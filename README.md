@@ -23,6 +23,10 @@ Weitere Befehle:
 
 > Die PWA-Installation und der Offline-Modus funktionieren im Produktions-Build (`npm run build && npm run preview`) bzw. nach dem Deployment über HTTPS. Zum Testen auf dem Handy im WLAN: `npx vite preview --host`.
 
+## Hosting auf GitHub Pages
+
+Bei jedem Push auf `main` baut `.github/workflows/pages.yml` die App (inkl. Unit-Tests) und veröffentlicht sie unter `https://<benutzer>.github.io/<repo>/`. Einmalig nötig: im Repository unter **Settings → Pages → Source** „GitHub Actions“ auswählen. Der Unterpfad wird über die Umgebungsvariable `BASE_PATH` gesetzt; lokal bleibt alles unter `/`.
+
 ## Was der MVP kann
 
 **Startseite & Profile** – „Hallo! Schön, dass du da bist!“, kindgerechte Profilauswahl (Spitzname, Tier-Avatar, Altersgruppe), Bereiche Kindergarten und Grundschule, Weiterlernen, Tagesziel, Mein Lernabenteuer, Meine Sterne, Meine Erfolge, Elternbereich.

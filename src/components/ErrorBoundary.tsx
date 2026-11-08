@@ -22,7 +22,7 @@ export class ErrorBoundary extends Component<{ children: ReactNode; compact?: bo
         <p className="max-w-md text-tinte/70">Lino hat sich kurz verlaufen. Dein Lernfortschritt ist sicher gespeichert.</p>
         <div className="flex gap-3">
           <button className="knopf bg-sonne-500" onClick={() => this.setState({ error: null })}>Nochmal versuchen</button>
-          <button className="knopf bg-white" onClick={() => window.location.assign('/')}>Zur Startseite</button>
+          <button className="knopf bg-white" onClick={() => window.location.assign(import.meta.env.BASE_URL)}>Zur Startseite</button>
         </div>
       </div>
     );
