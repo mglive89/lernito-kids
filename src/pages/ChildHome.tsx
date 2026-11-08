@@ -1,16 +1,25 @@
 import { Link, useNavigate } from 'react-router-dom';
-import { Lock, Users } from 'lucide-react';
+import { Lock, Play, Users } from 'lucide-react';
 import { useApp, useActiveProfile } from '../store/useApp';
-import { Avatar, ProgressBar, SectionTitle, StarCount, Tile } from '../components/ui';
+import { Avatar, COLOR_CLASSES, ProgressBar, SectionTitle, StarCount, Tile } from '../components/ui';
+import { sfx } from '../lib/sound';
+import { lessonLabel } from './Learn';
+import type { LearningModule } from '../learning/types';
 import { LinoSays } from '../components/Lino';
 import { levelFromXp } from '../learning/rewards';
 import { allModules, findModule, fitsCountry, schoolModules } from '../learning/registry';
-import { needsPractice } from '../learning/adaptive';
+import { needsPractice, pathDoneOf } from '../learning/adaptive';
 import { dateKey } from '../lib/date';
 import { L, tr } from '../i18n';
 import { stageFor } from '../school/systems';
 import { subjectDef, subjectName } from '../school/subjects';
 import { profileLabel } from './Start';
+
+/** Link zur nächsten Lektion eines Themas (Lernpfad) bzw. zum Spiel. */
+export function lessonLink(m: LearningModule, pathDone?: number): string {
+  if (m.area !== 'schule') return `/spiel/${m.id}`;
+  return `/spiel/${m.id}?lektion=${Math.min(3, (pathDone ?? 0) + 1)}`;
+}
 
 export function ChildHome() {
   const { profile, progress, settings } = useActiveProfile();
@@ -31,6 +40,8 @@ export function ChildHome() {
   const assigned = settings.assigned.map((id) => findModule(id, custom)).filter((m): m is NonNullable<typeof m> => !!m);
   const practice = allModules(custom).filter((m) => fitsCountry(m, country) && needsPractice(progress.modules[m.id])).slice(0, 4);
   const first = isKita ? 'kita-zaehlen' : schoolModules(country, year, 'mathe', custom)[0]?.id ?? 'kita-zaehlen';
+  // Weiterlernen: zuletzt gespieltes Thema, sonst das erste Mathe-Thema der Klasse
+  const cont = last ?? findModule(first, custom)!;
   const hour = new Date().getHours();
   const hello = hour < 11 ? L('Guten Morgen', 'Buongiorno') : hour < 18 ? L('Hallo', 'Ciao') : L('Guten Abend', 'Buonasera');
 
@@ -51,23 +62,30 @@ export function ChildHome() {
       <main className="seite">
         <LinoSays text={today.rounds >= goal ? L('Dein Tagesziel hast du geschafft! Du darfst gern weiterspielen.', 'Hai raggiunto l’obiettivo di oggi! Puoi continuare, se ti va.') : L('Was möchtest du heute lernen?', 'Che cosa vuoi imparare oggi?')} mood={today.rounds >= goal ? 'jubel' : 'freude'} size={80} />
 
-        <div className="mt-5 grid grid-cols-1 gap-4 md:grid-cols-3">
-          {last ? (
-            <Tile to={`/spiel/${last.id}`} emoji={last.emoji} title={L('Weiterlernen', 'Continua')} subtitle={tr(last.title)} color="minze" testId="weiterlernen" />
-          ) : (
-            <Tile to={`/spiel/${first}`} emoji="▶️" title={L('Weiterlernen', 'Continua')} subtitle={L('Starte mit deiner ersten Übung', 'Inizia con il primo esercizio')} color="minze" testId="weiterlernen" />
-          )}
-          <div className="karte flex flex-col justify-center gap-2 p-5" aria-label={L('Tagesziel', 'Obiettivo del giorno')}>
-            <span className="eyebrow">{L('Mein Tagesziel', 'Obiettivo di oggi')}</span>
-            <span className="font-display text-2xl font-bold">{Math.min(today.rounds, goal)} / {goal}</span>
-            <ProgressBar value={today.rounds / goal} label={L('Tagesziel', 'Obiettivo del giorno')} />
-            <span className="text-sm text-tinte/60">{L('Runden – ganz freiwillig', 'turni – senza obbligo')}</span>
-          </div>
-          <div className="karte flex flex-col justify-center gap-2 p-5" aria-label={L('Level-Fortschritt', 'Progresso di livello')}>
-            <span className="eyebrow">Level</span>
-            <span className="font-display text-2xl font-bold">{lvl.level}</span>
-            <ProgressBar value={lvl.progress} color="bg-lila-500" label={L('Fortschritt zum nächsten Level', 'Progresso verso il prossimo livello')} />
-            <span className="text-sm text-tinte/60">{lvl.next ? L(`Noch ${lvl.next - progress.xp} Punkte bis Level ${lvl.level + 1}`, `Ancora ${lvl.next - progress.xp} punti per il livello ${lvl.level + 1}`) : L('Höchstes Level erreicht!', 'Livello massimo raggiunto!')}</span>
+        <div className="mt-5 grid grid-cols-1 gap-4 lg:grid-cols-3">
+          <Link to={lessonLink(cont, pathDoneOf(progress.modules[cont.id]))} onClick={() => sfx.tap()} data-testid="weiterlernen"
+            className="group relative flex items-center gap-4 overflow-hidden rounded-blob bg-himmel-500 p-5 text-white shadow-karte transition hover:bg-himmel-700 lg:col-span-2 sm:p-6">
+            <span className="emoji flex h-16 w-16 shrink-0 items-center justify-center rounded-2xl bg-white/20 text-4xl" aria-hidden>{cont.emoji}</span>
+            <span className="min-w-0 flex-1">
+              <span className="block text-xs font-bold uppercase tracking-wider text-white/80">{L('Weiterlernen', 'Continua')}{cont.area === 'schule' ? ` · ${lessonLabel(Math.min(3, pathDoneOf(progress.modules[cont.id]) + 1))}` : ''}</span>
+              <span className="block truncate font-display text-2xl font-bold">{tr(cont.title)}</span>
+              <span className="block truncate text-white/85">{tr(cont.subtitle)}</span>
+            </span>
+            <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-white text-himmel-700 transition group-hover:scale-105" aria-hidden><Play size={22} className="fill-himmel-700" /></span>
+          </Link>
+          <div className="grid grid-cols-2 gap-4">
+            <div className="karte flex flex-col justify-center gap-2 p-4" aria-label={L('Tagesziel', 'Obiettivo del giorno')}>
+              <span className="eyebrow">{L('Tagesziel', 'Obiettivo')}</span>
+              <span className="font-display text-2xl font-bold">{Math.min(today.rounds, goal)}/{goal}</span>
+              <ProgressBar value={today.rounds / goal} label={L('Tagesziel', 'Obiettivo del giorno')} />
+              <span className="text-xs text-tinte/55">{L('Lektionen, freiwillig', 'lezioni, senza obbligo')}</span>
+            </div>
+            <div className="karte flex flex-col justify-center gap-2 p-4" aria-label={L('Level-Fortschritt', 'Progresso di livello')}>
+              <span className="eyebrow">Level {lvl.level}</span>
+              <span className="font-display text-2xl font-bold">{progress.xp} XP</span>
+              <ProgressBar value={lvl.progress} color="bg-lila-500" label={L('Fortschritt zum nächsten Level', 'Progresso verso il prossimo livello')} />
+              <span className="text-xs text-tinte/55">{lvl.next ? L(`Noch ${lvl.next - progress.xp} bis Level ${lvl.level + 1}`, `Ancora ${lvl.next - progress.xp} per il livello ${lvl.level + 1}`) : L('Höchstes Level!', 'Livello massimo!')}</span>
+            </div>
           </div>
         </div>
 
@@ -82,8 +100,22 @@ export function ChildHome() {
             <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
               {subjects.map((id) => {
                 const d = subjectDef(id);
-                const n = schoolModules(country, year, id, custom).length;
-                return <Tile key={id} to={`/schule/${year}/${id}`} emoji={d?.emoji ?? '📘'} title={subjectName(id, country)} subtitle={L(`${n} ${n === 1 ? 'Thema' : 'Themen'}`, `${n} ${n === 1 ? 'argomento' : 'argomenti'}`)} color={d?.color ?? 'himmel'} testId={`home-fach-${id}`} />;
+                const mods = schoolModules(country, year, id, custom);
+                const done = mods.reduce((a, m) => a + pathDoneOf(progress.modules[m.id]), 0);
+                const c = COLOR_CLASSES[d?.color ?? 'himmel'] ?? COLOR_CLASSES.himmel!;
+                return (
+                  <Link key={id} to={`/schule/${year}/${id}`} onClick={() => sfx.tap()} data-testid={`home-fach-${id}`}
+                    className="flex flex-col gap-3 rounded-blob bg-white p-4 shadow-weich ring-1 ring-tinte/5 transition hover:-translate-y-0.5 hover:shadow-karte">
+                    <span className="flex items-center gap-3">
+                      <span className={`emoji flex h-11 w-11 shrink-0 items-center justify-center rounded-xl text-2xl ${c.soft}`} aria-hidden>{d?.emoji ?? '📘'}</span>
+                      <span className="min-w-0">
+                        <span className="block truncate font-display text-lg font-bold leading-tight">{subjectName(id, country)}</span>
+                        <span className="block text-xs font-semibold text-tinte/55">{mods.length} {mods.length === 1 ? L('Einheit', 'unità') : L('Einheiten', 'unità')}</span>
+                      </span>
+                    </span>
+                    <ProgressBar value={mods.length ? done / (mods.length * 3) : 0} color={c.bg} label={L(`${done} von ${mods.length * 3} Lektionen`, `${done} di ${mods.length * 3} lezioni`)} />
+                  </Link>
+                );
               })}
             </div>
             <div className="mt-4 grid grid-cols-1 gap-4 sm:grid-cols-2">
@@ -109,7 +141,7 @@ export function ChildHome() {
             <SectionTitle>🔁 {L('Nochmal üben', 'Ripassiamo')}</SectionTitle>
             <p className="-mt-2 mb-3 text-tinte/60">{L('Diese Themen üben wir gemeinsam in kleinen Schritten.', 'Ripassiamo insieme questi argomenti, a piccoli passi.')}</p>
             <div className="grid grid-cols-2 gap-4 sm:grid-cols-4">
-              {practice.map((m) => <Tile key={m.id} to={`/spiel/${m.id}`} emoji={m.emoji} title={tr(m.title)} color={m.color} />)}
+              {practice.map((m) => <Tile key={m.id} to={lessonLink(m, Math.max(0, pathDoneOf(progress.modules[m.id]) - 1))} emoji={m.emoji} title={tr(m.title)} color={m.color} />)}
             </div>
           </>
         )}

@@ -136,4 +136,8 @@ export interface LearningModule {
   /** Benutzerdefiniertes Modul aus dem Admin-Bereich */
   custom?: boolean;
   generate: (level: Difficulty, rng: Rng) => Task[];
+  /** Lernkarten (Frage, Antwort, Erklärung) für die Theorie-Seite */
+  cards?: () => StudyCard[];
 }
+
+export interface StudyCard { q: string; a: string; ex?: string; code?: string; level: Difficulty }

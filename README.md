@@ -47,6 +47,10 @@ Intern ist jede Klasse ein Schuljahr 1–13 (`src/school/systems.ts`); Module tr
 
 **Design:** Schrift Plus Jakarta Sans, ruhige Farbpalette; ab Sekundarstufe automatisch sachlicherer „Teen“-Look. Maskottchen **Puppy in 3D** (React Three Fiber, live auf der Startseite, sonst vorgerenderte Bilder).
 
+**Lernpfad (ab Klasse 1):** Jedes Fach ist ein Pfad aus Einheiten (= Themen) mit je drei Lektionen: Grundlagen (Stufe 1), Üben (Stufe 2), Meistern (Stufe 3). Lektionen einer Einheit werden nacheinander freigeschaltet, alle Einheiten sind direkt erreichbar (Hausaufgaben-Hilfe). In der Lektion: Antwort wählen → „Prüfen“ → grüne/rote Rückmeldeleiste → „Weiter“; Fortschrittsbalken, Serien-Anzeige, Abschluss mit XP, Genauigkeit und Zeit. Keine Leben/Herzen und keine verlierbaren Serien. Kindergarten bleibt bei sofortiger Rückmeldung.
+
+**Theorie zu jedem Thema** (`/thema/:id`, Buch-Symbol im Pfad und in der Lektion): „Das Wichtigste“ (handgeschrieben, de/it, `src/learning/guides.ts`), automatisch erzeugte gelöste Beispiele (`src/learning/examples.ts`) und Lernkarten aus allen Fragen der Fragenbank.
+
 **Kindergarten – 12 spielbare Lernspiele:** Gegenstände zählen · Zahlen 1–20 · Farben · Formen (Drag-and-Drop) · Tiere mit (gesprochenen) Tiergeräuschen · Buchstaben und erste Wörter · Groß und Klein · Memory · Logische Reihenfolgen · Schattenbilder · Puzzle · Vorschule.
 
 Aufgabentypen: Auswahl, Zahlenfeld, Wörter/Silben bauen, Reihenfolge, Memory, Drag-and-Drop, Puzzle, 3D-Auswahl.
@@ -97,7 +101,7 @@ tests/e2e/           Playwright-Tests
 ## Qualität
 
 - TypeScript `strict` inkl. `noUncheckedIndexedAccess`
-- 183 Unit-Tests (jedes Modul in allen Sprach-/Länderkombinationen) (Vitest) für Lernlogik, Aufgaben-Generatoren, Adaptivität, Belohnungen, Hash, Untertitel
+- 185 Unit-Tests (jedes Modul in allen Sprach-/Länderkombinationen) (Vitest) für Lernlogik, Aufgaben-Generatoren, Adaptivität, Belohnungen, Hash, Untertitel
 - End-to-End-Tests (Playwright) für Desktop, Smartphone (Pixel 7) und Tablet (iPad Pro 11): Profil anlegen, Kita-Spiel inkl. Fehlversuch, Drag-and-Drop per Maus und per Antippen, Einmaleins mit Zahlenfeld, Deutsch, Lösungs-Erklärung, 3D-Fallback, Video + Quiz, Elternbereich (PIN, Zuweisung, Zeitlimit, Export), Admin-Modul anlegen und spielen, Zeitlimit-Pause, Manifest + Offline-Start, kein horizontales Scrollen
 - Fehlergrenzen (Error Boundaries) und Ladezustände, In-Memory-Fallback wenn IndexedDB blockiert ist
 

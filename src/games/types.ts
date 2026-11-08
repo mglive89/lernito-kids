@@ -8,6 +8,11 @@ export interface TaskViewProps<T extends Task = Task> {
   reveal: boolean;
   /** Aufgabe abgeschlossen – keine Eingaben mehr */
   done: boolean;
+  /**
+   * Prüfen-Modus: Antwort erst auswählen, dann mit „Prüfen“ bestätigen.
+   * Die Ansicht meldet die Prüf-Funktion (oder null, wenn nichts gewählt ist).
+   */
+  onPending?: (check: (() => void) | null) => void;
 }
 
 /** Aufgabentypen, bei denen Fehler weiche Hinweise sind und das Kind die Aufgabe selbst zu Ende bringt. */

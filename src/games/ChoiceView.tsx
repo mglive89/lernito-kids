@@ -7,17 +7,45 @@ import { speak } from '../lib/speech';
 import type { TaskViewProps } from './types';
 import { L } from '../i18n';
 
-export function ChoiceView({ task, onCorrect, onWrong, reveal, done }: TaskViewProps<ChoiceTask>) {
+export function ChoiceView({ task, onCorrect, onWrong, reveal, done, onPending }: TaskViewProps<ChoiceTask>) {
   const [wrong, setWrong] = useState<string[]>([]);
   const [chosen, setChosen] = useState<string | null>(null);
-  useEffect(() => { setWrong([]); setChosen(null); }, [task.id]);
+  const [selected, setSelected] = useState<string | null>(null);
+  useEffect(() => { setWrong([]); setChosen(null); setSelected(null); }, [task.id]);
+
+  const evaluate = (id: string) => {
+    if (id === task.correctId) { setChosen(id); onCorrect(); }
+    else { setWrong((w) => [...w, id]); onWrong(); }
+  };
+
+  // Prüfen-Modus: Auswahl melden, ausgewertet wird erst beim Prüfen
+  useEffect(() => {
+    if (!onPending) return;
+    if (!selected || done || reveal) { onPending(null); return; }
+    const id = selected;
+    onPending(() => { setSelected(null); evaluate(id); });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [selected, done, reveal, onPending]);
 
   const choose = (o: ChoiceOption) => {
     if (done || reveal || wrong.includes(o.id)) return;
     if (o.speak) speak(o.speak);
-    if (o.id === task.correctId) { setChosen(o.id); onCorrect(); }
-    else { setWrong((w) => [...w, o.id]); onWrong(); }
+    if (onPending) { setSelected(o.id); return; }
+    evaluate(o.id);
   };
+
+  // Tastatur: 1–9 wählt eine Antwort (Prüfen-Modus)
+  useEffect(() => {
+    if (!onPending) return;
+    const h = (e: KeyboardEvent) => {
+      if (e.target instanceof HTMLInputElement || e.target instanceof HTMLTextAreaElement) return;
+      const i = Number(e.key) - 1;
+      const o = task.options[i];
+      if (o && Number.isInteger(i)) choose(o);
+    };
+    window.addEventListener('keydown', h);
+    return () => window.removeEventListener('keydown', h);
+  });
 
   const style = task.optionStyle ?? 'text';
   const n = task.options.length;
@@ -31,6 +59,7 @@ export function ChoiceView({ task, onCorrect, onWrong, reveal, done }: TaskViewP
       {task.options.map((o) => {
         const isWrong = wrong.includes(o.id);
         const isRight = (chosen === o.id || (reveal && o.id === task.correctId));
+        const isSel = selected === o.id;
         return (
           <motion.button
             key={o.id}
@@ -40,15 +69,17 @@ export function ChoiceView({ task, onCorrect, onWrong, reveal, done }: TaskViewP
             onClick={() => choose(o)}
             disabled={isWrong || done}
             aria-label={ariaFor(o)}
+            aria-pressed={onPending ? isSel : undefined}
             animate={isWrong ? { x: [0, -10, 10, -6, 6, 0] } : isRight ? { scale: [1, 1.08, 1] } : {}}
             transition={{ duration: 0.45 }}
             whileTap={{ scale: 0.94 }}
             className={[
-              'knopf relative flex-col bg-white text-tinte',
+              'knopf relative flex-col text-tinte',
+              isSel ? 'bg-himmel-50 ring-4 ring-himmel-500' : 'bg-white',
               style === 'text' ? 'min-h-[4.5rem] justify-center px-4 text-xl sm:text-2xl' : 'aspect-square min-h-[5.5rem] p-2',
               style === 'big' ? 'font-display text-5xl sm:text-6xl' : '',
               isWrong ? 'opacity-40' : '',
-              isRight ? 'ring-8 ring-minze-500 disabled:opacity-100' : '',
+              isRight ? 'ring-4 ring-minze-500 disabled:opacity-100' : '',
               reveal && o.id === task.correctId ? 'animate-pulse' : ''
             ].join(' ')}
           >

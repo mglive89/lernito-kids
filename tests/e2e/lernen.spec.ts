@@ -1,5 +1,5 @@
 import { expect, test } from '@playwright/test';
-import { createProfile, playChoiceRound, waitNext } from './helpers';
+import { confirmAnswer, createProfile, playChoiceRound, waitNext } from './helpers';
 
 test('Kindergarten: Zählen spielen, Sterne bleiben nach Neuladen erhalten', async ({ page }) => {
   await createProfile(page, 'Mila', 'kita');
@@ -66,6 +66,7 @@ test('Grundschule Klasse 2: Einmaleins mit Zahlenfeld lösen', async ({ page }) 
       for (const d of String(a! * b!)) await page.getByTestId(`key-${d}`).click();
       await page.getByTestId('key-ok').click();
     }
+    await confirmAnswer(page);
     await waitNext(page, idx);
   }
   await expect(page.getByTestId('summary')).toBeVisible();
@@ -149,4 +150,43 @@ test('Programmieren Grundschule: Roboter-Parcours', async ({ page }) => {
   await page.getByTestId('modul-code-roboter').click();
   await expect(page.getByRole('img', { name: /Spielfeld/ })).toBeVisible();
   await playChoiceRound(page);
+});
+
+test('Lernpfad: Lektion abschließen schaltet die nächste frei, Theorie mit Beispielen', async ({ page }) => {
+  await createProfile(page, 'Sara', '8');
+  await page.goto('/schule/8/mathe');
+  await expect(page.getByTestId('pfad-fortschritt')).toContainText('0/');
+  const first = page.locator('[data-testid^="einheit-"]').first();
+  const id = (await first.getAttribute('data-testid'))!.replace('einheit-', '');
+  // Lektion 2 ist noch gesperrt
+  await page.getByTestId(`lektion-${id}-2`).click();
+  await expect(page.getByRole('status').filter({ hasText: /Lektion 1/ })).toBeVisible();
+  // Theorie öffnen
+  await page.getByTestId(`theorie-${id}`).click();
+  await expect(page.getByText('Das Wichtigste')).toBeVisible();
+  await expect(page.getByTestId('beispiel').first()).toBeVisible();
+  await page.getByTestId('theorie-ueben').click();
+  await expect(page.getByText('Lektion 1 · Grundlagen').first()).toBeVisible();
+  // Prüfen ist erst nach einer Auswahl aktiv
+  if (await page.locator('[data-correct="true"]').count()) await expect(page.getByTestId('pruefen')).toBeDisabled();
+  await page.getByTestId('theorie-oeffnen').click();
+  await expect(page.getByRole('dialog')).toBeVisible();
+  await page.keyboard.press('Escape');
+  for (let i = 0; i < 20; i++) {
+    if (await page.getByTestId('summary').isVisible()) break;
+    const area = page.getByTestId('task-area');
+    const idx = await area.getAttribute('data-index');
+    if ((await area.getAttribute('data-phase')) !== 'answer') await page.getByTestId('weiter').click();
+    else if (await page.locator('[data-correct="true"]').count()) { await page.locator('[data-correct="true"]').first().click(); await confirmAnswer(page); }
+    else {
+      // Zahlenfeld: Lösung zweimal falsch eingeben, dann wird sie gezeigt
+      for (let t = 0; t < 2; t++) { await page.getByTestId('key-9').click(); await page.getByTestId('key-9').click(); await page.getByTestId('key-9').click(); await page.getByTestId('key-ok').click(); }
+      continue;
+    }
+    await waitNext(page, idx);
+  }
+  await expect(page.getByTestId('xp-earned')).toBeVisible();
+  await page.getByTestId('zurueck').click();
+  await expect(page.getByTestId('pfad-fortschritt')).toContainText('1/');
+  await expect(page.getByTestId(`modul-${id}`)).toHaveAttribute('href', new RegExp(`lektion=2`));
 });

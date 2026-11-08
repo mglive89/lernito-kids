@@ -26,6 +26,15 @@ export async function answerChoice(page: Page) {
   await page.locator('[data-correct="true"]').first().click();
 }
 
+/** Schule: „Prüfen“ drücken (falls vorhanden) und nach richtiger Antwort „Weiter“. */
+export async function confirmAnswer(page: Page) {
+  const check = page.getByTestId('pruefen');
+  if (await check.isVisible()) await check.click();
+  const area = page.getByTestId('task-area');
+  await page.waitForFunction(() => document.querySelector('[data-testid="task-area"]')?.getAttribute('data-phase') !== 'answer' || !document.querySelector('[data-testid="pruefen"]'), null, { timeout: 5000 }).catch(() => {});
+  if ((await area.getAttribute('data-phase')) === 'correct' && (await page.getByTestId('weiter').isVisible())) await page.getByTestId('weiter').click();
+}
+
 /** Wartet, bis die nächste Aufgabe (oder die Zusammenfassung) da ist. */
 export async function waitNext(page: Page, index: string | null) {
   await page.waitForFunction((idx) => {
@@ -43,8 +52,11 @@ export async function playChoiceRound(page: Page) {
     const area = page.getByTestId('task-area');
     await area.waitFor();
     const idx = await area.getAttribute('data-index');
-    if ((await area.getAttribute('data-phase')) === 'reveal') await page.getByTestId('weiter').click();
-    else await page.locator('[data-correct="true"]:not([disabled])').first().click();
+    if ((await area.getAttribute('data-phase')) !== 'answer') await page.getByTestId('weiter').click();
+    else {
+      await page.locator('[data-correct="true"]:not([disabled])').first().click();
+      await confirmAnswer(page);
+    }
     await waitNext(page, idx);
   }
   await expect(page.getByTestId('summary')).toBeVisible();

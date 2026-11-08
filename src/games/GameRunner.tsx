@@ -1,13 +1,15 @@
-import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState, type ReactNode } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
-import { Lightbulb, RotateCcw, Star, X, ArrowRight } from 'lucide-react';
+import { BookOpen, Check, Clock, Flame, Lightbulb, RotateCcw, Star, Target, X, ArrowRight, Zap } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import type { LearningModule, Task } from '../learning/types';
 import { createRng } from '../lib/random';
 import { speak, stopSpeaking } from '../lib/speech';
 import { sfx } from '../lib/sound';
-import { Lino, type LinoMood } from '../components/Lino';
-import { Confetti, ProgressBar, SpeakButton } from '../components/ui';
+import { Lino } from '../components/Lino';
+import { Confetti, Modal, ProgressBar, SpeakButton } from '../components/ui';
+import { guideFor } from '../learning/guides';
+import { GuideContent } from '../pages/Guide';
 import { Visual } from '../components/Visual';
 import { TaskView } from './TaskView';
 import { MULTI_STEP } from './types';
@@ -27,11 +29,16 @@ interface Props {
   /** Vorschau (Admin) – nichts wird gespeichert */
   preview?: boolean;
   backTo: string;
+  /** 'check': Antwort wählen, dann „Prüfen“ (Schule). 'auto': sofort werten und weiter (Kita). */
+  mode?: 'auto' | 'check';
+  /** Name der Lektion im Lernpfad, z. B. „Lektion 2 · Üben“ */
+  lessonLabel?: string;
 }
 
 type Phase = 'answer' | 'correct' | 'reveal';
+type Tone = 'ok' | 'hint' | 'help';
 
-export function GameRunner({ module, level, speechOn, onFinish, preview, backTo }: Props) {
+export function GameRunner({ module, level, speechOn, onFinish, preview, backTo, mode = 'auto', lessonLabel }: Props) {
   const nav = useNavigate();
   const [seed, setSeed] = useState(() => Date.now());
   const tasks = useMemo<Task[]>(() => {
@@ -40,14 +47,21 @@ export function GameRunner({ module, level, speechOn, onFinish, preview, backTo 
   const [index, setIndex] = useState(0);
   const [attempts, setAttempts] = useState(0);
   const [phase, setPhase] = useState<Phase>('answer');
-  const [feedback, setFeedback] = useState<{ text: string; mood: LinoMood } | null>(null);
+  const [feedback, setFeedback] = useState<{ title: string; text?: string; tone: Tone } | null>(null);
   const stats = useRef({ firstTry: 0, solved: 0, hints: 0, start: Date.now() });
+  const [streak, setStreak] = useState(0);
   const [result, setResult] = useState<{ round: RoundResult; rec: RecordResult } | null>(null);
   const [revealHelp, setRevealHelp] = useState(false);
-  useEffect(() => setRevealHelp(false), [index, seed]);
+  const [pending, setPending] = useState<(() => void) | null>(null);
+  const [guideOpen, setGuideOpen] = useState(false);
+  useEffect(() => { setRevealHelp(false); setPending(null); }, [index, seed]);
+  const check = mode === 'check';
+  const hasGuide = !!guideFor(module.id) || !!module.cards;
 
   const task = tasks[index];
   const multi = task ? MULTI_STEP.includes(task.type) : false;
+  const usesCheck = check && task?.type === 'choice';
+  const onPending = useCallback((fn: (() => void) | null) => setPending(() => fn), []);
 
   useEffect(() => {
     if (!task || !speechOn) return;
@@ -77,11 +91,11 @@ export function GameRunner({ module, level, speechOn, onFinish, preview, backTo 
 
   const onCorrect = useCallback(() => {
     if (phase !== 'answer') return;
-    if (attempts === 0) stats.current.firstTry++;
+    if (attempts === 0) { stats.current.firstTry++; setStreak((x) => x + 1); }
     stats.current.solved++;
     sfx.correct();
     const text = pickOf(LOB);
-    setFeedback({ text, mood: 'jubel' });
+    setFeedback({ title: text, tone: 'ok' });
     if (speechOn) speak(text);
     setPhase('correct');
   }, [phase, attempts, speechOn]);
@@ -89,37 +103,48 @@ export function GameRunner({ module, level, speechOn, onFinish, preview, backTo 
   const onWrong = useCallback(() => {
     if (phase !== 'answer' || !task) return;
     sfx.tryAgain();
+    setStreak(0);
     const n = attempts + 1;
     setAttempts(n);
     if (n === 1) {
       stats.current.hints++;
-      const text = `${pickOf(NOCHMAL)} ${task.hint}`;
-      setFeedback({ text, mood: 'denken' });
-      if (speechOn) speak(text);
+      const title = pickOf(NOCHMAL);
+      setFeedback({ title, text: task.hint, tone: 'hint' });
+      if (speechOn) speak(`${title} ${task.hint}`);
     } else if (n >= 2) {
       if (multi) {
         // Bei mehrschrittigen Aufgaben zeigen wir die Hilfe, das Kind macht selbst weiter.
-        setFeedback({ text: `${L('Ich helfe dir:', 'Ti aiuto io:')} ${task.explain[0] ?? task.hint}`, mood: 'denken' });
+        setFeedback({ title: L('Ich helfe dir:', 'Ti aiuto io:'), text: task.explain[0] ?? task.hint, tone: 'hint' });
         setRevealHelp(true);
       } else {
-        setFeedback({ text: L('Schau mal, so geht es:', 'Guarda, si fa così:'), mood: 'ruhig' });
+        setFeedback({ title: L('Schau mal, so geht es:', 'Guarda, si fa così:'), tone: 'help' });
         if (speechOn) speak(`${L('Schau mal, so geht es.', 'Guarda, si fa così.')} ${task.explain.join(' ')}`);
         setPhase('reveal');
       }
     }
   }, [phase, task, attempts, speechOn, multi]);
 
-
-  // Automatisch weiter nach richtiger Antwort
+  // Kita: automatisch weiter nach richtiger Antwort. Schule: mit „Weiter“.
   useEffect(() => {
-    if (phase !== 'correct') return;
+    if (phase !== 'correct' || check) return;
     const t = setTimeout(next, 1400);
     return () => clearTimeout(t);
-  }, [phase, next]);
+  }, [phase, next, check]);
+
+  // Enter: prüfen bzw. weiter
+  useEffect(() => {
+    const h = (e: KeyboardEvent) => {
+      if (e.key !== 'Enter' || guideOpen) return;
+      if (phase === 'answer' && pending) { e.preventDefault(); pending(); }
+      else if (phase !== 'answer' && (check || phase === 'reveal')) { e.preventDefault(); next(); }
+    };
+    window.addEventListener('keydown', h);
+    return () => window.removeEventListener('keydown', h);
+  }, [phase, pending, check, next, guideOpen]);
 
   const restart = () => {
     stats.current = { firstTry: 0, solved: 0, hints: 0, start: Date.now() };
-    setResult(null); setIndex(0); setAttempts(0); setPhase('answer'); setFeedback(null); setSeed(Date.now());
+    setResult(null); setIndex(0); setAttempts(0); setPhase('answer'); setFeedback(null); setStreak(0); setSeed(Date.now());
   };
 
   if (tasks.length === 0) {
@@ -132,34 +157,44 @@ export function GameRunner({ module, level, speechOn, onFinish, preview, backTo 
     );
   }
 
-  if (result) return <Summary module={module} result={result} onAgain={restart} onBack={() => nav(backTo)} preview={preview} />;
+  if (result) return <Summary module={module} result={result} onAgain={restart} onBack={() => nav(backTo)} preview={preview} lessonLabel={lessonLabel} />;
   if (!task) return null;
+
+  const tone: Tone | 'idle' = feedback?.tone ?? 'idle';
+  const barBg = { idle: 'bg-white', ok: 'bg-minze-50', hint: 'bg-koralle-50', help: 'bg-sonne-50' }[tone];
+  const showNext = phase === 'reveal' || (phase === 'correct' && check);
 
   return (
     <div className="flex min-h-[100dvh] flex-col" style={{ paddingTop: 'var(--safe-top)' }}>
-      <div className="mx-auto flex w-full max-w-5xl items-center gap-3 px-4 py-3">
-        <button className="knopf h-12 w-12 shrink-0 bg-white px-0" onClick={() => { stopSpeaking(); nav(backTo); }} aria-label={L('Spiel beenden', 'Esci dal gioco')}>
-          <X size={24} />
+      <div className="mx-auto flex w-full max-w-3xl items-center gap-3 px-4 py-3">
+        <button className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full text-tinte/60 transition hover:bg-tinte/5 hover:text-tinte" onClick={() => { stopSpeaking(); nav(backTo); }} aria-label={L('Lektion beenden', 'Esci dalla lezione')}>
+          <X size={26} />
         </button>
         <div className="flex-1">
           <ProgressBar value={(index + (phase === 'answer' ? 0 : 1)) / tasks.length} label={L(`Aufgabe ${index + 1} von ${tasks.length}`, `Esercizio ${index + 1} di ${tasks.length}`)} />
         </div>
-        <span className="font-display text-lg font-bold" aria-hidden>{index + 1}/{tasks.length}</span>
+        <span className="min-w-[2.5rem] text-right font-display text-base font-bold text-tinte/60" aria-hidden>{index + 1}/{tasks.length}</span>
+        {hasGuide && (
+          <button className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-himmel-50 text-himmel-700 transition hover:bg-himmel-100" onClick={() => setGuideOpen(true)} aria-label={L('Theorie zum Thema öffnen', 'Apri la teoria')} data-testid="theorie-oeffnen">
+            <BookOpen size={22} />
+          </button>
+        )}
         {preview && <span className="rounded-full bg-lila-100 px-3 py-1 text-sm font-bold">{L('Vorschau', 'Anteprima')}</span>}
       </div>
 
-      <main className="mx-auto flex w-full max-w-5xl flex-1 flex-col items-center gap-5 px-4 pb-40 pt-2 sm:gap-6" data-testid="task-area" data-index={index} data-phase={phase}>
+      <main className="mx-auto flex w-full max-w-3xl flex-1 flex-col items-center gap-5 px-4 pb-48 pt-2 sm:gap-6" data-testid="task-area" data-index={index} data-phase={phase}>
         <AnimatePresence mode="wait">
           <motion.div key={task.id} initial={{ opacity: 0, x: 40 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -40 }} className="flex w-full flex-col items-center gap-5 sm:gap-6">
-            <div className="flex w-full max-w-3xl items-center gap-3">
+            {lessonLabel && index === 0 && phase === 'answer' && <span className="eyebrow self-start text-himmel-700">{lessonLabel}</span>}
+            <div className="flex w-full items-center gap-3">
               <SpeakButton text={task.speak ?? task.prompt} />
               <h1 className="flex-1 font-display text-2xl font-bold leading-snug tracking-tight sm:text-3xl" data-testid="task-prompt">{task.prompt}</h1>
               {task.sound && <SoundButton sound={task.sound} />}
             </div>
             {task.visual && <Visual v={task.visual} />}
-            <TaskView task={task} onCorrect={onCorrect} onWrong={onWrong} reveal={phase === 'reveal' || revealHelp} done={phase !== 'answer'} />
+            <TaskView task={task} onCorrect={onCorrect} onWrong={onWrong} reveal={phase === 'reveal' || revealHelp} done={phase !== 'answer'} onPending={usesCheck ? onPending : undefined} />
             {phase === 'reveal' && (
-              <motion.ol initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="karte w-full max-w-2xl list-decimal space-y-2 py-4 pl-10 pr-5 text-lg sm:text-xl" aria-label={L('Erklärung Schritt für Schritt', 'Spiegazione passo per passo')}>
+              <motion.ol initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="karte w-full list-decimal space-y-2 py-4 pl-10 pr-5 text-lg sm:text-xl" aria-label={L('Erklärung Schritt für Schritt', 'Spiegazione passo per passo')}>
                 {task.explain.map((s, i) => (
                   <motion.li key={i} initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.4 + i * 0.6 }}>{s}</motion.li>
                 ))}
@@ -169,29 +204,45 @@ export function GameRunner({ module, level, speechOn, onFinish, preview, backTo 
         </AnimatePresence>
       </main>
 
-      <div className="fixed inset-x-0 bottom-0 z-20" style={{ paddingBottom: 'var(--safe-bottom)' }}>
-        <AnimatePresence>
-          {feedback && (
-            <motion.div
-              initial={{ y: 120 }} animate={{ y: 0 }} exit={{ y: 120 }}
-              className={`mx-auto flex max-w-5xl items-end gap-3 rounded-t-[2rem] px-4 pb-3 pt-2 shadow-karte ${feedback.mood === 'jubel' ? 'bg-minze-100' : 'bg-sonne-100'} ring-1 ring-tinte/5`}
-              role="status" aria-live="assertive" data-testid="feedback"
-            >
-              <Lino mood={feedback.mood} size={72} />
-              <p className="mb-3 flex-1 font-display text-lg font-semibold sm:text-xl">
-                {feedback.mood === 'denken' && <Lightbulb className="mr-1 inline text-sonne-700" size={22} aria-hidden />}
-                {feedback.text}
-              </p>
-              {phase === 'reveal' && (
-                <button className="knopf mb-3 bg-himmel-500 text-white" onClick={next} data-testid="weiter">
-                  {L('Weiter', 'Avanti')} <ArrowRight />
-                </button>
+      {(feedback || usesCheck) && (
+        <div className={`fixed inset-x-0 bottom-0 z-20 border-t border-tinte/[0.07] ${barBg} transition-colors`} style={{ paddingBottom: 'var(--safe-bottom)' }}>
+          <div className="mx-auto flex max-w-3xl flex-col gap-3 px-4 py-4 sm:flex-row sm:items-center sm:gap-5 sm:py-5">
+            <div className="flex min-h-[3.5rem] flex-1 items-center gap-3" role="status" aria-live="assertive" data-testid="feedback">
+              {feedback && (
+                <>
+                  <motion.span initial={{ scale: 0.6, opacity: 0 }} animate={{ scale: 1, opacity: 1 }}
+                    className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-full text-white ${tone === 'ok' ? 'bg-minze-500' : tone === 'hint' ? 'bg-koralle-500' : 'bg-sonne-500'}`} aria-hidden>
+                    {tone === 'ok' ? <Check size={28} strokeWidth={3} /> : tone === 'hint' ? <Lightbulb size={26} /> : <BookOpen size={24} />}
+                  </motion.span>
+                  <div className="min-w-0">
+                    <p className={`font-display text-xl font-bold ${tone === 'ok' ? 'text-minze-700' : tone === 'hint' ? 'text-koralle-700' : 'text-sonne-700'}`}>
+                      {feedback.title}
+                      {tone === 'ok' && streak >= 3 && <span className="ml-2 inline-flex items-center gap-1 rounded-full bg-white px-2 py-0.5 text-sm text-sonne-700 shadow-weich"><Flame size={14} /> {L(`${streak} in Folge`, `${streak} di fila`)}</span>}
+                    </p>
+                    {feedback.text && <p className="text-base text-tinte/80 sm:text-lg">{feedback.text}</p>}
+                  </div>
+                </>
               )}
-            </motion.div>
-          )}
-        </AnimatePresence>
-      </div>
-      <Confetti show={phase === 'correct'} count={18} />
+              {!feedback && <Lino mood="ruhig" size={56} still />}
+            </div>
+            {showNext ? (
+              <button className={`knopf w-full text-white sm:w-48 ${tone === 'ok' ? 'bg-minze-500' : 'bg-himmel-500'}`} onClick={next} data-testid="weiter" autoFocus>
+                {L('Weiter', 'Avanti')} <ArrowRight />
+              </button>
+            ) : usesCheck && phase === 'answer' ? (
+              <button className="knopf w-full bg-himmel-500 text-white disabled:bg-tinte/10 disabled:text-tinte/40 disabled:shadow-none sm:w-48" disabled={!pending} onClick={() => pending?.()} data-testid="pruefen">
+                {L('Prüfen', 'Controlla')}
+              </button>
+            ) : null}
+          </div>
+        </div>
+      )}
+      <Confetti show={phase === 'correct' && !check} count={18} />
+      {hasGuide && (
+        <Modal open={guideOpen} onClose={() => setGuideOpen(false)} title={tr(module.title)} labelledBy="theorie-titel">
+          <GuideContent module={module} compact />
+        </Modal>
+      )}
     </div>
   );
 }
@@ -204,35 +255,43 @@ function SoundButton({ sound }: { sound: string }) {
   );
 }
 
-function Summary({ module, result, onAgain, onBack, preview }: { module: LearningModule; result: { round: RoundResult; rec: RecordResult }; onAgain: () => void; onBack: () => void; preview?: boolean }) {
+function Summary({ module, result, onAgain, onBack, preview, lessonLabel }: { module: LearningModule; result: { round: RoundResult; rec: RecordResult }; onAgain: () => void; onBack: () => void; preview?: boolean; lessonLabel?: string }) {
   const { round, rec } = result;
   const rs = roundStars(round);
   const change = (rec.difficultyAfter - rec.difficultyBefore) as -1 | 0 | 1;
+  const acc = round.total ? Math.round((round.firstTry / round.total) * 100) : 0;
+  const mins = Math.floor(round.durationSec / 60);
+  const secs = String(round.durationSec % 60).padStart(2, '0');
   return (
-    <main className="mx-auto flex min-h-[100dvh] max-w-2xl flex-col items-center justify-center gap-5 px-4 py-10 text-center" data-testid="summary">
+    <main className="mx-auto flex min-h-[100dvh] max-w-xl flex-col items-center justify-center gap-5 px-4 py-10 text-center" data-testid="summary">
       <Confetti show />
       <Lino mood="jubel" size={150} />
-      <h1 className="font-display text-4xl font-bold tracking-tight">{L('Geschafft!', 'Fatto!')}</h1>
-      <p className="text-xl text-tinte/80">{tr(module.title)}</p>
+      <div>
+        {lessonLabel && <p className="eyebrow text-himmel-700">{lessonLabel}</p>}
+        <h1 className="font-display text-4xl font-bold tracking-tight">{L('Geschafft!', 'Fatto!')}</h1>
+        <p className="mt-1 text-lg text-tinte/70">{tr(module.title)}</p>
+      </div>
       <div className="flex gap-2" aria-label={L(`${rs} von 3 Sternen`, `${rs} stelle su 3`)}>
         {[1, 2, 3].map((i) => (
           <motion.span key={i} initial={{ scale: 0, rotate: -90 }} animate={{ scale: 1, rotate: 0 }} transition={{ delay: 0.3 * i, type: 'spring' }}>
-            <Star size={64} className={i <= rs ? 'fill-sonne-500 text-sonne-500' : 'text-tinte/20'} />
+            <Star size={56} className={i <= rs ? 'fill-sonne-500 text-sonne-500' : 'text-tinte/15'} />
           </motion.span>
         ))}
       </div>
-      <p className="karte px-6 py-4 font-display text-xl">{roundMessage(round, change)}</p>
-      <div className="grid w-full grid-cols-2 gap-3">
-        <div className="karte p-4"><div className="font-display text-3xl font-bold" data-testid="stars-earned">+{rec.stars}</div><div>{L('Sterne', 'Stelle')}</div></div>
-        <div className="karte p-4"><div className="font-display text-3xl font-bold">{round.solved}/{round.total}</div><div>{L('Aufgaben gelöst', 'Esercizi risolti')}</div></div>
+      <div className="grid w-full grid-cols-3 gap-3">
+        <Stat icon={<Zap size={18} />} tone="text-sonne-700 bg-sonne-50" value={`+${rec.xp}`} label="XP" testId="xp-earned" />
+        <Stat icon={<Target size={18} />} tone="text-minze-700 bg-minze-50" value={`${acc} %`} label={L('Genauigkeit', 'Precisione')} />
+        <Stat icon={<Clock size={18} />} tone="text-himmel-700 bg-himmel-50" value={`${mins}:${secs}`} label={L('Zeit', 'Tempo')} />
       </div>
+      <p className="w-full rounded-2xl bg-white px-5 py-4 text-lg shadow-weich ring-1 ring-tinte/5">{roundMessage(round, change)}</p>
+      <p className="text-tinte/60"><span data-testid="stars-earned" className="font-bold text-tinte">+{rec.stars}</span> {L('Sterne', 'stelle')} · {round.solved}/{round.total} {L('gelöst', 'risolti')}</p>
       {rec.levelAfter > rec.levelBefore && (
-        <motion.div initial={{ scale: 0.8 }} animate={{ scale: 1 }} className="w-full rounded-3xl bg-lila-100 p-4 font-display text-xl font-bold">
+        <motion.div initial={{ scale: 0.8 }} animate={{ scale: 1 }} className="w-full rounded-2xl bg-lila-100 p-4 font-display text-xl font-bold">
           🎉 {L(`Neues Level: ${rec.levelAfter}! Schau mal bei deinem Avatar vorbei.`, `Nuovo livello: ${rec.levelAfter}! Passa dal tuo avatar.`)}
         </motion.div>
       )}
       {rec.badges.length > 0 && (
-        <div className="w-full rounded-3xl bg-sonne-100 p-4">
+        <div className="w-full rounded-2xl bg-sonne-100 p-4">
           <h2 className="mb-2 font-display text-xl font-bold">{L('Neues Abzeichen!', 'Nuovo distintivo!')}</h2>
           <ul className="flex flex-wrap justify-center gap-3">
             {rec.badges.map((b) => <li key={b.id} className="flex items-center gap-2 rounded-full bg-white px-4 py-2"><span className="emoji text-2xl">{b.emoji}</span>{tr(b.title)}</li>)}
@@ -240,10 +299,20 @@ function Summary({ module, result, onAgain, onBack, preview }: { module: Learnin
         </div>
       )}
       {preview && <p className="text-tinte/60">{L('Vorschau-Modus: Es wurde nichts gespeichert.', 'Modalità anteprima: non è stato salvato nulla.')}</p>}
-      <div className="flex w-full flex-col gap-3 sm:flex-row">
-        <button className="knopf flex-1 bg-sonne-500" onClick={onAgain} data-testid="nochmal"><RotateCcw /> {L('Nochmal spielen', 'Gioca ancora')}</button>
-        <button className="knopf flex-1 bg-white" onClick={onBack} data-testid="zurueck">{L('Weiter lernen', 'Continua a imparare')} <ArrowRight /></button>
+      <div className="flex w-full flex-col-reverse gap-3 sm:flex-row">
+        <button className="knopf flex-1 bg-white" onClick={onAgain} data-testid="nochmal"><RotateCcw /> {L('Nochmal', 'Ancora')}</button>
+        <button className="knopf flex-1 bg-himmel-500 text-white" onClick={onBack} data-testid="zurueck" autoFocus>{L('Weiter', 'Continua')} <ArrowRight /></button>
       </div>
     </main>
+  );
+}
+
+function Stat({ icon, value, label, tone, testId }: { icon: ReactNode; value: string; label: string; tone: string; testId?: string }) {
+  return (
+    <div className="rounded-2xl bg-white p-3 shadow-weich ring-1 ring-tinte/5">
+      <div className={`mx-auto mb-1 flex h-8 w-8 items-center justify-center rounded-full ${tone}`}>{icon}</div>
+      <div className="font-display text-2xl font-bold" data-testid={testId}>{value}</div>
+      <div className="text-xs font-semibold uppercase tracking-wide text-tinte/55">{label}</div>
+    </div>
   );
 }

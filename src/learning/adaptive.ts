@@ -10,6 +10,8 @@ export interface RoundResult {
   solved: number;
   hintsUsed: number;
   durationSec: number;
+  /** Lektion im Lernpfad (1–3), falls die Runde aus dem Pfad gestartet wurde */
+  pathStep?: number;
 }
 
 export interface ModuleProgress {
@@ -22,6 +24,8 @@ export interface ModuleProgress {
   history: number[];
   lastPlayed: string;
   bestStars: number;
+  /** Abgeschlossene Lektionen im Lernpfad (0–3) */
+  pathDone?: number;
 }
 
 export const emptyModuleProgress = (): ModuleProgress => ({
@@ -51,11 +55,18 @@ export function applyRound(prev: ModuleProgress, r: RoundResult, now = new Date(
     solved: prev.solved + r.solved,
     history: [...prev.history, Math.round(rate * 100) / 100].slice(-8),
     lastPlayed: now.toISOString(),
-    bestStars: Math.max(prev.bestStars, roundStars(r))
+    bestStars: Math.max(prev.bestStars, roundStars(r)),
+    pathDone: Math.max(pathDoneOf(prev), r.pathStep ?? 0)
   };
 }
 
 /** Thema braucht Wiederholung, wenn die letzten Runden im Mittel schwach waren. */
+/** Abgeschlossene Pfad-Lektionen; ältere Fortschritte zählen als erste Lektion. */
+export function pathDoneOf(p: ModuleProgress | undefined): number {
+  if (!p) return 0;
+  return p.pathDone ?? (p.rounds > 0 ? 1 : 0);
+}
+
 export function needsPractice(p: ModuleProgress | undefined): boolean {
   if (!p || p.history.length === 0) return false;
   const last = p.history.slice(-3);

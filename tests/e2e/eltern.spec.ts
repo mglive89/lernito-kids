@@ -48,9 +48,11 @@ test('Admin: eigenes Modul anlegen, veröffentlichen und spielen', async ({ page
   await page.goto('/');
   await page.getByTestId('profile-Kim').click();
   await page.goto('/schule/2/sachkunde');
-  await page.getByText('Tiere im Wald').click();
+  await page.locator('[data-testid^="einheit-"]', { hasText: 'Tiere im Wald' }).locator('[data-testid^="modul-"]').click();
   await expect(page.getByTestId('task-prompt')).toHaveText('Welches Tier hat Stacheln?');
   await page.locator('[data-correct="true"]').click();
+  await page.getByTestId('pruefen').click();
+  await page.getByTestId('weiter').click();
   await expect(page.getByTestId('summary')).toBeVisible({ timeout: 5000 });
 });
 

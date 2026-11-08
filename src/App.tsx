@@ -11,6 +11,7 @@ import { StarsPage, BadgesPage, AdventurePage, AvatarPage } from './pages/Reward
 import { MiniGamesPage, MiniGamePlayPage } from './pages/MiniGames';
 import { VideosPage, VideoPlayerPage } from './pages/Videos';
 import { PrivacyPage } from './pages/Privacy';
+import { GuidePage } from './pages/Guide';
 import { TimeUpOverlay } from './components/TimeUpOverlay';
 import { UpdatePrompt } from './components/UpdatePrompt';
 import { Lino } from './components/Lino';
@@ -106,6 +107,7 @@ export default function App() {
           <Route path="/schule" element={<RequireProfile><SchoolPage /></RequireProfile>} />
           <Route path="/schule/:year/:subject" element={<RequireProfile><SubjectPage /></RequireProfile>} />
           <Route path="/spiel/:moduleId" element={<RequireProfile><PlayPage /></RequireProfile>} />
+          <Route path="/thema/:moduleId" element={<RequireProfile><GuidePage /></RequireProfile>} />
           <Route path="/welt3d" element={<RequireProfile><World3DPage /></RequireProfile>} />
           <Route path="/videos" element={<RequireProfile><VideosPage /></RequireProfile>} />
           <Route path="/videos/:lessonId" element={<RequireProfile><VideoPlayerPage /></RequireProfile>} />

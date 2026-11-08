@@ -1,4 +1,4 @@
-import type { ChoiceTask, Difficulty, LearningModule, Rng, Task, Visual } from './types';
+import type { StudyCard, ChoiceTask, Difficulty, LearningModule, Rng, Task, Visual } from './types';
 import { sample, shuffle } from '../lib/random';
 import { L, getLang, tx } from '../i18n';
 import { getCountry, type Country, type SubjectId } from '../school/systems';
@@ -72,6 +72,17 @@ export function bankModule(def: {
     id: def.id, area: 'schule', subject: def.subject, years: def.years, countries: def.countries,
     title: tx(def.title[0], def.title[1]), subtitle: tx(def.subtitle[0], def.subtitle[1]), topic: tx(def.title[0], def.title[1]),
     emoji: def.emoji, color: def.color, roundSize: n,
-    generate: bankGenerator(def.items, def.id, { codeLang: def.codeLang, n })
+    generate: bankGenerator(def.items, def.id, { codeLang: def.codeLang, n }),
+    cards: () => bankCards(def.items)
   };
+}
+
+/** Alle Fragen einer Bank als Lernkarten (Land und Sprache wie im Spiel). */
+export function bankCards(items: BankItem[]): StudyCard[] {
+  const country = getCountry();
+  const it = getLang() === 'it';
+  return items.filter((x) => !x.c || x.c === country).map((item) => {
+    const p = parseLine(it && item.it ? item.it : item.de);
+    return { q: p.q, a: p.a, ex: p.ex, code: p.code, level: item.lv ?? 1 };
+  }).sort((a, b) => a.level - b.level);
 }

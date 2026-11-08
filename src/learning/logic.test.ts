@@ -163,3 +163,26 @@ describe('Hilfsfunktionen', () => {
     setLang('de');
   });
 });
+
+describe('Lernpfad und Theorie', async () => {
+  const { BUILTIN_MODULES } = await import('./registry');
+  const { guideFor } = await import('./guides');
+  const { workedExamples } = await import('./examples');
+  const { applyRound, emptyModuleProgress, pathDoneOf } = await import('./adaptive');
+  it('jedes Schulthema hat eine Theorie und Beispiele oder Lernkarten', () => {
+    for (const m of BUILTIN_MODULES.filter((x) => x.area === 'schule')) {
+      expect(guideFor(m.id), m.id).toBeDefined();
+      expect(workedExamples(m).length + (m.cards?.().length ?? 0), m.id).toBeGreaterThan(0);
+    }
+  });
+  it('Lektionen zählen hoch, alte Fortschritte gelten als erste Lektion', () => {
+    const r = { moduleId: 'x', total: 6, firstTry: 6, solved: 6, hintsUsed: 0, durationSec: 30 };
+    let p = applyRound(emptyModuleProgress(), { ...r, pathStep: 1 });
+    expect(pathDoneOf(p)).toBe(1);
+    p = applyRound(p, { ...r, pathStep: 2 });
+    expect(pathDoneOf(p)).toBe(2);
+    p = applyRound(p, { ...r, pathStep: 1 });
+    expect(pathDoneOf(p)).toBe(2);
+    expect(pathDoneOf({ ...emptyModuleProgress(), rounds: 3 })).toBe(1);
+  });
+});
