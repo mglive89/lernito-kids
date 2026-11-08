@@ -157,32 +157,50 @@ function Balloons() {
 }
 
 const MAL_FARBEN = ['#FFB627', '#FF8A3D', '#FF6F59', '#FF8FC7', '#8E6CEF', '#3A9BDC', '#2EC4B6', '#38B000', '#8B5A2B', '#FFFFFF'];
-type Region = 'maehne' | 'gesicht' | 'ohren' | 'nase' | 'koerper' | 'himmel' | 'wiese' | 'sonne';
+type Region = 'ohren' | 'kopf' | 'schnauze' | 'hoodie' | 'hose' | 'schuhe' | 'himmel' | 'wiese' | 'sonne';
 
 function Coloring() {
   const [color, setColor] = useState(MAL_FARBEN[0]!);
-  const [fills, setFills] = useState<Record<Region, string>>({ maehne: '#fff', gesicht: '#fff', ohren: '#fff', nase: '#fff', koerper: '#fff', himmel: '#fff', wiese: '#fff', sonne: '#fff' });
+  const [fills, setFills] = useState<Record<Region, string>>({ ohren: '#fff', kopf: '#fff', schnauze: '#fff', hoodie: '#fff', hose: '#fff', schuhe: '#fff', himmel: '#fff', wiese: '#fff', sonne: '#fff' });
   const paint = (r: Region) => { sfx.pop(); setFills((f) => ({ ...f, [r]: color })); };
   const stroke = { stroke: '#2B2D42', strokeWidth: 4, strokeLinejoin: 'round' as const, cursor: 'pointer' };
   return (
     <div className="flex flex-col items-center gap-4 lg:flex-row lg:items-start">
-      <svg viewBox="0 0 300 300" className="w-full max-w-lg rounded-3xl bg-white shadow-karte" role="img" aria-label="Ausmalbild von Lino">
+      <svg viewBox="0 0 300 300" className="w-full max-w-lg rounded-3xl bg-white shadow-karte" role="img" aria-label="Ausmalbild von Puppy">
         <rect x="2" y="2" width="296" height="210" fill={fills.himmel} {...stroke} onClick={() => paint('himmel')} />
         <rect x="2" y="212" width="296" height="86" fill={fills.wiese} {...stroke} onClick={() => paint('wiese')} />
         <circle cx="250" cy="50" r="28" fill={fills.sonne} {...stroke} onClick={() => paint('sonne')} />
-        <ellipse cx="150" cy="250" rx="60" ry="34" fill={fills.koerper} {...stroke} onClick={() => paint('koerper')} />
-        <g onClick={() => paint('maehne')}>
-          <path d="M150 40 C200 40 240 80 240 130 C240 180 200 220 150 220 C100 220 60 180 60 130 C60 80 100 40 150 40z" fill={fills.maehne} {...stroke} />
+        <g transform="translate(40 22) scale(1.1)">
+          <g onClick={() => paint('hose')}>
+            <path d="M68 168 L99 168 L97 202 L71 202 Z" fill={fills.hose} {...stroke} />
+            <path d="M101 168 L132 168 L129 202 L103 202 Z" fill={fills.hose} {...stroke} />
+          </g>
+          <g onClick={() => paint('schuhe')}>
+            <path d="M54 216 Q54 202 70 201 L94 201 Q100 205 100 216 Z" fill={fills.schuhe} {...stroke} />
+            <path d="M146 216 Q146 202 130 201 L106 201 Q100 205 100 216 Z" fill={fills.schuhe} {...stroke} />
+          </g>
+          <g onClick={() => paint('hoodie')}>
+            <path d="M64 124 Q58 148 63 172 L137 172 Q142 148 136 124 Q100 114 64 124 Z" fill={fills.hoodie} {...stroke} />
+            <path d="M68 126 Q54 142 66 160 L80 156 Q72 142 78 132 Z" fill={fills.hoodie} {...stroke} />
+            <path d="M130 124 Q150 120 160 128 L156 141 Q144 136 132 142 Z" fill={fills.hoodie} {...stroke} />
+            <path d="M80 148 L120 148 L127 164 L73 164 Z" fill={fills.hoodie} {...stroke} />
+          </g>
+          <circle cx="163" cy="133" r="8.5" fill={fills.kopf} {...stroke} onClick={() => paint('kopf')} />
+          <g onClick={() => paint('ohren')}>
+            <path d="M60 32 C34 10 6 34 14 66 C18 84 4 98 14 116 C26 136 54 124 58 100 Z" fill={fills.ohren} {...stroke} />
+            <path d="M140 32 C166 10 194 34 186 66 C182 84 196 98 186 116 C174 136 146 124 142 100 Z" fill={fills.ohren} {...stroke} />
+          </g>
+          <ellipse cx="100" cy="60" rx="46" ry="44" fill={fills.kopf} {...stroke} onClick={() => paint('kopf')} />
+          <path d="M57 68 Q60 102 100 121 Q140 102 143 68 Q122 58 100 64 Q78 58 57 68 Z" fill={fills.schnauze} {...stroke} onClick={() => paint('schnauze')} />
+          <g pointerEvents="none">
+            <ellipse cx="82" cy="50" rx="13" ry="16" fill="#fff" stroke="#2B2D42" strokeWidth="3" />
+            <ellipse cx="118" cy="50" rx="13" ry="16" fill="#fff" stroke="#2B2D42" strokeWidth="3" />
+            <circle cx="85" cy="54" r="6" fill="#2B2D42" />
+            <circle cx="115" cy="54" r="6" fill="#2B2D42" />
+            <ellipse cx="100" cy="75" rx="7.5" ry="5.5" fill="#2B2D42" />
+            <path d="M82 88 Q100 110 118 88" stroke="#2B2D42" strokeWidth="3.5" fill="none" strokeLinecap="round" />
+          </g>
         </g>
-        <g onClick={() => paint('ohren')}>
-          <circle cx="108" cy="85" r="17" fill={fills.ohren} {...stroke} />
-          <circle cx="192" cy="85" r="17" fill={fills.ohren} {...stroke} />
-        </g>
-        <ellipse cx="150" cy="135" rx="62" ry="56" fill={fills.gesicht} {...stroke} onClick={() => paint('gesicht')} />
-        <ellipse cx="150" cy="155" rx="20" ry="15" fill={fills.nase} {...stroke} onClick={() => paint('nase')} />
-        <circle cx="128" cy="122" r="8" fill="#2B2D42" pointerEvents="none" />
-        <circle cx="172" cy="122" r="8" fill="#2B2D42" pointerEvents="none" />
-        <path d="M138 172 q12 12 24 0" stroke="#2B2D42" strokeWidth="4" fill="none" strokeLinecap="round" pointerEvents="none" />
       </svg>
       <div className="flex flex-col gap-3">
         <p className="font-display text-xl font-bold">Wähle eine Farbe und tippe auf das Bild:</p>

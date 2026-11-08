@@ -17,7 +17,7 @@ export function TimeUpOverlay({ onUnlocked }: { onUnlocked: () => void }) {
       <div className="karte flex max-w-md flex-col items-center gap-4 p-8 text-center">
         <Lino mood="ruhig" size={130} />
         <h1 id="pause-titel" className="font-display text-3xl font-bold">Zeit für eine Pause!</h1>
-        <p className="text-xl">Du hast heute schon toll gelernt. Lino ruht sich jetzt auch aus. Bis morgen!</p>
+        <p className="text-xl">Du hast heute schon toll gelernt. Puppy ruht sich jetzt auch aus. Bis morgen!</p>
         <button className="knopf w-full bg-sonne-500" onClick={() => { setActive(null); nav('/'); }}>Zur Startseite</button>
         {hasPin && !showPin && <button className="text-base underline" onClick={() => setShowPin(true)}>Für Erwachsene: Zeit verlängern</button>}
         {showPin && (

@@ -231,7 +231,7 @@ function Goals({ child }: { child: Profile }) {
             </button>
           ))}
         </div>
-        <p className="mt-2 text-sm text-tinte/60">Heute gelernt: {formatMinutes(today)}. Ist das Limit erreicht, zeigt Lino freundlich eine Pause an. Mit der Eltern-PIN lässt sich die Zeit verlängern.</p>
+        <p className="mt-2 text-sm text-tinte/60">Heute gelernt: {formatMinutes(today)}. Ist das Limit erreicht, zeigt Puppy freundlich eine Pause an. Mit der Eltern-PIN lässt sich die Zeit verlängern.</p>
       </div>
       <Toggle label="Vorlesefunktion" description="Aufgaben werden automatisch vorgelesen (Web Speech API des Geräts)." checked={settings.speech} onChange={(v) => set(child.id, { speech: v })} />
       <Toggle label="Soundeffekte" description="Kurze, leise Töne bei Antworten." checked={settings.sounds} onChange={(v) => set(child.id, { sounds: v })} />

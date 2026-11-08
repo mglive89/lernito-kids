@@ -10,12 +10,14 @@ export default defineConfig({
   plugins: [
     react(),
     VitePWA({
+      // Im relativen Vorschau-Build ohne festen Pfad gibt es keinen Service Worker.
+      disable: base === './',
       registerType: 'prompt',
       includeAssets: ['favicon.svg', 'apple-touch-icon.png', 'icons/*.png'],
       manifest: {
         name: 'Lernito Kids',
         short_name: 'Lernito',
-        description: 'Spielerisch lernen mit Lino – für Kindergarten und Grundschule.',
+        description: 'Spielerisch lernen mit Puppy – für Kindergarten und Grundschule.',
         lang: 'de-DE',
         start_url: base,
         scope: base,

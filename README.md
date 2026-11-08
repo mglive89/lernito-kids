@@ -1,6 +1,6 @@
 # Lernito Kids 🦁
 
-Installierbare Lern-PWA für Kinder im **Kindergarten (3–6 Jahre)** und in der **Grundschule (Klasse 1–4)** – komplett auf Deutsch, mobil zuerst, offline-fähig, ohne Werbung und Tracker. Begleitet wird das Kind von **Lino**, einem eigens gestalteten kleinen Löwen.
+Installierbare Lern-PWA für Kinder im **Kindergarten (3–6 Jahre)** und in der **Grundschule (Klasse 1–4)** – komplett auf Deutsch, mobil zuerst, offline-fähig, ohne Werbung und Tracker. Begleitet wird das Kind von **Puppy**, einem gelben Hund mit Schlappohren, blauem Hoodie und Sneakern.
 
 Alle Inhalte, Texte, Figuren und Grafiken sind selbst erstellt.
 
@@ -48,7 +48,7 @@ Dazu **Englisch** als Einsteigerfach (alle Klassen). Aufgabentypen: Auswahl, Zah
 
 **Video-Lernmodul:** Videoübersicht nach Fach, Beispiel-Lektion „Was bedeutet Plus?“ als selbst erstellte, zeitgesteuerte Animation mit Untertiteln, Vorlesen, Fortschrittsanzeige und anschließendem Quiz. Eigene Videodateien (+ WebVTT-Untertitel) können im Admin-Bereich hochgeladen und mit einem Quiz verknüpft werden.
 
-**Belohnungen ohne Druck:** Sterne pro gelöster Aufgabe, Levelsystem, 16 Abzeichen, gestaltbarer Avatar (Extras werden über Level freigeschaltet), 3 freischaltbare Mini-Spiele (Seifenblasen, Ballon-Reihe, Lino ausmalen), freiwilliges Tagesziel. Keine Käufe, kein Glücksspiel, keine Werbung, keine verlierbaren Serien.
+**Belohnungen ohne Druck:** Sterne pro gelöster Aufgabe, Levelsystem, 16 Abzeichen, gestaltbarer Avatar (Extras werden über Level freigeschaltet), 3 freischaltbare Mini-Spiele (Seifenblasen, Ballon-Reihe, Puppy ausmalen), freiwilliges Tagesziel. Keine Käufe, kein Glücksspiel, keine Werbung, keine verlierbaren Serien.
 
 **Adaptives Lernen:** Schwierigkeit (Leicht/Mittel/Knifflig) pro Thema passt sich der Quote beim ersten Versuch an. Nach dem ersten Fehler kommt ein verständlicher Hinweis, nach dem zweiten eine Schritt-für-Schritt-Erklärung. Schwache Themen erscheinen unter „Nochmal üben“. Fortschritt wird pro Thema gespeichert. Rückmeldungen sind immer ermutigend.
 

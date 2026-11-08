@@ -63,7 +63,7 @@ export function newBadges(c: BadgeContext, owned: string[]): BadgeDef[] {
 export const MINIGAMES = [
   { id: 'seifenblasen', title: 'Seifenblasen', description: 'Blasen platzen lassen und mitzählen.', emoji: '🫧', starsNeeded: 5 },
   { id: 'ballons', title: 'Ballon-Reihe', description: 'Ballons der Reihe nach platzen lassen.', emoji: '🎈', starsNeeded: 25 },
-  { id: 'malen', title: 'Lino ausmalen', description: 'Male Lino in deinen Lieblingsfarben an.', emoji: '🖍️', starsNeeded: 60 }
+  { id: 'malen', title: 'Puppy ausmalen', description: 'Male Puppy in deinen Lieblingsfarben an.', emoji: '🖍️', starsNeeded: 60 }
 ] as const;
 
 /** Avatar-Teile, die mit Leveln freigeschaltet werden. */

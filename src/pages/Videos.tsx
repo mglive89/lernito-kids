@@ -178,14 +178,9 @@ function PlusLessonScene({ t }: { t: number }) {
       <rect width="640" height="360" fill="#DDF1FF" />
       <rect y="280" width="640" height="80" fill="#8EE3BF" />
       <circle cx="580" cy="60" r="34" fill="#FFD166" />
-      {/* Lino */}
-      <g transform={`translate(${t < 5 ? 40 + t * 8 : 80} ${t < 5 ? 150 + Math.sin(t * 4) * 6 : 150}) scale(0.55)`}>
-        <g fill="#FF8A3D">{Array.from({ length: 10 }, (_, i) => { const a = (i / 10) * Math.PI * 2; return <circle key={i} cx={Math.cos(a) * 66} cy={Math.sin(a) * 66} r="20" />; })}<circle r="72" /></g>
-        <ellipse rx="52" ry="48" fill="#FFD166" />
-        <circle cx="-19" cy="-8" r="8" fill="#2B2D42" /><circle cx="19" cy="-8" r="8" fill="#2B2D42" />
-        <ellipse cy="14" rx="17" ry="13" fill="#FFF1CC" />
-        <path d="M-10 21 q10 10 20 0" stroke="#2B2D42" strokeWidth="4" fill="none" strokeLinecap="round" />
-        <ellipse cy="120" rx="44" ry="28" fill="#FFB627" />
+      {/* Puppy */}
+      <g transform={`translate(${t < 5 ? -20 + t * 8 : 20} ${t < 5 ? 95 + Math.sin(t * 4) * 6 : 95})`}>
+        <Lino mood={t < 5 ? 'winken' : t >= 26 ? 'jubel' : 'freude'} size={130} still />
       </g>
       {/* Korb */}
       {t >= 5 && <path d="M170 250 h290 l-25 50 h-240z" fill="#C98B4B" stroke="#8B5A2B" strokeWidth="4" />}

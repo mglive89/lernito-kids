@@ -173,7 +173,7 @@ function hintTier(name: string): string {
     Kuh: 'Die Kuh gibt Milch und hat Flecken.', Hund: 'Der Hund bellt und wedelt mit dem Schwanz.', Katze: 'Die Katze hat Schnurrhaare.',
     Schwein: 'Das Schwein ist rosa und hat eine runde Nase.', Schaf: 'Das Schaf hat weiche Wolle.', Huhn: 'Das Huhn legt Eier.',
     Ente: 'Die Ente schwimmt gern auf dem Teich.', Pferd: 'Auf dem Pferd kann man reiten.', Frosch: 'Der Frosch ist grün und springt.',
-    Löwe: 'Der Löwe hat eine große Mähne – wie Lino!', Elefant: 'Der Elefant hat einen langen Rüssel.', Eule: 'Die Eule ist nachts wach.',
+    Löwe: 'Der Löwe hat eine große Mähne – wie ein König!', Elefant: 'Der Elefant hat einen langen Rüssel.', Eule: 'Die Eule ist nachts wach.',
     Hase: 'Der Hase hat lange Ohren.', Schildkröte: 'Die Schildkröte trägt ihr Haus auf dem Rücken.', Giraffe: 'Die Giraffe hat einen sehr langen Hals.',
     Pinguin: 'Der Pinguin lebt im Eis und kann nicht fliegen.', Schmetterling: 'Der Schmetterling hat bunte Flügel.', Schnecke: 'Die Schnecke ist ganz langsam.'
   };

@@ -26,7 +26,7 @@ export function StartPage() {
               <h1 className="font-display text-4xl font-bold sm:text-5xl" data-testid="greeting">{greet}</h1>
             </div>
             <p className="mt-2 flex items-center justify-center gap-2 text-xl text-tinte/80 sm:justify-start">
-              Ich bin Lino. Wer lernt heute mit mir? <SpeakButton text={`${greet} Ich bin Lino. Wer lernt heute mit mir?`} />
+              Ich bin Puppy. Wer lernt heute mit mir? <SpeakButton text={`${greet} Ich bin Puppy. Wer lernt heute mit mir?`} />
             </p>
           </div>
         </div>

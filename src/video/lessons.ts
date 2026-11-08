@@ -26,10 +26,10 @@ const q = (id: string, prompt: string, a: string, f: string[], hint: string, rng
 export const LESSONS: Lesson[] = [
   {
     id: 'video-plus', kind: 'animiert', title: 'Was bedeutet Plus?', emoji: '🍎', subject: 'mathe', topic: 'Addition',
-    description: 'Lino zeigt dir mit Äpfeln, wie Zusammenzählen funktioniert.',
+    description: 'Puppy zeigt dir mit Äpfeln, wie Zusammenzählen funktioniert.',
     duration: 40,
     cues: [
-      { start: 0, end: 5, text: 'Hallo! Ich bin Lino. Heute lernen wir, was Plus bedeutet.' },
+      { start: 0, end: 5, text: 'Hallo! Ich bin Puppy. Heute lernen wir, was Plus bedeutet.' },
       { start: 5, end: 11, text: 'Schau mal: In meinem Korb liegen drei Äpfel.' },
       { start: 11, end: 17, text: 'Jetzt kommen noch zwei Äpfel dazu!' },
       { start: 17, end: 26, text: 'Wir zählen alle zusammen: eins, zwei, drei, vier, fünf.' },

@@ -100,7 +100,7 @@ test('Video-Lektion mit Untertiteln und Quiz', async ({ page }) => {
   await createProfile(page, 'Emil', '1');
   await page.goto('/videos/video-plus');
   await page.getByLabel('Video starten').click();
-  await expect(page.getByTestId('untertitel')).toContainText('Lino');
+  await expect(page.getByTestId('untertitel')).toContainText('Puppy');
   // ans Ende springen
   await page.getByLabel('Position im Video').fill('39.9');
   await expect(page.getByTestId('zum-quiz')).toBeVisible({ timeout: 5000 });

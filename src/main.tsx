@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { BrowserRouter } from 'react-router-dom';
+import { BrowserRouter, HashRouter } from 'react-router-dom';
 import '@fontsource/nunito/400.css';
 import '@fontsource/nunito/700.css';
 import '@fontsource/nunito/800.css';
@@ -11,12 +11,17 @@ import './index.css';
 import App from './App';
 import { ErrorBoundary } from './components/ErrorBoundary';
 
+// Relativer Build (BASE_PATH=./, z. B. für eine Vorschau-Seite ohne festen Pfad) nutzt Hash-Routen.
+const relative = import.meta.env.BASE_URL === './';
+const Router = relative ? HashRouter : BrowserRouter;
+const routerProps = relative ? {} : { basename: import.meta.env.BASE_URL.replace(/\/$/, '') || '/' };
+
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
     <ErrorBoundary>
-      <BrowserRouter basename={import.meta.env.BASE_URL.replace(/\/$/, '') || '/'} future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
+      <Router {...routerProps} future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
         <App />
-      </BrowserRouter>
+      </Router>
     </ErrorBoundary>
   </React.StrictMode>
 );
