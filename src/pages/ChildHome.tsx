@@ -1,5 +1,5 @@
-import { Link, useNavigate } from 'react-router-dom';
-import { Lock, Play, Users } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { Play } from 'lucide-react';
 import { useApp, useActiveProfile } from '../store/useApp';
 import { Avatar, COLOR_CLASSES, ProgressBar, SectionTitle, StarCount, Tile } from '../components/ui';
 import { sfx } from '../lib/sound';
@@ -25,8 +25,6 @@ export function ChildHome() {
   const { profile, progress, settings } = useActiveProfile();
   const custom = useApp((s) => s.customModules);
   const enabled = useApp((s) => s.subjects);
-  const setActive = useApp((s) => s.setActiveProfile);
-  const nav = useNavigate();
   if (!profile) return null;
   const { country, year } = profile;
   const lvl = levelFromXp(progress.xp);
@@ -68,7 +66,7 @@ export function ChildHome() {
             <span className="emoji flex h-16 w-16 shrink-0 items-center justify-center rounded-2xl bg-white/20 text-4xl" aria-hidden>{cont.emoji}</span>
             <span className="min-w-0 flex-1">
               <span className="block text-xs font-bold uppercase tracking-wider text-white/80">{L('Weiterlernen', 'Continua')}{cont.area === 'schule' ? ` · ${lessonLabel(Math.min(3, pathDoneOf(progress.modules[cont.id]) + 1))}` : ''}</span>
-              <span className="block truncate font-display text-2xl font-bold">{tr(cont.title)}</span>
+              <span className="line-clamp-2 block font-display text-2xl font-bold leading-tight">{tr(cont.title)}</span>
               <span className="block truncate text-white/85">{tr(cont.subtitle)}</span>
             </span>
             <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-white text-himmel-700 transition group-hover:scale-105" aria-hidden><Play size={22} className="fill-himmel-700" /></span>
@@ -97,7 +95,7 @@ export function ChildHome() {
           </div>
         ) : (
           <>
-            <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
+            <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-4 lg:grid-cols-3 xl:grid-cols-4">
               {subjects.map((id) => {
                 const d = subjectDef(id);
                 const mods = schoolModules(country, year, id, custom);
@@ -118,10 +116,9 @@ export function ChildHome() {
                 );
               })}
             </div>
-            <div className="mt-4 grid grid-cols-1 gap-4 sm:grid-cols-2">
-              <Tile to={`/schule?jahr=${year}`} emoji={stage.emoji} title={L('Alle Fächer und Klassen', 'Tutte le materie e le classi')} subtitle={L('Auch Religion, Informatik und Programmieren', 'Anche religione, informatica e programmazione')} color="himmel" testId="bereich-schule" />
-              <Tile to="/kita" emoji="🧸" title={L('Kindergarten-Spiele', 'Giochi dell’infanzia')} subtitle={L('Für kleine Geschwister', 'Per i fratellini più piccoli')} color="sonne" testId="bereich-kita" />
-            </div>
+            <Link to={`/schule?jahr=${year}`} className="mt-4 inline-flex items-center gap-2 rounded-full bg-white px-4 py-2 text-sm font-bold text-himmel-700 shadow-weich ring-1 ring-tinte/5 hover:bg-himmel-50" data-testid="bereich-schule">
+              {stage.emoji} {L('Alle Fächer und Klassen, auch Religion, Informatik und Programmieren', 'Tutte le materie e le classi, anche religione, informatica e programmazione')} →
+            </Link>
           </>
         )}
 
@@ -146,21 +143,6 @@ export function ChildHome() {
           </>
         )}
 
-        <SectionTitle>{L('Entdecken', 'Scopri')}</SectionTitle>
-        <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
-          <Tile to="/abenteuer" emoji="🗺️" title={L('Mein Lernabenteuer', 'La mia avventura')} color="minze" testId="abenteuer" />
-          <Tile to="/sterne" emoji="⭐" title={L('Meine Sterne', 'Le mie stelle')} color="sonne" testId="sterne" />
-          <Tile to="/erfolge" emoji="🏅" title={L('Meine Erfolge', 'I miei traguardi')} color="koralle" testId="erfolge" />
-          <Tile to="/welt3d" emoji="🧊" title={L('3D-Lernwelt', 'Mondo 3D')} color="lila" testId="welt3d" />
-          <Tile to="/videos" emoji="🎬" title={L('Lernvideos', 'Video lezioni')} color="himmel" testId="videos" />
-          <Tile to="/minispiele" emoji="🫧" title={L('Mini-Spiele', 'Minigiochi')} color="minze" testId="minispiele" />
-          <Tile to="/avatar" emoji="🎨" title={L('Mein Avatar', 'Il mio avatar')} color="lila" testId="avatar" />
-        </div>
-
-        <nav className="mt-10 flex flex-wrap justify-center gap-3" aria-label={L('Weitere', 'Altro')}>
-          <button className="knopf bg-white text-base" onClick={() => { setActive(null); nav('/'); }} data-testid="profil-wechseln"><Users size={18} /> {L('Profil wechseln', 'Cambia profilo')}</button>
-          <Link className="knopf bg-white text-base" to="/eltern"><Lock size={18} /> {L('Elternbereich', 'Area genitori')}</Link>
-        </nav>
       </main>
     </div>
   );

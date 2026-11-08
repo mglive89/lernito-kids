@@ -1,5 +1,5 @@
 import { expect, test } from '@playwright/test';
-import { confirmAnswer, createProfile, playChoiceRound, waitNext } from './helpers';
+import { confirmAnswer, createProfile, fillProfileForm, playChoiceRound, PIN, setPinFlow, waitNext } from './helpers';
 
 test('Kindergarten: Zählen spielen, Sterne bleiben nach Neuladen erhalten', async ({ page }) => {
   await createProfile(page, 'Mila', 'kita');
@@ -111,14 +111,20 @@ test('Video-Lektion mit Untertiteln und Quiz', async ({ page }) => {
 
 test('Italien: Profil auf Italienisch, 2ª media, Matematica und Programmazione', async ({ page }) => {
   await page.goto('/');
-  await page.getByTestId('neues-profil').click();
+  await page.getByTestId('einrichtung-oeffnen').click();
+  await page.getByTestId('einrichtung-start').click();
+  await setPinFlow(page);
   await page.getByTestId('profil-name').fill('Giulia');
   await page.getByTestId('land-IT').click();
   // Sprache wechselt automatisch auf Italienisch
-  await expect(page.getByText('Quale scuola frequenti?')).toBeVisible();
+  await expect(page.getByText('Quale scuola frequenta?')).toBeVisible();
   await page.getByTestId('stufe-medie').click();
   await page.getByTestId('jahr-7').click();
   await page.getByTestId('profil-erstellen').click();
+  await expect(page.getByText('Regole di studio per Giulia')).toBeVisible();
+  await page.getByTestId('ziel-2').click();
+  await page.getByTestId('einrichtung-weiter').click();
+  await page.getByTestId('einrichtung-fertig').click();
   await expect(page.getByText('Giulia!')).toBeVisible();
   await expect(page.getByText('2ª media').first()).toBeVisible();
   await expect(page.getByTestId('home-fach-italiano')).toBeVisible();
@@ -189,4 +195,24 @@ test('Lernpfad: Lektion abschließen schaltet die nächste frei, Theorie mit Bei
   await page.getByTestId('zurueck').click();
   await expect(page.getByTestId('pfad-fortschritt')).toContainText('1/');
   await expect(page.getByTestId(`modul-${id}`)).toHaveAttribute('href', new RegExp(`lektion=2`));
+});
+
+test('Navigation, Profilseite und zweites Kind nur mit Eltern-PIN', async ({ page }) => {
+  await createProfile(page, 'Alex', '4');
+  const nav = (id: string) => page.locator(`[data-testid="${id}"]:visible, [data-testid="${id}-seite"]:visible`).first();
+  await nav('nav-profil').click();
+  await expect(page.getByTestId('profil-seite')).toContainText('Alex');
+  await nav('nav-erfolge').click();
+  await expect(page).toHaveURL(/\/erfolge$/);
+  await nav('nav-faecher').click();
+  await expect(page.getByTestId('fach-mathe')).toBeVisible();
+  await nav('nav-home').click();
+  await expect(page.getByTestId('weiterlernen')).toBeVisible();
+  // Neues Profil verlangt die Eltern-PIN
+  await page.goto('/');
+  await page.getByTestId('neues-profil').click();
+  await page.getByTestId('pin-login-field').fill(PIN);
+  await page.getByTestId('pin-login-key-ok').click();
+  await fillProfileForm(page, 'Bea', '9');
+  await expect(page.getByText('Bea!').first()).toBeVisible();
 });

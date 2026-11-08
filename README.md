@@ -47,6 +47,10 @@ Intern ist jede Klasse ein Schuljahr 1–13 (`src/school/systems.ts`); Module tr
 
 **Design:** Schrift Plus Jakarta Sans, ruhige Farbpalette; ab Sekundarstufe automatisch sachlicherer „Teen“-Look. Maskottchen **Puppy in 3D** (React Three Fiber, live auf der Startseite, sonst vorgerenderte Bilder).
 
+**Ersteinrichtung durch Eltern** (`/einrichtung`): Beim ersten Start richten Eltern die App ein: Eltern-PIN (mit Erwachsenen-Prüfung), Kinderprofil (Land, Sprache, Schule, Klasse, Avatar), Tagesziel, Zeitlimit, Vorlesen/Töne, Zusatzfächer. Danach wird das Gerät übergeben. Weitere Profile lassen sich nur mit Eltern-PIN anlegen.
+
+**Navigation im Kinderbereich:** Tab-Leiste unten (Smartphone/Tablet) bzw. Seitenleiste (Desktop) mit Lernen, Fächer, Erfolge, Profil. Die Profilseite zeigt Statistik (XP, Sterne, Lektionen, Lerntage, Minuten, Abzeichen), Fortschritt pro Fach und ein Menü (Avatar, Videos, 3D-Welt, Mini-Spiele, Profil wechseln, Elternbereich). Lektionen und Theorie laufen ohne Navigation im Vollbild.
+
 **Lernpfad (ab Klasse 1):** Jedes Fach ist ein Pfad aus Einheiten (= Themen) mit je drei Lektionen: Grundlagen (Stufe 1), Üben (Stufe 2), Meistern (Stufe 3). Lektionen einer Einheit werden nacheinander freigeschaltet, alle Einheiten sind direkt erreichbar (Hausaufgaben-Hilfe). In der Lektion: Antwort wählen → „Prüfen“ → grüne/rote Rückmeldeleiste → „Weiter“; Fortschrittsbalken, Serien-Anzeige, Abschluss mit XP, Genauigkeit und Zeit. Keine Leben/Herzen und keine verlierbaren Serien. Kindergarten bleibt bei sofortiger Rückmeldung.
 
 **Theorie zu jedem Thema** (`/thema/:id`, Buch-Symbol im Pfad und in der Lektion): „Das Wichtigste“ (handgeschrieben, de/it, `src/learning/guides.ts`), automatisch erzeugte gelöste Beispiele (`src/learning/examples.ts`) und Lernkarten aus allen Fragen der Fragenbank.

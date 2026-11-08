@@ -12,6 +12,9 @@ import { MiniGamesPage, MiniGamePlayPage } from './pages/MiniGames';
 import { VideosPage, VideoPlayerPage } from './pages/Videos';
 import { PrivacyPage } from './pages/Privacy';
 import { GuidePage } from './pages/Guide';
+import { SetupPage } from './pages/Setup';
+import { ProfilePage } from './pages/Profile';
+import { ChildShell } from './components/ChildShell';
 import { TimeUpOverlay } from './components/TimeUpOverlay';
 import { UpdatePrompt } from './components/UpdatePrompt';
 import { Lino } from './components/Lino';
@@ -37,7 +40,7 @@ function RequireProfile({ children }: { children: ReactNode }) {
   return active ? <>{children}</> : <Navigate to="/" replace />;
 }
 
-const ADULT_ROUTES = ['/eltern', '/admin', '/datenschutz'];
+const ADULT_ROUTES = ['/eltern', '/admin', '/datenschutz', '/einrichtung'];
 
 /** Zählt aktive Lernzeit (nur sichtbarer Tab, nur Kinderbereich). */
 function useLearningTimer(path: string) {
@@ -59,7 +62,7 @@ export default function App() {
   useLearningTimer(location.pathname);
 
   // Sprache und Land werden vor dem Rendern gesetzt, damit alle Texte passen.
-  const adultOrStart = location.pathname === '/' || location.pathname.startsWith('/profil') || ADULT_ROUTES.some((r) => location.pathname.startsWith(r));
+  const adultOrStart = location.pathname === '/' || location.pathname.startsWith('/profil/neu') || ADULT_ROUTES.some((r) => location.pathname.startsWith(r));
   const lang = !adultOrStart && profile ? profile.lang : uiLang ?? profile?.lang ?? SYSTEM_LANG;
   setLang(lang);
   setSpeechLang(lang);
@@ -102,20 +105,24 @@ export default function App() {
         <Routes>
           <Route path="/" element={<StartPage />} />
           <Route path="/profil/neu" element={<CreateProfilePage />} />
-          <Route path="/home" element={<RequireProfile><ChildHome /></RequireProfile>} />
-          <Route path="/kita" element={<RequireProfile><KitaPage /></RequireProfile>} />
-          <Route path="/schule" element={<RequireProfile><SchoolPage /></RequireProfile>} />
-          <Route path="/schule/:year/:subject" element={<RequireProfile><SubjectPage /></RequireProfile>} />
-          <Route path="/spiel/:moduleId" element={<RequireProfile><PlayPage /></RequireProfile>} />
+          <Route path="/einrichtung" element={<SetupPage />} />
+          <Route element={<RequireProfile><ChildShell /></RequireProfile>}>
+            <Route path="/home" element={<ChildHome />} />
+            <Route path="/kita" element={<KitaPage />} />
+            <Route path="/schule" element={<SchoolPage />} />
+            <Route path="/schule/:year/:subject" element={<SubjectPage />} />
+            <Route path="/welt3d" element={<World3DPage />} />
+            <Route path="/videos" element={<VideosPage />} />
+            <Route path="/sterne" element={<StarsPage />} />
+            <Route path="/erfolge" element={<BadgesPage />} />
+            <Route path="/abenteuer" element={<AdventurePage />} />
+            <Route path="/avatar" element={<AvatarPage />} />
+            <Route path="/minispiele" element={<MiniGamesPage />} />
+            <Route path="/profil" element={<ProfilePage />} />
+          </Route>
           <Route path="/thema/:moduleId" element={<RequireProfile><GuidePage /></RequireProfile>} />
-          <Route path="/welt3d" element={<RequireProfile><World3DPage /></RequireProfile>} />
-          <Route path="/videos" element={<RequireProfile><VideosPage /></RequireProfile>} />
+          <Route path="/spiel/:moduleId" element={<RequireProfile><PlayPage /></RequireProfile>} />
           <Route path="/videos/:lessonId" element={<RequireProfile><VideoPlayerPage /></RequireProfile>} />
-          <Route path="/sterne" element={<RequireProfile><StarsPage /></RequireProfile>} />
-          <Route path="/erfolge" element={<RequireProfile><BadgesPage /></RequireProfile>} />
-          <Route path="/abenteuer" element={<RequireProfile><AdventurePage /></RequireProfile>} />
-          <Route path="/avatar" element={<RequireProfile><AvatarPage /></RequireProfile>} />
-          <Route path="/minispiele" element={<RequireProfile><MiniGamesPage /></RequireProfile>} />
           <Route path="/minispiele/:gameId" element={<RequireProfile><MiniGamePlayPage /></RequireProfile>} />
           <Route path="/eltern/*" element={<ParentArea />} />
           <Route path="/admin/*" element={<AdminArea />} />

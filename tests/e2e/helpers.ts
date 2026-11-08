@@ -5,11 +5,21 @@ const STAGE: Record<'DE' | 'IT', [string, number, number][]> = {
   IT: [['infanzia', 0, 0], ['primaria', 1, 5], ['medie', 6, 8], ['superiori', 9, 13]]
 };
 
-/** Legt ein Profil an. age: 'kita' oder Schuljahr 1–13 (als Text). */
-export async function createProfile(page: Page, name: string, age: string, country: 'DE' | 'IT' = 'DE') {
-  await page.goto('/');
-  await expect(page.getByTestId('greeting')).toBeVisible();
-  await page.getByTestId('neues-profil').click();
+export const PIN = '1357';
+
+/** Erwachsenen-Prüfung lösen und PIN zweimal eingeben (Ersteinrichtung). */
+export async function setPinFlow(page: Page, pin = PIN) {
+  const n = await page.getByTestId('adult-number').getAttribute('data-value');
+  await page.getByTestId('adult-input').fill(n ?? '');
+  await page.getByTestId('adult-submit').click();
+  await page.getByTestId('pin-neu-field').fill(pin);
+  await page.getByTestId('pin-neu-key-ok').click();
+  await page.getByTestId('pin-wdh-field').fill(pin);
+  await page.getByTestId('pin-wdh-key-ok').click();
+}
+
+/** Füllt das Profilformular aus (Name, Land, Schule, Klasse). */
+export async function fillProfileForm(page: Page, name: string, age: string, country: 'DE' | 'IT' = 'DE') {
   await page.getByTestId('profil-name').fill(name);
   await page.getByTestId(`land-${country}`).click();
   const year = age === 'kita' ? 0 : Number(age);
@@ -17,8 +27,20 @@ export async function createProfile(page: Page, name: string, age: string, count
   await page.getByTestId(`stufe-${stage}`).click();
   if (to > from) await page.getByTestId(`jahr-${year}`).click();
   await page.getByTestId('profil-erstellen').click();
+}
+
+/** Ersteinrichtung durch Eltern (PIN, Profil, Regeln) und Übergabe an das Kind. age: 'kita' oder Schuljahr 1–13. */
+export async function createProfile(page: Page, name: string, age: string, country: 'DE' | 'IT' = 'DE') {
+  await page.goto('/');
+  await expect(page.getByTestId('greeting')).toBeVisible();
+  await page.getByTestId('einrichtung-oeffnen').click();
+  await page.getByTestId('einrichtung-start').click();
+  await setPinFlow(page);
+  await fillProfileForm(page, name, age, country);
+  await page.getByTestId('einrichtung-weiter').click();
+  await page.getByTestId('einrichtung-fertig').click();
   await expect(page).toHaveURL(/\/home$/);
-  await expect(page.getByText(`${name}!`)).toBeVisible();
+  await expect(page.getByText(`${name}!`).first()).toBeVisible();
 }
 
 /** Löst die aktuelle Auswahl-Aufgabe korrekt. */
@@ -62,14 +84,10 @@ export async function playChoiceRound(page: Page) {
   await expect(page.getByTestId('summary')).toBeVisible();
 }
 
-export async function setupParentPin(page: Page, pin = '1357') {
+/** Elternbereich mit der bei der Einrichtung gesetzten PIN öffnen. */
+export async function setupParentPin(page: Page, pin = PIN) {
   await page.goto('/eltern');
-  const n = await page.getByTestId('adult-number').getAttribute('data-value');
-  await page.getByTestId('adult-input').fill(n ?? '');
-  await page.getByTestId('adult-submit').click();
-  await page.getByTestId('pin-neu-field').fill(pin);
-  await page.getByTestId('pin-neu-key-ok').click();
-  await page.getByTestId('pin-wdh-field').fill(pin);
-  await page.getByTestId('pin-wdh-key-ok').click();
+  await page.getByTestId('pin-login-field').fill(pin);
+  await page.getByTestId('pin-login-key-ok').click();
   await expect(page.getByTestId('tab-uebersicht')).toBeVisible();
 }

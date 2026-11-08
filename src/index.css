@@ -36,6 +36,9 @@ html.wenig-bewegung *, html.wenig-bewegung *::before, html.wenig-bewegung *::aft
     @apply inline-flex select-none items-center justify-center gap-2 rounded-2xl px-5 py-3 font-display text-lg font-semibold shadow-knopf ring-1 ring-tinte/5 transition hover:brightness-[1.03] active:translate-y-px active:shadow-none focus-visible:outline focus-visible:outline-4 focus-visible:outline-offset-2 focus-visible:outline-himmel-500 disabled:cursor-not-allowed disabled:opacity-50;
     min-height: 3.25rem;
   }
+  /* Kräftige Hauptknöpfe mit „Kante“ unten */
+  .knopf-3d { box-shadow: 0 4px 0 rgba(16, 24, 40, 0.22); }
+  .knopf-3d:active { transform: translateY(3px); box-shadow: 0 1px 0 rgba(16, 24, 40, 0.22); }
   .karte { @apply rounded-blob bg-white shadow-karte ring-1 ring-tinte/[0.06]; }
   .chip { @apply inline-flex items-center gap-1 rounded-full px-3 py-1 text-sm font-bold; }
   .eyebrow { @apply text-xs font-extrabold uppercase tracking-[0.14em] text-tinte/50; }

@@ -6,6 +6,7 @@ import { useApp, type Profile } from '../store/useApp';
 import { Avatar, SpeakButton, TopBar } from '../components/ui';
 import { Lino } from '../components/Lino';
 import { InstallHint } from '../components/InstallHint';
+import { ParentGate } from '../components/ParentAuth';
 import { AVATAR_FARBEN, AVATAR_TIERE } from '../learning/rewards';
 import { sfx } from '../lib/sound';
 import { L, getLang, LANGS, setLang, tr, type Lang } from '../i18n';
@@ -73,6 +74,16 @@ export function StartPage() {
           </div>
         </section>
 
+        {profiles.length === 0 ? (
+          <section className="karte flex w-full flex-col items-center gap-4 p-6 text-center sm:p-8" aria-labelledby="setup-titel">
+            <span className="flex h-14 w-14 items-center justify-center rounded-2xl bg-minze-100 text-minze-700"><ShieldCheck size={30} /></span>
+            <h2 id="setup-titel" className="font-display text-2xl font-bold tracking-tight">{L('Zuerst richten die Eltern Lernito ein', 'Prima i genitori configurano Lernito')}</h2>
+            <p className="max-w-xl text-lg text-tinte/70">{L('Eltern-PIN festlegen, Profil für Ihr Kind anlegen, Tagesziel und Zeitlimit wählen. Danach kann Ihr Kind sofort loslegen.', 'Impostate il PIN, create il profilo di vostro figlio, scegliete obiettivo e limite di tempo. Poi vostro figlio può iniziare subito.')}</p>
+            <Link to="/einrichtung" className="knopf knopf-3d bg-minze-500 px-8 py-4 text-xl text-white" data-testid="einrichtung-oeffnen" onClick={() => sfx.tap()}>
+              {L('Einrichtung starten', 'Inizia la configurazione')}
+            </Link>
+          </section>
+        ) : (
         <section className="w-full" aria-labelledby="profile-titel">
           <h2 id="profile-titel" className="mb-4 font-display text-2xl font-bold tracking-tight">{L('Wer bist du?', 'Chi sei?')}</h2>
           <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
@@ -94,9 +105,11 @@ export function StartPage() {
             <Link to="/profil/neu" className="karte flex min-h-[12rem] flex-col items-center justify-center gap-3 border-2 border-dashed border-tinte/15 p-5 text-center shadow-none" data-testid="neues-profil" onClick={() => sfx.tap()}>
               <span className="flex h-16 w-16 items-center justify-center rounded-2xl bg-minze-100 text-minze-700"><Plus size={36} /></span>
               <span className="font-display text-lg font-bold">{L('Neues Profil', 'Nuovo profilo')}</span>
+              <span className="flex items-center gap-1 text-xs font-semibold text-tinte/50"><Lock size={12} /> {L('mit Eltern-PIN', 'con PIN genitori')}</span>
             </Link>
           </div>
         </section>
+        )}
 
         <div className="w-full"><InstallHint /></div>
 
@@ -125,10 +138,24 @@ function Step({ n, title, done, children }: { n: number; title: string; done: bo
 const choice = (active: boolean) => `knopf flex-col gap-1 py-4 text-base ${active ? 'bg-tinte text-white ring-2 ring-tinte' : 'bg-white'}`;
 
 export function CreateProfilePage() {
-  const add = useApp((s) => s.addProfile);
   const setActive = useApp((s) => s.setActiveProfile);
-  const setUiLang = useApp((s) => s.setUiLang);
   const nav = useNavigate();
+  return (
+    <div className="min-h-[100dvh]">
+      <TopBar title={L('Neues Profil', 'Nuovo profilo')} back="/" />
+      <main className="seite flex max-w-3xl flex-col gap-5">
+        <ParentGate>
+          <ProfileForm onCreated={(p) => { setActive(p.id); nav('/home'); }} />
+        </ParentGate>
+      </main>
+    </div>
+  );
+}
+
+/** Formular für ein Kinderprofil: Name, Land, Sprache, Schule, Klasse, Avatar. */
+export function ProfileForm({ onCreated, submitLabel }: { onCreated: (p: Profile) => void; submitLabel?: string }) {
+  const add = useApp((s) => s.addProfile);
+  const setUiLang = useApp((s) => s.setUiLang);
   const [name, setName] = useState('');
   const [country, setCountryState] = useState<Country | null>(null);
   const [lang, setLangState] = useState<Lang>(getLang());
@@ -152,27 +179,24 @@ export function CreateProfilePage() {
   const create = () => {
     if (!valid || country === null || year === null) return;
     const p = add({ name: name.trim().slice(0, 20), country, lang, year, avatar: { animal, color, extra: 'keins' } });
-    setActive(p.id);
     sfx.win();
-    nav('/home');
+    onCreated(p);
   };
   const stageDef = country && stage ? stagesOf(country).find((s) => s.id === stage) : undefined;
 
   return (
-    <div className="min-h-[100dvh]">
-      <TopBar title={L('Neues Profil', 'Nuovo profilo')} back="/" />
-      <main className="seite flex max-w-3xl flex-col gap-5">
+      <div className="flex w-full flex-col gap-5">
         <div className="flex flex-col items-center gap-2 pt-2">
           <Avatar config={{ animal, color, extra: 'keins' }} size={104} />
           {country !== null && year !== null && <span className="chip bg-white text-tinte/70 shadow-weich">{profileLabel({ country, year })}</span>}
         </div>
 
-        <Step n={1} title={L('Wie heißt du?', 'Come ti chiami?')} done={name.trim().length > 0}>
+        <Step n={1} title={L('Name des Kindes', 'Nome del bambino o della bambina')} done={name.trim().length > 0}>
           <input className="feld text-xl" value={name} onChange={(e) => setName(e.target.value)} maxLength={20} placeholder={L('Vorname oder Spitzname', 'Nome o soprannome')} autoComplete="off" data-testid="profil-name" aria-label={L('Name', 'Nome')} />
           <p className="mt-2 text-sm text-tinte/55">{L('Ein Spitzname reicht. Der Name bleibt nur auf diesem Gerät.', 'Basta un soprannome. Il nome resta solo su questo dispositivo.')}</p>
         </Step>
 
-        <Step n={2} title={L('In welchem Land gehst du zur Schule?', 'In quale Paese vai a scuola?')} done={country !== null}>
+        <Step n={2} title={L('In welchem Land geht Ihr Kind zur Schule?', 'In quale Paese va a scuola?')} done={country !== null}>
           <div className="grid grid-cols-2 gap-3">
             {COUNTRIES.map((c) => (
               <button key={c.id} type="button" onClick={() => { sfx.tap(); chooseCountry(c.id); }} aria-pressed={country === c.id} data-testid={`land-${c.id}`} className={choice(country === c.id)}>
@@ -188,7 +212,7 @@ export function CreateProfilePage() {
         </Step>
 
         {country && (
-          <Step n={3} title={L('Welche Schule besuchst du?', 'Quale scuola frequenti?')} done={year !== null}>
+          <Step n={3} title={L('Welche Schule besucht Ihr Kind?', 'Quale scuola frequenta?')} done={year !== null}>
             <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
               {stagesOf(country).map((s) => (
                 <button key={s.id} type="button" onClick={() => { sfx.tap(); chooseStage(s.id); }} aria-pressed={stage === s.id} data-testid={`stufe-${s.id}`} className={choice(stage === s.id)}>
@@ -214,7 +238,7 @@ export function CreateProfilePage() {
           </Step>
         )}
 
-        <Step n={country ? 4 : 3} title={L('Such dir ein Tier und eine Farbe aus', 'Scegli un animale e un colore')} done>
+        <Step n={country ? 4 : 3} title={L('Avatar: am besten gemeinsam mit dem Kind aussuchen', 'Avatar: sceglietelo insieme al bambino')} done>
           <div className="grid grid-cols-6 gap-2 sm:grid-cols-8">
             {AVATAR_TIERE.map((t) => (
               <button key={t} type="button" onClick={() => { sfx.tap(); setAnimal(t); }} aria-pressed={animal === t} aria-label={L(`Tier ${t}`, `Animale ${t}`)} className={`knopf aspect-square px-0 text-3xl ${animal === t ? 'bg-sonne-100 ring-2 ring-tinte' : 'bg-white'}`}>
@@ -230,11 +254,10 @@ export function CreateProfilePage() {
         </Step>
 
         <button className="knopf bg-minze-500 py-5 text-xl text-white" disabled={!valid} onClick={create} data-testid="profil-erstellen">
-          {L('Los geht’s!', 'Si parte!')}
+          {submitLabel ?? L('Los geht’s!', 'Si parte!')}
         </button>
         {!valid && <p className="-mt-2 text-center text-sm text-tinte/55">{L('Name, Land und Klasse auswählen, dann geht’s los.', 'Inserisci nome, Paese e classe per iniziare.')}</p>}
         {country && year !== null && <p className="-mt-2 text-center text-xs text-tinte/45">{tr(stageFor(country, year).name)}</p>}
-      </main>
-    </div>
+      </div>
   );
 }

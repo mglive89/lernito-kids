@@ -206,7 +206,7 @@ export function SubjectPage() {
       <AnimatePresence>
         {toast && (
           <motion.div initial={{ y: 40, opacity: 0 }} animate={{ y: 0, opacity: 1 }} exit={{ y: 40, opacity: 0 }} role="status"
-            className="fixed inset-x-4 bottom-6 z-40 mx-auto max-w-sm rounded-2xl bg-tinte px-5 py-3 text-center font-semibold text-white shadow-karte" style={{ marginBottom: 'var(--safe-bottom)' }}>
+            className="fixed inset-x-4 bottom-24 z-40 lg:bottom-6 mx-auto max-w-sm rounded-2xl bg-tinte px-5 py-3 text-center font-semibold text-white shadow-karte" style={{ marginBottom: 'var(--safe-bottom)' }}>
             {toast}
           </motion.div>
         )}
