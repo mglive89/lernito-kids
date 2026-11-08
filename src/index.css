@@ -1,0 +1,44 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --safe-top: env(safe-area-inset-top, 0px);
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+  color-scheme: light;
+}
+
+html { -webkit-text-size-adjust: 100%; }
+html.gross-text { font-size: 118%; }
+body {
+  @apply bg-creme font-sans text-tinte antialiased;
+  overscroll-behavior-y: none;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+html.kontrast body { background: #fff; }
+html.kontrast .karte, html.kontrast .knopf { outline: 3px solid #000; }
+html.kontrast .text-tinte\/70, html.kontrast .text-tinte\/60 { color: #000 !important; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+}
+html.wenig-bewegung *, html.wenig-bewegung *::before, html.wenig-bewegung *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+
+@layer components {
+  .knopf {
+    @apply inline-flex select-none items-center justify-center gap-2 rounded-2xl px-5 py-3 font-display text-lg font-semibold shadow-knopf transition active:translate-y-1 active:shadow-none focus-visible:outline focus-visible:outline-4 focus-visible:outline-offset-2 focus-visible:outline-himmel-500 disabled:cursor-not-allowed disabled:opacity-50;
+    min-height: 3.25rem;
+  }
+  .karte { @apply rounded-blob bg-white shadow-karte; }
+  .feld { @apply w-full rounded-xl border-2 border-tinte/15 bg-white px-4 py-3 text-lg outline-none focus:border-himmel-500; }
+  .seite { @apply mx-auto w-full max-w-6xl px-4 pb-24 sm:px-6; padding-bottom: calc(6rem + var(--safe-bottom)); }
+  .ueberschrift { @apply font-display text-3xl font-bold sm:text-4xl; }
+}
+
+.hintergrund-punkte {
+  background-image: radial-gradient(rgba(43, 45, 66, 0.06) 2px, transparent 2px);
+  background-size: 28px 28px;
+}
+.silhouette { filter: brightness(0) opacity(0.85); }
+.emoji { font-family: 'Apple Color Emoji', 'Segoe UI Emoji', 'Noto Color Emoji', sans-serif; line-height: 1; }

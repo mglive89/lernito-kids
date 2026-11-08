@@ -1,0 +1,102 @@
+# Lernito Kids 🦁
+
+Installierbare Lern-PWA für Kinder im **Kindergarten (3–6 Jahre)** und in der **Grundschule (Klasse 1–4)** – komplett auf Deutsch, mobil zuerst, offline-fähig, ohne Werbung und Tracker. Begleitet wird das Kind von **Lino**, einem eigens gestalteten kleinen Löwen.
+
+Alle Inhalte, Texte, Figuren und Grafiken sind selbst erstellt.
+
+## Schnellstart
+
+```bash
+npm install
+npm run dev        # Entwicklungsserver: http://localhost:5173
+```
+
+Weitere Befehle:
+
+| Befehl | Zweck |
+|---|---|
+| `npm run build` | TypeScript-Prüfung (strict) + Produktions-Build inkl. Service Worker |
+| `npm run preview` | Produktions-Build lokal ausliefern (PWA/Offline testen) |
+| `npm test` | Unit-Tests der Lernlogik (Vitest) |
+| `npm run e2e` | End-to-End-Tests (Playwright; Desktop, Smartphone, Tablet) – vorher einmalig `npx playwright install chromium` |
+| `npm run icons` | App-Icons aus `public/favicon.svg` neu erzeugen |
+
+> Die PWA-Installation und der Offline-Modus funktionieren im Produktions-Build (`npm run build && npm run preview`) bzw. nach dem Deployment über HTTPS. Zum Testen auf dem Handy im WLAN: `npx vite preview --host`.
+
+## Was der MVP kann
+
+**Startseite & Profile** – „Hallo! Schön, dass du da bist!“, kindgerechte Profilauswahl (Spitzname, Tier-Avatar, Altersgruppe), Bereiche Kindergarten und Grundschule, Weiterlernen, Tagesziel, Mein Lernabenteuer, Meine Sterne, Meine Erfolge, Elternbereich.
+
+**Kindergarten – 12 spielbare Lernspiele:** Gegenstände zählen · Zahlen 1–20 · Farben · Formen (Drag-and-Drop) · Tiere mit (gesprochenen) Tiergeräuschen · Buchstaben und erste Wörter · Groß und Klein · Memory · Logische Reihenfolgen · Schattenbilder · Puzzle · Vorschule (Nachbarzahlen, Reime, Silben, Mengen vergleichen).
+
+**Grundschule – getrennt nach Klassenstufe:**
+
+| | Mathematik | Deutsch | Sachunterricht |
+|---|---|---|---|
+| Klasse 1 | Plus bis 20, Minus bis 20, Zahlen vergleichen, Zahlenraum bis 20 | Anlaute, Silben, Wörter bauen, Erstes Lesen | Jahreszeiten, Körper, Verkehr |
+| Klasse 2 | Rechnen bis 100, Einmaleins, Uhrzeit, Geld | Rechtschreibung, ABC-Ordnung, Nomen, Lesen & Verstehen | Tiere, Pflanzen, Verkehr |
+| Klasse 3 | Mal & Geteilt, Schriftlich rechnen, Geometrie | Wortarten, Einzahl/Mehrzahl, Textverständnis | Natur und Umwelt |
+| Klasse 4 | Große Zahlen, Brüche, Sachaufgaben, Maßeinheiten | Satzglieder, Zeitformen, Sachtexte | Deutschland und Technik |
+
+Dazu **Englisch** als Einsteigerfach (alle Klassen). Aufgabentypen: Auswahl, Zahlenfeld, Wörter/Silben bauen, Reihenfolge, Memory, Drag-and-Drop, Puzzle, 3D-Auswahl.
+
+**3D-Lernwelt (React Three Fiber):** Körper drehen · Sammeln und Zählen (Dinge in den Korb legen) · 3D-Zahlenwelt · Tiere auf der Wiese. Niedrige Pixeldichte und einfache Geometrien für mittlere Tablets; automatischer **2D-Fallback** ohne WebGL (testbar mit `?no3d` in der URL).
+
+**Video-Lernmodul:** Videoübersicht nach Fach, Beispiel-Lektion „Was bedeutet Plus?“ als selbst erstellte, zeitgesteuerte Animation mit Untertiteln, Vorlesen, Fortschrittsanzeige und anschließendem Quiz. Eigene Videodateien (+ WebVTT-Untertitel) können im Admin-Bereich hochgeladen und mit einem Quiz verknüpft werden.
+
+**Belohnungen ohne Druck:** Sterne pro gelöster Aufgabe, Levelsystem, 16 Abzeichen, gestaltbarer Avatar (Extras werden über Level freigeschaltet), 3 freischaltbare Mini-Spiele (Seifenblasen, Ballon-Reihe, Lino ausmalen), freiwilliges Tagesziel. Keine Käufe, kein Glücksspiel, keine Werbung, keine verlierbaren Serien.
+
+**Adaptives Lernen:** Schwierigkeit (Leicht/Mittel/Knifflig) pro Thema passt sich der Quote beim ersten Versuch an. Nach dem ersten Fehler kommt ein verständlicher Hinweis, nach dem zweiten eine Schritt-für-Schritt-Erklärung. Schwache Themen erscheinen unter „Nochmal üben“. Fortschritt wird pro Thema gespeichert. Rückmeldungen sind immer ermutigend.
+
+**Elternbereich (PIN-geschützt):** Kinderprofile verwalten, Fortschritts- und Themenstatistik, Lernzeit pro Tag, Tagesziel, Zeitlimit mit freundlicher Pause, Aufgaben zuweisen, Wochenbericht (Drucken/PDF/Text), Einwilligungen (Online-Sync, KI-Lernhilfe – beide standardmäßig aus), Export/Import/Löschen aller Daten, Barrierefreiheit (Kontrast, Schriftgröße, weniger Bewegung).
+
+**Admin-/Redaktionsbereich (eigene PIN):** Fächer verwalten, eigene Lernmodule erstellen/bearbeiten/löschen, Fragen und Antworten mit Hinweis und Erklärung, Schwierigkeitsgrad, Klassenstufe, Veröffentlichen, Inhaltsvorschau, Bilder und Videos verwalten, Video-Lektionen anlegen.
+
+**PWA & Offline:** Web-App-Manifest, eigenes App-Icon, Splash-Screen, Service Worker (Workbox) mit Precaching aller Lernmodule, Installationshinweis für Android und iOS, Update-Hinweis. Fortschritt liegt dauerhaft in IndexedDB.
+
+## Architektur
+
+```
+src/
+  learning/          Lernlogik (framework-unabhängig, getestet)
+    types.ts         Aufgaben- und Modultypen
+    modules/         Aufgaben-Generatoren: kita, math, german, sach (inkl. Englisch & 3D)
+    adaptive.ts      Schwierigkeitsanpassung, Wiederholungsempfehlung, Rückmeldungen
+    rewards.ts       Sterne, Level, Abzeichen, Mini-Spiele, Avatar-Extras
+    custom.ts        Eigene Inhalte aus dem Admin-Bereich
+    registry.ts      Alle Module an einem Ort
+  content/words.ts   Eingebettete Wort-, Tier- und Farblisten
+  games/             Spiel-Engine: GameRunner + ein View pro Aufgabentyp
+  three/             3D-Szenen (lazy geladen)
+  video/             Lektionen, Untertitel, WebVTT-Parser
+  store/useApp.ts    Zustand-Store, persistiert in IndexedDB
+  lib/               Vorlesen, Sounds (WebAudio), IndexedDB, Hash, Zufall, Datum
+  pages/             Seiten inkl. parents/ und admin/
+supabase/schema.sql  Vorbereitetes Schema mit RLS und Rollen
+docs/DATENSCHUTZ.md  Umsetzung und offene rechtliche Prüfungen
+tests/e2e/           Playwright-Tests
+```
+
+**Neues Lernmodul hinzufügen:** Generator-Funktion `(level, rng) => Task[]` schreiben und in der passenden `*_MODULES`-Liste eintragen. Die Unit-Tests prüfen automatisch alle Module auf allen Stufen mit vielen Zufallsseeds (Lösung vorhanden, eindeutige Antworten, keine negativen Ergebnisse …).
+
+## Qualität
+
+- TypeScript `strict` inkl. `noUncheckedIndexedAccess`
+- 75 Unit-Tests (Vitest) für Lernlogik, Aufgaben-Generatoren, Adaptivität, Belohnungen, Hash, Untertitel
+- End-to-End-Tests (Playwright) für Desktop, Smartphone (Pixel 7) und Tablet (iPad Pro 11): Profil anlegen, Kita-Spiel inkl. Fehlversuch, Drag-and-Drop per Maus und per Antippen, Einmaleins mit Zahlenfeld, Deutsch, Lösungs-Erklärung, 3D-Fallback, Video + Quiz, Elternbereich (PIN, Zuweisung, Zeitlimit, Export), Admin-Modul anlegen und spielen, Zeitlimit-Pause, Manifest + Offline-Start, kein horizontales Scrollen
+- Fehlergrenzen (Error Boundaries) und Ladezustände, In-Memory-Fallback wenn IndexedDB blockiert ist
+
+## Ausstehende Erweiterungen
+
+| Bereich | Status / nächster Schritt |
+|---|---|
+| Elternkonten & Synchronisierung | Schema in `supabase/schema.sql` vorbereitet, Einwilligung im Elternbereich vorhanden. Offen: Supabase-Client, Login (Magic Link), Sync-Logik (Last-Write-Wins pro Kind), EU-Region. |
+| Serverseitige Admin-Anmeldung | Admin-Bereich ist lokal per PIN geschützt. Für den Produktivbetrieb: Supabase Auth + Rollen (`editor`/`admin`) + RLS, Medien im Storage-Bucket. |
+| KI-Lernhilfe | Schalter und Einwilligung vorhanden (standardmäßig aus). Offen: moderierte Edge Function, die nur vorformulierte Erklärungen zu einer Aufgabe liefert – kein freier Chat, keine Schlüssel im Frontend. |
+| Bundesland-Lehrpläne | Feld `federal_state` im Schema vorbereitet. Offen: Zuordnung der Module zu Lehrplänen und Filter im Elternbereich. |
+| Audio | Tiergeräusche und Vorlesen laufen über die Sprachausgabe des Geräts. Optional: eingesprochene Audiodateien als Offline-Fallback. |
+| Weitere 3D-Aufgaben | z. B. 3D-Puzzle (Formen in Löcher stecken), Bauklötze-Zählen. |
+| Weitere Video-Lektionen | Nur eine animierte Beispiel-Lektion eingebaut; weitere über Admin-Upload möglich. |
+| Inhalte | Inhaltsumfang je Thema ausbauen, fachdidaktische Prüfung. |
+| Rechtliches | Siehe `docs/DATENSCHUTZ.md` – Prüfungen sind dokumentiert, nicht erledigt. |
+| Tests | WebKit/iOS-Safari-Testlauf auf echten Geräten (Playwright-Tests laufen hier mit Chromium in Geräte-Emulation). |

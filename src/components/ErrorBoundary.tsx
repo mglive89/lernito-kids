@@ -1,0 +1,30 @@
+import { Component, type ErrorInfo, type ReactNode } from 'react';
+
+interface State { error: Error | null }
+
+export class ErrorBoundary extends Component<{ children: ReactNode; compact?: boolean }, State> {
+  state: State = { error: null };
+
+  static getDerivedStateFromError(error: Error): State {
+    return { error };
+  }
+
+  componentDidCatch(error: Error, info: ErrorInfo): void {
+    console.error('Lernito-Fehler:', error, info.componentStack);
+  }
+
+  render() {
+    if (!this.state.error) return this.props.children;
+    return (
+      <div role="alert" className={`flex flex-col items-center justify-center gap-4 p-8 text-center ${this.props.compact ? '' : 'min-h-screen'}`}>
+        <div className="emoji text-6xl" aria-hidden>🦁</div>
+        <h1 className="font-display text-2xl font-bold">Hoppla, da ist etwas schiefgelaufen.</h1>
+        <p className="max-w-md text-tinte/70">Lino hat sich kurz verlaufen. Dein Lernfortschritt ist sicher gespeichert.</p>
+        <div className="flex gap-3">
+          <button className="knopf bg-sonne-500" onClick={() => this.setState({ error: null })}>Nochmal versuchen</button>
+          <button className="knopf bg-white" onClick={() => window.location.assign('/')}>Zur Startseite</button>
+        </div>
+      </div>
+    );
+  }
+}
