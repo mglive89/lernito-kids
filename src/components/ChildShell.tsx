@@ -28,7 +28,7 @@ export function ChildShell() {
       {/* Seitenleiste */}
       <aside className="fixed inset-y-0 left-0 z-30 hidden w-64 flex-col border-r border-tinte/[0.07] bg-white/90 px-4 py-6 backdrop-blur lg:flex" aria-label={L('Hauptnavigation', 'Navigazione principale')}>
         <span className="mb-8 flex items-center gap-2 px-3 font-display text-2xl font-extrabold tracking-tight text-himmel-700">
-          <img src={`${import.meta.env.BASE_URL}favicon.svg`} alt="" className="h-9 w-9" /> Lernito
+          <img src={`${import.meta.env.BASE_URL}puppy/kopf.png`} alt="" className="h-9 w-9 rounded-xl bg-sonne-100" /> Lernito
         </span>
         <nav className="flex flex-col gap-1.5">
           {items.map((it) => (

@@ -1,4 +1,4 @@
-import { lazy, Suspense, useState } from 'react';
+import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Check, Lock, Plus, ShieldCheck } from 'lucide-react';
@@ -12,9 +12,7 @@ import { sfx } from '../lib/sound';
 import { L, getLang, LANGS, setLang, tr, type Lang } from '../i18n';
 import { COUNTRIES, stageFor, stagesOf, typicalAge, yearLabel, type Country, type StageId } from '../school/systems';
 import { MASCOT_NAME } from '../content/mascot';
-import { hasWebGL } from '../lib/webgl';
 
-const Puppy3D = lazy(() => import('../components/Puppy3D'));
 
 /** Kurzbeschreibung eines Profils, z. B. „🇮🇹 2ª media“ */
 export function profileLabel(p: Pick<Profile, 'country' | 'year'>): string {
@@ -36,13 +34,7 @@ export function LanguageSwitch({ value, onChange, testPrefix = 'sprache' }: { va
 }
 
 function Mascot({ size }: { size: number }) {
-  const reduce = useApp((s) => s.parent.reduceMotion);
-  if (!hasWebGL() || reduce) return <Lino mood="winken" size={size} />;
-  return (
-    <Suspense fallback={<Lino mood="winken" size={size} />}>
-      <div style={{ width: size * 1.25, height: size * 1.35 }}><Puppy3D mood="winken" interactive /></div>
-    </Suspense>
-  );
+  return <Lino mood="winken" size={size} />;
 }
 
 export function StartPage() {
@@ -57,14 +49,14 @@ export function StartPage() {
   return (
     <div className="hintergrund-punkte min-h-[100dvh]" style={{ paddingTop: 'var(--safe-top)' }}>
       <div className="mx-auto flex max-w-6xl items-center justify-between px-4 pt-4 sm:px-6">
-        <span className="flex items-center gap-2 font-display text-lg font-bold tracking-tight"><img src={`${import.meta.env.BASE_URL}favicon.svg`} alt="" className="h-8 w-8" /> Lernito Kids</span>
+        <span className="flex items-center gap-2 font-display text-lg font-bold tracking-tight"><img src={`${import.meta.env.BASE_URL}puppy/kopf.png`} alt="" className="h-8 w-8 rounded-lg bg-sonne-100" /> Lernito Kids</span>
         <LanguageSwitch value={lang} onChange={(l) => { setLang(l); setUiLang(l); }} />
       </div>
       <main className="seite flex flex-col items-center gap-8 pt-4 sm:pt-6">
         <section className="karte relative flex w-full flex-col items-center gap-4 overflow-hidden p-6 text-center sm:flex-row sm:p-8 sm:text-left">
           <div className="pointer-events-none absolute -right-24 -top-24 h-72 w-72 rounded-full bg-sonne-100" aria-hidden />
           <div className="pointer-events-none absolute -bottom-28 right-40 h-60 w-60 rounded-full bg-himmel-50" aria-hidden />
-          <div className="relative shrink-0"><Mascot size={170} /></div>
+          <div className="relative shrink-0"><Mascot size={210} /></div>
           <div className="relative flex-1">
             <p className="eyebrow">{L('Lernen vom Kindergarten bis zum Abitur', 'Dalla scuola dell’infanzia alla maturità')}</p>
             <h1 className="mt-2 font-display text-3xl font-bold tracking-tight sm:text-5xl" data-testid="greeting">{greet}</h1>

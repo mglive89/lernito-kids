@@ -13,7 +13,7 @@ export default defineConfig({
       // Im relativen Vorschau-Build ohne festen Pfad gibt es keinen Service Worker.
       disable: base === './',
       registerType: 'prompt',
-      includeAssets: ['favicon.svg', 'apple-touch-icon.png', 'icons/*.png'],
+      includeAssets: ['favicon.png', 'apple-touch-icon.png', 'icons/*.png', 'puppy/*'],
       manifest: {
         name: 'Lernito Kids',
         short_name: 'Lernito',

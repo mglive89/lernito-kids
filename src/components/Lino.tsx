@@ -31,12 +31,12 @@ const C = {
 
 function motionFor(mood: LinoMood, off: boolean) {
   if (off) return undefined;
-  return mood === 'jubel' ? { y: [0, -14, 0], rotate: [0, -4, 4, 0] } : mood === 'denken' ? { rotate: [0, -3, 0] } : { y: [0, -5, 0] };
+  return mood === 'jubel' ? { y: [0, -14, 0], rotate: [0, -4, 4, 0] } : mood === 'denken' ? { rotate: [0, -4, 0] } : mood === 'winken' ? { rotate: [0, 3, 0, 3, 0] } : { y: [0, -5, 0] };
 }
 
 /**
  * Puppy – das Maskottchen von Lernito Kids: ein gelber Hund mit Schlappohren, blauem Hoodie und Sneakern.
- * Standard: vorgerenderte 3D-Bilder (public/puppy/*.png, erzeugt mit `npm run puppy` aus Puppy3D.tsx).
+ * Standard: Marcos 3D-Figur (public/puppy/puppy.webp, freigestellt). Die Stimmung zeigt sich über die Bewegung.
  * Fallback: gezeichnete SVG-Version.
  */
 export function Lino(props: Props) {
@@ -46,14 +46,14 @@ export function Lino(props: Props) {
   if (flat || failed) return <LinoFlat {...props} />;
   return (
     <motion.img
-      src={`${import.meta.env.BASE_URL}puppy/${mood}.png`}
-      width={size * 1.15}
-      height={size * 1.15 * 1.1}
+      src={`${import.meta.env.BASE_URL}puppy/puppy.webp`}
+      width={Math.round(size * 1.25 * 0.709)}
+      height={Math.round(size * 1.25)}
       alt={MASCOT_DESC}
       draggable={false}
       onError={() => setFailed(true)}
       className={`pointer-events-none select-none ${className}`}
-      style={{ margin: -size * 0.075 }}
+      style={{ margin: `${-size * 0.06}px 0`, transformOrigin: '50% 90%' }}
       animate={motionFor(mood, still || !!reduce)}
       transition={{ duration: mood === 'jubel' ? 0.9 : 2.4, repeat: Infinity, ease: 'easeInOut' }}
     />

@@ -35,7 +35,7 @@ export function SetupPage() {
   return (
     <div className="hintergrund-punkte min-h-[100dvh]" style={{ paddingTop: 'var(--safe-top)' }}>
       <header className="mx-auto flex max-w-3xl items-center gap-4 px-4 pt-5">
-        <span className="flex items-center gap-2 font-display text-lg font-bold tracking-tight"><img src={`${import.meta.env.BASE_URL}favicon.svg`} alt="" className="h-8 w-8" /> Lernito</span>
+        <span className="flex items-center gap-2 font-display text-lg font-bold tracking-tight"><img src={`${import.meta.env.BASE_URL}puppy/kopf.png`} alt="" className="h-8 w-8 rounded-lg bg-sonne-100" /> Lernito</span>
         <div className="flex flex-1 items-center gap-1.5" role="progressbar" aria-valuemin={1} aria-valuemax={ORDER.length} aria-valuenow={idx + 1} aria-label={L('Einrichtung', 'Configurazione')}>
           {ORDER.map((s, i) => <span key={s} className={`h-2 flex-1 rounded-full transition-colors ${i <= idx ? 'bg-minze-500' : 'bg-tinte/10'}`} />)}
         </div>

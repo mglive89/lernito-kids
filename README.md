@@ -19,8 +19,6 @@ Weitere Befehle:
 | `npm run preview` | Produktions-Build lokal ausliefern (PWA/Offline testen) |
 | `npm test` | Unit-Tests der Lernlogik (Vitest) |
 | `npm run e2e` | End-to-End-Tests (Playwright; Desktop, Smartphone, Tablet) – vorher einmalig `npx playwright install chromium` |
-| `npm run icons` | App-Icons aus `public/favicon.svg` neu erzeugen |
-| `npm run puppy` | 3D-Puppy-Bilder (`public/puppy/*.png`) aus `src/components/Puppy3D.tsx` neu rendern (Playwright + `puppy-studio.html`, nur Entwicklung) |
 
 > Die PWA-Installation und der Offline-Modus funktionieren im Produktions-Build (`npm run build && npm run preview`) bzw. nach dem Deployment über HTTPS. Zum Testen auf dem Handy im WLAN: `npx vite preview --host`.
 
@@ -45,7 +43,7 @@ Intern ist jede Klasse ein Schuljahr 1–13 (`src/school/systems.ts`); Module tr
 
 **Zusatzfächer für alle Stufen:** Religion & Ethik (Feste, Weltreligionen, Ethik), Informatik (Computer-Grundlagen, Hardware & Netz, Binär/Hex, Logikgatter, Caesar-Verschlüsselung, SQL), Programmieren (Roboter-Parcours, Abläufe, Blöcke, Schleifen, Python-Ausgaben vorhersagen, Fehler finden).
 
-**Design:** Schrift Plus Jakarta Sans, ruhige Farbpalette; ab Sekundarstufe automatisch sachlicherer „Teen“-Look. Maskottchen **Puppy in 3D** (React Three Fiber, live auf der Startseite, sonst vorgerenderte Bilder).
+**Design:** Schrift Plus Jakarta Sans, ruhige Farbpalette; ab Sekundarstufe automatisch sachlicherer „Teen“-Look. Maskottchen **Puppy**: Marcos eigene 3D-Figur, freigestellt als `public/puppy/puppy.webp`; Kopf-Ausschnitt `public/puppy/kopf.png` für Logo und App-Icons.
 
 **Ersteinrichtung durch Eltern** (`/einrichtung`): Beim ersten Start richten Eltern die App ein: Eltern-PIN (mit Erwachsenen-Prüfung), Kinderprofil (Land, Sprache, Schule, Klasse, Avatar), Tagesziel, Zeitlimit, Vorlesen/Töne, Zusatzfächer. Danach wird das Gerät übergeben. Weitere Profile lassen sich nur mit Eltern-PIN anlegen.
 
