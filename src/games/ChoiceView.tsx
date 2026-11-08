@@ -6,6 +6,7 @@ import { Shape } from '../components/Shape';
 import { speak } from '../lib/speech';
 import type { TaskViewProps } from './types';
 import { L } from '../i18n';
+import { sfx } from '../lib/sound';
 
 export function ChoiceView({ task, onCorrect, onWrong, reveal, done, onPending }: TaskViewProps<ChoiceTask>) {
   const [wrong, setWrong] = useState<string[]>([]);
@@ -30,7 +31,7 @@ export function ChoiceView({ task, onCorrect, onWrong, reveal, done, onPending }
   const choose = (o: ChoiceOption) => {
     if (done || reveal || wrong.includes(o.id)) return;
     if (o.speak) speak(o.speak);
-    if (onPending) { setSelected(o.id); return; }
+    if (onPending) { sfx.select(); setSelected(o.id); return; }
     evaluate(o.id);
   };
 
@@ -47,7 +48,9 @@ export function ChoiceView({ task, onCorrect, onWrong, reveal, done, onPending }
     return () => window.removeEventListener('keydown', h);
   });
 
-  const style = task.optionStyle ?? 'text';
+  // Große Darstellung nur für kurze Inhalte (Zahlen, Zeichen) – längere Wörter passen sonst nicht in die Kacheln
+  const rawStyle = task.optionStyle ?? 'text';
+  const style = rawStyle === 'big' && task.options.some((o) => (o.label ?? '').length > 4) ? 'text' : rawStyle;
   const n = task.options.length;
   const grid =
     style === 'text' ? (n > 3 ? 'grid-cols-1 sm:grid-cols-2' : 'grid-cols-1')

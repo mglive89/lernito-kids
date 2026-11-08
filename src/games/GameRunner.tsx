@@ -13,6 +13,7 @@ import { GuideContent } from '../pages/Guide';
 import { Visual } from '../components/Visual';
 import { TaskView } from './TaskView';
 import { MULTI_STEP } from './types';
+import { helpSteps, howTo } from './coach';
 import { roundMessage, roundStars, type RoundResult } from '../learning/adaptive';
 import type { RecordResult } from '../store/useApp';
 import { L, getLang, tr } from '../i18n';
@@ -33,12 +34,14 @@ interface Props {
   mode?: 'auto' | 'check';
   /** Name der Lektion im Lernpfad, z. B. „Lektion 2 · Üben“ */
   lessonLabel?: string;
+  /** Puppy erklärt zu Beginn, wie die Aufgabe funktioniert (jüngere Kinder) */
+  coachIntro?: boolean;
 }
 
 type Phase = 'answer' | 'correct' | 'reveal';
 type Tone = 'ok' | 'hint' | 'help';
 
-export function GameRunner({ module, level, speechOn, onFinish, preview, backTo, mode = 'auto', lessonLabel }: Props) {
+export function GameRunner({ module, level, speechOn, onFinish, preview, backTo, mode = 'auto', lessonLabel, coachIntro = false }: Props) {
   const nav = useNavigate();
   const [seed, setSeed] = useState(() => Date.now());
   const tasks = useMemo<Task[]>(() => {
@@ -54,7 +57,10 @@ export function GameRunner({ module, level, speechOn, onFinish, preview, backTo,
   const [revealHelp, setRevealHelp] = useState(false);
   const [pending, setPending] = useState<(() => void) | null>(null);
   const [guideOpen, setGuideOpen] = useState(false);
-  useEffect(() => { setRevealHelp(false); setPending(null); }, [index, seed]);
+  // Puppy-Hilfe: -1 = zu, 0 = nur Anleitung (automatisch), 1… = Hilfe-Schritte
+  const [coach, setCoach] = useState<{ text: string; step: number } | null>(null);
+  const helped = useRef(false);
+  useEffect(() => { setRevealHelp(false); setPending(null); setCoach(null); helped.current = false; }, [index, seed]);
   const check = mode === 'check';
   const hasGuide = !!guideFor(module.id) || !!module.cards;
 
@@ -62,6 +68,27 @@ export function GameRunner({ module, level, speechOn, onFinish, preview, backTo,
   const multi = task ? MULTI_STEP.includes(task.type) : false;
   const usesCheck = check && task?.type === 'choice';
   const onPending = useCallback((fn: (() => void) | null) => setPending(() => fn), []);
+  const steps = useMemo(() => (task ? helpSteps(task, check) : []), [task, check]);
+
+  // Jüngere Kinder: Puppy erklärt bei der ersten Aufgabe jeder Art, wie es geht
+  const introduced = useRef(new Set<string>());
+  useEffect(() => {
+    if (!coachIntro || !task) return;
+    const kind = task.visual?.kind === 'robot' || task.visual?.kind === 'code' ? task.visual.kind : task.type;
+    if (introduced.current.has(kind)) return;
+    introduced.current.add(kind);
+    setCoach({ text: howTo(task, check), step: 0 });
+  }, [task, coachIntro, check]);
+
+  const askPuppy = () => {
+    if (!task || phase !== 'answer') return;
+    sfx.help();
+    const nextStep = Math.min((coach?.step ?? 0) + 1, steps.length);
+    if (!helped.current) { helped.current = true; stats.current.hints++; }
+    const text = steps[nextStep - 1] ?? task.hint;
+    setCoach({ text, step: nextStep });
+    if (speechOn) speak(text);
+  };
 
   useEffect(() => {
     if (!task || !speechOn) return;
@@ -76,6 +103,7 @@ export function GameRunner({ module, level, speechOn, onFinish, preview, backTo,
     setAttempts(0);
     setPhase('answer');
     if (index + 1 < tasks.length) {
+      sfx.whoosh();
       setIndex((i) => i + 1);
     } else {
       const round: RoundResult = {
@@ -84,6 +112,8 @@ export function GameRunner({ module, level, speechOn, onFinish, preview, backTo,
       };
       const rec = onFinish(round);
       sfx.win();
+      if (rec.levelAfter > rec.levelBefore) setTimeout(() => sfx.levelUp(), 1100);
+      else if (rec.badges.length) setTimeout(() => sfx.unlock(), 1100);
       setResult({ round, rec });
       if (speechOn) speak(L(`Geschafft! Du hast ${rec.stars} Sterne gesammelt.`, `Fatto! Hai raccolto ${rec.stars} stelle.`));
     }
@@ -91,9 +121,12 @@ export function GameRunner({ module, level, speechOn, onFinish, preview, backTo,
 
   const onCorrect = useCallback(() => {
     if (phase !== 'answer') return;
-    if (attempts === 0) { stats.current.firstTry++; setStreak((x) => x + 1); }
+    const first = attempts === 0 && !helped.current;
+    if (first) { stats.current.firstTry++; setStreak((x) => { if (x + 1 >= 3) sfx.streak(); return x + 1; }); }
+    else setStreak(0);
     stats.current.solved++;
     sfx.correct();
+    setCoach(null);
     const text = pickOf(LOB);
     setFeedback({ title: text, tone: 'ok' });
     if (speechOn) speak(text);
@@ -104,6 +137,7 @@ export function GameRunner({ module, level, speechOn, onFinish, preview, backTo,
     if (phase !== 'answer' || !task) return;
     sfx.tryAgain();
     setStreak(0);
+    setCoach(null);
     const n = attempts + 1;
     setAttempts(n);
     if (n === 1) {
@@ -174,6 +208,10 @@ export function GameRunner({ module, level, speechOn, onFinish, preview, backTo,
           <ProgressBar value={(index + (phase === 'answer' ? 0 : 1)) / tasks.length} label={L(`Aufgabe ${index + 1} von ${tasks.length}`, `Esercizio ${index + 1} di ${tasks.length}`)} />
         </div>
         <span className="min-w-[2.5rem] text-right font-display text-base font-bold text-tinte/60" aria-hidden>{index + 1}/{tasks.length}</span>
+        <button className="flex h-11 shrink-0 items-center gap-1.5 rounded-full bg-sonne-100 pl-1 pr-3 text-sm font-bold text-sonne-700 transition hover:bg-sonne-300/60 disabled:opacity-40" onClick={askPuppy} disabled={phase !== 'answer'}
+          aria-label={L('Puppy um Hilfe bitten', 'Chiedi aiuto a Puppy')} data-testid="puppy-hilfe">
+          <img src={`${import.meta.env.BASE_URL}puppy/kopf.png`} alt="" className="h-9 w-9" /> <span className="hidden sm:inline">{L('Hilfe', 'Aiuto')}</span>
+        </button>
         {hasGuide && (
           <button className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-himmel-50 text-himmel-700 transition hover:bg-himmel-100" onClick={() => setGuideOpen(true)} aria-label={L('Theorie zum Thema öffnen', 'Apri la teoria')} data-testid="theorie-oeffnen">
             <BookOpen size={22} />
@@ -191,6 +229,30 @@ export function GameRunner({ module, level, speechOn, onFinish, preview, backTo,
               <h1 className="flex-1 font-display text-2xl font-bold leading-snug tracking-tight sm:text-3xl" data-testid="task-prompt">{task.prompt}</h1>
               {task.sound && <SoundButton sound={task.sound} />}
             </div>
+            <AnimatePresence>
+              {coach && phase === 'answer' && (
+                <motion.div initial={{ opacity: 0, y: -8, scale: 0.97 }} animate={{ opacity: 1, y: 0, scale: 1 }} exit={{ opacity: 0, y: -8 }}
+                  className="flex w-full items-end gap-2" data-testid="puppy-tipp" role="note" aria-live="polite">
+                  <Lino mood={coach.step === 0 ? 'winken' : 'denken'} size={64} />
+                  <div className="relative mb-2 flex-1 rounded-2xl rounded-bl-md bg-sonne-50 px-4 py-3 text-base leading-relaxed ring-1 ring-sonne-300 sm:text-lg">
+                    <p className="mb-0.5 text-xs font-extrabold uppercase tracking-wider text-sonne-700">
+                      {coach.step === 0 ? L('So geht’s', 'Come si fa') : L(`Puppy hilft · ${coach.step}/${steps.length}`, `Puppy ti aiuta · ${coach.step}/${steps.length}`)}
+                    </p>
+                    {coach.text}
+                    <div className="mt-2 flex flex-wrap gap-2">
+                      {coach.step < steps.length && (
+                        <button type="button" className="rounded-full bg-white px-3 py-1 text-sm font-bold text-sonne-700 ring-1 ring-sonne-300 hover:bg-sonne-100" onClick={askPuppy} data-testid="puppy-mehr">
+                          {coach.step === 0 ? L('Gib mir einen Tipp', 'Dammi un suggerimento') : L('Noch ein Schritt', 'Un altro passo')}
+                        </button>
+                      )}
+                      <button type="button" className="rounded-full px-3 py-1 text-sm font-bold text-tinte/55 hover:bg-white" onClick={() => { stopSpeaking(); setCoach(null); }} data-testid="puppy-ok">
+                        {L('Alles klar!', 'Ho capito!')}
+                      </button>
+                    </div>
+                  </div>
+                </motion.div>
+              )}
+            </AnimatePresence>
             {task.visual && <Visual v={task.visual} />}
             <TaskView task={task} onCorrect={onCorrect} onWrong={onWrong} reveal={phase === 'reveal' || revealHelp} done={phase !== 'answer'} onPending={usesCheck ? onPending : undefined} />
             {phase === 'reveal' && (
@@ -210,9 +272,11 @@ export function GameRunner({ module, level, speechOn, onFinish, preview, backTo,
             <div className="flex min-h-[3.5rem] flex-1 items-center gap-3" role="status" aria-live="assertive" data-testid="feedback">
               {feedback && (
                 <>
-                  <motion.span initial={{ scale: 0.6, opacity: 0 }} animate={{ scale: 1, opacity: 1 }}
-                    className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-full text-white ${tone === 'ok' ? 'bg-minze-500' : tone === 'hint' ? 'bg-koralle-500' : 'bg-sonne-500'}`} aria-hidden>
-                    {tone === 'ok' ? <Check size={28} strokeWidth={3} /> : tone === 'hint' ? <Lightbulb size={26} /> : <BookOpen size={24} />}
+                  <motion.span initial={{ scale: 0.6, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} className="relative shrink-0" aria-hidden>
+                    <Lino mood={tone === 'ok' ? 'jubel' : 'denken'} size={52} still={tone !== 'ok'} />
+                    <span className={`absolute -bottom-1 -right-1 flex h-6 w-6 items-center justify-center rounded-full text-white ring-2 ring-white ${tone === 'ok' ? 'bg-minze-500' : tone === 'hint' ? 'bg-koralle-500' : 'bg-sonne-500'}`}>
+                      {tone === 'ok' ? <Check size={15} strokeWidth={3.5} /> : tone === 'hint' ? <Lightbulb size={14} /> : <BookOpen size={13} />}
+                    </span>
                   </motion.span>
                   <div className="min-w-0">
                     <p className={`font-display text-xl font-bold ${tone === 'ok' ? 'text-minze-700' : tone === 'hint' ? 'text-koralle-700' : 'text-sonne-700'}`}>

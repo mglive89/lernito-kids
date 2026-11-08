@@ -310,7 +310,7 @@ export function PlayPage() {
   return (
     <GameRunner key={`${mod.id}-${step}`} module={mod} level={level} speechOn={settings.speech} backTo={backTo}
       onFinish={(r) => record(step ? { ...r, pathStep: step } : r)}
-      mode={kids ? 'auto' : 'check'} lessonLabel={step ? lessonLabel(step) : undefined} />
+      mode={kids ? 'auto' : 'check'} coachIntro={kids || (profile?.year ?? 0) <= 4} lessonLabel={step ? lessonLabel(step) : undefined} />
   );
 }
 

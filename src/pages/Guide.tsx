@@ -12,6 +12,7 @@ import { workedExamples } from '../learning/examples';
 import { pathDoneOf } from '../learning/adaptive';
 import type { LearningModule, StudyCard } from '../learning/types';
 import { L, tr } from '../i18n';
+import { sfx } from '../lib/sound';
 
 /** Theorie eines Themas: Das Wichtigste, gelöste Beispiele, Lernkarten. */
 export function GuideContent({ module, compact = false }: { module: LearningModule; compact?: boolean }) {
@@ -84,7 +85,7 @@ function Flashcards({ cards, max }: { cards: StudyCard[]; max: number }) {
 function Card({ c }: { c: StudyCard }) {
   const [open, setOpen] = useState(false);
   return (
-    <button type="button" onClick={() => setOpen((v) => !v)} aria-expanded={open} data-testid="lernkarte"
+    <button type="button" onClick={() => { sfx.flip(); setOpen((v) => !v); }} aria-expanded={open} data-testid="lernkarte"
       className={`flex min-h-[7rem] flex-col items-start gap-2 rounded-2xl p-4 text-left shadow-weich ring-1 transition ${open ? 'bg-lila-50 ring-lila-300' : 'bg-white ring-tinte/5 hover:ring-lila-300'}`}>
       <span className="font-semibold leading-snug">{c.q}</span>
       {c.code && <pre className="w-full overflow-x-auto rounded-xl bg-tinte px-3 py-2 font-mono text-sm text-white">{c.code}</pre>}

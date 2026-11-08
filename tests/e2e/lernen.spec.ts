@@ -90,6 +90,26 @@ test('Nach zwei Fehlversuchen wird die Lösung Schritt für Schritt erklärt', a
   await expect(page.getByTestId('task-prompt')).toBeVisible();
 });
 
+test('Puppy erklärt die Aufgabe und gibt auf Wunsch Schritt-für-Schritt-Hilfe', async ({ page }) => {
+  await createProfile(page, 'Ben', '1');
+  await page.goto('/schule/1/deutsch');
+  await page.getByTestId('modul-d1-lesen').click();
+  // Jüngere Kinder: Puppy erklärt die erste Aufgabe automatisch
+  const tip = page.getByTestId('puppy-tipp');
+  await expect(tip).toBeVisible();
+  await page.getByTestId('puppy-ok').click();
+  await expect(tip).toBeHidden();
+  // Auf Wunsch: Hilfe-Knopf mit Puppy, dann weitere Schritte
+  await page.getByTestId('puppy-hilfe').click();
+  await expect(tip).toBeVisible();
+  const first = await tip.innerText();
+  await page.getByTestId('puppy-mehr').click();
+  await expect(tip).not.toHaveText(first);
+  // Antworten funktioniert weiterhin
+  await page.locator('[data-correct="true"]').first().click();
+  await confirmAnswer(page);
+});
+
 test('3D-Lernwelt mit 2D-Fallback ohne WebGL', async ({ page }) => {
   await createProfile(page, 'Noah', '3');
   await page.goto('/spiel/3d-koerper?no3d');

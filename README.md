@@ -61,6 +61,10 @@ Aufgabentypen: Auswahl, Zahlenfeld, Wörter/Silben bauen, Reihenfolge, Memory, D
 
 **Video-Lernmodul:** Videoübersicht nach Fach, Beispiel-Lektion „Was bedeutet Plus?“ als selbst erstellte, zeitgesteuerte Animation mit Untertiteln, Vorlesen, Fortschrittsanzeige und anschließendem Quiz. Eigene Videodateien (+ WebVTT-Untertitel) können im Admin-Bereich hochgeladen und mit einem Quiz verknüpft werden.
 
+**Puppy hilft:** In jeder Lektion sitzt Puppy oben rechts. Ein Tipp darauf erklärt, *wie* die Aufgabe funktioniert (je Aufgabentyp), danach gibt es Schritt für Schritt Hinweise, ohne die Lösung zu verraten. Für Kita und Klasse 1–4 erklärt Puppy jeden neuen Aufgabentyp automatisch beim ersten Mal. Wer Hilfe nutzt, bekommt keinen Punktabzug, nur der „beim ersten Versuch“-Bonus entfällt. Bei eingeschaltetem Vorlesen spricht Puppy die Tipps.
+
+**Sounds:** Alle Töne werden lokal per WebAudio erzeugt (keine Audiodateien, kein Mikrofon): Antippen, Auswahl, richtig (Glocken), sanftes „nochmal“, Serie, Lektion geschafft, Level/Freischaltung, Seitenwechsel, Lernkarten umdrehen. Abschaltbar im Elternbereich.
+
 **Belohnungen ohne Druck:** Sterne pro gelöster Aufgabe, Levelsystem, 16 Abzeichen, gestaltbarer Avatar (Extras werden über Level freigeschaltet), 3 freischaltbare Mini-Spiele (Seifenblasen, Ballon-Reihe, Puppy ausmalen), freiwilliges Tagesziel. Keine Käufe, kein Glücksspiel, keine Werbung, keine verlierbaren Serien.
 
 **Adaptives Lernen:** Schwierigkeit (Leicht/Mittel/Knifflig) pro Thema passt sich der Quote beim ersten Versuch an. Nach dem ersten Fehler kommt ein verständlicher Hinweis, nach dem zweiten eine Schritt-für-Schritt-Erklärung. Schwache Themen erscheinen unter „Nochmal üben“. Fortschritt wird pro Thema gespeichert. Rückmeldungen sind immer ermutigend.
