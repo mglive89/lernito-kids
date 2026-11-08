@@ -4,6 +4,7 @@ import type { MemoryTask } from '../learning/types';
 import type { TaskViewProps } from './types';
 import { shuffle, createRng } from '../lib/random';
 import { sfx } from '../lib/sound';
+import { L } from '../i18n';
 
 interface Card { key: string; pair: string; face: string }
 
@@ -36,7 +37,7 @@ export function MemoryView({ task, onCorrect, done }: TaskViewProps<MemoryTask>)
 
   const cols = cards.length <= 6 ? 'grid-cols-3' : cards.length <= 8 ? 'grid-cols-4' : 'grid-cols-4 sm:grid-cols-6';
   return (
-    <div className={`grid w-full max-w-2xl gap-3 ${cols}`} aria-label={`Memory mit ${task.pairs.length} Paaren, ${found.length} gefunden`}>
+    <div className={`grid w-full max-w-2xl gap-3 ${cols}`} aria-label={L(`Memory mit ${task.pairs.length} Paaren, ${found.length} gefunden`, `Memory con ${task.pairs.length} coppie, ${found.length} trovate`)}>
       {cards.map((c) => {
         const visible = open.includes(c.key) || found.includes(c.pair);
         return (
@@ -48,7 +49,7 @@ export function MemoryView({ task, onCorrect, done }: TaskViewProps<MemoryTask>)
             className={`knopf aspect-square p-0 text-5xl sm:text-6xl ${found.includes(c.pair) ? 'bg-minze-100 ring-4 ring-minze-500' : visible ? 'bg-white' : 'bg-lila-500'}`}
             animate={{ rotateY: visible ? 0 : 180 }}
             transition={{ duration: 0.3 }}
-            aria-label={visible ? c.face : 'Verdeckte Karte'}
+            aria-label={visible ? c.face : L('Verdeckte Karte', 'Carta coperta')}
           >
             <span className="emoji" style={{ transform: visible ? undefined : 'rotateY(180deg)' }}>{visible ? c.face : '❔'}</span>
           </motion.button>

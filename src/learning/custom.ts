@@ -1,4 +1,7 @@
-import type { ChoiceTask, Difficulty, Grade, LearningModule, SubjectId } from './types';
+import type { ChoiceTask, Difficulty, LearningModule, SubjectId } from './types';
+import type { Country } from '../school/systems';
+import { SUBJECTS } from '../school/subjects';
+import { L } from '../i18n';
 import { shuffle } from '../lib/random';
 
 export interface CustomQuestion {
@@ -18,8 +21,10 @@ export interface CustomModule {
   subtitle: string;
   emoji: string;
   color: LearningModule['color'];
-  /** 'kita' oder eine Klassenstufe */
-  target: 'kita' | Grade;
+  /** 'kita' oder ein Schuljahr 1–13 */
+  target: 'kita' | number;
+  /** Land, für das die Einheit gedacht ist (Standard: alle) */
+  country?: Country;
   subject: SubjectId;
   difficulty: Difficulty;
   published: boolean;
@@ -30,12 +35,10 @@ export interface CustomModule {
 
 export interface SubjectSetting { id: SubjectId; name: string; emoji: string; enabled: boolean; builtin: boolean }
 
-export const DEFAULT_SUBJECTS: SubjectSetting[] = [
-  { id: 'deutsch', name: 'Deutsch', emoji: '📖', enabled: true, builtin: true },
-  { id: 'mathe', name: 'Mathematik', emoji: '🔢', enabled: true, builtin: true },
-  { id: 'sachunterricht', name: 'Sachunterricht', emoji: '🌍', enabled: true, builtin: true },
-  { id: 'englisch', name: 'Englisch', emoji: '🇬🇧', enabled: true, builtin: true }
-];
+/** Fächer, die Eltern ein- und ausschalten können. Namen werden in der UI über subjectName() übersetzt. */
+export const DEFAULT_SUBJECTS: SubjectSetting[] = SUBJECTS.filter((s) => s.id !== 'scienze').map((s) => ({
+  id: s.id, name: typeof s.name === 'string' ? s.name : s.name.de, emoji: s.emoji, enabled: true, builtin: true
+}));
 
 export function validateCustomModule(m: CustomModule): string[] {
   const errors: string[] = [];
@@ -55,11 +58,12 @@ export function customToModule(c: CustomModule): LearningModule {
   return {
     id: c.id,
     title: c.title,
-    subtitle: c.subtitle || 'Eigene Lerneinheit',
+    subtitle: c.subtitle || L('Eigene Lerneinheit', 'Unità personalizzata'),
     emoji: c.emoji || '✨',
     color: c.color,
     area: c.target === 'kita' ? 'kita' : 'schule',
-    grade: c.target === 'kita' ? undefined : c.target,
+    years: c.target === 'kita' ? undefined : [c.target, c.target],
+    countries: c.country ? [c.country] : undefined,
     subject: c.target === 'kita' ? undefined : c.subject,
     topic: c.title,
     roundSize: c.questions.length,
@@ -75,8 +79,8 @@ export function customToModule(c: CustomModule): LearningModule {
           options: shuffle(rng, opts).map((o) => ({ id: String(o.k), label: o.text })),
           correctId: String(q.correctIndex),
           optionStyle: 'text',
-          hint: q.hint || 'Lies die Aufgabe noch einmal in Ruhe.',
-          explain: [`Richtig ist: ${q.options[q.correctIndex] ?? ''}.`, ...(q.explain ? [q.explain] : [])]
+          hint: q.hint || L('Lies die Aufgabe noch einmal in Ruhe.', 'Rileggi la domanda con calma.'),
+          explain: [L('Richtig ist: ', 'La risposta giusta è: ') + (q.options[q.correctIndex] ?? '') + '.', ...(q.explain ? [q.explain] : [])]
         };
       })
   };

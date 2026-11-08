@@ -9,7 +9,9 @@ import { BUILTIN_MODULES } from '../../learning/registry';
 import { customToModule, validateCustomModule, type CustomModule, type CustomQuestion, type SubjectSetting } from '../../learning/custom';
 import { deleteMedia, getMediaBlob, listMedia, putMedia, type MediaMeta } from '../../lib/db';
 import { GameRunner } from '../../games/GameRunner';
-import type { Difficulty, Grade } from '../../learning/types';
+import type { Difficulty } from '../../learning/types';
+import { COUNTRIES, type Country } from '../../school/systems';
+import { tr } from '../../i18n';
 
 const COLORS: CustomModule['color'][] = ['sonne', 'himmel', 'minze', 'koralle', 'lila'];
 const newId = (p: string) => `${p}-${Date.now().toString(36)}-${Math.random().toString(36).slice(2, 6)}`;
@@ -135,7 +137,7 @@ function ModulesTab() {
             <span className="emoji text-4xl">{m.emoji}</span>
             <div className="flex-1">
               <p className="font-display text-xl font-bold">{m.title}</p>
-              <p className="text-sm text-tinte/70">{m.target === 'kita' ? 'Kindergarten' : `Klasse ${m.target} · ${m.subject}`} · Stufe {m.difficulty} · {m.questions.length} Fragen</p>
+              <p className="text-sm text-tinte/70">{m.target === 'kita' ? 'Kindergarten' : `${m.target}. Schuljahr · ${m.subject}`}{m.country ? ` · ${m.country}` : ''} · Stufe {m.difficulty} · {m.questions.length} Fragen</p>
             </div>
             <label className="flex items-center gap-2 font-bold">
               <input type="checkbox" className="h-6 w-6 accent-minze-500" checked={m.published} onChange={(e) => { if (!e.target.checked || validateCustomModule(m).length === 0) save({ ...m, published: e.target.checked }); }} data-testid={`publish-${m.id}`} />
@@ -183,9 +185,14 @@ function ModuleEditor({ initial, onClose }: { initial: CustomModule; onClose: ()
         <label>Farbe
           <select className="feld" value={m.color} onChange={(e) => setM({ ...m, color: e.target.value as CustomModule['color'] })}>{COLORS.map((c) => <option key={c} value={c}>{c}</option>)}</select>
         </label>
-        <label>Klassenstufe
-          <select className="feld" value={String(m.target)} onChange={(e) => setM({ ...m, target: e.target.value === 'kita' ? 'kita' : (Number(e.target.value) as Grade) })} data-testid="modul-stufe">
-            <option value="kita">Kindergarten</option>{[1, 2, 3, 4].map((g) => <option key={g} value={g}>Klasse {g}</option>)}
+        <label>Schuljahr
+          <select className="feld" value={String(m.target)} onChange={(e) => setM({ ...m, target: e.target.value === 'kita' ? 'kita' : Number(e.target.value) })} data-testid="modul-stufe">
+            <option value="kita">Kindergarten / Infanzia</option>{Array.from({ length: 13 }, (_, i) => i + 1).map((g) => <option key={g} value={g}>{g}. Schuljahr</option>)}
+          </select>
+        </label>
+        <label>Land
+          <select className="feld" value={m.country ?? ''} onChange={(e) => setM({ ...m, country: (e.target.value || undefined) as Country | undefined })} data-testid="modul-land">
+            <option value="">Alle Länder</option>{COUNTRIES.map((c) => <option key={c.id} value={c.id}>{c.flag} {tr(c.name)}</option>)}
           </select>
         </label>
         <label>Fach

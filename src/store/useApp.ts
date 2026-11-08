@@ -6,16 +6,23 @@ import { hashPin, randomSalt } from '../lib/hash';
 import { applyRound, emptyModuleProgress, type ModuleProgress, type RoundResult } from '../learning/adaptive';
 import { levelFromXp, newBadges, starsForRound, xpForRound, type BadgeDef } from '../learning/rewards';
 import { DEFAULT_SUBJECTS, type CustomModule, type SubjectSetting } from '../learning/custom';
-import type { Difficulty, Grade } from '../learning/types';
+import type { Difficulty } from '../learning/types';
+import type { Lang } from '../i18n';
+import type { Country, SchoolYear } from '../school/systems';
+import { SUBJECTS } from '../school/subjects';
 
-export type AgeGroup = 'kita' | Grade;
 
 export interface AvatarConfig { animal: string; color: string; extra: string }
 
 export interface Profile {
   id: string;
   name: string;
-  ageGroup: AgeGroup;
+  /** Land des Schulsystems */
+  country: Country;
+  /** Sprache der App für dieses Kind */
+  lang: Lang;
+  /** 0 = Kindergarten / Infanzia, 1–13 = Schuljahr */
+  year: SchoolYear;
   avatar: AvatarConfig;
   avatarCustomized: boolean;
   createdAt: string;
@@ -90,6 +97,8 @@ interface AppState {
   customModules: CustomModule[];
   customVideos: CustomVideo[];
   subjects: SubjectSetting[];
+  /** Sprache der Startseite (vor der Profilwahl) */
+  uiLang: Lang | null;
   /** Nicht persistiert */
   parentUnlockedUntil: number;
   adminUnlocked: boolean;
@@ -118,6 +127,7 @@ interface AppState {
   saveCustomVideo: (v: CustomVideo) => void;
   deleteCustomVideo: (id: string) => void;
   setSubjects: (s: SubjectSetting[]) => void;
+  setUiLang: (l: Lang) => void;
   resetProfileProgress: (id: string) => void;
   importData: (data: unknown) => void;
   wipeAll: () => void;
@@ -142,7 +152,7 @@ function badgeContext(p: ProfileProgress, profile: Profile | undefined, lastRoun
   };
 }
 
-const PERSIST_KEYS = ['profiles', 'activeProfileId', 'progress', 'childSettings', 'parent', 'customModules', 'customVideos', 'subjects'] as const;
+const PERSIST_KEYS = ['profiles', 'activeProfileId', 'progress', 'childSettings', 'parent', 'customModules', 'customVideos', 'subjects', 'uiLang'] as const;
 
 export const useApp = create<AppState>()(
   persist(
@@ -155,6 +165,7 @@ export const useApp = create<AppState>()(
       customModules: [],
       customVideos: [],
       subjects: DEFAULT_SUBJECTS,
+      uiLang: null,
       parentUnlockedUntil: 0,
       adminUnlocked: false,
       hydrated: false,
@@ -297,6 +308,7 @@ export const useApp = create<AppState>()(
         }),
       deleteCustomVideo: (id) => set((s) => ({ customVideos: s.customVideos.filter((c) => c.id !== id) })),
       setSubjects: (subjects) => set({ subjects }),
+      setUiLang: (uiLang) => set({ uiLang }),
 
       resetProfileProgress: (id) => set((s) => ({ progress: { ...s.progress, [id]: emptyProgress() } })),
 
@@ -305,7 +317,7 @@ export const useApp = create<AppState>()(
         const d = data as Partial<Record<(typeof PERSIST_KEYS)[number], unknown>> & { app?: string };
         if (d.app !== 'lernito-kids' || !Array.isArray(d.profiles)) throw new Error('Diese Datei stammt nicht aus Lernito Kids.');
         set({
-          profiles: d.profiles as Profile[],
+          profiles: (d.profiles as unknown[]).map(migrateProfile),
           progress: (d.progress as Record<string, ProfileProgress>) ?? {},
           childSettings: (d.childSettings as Record<string, ChildSettings>) ?? {},
           customModules: (d.customModules as CustomModule[]) ?? get().customModules,
@@ -321,8 +333,9 @@ export const useApp = create<AppState>()(
     }),
     {
       name: 'lernito-state',
-      version: 1,
+      version: 2,
       storage: createJSONStorage(() => idbStorage),
+      migrate: (persisted, version) => migrateState(persisted, version) as AppState,
       partialize: (s) => Object.fromEntries(PERSIST_KEYS.map((k) => [k, s[k]])) as Pick<AppState, (typeof PERSIST_KEYS)[number]>,
       onRehydrateStorage: () => () => {
         useApp.setState({ hydrated: true });
@@ -331,12 +344,40 @@ export const useApp = create<AppState>()(
   )
 );
 
+/** Ältere Profile (Version 1: ageGroup 'kita' | 1–4, nur Deutschland) auf Land, Sprache und Schuljahr umstellen. */
+export function migrateProfile(raw: unknown): Profile {
+  const p = raw as Partial<Profile> & { ageGroup?: 'kita' | number };
+  const year = typeof p.year === 'number' ? p.year : p.ageGroup === 'kita' || p.ageGroup === undefined ? 0 : Number(p.ageGroup);
+  const { ageGroup: _old, ...rest } = p;
+  return { ...rest, country: p.country ?? 'DE', lang: p.lang ?? 'de', year: Math.max(0, Math.min(13, year || 0)) } as Profile;
+}
+
+export function migrateSubjects(list: SubjectSetting[] | undefined): SubjectSetting[] {
+  const byId = new Map((list ?? []).map((x) => [x.id === 'sachunterricht' ? 'sachkunde' : x.id, x]));
+  const builtin = DEFAULT_SUBJECTS.map((d) => ({ ...d, enabled: byId.get(d.id)?.enabled ?? true }));
+  const custom = (list ?? []).filter((x) => !x.builtin && !SUBJECTS.some((s) => s.id === x.id));
+  return [...builtin, ...custom];
+}
+
+function migrateState(persisted: unknown, version: number): unknown {
+  const s = (persisted ?? {}) as Record<string, unknown>;
+  if (version < 2) {
+    s.profiles = Array.isArray(s.profiles) ? s.profiles.map(migrateProfile) : [];
+    s.subjects = migrateSubjects(s.subjects as SubjectSetting[] | undefined);
+    s.customModules = Array.isArray(s.customModules)
+      ? (s.customModules as CustomModule[]).map((m) => ({ ...m, subject: m.subject === 'sachunterricht' ? 'sachkunde' : m.subject, country: m.country ?? 'DE' }))
+      : [];
+    s.uiLang = s.uiLang ?? null;
+  }
+  return s;
+}
+
 /** Export aller lokal gespeicherten Daten (DSGVO Art. 15/20). */
 export function exportAllData(): string {
   const s = useApp.getState();
   return JSON.stringify(
     {
-      app: 'lernito-kids', exportedAt: new Date().toISOString(), version: 1,
+      app: 'lernito-kids', exportedAt: new Date().toISOString(), version: 2,
       profiles: s.profiles, progress: s.progress, childSettings: s.childSettings, customModules: s.customModules,
       parent: { consentOnlineSync: s.parent.consentOnlineSync, consentAiHelper: s.parent.consentAiHelper, consentUpdatedAt: s.parent.consentUpdatedAt }
     },

@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { motion, useReducedMotion } from 'framer-motion';
 import { MASCOT_DESC } from '../content/mascot';
 
@@ -9,6 +10,8 @@ interface Props {
   className?: string;
   /** Kein Hüpfen, z. B. in Listen */
   still?: boolean;
+  /** Gezeichnete 2D-Version erzwingen (z. B. innerhalb einer SVG-Grafik) */
+  flat?: boolean;
 }
 
 const C = {
@@ -26,8 +29,39 @@ const C = {
   haar: '#7A4A1E'
 };
 
-/** Puppy – das Maskottchen von Lernito Kids: ein gelber Hund mit Schlappohren, blauem Hoodie und Sneakern. */
-export function Lino({ mood = 'freude', size = 140, className = '', still = false }: Props) {
+function motionFor(mood: LinoMood, off: boolean) {
+  if (off) return undefined;
+  return mood === 'jubel' ? { y: [0, -14, 0], rotate: [0, -4, 4, 0] } : mood === 'denken' ? { rotate: [0, -3, 0] } : { y: [0, -5, 0] };
+}
+
+/**
+ * Puppy – das Maskottchen von Lernito Kids: ein gelber Hund mit Schlappohren, blauem Hoodie und Sneakern.
+ * Standard: vorgerenderte 3D-Bilder (public/puppy/*.png, erzeugt mit `npm run puppy` aus Puppy3D.tsx).
+ * Fallback: gezeichnete SVG-Version.
+ */
+export function Lino(props: Props) {
+  const { mood = 'freude', size = 140, className = '', still = false, flat = false } = props;
+  const reduce = useReducedMotion();
+  const [failed, setFailed] = useState(false);
+  if (flat || failed) return <LinoFlat {...props} />;
+  return (
+    <motion.img
+      src={`${import.meta.env.BASE_URL}puppy/${mood}.png`}
+      width={size * 1.15}
+      height={size * 1.15 * 1.1}
+      alt={MASCOT_DESC}
+      draggable={false}
+      onError={() => setFailed(true)}
+      className={`pointer-events-none select-none ${className}`}
+      style={{ margin: -size * 0.075 }}
+      animate={motionFor(mood, still || !!reduce)}
+      transition={{ duration: mood === 'jubel' ? 0.9 : 2.4, repeat: Infinity, ease: 'easeInOut' }}
+    />
+  );
+}
+
+/** Gezeichnete Puppy-Version (SVG) */
+export function LinoFlat({ mood = 'freude', size = 140, className = '', still = false }: Props) {
   const reduce = useReducedMotion();
   const animate = still || reduce
     ? undefined

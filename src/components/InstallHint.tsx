@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Download, Share } from 'lucide-react';
+import { L } from '../i18n';
 
 interface BeforeInstallPromptEvent extends Event { prompt: () => Promise<void>; userChoice: Promise<{ outcome: string }> }
 
@@ -21,16 +22,16 @@ export function InstallHint() {
   return (
     <div className="karte flex flex-col gap-3 p-4 sm:flex-row sm:items-center">
       <div className="flex-1">
-        <p className="font-bold">Lernito auf den Home-Bildschirm legen</p>
+        <p className="font-bold">{L('Lernito auf den Home-Bildschirm legen', 'Aggiungi Lernito alla schermata Home')}</p>
         {isIos && !evt ? (
-          <p className="text-sm text-tinte/70">In Safari auf <Share className="inline" size={16} aria-label="Teilen" /> tippen und „Zum Home-Bildschirm“ wählen.</p>
+          <p className="text-sm text-tinte/70">{L('In Safari auf', 'In Safari tocca')} <Share className="inline" size={16} aria-label={L('Teilen', 'Condividi')} /> {L('tippen und „Zum Home-Bildschirm“ wählen.', 'e scegli «Aggiungi alla schermata Home».')}</p>
         ) : (
-          <p className="text-sm text-tinte/70">Dann startet Lernito wie eine App – auch offline.</p>
+          <p className="text-sm text-tinte/70">{L('Dann startet Lernito wie eine App – auch offline.', 'Così Lernito si apre come un’app, anche offline.')}</p>
         )}
       </div>
       <div className="flex gap-2">
-        {evt && <button className="knopf bg-minze-500 text-white" onClick={() => void evt.prompt().then(() => setEvt(null))}><Download /> Installieren</button>}
-        <button className="knopf bg-white text-base" onClick={hide}>Später</button>
+        {evt && <button className="knopf bg-minze-500 text-white" onClick={() => void evt.prompt().then(() => setEvt(null))}><Download /> {L('Installieren', 'Installa')}</button>}
+        <button className="knopf bg-white text-base" onClick={hide}>{L('Später', 'Più tardi')}</button>
       </div>
     </div>
   );

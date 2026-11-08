@@ -34,3 +34,5 @@
 10. **Sicherheitsprüfung** der Server-Komponenten (Penetrationstest, RLS-Policies, Rollenmodell).
 11. **Lehrplanbezug**: fachdidaktische Prüfung der Inhalte und Zuordnung zu Bundesland-Lehrplänen.
 12. **Urheberrecht**: Alle eingebauten Inhalte, Figuren und Grafiken sind selbst erstellt. Bei hochgeladenen Medien liegt die Verantwortung bei der Redaktion; ein Freigabeprozess ist vorzusehen.
+13. **Italien** (seit Version mit DE/IT-Profilen): italienische *Informativa privacy* (Art. 13 DSGVO) auf Italienisch; Einwilligungsalter nach Art. 2-quinquies Codice privacy (D.Lgs. 196/2003 i. d. F. D.Lgs. 101/2018): 14 Jahre; Leitlinien und Entscheidungen des *Garante per la protezione dei dati personali* zu Minderjährigen und Altersverifikation; ggf. AGCOM-Vorgaben zur Altersverifikation; Verbraucherrecht (Codice del consumo) bei späteren kostenpflichtigen Angeboten.
+14. **Inhalte Italien**: fachdidaktische Prüfung gegenüber den *Indicazioni nazionali* (infanzia, primo ciclo) und den Leitlinien der Licei/Istituti tecnici/professionali; Religionsunterricht (IRC) ist in Italien freiwillig – Ausblenden des Fachs durch Eltern vorsehen.

@@ -10,23 +10,24 @@ import { sfx } from '../lib/sound';
 import { speak } from '../lib/speech';
 import { zahlwort } from '../content/words';
 import { createRng, shuffle } from '../lib/random';
+import { L, tr } from '../i18n';
 
 export function MiniGamesPage() {
   const { progress } = useActiveProfile();
   return (
     <div className="min-h-[100dvh]">
-      <TopBar title="Mini-Spiele" back="/home" stars={progress.stars} />
+      <TopBar title={L('Mini-Spiele', 'Minigiochi')} back="/home" stars={progress.stars} />
       <main className="seite">
-        <LinoSays text="Mit deinen Sternen schaltest du Mini-Spiele frei. Sie bleiben für immer offen!" size={80} />
+        <LinoSays text={L('Mit deinen Sternen schaltest du Mini-Spiele frei. Sie bleiben für immer offen!', 'Con le tue stelle sblocchi i minigiochi. Restano aperti per sempre!')} size={80} />
         <div className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-3">
           {MINIGAMES.map((g) => {
             const open = progress.stars >= g.starsNeeded;
             const inner = (
               <div className={`karte flex h-full flex-col items-center gap-2 p-6 text-center ${open ? '' : 'opacity-60'}`}>
                 <span className="emoji text-7xl">{open ? g.emoji : '🔒'}</span>
-                <span className="font-display text-2xl font-bold">{g.title}</span>
-                <span className="text-tinte/70">{g.description}</span>
-                {!open && <span className="mt-2 flex items-center gap-1 rounded-full bg-sonne-100 px-3 py-1 font-bold"><Lock size={16} /> ab {g.starsNeeded} Sternen</span>}
+                <span className="font-display text-2xl font-bold">{tr(g.title)}</span>
+                <span className="text-tinte/70">{tr(g.description)}</span>
+                {!open && <span className="mt-2 flex items-center gap-1 rounded-full bg-sonne-100 px-3 py-1 font-bold"><Lock size={16} /> {L(`ab ${g.starsNeeded} Sternen`, `da ${g.starsNeeded} stelle`)}</span>}
               </div>
             );
             return open
@@ -34,7 +35,7 @@ export function MiniGamesPage() {
               : <div key={g.id} aria-disabled="true" data-testid={`minispiel-${g.id}`}>{inner}</div>;
           })}
         </div>
-        <p className="mt-6 text-center text-sm text-tinte/60">Mini-Spiele sind kurze Pausen. Es gibt keine Käufe, keine Glücksräder und keine Werbung.</p>
+        <p className="mt-6 text-center text-sm text-tinte/60">{L('Mini-Spiele sind kurze Pausen. Es gibt keine Käufe, keine Glücksräder und keine Werbung.', 'I minigiochi sono brevi pause. Niente acquisti, niente ruote della fortuna e niente pubblicità.')}</p>
       </main>
     </div>
   );
@@ -52,14 +53,14 @@ export function MiniGamePlayPage() {
   if (!game || progress.stars < game.starsNeeded) {
     return (
       <div className="min-h-[100dvh]">
-        <TopBar title="Mini-Spiel" back="/minispiele" />
-        <main className="seite"><LinoSays text="Dieses Spiel ist noch nicht freigeschaltet. Sammle weiter Sterne!" mood="denken" /></main>
+        <TopBar title={L('Mini-Spiel', 'Minigioco')} back="/minispiele" />
+        <main className="seite"><LinoSays text={L('Dieses Spiel ist noch nicht freigeschaltet. Sammle weiter Sterne!', 'Questo gioco non è ancora sbloccato. Continua a raccogliere stelle!')} mood="denken" /></main>
       </div>
     );
   }
   return (
     <div className="min-h-[100dvh]">
-      <TopBar title={game.title} back="/minispiele" />
+      <TopBar title={tr(game.title)} back="/minispiele" />
       <main className="seite">
         {game.id === 'seifenblasen' && <Bubbles />}
         {game.id === 'ballons' && <Balloons />}
@@ -88,14 +89,14 @@ function Bubbles() {
   };
   return (
     <div className="flex flex-col items-center gap-3">
-      <p className="font-display text-3xl font-bold" aria-live="polite">Geplatzt: {count}</p>
-      <div className="relative h-[60vh] w-full overflow-hidden rounded-3xl bg-gradient-to-b from-himmel-100 to-himmel-300" aria-label="Seifenblasen zum Antippen">
+      <p className="font-display text-3xl font-bold" aria-live="polite">{L('Geplatzt', 'Scoppiate')}: {count}</p>
+      <div className="relative h-[60vh] w-full overflow-hidden rounded-3xl bg-gradient-to-b from-himmel-100 to-himmel-300" aria-label={L('Seifenblasen zum Antippen', 'Bolle da toccare')}>
         <AnimatePresence>
           {bubbles.map((b) => (
             <motion.button
               key={b.id}
               type="button"
-              aria-label="Seifenblase"
+              aria-label={L('Seifenblase', 'Bolla di sapone')}
               onPointerDown={() => pop(b.id)}
               className="absolute rounded-full border-4 border-white/80"
               style={{ left: `${b.x}%`, width: b.size, height: b.size, background: `radial-gradient(circle at 30% 30%, rgba(255,255,255,.9), hsla(${b.hue},80%,70%,.35) 60%, hsla(${b.hue},80%,60%,.15))` }}
@@ -126,7 +127,7 @@ function Balloons() {
   };
   return (
     <div className="flex flex-col items-center gap-4">
-      <p className="text-center font-display text-2xl font-bold">Lass die Ballons der Reihe nach platzen: 1, 2, 3 …</p>
+      <p className="text-center font-display text-2xl font-bold">{L('Lass die Ballons der Reihe nach platzen: 1, 2, 3 …', 'Fai scoppiare i palloncini in ordine: 1, 2, 3 …')}</p>
       <div className="grid w-full max-w-2xl grid-cols-3 gap-4 sm:grid-cols-5">
         {order.map((v, i) => (
           <motion.button
@@ -138,7 +139,7 @@ function Balloons() {
             transition={popped.includes(v) ? { duration: 0.2 } : { duration: 2, repeat: wiggle === v ? 0 : Infinity, delay: i * 0.1 }}
             className="relative mx-auto flex h-28 w-24 items-center justify-center rounded-[50%] font-display text-4xl font-bold text-white shadow-knopf"
             style={{ background: colors[v % colors.length] }}
-            aria-label={`Ballon ${v}`}
+            aria-label={L(`Ballon ${v}`, `Palloncino ${v}`)}
           >
             {v}
             <span className="absolute -bottom-6 left-1/2 h-6 w-0.5 bg-tinte/40" aria-hidden />
@@ -148,8 +149,8 @@ function Balloons() {
       {done && (
         <div className="flex flex-col items-center gap-3">
           <Confetti show />
-          <LinoSays text="Super! Alle Ballons in der richtigen Reihenfolge!" mood="jubel" />
-          <button className="knopf bg-sonne-500" onClick={() => { setPopped([]); setRound((r) => r + 1); }}>Nochmal mit mehr Ballons</button>
+          <LinoSays text={L('Super! Alle Ballons in der richtigen Reihenfolge!', 'Super! Tutti i palloncini nell’ordine giusto!')} mood="jubel" />
+          <button className="knopf bg-sonne-500" onClick={() => { setPopped([]); setRound((r) => r + 1); }}>{L('Nochmal mit mehr Ballons', 'Ancora, con più palloncini')}</button>
         </div>
       )}
     </div>
@@ -166,7 +167,7 @@ function Coloring() {
   const stroke = { stroke: '#2B2D42', strokeWidth: 4, strokeLinejoin: 'round' as const, cursor: 'pointer' };
   return (
     <div className="flex flex-col items-center gap-4 lg:flex-row lg:items-start">
-      <svg viewBox="0 0 300 300" className="w-full max-w-lg rounded-3xl bg-white shadow-karte" role="img" aria-label="Ausmalbild von Puppy">
+      <svg viewBox="0 0 300 300" className="w-full max-w-lg rounded-3xl bg-white shadow-karte" role="img" aria-label={L('Ausmalbild von Puppy', 'Disegno di Puppy da colorare')}>
         <rect x="2" y="2" width="296" height="210" fill={fills.himmel} {...stroke} onClick={() => paint('himmel')} />
         <rect x="2" y="212" width="296" height="86" fill={fills.wiese} {...stroke} onClick={() => paint('wiese')} />
         <circle cx="250" cy="50" r="28" fill={fills.sonne} {...stroke} onClick={() => paint('sonne')} />
@@ -203,13 +204,13 @@ function Coloring() {
         </g>
       </svg>
       <div className="flex flex-col gap-3">
-        <p className="font-display text-xl font-bold">Wähle eine Farbe und tippe auf das Bild:</p>
-        <div className="grid grid-cols-5 gap-3" role="radiogroup" aria-label="Farben">
+        <p className="font-display text-xl font-bold">{L('Wähle eine Farbe und tippe auf das Bild:', 'Scegli un colore e tocca il disegno:')}</p>
+        <div className="grid grid-cols-5 gap-3" role="radiogroup" aria-label={L('Farben', 'Colori')}>
           {MAL_FARBEN.map((c) => (
-            <button key={c} type="button" role="radio" aria-checked={color === c} aria-label={`Farbe ${c}`} onClick={() => setColor(c)} className={`h-14 w-14 rounded-full border-2 border-tinte/20 shadow-knopf ${color === c ? 'ring-4 ring-tinte ring-offset-2' : ''}`} style={{ background: c }} />
+            <button key={c} type="button" role="radio" aria-checked={color === c} aria-label={L(`Farbe ${c}`, `Colore ${c}`)} onClick={() => setColor(c)} className={`h-14 w-14 rounded-full border-2 border-tinte/20 shadow-knopf ${color === c ? 'ring-4 ring-tinte ring-offset-2' : ''}`} style={{ background: c }} />
           ))}
         </div>
-        <button className="knopf bg-white" onClick={() => setFills((f) => Object.fromEntries(Object.keys(f).map((k) => [k, '#fff'])) as Record<Region, string>)}>Neu anfangen</button>
+        <button className="knopf bg-white" onClick={() => setFills((f) => Object.fromEntries(Object.keys(f).map((k) => [k, '#fff'])) as Record<Region, string>)}>{L('Neu anfangen', 'Ricomincia')}</button>
       </div>
     </div>
   );

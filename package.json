@@ -12,11 +12,12 @@
     "test": "vitest run",
     "test:watch": "vitest",
     "e2e": "playwright test --trace off",
-    "icons": "node scripts/generate-icons.mjs"
+    "icons": "node scripts/generate-icons.mjs",
+    "puppy": "node scripts/render-puppy.mjs"
   },
   "dependencies": {
     "@fontsource/fredoka": "5.1.0",
-    "@fontsource/nunito": "5.1.0",
+    "@fontsource/plus-jakarta-sans": "5.1.0",
     "@react-three/fiber": "8.17.10",
     "framer-motion": "11.11.17",
     "idb": "8.0.0",

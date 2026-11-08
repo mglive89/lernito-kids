@@ -5,6 +5,9 @@ import type { Difficulty, Task } from './types';
 import { KITA_MODULES } from './modules/kita';
 import { MATH_MODULES, uhrText, euro } from './modules/math';
 import { GERMAN_MODULES } from './modules/german';
+import { schoolModules } from './registry';
+import { setLang, type Lang } from '../i18n';
+import { setCountry, stageFor, type Country } from '../school/systems';
 
 function checkTask(t: Task, ctx: string) {
   expect(t.prompt.trim().length, `${ctx}: prompt`).toBeGreaterThan(0);
@@ -20,7 +23,7 @@ function checkTask(t: Task, ctx: string) {
     }
     case 'input':
       expect(Number.isFinite(t.answer), ctx).toBe(true);
-      expect(t.answer, `${ctx}: keine negativen Ergebnisse`).toBeGreaterThanOrEqual(0);
+      if (!t.signed) expect(t.answer, `${ctx}: keine negativen Ergebnisse`).toBeGreaterThanOrEqual(0);
       break;
     case 'wordbuild': {
       const pool = [...t.tiles];
@@ -51,17 +54,45 @@ function checkTask(t: Task, ctx: string) {
   }
 }
 
-describe('Lernmodule erzeugen gültige Aufgaben', () => {
+const COMBOS: [Lang, Country][] = [['de', 'DE'], ['it', 'IT'], ['it', 'DE'], ['de', 'IT']];
+
+describe('Lernmodule erzeugen gültige Aufgaben (alle Sprachen und Länder)', () => {
   for (const m of BUILTIN_MODULES) {
     it(`${m.id} – alle Stufen, viele Seeds`, () => {
-      for (const level of [1, 2, 3] as Difficulty[]) {
-        for (let seed = 1; seed <= 40; seed++) {
-          const tasks = m.generate(level, createRng(seed * 7919 + level));
-          expect(tasks.length, `${m.id} L${level}`).toBeGreaterThan(0);
-          tasks.forEach((t, i) => checkTask(t, `${m.id} L${level} s${seed} #${i}`));
+      for (const [lang, country] of COMBOS) {
+        if (m.countries && !m.countries.includes(country)) continue;
+        setLang(lang); setCountry(country);
+        for (const level of [1, 2, 3] as Difficulty[]) {
+          for (let seed = 1; seed <= 12; seed++) {
+            const tasks = m.generate(level, createRng(seed * 7919 + level));
+            expect(tasks.length, `${m.id} L${level}`).toBeGreaterThan(0);
+            tasks.forEach((t, i) => checkTask(t, `${m.id} ${lang}/${country} L${level} s${seed} #${i}`));
+          }
         }
       }
+      setLang('de'); setCountry('DE');
     });
+  }
+});
+
+describe('Schulsysteme: jede Klasse hat Inhalte', () => {
+  for (const country of ['DE', 'IT'] as Country[]) {
+    for (let year = 1; year <= 13; year++) {
+      it(`${country} Klasse ${year}: Mathe, Landessprache, Englisch und Zusatzfächer`, () => {
+        const st = stageFor(country, year);
+        const lang = country === 'IT' ? 'italiano' : 'deutsch';
+        expect(st.subjects).toContain(lang);
+        for (const s of ['mathe', lang, ...st.extras]) {
+          expect(schoolModules(country, year, s).length, `${country} ${year} ${s}`).toBeGreaterThan(0);
+        }
+        if (year >= 3) expect(schoolModules(country, year, 'englisch').length, `${country} ${year} englisch`).toBeGreaterThan(0);
+        if (year >= 5) {
+          const sci = country === 'IT' && year <= 8 ? ['scienze'] : ['biologie', 'physik', 'chemie'];
+          expect(sci.reduce((n, s) => n + schoolModules(country, year, s).length, 0), `${country} ${year} Naturwissenschaften`).toBeGreaterThan(0);
+          expect(schoolModules(country, year, 'geschichte').length, `${country} ${year} Geschichte`).toBeGreaterThan(0);
+        }
+      });
+    }
   }
 });
 
@@ -71,10 +102,10 @@ describe('MVP-Umfang', () => {
     expect(MATH_MODULES.length).toBeGreaterThanOrEqual(4);
     expect(GERMAN_MODULES.length).toBeGreaterThanOrEqual(4);
   });
-  it('jede Klassenstufe hat Mathe und Deutsch', () => {
+  it('jede Grundschulklasse hat Mathe und Deutsch', () => {
     for (const g of [1, 2, 3, 4]) {
-      expect(MATH_MODULES.some((m) => m.grade === g)).toBe(true);
-      expect(GERMAN_MODULES.some((m) => m.grade === g)).toBe(true);
+      expect(MATH_MODULES.some((m) => m.years && m.years[0] <= g && m.years[1] >= g)).toBe(true);
+      expect(GERMAN_MODULES.some((m) => m.years && m.years[0] <= g && m.years[1] >= g)).toBe(true);
     }
   });
   it('Modul-IDs sind eindeutig', () => {

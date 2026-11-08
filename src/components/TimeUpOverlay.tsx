@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { Lino } from './Lino';
 import { PinPad } from './PinPad';
 import { useApp } from '../store/useApp';
+import { L } from '../i18n';
 
 /** Freundlicher Pausenhinweis, wenn das von Eltern gesetzte Tageslimit erreicht ist. */
 export function TimeUpOverlay({ onUnlocked }: { onUnlocked: () => void }) {
@@ -16,12 +17,12 @@ export function TimeUpOverlay({ onUnlocked }: { onUnlocked: () => void }) {
     <div className="fixed inset-0 z-[60] flex items-center justify-center bg-himmel-100 p-4" role="dialog" aria-modal="true" aria-labelledby="pause-titel">
       <div className="karte flex max-w-md flex-col items-center gap-4 p-8 text-center">
         <Lino mood="ruhig" size={130} />
-        <h1 id="pause-titel" className="font-display text-3xl font-bold">Zeit für eine Pause!</h1>
-        <p className="text-xl">Du hast heute schon toll gelernt. Puppy ruht sich jetzt auch aus. Bis morgen!</p>
-        <button className="knopf w-full bg-sonne-500" onClick={() => { setActive(null); nav('/'); }}>Zur Startseite</button>
-        {hasPin && !showPin && <button className="text-base underline" onClick={() => setShowPin(true)}>Für Erwachsene: Zeit verlängern</button>}
+        <h1 id="pause-titel" className="font-display text-3xl font-bold">{L('Zeit für eine Pause!', 'È ora di una pausa!')}</h1>
+        <p className="text-xl">{L('Du hast heute schon toll gelernt. Puppy ruht sich jetzt auch aus. Bis morgen!', 'Oggi hai già imparato tanto. Anche Puppy ora si riposa. A domani!')}</p>
+        <button className="knopf w-full bg-sonne-500" onClick={() => { setActive(null); nav('/'); }}>{L('Zur Startseite', 'Alla pagina iniziale')}</button>
+        {hasPin && !showPin && <button className="text-base underline" onClick={() => setShowPin(true)}>{L('Für Erwachsene: Zeit verlängern', 'Per gli adulti: prolunga il tempo')}</button>}
         {showPin && (
-          <PinPad testId="pause-pin" label="Eltern-PIN" error={err} onSubmit={(p) => (verify(p) ? onUnlocked() : setErr('Die PIN stimmt nicht.'))} />
+          <PinPad testId="pause-pin" label={L('Eltern-PIN', 'PIN dei genitori')} error={err} onSubmit={(p) => (verify(p) ? onUnlocked() : setErr(L('Die PIN stimmt nicht.', 'Il PIN non è corretto.')))} />
         )}
       </div>
     </div>

@@ -1,6 +1,6 @@
 /**
  * Vorlesefunktion über die Web Speech API.
- * - Nutzt bevorzugt eine deutsche Stimme.
+ * - Nutzt bevorzugt eine Stimme in der App-Sprache (Deutsch oder Italienisch).
  * - Kennzeichnet, ob eine lokale (offline nutzbare) Stimme vorhanden ist.
  * - Fallback: Text bleibt sichtbar, Status wird klar angezeigt.
  */
@@ -8,6 +8,14 @@ export type SpeechStatus = 'offline' | 'online' | 'keine';
 
 let cachedVoice: SpeechSynthesisVoice | null = null;
 let voicesLoaded = false;
+let speechLang: 'de' | 'it' = 'de';
+
+/** Sprache der Vorlesestimme festlegen */
+export function setSpeechLang(l: 'de' | 'it'): void {
+  if (l === speechLang) return;
+  speechLang = l;
+  cachedVoice = null;
+}
 
 export function speechSupported(): boolean {
   return typeof window !== 'undefined' && 'speechSynthesis' in window && typeof SpeechSynthesisUtterance !== 'undefined';
@@ -17,8 +25,8 @@ function pickVoice(): SpeechSynthesisVoice | null {
   if (!speechSupported()) return null;
   const voices = window.speechSynthesis.getVoices();
   if (voices.length) voicesLoaded = true;
-  const de = voices.filter((v) => v.lang.toLowerCase().startsWith('de'));
-  cachedVoice = de.find((v) => v.localService) ?? de[0] ?? null;
+  const match = voices.filter((v) => v.lang.toLowerCase().startsWith(speechLang));
+  cachedVoice = match.find((v) => v.localService) ?? match[0] ?? null;
   return cachedVoice;
 }
 
@@ -48,7 +56,7 @@ export function speak(text: string, opts: { rate?: number; pitch?: number; force
     const synth = window.speechSynthesis;
     synth.cancel();
     const u = new SpeechSynthesisUtterance(text.replace(/[„“]/g, ''));
-    u.lang = 'de-DE';
+    u.lang = speechLang === 'it' ? 'it-IT' : 'de-DE';
     const v = cachedVoice ?? pickVoice();
     if (v) u.voice = v;
     u.rate = opts.rate ?? 0.92;

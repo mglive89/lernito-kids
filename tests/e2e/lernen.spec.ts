@@ -107,3 +107,46 @@ test('Video-Lektion mit Untertiteln und Quiz', async ({ page }) => {
   await page.getByTestId('zum-quiz').click();
   await playChoiceRound(page);
 });
+
+test('Italien: Profil auf Italienisch, 2ª media, Matematica und Programmazione', async ({ page }) => {
+  await page.goto('/');
+  await page.getByTestId('neues-profil').click();
+  await page.getByTestId('profil-name').fill('Giulia');
+  await page.getByTestId('land-IT').click();
+  // Sprache wechselt automatisch auf Italienisch
+  await expect(page.getByText('Quale scuola frequenti?')).toBeVisible();
+  await page.getByTestId('stufe-medie').click();
+  await page.getByTestId('jahr-7').click();
+  await page.getByTestId('profil-erstellen').click();
+  await expect(page.getByText('Giulia!')).toBeVisible();
+  await expect(page.getByText('2ª media').first()).toBeVisible();
+  await expect(page.getByTestId('home-fach-italiano')).toBeVisible();
+  await page.getByTestId('bereich-schule').click();
+  await expect(page.getByTestId('fach-scienze')).toBeVisible();
+  await page.getByTestId('fach-programmieren').click();
+  await page.getByTestId('modul-code-python').click();
+  await expect(page.getByTestId('task-prompt')).toHaveText('Che cosa stampa il programma Python?');
+  await page.goto('/schule/7/italiano');
+  await page.getByTestId('modul-it7-logica').click();
+  await playChoiceRound(page);
+  await expect(page.getByText('Fatto!')).toBeVisible();
+});
+
+test('Oberstufe Deutschland: Integralrechnung und Ethik vorhanden', async ({ page }) => {
+  await createProfile(page, 'Jonas', '12');
+  await page.getByTestId('bereich-schule').click();
+  await expect(page.getByTestId('klasse-12')).toHaveAttribute('aria-selected', 'true');
+  await page.getByTestId('fach-mathe').click();
+  await expect(page.getByTestId('modul-ms-integral')).toBeVisible();
+  await page.goto('/schule/12/religion');
+  await page.getByTestId('modul-rel-ethik').click();
+  await playChoiceRound(page);
+});
+
+test('Programmieren Grundschule: Roboter-Parcours', async ({ page }) => {
+  await createProfile(page, 'Lina', '2');
+  await page.goto('/schule/2/programmieren');
+  await page.getByTestId('modul-code-roboter').click();
+  await expect(page.getByRole('img', { name: /Spielfeld/ })).toBeVisible();
+  await playChoiceRound(page);
+});

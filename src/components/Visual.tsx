@@ -6,6 +6,7 @@ import { hasWebGL } from '../lib/webgl';
 import { getMediaBlob } from '../lib/db';
 import { euro } from '../learning/modules/math';
 import { ErrorBoundary } from './ErrorBoundary';
+import { L } from '../i18n';
 
 const Solid3D = lazy(() => import('../three/Solid3D'));
 const Count3D = lazy(() => import('../three/Count3D'));
@@ -14,7 +15,7 @@ export function Visual({ v }: { v: V }) {
   switch (v.kind) {
     case 'emojis':
       return (
-        <div className="flex max-w-2xl flex-wrap items-center justify-center gap-2 sm:gap-3" aria-label={`${v.items.length} Bilder`}>
+        <div className="flex max-w-2xl flex-wrap items-center justify-center gap-2 sm:gap-3" aria-label={L(`${v.items.length} Bilder`, `${v.items.length} immagini`)}>
           {v.items.map((e, i) => (
             <motion.span key={i} className="emoji text-5xl sm:text-6xl" initial={{ scale: 0, rotate: -20 }} animate={{ scale: 1, rotate: 0 }} transition={{ delay: i * 0.05, type: 'spring' }}>{e}</motion.span>
           ))}
@@ -38,7 +39,7 @@ export function Visual({ v }: { v: V }) {
       );
     case 'dots':
       return (
-        <div className="grid grid-cols-5 gap-3 rounded-3xl bg-white p-4" aria-label={`${v.count} Punkte`}>
+        <div className="grid grid-cols-5 gap-3 rounded-3xl bg-white p-4" aria-label={L(`${v.count} Punkte`, `${v.count} punti`)}>
           {Array.from({ length: v.count }, (_, i) => (
             <motion.span key={i} className="h-10 w-10 rounded-full bg-koralle-500 sm:h-12 sm:w-12" initial={{ scale: 0 }} animate={{ scale: 1 }} transition={{ delay: i * 0.06 }} />
           ))}
@@ -81,17 +82,57 @@ export function Visual({ v }: { v: V }) {
         </ErrorBoundary>
       ) : (
         <div className="flex flex-col items-center gap-2">
-          <span className="rounded-full bg-sonne-100 px-3 py-1 text-sm">2D-Ansicht (3D wird auf diesem Gerät nicht unterstützt)</span>
+          <span className="rounded-full bg-sonne-100 px-3 py-1 text-sm">{L('2D-Ansicht (3D wird auf diesem Gerät nicht unterstützt)', 'Vista 2D (il 3D non è supportato su questo dispositivo)')}</span>
           <Visual v={{ kind: 'emojis', items: Array(v.count).fill(v.item === 'apfel' ? '🍎' : v.item === 'ball' ? '⚽' : '⭐') }} />
         </div>
       );
     case 'image':
       return <MediaImage id={v.mediaId} alt={v.alt} />;
+    case 'code':
+      return (
+        <div className="w-full max-w-2xl overflow-x-auto rounded-2xl bg-[#1E2235] p-4 text-left shadow-karte">
+          {v.lang && <div className="mb-2 text-xs font-bold uppercase tracking-wider text-white/50">{v.lang}</div>}
+          <pre className="font-mono text-base leading-relaxed text-[#E6EDF3] sm:text-lg"><code>{v.code}</code></pre>
+        </div>
+      );
+    case 'table':
+      return (
+        <div className="w-full max-w-xl overflow-x-auto">
+          <table className="w-full border-collapse overflow-hidden rounded-2xl bg-white text-center font-mono text-lg shadow-karte">
+            <thead><tr>{v.head.map((h, i) => <th key={i} className="border-b-2 border-tinte/10 bg-himmel-100 px-3 py-2">{h}</th>)}</tr></thead>
+            <tbody>{v.rows.map((r, i) => <tr key={i}>{r.map((c, k) => <td key={k} className="border-b border-tinte/5 px-3 py-2">{c}</td>)}</tr>)}</tbody>
+          </table>
+        </div>
+      );
+    case 'robot':
+      return <RobotGrid v={v} />;
   }
 }
 
 function Loading3D() {
-  return <div className="flex h-64 w-full max-w-md items-center justify-center rounded-3xl bg-white text-lg" role="status">3D-Welt wird geladen …</div>;
+  return <div className="flex h-64 w-full max-w-md items-center justify-center rounded-3xl bg-white text-lg" role="status">{L('3D-Welt wird geladen …', 'Caricamento del mondo 3D …')}</div>;
+}
+
+function RobotGrid({ v }: { v: Extract<V, { kind: 'robot' }> }) {
+  const cell = 56;
+  const n = v.size;
+  const isWall = (x: number, y: number) => v.walls?.some(([a, b]) => a === x && b === y);
+  const isItem = (x: number, y: number) => v.items?.some(([a, b]) => a === x && b === y);
+  return (
+    <svg viewBox={`0 0 ${n * cell} ${n * cell}`} width={Math.min(320, n * cell)} className="max-w-full rounded-2xl bg-white shadow-karte" role="img"
+      aria-label={L(`Spielfeld ${n} mal ${n}: Roboter bei Spalte ${v.robot[0] + 1}, Zeile ${v.robot[1] + 1}; Ziel bei Spalte ${v.goal[0] + 1}, Zeile ${v.goal[1] + 1}`, `Griglia ${n} per ${n}: robot in colonna ${v.robot[0] + 1}, riga ${v.robot[1] + 1}; traguardo in colonna ${v.goal[0] + 1}, riga ${v.goal[1] + 1}`)}>
+      {Array.from({ length: n * n }, (_, i) => {
+        const x = i % n, y = Math.floor(i / n);
+        return <rect key={i} x={x * cell + 2} y={y * cell + 2} width={cell - 4} height={cell - 4} rx="8" fill={isWall(x, y) ? '#5B6178' : (x + y) % 2 ? '#EEF4FB' : '#F7FAFD'} />;
+      })}
+      {Array.from({ length: n * n }, (_, i) => {
+        const x = i % n, y = Math.floor(i / n);
+        return isItem(x, y) ? <text key={`i${i}`} x={x * cell + cell / 2} y={y * cell + cell / 2 + 10} textAnchor="middle" fontSize="28">💎</text> : null;
+      })}
+      <text x={v.goal[0] * cell + cell / 2} y={v.goal[1] * cell + cell / 2 + 11} textAnchor="middle" fontSize="32">⭐</text>
+      <text x={v.robot[0] * cell + cell / 2} y={v.robot[1] * cell + cell / 2 + 11} textAnchor="middle" fontSize="32">🤖</text>
+    </svg>
+  );
 }
 
 function MediaImage({ id, alt }: { id: string; alt: string }) {
@@ -102,8 +143,8 @@ function MediaImage({ id, alt }: { id: string; alt: string }) {
     void getMediaBlob(id).then((b) => { if (b) { u = URL.createObjectURL(b); setUrl(u); } else setMissing(true); });
     return () => { if (u) URL.revokeObjectURL(u); };
   }, [id]);
-  if (missing) return <div className="rounded-2xl bg-white p-4 text-tinte/60">Bild nicht gefunden</div>;
-  if (!url) return <div className="h-48 w-64 animate-pulse rounded-2xl bg-white" role="status" aria-label="Bild wird geladen" />;
+  if (missing) return <div className="rounded-2xl bg-white p-4 text-tinte/60">{L('Bild nicht gefunden', 'Immagine non trovata')}</div>;
+  if (!url) return <div className="h-48 w-64 animate-pulse rounded-2xl bg-white" role="status" aria-label={L('Bild wird geladen', 'Caricamento immagine')} />;
   return <img src={url} alt={alt} className="max-h-64 max-w-full rounded-2xl object-contain shadow-karte" />;
 }
 
@@ -111,7 +152,7 @@ export function Clock({ hours, minutes, size = 220 }: { hours: number; minutes: 
   const hAngle = ((hours % 12) + minutes / 60) * 30;
   const mAngle = minutes * 6;
   return (
-    <svg viewBox="0 0 200 200" width={size} height={size} role="img" aria-label="Analoge Uhr">
+    <svg viewBox="0 0 200 200" width={size} height={size} role="img" aria-label={L('Analoge Uhr', 'Orologio analogico')}>
       <circle cx="100" cy="100" r="94" fill="#fff" stroke="#3A9BDC" strokeWidth="8" />
       {Array.from({ length: 60 }, (_, i) => {
         const a = (i * 6 * Math.PI) / 180;
@@ -143,7 +184,7 @@ function Coin({ cents }: { cents: number }) {
       <text x="50" y={isEuro ? 58 : 56} textAnchor="middle" fontSize={isEuro ? 28 : 26} fontWeight="800" fill="#2B2D42" fontFamily="Fredoka, sans-serif">
         {isEuro ? `${cents / 100}€` : `${cents}`}
       </text>
-      {!isEuro && <text x="50" y="76" textAnchor="middle" fontSize="13" fill="#2B2D42">Cent</text>}
+      {!isEuro && <text x="50" y="76" textAnchor="middle" fontSize="13" fill="#2B2D42">{L('Cent', 'cent')}</text>}
     </svg>
   );
 }
@@ -157,15 +198,15 @@ function Pie({ parts, filled }: { parts: number; filled: number }) {
     const d = `M100 100 L${100 + r * Math.cos(a0)} ${100 + r * Math.sin(a0)} A${r} ${r} 0 ${large} 1 ${100 + r * Math.cos(a1)} ${100 + r * Math.sin(a1)}z`;
     return <path key={i} d={d} fill={i < filled ? '#FF6F59' : '#FFF1CC'} stroke="#C77D00" strokeWidth="3" />;
   });
-  return <svg viewBox="0 0 200 200" width={220} height={220} role="img" aria-label={`Kreis in ${parts} Teile geteilt, ${filled} gefärbt`}>{slices}</svg>;
+  return <svg viewBox="0 0 200 200" width={220} height={220} role="img" aria-label={L(`Kreis in ${parts} Teile geteilt, ${filled} gefärbt`, `Cerchio diviso in ${parts} parti, ${filled} colorate`)}>{slices}</svg>;
 }
 
 function Column({ a, b, op }: { a: number; b: number; op: '+' | '-' }) {
   const width = Math.max(String(a).length, String(b).length) + 1;
   const pad = (n: number) => String(n).padStart(width, ' ').split('');
   return (
-    <div className="rounded-3xl bg-white p-5 font-mono text-5xl font-bold leading-tight sm:text-6xl" aria-label={`${a} ${op === '+' ? 'plus' : 'minus'} ${b}`}>
-      <div className="mb-1 flex justify-end gap-3 text-base font-sans text-tinte/60"><span>H</span><span>Z</span><span>E</span></div>
+    <div className="rounded-3xl bg-white p-5 font-mono text-5xl font-bold leading-tight sm:text-6xl" aria-label={`${a} ${op === '+' ? (L('plus', 'più')) : (L('minus', 'meno'))} ${b}`}>
+      <div className="mb-1 flex justify-end gap-3 text-base font-sans text-tinte/60"><span>{L('H', 'h')}</span><span>{L('Z', 'da')}</span><span>{L('E', 'u')}</span></div>
       <div className="flex justify-end gap-3">{pad(a).map((c, i) => <span key={i} className="w-8 text-center">{c}</span>)}</div>
       <div className="flex justify-end gap-3">{[op === '+' ? '+' : '−', ...pad(b).slice(1)].map((c, i) => <span key={i} className="w-8 text-center">{c}</span>)}</div>
       <div className="mt-2 border-t-4 border-tinte" />
@@ -186,8 +227,8 @@ export function Solid2D({ solid, color }: { solid: SolidName; color: string }) {
   };
   return (
     <div className="flex flex-col items-center gap-2">
-      <svg viewBox="0 0 190 180" width={240} height={228} role="img" aria-label="Geometrischer Körper">{shapes[solid]}</svg>
-      <span className="rounded-full bg-sonne-100 px-3 py-1 text-sm">2D-Ansicht (3D wird auf diesem Gerät nicht unterstützt)</span>
+      <svg viewBox="0 0 190 180" width={240} height={228} role="img" aria-label={L('Geometrischer Körper', 'Solido geometrico')}>{shapes[solid]}</svg>
+      <span className="rounded-full bg-sonne-100 px-3 py-1 text-sm">{L('2D-Ansicht (3D wird auf diesem Gerät nicht unterstützt)', 'Vista 2D (il 3D non è supportato su questo dispositivo)')}</span>
     </div>
   );
 }

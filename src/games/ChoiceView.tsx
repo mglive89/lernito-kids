@@ -5,6 +5,7 @@ import type { ChoiceOption, ChoiceTask } from '../learning/types';
 import { Shape } from '../components/Shape';
 import { speak } from '../lib/speech';
 import type { TaskViewProps } from './types';
+import { L } from '../i18n';
 
 export function ChoiceView({ task, onCorrect, onWrong, reveal, done }: TaskViewProps<ChoiceTask>) {
   const [wrong, setWrong] = useState<string[]>([]);
@@ -26,7 +27,7 @@ export function ChoiceView({ task, onCorrect, onWrong, reveal, done }: TaskViewP
         : n === 2 ? 'grid-cols-2' : n === 3 ? 'grid-cols-3' : n === 4 ? 'grid-cols-2 sm:grid-cols-4' : 'grid-cols-3';
 
   return (
-    <div className={`grid w-full gap-3 sm:gap-4 ${style === 'text' ? 'max-w-3xl' : 'max-w-2xl'} ${grid}`} role="group" aria-label="Antwortmöglichkeiten">
+    <div className={`grid w-full gap-3 sm:gap-4 ${style === 'text' ? 'max-w-3xl' : 'max-w-2xl'} ${grid}`} role="group" aria-label={L('Antwortmöglichkeiten', 'Risposte possibili')}>
       {task.options.map((o) => {
         const isWrong = wrong.includes(o.id);
         const isRight = (chosen === o.id || (reveal && o.id === task.correctId));

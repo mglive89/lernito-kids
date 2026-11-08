@@ -20,4 +20,9 @@ export function formatMinutes(sec: number): string {
   return `${Math.floor(m / 60)} Std. ${m % 60} Min.`;
 }
 
-export const WOCHENTAGE_KURZ = ['So', 'Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa'];
+import { getLang } from '../i18n';
+const WT_DE = ['So', 'Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa'];
+const WT_IT = ['Do', 'Lu', 'Ma', 'Me', 'Gi', 'Ve', 'Sa'];
+/** Kurze Wochentagsnamen in der aktuellen Sprache (Index = Date.getDay()) */
+export function wochentagKurz(d: number): string { return (getLang() === 'it' ? WT_IT : WT_DE)[d] ?? ''; }
+export const WOCHENTAGE_KURZ = WT_DE;

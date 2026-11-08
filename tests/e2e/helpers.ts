@@ -1,11 +1,21 @@
 import { expect, type Page } from '@playwright/test';
 
-export async function createProfile(page: Page, name: string, age: 'kita' | '1' | '2' | '3' | '4') {
+const STAGE: Record<'DE' | 'IT', [string, number, number][]> = {
+  DE: [['kita', 0, 0], ['grundschule', 1, 4], ['sek1', 5, 10], ['sek2', 11, 13]],
+  IT: [['infanzia', 0, 0], ['primaria', 1, 5], ['medie', 6, 8], ['superiori', 9, 13]]
+};
+
+/** Legt ein Profil an. age: 'kita' oder Schuljahr 1–13 (als Text). */
+export async function createProfile(page: Page, name: string, age: string, country: 'DE' | 'IT' = 'DE') {
   await page.goto('/');
-  await expect(page.getByTestId('greeting')).toHaveText('Hallo! Schön, dass du da bist!');
+  await expect(page.getByTestId('greeting')).toBeVisible();
   await page.getByTestId('neues-profil').click();
   await page.getByTestId('profil-name').fill(name);
-  await page.getByTestId(`alter-${age}`).click();
+  await page.getByTestId(`land-${country}`).click();
+  const year = age === 'kita' ? 0 : Number(age);
+  const [stage, from, to] = STAGE[country].find(([, a, b]) => year >= a && year <= b)!;
+  await page.getByTestId(`stufe-${stage}`).click();
+  if (to > from) await page.getByTestId(`jahr-${year}`).click();
   await page.getByTestId('profil-erstellen').click();
   await expect(page).toHaveURL(/\/home$/);
   await expect(page.getByText(`${name}!`)).toBeVisible();

@@ -5,7 +5,7 @@ test('Elternbereich: PIN, Aufgabe zuweisen, Zeitlimit, Export', async ({ page })
   await createProfile(page, 'Mia', '1');
   await setupParentPin(page);
   await page.getByTestId('tab-aufgaben').click();
-  await page.locator('summary', { hasText: 'Klasse 1 · Mathematik' }).click();
+  await page.locator('summary', { hasText: 'Mathematik · 1. Klasse' }).click();
   await page.getByTestId('assign-m1-minus').check();
   await page.getByTestId('tab-ziele').click();
   await page.getByTestId('limit-15').click();
@@ -38,7 +38,7 @@ test('Admin: eigenes Modul anlegen, veröffentlichen und spielen', async ({ page
   await page.getByTestId('modul-neu').click();
   await page.getByTestId('modul-titel').fill('Tiere im Wald');
   await page.getByTestId('modul-stufe').selectOption('2');
-  await page.getByTestId('modul-fach').selectOption('sachunterricht');
+  await page.getByTestId('modul-fach').selectOption('sachkunde');
   await page.getByTestId('frage-0').fill('Welches Tier hat Stacheln?');
   await page.getByTestId('antwort-0-0').fill('Igel');
   await page.getByTestId('antwort-0-1').fill('Reh');
@@ -47,7 +47,7 @@ test('Admin: eigenes Modul anlegen, veröffentlichen und spielen', async ({ page
 
   await page.goto('/');
   await page.getByTestId('profile-Kim').click();
-  await page.goto('/schule/2/sachunterricht');
+  await page.goto('/schule/2/sachkunde');
   await page.getByText('Tiere im Wald').click();
   await expect(page.getByTestId('task-prompt')).toHaveText('Welches Tier hat Stacheln?');
   await page.locator('[data-correct="true"]').click();

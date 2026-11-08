@@ -17,7 +17,7 @@ export default defineConfig({
       manifest: {
         name: 'Lernito Kids',
         short_name: 'Lernito',
-        description: 'Spielerisch lernen mit Puppy – für Kindergarten und Grundschule.',
+        description: 'Spielerisch lernen mit Puppy – vom Kindergarten bis zur Oberstufe, auf Deutsch und Italienisch.',
         lang: 'de-DE',
         start_url: base,
         scope: base,

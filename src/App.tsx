@@ -14,6 +14,10 @@ import { PrivacyPage } from './pages/Privacy';
 import { TimeUpOverlay } from './components/TimeUpOverlay';
 import { UpdatePrompt } from './components/UpdatePrompt';
 import { Lino } from './components/Lino';
+import { L, SYSTEM_LANG, setLang } from './i18n';
+import { isTeen, setCountry } from './school/systems';
+import { setCustomSubjectNames } from './school/subjects';
+import { setSpeechLang } from './lib/speech';
 
 const ParentArea = lazy(() => import('./pages/parents/ParentArea'));
 const AdminArea = lazy(() => import('./pages/admin/AdminArea'));
@@ -22,7 +26,7 @@ function Loading() {
   return (
     <div className="flex min-h-screen flex-col items-center justify-center gap-3" role="status">
       <Lino size={110} />
-      <p className="font-display text-xl">Einen Moment …</p>
+      <p className="font-display text-xl">{L('Einen Moment …', 'Un momento …')}</p>
     </div>
   );
 }
@@ -50,7 +54,19 @@ export default function App() {
   const parent = useApp((s) => s.parent);
   const { profile, progress, settings } = useActiveProfile();
   const location = useLocation();
+  const uiLang = useApp((s) => s.uiLang);
   useLearningTimer(location.pathname);
+
+  // Sprache und Land werden vor dem Rendern gesetzt, damit alle Texte passen.
+  const adultOrStart = location.pathname === '/' || location.pathname.startsWith('/profil') || ADULT_ROUTES.some((r) => location.pathname.startsWith(r));
+  const lang = !adultOrStart && profile ? profile.lang : uiLang ?? profile?.lang ?? SYSTEM_LANG;
+  setLang(lang);
+  setSpeechLang(lang);
+  setCountry(profile?.country ?? 'DE');
+  const subjectSettings = useApp((s) => s.subjects);
+  setCustomSubjectNames((id) => subjectSettings.find((x) => x.id === id)?.name);
+  const teen = !adultOrStart && !!profile && isTeen(profile.country, profile.year);
+  useEffect(() => { document.documentElement.classList.toggle('teen', teen); }, [teen]);
 
   useEffect(() => {
     if (!hydrated) return;
@@ -88,7 +104,7 @@ export default function App() {
           <Route path="/home" element={<RequireProfile><ChildHome /></RequireProfile>} />
           <Route path="/kita" element={<RequireProfile><KitaPage /></RequireProfile>} />
           <Route path="/schule" element={<RequireProfile><SchoolPage /></RequireProfile>} />
-          <Route path="/schule/:grade/:subject" element={<RequireProfile><SubjectPage /></RequireProfile>} />
+          <Route path="/schule/:year/:subject" element={<RequireProfile><SubjectPage /></RequireProfile>} />
           <Route path="/spiel/:moduleId" element={<RequireProfile><PlayPage /></RequireProfile>} />
           <Route path="/welt3d" element={<RequireProfile><World3DPage /></RequireProfile>} />
           <Route path="/videos" element={<RequireProfile><VideosPage /></RequireProfile>} />

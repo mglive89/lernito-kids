@@ -1,3 +1,4 @@
+import { L } from '../i18n';
 import type { Difficulty } from './types';
 
 export interface RoundResult {
@@ -72,10 +73,10 @@ export function roundStars(r: RoundResult): 1 | 2 | 3 {
 
 /** Ermutigende Rückmeldung – niemals beschämend. */
 export function roundMessage(r: RoundResult, levelChange: -1 | 0 | 1): string {
-  if (levelChange > 0) return 'Wow, das war super! Beim nächsten Mal wird es ein kleines bisschen kniffliger.';
-  if (levelChange < 0) return 'Gut gemacht, dass du drangeblieben bist! Wir üben das nächste Mal in kleineren Schritten.';
+  if (levelChange > 0) return L('Wow, das war super! Beim nächsten Mal wird es ein kleines bisschen kniffliger.', 'Wow, bravissimo! La prossima volta sarà un pochino più difficile.');
+  if (levelChange < 0) return L('Gut gemacht, dass du drangeblieben bist! Wir üben das nächste Mal in kleineren Schritten.', 'Bravo che non hai mollato! La prossima volta procediamo a passi più piccoli.');
   const rate = r.total ? r.firstTry / r.total : 0;
-  if (rate >= 0.9) return 'Fantastisch! Du hast fast alles auf Anhieb geschafft!';
-  if (rate >= 0.6) return 'Toll gemacht! Mit jeder Runde wirst du sicherer.';
-  return 'Prima, dass du durchgehalten hast! Üben macht dich jedes Mal stärker.';
+  if (rate >= 0.9) return L('Fantastisch! Du hast fast alles auf Anhieb geschafft!', 'Fantastico! Hai fatto quasi tutto giusto al primo colpo!');
+  if (rate >= 0.6) return L('Toll gemacht! Mit jeder Runde wirst du sicherer.', 'Ottimo lavoro! A ogni turno diventi più sicuro.');
+  return L('Prima, dass du durchgehalten hast! Üben macht dich jedes Mal stärker.', 'Bravo che sei arrivato fino in fondo! Esercitarsi ti rende sempre più forte.');
 }

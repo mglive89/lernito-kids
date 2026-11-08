@@ -1,6 +1,6 @@
-# Lernito Kids 🦁
+# Lernito Kids 🐶
 
-Installierbare Lern-PWA für Kinder im **Kindergarten (3–6 Jahre)** und in der **Grundschule (Klasse 1–4)** – komplett auf Deutsch, mobil zuerst, offline-fähig, ohne Werbung und Tracker. Begleitet wird das Kind von **Puppy**, einem gelben Hund mit Schlappohren, blauem Hoodie und Sneakern.
+Installierbare Lern-PWA für **Deutschland und Italien** – vom Kindergarten/Scuola dell’infanzia bis zur Oberstufe/Scuola superiore (Klasse 1–13), Oberfläche auf **Deutsch und Italienisch**, mobil zuerst, offline-fähig, ohne Werbung und Tracker. Begleitet wird das Kind von **Puppy**, einem gelben Hund mit Schlappohren, blauem Hoodie und Sneakern.
 
 Alle Inhalte, Texte, Figuren und Grafiken sind selbst erstellt.
 
@@ -20,6 +20,7 @@ Weitere Befehle:
 | `npm test` | Unit-Tests der Lernlogik (Vitest) |
 | `npm run e2e` | End-to-End-Tests (Playwright; Desktop, Smartphone, Tablet) – vorher einmalig `npx playwright install chromium` |
 | `npm run icons` | App-Icons aus `public/favicon.svg` neu erzeugen |
+| `npm run puppy` | 3D-Puppy-Bilder (`public/puppy/*.png`) aus `src/components/Puppy3D.tsx` neu rendern (Playwright + `puppy-studio.html`, nur Entwicklung) |
 
 > Die PWA-Installation und der Offline-Modus funktionieren im Produktions-Build (`npm run build && npm run preview`) bzw. nach dem Deployment über HTTPS. Zum Testen auf dem Handy im WLAN: `npx vite preview --host`.
 
@@ -29,20 +30,26 @@ Bei jedem Push auf `main` baut `.github/workflows/pages.yml` die App (inkl. Unit
 
 ## Was der MVP kann
 
-**Startseite & Profile** – „Hallo! Schön, dass du da bist!“, kindgerechte Profilauswahl (Spitzname, Tier-Avatar, Altersgruppe), Bereiche Kindergarten und Grundschule, Weiterlernen, Tagesziel, Mein Lernabenteuer, Meine Sterne, Meine Erfolge, Elternbereich.
+**Länder & Schulsysteme** – Beim Anlegen eines Profils wählt man das Land (🇩🇪 Deutschland / 🇮🇹 Italien); die Sprache stellt sich passend ein (im Elternbereich änderbar). Danach Schulstufe und Klasse:
 
-**Kindergarten – 12 spielbare Lernspiele:** Gegenstände zählen · Zahlen 1–20 · Farben · Formen (Drag-and-Drop) · Tiere mit (gesprochenen) Tiergeräuschen · Buchstaben und erste Wörter · Groß und Klein · Memory · Logische Reihenfolgen · Schattenbilder · Puzzle · Vorschule (Nachbarzahlen, Reime, Silben, Mengen vergleichen).
+| | Deutschland | Italien |
+|---|---|---|
+| Vorschule | Kindergarten (3–6) | Scuola dell’infanzia (3–6) |
+| Primar | Grundschule, Klasse 1–4 | Scuola primaria, 1ª–5ª |
+| Sek. I | Sekundarstufe I, Klasse 5–10 | Scuola secondaria di I grado (medie), 1ª–3ª |
+| Sek. II | Oberstufe, Klasse 11–13 | Scuola secondaria di II grado (superiori), 1ª–5ª |
 
-**Grundschule – getrennt nach Klassenstufe:**
+Intern ist jede Klasse ein Schuljahr 1–13 (`src/school/systems.ts`); Module tragen `years`, optional `countries` und `langs`.
 
-| | Mathematik | Deutsch | Sachunterricht |
-|---|---|---|---|
-| Klasse 1 | Plus bis 20, Minus bis 20, Zahlen vergleichen, Zahlenraum bis 20 | Anlaute, Silben, Wörter bauen, Erstes Lesen | Jahreszeiten, Körper, Verkehr |
-| Klasse 2 | Rechnen bis 100, Einmaleins, Uhrzeit, Geld | Rechtschreibung, ABC-Ordnung, Nomen, Lesen & Verstehen | Tiere, Pflanzen, Verkehr |
-| Klasse 3 | Mal & Geteilt, Schriftlich rechnen, Geometrie | Wortarten, Einzahl/Mehrzahl, Textverständnis | Natur und Umwelt |
-| Klasse 4 | Große Zahlen, Brüche, Sachaufgaben, Maßeinheiten | Satzglieder, Zeitformen, Sachtexte | Deutschland und Technik |
+**Fächer je Stufe:** Mathematik (bis Analysis/Integral), Deutsch bzw. Italiano (Grammatik, Rechtschreibung, Stilmittel, Literaturepochen / analisi logica, retorica, letteratura), Englisch, Sachunterricht/Scienze, Biologie, Physik, Chemie, Geschichte, Geografie.
 
-Dazu **Englisch** als Einsteigerfach (alle Klassen). Aufgabentypen: Auswahl, Zahlenfeld, Wörter/Silben bauen, Reihenfolge, Memory, Drag-and-Drop, Puzzle, 3D-Auswahl.
+**Zusatzfächer für alle Stufen:** Religion & Ethik (Feste, Weltreligionen, Ethik), Informatik (Computer-Grundlagen, Hardware & Netz, Binär/Hex, Logikgatter, Caesar-Verschlüsselung, SQL), Programmieren (Roboter-Parcours, Abläufe, Blöcke, Schleifen, Python-Ausgaben vorhersagen, Fehler finden).
+
+**Design:** Schrift Plus Jakarta Sans, ruhige Farbpalette; ab Sekundarstufe automatisch sachlicherer „Teen“-Look. Maskottchen **Puppy in 3D** (React Three Fiber, live auf der Startseite, sonst vorgerenderte Bilder).
+
+**Kindergarten – 12 spielbare Lernspiele:** Gegenstände zählen · Zahlen 1–20 · Farben · Formen (Drag-and-Drop) · Tiere mit (gesprochenen) Tiergeräuschen · Buchstaben und erste Wörter · Groß und Klein · Memory · Logische Reihenfolgen · Schattenbilder · Puzzle · Vorschule.
+
+Aufgabentypen: Auswahl, Zahlenfeld, Wörter/Silben bauen, Reihenfolge, Memory, Drag-and-Drop, Puzzle, 3D-Auswahl.
 
 **3D-Lernwelt (React Three Fiber):** Körper drehen · Sammeln und Zählen (Dinge in den Korb legen) · 3D-Zahlenwelt · Tiere auf der Wiese. Niedrige Pixeldichte und einfache Geometrien für mittlere Tablets; automatischer **2D-Fallback** ohne WebGL (testbar mit `?no3d` in der URL).
 
@@ -64,11 +71,15 @@ Dazu **Englisch** als Einsteigerfach (alle Klassen). Aufgabentypen: Auswahl, Zah
 src/
   learning/          Lernlogik (framework-unabhängig, getestet)
     types.ts         Aufgaben- und Modultypen
-    modules/         Aufgaben-Generatoren: kita, math, german, sach (inkl. Englisch & 3D)
+    bank.ts          Kompakte Fragen-Bank-Syntax (de/it)
+    modules/         Generatoren & Banken: kita, math, mathSek, german, germanSek, italiano,
+                     english, science, humanities, extras (Religion/Informatik), coding, sach
     adaptive.ts      Schwierigkeitsanpassung, Wiederholungsempfehlung, Rückmeldungen
     rewards.ts       Sterne, Level, Abzeichen, Mini-Spiele, Avatar-Extras
     custom.ts        Eigene Inhalte aus dem Admin-Bereich
     registry.ts      Alle Module an einem Ort
+  school/            Schulsysteme DE/IT, Fächer
+  i18n/              Übersetzung L(de, it), Sprache
   content/words.ts   Eingebettete Wort-, Tier- und Farblisten
   games/             Spiel-Engine: GameRunner + ein View pro Aufgabentyp
   three/             3D-Szenen (lazy geladen)
@@ -86,7 +97,7 @@ tests/e2e/           Playwright-Tests
 ## Qualität
 
 - TypeScript `strict` inkl. `noUncheckedIndexedAccess`
-- 75 Unit-Tests (Vitest) für Lernlogik, Aufgaben-Generatoren, Adaptivität, Belohnungen, Hash, Untertitel
+- 183 Unit-Tests (jedes Modul in allen Sprach-/Länderkombinationen) (Vitest) für Lernlogik, Aufgaben-Generatoren, Adaptivität, Belohnungen, Hash, Untertitel
 - End-to-End-Tests (Playwright) für Desktop, Smartphone (Pixel 7) und Tablet (iPad Pro 11): Profil anlegen, Kita-Spiel inkl. Fehlversuch, Drag-and-Drop per Maus und per Antippen, Einmaleins mit Zahlenfeld, Deutsch, Lösungs-Erklärung, 3D-Fallback, Video + Quiz, Elternbereich (PIN, Zuweisung, Zeitlimit, Export), Admin-Modul anlegen und spielen, Zeitlimit-Pause, Manifest + Offline-Start, kein horizontales Scrollen
 - Fehlergrenzen (Error Boundaries) und Ladezustände, In-Memory-Fallback wenn IndexedDB blockiert ist
 
@@ -102,5 +113,7 @@ tests/e2e/           Playwright-Tests
 | Weitere 3D-Aufgaben | z. B. 3D-Puzzle (Formen in Löcher stecken), Bauklötze-Zählen. |
 | Weitere Video-Lektionen | Nur eine animierte Beispiel-Lektion eingebaut; weitere über Admin-Upload möglich. |
 | Inhalte | Inhaltsumfang je Thema ausbauen, fachdidaktische Prüfung. |
-| Rechtliches | Siehe `docs/DATENSCHUTZ.md` – Prüfungen sind dokumentiert, nicht erledigt. |
+| Rechtliches | Siehe `docs/DATENSCHUTZ.md` – Prüfungen sind dokumentiert, nicht erledigt. Für Italien zusätzlich: DSGVO Art. 8 i. V. m. Codice privacy Art. 2-quinquies (Einwilligungsalter 14), Vorgaben des Garante zu Minderjährigen, italienische Informativa. |
+| Admin-Bereich | Oberfläche nur auf Deutsch. |
+| Lehrpläne | Inhalte orientieren sich grob an KMK-Bildungsstandards bzw. Indicazioni nazionali; fachdidaktische Prüfung je Land offen. |
 | Tests | WebKit/iOS-Safari-Testlauf auf echten Geräten (Playwright-Tests laufen hier mit Chromium in Geräte-Emulation). |

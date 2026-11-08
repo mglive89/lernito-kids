@@ -1,9 +1,11 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Delete } from 'lucide-react';
+import { L } from '../i18n';
 
 /** PIN-Eingabe für Erwachsene (4–6 Ziffern). */
-export function PinPad({ onSubmit, label = 'PIN eingeben', error, minLength = 4, testId = 'pin' }: { onSubmit: (pin: string) => void; label?: string; error?: string | null; minLength?: number; testId?: string }) {
+export function PinPad({ onSubmit, label, error, minLength = 4, testId = 'pin' }: { onSubmit: (pin: string) => void; label?: string; error?: string | null; minLength?: number; testId?: string }) {
+  label = label ?? L('PIN eingeben', 'Inserisci il PIN');
   const [pin, setPin] = useState('');
   const press = (k: string) => {
     if (k === 'del') setPin((p) => p.slice(0, -1));
@@ -33,7 +35,7 @@ export function PinPad({ onSubmit, label = 'PIN eingeben', error, minLength = 4,
       {error && <p id={`${testId}-err`} className="text-center font-bold text-koralle-700" role="alert">{error}</p>}
       <div className="grid w-full grid-cols-3 gap-2">
         {['1', '2', '3', '4', '5', '6', '7', '8', '9', 'del', '0', 'ok'].map((k) => (
-          <button key={k} type="button" onClick={() => press(k)} className={`knopf h-14 text-2xl ${k === 'ok' ? 'bg-minze-500 text-white' : 'bg-white'}`} aria-label={k === 'del' ? 'Löschen' : k === 'ok' ? 'Bestätigen' : k} data-testid={`${testId}-key-${k}`}>
+          <button key={k} type="button" onClick={() => press(k)} className={`knopf h-14 text-2xl ${k === 'ok' ? 'bg-minze-500 text-white' : 'bg-white'}`} aria-label={k === 'del' ? L('Löschen', 'Cancella') : k === 'ok' ? L('Bestätigen', 'Conferma') : k} data-testid={`${testId}-key-${k}`}>
             {k === 'del' ? <Delete /> : k === 'ok' ? 'OK' : k}
           </button>
         ))}

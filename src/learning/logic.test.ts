@@ -1,3 +1,7 @@
+import { migrateProfile, migrateSubjects } from '../store/useApp';
+import { setLang, tr } from '../i18n';
+import { yearLabel } from '../school/systems';
+import { numeroInParole } from '../lib/zahlInWorten';
 import { describe, expect, it } from 'vitest';
 import { applyRound, emptyModuleProgress, needsPractice, nextDifficulty, roundMessage, roundStars } from './adaptive';
 import { BADGES, levelFromXp, newBadges, starsForRound, xpForRound } from './rewards';
@@ -95,7 +99,35 @@ describe('Eigene Inhalte (Admin)', () => {
       expect(t.options).toHaveLength(2);
       expect(t.options.find((o) => o.id === t.correctId)?.label).toBe('4');
     }
-    expect(m.grade).toBe(2);
+    expect(m.years).toEqual([2, 2]);
+  });
+});
+
+describe('Profile und Sprachen', () => {
+  it('alte Profile (ageGroup) werden auf Land, Sprache und Schuljahr umgestellt', () => {
+    const p = migrateProfile({ id: 'x', name: 'Mia', ageGroup: 3, avatar: { animal: '🦊', color: '#fff', extra: 'keins' }, avatarCustomized: false, createdAt: '' });
+    expect(p).toMatchObject({ country: 'DE', lang: 'de', year: 3 });
+    expect('ageGroup' in p).toBe(false);
+    expect(migrateProfile({ id: 'y', name: 'Leo', ageGroup: 'kita' }).year).toBe(0);
+  });
+  it('Fächerliste wird ergänzt, Sachunterricht wird zu Sachkunde', () => {
+    const list = migrateSubjects([{ id: 'sachunterricht', name: 'Sachunterricht', emoji: '🌍', enabled: false, builtin: true }]);
+    expect(list.find((s) => s.id === 'sachkunde')?.enabled).toBe(false);
+    expect(list.some((s) => s.id === 'programmieren')).toBe(true);
+  });
+  it('Klassenbezeichnungen je Land', () => {
+    setLang('it');
+    expect(yearLabel('IT', 7)).toBe('2ª media');
+    expect(yearLabel('IT', 9)).toBe('1ª superiore');
+    expect(yearLabel('IT', 3)).toBe('3ª elementare');
+    setLang('de');
+    expect(yearLabel('DE', 5)).toBe('5. Klasse');
+  });
+  it('Italienische Zahlwörter', () => {
+    expect(numeroInParole(123)).toBe('centoventitré');
+    expect(numeroInParole(781)).toBe('settecentoottantuno');
+    expect(numeroInParole(408)).toBe('quattrocentootto');
+    expect(numeroInParole(918)).toBe('novecentodiciotto');
   });
 });
 
@@ -125,6 +157,9 @@ describe('Hilfsfunktionen', () => {
   it('WebVTT-Parser und Untertitel', () => {
     const cues = parseVtt('WEBVTT\n\n00:00:01.000 --> 00:00:03.500\nHallo Welt\n\n00:00:04.000 --> 00:00:06.000 align:center\nZweite Zeile');
     expect(cues).toEqual([{ start: 1, end: 3.5, text: 'Hallo Welt' }, { start: 4, end: 6, text: 'Zweite Zeile' }]);
-    expect(activeCue(LESSONS[0]!.cues, 6)?.text).toMatch(/drei Äpfel/);
+    expect(tr(activeCue(LESSONS[0]!.cues, 6)?.text)).toMatch(/drei Äpfel/);
+    setLang('it');
+    expect(tr(activeCue(LESSONS[0]!.cues, 6)?.text)).toMatch(/tre mele/);
+    setLang('de');
   });
 });

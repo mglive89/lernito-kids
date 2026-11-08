@@ -5,8 +5,9 @@ import { useApp } from '../../store/useApp';
 import { TopBar, Notice } from '../../components/ui';
 import { PinPad } from '../../components/PinPad';
 import { Lino } from '../../components/Lino';
-import { zahlInWorten } from '../../lib/zahlInWorten';
+import { numeroInParole, zahlInWorten } from '../../lib/zahlInWorten';
 import { ParentDashboard } from './ParentDashboard';
+import { L, getLang } from '../../i18n';
 
 /** Erwachsenen-Prüfung: Zahl in Worten als Ziffern eingeben (für Vorschulkinder kaum lösbar). */
 export function AdultCheck({ onPass }: { onPass: () => void }) {
@@ -19,15 +20,15 @@ export function AdultCheck({ onPass }: { onPass: () => void }) {
       onSubmit={(e) => {
         e.preventDefault();
         if (Number(val) === n) onPass();
-        else { setErr('Das stimmt leider nicht. Neue Zahl:'); setVal(''); setN(100 + Math.floor(Math.random() * 899)); }
+        else { setErr(L('Das stimmt leider nicht. Neue Zahl:', 'Non è corretto. Nuovo numero:')); setVal(''); setN(100 + Math.floor(Math.random() * 899)); }
       }}
     >
-      <h2 className="font-display text-2xl font-bold">Nur für Erwachsene</h2>
-      <label htmlFor="adult-check" className="text-lg">Bitte schreiben Sie diese Zahl in Ziffern:</label>
-      <p className="rounded-xl bg-sonne-100 p-3 text-center font-display text-2xl font-bold" data-testid="adult-number" data-value={n}>{zahlInWorten(n)}</p>
+      <h2 className="font-display text-2xl font-bold">{L('Nur für Erwachsene', 'Solo per adulti')}</h2>
+      <label htmlFor="adult-check" className="text-lg">{L('Bitte schreiben Sie diese Zahl in Ziffern:', 'Scrivete questo numero in cifre:')}</label>
+      <p className="rounded-xl bg-sonne-100 p-3 text-center font-display text-2xl font-bold" data-testid="adult-number" data-value={n}>{getLang() === 'it' ? numeroInParole(n) : zahlInWorten(n)}</p>
       <input id="adult-check" data-testid="adult-input" className="feld text-center text-2xl" inputMode="numeric" value={val} onChange={(e) => setVal(e.target.value.replace(/\D/g, ''))} autoComplete="off" />
       {err && <p className="font-bold text-koralle-700" role="alert">{err}</p>}
-      <button className="knopf bg-himmel-500 text-white" type="submit" data-testid="adult-submit">Weiter</button>
+      <button className="knopf bg-himmel-500 text-white" type="submit" data-testid="adult-submit">{L('Weiter', 'Avanti')}</button>
     </form>
   );
 }
@@ -39,16 +40,16 @@ function PinSetup({ onDone }: { onDone: () => void }) {
   const [err, setErr] = useState<string | null>(null);
   return (
     <div className="flex flex-col items-center gap-5">
-      <Notice>Willkommen im Elternbereich! Legen Sie eine PIN (4–6 Ziffern) fest. Sie schützt diesen Bereich auf diesem Gerät vor Kindern.</Notice>
+      <Notice>{L('Willkommen im Elternbereich! Legen Sie eine PIN (4–6 Ziffern) fest. Sie schützt diesen Bereich auf diesem Gerät vor Kindern.', 'Benvenuti nell’area genitori! Impostate un PIN (4–6 cifre): protegge quest’area dai bambini su questo dispositivo.')}</Notice>
       {step === 'check' && <AdultCheck onPass={() => setStep('pin1')} />}
-      {step === 'pin1' && <PinPad testId="pin-neu" label="Neue PIN festlegen" onSubmit={(p) => { setFirst(p); setErr(null); setStep('pin2'); }} />}
+      {step === 'pin1' && <PinPad testId="pin-neu" label={L('Neue PIN festlegen', 'Imposta un nuovo PIN')} onSubmit={(p) => { setFirst(p); setErr(null); setStep('pin2'); }} />}
       {step === 'pin2' && (
         <PinPad
           testId="pin-wdh"
-          label="PIN wiederholen"
+          label={L('PIN wiederholen', 'Ripeti il PIN')}
           error={err}
           onSubmit={(p) => {
-            if (p !== first) { setErr('Die PINs stimmen nicht überein. Bitte neu festlegen.'); setStep('pin1'); return; }
+            if (p !== first) { setErr(L('Die PINs stimmen nicht überein. Bitte neu festlegen.', 'I PIN non coincidono. Impostatelo di nuovo.')); setStep('pin1'); return; }
             setPin(p);
             onDone();
           }}
@@ -70,21 +71,21 @@ function PinLogin({ onDone }: { onDone: () => void }) {
   if (forgot) {
     return (
       <div className="flex flex-col items-center gap-4">
-        <Notice tone="warn">PIN vergessen? Nach der Erwachsenen-Prüfung wird nur die PIN zurückgesetzt. Die Lernstände der Kinder bleiben erhalten.</Notice>
+        <Notice tone="warn">{L('PIN vergessen? Nach der Erwachsenen-Prüfung wird nur die PIN zurückgesetzt. Die Lernstände der Kinder bleiben erhalten.', 'PIN dimenticato? Dopo la verifica per adulti viene azzerato solo il PIN. I progressi dei bambini restano.')}</Notice>
         <AdultCheck onPass={() => { setParent({ pinHash: null, salt: null }); setForgot(false); }} />
-        <button className="underline" onClick={() => setForgot(false)}>Abbrechen</button>
+        <button className="underline" onClick={() => setForgot(false)}>{L('Abbrechen', 'Annulla')}</button>
       </div>
     );
   }
   return (
     <div className="flex flex-col items-center gap-4">
       {locked ? (
-        <Notice tone="warn">Zu viele Versuche. Bitte warten Sie {Math.ceil((lockUntil - now) / 1000)} Sekunden.</Notice>
+        <Notice tone="warn">{L(`Zu viele Versuche. Bitte warten Sie ${Math.ceil((lockUntil - now) / 1000)} Sekunden.`, `Troppi tentativi. Attendete ${Math.ceil((lockUntil - now) / 1000)} secondi.`)}</Notice>
       ) : (
         <PinPad
           testId="pin-login"
-          label="Eltern-PIN eingeben"
-          error={fails > 0 ? `Falsche PIN (${fails}/5)` : null}
+          label={L('Eltern-PIN eingeben', 'Inserite il PIN dei genitori')}
+          error={fails > 0 ? L(`Falsche PIN (${fails}/5)`, `PIN errato (${fails}/5)`) : null}
           onSubmit={(p) => {
             if (verify(p)) { setFails(0); onDone(); return; }
             const f = fails + 1;
@@ -93,7 +94,7 @@ function PinLogin({ onDone }: { onDone: () => void }) {
           }}
         />
       )}
-      <button className="text-base underline" onClick={() => setForgot(true)}>PIN vergessen?</button>
+      <button className="text-base underline" onClick={() => setForgot(true)}>{L('PIN vergessen?', 'PIN dimenticato?')}</button>
     </div>
   );
 }
@@ -111,11 +112,11 @@ export default function ParentArea() {
   if (!unlocked) {
     return (
       <div className="min-h-[100dvh]">
-        <TopBar title="Elternbereich" back={-1} />
+        <TopBar title={L('Elternbereich', 'Area genitori')} back={-1} />
         <main className="seite flex flex-col items-center gap-6">
           <Lino mood="ruhig" size={100} still />
           {hasPin ? <PinLogin onDone={() => unlock(20)} /> : <PinSetup onDone={() => unlock(20)} />}
-          <Link to="/datenschutz" className="flex items-center gap-2 underline"><ShieldCheck size={18} /> Informationen zum Datenschutz</Link>
+          <Link to="/datenschutz" className="flex items-center gap-2 underline"><ShieldCheck size={18} /> {L('Informationen zum Datenschutz', 'Informazioni sulla privacy')}</Link>
         </main>
       </div>
     );
@@ -123,9 +124,9 @@ export default function ParentArea() {
   return (
     <div className="min-h-[100dvh] bg-white/60">
       <TopBar
-        title="Elternbereich"
+        title={L('Elternbereich', 'Area genitori')}
         back="/"
-        right={<button className="knopf bg-white text-base" onClick={() => { lock(); nav('/'); }} data-testid="eltern-abmelden"><LogOut size={20} /> Sperren</button>}
+        right={<button className="knopf bg-white text-base" onClick={() => { lock(); nav('/'); }} data-testid="eltern-abmelden"><LogOut size={20} /> {L('Sperren', 'Blocca')}</button>}
       />
       <ParentDashboard />
     </div>

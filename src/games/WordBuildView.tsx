@@ -4,6 +4,7 @@ import type { WordBuildTask } from '../learning/types';
 import type { TaskViewProps } from './types';
 import { speak } from '../lib/speech';
 import { sfx } from '../lib/sound';
+import { L } from '../i18n';
 
 export function WordBuildView({ task, onCorrect, onWrong, reveal, done }: TaskViewProps<WordBuildTask>) {
   const [placed, setPlaced] = useState<(number | null)[]>(() => task.solution.map(() => null));
@@ -42,7 +43,7 @@ export function WordBuildView({ task, onCorrect, onWrong, reveal, done }: TaskVi
 
   return (
     <div className="flex w-full max-w-3xl flex-col items-center gap-6">
-      <motion.div key={shake} animate={shake ? { x: [0, -10, 10, -6, 6, 0] } : {}} className="flex flex-wrap justify-center gap-2" aria-label="Dein Wort" aria-live="polite">
+      <motion.div key={shake} animate={shake ? { x: [0, -10, 10, -6, 6, 0] } : {}} className="flex flex-wrap justify-center gap-2" aria-label={L('Dein Wort', 'La tua parola')} aria-live="polite">
         {task.solution.map((s, k) => {
           const tileIdx = placed[k];
           const content = tileIdx !== null && tileIdx !== undefined ? task.tiles[tileIdx] : reveal ? s : '';
@@ -60,7 +61,7 @@ export function WordBuildView({ task, onCorrect, onWrong, reveal, done }: TaskVi
           );
         })}
       </motion.div>
-      <div className="flex flex-wrap justify-center gap-3" role="group" aria-label="Bausteine">
+      <div className="flex flex-wrap justify-center gap-3" role="group" aria-label={L('Bausteine', 'Tessere')}>
         {task.tiles.map((t, i) => (
           <motion.button
             key={i}

@@ -4,6 +4,7 @@ import type { OrderTask } from '../learning/types';
 import type { TaskViewProps } from './types';
 import { sfx } from '../lib/sound';
 import { speak } from '../lib/speech';
+import { L } from '../i18n';
 
 export function OrderView({ task, onCorrect, onWrong, reveal, done }: TaskViewProps<OrderTask>) {
   const [picked, setPicked] = useState<string[]>([]);
@@ -29,14 +30,14 @@ export function OrderView({ task, onCorrect, onWrong, reveal, done }: TaskViewPr
 
   return (
     <div className="flex w-full max-w-3xl flex-col items-center gap-6">
-      <ol className="flex min-h-[5rem] flex-wrap justify-center gap-2 rounded-3xl bg-white/70 p-3" aria-label="Deine Reihenfolge">
+      <ol className="flex min-h-[5rem] flex-wrap justify-center gap-2 rounded-3xl bg-white/70 p-3" aria-label={L('Deine Reihenfolge', 'Il tuo ordine')}>
         {task.correctOrder.map((_, k) => (
           <li key={k} className={`flex h-16 min-w-[4.5rem] items-center justify-center rounded-2xl border-4 px-3 font-display text-2xl font-bold sm:text-3xl ${picked[k] ? 'border-minze-500 bg-minze-100' : 'border-dashed border-tinte/20'}`}>
             {picked[k] ? task.items.find((i) => i.id === picked[k])?.label : ''}
           </li>
         ))}
       </ol>
-      <div className="flex flex-wrap justify-center gap-3" role="group" aria-label="Zum Antippen">
+      <div className="flex flex-wrap justify-center gap-3" role="group" aria-label={L('Zum Antippen', 'Da toccare')}>
         {task.items.map((it) => (
           <motion.button
             key={it.id}

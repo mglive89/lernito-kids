@@ -4,22 +4,23 @@ export default {
   theme: {
     extend: {
       colors: {
-        creme: '#FFF8E7',
-        sonne: { 100: '#FFF1CC', 300: '#FFD166', 500: '#FFB627', 700: '#C77D00' },
-        himmel: { 100: '#DDF1FF', 300: '#8ED1FC', 500: '#3A9BDC', 700: '#1D5F8F' },
-        minze: { 100: '#DDF7EC', 300: '#8EE3BF', 500: '#2EC4B6', 700: '#137A70' },
-        koralle: { 100: '#FFE3DE', 300: '#FF9F8E', 500: '#FF6F59', 700: '#B83A26' },
-        lila: { 100: '#EFE5FF', 300: '#C3A6FF', 500: '#8E6CEF', 700: '#5233B0' },
-        tinte: '#2B2D42'
+        creme: '#F5F7FB',
+        sonne: { 50: '#FFFAEB', 100: '#FFF1CC', 300: '#FFD166', 500: '#FFB020', 700: '#B86E00' },
+        himmel: { 50: '#F0F6FF', 100: '#DCEBFF', 300: '#93C2FF', 500: '#2F7DEB', 700: '#1B4FA8' },
+        minze: { 50: '#EEFBF7', 100: '#D5F5EC', 300: '#7FDCC3', 500: '#14B8A6', 700: '#0B7468' },
+        koralle: { 50: '#FFF3F1', 100: '#FFE1DC', 300: '#FF9E8F', 500: '#F25F4C', 700: '#B23A28' },
+        lila: { 50: '#F5F2FF', 100: '#E9E3FF', 300: '#BBA8FF', 500: '#7C5CFA', 700: '#4F33C2' },
+        tinte: '#1F2340'
       },
       fontFamily: {
-        sans: ['Nunito', 'system-ui', 'sans-serif'],
-        display: ['Fredoka', 'Nunito', 'system-ui', 'sans-serif']
+        sans: ['"Plus Jakarta Sans"', 'Nunito', 'system-ui', 'sans-serif'],
+        display: ['var(--font-display)', 'system-ui', 'sans-serif']
       },
-      borderRadius: { blob: '2rem' },
+      borderRadius: { blob: 'var(--radius-card)' },
       boxShadow: {
-        knopf: '0 6px 0 rgba(43,45,66,0.18)',
-        karte: '0 10px 30px -10px rgba(43,45,66,0.25)'
+        knopf: '0 1px 2px rgba(16,24,40,0.08), 0 3px 0 rgba(16,24,40,0.10)',
+        karte: '0 1px 2px rgba(16,24,40,0.05), 0 12px 32px -14px rgba(16,24,40,0.22)',
+        weich: '0 1px 2px rgba(16,24,40,0.04), 0 4px 14px -6px rgba(16,24,40,0.14)'
       }
     }
   },

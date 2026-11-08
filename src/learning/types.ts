@@ -1,3 +1,5 @@
+import type { Lang, Txt } from '../i18n';
+import type { Country } from '../school/systems';
 export type Difficulty = 1 | 2 | 3;
 export type Area = 'kita' | 'schule' | 'welt3d' | 'video';
 export type Grade = 1 | 2 | 3 | 4;
@@ -19,7 +21,10 @@ export type Visual =
   | { kind: 'pattern'; items: string[] }
   | { kind: 'solid3d'; solid: SolidName; color: string }
   | { kind: 'count3d'; count: number; item: 'apfel' | 'ball' | 'stern' }
-  | { kind: 'image'; mediaId: string; alt: string };
+  | { kind: 'image'; mediaId: string; alt: string }
+  | { kind: 'code'; code: string; lang?: string }
+  | { kind: 'robot'; size: number; robot: [number, number]; goal: [number, number]; walls?: [number, number][]; items?: [number, number][] }
+  | { kind: 'table'; head: string[]; rows: string[][] };
 
 export interface ChoiceOption {
   id: string;
@@ -58,6 +63,8 @@ export interface ChoiceTask extends TaskBase {
 export interface InputTask extends TaskBase {
   type: 'input';
   answer: number;
+  /** Minus-Taste anbieten (negative Ergebnisse möglich) */
+  signed?: boolean;
 }
 
 export interface WordBuildTask extends TaskBase {
@@ -107,15 +114,22 @@ export type Rng = () => number;
 
 export interface LearningModule {
   id: string;
-  title: string;
-  subtitle: string;
+  title: Txt;
+  subtitle: Txt;
   emoji: string;
   color: 'sonne' | 'himmel' | 'minze' | 'koralle' | 'lila';
   area: Area;
+  /** Nur noch für eigene Module aus dem Admin-Bereich (Klasse 1–4) */
   grade?: Grade;
+  /** Schuljahre (1–13), für die das Modul passt */
+  years?: [number, number];
+  /** Nur in diesen Ländern (Standard: alle) */
+  countries?: Country[];
+  /** Nur in diesen Sprachen (z. B. Buchstaben-Spiele) */
+  langs?: Lang[];
   subject?: SubjectId;
   /** Themen-Schlüssel für Fortschritt nach Themen */
-  topic: string;
+  topic: Txt;
   roundSize: number;
   /** Benötigt WebGL (mit 2D-Fallback) */
   uses3d?: boolean;

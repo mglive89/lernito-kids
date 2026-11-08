@@ -1,6 +1,7 @@
 import { useEffect, useState, type ReactNode } from 'react';
 import { motion } from 'framer-motion';
 import { sfx } from '../lib/sound';
+import { L } from '../i18n';
 
 export interface BoardPiece { id: string; render: () => ReactNode; label: string }
 export interface BoardTarget { id: string; accepts: string; render: (filled: boolean) => ReactNode; label: string }
@@ -59,7 +60,7 @@ export function DragBoard({ pieces, targets, onCorrectDrop, onWrongDrop, onCompl
 
   return (
     <div className="flex w-full max-w-3xl flex-col items-center gap-6">
-      <div className={targetLayout} role="group" aria-label="Zielfelder">
+      <div className={targetLayout} role="group" aria-label={L('Zielfelder', 'Caselle di destinazione')}>
         {targets.map((t) => {
           const p = placed[t.id];
           const piece = p ? pieces.find((x) => x.id === p) : undefined;
@@ -79,7 +80,7 @@ export function DragBoard({ pieces, targets, onCorrectDrop, onWrongDrop, onCompl
           );
         })}
       </div>
-      <div className="flex min-h-[7rem] flex-wrap justify-center gap-3 rounded-3xl bg-white/50 p-3" role="group" aria-label="Teile zum Verschieben">
+      <div className="flex min-h-[7rem] flex-wrap justify-center gap-3 rounded-3xl bg-white/50 p-3" role="group" aria-label={L('Teile zum Verschieben', 'Pezzi da spostare')}>
         {pieces.filter((p) => !placedPieces.includes(p.id)).map((p) => (
           <motion.button
             type="button"
@@ -100,7 +101,7 @@ export function DragBoard({ pieces, targets, onCorrectDrop, onWrongDrop, onCompl
           </motion.button>
         ))}
       </div>
-      <p className="text-center text-base text-tinte/60">Tipp: Du kannst ein Teil auch antippen und dann auf das Ziel tippen.</p>
+      <p className="text-center text-base text-tinte/60">{L('Tipp: Du kannst ein Teil auch antippen und dann auf das Ziel tippen.', 'Suggerimento: puoi anche toccare un pezzo e poi la sua casella.')}</p>
     </div>
   );
 }
