@@ -2,24 +2,19 @@ import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Check, Lock, Plus, ShieldCheck } from 'lucide-react';
-import { useApp, type Profile } from '../store/useApp';
-import { Avatar, SpeakButton, TopBar } from '../components/ui';
-import { Lino } from '../components/Lino';
-import { InstallHint } from '../components/InstallHint';
-import { ParentGate } from '../components/ParentAuth';
-import { AVATAR_FARBEN, AVATAR_TIERE } from '../learning/rewards';
-import { sfx } from '../lib/sound';
-import { L, getLang, LANGS, setLang, tr, type Lang } from '../i18n';
-import { COUNTRIES, stageFor, stagesOf, typicalAge, yearLabel, type Country, type StageId } from '../school/systems';
-import { MASCOT_NAME } from '../content/mascot';
+import { useApp, type Profile } from '../../store/useApp';
+import { Avatar, SpeakButton, TopBar } from '../../components/ui';
+import { Lino } from '../../components/Lino';
+import { InstallHint } from '../../components/InstallHint';
+import { ParentGate } from '../../components/ParentAuth';
+import { AVATAR_FARBEN, AVATAR_TIERE } from '../../learning/rewards';
+import { sfx } from '../../lib/sound';
+import { L, getLang, LANGS, setLang, tr, type Lang } from '../../i18n';
+import { COUNTRIES, stageFor, stagesOf, typicalAge, yearLabel, profileLabel, type Country, type StageId } from '../../school/systems';
+import { MASCOT_NAME } from '../../content/mascot';
 
 
 /** Kurzbeschreibung eines Profils, z. B. „🇮🇹 2ª media“ */
-export function profileLabel(p: Pick<Profile, 'country' | 'year'>): string {
-  const flag = COUNTRIES.find((c) => c.id === p.country)?.flag ?? '';
-  return `${flag} ${yearLabel(p.country, p.year)}`;
-}
-
 export function LanguageSwitch({ value, onChange, testPrefix = 'sprache' }: { value: Lang; onChange: (l: Lang) => void; testPrefix?: string }) {
   return (
     <div className="inline-flex rounded-full bg-white p-1 shadow-weich ring-1 ring-tinte/5" role="radiogroup" aria-label={L('Sprache', 'Lingua')}>
@@ -47,31 +42,32 @@ export function StartPage() {
   const greet = L('Hallo! Schön, dass du da bist!', 'Ciao! Che bello vederti!');
   const intro = L(`Ich bin ${MASCOT_NAME}. Wer lernt heute mit mir?`, `Sono ${MASCOT_NAME}. Chi impara con me oggi?`);
   return (
-    <div className="hintergrund-punkte min-h-[100dvh]" style={{ paddingTop: 'var(--safe-top)' }}>
+    <div className="kinder-hintergrund min-h-[100dvh]" style={{ paddingTop: 'var(--safe-top)' }}>
       <div className="mx-auto flex max-w-6xl items-center justify-between px-4 pt-4 sm:px-6">
-        <span className="flex items-center gap-2 font-display text-lg font-bold tracking-tight"><img src={`${import.meta.env.BASE_URL}puppy/kopf.png`} alt="" className="h-8 w-8 rounded-lg bg-sonne-100" /> Lernito Kids</span>
+        <span className="flex items-center gap-2 font-display text-xl font-extrabold tracking-tight"><img src={`${import.meta.env.BASE_URL}puppy/kopf.png`} alt="" className="h-10 w-10 rounded-xl bg-sonne-100 ring-2 ring-sonne-300" /> <span><span className="text-himmel-500">Lern</span><span className="text-sonne-500">ito</span> <span className="text-tinte/70">Kids</span></span></span>
         <LanguageSwitch value={lang} onChange={(l) => { setLang(l); setUiLang(l); }} />
       </div>
       <main className="seite flex flex-col items-center gap-8 pt-4 sm:pt-6">
-        <section className="karte relative flex w-full flex-col items-center gap-4 overflow-hidden p-6 text-center sm:flex-row sm:p-8 sm:text-left">
-          <div className="pointer-events-none absolute -right-24 -top-24 h-72 w-72 rounded-full bg-sonne-100" aria-hidden />
-          <div className="pointer-events-none absolute -bottom-28 right-40 h-60 w-60 rounded-full bg-himmel-50" aria-hidden />
+        <section className="relative flex w-full flex-col items-center gap-4 overflow-hidden rounded-blob bg-gradient-to-br from-himmel-500 via-himmel-500 to-lila-500 p-6 text-center text-white shadow-karte sm:flex-row sm:p-8 sm:text-left">
+          <div className="pointer-events-none absolute -right-24 -top-24 h-72 w-72 rounded-full bg-white/10" aria-hidden />
+          <div className="pointer-events-none absolute -bottom-28 right-40 h-60 w-60 rounded-full bg-sonne-300/25" aria-hidden />
+          <div className="pointer-events-none absolute left-6 top-10 h-24 w-24 rounded-full bg-sonne-300/30 blur-2xl" aria-hidden />
           <div className="relative shrink-0"><Mascot size={210} /></div>
           <div className="relative flex-1">
-            <p className="eyebrow">{L('Lernen vom Kindergarten bis zum Abitur', 'Dalla scuola dell’infanzia alla maturità')}</p>
+            <p className="eyebrow text-white/75">{L('Lernen vom Kindergarten bis zum Abitur', 'Dalla scuola dell’infanzia alla maturità')}</p>
             <h1 className="mt-2 font-display text-3xl font-bold tracking-tight sm:text-5xl" data-testid="greeting">{greet}</h1>
-            <p className="mt-3 flex items-center justify-center gap-2 text-lg text-tinte/70 sm:justify-start">
+            <p className="mt-3 flex items-center justify-center gap-3 text-lg text-white/90 sm:justify-start">
               {intro} <SpeakButton text={`${greet} ${intro}`} />
             </p>
           </div>
         </section>
 
         {profiles.length === 0 ? (
-          <section className="karte flex w-full flex-col items-center gap-4 p-6 text-center sm:p-8" aria-labelledby="setup-titel">
+          <section className="karte-3d flex w-full flex-col items-center gap-4 p-6 text-center sm:p-8" aria-labelledby="setup-titel">
             <span className="flex h-14 w-14 items-center justify-center rounded-2xl bg-minze-100 text-minze-700"><ShieldCheck size={30} /></span>
             <h2 id="setup-titel" className="font-display text-2xl font-bold tracking-tight">{L('Zuerst richten die Eltern Lernito ein', 'Prima i genitori configurano Lernito')}</h2>
             <p className="max-w-xl text-lg text-tinte/70">{L('Eltern-PIN festlegen, Profil für Ihr Kind anlegen, Tagesziel und Zeitlimit wählen. Danach kann Ihr Kind sofort loslegen.', 'Impostate il PIN, create il profilo di vostro figlio, scegliete obiettivo e limite di tempo. Poi vostro figlio può iniziare subito.')}</p>
-            <Link to="/einrichtung" className="knopf knopf-3d bg-minze-500 px-8 py-4 text-xl text-white" data-testid="einrichtung-oeffnen" onClick={() => sfx.tap()}>
+            <Link to="/einrichtung" className="knopf kante-minze bg-minze-500 px-8 py-4 text-xl text-white" data-testid="einrichtung-oeffnen" onClick={() => sfx.tap()}>
               {L('Einrichtung starten', 'Inizia la configurazione')}
             </Link>
           </section>
@@ -86,7 +82,7 @@ export function StartPage() {
                 initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: i * 0.05 }}
                 whileTap={{ scale: 0.96 }} whileHover={{ y: -2 }}
                 onClick={() => { sfx.tap(); setLang(p.lang); setActive(p.id); nav('/home'); }}
-                className="karte flex flex-col items-center gap-3 p-5 focus-visible:outline focus-visible:outline-4 focus-visible:outline-himmel-500"
+                className="karte-3d flex flex-col items-center gap-3 p-5 focus-visible:outline focus-visible:outline-4 focus-visible:outline-himmel-500"
                 data-testid={`profile-${p.name}`}
               >
                 <Avatar config={p.avatar} size={88} />
@@ -94,7 +90,7 @@ export function StartPage() {
                 <span className="chip bg-tinte/[0.05] text-tinte/70">{profileLabel(p)}</span>
               </motion.button>
             ))}
-            <Link to="/profil/neu" className="karte flex min-h-[12rem] flex-col items-center justify-center gap-3 border-2 border-dashed border-tinte/15 p-5 text-center shadow-none" data-testid="neues-profil" onClick={() => sfx.tap()}>
+            <Link to="/profil/neu" className="flex min-h-[12rem] flex-col items-center justify-center gap-3 rounded-blob border-2 border-dashed border-tinte/15 bg-white/60 p-5 text-center transition hover:bg-white" data-testid="neues-profil" onClick={() => sfx.tap()}>
               <span className="flex h-16 w-16 items-center justify-center rounded-2xl bg-minze-100 text-minze-700"><Plus size={36} /></span>
               <span className="font-display text-lg font-bold">{L('Neues Profil', 'Nuovo profilo')}</span>
               <span className="flex items-center gap-1 text-xs font-semibold text-tinte/50"><Lock size={12} /> {L('mit Eltern-PIN', 'con PIN genitori')}</span>
@@ -106,8 +102,8 @@ export function StartPage() {
         <div className="w-full"><InstallHint /></div>
 
         <nav className="flex w-full flex-wrap items-center justify-center gap-3" aria-label={L('Für Erwachsene', 'Per gli adulti')}>
-          <Link to="/eltern" className="knopf bg-white text-base" data-testid="elternbereich"><Lock size={18} /> {L('Elternbereich', 'Area genitori')}</Link>
-          <Link to="/datenschutz" className="knopf bg-white text-base"><ShieldCheck size={18} /> {L('Datenschutz', 'Privacy')}</Link>
+          <Link to="/eltern" className="knopf knopf-3d bg-white text-base" data-testid="elternbereich"><Lock size={18} /> {L('Elternbereich', 'Area genitori')}</Link>
+          <Link to="/datenschutz" className="knopf knopf-3d bg-white text-base"><ShieldCheck size={18} /> {L('Datenschutz', 'Privacy')}</Link>
         </nav>
         <p className="max-w-xl text-center text-sm text-tinte/55">{L('Lernito Kids speichert alle Daten nur auf diesem Gerät. Keine Werbung, keine Tracker, keine öffentlichen Profile.', 'Lernito Kids salva tutti i dati solo su questo dispositivo. Niente pubblicità, niente tracker, nessun profilo pubblico.')}</p>
       </main>

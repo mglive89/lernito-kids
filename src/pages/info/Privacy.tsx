@@ -1,5 +1,5 @@
-import { TopBar } from '../components/ui';
-import { L } from '../i18n';
+import { TopBar } from '../../components/ui';
+import { L } from '../../i18n';
 
 export function PrivacyPage() {
   const h2 = 'font-display text-2xl font-bold tracking-tight';

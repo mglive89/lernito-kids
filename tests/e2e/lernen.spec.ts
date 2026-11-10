@@ -226,6 +226,11 @@ test('Navigation, Profilseite und zweites Kind nur mit Eltern-PIN', async ({ pag
   await expect(page).toHaveURL(/\/erfolge$/);
   await nav('nav-faecher').click();
   await expect(page.getByTestId('fach-mathe')).toBeVisible();
+  // Entdecken: Videos, 3D-Welt und Mini-Spiele an einem Ort
+  await nav('nav-entdecken').click();
+  await expect(page.getByTestId('entdecken-seite')).toBeVisible();
+  await page.getByTestId('entdecken-minispiele').click();
+  await expect(page).toHaveURL(/\/minispiele$/);
   await nav('nav-home').click();
   await expect(page.getByTestId('weiterlernen')).toBeVisible();
   // Neues Profil verlangt die Eltern-PIN

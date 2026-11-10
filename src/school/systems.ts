@@ -92,3 +92,9 @@ let currentCountry: Country = 'DE';
 /** Land des aktiven Profils (für länderspezifische Fragen). */
 export function getCountry(): Country { return currentCountry; }
 export function setCountry(c: Country) { currentCountry = c; }
+
+/** Kurzbeschreibung eines Profils, z. B. „🇮🇹 3ª elementare“. */
+export function profileLabel(p: { country: Country; year: number }): string {
+  const flag = COUNTRIES.find((c) => c.id === p.country)?.flag ?? '';
+  return `${flag} ${yearLabel(p.country, p.year)}`;
+}

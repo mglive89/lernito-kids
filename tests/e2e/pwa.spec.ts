@@ -24,7 +24,7 @@ test('PWA: Manifest, Icons und Offline-Start', async ({ page, context }) => {
 
 test('Layout: kein horizontales Scrollen', async ({ page }) => {
   await createProfile(page, 'Breit', '3');
-  for (const path of ['/home', '/kita', '/schule?jahr=3', '/schule?jahr=11', '/spiel/m3-schriftlich', '/spiel/kita-puzzle', '/spiel/code-roboter', '/spiel/code-python', '/eltern', '/profil/neu']) {
+  for (const path of ['/home', '/entdecken', '/erfolge', '/profil', '/schule/3/mathe', '/kita', '/schule?jahr=3', '/schule?jahr=11', '/spiel/m3-schriftlich', '/spiel/kita-puzzle', '/spiel/code-roboter', '/spiel/code-python', '/eltern', '/profil/neu']) {
     await page.goto(path);
     await page.waitForTimeout(400);
     const overflow = await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth);

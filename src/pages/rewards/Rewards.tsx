@@ -2,17 +2,17 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Lock, Star } from 'lucide-react';
-import { useApp, useActiveProfile } from '../store/useApp';
-import { Avatar, ProgressBar, TopBar } from '../components/ui';
-import { Lino, LinoSays } from '../components/Lino';
-import { AVATAR_EXTRAS, AVATAR_FARBEN, AVATAR_TIERE, BADGES, levelFromXp, MINIGAMES } from '../learning/rewards';
-import { kitaModules, schoolModules, world3dModules } from '../learning/registry';
-import { lastNDays, wochentagKurz } from '../lib/date';
-import type { LearningModule } from '../learning/types';
-import { L, locale, tr } from '../i18n';
-import { stageFor, yearLabel } from '../school/systems';
-import { subjectName } from '../school/subjects';
-import { sfx } from '../lib/sound';
+import { useApp, useActiveProfile } from '../../store/useApp';
+import { Avatar, ProgressBar, TopBar } from '../../components/ui';
+import { Lino, LinoSays } from '../../components/Lino';
+import { AVATAR_EXTRAS, AVATAR_FARBEN, AVATAR_TIERE, BADGES, levelFromXp, MINIGAMES } from '../../learning/rewards';
+import { kitaModules, schoolModules, world3dModules } from '../../learning/registry';
+import { lastNDays, wochentagKurz } from '../../lib/date';
+import type { LearningModule } from '../../learning/types';
+import { L, locale, tr } from '../../i18n';
+import { stageFor, yearLabel } from '../../school/systems';
+import { subjectName } from '../../school/subjects';
+import { sfx } from '../../lib/sound';
 
 export function StarsPage() {
   const { progress } = useActiveProfile();
@@ -64,14 +64,14 @@ export function BadgesPage() {
       <TopBar title={L('Meine Erfolge', 'I miei traguardi')} back="/home" stars={progress.stars} />
       <main className="seite">
         <LinoSays text={L(`Du hast schon ${Object.keys(owned).length} von ${BADGES.length} Abzeichen!`, `Hai già ${Object.keys(owned).length} distintivi su ${BADGES.length}!`)} size={80} mood="jubel" />
-        <div className="mt-6 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
+        <div className="mt-6 grid grid-cols-3 gap-3 sm:grid-cols-4 sm:gap-4 lg:grid-cols-5">
           {BADGES.map((b) => {
             const has = !!owned[b.id];
             return (
-              <div key={b.id} className={`karte flex flex-col items-center gap-2 p-5 text-center ${has ? '' : 'opacity-60'}`} data-testid={`badge-${b.id}`} data-owned={has}>
-                <span className={`emoji text-6xl ${has ? '' : 'grayscale'}`} aria-hidden>{has ? b.emoji : '🔒'}</span>
-                <span className="font-display text-lg font-bold">{tr(b.title)}</span>
-                <span className="text-sm text-tinte/70">{tr(b.description)}</span>
+              <div key={b.id} className={`flex flex-col items-center gap-1.5 p-3 text-center sm:p-4 ${has ? 'karte-3d bg-gradient-to-b from-sonne-50 to-white ring-sonne-300' : 'rounded-blob bg-white/60 border-2 border-dashed border-tinte/15'}`} data-testid={`badge-${b.id}`} data-owned={has}>
+                <span className={`emoji flex h-16 w-16 items-center justify-center rounded-full text-4xl sm:h-20 sm:w-20 sm:text-5xl ${has ? 'bg-sonne-100 ring-4 ring-sonne-300' : 'bg-tinte/[0.05] opacity-40 grayscale'}`} aria-hidden>{b.emoji}</span>
+                <span className={`font-display text-sm font-bold leading-tight sm:text-base ${has ? '' : 'text-tinte/60'}`}>{tr(b.title)}</span>
+                <span className="text-xs leading-snug text-tinte/55 sm:text-sm">{tr(b.description)}</span>
                 {has && <span className="text-xs text-tinte/50">{L('am', 'il')} {new Date(owned[b.id]!).toLocaleDateString(locale())}</span>}
               </div>
             );
@@ -120,7 +120,7 @@ export function AdventurePage() {
   const icons: Record<string, string> = { mathe: '⛰️', deutsch: '🌲', italiano: '🌲', englisch: '🏰', sachkunde: '🔬', scienze: '🔬', biologie: '🧬', physik: '⚡', chemie: '⚗️', geschichte: '🏛️', geographie: '🗺️' };
   return (
     <div className="min-h-[100dvh]">
-      <TopBar title={L('Mein Lernabenteuer', 'La mia avventura')} back="/home" stars={progress.stars} />
+      <TopBar title={L('Mein Lernabenteuer', 'La mia avventura')} back="/entdecken" stars={progress.stars} />
       <main className="seite flex flex-col gap-4">
         <LinoSays text={L('Jeder Kreis ist eine Station auf deiner Reise. Grüne Kreise hast du schon besucht!', 'Ogni cerchio è una tappa del tuo viaggio. Quelli verdi li hai già visitati!')} size={80} />
         {profile?.year === 0 && <PathSection title={L('Kindergarten-Insel', 'Isola dell’infanzia')} emoji="🏝️" modules={kitaModules(custom)} />}
@@ -149,7 +149,7 @@ export function AvatarPage() {
   };
   return (
     <div className="min-h-[100dvh]">
-      <TopBar title={L('Mein Avatar', 'Il mio avatar')} back="/home" stars={progress.stars} />
+      <TopBar title={L('Mein Avatar', 'Il mio avatar')} back="/profil" stars={progress.stars} />
       <main className="seite flex flex-col gap-6">
         <div className="flex flex-col items-center gap-2">
           <motion.div key={JSON.stringify(profile.avatar)} initial={{ scale: 0.8, rotate: -8 }} animate={{ scale: 1, rotate: 0 }}><Avatar config={profile.avatar} size={150} /></motion.div>

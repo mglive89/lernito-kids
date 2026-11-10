@@ -2,15 +2,15 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Captions, CaptionsOff, Pause, Play, RotateCcw, Volume2, VolumeX } from 'lucide-react';
-import { useApp, useActiveProfile, type CustomVideo } from '../store/useApp';
-import { Notice, ProgressBar, TopBar } from '../components/ui';
-import { Lino, LinoSays } from '../components/Lino';
-import { activeCue, LESSONS, parseVtt, type Cue, type Lesson } from '../video/lessons';
-import { getMediaBlob } from '../lib/db';
-import { speak, stopSpeaking } from '../lib/speech';
-import { L, tr } from '../i18n';
-import { subjectName } from '../school/subjects';
-import { getCountry } from '../school/systems';
+import { useApp, useActiveProfile, type CustomVideo } from '../../store/useApp';
+import { Notice, ProgressBar, TopBar } from '../../components/ui';
+import { Lino, LinoSays } from '../../components/Lino';
+import { activeCue, LESSONS, parseVtt, type Cue, type Lesson } from '../../video/lessons';
+import { getMediaBlob } from '../../lib/db';
+import { speak, stopSpeaking } from '../../lib/speech';
+import { L, tr } from '../../i18n';
+import { subjectName } from '../../school/subjects';
+import { getCountry } from '../../school/systems';
 
 const subjectTitle = (id: string) => (id === 'kita' ? L('Kindergarten', 'Scuola dell’infanzia') : subjectName(id === 'sachunterricht' ? 'sachkunde' : id, getCountry()));
 
@@ -24,7 +24,7 @@ export function VideosPage() {
   const bySubject = items.reduce<Record<string, typeof items>>((acc, it) => { (acc[it.subject] ??= []).push(it); return acc; }, {});
   return (
     <div className="min-h-[100dvh]">
-      <TopBar title={L('Lernvideos', 'Video lezioni')} back="/home" stars={progress.stars} />
+      <TopBar title={L('Lernvideos', 'Video lezioni')} back="/entdecken" stars={progress.stars} />
       <main className="seite flex flex-col gap-6">
         <LinoSays text={L('Schau ein kurzes Video und mach danach das Quiz!', 'Guarda un breve video e poi fai il quiz!')} size={80} />
         {Object.entries(bySubject).map(([subject, list]) => (

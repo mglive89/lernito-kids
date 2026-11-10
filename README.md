@@ -79,6 +79,7 @@ Aufgabentypen: Auswahl, Zahlenfeld, Wörter/Silben bauen, Reihenfolge, Memory, D
 
 ```
 src/
+  app/               App-Gerüst: routes.tsx (alle Routen), navigation.ts (Tab-/Seitenleiste)
   learning/          Lernlogik (framework-unabhängig, getestet)
     types.ts         Aufgaben- und Modultypen
     bank.ts          Kompakte Fragen-Bank-Syntax (de/it)
@@ -88,6 +89,7 @@ src/
     rewards.ts       Sterne, Level, Abzeichen, Mini-Spiele, Avatar-Extras
     custom.ts        Eigene Inhalte aus dem Admin-Bereich
     registry.ts      Alle Module an einem Ort
+    lessons.ts       Lernpfad: 3 Lektionen pro Einheit, Links zur nächsten Lektion
   school/            Schulsysteme DE/IT, Fächer
   i18n/              Übersetzung L(de, it), Sprache
   content/words.ts   Eingebettete Wort-, Tier- und Farblisten
@@ -96,7 +98,16 @@ src/
   video/             Lektionen, Untertitel, WebVTT-Parser
   store/useApp.ts    Zustand-Store, persistiert in IndexedDB
   lib/               Vorlesen, Sounds (WebAudio), IndexedDB, Hash, Zufall, Datum
-  pages/             Seiten inkl. parents/ und admin/
+  components/ui/     Design-System: Farben, Kacheln, Kopfleiste, Fortschritt, Dialoge, Vorlesen-Knopf
+  components/        ChildShell (Navigation), Puppy (Lino.tsx), ModuleGrid, GuideContent …
+  pages/             Seiten nach Bereich:
+    onboarding/      Start, Profil anlegen, Ersteinrichtung
+    home/            Startseite des Kindes
+    learn/           Fächer, Lernpfad, Lektion, Theorie, Kindergarten-Spiele
+    discover/        Entdecken: Videos, 3D-Welt, Mini-Spiele
+    rewards/         Sterne, Abzeichen, Abenteuer, Avatar
+    profile/ info/   Profil, Datenschutz
+    parents/ admin/  Eltern- und Admin-Bereich
 supabase/schema.sql  Vorbereitetes Schema mit RLS und Rollen
 docs/DATENSCHUTZ.md  Umsetzung und offene rechtliche Prüfungen
 tests/e2e/           Playwright-Tests
