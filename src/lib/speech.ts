@@ -33,7 +33,8 @@ function pickVoice(): SpeechSynthesisVoice | null {
 export function speechStatus(): SpeechStatus {
   if (!speechSupported()) return 'keine';
   const v = cachedVoice ?? pickVoice();
-  if (!v) return voicesLoaded ? 'keine' : 'offline';
+  // Ohne passende Stimme trotzdem versuchen: der Browser wählt dann anhand von lang selbst eine Stimme.
+  if (!v) return voicesLoaded ? 'online' : 'offline';
   return v.localService ? 'offline' : 'online';
 }
 
@@ -50,24 +51,94 @@ export function setSpeechEnabled(v: boolean): void {
   if (!v) stopSpeaking();
 }
 
+// Laufende Äußerungen festhalten: Chrome verwirft sonst Utterances per Garbage Collection mitten im Satz.
+const live = new Set<SpeechSynthesisUtterance>();
+let pendingTimer: ReturnType<typeof setTimeout> | null = null;
+let primed = false;
+
+/** Längere Texte in Sätze teilen: Chrome bricht einzelne Äußerungen nach ca. 15 Sekunden ab. */
+function chunks(text: string): string[] {
+  const parts = text.match(/[^.!?;:]+[.!?;:]*\s*/g) ?? [text];
+  const out: string[] = [];
+  for (const p of parts) {
+    const t = p.trim();
+    if (!t) continue;
+    const last = out[out.length - 1];
+    if (last && last.length + t.length < 160) out[out.length - 1] = `${last} ${t}`;
+    else out.push(t);
+  }
+  return out.length ? out : [text];
+}
+
+function utter(text: string, rate: number, pitch: number): SpeechSynthesisUtterance {
+  const u = new SpeechSynthesisUtterance(text);
+  u.lang = speechLang === 'it' ? 'it-IT' : 'de-DE';
+  const v = cachedVoice ?? pickVoice();
+  if (v) u.voice = v;
+  u.rate = rate;
+  u.pitch = pitch;
+  u.volume = 1;
+  live.add(u);
+  const done = () => live.delete(u);
+  u.onend = done;
+  u.onerror = done;
+  return u;
+}
+
+/**
+ * Text vorlesen. Robust gegen bekannte Browserfehler:
+ * - Chrome: speak() direkt nach cancel() wird oft verschluckt → kurz warten, wenn noch etwas läuft.
+ * - Chrome/Android: Synthese hängt nach Tab-Wechsel „pausiert“ → resume().
+ * - iOS: das erste Vorlesen muss direkt aus einem Tippen kommen → dann sofort sprechen.
+ */
 export function speak(text: string, opts: { rate?: number; pitch?: number; force?: boolean } = {}): boolean {
   if ((!enabled && !opts.force) || !speechSupported() || !text) return false;
   try {
     const synth = window.speechSynthesis;
-    synth.cancel();
-    const u = new SpeechSynthesisUtterance(text.replace(/[„“]/g, ''));
-    u.lang = speechLang === 'it' ? 'it-IT' : 'de-DE';
-    const v = cachedVoice ?? pickVoice();
-    if (v) u.voice = v;
-    u.rate = opts.rate ?? 0.92;
-    u.pitch = opts.pitch ?? 1.1;
-    synth.speak(u);
+    const clean = text.replace(/[„“”«»]/g, '').replace(/\s+/g, ' ').trim();
+    if (!clean) return false;
+    const rate = opts.rate ?? 0.92;
+    const pitch = opts.pitch ?? 1.1;
+    if (pendingTimer) { clearTimeout(pendingTimer); pendingTimer = null; }
+    const run = () => {
+      pendingTimer = null;
+      if (synth.paused) synth.resume();
+      for (const c of chunks(clean)) synth.speak(utter(c, rate, pitch));
+    };
+    const busy = synth.speaking || synth.pending;
+    if (busy) {
+      synth.cancel();
+      pendingTimer = setTimeout(run, 120);
+    } else {
+      run();
+    }
     return true;
   } catch {
     return false;
   }
 }
 
+/** Beim ersten Tippen die Sprachausgabe „freischalten“ (iOS/Safari erlaubt sie sonst nicht aus Timern). */
+export function primeSpeech(): void {
+  if (primed || !speechSupported()) return;
+  primed = true;
+  try {
+    pickVoice();
+    const u = new SpeechSynthesisUtterance(' ');
+    u.volume = 0;
+    window.speechSynthesis.speak(u);
+  } catch { /* egal */ }
+}
+
 export function stopSpeaking(): void {
+  if (pendingTimer) { clearTimeout(pendingTimer); pendingTimer = null; }
   if (speechSupported()) window.speechSynthesis.cancel();
+}
+
+// Stimmen werden in Chrome erst asynchron geladen: Auswahl dann aktualisieren.
+if (speechSupported()) {
+  try {
+    window.speechSynthesis.addEventListener('voiceschanged', () => { cachedVoice = null; pickVoice(); });
+    pickVoice();
+  } catch { /* ältere Browser */ }
 }

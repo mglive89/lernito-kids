@@ -1,7 +1,7 @@
 import { lazy, Suspense, useEffect, useState, type ReactNode } from 'react';
 import { Navigate, Route, Routes, useLocation } from 'react-router-dom';
 import { useApp, useActiveProfile } from './store/useApp';
-import { setSpeechEnabled } from './lib/speech';
+import { primeSpeech, setSpeechEnabled } from './lib/speech';
 import { setSoundsEnabled } from './lib/sound';
 import { dateKey } from './lib/date';
 import { StartPage, CreateProfilePage } from './pages/Start';
@@ -89,6 +89,14 @@ export default function App() {
     setSpeechEnabled(settings.speech);
     setSoundsEnabled(settings.sounds);
   }, [settings.speech, settings.sounds]);
+
+  // Erstes Tippen schaltet die Sprachausgabe frei (iOS/Safari, Chrome-Autoplay-Regeln)
+  useEffect(() => {
+    const h = () => primeSpeech();
+    window.addEventListener('pointerdown', h, { once: true });
+    window.addEventListener('keydown', h, { once: true });
+    return () => { window.removeEventListener('pointerdown', h); window.removeEventListener('keydown', h); };
+  }, []);
 
   useEffect(() => { window.scrollTo(0, 0); }, [location.pathname]);
 
