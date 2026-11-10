@@ -2,21 +2,21 @@ import { useEffect, useMemo, useRef, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { AnimatePresence, motion } from 'framer-motion';
 import { Lock } from 'lucide-react';
-import { useApp, useActiveProfile } from '../store/useApp';
-import { Confetti, TopBar } from '../components/ui';
-import { LinoSays } from '../components/Lino';
-import { MINIGAMES } from '../learning/rewards';
-import { sfx } from '../lib/sound';
-import { speak } from '../lib/speech';
-import { zahlwort } from '../content/words';
-import { createRng, shuffle } from '../lib/random';
-import { L, tr } from '../i18n';
+import { useApp, useActiveProfile } from '../../store/useApp';
+import { Confetti, TopBar } from '../../components/ui';
+import { LinoSays } from '../../components/Lino';
+import { MINIGAMES } from '../../learning/rewards';
+import { sfx } from '../../lib/sound';
+import { speak } from '../../lib/speech';
+import { zahlwort } from '../../content/words';
+import { createRng, shuffle } from '../../lib/random';
+import { L, tr } from '../../i18n';
 
 export function MiniGamesPage() {
   const { progress } = useActiveProfile();
   return (
     <div className="min-h-[100dvh]">
-      <TopBar title={L('Mini-Spiele', 'Minigiochi')} back="/home" stars={progress.stars} />
+      <TopBar title={L('Mini-Spiele', 'Minigiochi')} back="/entdecken" stars={progress.stars} />
       <main className="seite">
         <LinoSays text={L('Mit deinen Sternen schaltest du Mini-Spiele frei. Sie bleiben für immer offen!', 'Con le tue stelle sblocchi i minigiochi. Restano aperti per sempre!')} size={80} />
         <div className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-3">

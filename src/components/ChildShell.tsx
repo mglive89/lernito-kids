@@ -1,11 +1,10 @@
 import { NavLink, Outlet, useLocation } from 'react-router-dom';
-import { BookOpenCheck, Home, Lock, Trophy, UserRound } from 'lucide-react';
+import { Lock } from 'lucide-react';
 import { useActiveProfile } from '../store/useApp';
-import { Avatar } from './ui';
+import { Avatar, colorSet } from './ui';
 import { L } from '../i18n';
 import { sfx } from '../lib/sound';
-
-interface Item { to: string; label: string; icon: typeof Home; match: string[]; testId: string }
+import { childNavItems, isNavActive } from '../app/navigation';
 
 /**
  * Rahmen des Kinderbereichs: Seitenleiste (Desktop) bzw. Tab-Leiste unten (Smartphone/Tablet).
@@ -14,33 +13,35 @@ interface Item { to: string; label: string; icon: typeof Home; match: string[]; 
 export function ChildShell() {
   const { profile } = useActiveProfile();
   const { pathname } = useLocation();
-  const kita = (profile?.year ?? 0) === 0;
-  const items: Item[] = [
-    { to: '/home', label: L('Lernen', 'Impara'), icon: Home, match: ['/home'], testId: 'nav-home' },
-    { to: kita ? '/kita' : `/schule?jahr=${profile?.year ?? 1}`, label: kita ? L('Spiele', 'Giochi') : L('Fächer', 'Materie'), icon: BookOpenCheck, match: ['/schule', '/kita', '/welt3d', '/videos'], testId: 'nav-faecher' },
-    { to: '/erfolge', label: L('Erfolge', 'Traguardi'), icon: Trophy, match: ['/erfolge', '/sterne', '/abenteuer'], testId: 'nav-erfolge' },
-    { to: '/profil', label: L('Profil', 'Profilo'), icon: UserRound, match: ['/profil', '/avatar', '/minispiele'], testId: 'nav-profil' }
-  ];
-  const active = (it: Item) => it.match.some((m) => pathname === m || pathname.startsWith(`${m}/`));
+  const items = childNavItems(profile?.year ?? 0);
+  const base = import.meta.env.BASE_URL;
 
   return (
-    <div className="min-h-[100dvh] lg:pl-64">
+    <div className="kinder-hintergrund min-h-[100dvh] lg:pl-64">
       {/* Seitenleiste */}
-      <aside className="fixed inset-y-0 left-0 z-30 hidden w-64 flex-col border-r border-tinte/[0.07] bg-white/90 px-4 py-6 backdrop-blur lg:flex" aria-label={L('Hauptnavigation', 'Navigazione principale')}>
-        <span className="mb-8 flex items-center gap-2 px-3 font-display text-2xl font-extrabold tracking-tight text-himmel-700">
-          <img src={`${import.meta.env.BASE_URL}puppy/kopf.png`} alt="" className="h-9 w-9 rounded-xl bg-sonne-100" /> Lernito
+      <aside className="fixed inset-y-0 left-0 z-30 hidden w-64 flex-col border-r-2 border-tinte/[0.06] bg-white/90 px-4 py-6 backdrop-blur lg:flex" aria-label={L('Hauptnavigation', 'Navigazione principale')}>
+        <span className="mb-8 flex items-center gap-2.5 px-2 font-display text-2xl font-extrabold tracking-tight">
+          <img src={`${base}puppy/kopf.png`} alt="" className="h-11 w-11 rounded-2xl bg-sonne-100 ring-2 ring-sonne-300" />
+          <span><span className="text-himmel-500">Lern</span><span className="text-sonne-500">ito</span></span>
         </span>
-        <nav className="flex flex-col gap-1.5">
-          {items.map((it) => (
-            <NavLink key={it.testId} to={it.to} onClick={() => sfx.tap()} data-testid={`${it.testId}-seite`} aria-current={active(it) ? 'page' : undefined}
-              className={`flex items-center gap-4 rounded-2xl px-4 py-3 font-display text-base font-bold uppercase tracking-wide transition ${active(it) ? 'bg-himmel-50 text-himmel-700 ring-2 ring-himmel-300' : 'text-tinte/60 hover:bg-tinte/[0.04]'}`}>
-              <it.icon size={26} strokeWidth={active(it) ? 2.6 : 2} /> {it.label}
-            </NavLink>
-          ))}
+        <nav className="flex flex-col gap-2">
+          {items.map((it) => {
+            const on = isNavActive(it, pathname);
+            const c = colorSet(it.color);
+            return (
+              <NavLink key={it.testId} to={it.to} onClick={() => sfx.tap()} data-testid={`${it.testId}-seite`} aria-current={on ? 'page' : undefined}
+                className={`flex items-center gap-4 rounded-2xl px-3 py-2.5 font-display text-base font-bold uppercase tracking-wide transition ${on ? `${c.soft} ${c.text} ring-2 ${c.ring}` : 'text-tinte/60 hover:bg-tinte/[0.04]'}`}>
+                <span className={`flex h-10 w-10 items-center justify-center rounded-xl transition ${on ? `${c.bg} text-white` : 'bg-tinte/[0.04]'}`}>
+                  <it.icon size={22} strokeWidth={on ? 2.6 : 2.2} />
+                </span>
+                {it.label}
+              </NavLink>
+            );
+          })}
         </nav>
         <div className="mt-auto flex flex-col gap-2">
           {profile && (
-            <NavLink to="/profil" className="flex items-center gap-3 rounded-2xl px-3 py-2 hover:bg-tinte/[0.04]">
+            <NavLink to="/profil" className="flex items-center gap-3 rounded-2xl bg-creme px-3 py-2.5 hover:bg-tinte/[0.05]">
               <Avatar config={profile.avatar} size={40} />
               <span className="truncate font-bold">{profile.name}</span>
             </NavLink>
@@ -52,17 +53,18 @@ export function ChildShell() {
       <div className="pb-24 lg:pb-0"><Outlet /></div>
 
       {/* Tab-Leiste */}
-      <nav className="fixed inset-x-0 bottom-0 z-30 border-t border-tinte/[0.08] bg-white/95 backdrop-blur lg:hidden" style={{ paddingBottom: 'var(--safe-bottom)' }} aria-label={L('Hauptnavigation', 'Navigazione principale')}>
-        <div className="mx-auto grid max-w-lg grid-cols-4 px-2 py-1.5">
+      <nav className="fixed inset-x-0 bottom-0 z-30 border-t-2 border-tinte/[0.06] bg-white/95 backdrop-blur lg:hidden" style={{ paddingBottom: 'var(--safe-bottom)' }} aria-label={L('Hauptnavigation', 'Navigazione principale')}>
+        <div className="mx-auto grid max-w-xl grid-cols-5 px-1 pb-1 pt-1.5">
           {items.map((it) => {
-            const on = active(it);
+            const on = isNavActive(it, pathname);
+            const c = colorSet(it.color);
             return (
               <NavLink key={it.testId} to={it.to} onClick={() => sfx.tap()} data-testid={it.testId} aria-current={on ? 'page' : undefined}
-                className="flex flex-col items-center gap-0.5 rounded-xl py-1.5 text-[11px] font-bold uppercase tracking-wide">
-                <span className={`flex h-9 w-14 items-center justify-center rounded-xl transition ${on ? 'bg-himmel-50 text-himmel-700 ring-2 ring-himmel-300' : 'text-tinte/45'}`}>
-                  <it.icon size={24} strokeWidth={on ? 2.6 : 2} />
+                className="flex min-w-0 flex-col items-center gap-0.5 rounded-xl py-1 text-[10.5px] font-extrabold uppercase tracking-wide sm:text-[11px]">
+                <span className={`flex h-9 w-12 items-center justify-center rounded-2xl transition ${on ? `${c.bg} text-white ${c.edge} -translate-y-0.5` : 'text-tinte/40'}`}>
+                  <it.icon size={22} strokeWidth={on ? 2.6 : 2.2} />
                 </span>
-                <span className={on ? 'text-himmel-700' : 'text-tinte/50'}>{it.label}</span>
+                <span className={`max-w-full truncate ${on ? c.text : 'text-tinte/45'}`}>{it.label}</span>
               </NavLink>
             );
           })}

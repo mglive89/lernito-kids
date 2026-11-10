@@ -9,7 +9,7 @@ import { sfx } from '../lib/sound';
 import { Lino } from '../components/Lino';
 import { Confetti, Modal, ProgressBar, SpeakButton } from '../components/ui';
 import { guideFor } from '../learning/guides';
-import { GuideContent } from '../pages/Guide';
+import { GuideContent } from '../components/GuideContent';
 import { Visual } from '../components/Visual';
 import { TaskView } from './TaskView';
 import { MULTI_STEP } from './types';
@@ -269,7 +269,7 @@ export function GameRunner({ module, level, speechOn, onFinish, preview, backTo,
       {(feedback || usesCheck) && (
         <div className={`fixed inset-x-0 bottom-0 z-20 border-t border-tinte/[0.07] ${barBg} transition-colors`} style={{ paddingBottom: 'var(--safe-bottom)' }}>
           <div className="mx-auto flex max-w-3xl flex-col gap-3 px-4 py-4 sm:flex-row sm:items-center sm:gap-5 sm:py-5">
-            <div className="flex min-h-[3.5rem] flex-1 items-center gap-3" role="status" aria-live="assertive" data-testid="feedback">
+            <div className="flex flex-1 sm:min-h-[3.5rem] items-center gap-3" role="status" aria-live="assertive" data-testid="feedback">
               {feedback && (
                 <>
                   <motion.span initial={{ scale: 0.6, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} className="relative shrink-0" aria-hidden>
@@ -287,14 +287,14 @@ export function GameRunner({ module, level, speechOn, onFinish, preview, backTo,
                   </div>
                 </>
               )}
-              {!feedback && <Lino mood="ruhig" size={56} still />}
+              {!feedback && !coach && <span className="hidden sm:block"><Lino mood="ruhig" size={56} still /></span>}
             </div>
             {showNext ? (
-              <button className={`knopf w-full text-white sm:w-48 ${tone === 'ok' ? 'bg-minze-500' : 'bg-himmel-500'}`} onClick={next} data-testid="weiter" autoFocus>
+              <button className={`knopf w-full text-white sm:w-48 ${tone === 'ok' ? 'kante-minze bg-minze-500' : 'kante-himmel bg-himmel-500'}`} onClick={next} data-testid="weiter" autoFocus>
                 {L('Weiter', 'Avanti')} <ArrowRight />
               </button>
             ) : usesCheck && phase === 'answer' ? (
-              <button className="knopf w-full bg-himmel-500 text-white disabled:bg-tinte/10 disabled:text-tinte/40 disabled:shadow-none sm:w-48" disabled={!pending} onClick={() => pending?.()} data-testid="pruefen">
+              <button className="knopf kante-himmel w-full bg-himmel-500 text-white disabled:bg-tinte/10 disabled:text-tinte/40 disabled:shadow-none sm:w-48" disabled={!pending} onClick={() => pending?.()} data-testid="pruefen">
                 {L('Prüfen', 'Controlla')}
               </button>
             ) : null}

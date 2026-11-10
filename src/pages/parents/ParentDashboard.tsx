@@ -8,7 +8,7 @@ import { needsPractice } from '../../learning/adaptive';
 import { levelFromXp, BADGES } from '../../learning/rewards';
 import { dateKey, formatMinutes, lastNDays, wochentagKurz } from '../../lib/date';
 import { clearAllData } from '../../lib/db';
-import { profileLabel } from '../Start';
+import { profileLabel } from '../../school/systems';
 import { L, LANGS, locale, tr, type Lang } from '../../i18n';
 import { COUNTRIES, STAGES, yearLabel, type Country } from '../../school/systems';
 import { subjectName } from '../../school/subjects';

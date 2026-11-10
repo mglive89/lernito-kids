@@ -261,7 +261,7 @@ export function LinoSays({ text, mood = 'freude', size = 90 }: { text: string; m
   return (
     <div className="flex items-end gap-3">
       <Lino mood={mood} size={size} />
-      <div className="karte relative mb-6 max-w-md px-5 py-3 font-display text-lg font-medium sm:text-xl" aria-live="polite">
+      <div className="karte-3d relative mb-6 max-w-md px-5 py-3 font-display text-lg font-medium sm:text-xl" aria-live="polite">
         <span className="absolute -left-2 bottom-4 h-4 w-4 rotate-45 bg-white" aria-hidden />
         {text}
       </div>
