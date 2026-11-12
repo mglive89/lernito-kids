@@ -20,7 +20,7 @@ export function SpeakView({ task, onCorrect, onWrong, onSkip, reveal, done }: Ta
 
   const talk = async () => {
     if (done || reveal) return;
-    if (v.state === 'listening') { v.cancel(); return; }
+    if (v.state === 'listening') { v.finish(); return; }
     const alts = await v.listen(task.lang);
     if (!alts) return;
     setHeard(alts);
@@ -49,7 +49,7 @@ export function SpeakView({ task, onCorrect, onWrong, onSkip, reveal, done }: Ta
         <div className="flex flex-col items-center gap-3">
           <MicButton size="lg" listening={v.state === 'listening'} onClick={talk} disabled={done || reveal} label={L('Mikrofon: jetzt sprechen', 'Microfono: parla adesso')} />
           <p className="min-h-[1.75rem] text-center text-lg font-semibold text-tinte/70" role="status" aria-live="polite" data-testid="sprech-status">
-            {v.state === 'listening' ? L('Ich höre zu … sprich jetzt!', 'Ti ascolto… parla adesso!')
+            {v.state === 'listening' ? (v.live ? L(`Ich höre: „${v.live}“`, `Ti sento: «${v.live}»`) : L('Ich höre zu … sprich jetzt!', 'Ti ascolto… parla adesso!'))
               : done ? <span className="inline-flex items-center gap-1 text-minze-700"><Check size={20} /> {L('Gut ausgesprochen!', 'Pronuncia ottima!')}</span>
                 : heard ? L(`Ich habe gehört: „${heard[0]}“`, `Ho sentito: «${heard[0]}»`)
                   : v.error ?? L('Tippe auf das Mikrofon und sprich.', 'Tocca il microfono e parla.')}

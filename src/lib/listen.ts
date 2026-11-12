@@ -44,58 +44,126 @@ export function recognitionSupported(): boolean {
 }
 
 let current: Recognition | null = null;
+/** Beendet die laufende Sitzung und wertet aus, was bis jetzt gehört wurde */
+let finishCurrent: (() => void) | null = null;
 
 /** Laufende Erkennung abbrechen (z. B. beim Verlassen der Aufgabe). */
 export function stopListening(): void {
+  finishCurrent = null;
   try { current?.abort(); } catch { /* egal */ }
   current = null;
 }
 
+/** Zuhören jetzt beenden und das Gehörte auswerten (Kind tippt nochmal aufs Mikrofon). */
+export function finishListening(): void {
+  finishCurrent?.();
+}
+
+export interface ListenOptions {
+  /** Höchstdauer insgesamt (ms) */
+  timeoutMs?: number;
+  /** So lange Stille nach dem Sprechen, dann ist das Kind fertig (ms) */
+  silenceMs?: number;
+  /** Zwischenergebnis während des Sprechens (für die Anzeige „Ich höre: …“) */
+  onInterim?: (text: string) => void;
+}
+
 /**
  * Einmal zuhören und die erkannten Sätze liefern.
+ * Großzügig für Kinder:
+ * - hört weiter, auch wenn das Kind kurz Pause macht (erst nach längerer Stille ist Schluss),
+ * - startet automatisch neu, wenn der Browser zu früh aufhört oder nichts gehört hat,
+ * - nimmt notfalls das Zwischenergebnis, wenn der Browser kein Endergebnis liefert.
  * Muss aus einem Tippen heraus gestartet werden (Mikrofon-Freigabe des Browsers).
  */
-export function listenOnce(locale: string, opts: { timeoutMs?: number } = {}): Promise<ListenResult> {
+export function listenOnce(locale: string, opts: ListenOptions = {}): Promise<ListenResult> {
   const C = ctor();
   if (!C) return Promise.reject<ListenResult>('unsupported' satisfies ListenError);
   stopListening();
+  const timeoutMs = opts.timeoutMs ?? 12000;
+  const silenceMs = opts.silenceMs ?? 1600;
   return new Promise<ListenResult>((resolve, reject) => {
-    let rec: Recognition;
-    try { rec = new C(); } catch { reject('unsupported' satisfies ListenError); return; }
-    current = rec;
-    rec.lang = locale;
-    rec.continuous = false;
-    rec.interimResults = false;
-    rec.maxAlternatives = 5;
+    const started = Date.now();
+    const finals: string[] = [];
+    let interim = '';
     let settled = false;
-    const alts: string[] = [];
+    let restarts = 0;
+    let rec: Recognition | null = null;
+    let silenceTimer: ReturnType<typeof setTimeout> | undefined;
+    let wantStop = false;
+
+    const heardSomething = () => finals.length > 0 || interim.trim().length > 0;
     const finish = (err?: ListenError) => {
       if (settled) return;
       settled = true;
-      clearTimeout(timer);
-      if (current === rec) current = null;
-      if (err) reject(err);
-      else if (alts.length) resolve({ alternatives: alts });
-      else reject('no-speech' satisfies ListenError);
+      clearTimeout(totalTimer);
+      clearTimeout(silenceTimer);
+      finishCurrent = null;
+      if (rec && current === rec) current = null;
+      try { rec?.abort(); } catch { /* egal */ }
+      const alts = [...finals];
+      if (interim.trim() && !alts.includes(interim.trim())) alts.push(interim.trim());
+      if (alts.length) resolve({ alternatives: alts });
+      else reject(err ?? ('no-speech' satisfies ListenError));
     };
-    const timer = setTimeout(() => { try { rec.stop(); } catch { /* egal */ } setTimeout(() => finish(), 600); }, opts.timeoutMs ?? 8000);
-    rec.onresult = (e) => {
-      for (let i = 0; i < e.results.length; i++) {
-        const r = e.results[i]!;
-        for (let j = 0; j < r.length; j++) {
-          const t = r[j]?.transcript?.trim();
-          if (t && !alts.includes(t)) alts.push(t);
+    // Sanft beenden: Browser liefert noch das Endergebnis, danach onend → finish
+    const stopSoft = () => {
+      wantStop = true;
+      try { rec?.stop(); } catch { /* egal */ }
+      setTimeout(() => finish(), 900);
+    };
+    finishCurrent = stopSoft;
+    const totalTimer = setTimeout(stopSoft, timeoutMs);
+
+    const start = () => {
+      let r: Recognition;
+      try { r = new C(); } catch { finish('unsupported'); return; }
+      rec = r;
+      current = r;
+      r.lang = locale;
+      r.continuous = true;
+      r.interimResults = true;
+      r.maxAlternatives = 5;
+      r.onresult = (e) => {
+        let live = '';
+        for (let i = 0; i < e.results.length; i++) {
+          const res = e.results[i]!;
+          if (res.isFinal === false) { live += `${res[0]?.transcript ?? ''} `; continue; }
+          for (let j = 0; j < res.length; j++) {
+            const t = res[j]?.transcript?.trim();
+            if (t && !finals.includes(t)) finals.push(t);
+          }
         }
-      }
-    };
-    rec.onerror = (e) => {
-      const map: Record<string, ListenError> = {
-        'not-allowed': 'denied', 'service-not-allowed': 'denied', 'no-speech': 'no-speech',
-        'audio-capture': 'no-mic', network: 'network', aborted: 'aborted', 'language-not-supported': 'unsupported'
+        // Mehrere Endergebnisse (Pausen im Satz) zusätzlich als ganzen Satz anbieten
+        const finalParts: string[] = [];
+        for (let i = 0; i < e.results.length; i++) { const res = e.results[i]!; if (res.isFinal !== false && res[0]) finalParts.push(res[0].transcript.trim()); }
+        const joined = finalParts.join(' ').trim();
+        if (finalParts.length > 1 && joined && !finals.includes(joined)) finals.unshift(joined);
+        interim = live.trim() ? `${joined} ${live}`.trim() : interim;
+        if (live.trim() || joined) opts.onInterim?.((live.trim() ? `${joined} ${live}` : joined).trim());
+        clearTimeout(silenceTimer);
+        silenceTimer = setTimeout(stopSoft, silenceMs);
       };
-      finish(map[e.error] ?? 'other');
+      r.onerror = (e) => {
+        if (e.error === 'no-speech' || e.error === 'aborted') return; // onend entscheidet
+        const map: Record<string, ListenError> = {
+          'not-allowed': 'denied', 'service-not-allowed': 'denied', 'audio-capture': 'no-mic',
+          network: 'network', 'language-not-supported': 'unsupported'
+        };
+        finish(map[e.error] ?? 'other');
+      };
+      r.onend = () => {
+        if (settled) return;
+        // Noch nichts gehört (Stille am Anfang, Browser hört zu früh auf)? Weiter zuhören, solange Zeit ist.
+        if (!wantStop && !heardSomething() && Date.now() - started < timeoutMs - 1500 && restarts < 6) {
+          restarts++;
+          setTimeout(() => { if (!settled) start(); }, 150);
+          return;
+        }
+        finish();
+      };
+      try { r.start(); } catch { finish('other'); }
     };
-    rec.onend = () => finish();
-    try { rec.start(); } catch { finish('other'); }
+    start();
   });
 }
