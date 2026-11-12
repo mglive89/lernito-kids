@@ -191,6 +191,8 @@ test('Lernpfad: Lektion abschließen schaltet die nächste frei, Theorie mit Bei
   await page.getByTestId(`theorie-${id}`).click();
   await expect(page.getByText('Das Wichtigste')).toBeVisible();
   await expect(page.getByTestId('beispiel').first()).toBeVisible();
+  await expect(page.getByTestId('theorie-abschnitt').first()).toBeVisible();
+  await expect(page.getByText('Typische Fehler')).toBeVisible();
   await page.getByTestId('theorie-ueben').click();
   await expect(page.getByText('Lektion 1 · Grundlagen').first()).toBeVisible();
   // Prüfen ist erst nach einer Auswahl aktiv

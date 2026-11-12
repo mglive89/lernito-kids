@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { BookOpen, CheckCircle2, ChevronDown, Lightbulb, Layers } from 'lucide-react';
 import { Visual } from './Visual';
 import { LinoSays } from './Lino';
+import { TheoryContent } from './TheoryContent';
 import { guideFor } from '../learning/guides';
 import { workedExamples } from '../learning/examples';
 import type { LearningModule, StudyCard } from '../learning/types';
@@ -40,6 +41,7 @@ export function GuideContent({ module, compact = false }: { module: LearningModu
           </ul>
         </section>
       )}
+      <TheoryContent moduleId={module.id} compact={compact} />
       {examples.length > 0 && (
         <section aria-labelledby="g-beispiele">
           <h2 id="g-beispiele" className="mb-3 flex items-center gap-2 font-display text-xl font-bold"><BookOpen size={20} className="text-himmel-700" /> {L('Beispiele mit Lösung', 'Esempi svolti')}</h2>
