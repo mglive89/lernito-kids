@@ -44,18 +44,17 @@ export function StartPage() {
   return (
     <div className="kinder-hintergrund min-h-[100dvh]" style={{ paddingTop: 'var(--safe-top)' }}>
       <div className="mx-auto flex max-w-6xl items-center justify-between px-4 pt-4 sm:px-6">
-        <span className="flex items-center gap-2 font-display text-xl font-extrabold tracking-tight"><img src={`${import.meta.env.BASE_URL}puppy/kopf.png`} alt="" className="h-10 w-10 rounded-xl bg-sonne-100 ring-2 ring-sonne-300" /> <span><span className="text-himmel-500">Lern</span><span className="text-sonne-500">ito</span> <span className="text-tinte/70">Kids</span></span></span>
+        <span className="flex items-center gap-2 font-display text-xl font-extrabold tracking-tight"><img src={`${import.meta.env.BASE_URL}puppy/kopf.png`} alt="" className="h-10 w-10 rounded-xl bg-sonne-100 ring-2 ring-sonne-300" /> <span>Lernito<span className="ml-1 rounded-md bg-sonne-100 px-1.5 py-0.5 align-middle text-xs font-bold text-sonne-700">Kids</span></span></span>
         <LanguageSwitch value={lang} onChange={(l) => { setLang(l); setUiLang(l); }} />
       </div>
       <main className="seite flex flex-col items-center gap-8 pt-4 sm:pt-6">
-        <section className="relative flex w-full flex-col items-center gap-4 overflow-hidden rounded-blob bg-gradient-to-br from-himmel-500 via-himmel-500 to-lila-500 p-6 text-center text-white shadow-karte sm:flex-row sm:p-8 sm:text-left">
+        <section className="relative flex w-full flex-col items-center gap-4 overflow-hidden rounded-blob bg-gradient-to-br from-himmel-600 to-himmel-500 p-6 text-center text-white shadow-karte sm:flex-row sm:p-8 sm:text-left">
           <div className="pointer-events-none absolute -right-24 -top-24 h-72 w-72 rounded-full bg-white/10" aria-hidden />
-          <div className="pointer-events-none absolute -bottom-28 right-40 h-60 w-60 rounded-full bg-sonne-300/25" aria-hidden />
-          <div className="pointer-events-none absolute left-6 top-10 h-24 w-24 rounded-full bg-sonne-300/30 blur-2xl" aria-hidden />
+          <div className="pointer-events-none absolute -bottom-28 right-40 h-60 w-60 rounded-full bg-white/[0.06]" aria-hidden />
           <div className="relative shrink-0"><Mascot size={210} /></div>
           <div className="relative flex-1">
             <p className="eyebrow text-white/75">{L('Lernen vom Kindergarten bis zum Abitur', 'Dalla scuola dell’infanzia alla maturità')}</p>
-            <h1 className="mt-2 font-display text-3xl font-bold tracking-tight sm:text-5xl" data-testid="greeting">{greet}</h1>
+            <h1 className="mt-2 font-display text-3xl font-extrabold tracking-tight sm:text-5xl" data-testid="greeting">{greet}</h1>
             <p className="mt-3 flex items-center justify-center gap-3 text-lg text-white/90 sm:justify-start">
               {intro} <SpeakButton text={`${greet} ${intro}`} />
             </p>

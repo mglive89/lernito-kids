@@ -1,6 +1,6 @@
 import { useSearchParams } from 'react-router-dom';
 import { useApp, useActiveProfile } from '../../store/useApp';
-import { SectionTitle, Tile, TopBar } from '../../components/ui';
+import { SectionTitle, SubjectIcon, Tile, TopBar } from '../../components/ui';
 import { schoolModules } from '../../learning/registry';
 import { L, tr } from '../../i18n';
 import { stageFor, stagesOf, yearLabel, type SubjectId } from '../../school/systems';
@@ -31,7 +31,7 @@ export function SchoolPage() {
     const d = subjectDef(id);
     const count = schoolModules(country, year, id, custom).length;
     return (
-      <Tile key={id} to={`/schule/${year}/${id}`} emoji={d?.emoji ?? '📘'} title={subjectName(id, country)}
+      <Tile key={id} to={`/schule/${year}/${id}`} icon={<SubjectIcon id={id} color={d?.color} size="lg" />} title={subjectName(id, country)}
         subtitle={count ? L(`${count} ${count === 1 ? 'Thema' : 'Themen'}`, `${count} ${count === 1 ? 'argomento' : 'argomenti'}`) : L('Bald verfügbar', 'Presto disponibile')}
         color={d?.color ?? 'himmel'} big={big} testId={`fach-${id}`} />
     );
@@ -43,15 +43,15 @@ export function SchoolPage() {
         <div className="mb-3 flex gap-2 overflow-x-auto pb-1" role="tablist" aria-label={L('Schulform', 'Tipo di scuola')}>
           {stages.map((s) => (
             <button key={s.id} role="tab" aria-selected={stage.id === s.id} onClick={() => setParams({ jahr: String(s.id === stage.id ? year : s.years[0]) })} data-testid={`stufe-${s.id}`}
-              className={`chip shrink-0 whitespace-nowrap px-4 py-2 ${stage.id === s.id ? 'bg-tinte text-white' : 'bg-white text-tinte/70 ring-1 ring-tinte/10'}`}>
-              <span className="emoji" aria-hidden>{s.emoji}</span> {tr(s.name)}
+              className={`shrink-0 whitespace-nowrap rounded-full px-4 py-2 text-sm font-semibold transition ${stage.id === s.id ? 'bg-tinte text-white' : 'bg-white text-tinte/70 ring-1 ring-tinte/10 hover:bg-tinte/[0.03]'}`}>
+              {tr(s.name)}
             </button>
           ))}
         </div>
-        <div className="mb-6 flex gap-1 overflow-x-auto rounded-2xl bg-white p-1.5 shadow-weich ring-1 ring-tinte/5" role="tablist" aria-label={L('Klasse', 'Classe')}>
+        <div className="mb-6 flex gap-1 overflow-x-auto rounded-xl bg-tinte/[0.05] p-1" role="tablist" aria-label={L('Klasse', 'Classe')}>
           {stage.years.map((y) => (
             <button key={y} role="tab" aria-selected={year === y} onClick={() => setParams({ jahr: String(y) })} data-testid={`klasse-${y}`}
-              className={`shrink-0 grow whitespace-nowrap rounded-xl px-3 py-2.5 font-display text-base font-bold transition sm:text-lg ${year === y ? 'bg-himmel-500 text-white shadow-weich' : 'text-tinte/70 hover:bg-tinte/5'}`}>
+              className={`shrink-0 grow whitespace-nowrap rounded-lg px-3 py-2 text-sm font-semibold transition sm:text-base ${year === y ? 'bg-white text-tinte shadow-weich' : 'text-tinte/60 hover:text-tinte'}`}>
               {yearLabel(country, y).replace(/ · .*/, '')}
             </button>
           ))}

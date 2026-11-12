@@ -15,7 +15,7 @@ test('PWA: Manifest, Icons und Offline-Start', async ({ page, context }) => {
   await page.waitForFunction(() => !!navigator.serviceWorker.controller);
   await context.setOffline(true);
   await page.reload();
-  await expect(page.getByText('Kindergarten').first()).toBeVisible();
+  await expect(page.getByText('Kindergarten').locator('visible=true').first()).toBeVisible();
   await page.goto('/kita');
   await page.getByTestId('modul-kita-memory').click();
   await expect(page.getByTestId('task-prompt')).toContainText('Paare');
@@ -30,4 +30,21 @@ test('Layout: kein horizontales Scrollen', async ({ page }) => {
     const overflow = await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth);
     expect(overflow, path).toBeLessThanOrEqual(1);
   }
+});
+
+test('Kein Zoom: Viewport gesperrt, Strg+Mausrad und Pinch-Gesten werden abgefangen', async ({ page }) => {
+  await page.goto('/');
+  const viewport = await page.locator('meta[name="viewport"]').getAttribute('content');
+  expect(viewport).toContain('user-scalable=no');
+  expect(viewport).toContain('maximum-scale=1');
+  const blocked = await page.evaluate(() => {
+    const wheel = new WheelEvent('wheel', { ctrlKey: true, deltaY: -100, cancelable: true, bubbles: true });
+    window.dispatchEvent(wheel);
+    const gesture = new Event('gesturestart', { cancelable: true, bubbles: true });
+    document.body.dispatchEvent(gesture);
+    const plain = new WheelEvent('wheel', { deltaY: 100, cancelable: true, bubbles: true });
+    window.dispatchEvent(plain);
+    return { wheel: wheel.defaultPrevented, gesture: gesture.defaultPrevented, plain: plain.defaultPrevented };
+  });
+  expect(blocked).toEqual({ wheel: true, gesture: true, plain: false });
 });

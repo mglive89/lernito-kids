@@ -8,3 +8,4 @@ export { Avatar } from './Avatar';
 export { Modal } from './Modal';
 export { Confetti } from './Confetti';
 export { Notice, Toggle } from './Feedback';
+export { IconBadge, SubjectIcon, subjectIcon } from './Icons';
