@@ -70,10 +70,32 @@ function chunks(text: string): string[] {
   return out.length ? out : [text];
 }
 
-function utter(text: string, rate: number, pitch: number): SpeechSynthesisUtterance {
+/** Stimme für eine andere Sprache (Sprachkurse), z. B. „en-GB“ oder „fr-FR“. */
+const otherVoices = new Map<string, SpeechSynthesisVoice | null>();
+function voiceFor(locale: string): SpeechSynthesisVoice | null {
+  if (otherVoices.has(locale)) return otherVoices.get(locale)!;
+  const voices = window.speechSynthesis.getVoices();
+  if (!voices.length) return null;
+  const norm = (l: string) => l.toLowerCase().replace('_', '-');
+  const exact = voices.filter((v) => norm(v.lang) === norm(locale));
+  const base = voices.filter((v) => norm(v.lang).startsWith(norm(locale).slice(0, 2)));
+  const pool = exact.length ? exact : base;
+  const v = pool.find((x) => x.localService) ?? pool[0] ?? null;
+  otherVoices.set(locale, v);
+  return v;
+}
+
+/** Gibt es auf diesem Gerät eine Stimme für diese Sprache? (null = Stimmen noch nicht geladen) */
+export function hasVoiceFor(locale: string): boolean | null {
+  if (!speechSupported()) return false;
+  if (!window.speechSynthesis.getVoices().length) return null;
+  return voiceFor(locale) !== null;
+}
+
+function utter(text: string, rate: number, pitch: number, locale?: string): SpeechSynthesisUtterance {
   const u = new SpeechSynthesisUtterance(text);
-  u.lang = speechLang === 'it' ? 'it-IT' : 'de-DE';
-  const v = cachedVoice ?? pickVoice();
+  u.lang = locale ?? (speechLang === 'it' ? 'it-IT' : 'de-DE');
+  const v = locale ? voiceFor(locale) : cachedVoice ?? pickVoice();
   if (v) u.voice = v;
   u.rate = rate;
   u.pitch = pitch;
@@ -91,7 +113,7 @@ function utter(text: string, rate: number, pitch: number): SpeechSynthesisUttera
  * - Chrome/Android: Synthese hängt nach Tab-Wechsel „pausiert“ → resume().
  * - iOS: das erste Vorlesen muss direkt aus einem Tippen kommen → dann sofort sprechen.
  */
-export function speak(text: string, opts: { rate?: number; pitch?: number; force?: boolean } = {}): boolean {
+export function speak(text: string, opts: { rate?: number; pitch?: number; force?: boolean; /** andere Sprache, z. B. „en-GB“ */ lang?: string } = {}): boolean {
   if ((!enabled && !opts.force) || !speechSupported() || !text) return false;
   try {
     const synth = window.speechSynthesis;
@@ -103,7 +125,7 @@ export function speak(text: string, opts: { rate?: number; pitch?: number; force
     const run = () => {
       pendingTimer = null;
       if (synth.paused) synth.resume();
-      for (const c of chunks(clean)) synth.speak(utter(c, rate, pitch));
+      for (const c of chunks(clean)) synth.speak(utter(c, rate, pitch, opts.lang));
     };
     const busy = synth.speaking || synth.pending;
     if (busy) {
@@ -138,7 +160,7 @@ export function stopSpeaking(): void {
 // Stimmen werden in Chrome erst asynchron geladen: Auswahl dann aktualisieren.
 if (speechSupported()) {
   try {
-    window.speechSynthesis.addEventListener('voiceschanged', () => { cachedVoice = null; pickVoice(); });
+    window.speechSynthesis.addEventListener('voiceschanged', () => { cachedVoice = null; otherVoices.clear(); pickVoice(); });
     pickVoice();
   } catch { /* ältere Browser */ }
 }

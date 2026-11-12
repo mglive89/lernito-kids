@@ -47,6 +47,20 @@ function checkTask(t: Task, ctx: string) {
     case 'puzzle':
       expect([2, 3]).toContain(t.grid);
       break;
+    case 'speak':
+      expect(t.phrase.trim().length, `${ctx}: Satz`).toBeGreaterThan(0);
+      expect(t.lang, ctx).toMatch(/^[a-z]{2}-[A-Z]{2}$/);
+      break;
+    case 'sentence': {
+      const pool = t.tiles.map((x) => x.toLowerCase());
+      for (const w of t.words) {
+        const i = pool.indexOf(w.toLowerCase());
+        expect(i, `${ctx}: Wort ${w} vorhanden`).toBeGreaterThanOrEqual(0);
+        pool.splice(i, 1);
+      }
+      expect(t.words.length, ctx).toBeGreaterThan(0);
+      break;
+    }
     case 'pick3d':
       expect(t.items.map((i) => i.id), ctx).toContain(t.correctId);
       expect(new Set(t.items.map((i) => i.id)).size, ctx).toBe(t.items.length);

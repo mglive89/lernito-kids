@@ -26,7 +26,7 @@ const tabs = (): { id: Tab; label: string; icon: typeof BarChart3 }[] => [
   { id: 'barrierefrei', label: L('Barrierefreiheit', 'Accessibilità'), icon: Accessibility }
 ];
 
-const areaLabel = (a: string) => ({ kita: L('Kindergarten', 'Scuola dell’infanzia'), schule: L('Schule', 'Scuola'), welt3d: L('3D-Lernwelt', 'Mondo 3D'), video: L('Video-Quiz', 'Quiz video') } as Record<string, string>)[a] ?? a;
+const areaLabel = (a: string) => ({ kita: L('Kindergarten', 'Scuola dell’infanzia'), schule: L('Schule', 'Scuola'), welt3d: L('3D-Lernwelt', 'Mondo 3D'), video: L('Video-Quiz', 'Quiz video'), lingue: L('Sprachkurse', 'Corsi di lingua') } as Record<string, string>)[a] ?? a;
 
 function groupLabel(m: LearningModule, country: Country = 'DE'): string {
   if (m.area === 'schule') {
@@ -384,6 +384,13 @@ function Privacy() {
         checked={parent.consentAiHelper}
         onChange={(v) => consent({ consentAiHelper: v })}
         testId="consent-ai"
+      />
+      <Toggle
+        label={L('Mikrofon für Aussprache und Sprachantworten', 'Microfono per pronuncia e risposte a voce')}
+        description={L('Kinder können in den Sprachkursen nachsprechen und Quizfragen mit der Stimme beantworten. Die Spracherkennung übernimmt der Browser; je nach Gerät wird die Aufnahme dafür an dessen Anbieter (z. B. Google oder Apple) übertragen. Lernito speichert keine Aufnahmen.', 'I bambini possono ripetere le frasi nei corsi di lingua e rispondere ai quiz con la voce. Il riconoscimento vocale è fornito dal browser; a seconda del dispositivo, l’audio può essere inviato al suo fornitore (ad es. Google o Apple). Lernito non salva registrazioni.')}
+        checked={!!parent.consentVoice}
+        onChange={(v) => consent({ consentVoice: v })}
+        testId="consent-voice"
       />
       {parent.consentUpdatedAt && <p className="text-sm text-tinte/60">{L('Einwilligungen zuletzt geändert:', 'Consensi modificati il:')} {new Date(parent.consentUpdatedAt).toLocaleString(locale())}</p>}
 

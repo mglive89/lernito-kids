@@ -57,6 +57,8 @@ export interface ParentSettings {
   /** Einwilligungen – alle standardmäßig aus */
   consentOnlineSync: boolean;
   consentAiHelper: boolean;
+  /** Mikrofon für Aussprache und Sprachantworten (Spracherkennung des Browsers) */
+  consentVoice?: boolean;
   consentUpdatedAt: string | null;
   highContrast: boolean;
   largeText: boolean;
@@ -136,7 +138,7 @@ interface AppState {
 export const emptyProgress = (): ProfileProgress => ({ stars: 0, xp: 0, rounds: 0, badges: {}, modules: {}, daily: {}, videos: {}, minigamesPlayed: 0 });
 export const defaultChildSettings = (): ChildSettings => ({ dailyGoalRounds: 3, timeLimitMin: null, assigned: [], speech: true, sounds: true });
 const defaultParent = (): ParentSettings => ({
-  pinHash: null, salt: null, consentOnlineSync: false, consentAiHelper: false, consentUpdatedAt: null,
+  pinHash: null, salt: null, consentOnlineSync: false, consentAiHelper: false, consentVoice: false, consentUpdatedAt: null,
   highContrast: false, largeText: false, reduceMotion: false, adminPinHash: null, adminSalt: null
 });
 
@@ -379,7 +381,7 @@ export function exportAllData(): string {
     {
       app: 'lernito-kids', exportedAt: new Date().toISOString(), version: 2,
       profiles: s.profiles, progress: s.progress, childSettings: s.childSettings, customModules: s.customModules,
-      parent: { consentOnlineSync: s.parent.consentOnlineSync, consentAiHelper: s.parent.consentAiHelper, consentUpdatedAt: s.parent.consentUpdatedAt }
+      parent: { consentOnlineSync: s.parent.consentOnlineSync, consentAiHelper: s.parent.consentAiHelper, consentVoice: !!s.parent.consentVoice, consentUpdatedAt: s.parent.consentUpdatedAt }
     },
     null, 2
   );

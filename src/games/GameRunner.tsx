@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import type { LearningModule, Task } from '../learning/types';
 import { createRng } from '../lib/random';
 import { speak, stopSpeaking } from '../lib/speech';
+import { stopListening } from '../lib/listen';
 import { sfx } from '../lib/sound';
 import { Lino } from '../components/Lino';
 import { Confetti, Modal, ProgressBar, SpeakButton } from '../components/ui';
@@ -66,7 +67,7 @@ export function GameRunner({ module, level, speechOn, onFinish, preview, backTo,
 
   const task = tasks[index];
   const multi = task ? MULTI_STEP.includes(task.type) : false;
-  const usesCheck = check && task?.type === 'choice';
+  const usesCheck = check && (task?.type === 'choice' || task?.type === 'sentence');
   const onPending = useCallback((fn: (() => void) | null) => setPending(() => fn), []);
   const steps = useMemo(() => (task ? helpSteps(task, check) : []), [task, check]);
 
@@ -95,10 +96,11 @@ export function GameRunner({ module, level, speechOn, onFinish, preview, backTo,
     const t = setTimeout(() => speak(task.speak ?? task.prompt), 350);
     return () => clearTimeout(t);
   }, [task, speechOn]);
-  useEffect(() => () => stopSpeaking(), []);
+  useEffect(() => () => { stopSpeaking(); stopListening(); }, []);
 
   const next = useCallback(() => {
     stopSpeaking();
+    stopListening();
     setFeedback(null);
     setAttempts(0);
     setPhase('answer');
@@ -157,6 +159,15 @@ export function GameRunner({ module, level, speechOn, onFinish, preview, backTo,
       }
     }
   }, [phase, task, attempts, speechOn, multi]);
+
+  // „Ich kann gerade nicht sprechen“: Aufgabe zeigen und weiter, zählt nicht als gelöst
+  const onSkip = useCallback(() => {
+    if (phase !== 'answer') return;
+    setStreak(0);
+    setCoach(null);
+    setFeedback({ title: L('Kein Problem!', 'Nessun problema!'), text: L('Wir üben das Sprechen ein anderes Mal.', 'Faremo pratica di pronuncia un’altra volta.'), tone: 'help' });
+    setPhase('reveal');
+  }, [phase]);
 
   // Kita: automatisch weiter nach richtiger Antwort. Schule: mit „Weiter“.
   useEffect(() => {
@@ -254,7 +265,7 @@ export function GameRunner({ module, level, speechOn, onFinish, preview, backTo,
               )}
             </AnimatePresence>
             {task.visual && <Visual v={task.visual} />}
-            <TaskView task={task} onCorrect={onCorrect} onWrong={onWrong} reveal={phase === 'reveal' || revealHelp} done={phase !== 'answer'} onPending={usesCheck ? onPending : undefined} />
+            <TaskView task={task} onCorrect={onCorrect} onWrong={onWrong} reveal={phase === 'reveal' || revealHelp} done={phase !== 'answer'} onPending={usesCheck ? onPending : undefined} onSkip={onSkip} />
             {phase === 'reveal' && (
               <motion.ol initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="karte w-full list-decimal space-y-2 py-4 pl-10 pr-5 text-lg sm:text-xl" aria-label={L('Erklärung Schritt für Schritt', 'Spiegazione passo per passo')}>
                 {task.explain.map((s, i) => (

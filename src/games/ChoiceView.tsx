@@ -5,7 +5,9 @@ import type { ChoiceOption, ChoiceTask } from '../learning/types';
 import { Shape } from '../components/Shape';
 import { speak } from '../lib/speech';
 import type { TaskViewProps } from './types';
-import { L } from '../i18n';
+import { L, getLang, locale } from '../i18n';
+import { VoiceAnswer } from '../components/voice/Voice';
+import { matchOption } from '../lib/voiceMatch';
 import { sfx } from '../lib/sound';
 
 export function ChoiceView({ task, onCorrect, onWrong, reveal, done, onPending }: TaskViewProps<ChoiceTask>) {
@@ -30,7 +32,7 @@ export function ChoiceView({ task, onCorrect, onWrong, reveal, done, onPending }
 
   const choose = (o: ChoiceOption) => {
     if (done || reveal || wrong.includes(o.id)) return;
-    if (o.speak) speak(o.speak);
+    if (o.speak) speak(o.speak, o.speakLang ? { lang: o.speakLang, rate: 0.9, pitch: 1 } : {});
     if (onPending) { sfx.select(); setSelected(o.id); return; }
     evaluate(o.id);
   };
@@ -57,7 +59,21 @@ export function ChoiceView({ task, onCorrect, onWrong, reveal, done, onPending }
       : style === 'color' ? (n > 4 ? 'grid-cols-3' : n === 4 ? 'grid-cols-2 sm:grid-cols-4' : 'grid-cols-3')
         : n === 2 ? 'grid-cols-2' : n === 3 ? 'grid-cols-3' : n === 4 ? 'grid-cols-2 sm:grid-cols-4' : 'grid-cols-3';
 
+  // Sprachantwort: nur wenn jede Möglichkeit einen sagbaren Namen hat
+  const spoken = task.options.map((o) => o.label ?? o.speak ?? '');
+  const voiceOk = spoken.every((x) => x.trim().length > 0);
+  const voiceLang = task.options[0]?.speakLang ?? locale();
+  const onHeard = (alts: string[]): string | null => {
+    const i = matchOption(alts, spoken, voiceLang.slice(0, 2) || getLang());
+    const o = i === null ? undefined : task.options[i];
+    if (!o) return L(`Ich habe „${alts[0]}“ verstanden. Sag eine der Antworten oder tippe sie an.`, `Ho capito «${alts[0]}». Di’ una delle risposte oppure toccala.`);
+    if (wrong.includes(o.id)) return L(`„${spoken[i!]}“ hast du schon probiert.`, `«${spoken[i!]}» l’hai già provata.`);
+    choose(o);
+    return null;
+  };
+
   return (
+    <>
     <div className={`grid w-full gap-3 sm:gap-4 ${style === 'text' ? 'max-w-3xl' : 'max-w-2xl'} ${grid}`} role="group" aria-label={L('Antwortmöglichkeiten', 'Risposte possibili')}>
       {task.options.map((o) => {
         const isWrong = wrong.includes(o.id);
@@ -92,6 +108,8 @@ export function ChoiceView({ task, onCorrect, onWrong, reveal, done, onPending }
         );
       })}
     </div>
+    {voiceOk && !done && !reveal && <VoiceAnswer locale={voiceLang} onHeard={onHeard} />}
+    </>
   );
 }
 

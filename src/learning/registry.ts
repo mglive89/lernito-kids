@@ -11,6 +11,7 @@ import { HUMANITIES_MODULES } from './modules/humanities';
 import { ENGLISH_MODULES } from './modules/english';
 import { EXTRA_MODULES } from './modules/extras';
 import { CODING_MODULES } from './modules/coding';
+import { LANGUAGE_MODULES } from '../lingue/course';
 import { LESSONS, lessonQuizModule } from '../video/lessons';
 import { customToModule, type CustomModule } from './custom';
 import { subjectDef } from '../school/subjects';
@@ -19,7 +20,7 @@ import type { Country } from '../school/systems';
 export const BUILTIN_MODULES: LearningModule[] = [
   ...KITA_MODULES, ...MATH_MODULES, ...MATH_SEK_MODULES, ...GERMAN_MODULES, ...GERMAN_SEK_MODULES, ...ITALIAN_MODULES,
   ...SACH_MODULES, ...SCIENCE_MODULES, ...HUMANITIES_MODULES, ...ENGLISH_MODULES, ...EXTRA_MODULES, ...CODING_MODULES,
-  ...WORLD3D_MODULES, ...LESSONS.map(lessonQuizModule)
+  ...WORLD3D_MODULES, ...LESSONS.map(lessonQuizModule), ...LANGUAGE_MODULES
 ];
 
 export function allModules(custom: CustomModule[] = [], includeDrafts = false): LearningModule[] {
