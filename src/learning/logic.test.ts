@@ -175,6 +175,23 @@ describe('Lernpfad und Theorie', async () => {
       expect(workedExamples(m).length + (m.cards?.().length ?? 0), m.id).toBeGreaterThan(0);
     }
   });
+  it('jedes Schulthema hat ausführliche Theorie auf Deutsch und Italienisch', async () => {
+    const { theoryFor, THEORY } = await import('./theory');
+    const ids = new Set(BUILTIN_MODULES.map((m) => m.id));
+    for (const id of Object.keys(THEORY)) expect(ids.has(id), `unbekanntes Thema ${id}`).toBe(true);
+    for (const m of BUILTIN_MODULES.filter((x) => x.area === 'schule')) {
+      const t = theoryFor(m.id);
+      expect(t, m.id).toBeDefined();
+      expect(t!.sections.length, m.id).toBeGreaterThanOrEqual(3);
+      expect(t!.mistakes.length + t!.terms.length, m.id).toBeGreaterThan(0);
+      for (const s of t!.sections) {
+        for (const txt of [s.title, s.text, s.example, s.tip]) {
+          if (txt === undefined) continue;
+          expect(typeof txt === 'object' && txt.de.trim() && txt.it.trim(), `${m.id}: ${JSON.stringify(txt)}`).toBeTruthy();
+        }
+      }
+    }
+  });
   it('Lektionen zählen hoch, alte Fortschritte gelten als erste Lektion', () => {
     const r = { moduleId: 'x', total: 6, firstTry: 6, solved: 6, hintsUsed: 0, durationSec: 30 };
     let p = applyRound(emptyModuleProgress(), { ...r, pathStep: 1 });
