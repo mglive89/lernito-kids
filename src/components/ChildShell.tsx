@@ -1,7 +1,8 @@
 import { NavLink, Outlet, useLocation } from 'react-router-dom';
 import { Lock } from 'lucide-react';
 import { useActiveProfile } from '../store/useApp';
-import { Avatar } from './ui';
+import { motion } from 'framer-motion';
+import { Avatar, PageTransition } from './ui';
 import { profileLabel } from '../school/systems';
 import { L } from '../i18n';
 import { sfx } from '../lib/sound';
@@ -30,8 +31,9 @@ export function ChildShell() {
             const on = isNavActive(it, pathname);
             return (
               <NavLink key={it.testId} to={it.to} onClick={() => sfx.tap()} data-testid={`${it.testId}-seite`} aria-current={on ? 'page' : undefined}
-                className={`relative flex items-center gap-3 rounded-xl px-3 py-2.5 text-[15px] font-semibold transition ${on ? 'bg-himmel-50 text-himmel-700' : 'text-tinte/65 hover:bg-tinte/[0.04] hover:text-tinte'}`}>
-                {on && <span className="absolute -left-4 top-2 bottom-2 w-1 rounded-r-full bg-himmel-500" aria-hidden />}
+                className={`relative flex items-center gap-3 rounded-xl px-3 py-2.5 text-[15px] font-semibold transition isolate ${on ? 'text-himmel-700' : 'text-tinte/65 hover:bg-tinte/[0.04] hover:text-tinte'}`}>
+                {on && <motion.span layoutId="nav-seite" className="absolute inset-0 -z-10 rounded-xl bg-himmel-50" transition={{ type: 'spring', stiffness: 420, damping: 34 }} aria-hidden />}
+                {on && <motion.span layoutId="nav-seite-strich" className="absolute -left-4 bottom-2 top-2 w-1 rounded-r-full bg-himmel-500" transition={{ type: 'spring', stiffness: 420, damping: 34 }} aria-hidden />}
                 <it.icon size={20} strokeWidth={on ? 2.4 : 2} />
                 {it.label}
               </NavLink>
@@ -52,7 +54,7 @@ export function ChildShell() {
         </div>
       </aside>
 
-      <div className="pb-24 lg:pb-0"><Outlet /></div>
+      <div className="pb-24 lg:pb-0"><PageTransition id={pathname}><Outlet /></PageTransition></div>
 
       {/* Tab-Leiste */}
       <nav className="fixed inset-x-0 bottom-0 z-30 border-t border-tinte/[0.07] bg-white/95 backdrop-blur lg:hidden" style={{ paddingBottom: 'var(--safe-bottom)' }} aria-label={L('Hauptnavigation', 'Navigazione principale')}>
@@ -62,8 +64,10 @@ export function ChildShell() {
             return (
               <NavLink key={it.testId} to={it.to} onClick={() => sfx.tap()} data-testid={it.testId} aria-current={on ? 'page' : undefined}
                 className={`relative flex min-w-0 flex-col items-center gap-1 pb-2 pt-2.5 text-[11px] font-semibold transition ${on ? 'text-himmel-600' : 'text-tinte/50'}`}>
-                {on && <span className="absolute inset-x-5 top-0 h-[3px] rounded-b-full bg-himmel-500" aria-hidden />}
-                <it.icon size={22} strokeWidth={on ? 2.4 : 2} />
+                {on && <motion.span layoutId="nav-tab" className="absolute inset-x-5 top-0 h-[3px] rounded-b-full bg-himmel-500" transition={{ type: 'spring', stiffness: 420, damping: 34 }} aria-hidden />}
+                <motion.span animate={on ? { y: -1, scale: 1.08 } : { y: 0, scale: 1 }} whileTap={{ scale: 0.88 }} transition={{ type: 'spring', stiffness: 500, damping: 26 }} className="flex">
+                  <it.icon size={22} strokeWidth={on ? 2.4 : 2} />
+                </motion.span>
                 <span className="max-w-full truncate">{it.label}</span>
               </NavLink>
             );

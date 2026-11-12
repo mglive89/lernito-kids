@@ -43,7 +43,7 @@ export function StartPage() {
   const intro = L(`Ich bin ${MASCOT_NAME}. Wer lernt heute mit mir?`, `Sono ${MASCOT_NAME}. Chi impara con me oggi?`);
   return (
     <div className="kinder-hintergrund min-h-[100dvh]" style={{ paddingTop: 'var(--safe-top)' }}>
-      <div className="mx-auto flex max-w-6xl items-center justify-between px-4 pt-4 sm:px-6">
+      <div className="mx-auto flex max-w-6xl 2xl:max-w-7xl items-center justify-between px-4 pt-4 sm:px-6">
         <span className="flex items-center gap-2 font-display text-xl font-extrabold tracking-tight"><img src={`${import.meta.env.BASE_URL}puppy/kopf.png`} alt="" className="h-10 w-10 rounded-xl bg-sonne-100 ring-2 ring-sonne-300" /> <span>Lernito<span className="ml-1 rounded-md bg-sonne-100 px-1.5 py-0.5 align-middle text-xs font-bold text-sonne-700">Kids</span></span></span>
         <LanguageSwitch value={lang} onChange={(l) => { setLang(l); setUiLang(l); }} />
       </div>

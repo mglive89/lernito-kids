@@ -9,7 +9,7 @@ export function TopBar({ title, back, right, stars }: { title?: string; back?: s
   const nav = useNavigate();
   return (
     <header className="sticky top-0 z-30 border-b border-tinte/[0.06] bg-white/85 backdrop-blur-md" style={{ paddingTop: 'var(--safe-top)' }}>
-      <div className="mx-auto flex h-16 max-w-6xl items-center gap-3 px-4 sm:px-6">
+      <div className="mx-auto flex h-16 max-w-6xl 2xl:max-w-7xl items-center gap-3 px-4 sm:px-6">
         {back !== undefined && (
           <button
             className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full text-tinte/70 ring-1 ring-tinte/10 transition hover:bg-tinte/[0.04] hover:text-tinte focus-visible:outline focus-visible:outline-4 focus-visible:outline-himmel-500"

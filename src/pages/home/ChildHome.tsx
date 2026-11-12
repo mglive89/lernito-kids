@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import { ArrowRight, CalendarCheck, ChevronRight, Play, Target, Zap } from 'lucide-react';
 import { useApp, useActiveProfile } from '../../store/useApp';
-import { Avatar, colorSet, IconBadge, ProgressBar, ProgressRing, SectionTitle, StarCount, SubjectIcon, subjectIcon, Tile } from '../../components/ui';
+import { Avatar, colorSet, CountUp, IconBadge, Reveal, Stagger, StaggerItem, ProgressBar, ProgressRing, SectionTitle, StarCount, SubjectIcon, subjectIcon, Tile } from '../../components/ui';
 import { sfx } from '../../lib/sound';
 import { lessonLabel, lessonLink } from '../../learning/lessons';
 import { Lino } from '../../components/Lino';
@@ -43,7 +43,7 @@ export function ChildHome() {
 
   return (
     <div style={{ paddingTop: 'var(--safe-top)' }}>
-      <header className="mx-auto flex max-w-6xl items-center gap-3 px-4 pt-5 sm:px-6">
+      <header className="mx-auto flex max-w-6xl 2xl:max-w-7xl items-center gap-3 px-4 pt-5 sm:px-6">
         <Link to="/avatar" aria-label={L('Avatar gestalten', 'Personalizza l’avatar')}><Avatar config={profile.avatar} size={48} /></Link>
         <div className="min-w-0 flex-1">
           <p className="truncate font-display text-xl font-extrabold tracking-tight sm:text-2xl">{hello}, {profile.name}!</p>
@@ -54,9 +54,11 @@ export function ChildHome() {
 
       <main className="seite">
         {/* Weiterlernen mit Puppy */}
-        <section className="relative mt-5 overflow-hidden rounded-blob bg-gradient-to-br from-himmel-600 to-himmel-500 text-white shadow-karte" aria-label={L('Weiterlernen', 'Continua')}>
-          <span className="pointer-events-none absolute -right-20 -top-24 h-72 w-72 rounded-full bg-white/[0.07]" aria-hidden />
-          <span className="pointer-events-none absolute -bottom-32 right-32 h-64 w-64 rounded-full bg-white/[0.05]" aria-hidden />
+        <section className="relative mt-5 overflow-hidden rounded-blob hero-lebendig text-white shadow-karte" aria-label={L('Weiterlernen', 'Continua')}>
+          <span className="schwebe pointer-events-none absolute -right-20 -top-24 h-72 w-72 rounded-full bg-white/[0.08]" aria-hidden />
+          <span className="schwebe-langsam pointer-events-none absolute -bottom-32 right-32 h-64 w-64 rounded-full bg-white/[0.06]" aria-hidden />
+          <span className="schwebe pointer-events-none absolute left-1/2 top-6 h-3 w-3 rounded-full bg-sonne-300/80" aria-hidden />
+          <span className="schwebe-langsam pointer-events-none absolute right-1/3 bottom-10 h-2 w-2 rounded-full bg-white/70" aria-hidden />
           <div className="relative flex items-end gap-2 p-5 sm:gap-6 sm:p-7">
             <div className="min-w-0 flex-1">
               <p className="text-sm font-medium text-white/80" aria-live="polite">
@@ -73,7 +75,7 @@ export function ChildHome() {
                 </span>
               </div>
               <Link to={lessonLink(cont, pathDoneOf(progress.modules[cont.id]))} onClick={() => sfx.tap()} data-testid="weiterlernen"
-                className="knopf mt-5 w-full bg-white text-himmel-700 ring-0 hover:bg-himmel-50 sm:w-auto sm:px-7">
+                className="knopf glanz puls mt-5 w-full bg-white text-himmel-700 ring-0 hover:bg-himmel-50 sm:w-auto sm:px-7">
                 <Play size={18} className="fill-himmel-700" /> {L('Los geht’s', 'Iniziamo')}
               </Link>
             </div>
@@ -83,26 +85,26 @@ export function ChildHome() {
         </section>
 
         {/* Tagesziel, Level, Lerntage */}
-        <div className="mt-4 grid grid-cols-3 gap-3 sm:gap-4">
-          <div className="karte-3d flex flex-col items-center gap-2 p-3 text-center sm:flex-row sm:gap-4 sm:p-4 sm:text-left" aria-label={L('Tagesziel', 'Obiettivo del giorno')}>
+        <Stagger className="mt-4 grid grid-cols-3 gap-3 sm:gap-4">
+          <StaggerItem className="karte-3d flex flex-col items-center gap-2 p-3 text-center sm:flex-row sm:gap-4 sm:p-4 sm:text-left" aria-label={L('Tagesziel', 'Obiettivo del giorno')}>
             <ProgressRing value={today.rounds / goal} size={52} stroke={6} color="#12B886" label={L('Tagesziel', 'Obiettivo del giorno')}>
               <Target size={20} className="text-minze-600" />
             </ProgressRing>
             <span><span className="block font-display text-lg font-extrabold leading-none sm:text-xl">{Math.min(today.rounds, goal)}/{goal}</span><span className="text-xs font-medium text-tinte/55">{L('Tagesziel', 'Obiettivo')}</span></span>
-          </div>
-          <div className="karte-3d flex flex-col items-center gap-2 p-3 text-center sm:flex-row sm:gap-4 sm:p-4 sm:text-left" aria-label={L('Level-Fortschritt', 'Progresso di livello')}>
+          </StaggerItem>
+          <StaggerItem className="karte-3d flex flex-col items-center gap-2 p-3 text-center sm:flex-row sm:gap-4 sm:p-4 sm:text-left" aria-label={L('Level-Fortschritt', 'Progresso di livello')}>
             <IconBadge icon={Zap} color="lila" size="lg" />
             <span className="w-full min-w-0">
-              <span className="block font-display text-lg font-extrabold leading-none sm:text-xl">{progress.xp} XP</span>
+              <span className="block font-display text-lg font-extrabold leading-none sm:text-xl"><CountUp value={progress.xp} /> XP</span>
               <span className="text-xs font-medium text-tinte/55">{lvl.next ? L(`noch ${lvl.next - progress.xp} bis Level ${lvl.level + 1}`, `${lvl.next - progress.xp} al livello ${lvl.level + 1}`) : L('Höchstes Level!', 'Livello massimo!')}</span>
               <span className="mt-1.5 hidden sm:block"><ProgressBar value={lvl.progress} color="bg-lila-500" label={L('Fortschritt zum nächsten Level', 'Progresso verso il prossimo livello')} /></span>
             </span>
-          </div>
-          <div className="karte-3d flex flex-col items-center gap-2 p-3 text-center sm:flex-row sm:gap-4 sm:p-4 sm:text-left" aria-label={L('Lerntage', 'Giorni di studio')}>
+          </StaggerItem>
+          <StaggerItem className="karte-3d flex flex-col items-center gap-2 p-3 text-center sm:flex-row sm:gap-4 sm:p-4 sm:text-left" aria-label={L('Lerntage', 'Giorni di studio')}>
             <IconBadge icon={CalendarCheck} color="koralle" size="lg" />
-            <span><span className="block font-display text-lg font-extrabold leading-none sm:text-xl">{learnDays}</span><span className="text-xs font-medium text-tinte/55">{L('Lerntage', 'Giorni di studio')}</span></span>
-          </div>
-        </div>
+            <span><span className="block font-display text-lg font-extrabold leading-none sm:text-xl"><CountUp value={learnDays} /></span><span className="text-xs font-medium text-tinte/55">{L('Lerntage', 'Giorni di studio')}</span></span>
+          </StaggerItem>
+        </Stagger>
 
         <SectionTitle action={!isKita && (
           <Link to={`/schule?jahr=${year}`} className="flex items-center gap-1 text-sm font-semibold text-himmel-600 hover:text-himmel-700" data-testid="bereich-schule">{L('Alle Fächer', 'Tutte le materie')} <ChevronRight size={16} /></Link>
@@ -113,7 +115,7 @@ export function ChildHome() {
             <Tile to="/schule?jahr=1" emoji="🎒" title={L('Schon mal in die Schule schauen', 'Dai un’occhiata alla scuola')} subtitle={L('Aufgaben der 1. Klasse', 'Esercizi della prima classe')} color="himmel" big testId="bereich-schule" />
           </div>
         ) : (
-          <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-4 xl:grid-cols-4">
+          <Stagger className="grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-4 xl:grid-cols-4">
             {subjects.map((id) => {
               const d = subjectDef(id);
               const mods = schoolModules(country, year, id, custom);
@@ -121,10 +123,11 @@ export function ChildHome() {
               const total = mods.length * 3;
               const c = colorSet(d?.color);
               return (
-                <Link key={id} to={`/schule/${year}/${id}`} onClick={() => sfx.tap()} data-testid={`home-fach-${id}`}
-                  className="karte-3d group flex flex-col gap-4 p-4 transition hover:-translate-y-0.5 sm:p-5">
+                <StaggerItem key={id}>
+                <Link to={`/schule/${year}/${id}`} onClick={() => sfx.tap()} data-testid={`home-fach-${id}`}
+                  className="karte-3d group flex h-full flex-col gap-4 p-4 hover:-translate-y-1 sm:p-5">
                   <span className="flex items-start justify-between">
-                    <SubjectIcon id={id} color={d?.color} size="lg" />
+                    <span className="transition-transform duration-300 group-hover:-rotate-6 group-hover:scale-110"><SubjectIcon id={id} color={d?.color} size="lg" /></span>
                     <ArrowRight size={18} className={`${c.text} opacity-0 transition group-hover:opacity-100`} aria-hidden />
                   </span>
                   <span>
@@ -133,9 +136,10 @@ export function ChildHome() {
                     <ProgressBar value={total ? done / total : 0} color={c.bg} label={L(`${done} von ${total} Lektionen`, `${done} di ${total} lezioni`)} />
                   </span>
                 </Link>
+                </StaggerItem>
               );
             })}
-          </div>
+          </Stagger>
         )}
 
         {assigned.length > 0 && (
@@ -159,6 +163,7 @@ export function ChildHome() {
           </>
         )}
 
+        <Reveal>
         <SectionTitle action={<Link to="/entdecken" className="flex items-center gap-1 text-sm font-semibold text-himmel-600 hover:text-himmel-700">{L('Alle', 'Tutto')} <ChevronRight size={16} /></Link>}>
           {L('Entdecken', 'Scopri')}
         </SectionTitle>
@@ -167,6 +172,7 @@ export function ChildHome() {
             <Tile key={it.to} to={it.to} icon={<IconBadge icon={it.icon} color={it.color} size="lg" />} title={it.title} subtitle={it.text} color={it.color} />
           ))}
         </div>
+        </Reveal>
       </main>
     </div>
   );

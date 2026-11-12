@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Lock, Star } from 'lucide-react';
 import { useApp, useActiveProfile } from '../../store/useApp';
-import { Avatar, ProgressBar, TopBar } from '../../components/ui';
+import { Avatar, ProgressBar, TopBar, AnimatedGrid } from '../../components/ui';
 import { Lino, LinoSays } from '../../components/Lino';
 import { AVATAR_EXTRAS, AVATAR_FARBEN, AVATAR_TIERE, BADGES, levelFromXp, MINIGAMES } from '../../learning/rewards';
 import { kitaModules, schoolModules, world3dModules } from '../../learning/registry';
@@ -64,7 +64,7 @@ export function BadgesPage() {
       <TopBar title={L('Meine Erfolge', 'I miei traguardi')} back="/home" stars={progress.stars} />
       <main className="seite">
         <LinoSays text={L(`Du hast schon ${Object.keys(owned).length} von ${BADGES.length} Abzeichen!`, `Hai già ${Object.keys(owned).length} distintivi su ${BADGES.length}!`)} size={80} mood="jubel" />
-        <div className="mt-6 grid grid-cols-3 gap-3 sm:grid-cols-4 sm:gap-4 lg:grid-cols-5">
+        <AnimatedGrid className="mt-6 grid grid-cols-3 gap-3 sm:grid-cols-4 sm:gap-4 lg:grid-cols-5">
           {BADGES.map((b) => {
             const has = !!owned[b.id];
             return (
@@ -76,7 +76,7 @@ export function BadgesPage() {
               </div>
             );
           })}
-        </div>
+        </AnimatedGrid>
       </main>
     </div>
   );

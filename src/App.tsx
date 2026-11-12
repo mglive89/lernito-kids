@@ -1,5 +1,6 @@
 import { Suspense, useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
+import { MotionConfig } from 'framer-motion';
 import { AppRoutes, isAdultRoute } from './app/routes';
 import { useApp, useActiveProfile } from './store/useApp';
 import { primeSpeech, setSpeechEnabled } from './lib/speech';
@@ -90,12 +91,12 @@ export default function App() {
   if (!hydrated) return <Loading />;
 
   return (
-    <>
+    <MotionConfig reducedMotion={parent.reduceMotion ? 'always' : 'user'}>
       <Suspense fallback={<Loading />}>
         <AppRoutes />
       </Suspense>
       {timeUp && profile && <TimeUpOverlay onUnlocked={() => setTimeUpDismissed(`${profile.id}-${dateKey()}`)} />}
       <UpdatePrompt />
-    </>
+    </MotionConfig>
   );
 }
