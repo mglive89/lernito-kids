@@ -43,7 +43,7 @@ export function SchoolPage() {
         <div className="mb-3 flex gap-2 overflow-x-auto pb-1" role="tablist" aria-label={L('Schulform', 'Tipo di scuola')}>
           {stages.map((s) => (
             <button key={s.id} role="tab" aria-selected={stage.id === s.id} onClick={() => setParams({ jahr: String(s.id === stage.id ? year : s.years[0]) })} data-testid={`stufe-${s.id}`}
-              className={`shrink-0 whitespace-nowrap rounded-full px-4 py-2 text-sm font-semibold transition ${stage.id === s.id ? 'bg-tinte text-white' : 'bg-white text-tinte/70 ring-1 ring-tinte/10 hover:bg-tinte/[0.03]'}`}>
+              className={`shrink-0 whitespace-nowrap rounded-full px-4 py-2 text-sm font-semibold transition ${stage.id === s.id ? 'bg-tinte-fest text-white' : 'bg-flaeche text-tinte/70 ring-1 ring-tinte/10 hover:bg-tinte/[0.03]'}`}>
               {tr(s.name)}
             </button>
           ))}
@@ -51,7 +51,7 @@ export function SchoolPage() {
         <div className="mb-6 flex gap-1 overflow-x-auto rounded-xl bg-tinte/[0.05] p-1" role="tablist" aria-label={L('Klasse', 'Classe')}>
           {stage.years.map((y) => (
             <button key={y} role="tab" aria-selected={year === y} onClick={() => setParams({ jahr: String(y) })} data-testid={`klasse-${y}`}
-              className={`shrink-0 grow whitespace-nowrap rounded-lg px-3 py-2 text-sm font-semibold transition sm:text-base ${year === y ? 'bg-white text-tinte shadow-weich' : 'text-tinte/60 hover:text-tinte'}`}>
+              className={`shrink-0 grow whitespace-nowrap rounded-lg px-3 py-2 text-sm font-semibold transition sm:text-base ${year === y ? 'bg-flaeche text-tinte shadow-weich' : 'text-tinte/60 hover:text-tinte'}`}>
               {yearLabel(country, y).replace(/ · .*/, '')}
             </button>
           ))}

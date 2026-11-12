@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { motion, useReducedMotion } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { MASCOT_DESC } from '../content/mascot';
 
 export type LinoMood = 'freude' | 'denken' | 'jubel' | 'winken' | 'ruhig';
@@ -29,10 +29,7 @@ const C = {
   haar: '#7A4A1E'
 };
 
-function motionFor(mood: LinoMood, off: boolean) {
-  if (off) return undefined;
-  return mood === 'jubel' ? { y: [0, -14, 0], rotate: [0, -4, 4, 0] } : mood === 'denken' ? { rotate: [0, -4, 0] } : mood === 'winken' ? { rotate: [0, 3, 0, 3, 0] } : { y: [0, -5, 0] };
-}
+// Puppy steht ruhig: keine Dauer-Animationen mehr (Wunsch von Marco). Reaktion nur beim Antippen (PuppyTap).
 
 /**
  * Puppy – das Maskottchen von Lernito Kids: ein gelber Hund mit Schlappohren, blauem Hoodie und Sneakern.
@@ -40,8 +37,7 @@ function motionFor(mood: LinoMood, off: boolean) {
  * Fallback: gezeichnete SVG-Version.
  */
 export function Lino(props: Props) {
-  const { mood = 'freude', size = 140, className = '', still = false, flat = false } = props;
-  const reduce = useReducedMotion();
+  const { size = 140, className = '', flat = false } = props;
   const [failed, setFailed] = useState(false);
   if (flat || failed) return <LinoFlat {...props} />;
   return (
@@ -54,22 +50,12 @@ export function Lino(props: Props) {
       onError={() => setFailed(true)}
       className={`pointer-events-none select-none ${className}`}
       style={{ margin: `${-size * 0.06}px 0`, transformOrigin: '50% 90%' }}
-      animate={motionFor(mood, still || !!reduce)}
-      transition={{ duration: mood === 'jubel' ? 0.9 : 2.4, repeat: Infinity, ease: 'easeInOut' }}
     />
   );
 }
 
 /** Gezeichnete Puppy-Version (SVG) */
-export function LinoFlat({ mood = 'freude', size = 140, className = '', still = false }: Props) {
-  const reduce = useReducedMotion();
-  const animate = still || reduce
-    ? undefined
-    : mood === 'jubel'
-      ? { y: [0, -14, 0], rotate: [0, -4, 4, 0] }
-      : mood === 'denken'
-        ? { rotate: [0, -3, 0] }
-        : { y: [0, -5, 0] };
+export function LinoFlat({ mood = 'freude', size = 140, className = '' }: Props) {
   return (
     <motion.svg
       viewBox="0 0 200 220"
@@ -78,13 +64,11 @@ export function LinoFlat({ mood = 'freude', size = 140, className = '', still = 
       className={className}
       role="img"
       aria-label={MASCOT_DESC}
-      animate={animate}
-      transition={{ duration: mood === 'jubel' ? 0.9 : 2.4, repeat: Infinity, ease: 'easeInOut' }}
     >
       <Legs />
       <Body />
       <Head mood={mood} />
-      <Arms mood={mood} reduce={!!reduce} />
+      <Arms mood={mood} reduce />
       {mood === 'denken' && (
         <g fill="#fff" stroke={C.tinte} strokeWidth="2">
           <circle cx="150" cy="10" r="4" />
@@ -262,7 +246,7 @@ export function LinoSays({ text, mood = 'freude', size = 90 }: { text: string; m
     <div className="flex items-end gap-3">
       <Lino mood={mood} size={size} />
       <div className="karte-3d relative mb-6 max-w-md px-5 py-3 font-display text-lg font-medium sm:text-xl" aria-live="polite">
-        <span className="absolute -left-2 bottom-4 h-4 w-4 rotate-45 bg-white" aria-hidden />
+        <span className="absolute -left-2 bottom-4 h-4 w-4 rotate-45 bg-flaeche" aria-hidden />
         {text}
       </div>
     </div>

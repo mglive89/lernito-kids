@@ -84,7 +84,7 @@ export function SubjectPage() {
       <AnimatePresence>
         {toast && (
           <motion.div initial={{ y: 40, opacity: 0 }} animate={{ y: 0, opacity: 1 }} exit={{ y: 40, opacity: 0 }} role="status"
-            className="fixed inset-x-4 bottom-24 z-40 lg:bottom-6 mx-auto max-w-sm rounded-2xl bg-tinte px-5 py-3 text-center font-semibold text-white shadow-karte" style={{ marginBottom: 'var(--safe-bottom)' }}>
+            className="fixed inset-x-4 bottom-24 z-40 lg:bottom-6 mx-auto max-w-sm rounded-2xl bg-tinte-fest px-5 py-3 text-center font-semibold text-white shadow-karte" style={{ marginBottom: 'var(--safe-bottom)' }}>
             {toast}
           </motion.div>
         )}
@@ -106,7 +106,7 @@ function UnitHeader({ m, index, done }: { m: LearningModule; index: number; done
           <h2 className="font-display text-xl font-bold leading-tight sm:text-2xl">{tr(m.title)}</h2>
           <p className="u-sub text-sm sm:text-base">{tr(m.subtitle)}</p>
         </div>
-        <Link to={`/thema/${m.id}`} className="flex shrink-0 items-center gap-1.5 rounded-xl bg-white px-3 py-2 text-sm font-bold text-tinte shadow-weich transition hover:bg-white/90" data-testid={`theorie-${m.id}`}>
+        <Link to={`/thema/${m.id}`} className="flex shrink-0 items-center gap-1.5 rounded-xl bg-flaeche px-3 py-2 text-sm font-bold text-tinte shadow-weich transition hover:bg-white/90" data-testid={`theorie-${m.id}`}>
           <BookOpen size={18} /> <span className="hidden sm:inline">{L('Theorie', 'Teoria')}</span>
         </Link>
       </div>
@@ -137,7 +137,7 @@ function PathNode({ m, n, name, state, current, offset, testId, onLocked }: {
     <div className="relative" style={{ transform: `translateX(${offset}px)` }}>
       {current && (
         <motion.span initial={{ y: 0 }} animate={{ y: [0, -5, 0] }} transition={{ repeat: Infinity, duration: 1.6 }}
-          className={`absolute -top-9 left-1/2 z-10 -translate-x-1/2 whitespace-nowrap rounded-xl bg-white px-3 py-1 text-sm font-extrabold uppercase tracking-wide shadow-weich ring-1 ring-tinte/10 ${c.text}`}>
+          className={`absolute -top-9 left-1/2 z-10 -translate-x-1/2 whitespace-nowrap rounded-xl bg-flaeche px-3 py-1 text-sm font-extrabold uppercase tracking-wide shadow-weich ring-1 ring-tinte/10 ${c.text}`}>
           {L('Start', 'Inizia')}
         </motion.span>
       )}

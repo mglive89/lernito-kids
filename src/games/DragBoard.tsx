@@ -72,7 +72,7 @@ export function DragBoard({ pieces, targets, onCorrectDrop, onWrongDrop, onCompl
               data-testid={`target-${t.accepts}`}
               onClick={() => selected && tryPlace(selected, t.id)}
               animate={wrongTarget === t.id ? { x: [0, -8, 8, -5, 5, 0] } : {}}
-              className={`relative flex items-center justify-center rounded-3xl border-4 ${targetSize} ${p ? 'border-minze-500 bg-minze-100' : 'border-dashed border-tinte/20 bg-white/70'} ${hintTarget === t.id ? 'ring-8 ring-sonne-500' : ''} ${selected && !p ? 'cursor-pointer' : ''}`}
+              className={`relative flex items-center justify-center rounded-3xl border-4 ${targetSize} ${p ? 'border-minze-500 bg-minze-100' : 'border-dashed border-tinte/20 bg-flaeche/70'} ${hintTarget === t.id ? 'ring-8 ring-sonne-500' : ''} ${selected && !p ? 'cursor-pointer' : ''}`}
               aria-label={p ? `${t.label}: richtig belegt` : `Ziel: ${t.label}`}
             >
               <span data-target={t.id} className="pointer-events-none">{piece ? piece.render() : t.render(false)}</span>
@@ -80,7 +80,7 @@ export function DragBoard({ pieces, targets, onCorrectDrop, onWrongDrop, onCompl
           );
         })}
       </div>
-      <div className="flex min-h-[7rem] flex-wrap justify-center gap-3 rounded-3xl bg-white/50 p-3" role="group" aria-label={L('Teile zum Verschieben', 'Pezzi da spostare')}>
+      <div className="flex min-h-[7rem] flex-wrap justify-center gap-3 rounded-3xl bg-flaeche/50 p-3" role="group" aria-label={L('Teile zum Verschieben', 'Pezzi da spostare')}>
         {pieces.filter((p) => !placedPieces.includes(p.id)).map((p) => (
           <motion.button
             type="button"
@@ -93,7 +93,7 @@ export function DragBoard({ pieces, targets, onCorrectDrop, onWrongDrop, onCompl
             whileDrag={{ scale: 1.12, zIndex: 50 }}
             onDragEnd={(_, info) => onDragEnd(p.id, info.point)}
             onTap={() => { sfx.tap(); setSelected((s) => (s === p.id ? null : p.id)); }}
-            className={`relative z-10 flex touch-none items-center justify-center rounded-3xl bg-white shadow-knopf ${pieceSize} ${selected === p.id ? 'ring-8 ring-himmel-500' : ''} ${hintPiece === p.id ? 'animate-bounce' : ''}`}
+            className={`relative z-10 flex touch-none items-center justify-center rounded-3xl bg-flaeche shadow-knopf ${pieceSize} ${selected === p.id ? 'ring-8 ring-himmel-500' : ''} ${hintPiece === p.id ? 'animate-bounce' : ''}`}
             aria-label={`${p.label}${selected === p.id ? ' (ausgewählt – tippe auf ein Ziel)' : ''}`}
             aria-pressed={selected === p.id}
           >

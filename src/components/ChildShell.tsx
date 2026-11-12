@@ -21,7 +21,7 @@ export function ChildShell() {
   return (
     <div className="kinder-hintergrund min-h-[100dvh] lg:pl-64">
       {/* Seitenleiste */}
-      <aside className="fixed inset-y-0 left-0 z-30 hidden w-64 flex-col border-r border-tinte/[0.07] bg-white px-4 py-6 lg:flex" aria-label={L('Hauptnavigation', 'Navigazione principale')}>
+      <aside className="fixed inset-y-0 left-0 z-30 hidden w-64 flex-col border-r border-tinte/[0.07] bg-flaeche px-4 py-6 lg:flex" aria-label={L('Hauptnavigation', 'Navigazione principale')}>
         <span className="mb-8 flex items-center gap-2.5 px-2 font-display text-xl font-extrabold tracking-tight">
           <img src={`${base}puppy/kopf.png`} alt="" className="h-10 w-10 rounded-xl bg-sonne-100" />
           <span>Lernito<span className="ml-1 rounded-md bg-sonne-100 px-1.5 py-0.5 align-middle text-xs font-bold text-sonne-700">Kids</span></span>
@@ -57,7 +57,7 @@ export function ChildShell() {
       <div className="pb-24 lg:pb-0"><PageTransition id={pathname}><Outlet /></PageTransition></div>
 
       {/* Tab-Leiste */}
-      <nav className="fixed inset-x-0 bottom-0 z-30 border-t border-tinte/[0.07] bg-white/95 backdrop-blur lg:hidden" style={{ paddingBottom: 'var(--safe-bottom)' }} aria-label={L('Hauptnavigation', 'Navigazione principale')}>
+      <nav className="fixed inset-x-0 bottom-0 z-30 border-t border-tinte/[0.07] bg-flaeche/95 backdrop-blur lg:hidden" style={{ paddingBottom: 'var(--safe-bottom)' }} aria-label={L('Hauptnavigation', 'Navigazione principale')}>
         <div className="mx-auto grid max-w-xl grid-cols-5 px-1">
           {items.map((it) => {
             const on = isNavActive(it, pathname);

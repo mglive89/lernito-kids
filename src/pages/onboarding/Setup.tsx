@@ -114,7 +114,7 @@ export function SetupPage() {
                   ))}
                 </ul>
                 <div className="flex flex-col gap-3 sm:flex-row">
-                  <button className="knopf flex-1 bg-white" onClick={() => go('kind')} data-testid="einrichtung-weiteres-kind"><UserPlus size={20} /> {L('Weiteres Kind', 'Un altro bambino')}</button>
+                  <button className="knopf flex-1 bg-flaeche" onClick={() => go('kind')} data-testid="einrichtung-weiteres-kind"><UserPlus size={20} /> {L('Weiteres Kind', 'Un altro bambino')}</button>
                   <button className="knopf knopf-3d flex-1 bg-himmel-500 text-white" data-testid="einrichtung-fertig"
                     onClick={() => {
                       lock();
@@ -143,7 +143,7 @@ function StepHead({ n, title, text }: { n: number; title: string; text: string }
   );
 }
 
-const pill = (on: boolean) => `knopf min-w-[4.5rem] flex-1 px-3 py-2 text-base ${on ? 'bg-himmel-500 text-white ring-2 ring-himmel-700' : 'bg-white'}`;
+const pill = (on: boolean) => `knopf min-w-[4.5rem] flex-1 px-3 py-2 text-base ${on ? 'bg-himmel-500 text-white ring-2 ring-himmel-700' : 'bg-flaeche'}`;
 
 /** Tagesziel, Zeitlimit, Vorlesen und Zusatzfächer für ein Kind */
 function Rules({ profile }: { profile: Profile }) {

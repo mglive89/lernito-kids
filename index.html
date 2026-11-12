@@ -14,9 +14,12 @@
     <title>Lernito Kids</title>
     <style>
       #splash{position:fixed;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;background:#F6F7FB;font-family:system-ui,sans-serif;color:#18213D;z-index:9999;transition:opacity .4s}
-      #splash img{width:auto;height:170px;animation:hop 1s ease-in-out infinite}
-      @keyframes hop{50%{transform:translateY(-12px)}}
+      #splash img{width:auto;height:170px}
+      html.dunkel #splash{background:#0D1220;color:#E7EBF6}
     </style>
+    <script>
+      try { var t = localStorage.getItem('lernito-theme'); if (t === 'dunkel' || (t === 'auto' && matchMedia('(prefers-color-scheme: dark)').matches)) document.documentElement.classList.add('dunkel'); } catch (e) {}
+    </script>
   </head>
   <body>
     <div id="splash" aria-hidden="true"><img src="/puppy/puppy.webp" alt="" /><p style="font-size:1.4rem;font-weight:800">Lernito Kids</p></div>

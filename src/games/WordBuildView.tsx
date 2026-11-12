@@ -53,7 +53,7 @@ export function WordBuildView({ task, onCorrect, onWrong, reveal, done }: TaskVi
               type="button"
               onClick={() => tapSlot(k)}
               data-testid={`slot-${k}`}
-              className={`flex h-16 min-w-[4rem] items-center justify-center rounded-2xl border-4 border-dashed px-3 font-display text-4xl font-bold sm:h-20 sm:min-w-[5rem] ${tileIdx !== null ? 'border-solid border-minze-500 bg-white' : reveal ? 'border-sonne-500 text-tinte/30' : 'border-tinte/25 bg-white/60'}`}
+              className={`flex h-16 min-w-[4rem] items-center justify-center rounded-2xl border-4 border-dashed px-3 font-display text-4xl font-bold sm:h-20 sm:min-w-[5rem] ${tileIdx !== null ? 'border-solid border-minze-500 bg-flaeche' : reveal ? 'border-sonne-500 text-tinte/30' : 'border-tinte/25 bg-flaeche/60'}`}
               aria-label={content ? `Platz ${k + 1}: ${content}` : `Platz ${k + 1}: leer`}
             >
               {content}

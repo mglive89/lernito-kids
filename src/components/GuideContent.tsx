@@ -33,7 +33,7 @@ export function GuideContent({ module, compact = false }: { module: LearningModu
           <p className="mb-3 text-lg leading-relaxed">{tr(guide.intro)}</p>
           <ul className="flex flex-col gap-2">
             {guide.points.map((p, i) => (
-              <li key={i} className="flex gap-3 rounded-2xl bg-white p-3 text-base leading-relaxed shadow-weich ring-1 ring-tinte/5 sm:text-lg">
+              <li key={i} className="flex gap-3 rounded-2xl bg-flaeche p-3 text-base leading-relaxed shadow-weich ring-1 ring-tinte/5 sm:text-lg">
                 <CheckCircle2 size={20} className="mt-1 shrink-0 text-minze-500" aria-hidden />
                 <span>{tr(p)}</span>
               </li>
@@ -47,7 +47,7 @@ export function GuideContent({ module, compact = false }: { module: LearningModu
           <h2 id="g-beispiele" className="mb-3 flex items-center gap-2 font-display text-xl font-bold"><BookOpen size={20} className="text-himmel-700" /> {L('Beispiele mit Lösung', 'Esempi svolti')}</h2>
           <ol className="flex flex-col gap-3">
             {examples.map((ex, i) => (
-              <li key={i} className="rounded-2xl bg-white p-4 shadow-weich ring-1 ring-tinte/5" data-testid="beispiel">
+              <li key={i} className="rounded-2xl bg-flaeche p-4 shadow-weich ring-1 ring-tinte/5" data-testid="beispiel">
                 <p className="eyebrow mb-1 text-tinte/50">{L('Beispiel', 'Esempio')} {i + 1}</p>
                 <p className="font-display text-lg font-bold">{ex.prompt}</p>
                 {ex.visual && <div className="my-3 flex justify-center"><Visual v={ex.visual} /></div>}
@@ -81,7 +81,7 @@ function Flashcards({ cards, max }: { cards: StudyCard[]; max: number }) {
         {list.map((c, i) => <Card key={i} c={c} />)}
       </div>
       {cards.length > max && (
-        <button className="knopf mt-3 w-full bg-white text-base" onClick={() => setShowAll((v) => !v)} data-testid="karten-alle">
+        <button className="knopf mt-3 w-full bg-flaeche text-base" onClick={() => setShowAll((v) => !v)} data-testid="karten-alle">
           <ChevronDown className={showAll ? 'rotate-180' : ''} /> {showAll ? L('Weniger anzeigen', 'Mostra meno') : L(`Alle ${cards.length} Karten anzeigen`, `Mostra tutte le ${cards.length} carte`)}
         </button>
       )}
@@ -93,9 +93,9 @@ function Card({ c }: { c: StudyCard }) {
   const [open, setOpen] = useState(false);
   return (
     <button type="button" onClick={() => { sfx.flip(); setOpen((v) => !v); }} aria-expanded={open} data-testid="lernkarte"
-      className={`flex min-h-[7rem] flex-col items-start gap-2 rounded-2xl p-4 text-left shadow-weich ring-1 transition ${open ? 'bg-lila-50 ring-lila-300' : 'bg-white ring-tinte/5 hover:ring-lila-300'}`}>
+      className={`flex min-h-[7rem] flex-col items-start gap-2 rounded-2xl p-4 text-left shadow-weich ring-1 transition ${open ? 'bg-lila-50 ring-lila-300' : 'bg-flaeche ring-tinte/5 hover:ring-lila-300'}`}>
       <span className="font-semibold leading-snug">{c.q}</span>
-      {c.code && <pre className="w-full overflow-x-auto rounded-xl bg-tinte px-3 py-2 font-mono text-sm text-white">{c.code}</pre>}
+      {c.code && <pre className="w-full overflow-x-auto rounded-xl bg-tinte-fest px-3 py-2 font-mono text-sm text-white">{c.code}</pre>}
       {open ? (
         <motion.span initial={{ opacity: 0, y: 4 }} animate={{ opacity: 1, y: 0 }} className="flex flex-col gap-1">
           <span className="font-display text-lg font-bold text-lila-700">{c.a}</span>

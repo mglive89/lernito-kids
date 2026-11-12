@@ -9,6 +9,8 @@ import { stopListening } from '../lib/listen';
 import { sfx } from '../lib/sound';
 import { Lino } from '../components/Lino';
 import { Confetti, Modal, ProgressBar, SpeakButton } from '../components/ui';
+import { burstAt } from '../lib/effects';
+import { PuppyTap } from '../components/PuppyTap';
 import { guideFor } from '../learning/guides';
 import { GuideContent } from '../components/GuideContent';
 import { Visual } from '../components/Visual';
@@ -128,6 +130,7 @@ export function GameRunner({ module, level, speechOn, onFinish, preview, backTo,
     else setStreak(0);
     stats.current.solved++;
     sfx.correct();
+    burstAt(document.querySelector('[data-testid="task-area"] [data-correct="true"]'), 'sterne', first ? 14 : 10);
     setCoach(null);
     const text = pickOf(LOB);
     setFeedback({ title: text, tone: 'ok' });
@@ -206,7 +209,7 @@ export function GameRunner({ module, level, speechOn, onFinish, preview, backTo,
   if (!task) return null;
 
   const tone: Tone | 'idle' = feedback?.tone ?? 'idle';
-  const barBg = { idle: 'bg-white', ok: 'bg-minze-50', hint: 'bg-koralle-50', help: 'bg-sonne-50' }[tone];
+  const barBg = { idle: 'bg-flaeche', ok: 'bg-minze-50', hint: 'bg-koralle-50', help: 'bg-sonne-50' }[tone];
   const showNext = phase === 'reveal' || (phase === 'correct' && check);
 
   return (
@@ -252,11 +255,11 @@ export function GameRunner({ module, level, speechOn, onFinish, preview, backTo,
                     {coach.text}
                     <div className="mt-2 flex flex-wrap gap-2">
                       {coach.step < steps.length && (
-                        <button type="button" className="rounded-full bg-white px-3 py-1 text-sm font-bold text-sonne-700 ring-1 ring-sonne-300 hover:bg-sonne-100" onClick={askPuppy} data-testid="puppy-mehr">
+                        <button type="button" className="rounded-full bg-flaeche px-3 py-1 text-sm font-bold text-sonne-700 ring-1 ring-sonne-300 hover:bg-sonne-100" onClick={askPuppy} data-testid="puppy-mehr">
                           {coach.step === 0 ? L('Gib mir einen Tipp', 'Dammi un suggerimento') : L('Noch ein Schritt', 'Un altro passo')}
                         </button>
                       )}
-                      <button type="button" className="rounded-full px-3 py-1 text-sm font-bold text-tinte/55 hover:bg-white" onClick={() => { stopSpeaking(); setCoach(null); }} data-testid="puppy-ok">
+                      <button type="button" className="rounded-full px-3 py-1 text-sm font-bold text-tinte/55 hover:bg-flaeche" onClick={() => { stopSpeaking(); setCoach(null); }} data-testid="puppy-ok">
                         {L('Alles klar!', 'Ho capito!')}
                       </button>
                     </div>
@@ -292,7 +295,7 @@ export function GameRunner({ module, level, speechOn, onFinish, preview, backTo,
                   <div className="min-w-0">
                     <p className={`font-display text-xl font-bold ${tone === 'ok' ? 'text-minze-700' : tone === 'hint' ? 'text-koralle-700' : 'text-sonne-700'}`}>
                       {feedback.title}
-                      {tone === 'ok' && streak >= 3 && <span className="ml-2 inline-flex items-center gap-1 rounded-full bg-white px-2 py-0.5 text-sm text-sonne-700 shadow-weich"><Flame size={14} /> {L(`${streak} in Folge`, `${streak} di fila`)}</span>}
+                      {tone === 'ok' && streak >= 3 && <span className="ml-2 inline-flex items-center gap-1 rounded-full bg-flaeche px-2 py-0.5 text-sm text-sonne-700 shadow-weich"><Flame size={14} /> {L(`${streak} in Folge`, `${streak} di fila`)}</span>}
                     </p>
                     {feedback.text && <p className="text-base text-tinte/80 sm:text-lg">{feedback.text}</p>}
                   </div>
@@ -339,8 +342,8 @@ function Summary({ module, result, onAgain, onBack, preview, lessonLabel }: { mo
   const secs = String(round.durationSec % 60).padStart(2, '0');
   return (
     <main className="mx-auto flex min-h-[100dvh] max-w-xl flex-col items-center justify-center gap-5 px-4 py-10 text-center" data-testid="summary">
-      <Confetti show />
-      <Lino mood="jubel" size={150} />
+      <Confetti show count={70} />
+      <PuppyTap><Lino mood="jubel" size={150} /></PuppyTap>
       <div>
         {lessonLabel && <p className="eyebrow text-himmel-700">{lessonLabel}</p>}
         <h1 className="font-display text-4xl font-bold tracking-tight">{L('Geschafft!', 'Fatto!')}</h1>
@@ -348,7 +351,8 @@ function Summary({ module, result, onAgain, onBack, preview, lessonLabel }: { mo
       </div>
       <div className="flex gap-2" aria-label={L(`${rs} von 3 Sternen`, `${rs} stelle su 3`)}>
         {[1, 2, 3].map((i) => (
-          <motion.span key={i} initial={{ scale: 0, rotate: -90 }} animate={{ scale: 1, rotate: 0 }} transition={{ delay: 0.3 * i, type: 'spring' }}>
+          <motion.span key={i} id={`stern-${i}`} initial={{ scale: 0, rotate: -90 }} animate={{ scale: 1, rotate: 0 }} transition={{ delay: 0.3 * i, type: 'spring' }}
+            onAnimationComplete={() => { if (i <= rs) burstAt(document.getElementById(`stern-${i}`), 'sterne', 9); }}>
             <Star size={56} className={i <= rs ? 'fill-sonne-500 text-sonne-500' : 'text-tinte/15'} />
           </motion.span>
         ))}
@@ -358,7 +362,7 @@ function Summary({ module, result, onAgain, onBack, preview, lessonLabel }: { mo
         <Stat icon={<Target size={18} />} tone="text-minze-700 bg-minze-50" value={`${acc} %`} label={L('Genauigkeit', 'Precisione')} />
         <Stat icon={<Clock size={18} />} tone="text-himmel-700 bg-himmel-50" value={`${mins}:${secs}`} label={L('Zeit', 'Tempo')} />
       </div>
-      <p className="w-full rounded-2xl bg-white px-5 py-4 text-lg shadow-weich ring-1 ring-tinte/5">{roundMessage(round, change)}</p>
+      <p className="w-full rounded-2xl bg-flaeche px-5 py-4 text-lg shadow-weich ring-1 ring-tinte/5">{roundMessage(round, change)}</p>
       <p className="text-tinte/60"><span data-testid="stars-earned" className="font-bold text-tinte">+{rec.stars}</span> {L('Sterne', 'stelle')} · {round.solved}/{round.total} {L('gelöst', 'risolti')}</p>
       {rec.levelAfter > rec.levelBefore && (
         <motion.div initial={{ scale: 0.8 }} animate={{ scale: 1 }} className="w-full rounded-2xl bg-lila-100 p-4 font-display text-xl font-bold">
@@ -369,13 +373,13 @@ function Summary({ module, result, onAgain, onBack, preview, lessonLabel }: { mo
         <div className="w-full rounded-2xl bg-sonne-100 p-4">
           <h2 className="mb-2 font-display text-xl font-bold">{L('Neues Abzeichen!', 'Nuovo distintivo!')}</h2>
           <ul className="flex flex-wrap justify-center gap-3">
-            {rec.badges.map((b) => <li key={b.id} className="flex items-center gap-2 rounded-full bg-white px-4 py-2"><span className="emoji text-2xl">{b.emoji}</span>{tr(b.title)}</li>)}
+            {rec.badges.map((b) => <li key={b.id} className="flex items-center gap-2 rounded-full bg-flaeche px-4 py-2"><span className="emoji text-2xl">{b.emoji}</span>{tr(b.title)}</li>)}
           </ul>
         </div>
       )}
       {preview && <p className="text-tinte/60">{L('Vorschau-Modus: Es wurde nichts gespeichert.', 'Modalità anteprima: non è stato salvato nulla.')}</p>}
       <div className="flex w-full flex-col-reverse gap-3 sm:flex-row">
-        <button className="knopf flex-1 bg-white" onClick={onAgain} data-testid="nochmal"><RotateCcw /> {L('Nochmal', 'Ancora')}</button>
+        <button className="knopf flex-1 bg-flaeche" onClick={onAgain} data-testid="nochmal"><RotateCcw /> {L('Nochmal', 'Ancora')}</button>
         <button className="knopf flex-1 bg-himmel-500 text-white" onClick={onBack} data-testid="zurueck" autoFocus>{L('Weiter', 'Continua')} <ArrowRight /></button>
       </div>
     </main>
@@ -384,7 +388,7 @@ function Summary({ module, result, onAgain, onBack, preview, lessonLabel }: { mo
 
 function Stat({ icon, value, label, tone, testId }: { icon: ReactNode; value: string; label: string; tone: string; testId?: string }) {
   return (
-    <div className="rounded-2xl bg-white p-3 shadow-weich ring-1 ring-tinte/5">
+    <div className="rounded-2xl bg-flaeche p-3 shadow-weich ring-1 ring-tinte/5">
       <div className={`mx-auto mb-1 flex h-8 w-8 items-center justify-center rounded-full ${tone}`}>{icon}</div>
       <div className="font-display text-2xl font-bold" data-testid={testId}>{value}</div>
       <div className="text-xs font-semibold uppercase tracking-wide text-tinte/55">{label}</div>

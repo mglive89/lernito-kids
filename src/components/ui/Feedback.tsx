@@ -7,14 +7,14 @@ export function Notice({ children, tone = 'info' }: { children: ReactNode; tone?
 
 export function Toggle({ checked, onChange, label, description, disabled, testId }: { checked: boolean; onChange: (v: boolean) => void; label: string; description?: ReactNode; disabled?: boolean; testId?: string }) {
   return (
-    <label className={`flex cursor-pointer items-start justify-between gap-4 rounded-2xl bg-white p-4 ring-1 ring-tinte/[0.06] ${disabled ? 'opacity-60' : ''}`}>
+    <label className={`flex cursor-pointer items-start justify-between gap-4 rounded-2xl bg-flaeche p-4 ring-1 ring-tinte/[0.06] ${disabled ? 'opacity-60' : ''}`}>
       <span>
         <span className="block text-lg font-bold">{label}</span>
         {description && <span className="block text-sm text-tinte/70">{description}</span>}
       </span>
       <input type="checkbox" role="switch" className="peer sr-only" checked={checked} disabled={disabled} onChange={(e) => onChange(e.target.checked)} data-testid={testId} />
       <span className={`relative mt-1 h-8 w-14 shrink-0 rounded-full transition ${checked ? 'bg-minze-500' : 'bg-tinte/20'} peer-focus-visible:outline peer-focus-visible:outline-4 peer-focus-visible:outline-himmel-500`} aria-hidden>
-        <span className={`absolute top-1 h-6 w-6 rounded-full bg-white shadow transition ${checked ? 'left-7' : 'left-1'}`} />
+        <span className={`absolute top-1 h-6 w-6 rounded-full bg-flaeche shadow transition ${checked ? 'left-7' : 'left-1'}`} />
       </span>
     </label>
   );

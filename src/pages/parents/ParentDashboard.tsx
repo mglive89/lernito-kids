@@ -2,7 +2,7 @@ import { useMemo, useRef, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { BarChart3, BookOpen, ClipboardList, Download, FileText, Settings2, Shield, Trash2, Upload, Users, Accessibility, Wrench } from 'lucide-react';
 import { defaultChildSettings, exportAllData, useApp, type Profile, type ProfileProgress } from '../../store/useApp';
-import { Avatar, Modal, Notice, ProgressBar, Toggle } from '../../components/ui';
+import { Avatar, Modal, Notice, ProgressBar, Toggle, ThemePicker } from '../../components/ui';
 import { allModules } from '../../learning/registry';
 import { needsPractice } from '../../learning/adaptive';
 import { levelFromXp, BADGES } from '../../learning/rewards';
@@ -61,17 +61,17 @@ export function ParentDashboard() {
     <main className="seite grid gap-6 lg:grid-cols-[16rem_1fr]">
       <nav className="flex gap-2 overflow-x-auto pb-2 lg:flex-col lg:overflow-visible" aria-label={L('Bereiche', 'Sezioni')}>
         {tabs().map((t) => (
-          <button key={t.id} onClick={() => setTab(t.id)} aria-current={tab === t.id} data-testid={`tab-${t.id}`} className={`flex shrink-0 items-center gap-2 rounded-2xl px-4 py-3 text-left font-bold ${tab === t.id ? 'bg-himmel-500 text-white' : 'bg-white'}`}>
+          <button key={t.id} onClick={() => setTab(t.id)} aria-current={tab === t.id} data-testid={`tab-${t.id}`} className={`flex shrink-0 items-center gap-2 rounded-2xl px-4 py-3 text-left font-bold ${tab === t.id ? 'bg-himmel-500 text-white' : 'bg-flaeche'}`}>
             <t.icon size={20} /> {t.label}
           </button>
         ))}
-        <Link to="/admin" className="flex shrink-0 items-center gap-2 rounded-2xl bg-white px-4 py-3 font-bold" data-testid="zum-admin"><Wrench size={20} /> {L('Inhalte verwalten', 'Gestisci contenuti')}</Link>
+        <Link to="/admin" className="flex shrink-0 items-center gap-2 rounded-2xl bg-flaeche px-4 py-3 font-bold" data-testid="zum-admin"><Wrench size={20} /> {L('Inhalte verwalten', 'Gestisci contenuti')}</Link>
       </nav>
       <section className="min-w-0">
         {needsChild && profiles.length > 1 && (
           <div className="mb-4 flex flex-wrap gap-2" role="tablist" aria-label={L('Kind auswählen', 'Scegli il bambino')}>
             {profiles.map((p) => (
-              <button key={p.id} role="tab" aria-selected={child?.id === p.id} onClick={() => setChildId(p.id)} className={`flex items-center gap-2 rounded-full px-3 py-2 font-bold ${child?.id === p.id ? 'bg-sonne-300' : 'bg-white'}`}>
+              <button key={p.id} role="tab" aria-selected={child?.id === p.id} onClick={() => setChildId(p.id)} className={`flex items-center gap-2 rounded-full px-3 py-2 font-bold ${child?.id === p.id ? 'bg-sonne-300' : 'bg-flaeche'}`}>
                 <Avatar config={p.avatar} size={32} /> {p.name}
               </button>
             ))}
@@ -205,7 +205,7 @@ function Children() {
               {LANGS.map((l) => <option key={l.id} value={l.id}>{l.flag} {l.name}</option>)}
             </select>
           </div>
-          <button className="knopf bg-white text-base" onClick={() => setConfirm({ kind: 'reset', p })}>{L('Fortschritt zurücksetzen', 'Azzera i progressi')}</button>
+          <button className="knopf bg-flaeche text-base" onClick={() => setConfirm({ kind: 'reset', p })}>{L('Fortschritt zurücksetzen', 'Azzera i progressi')}</button>
           <button className="knopf bg-koralle-100 text-base" onClick={() => setConfirm({ kind: 'delete', p })} aria-label={L(`${p.name} löschen`, `Elimina ${p.name}`)}><Trash2 size={20} /> {L('Löschen', 'Elimina')}</button>
         </div>
       ))}
@@ -221,7 +221,7 @@ function Children() {
         <p className="mb-4">{confirm?.kind === 'delete' ? L(`Das Profil „${confirm?.p.name}“ und alle Lerndaten werden dauerhaft von diesem Gerät gelöscht.`, `Il profilo «${confirm?.p.name}» e tutti i dati verranno eliminati definitivamente da questo dispositivo.`) : L(`Sterne, Abzeichen und Lernstände von „${confirm?.p.name}“ werden auf null gesetzt.`, `Stelle, distintivi e progressi di «${confirm?.p.name}» verranno azzerati.`)}</p>
         <div className="flex gap-2">
           <button className="knopf bg-koralle-500 text-white" onClick={() => { if (confirm) { if (confirm.kind === 'delete') { del(confirm.p.id); } else { reset(confirm.p.id); } } setConfirm(null); }}>{confirm?.kind === 'delete' ? L('Ja, löschen', 'Sì, elimina') : L('Ja, zurücksetzen', 'Sì, azzera')}</button>
-          <button className="knopf bg-white" onClick={() => setConfirm(null)}>{L('Abbrechen', 'Annulla')}</button>
+          <button className="knopf bg-flaeche" onClick={() => setConfirm(null)}>{L('Abbrechen', 'Annulla')}</button>
         </div>
       </Modal>
     </div>
@@ -332,7 +332,7 @@ function Report({ child }: { child: Profile }) {
       </article>
       <div className="flex flex-wrap gap-2">
         <button className="knopf bg-himmel-500 text-white" onClick={() => window.print()}><FileText /> {L('Drucken / als PDF', 'Stampa / PDF')}</button>
-        <button className="knopf bg-white" onClick={download}><Download /> {L('Als Textdatei', 'Come file di testo')}</button>
+        <button className="knopf bg-flaeche" onClick={download}><Download /> {L('Als Textdatei', 'Come file di testo')}</button>
       </div>
       <p className="text-sm text-tinte/60">{L('Berichte werden nur auf Wunsch erstellt und nicht automatisch versendet.', 'I resoconti vengono creati solo su richiesta e non vengono inviati automaticamente.')}</p>
     </div>
@@ -398,7 +398,7 @@ function Privacy() {
         <h3 className="font-display text-xl font-bold">{L('Ihre Daten', 'I vostri dati')}</h3>
         <div className="flex flex-wrap gap-2">
           <button className="knopf bg-himmel-500 text-white" onClick={doExport} data-testid="export"><Download /> {L('Alle Daten exportieren', 'Esporta tutti i dati')}</button>
-          <button className="knopf bg-white" onClick={() => fileRef.current?.click()}><Upload /> {L('Daten importieren', 'Importa dati')}</button>
+          <button className="knopf bg-flaeche" onClick={() => fileRef.current?.click()}><Upload /> {L('Daten importieren', 'Importa dati')}</button>
           <input ref={fileRef} type="file" accept="application/json" className="hidden" onChange={(e) => { const f = e.target.files?.[0]; if (f) void doImport(f); e.target.value = ''; }} />
           <button className="knopf bg-koralle-500 text-white" onClick={() => setWipeOpen(true)} data-testid="alles-loeschen"><Trash2 /> {L('Alle Daten löschen', 'Cancella tutti i dati')}</button>
         </div>
@@ -420,6 +420,11 @@ function A11y() {
   const setParent = useApp((s) => s.setParent);
   return (
     <div className="flex flex-col gap-3">
+      <div className="flex flex-col gap-2">
+        <span className="font-bold">{L('Erscheinungsbild', 'Aspetto')}</span>
+        <ThemePicker id="thema-eltern" />
+        <span className="text-sm text-tinte/60">{L('Dunkles Thema schont die Augen am Abend. Bei hohem Kontrast bleibt die App hell.', 'Il tema scuro riposa gli occhi la sera. Con il contrasto elevato l’app resta chiara.')}</span>
+      </div>
       <Toggle label={L('Hoher Kontrast', 'Contrasto elevato')} description={L('Stärkere Rahmen und Kontraste.', 'Bordi e contrasti più marcati.')} checked={parent.highContrast} onChange={(v) => setParent({ highContrast: v })} />
       <Toggle label={L('Größere Schrift', 'Testo più grande')} description={L('Alle Texte werden etwas größer dargestellt.', 'Tutti i testi vengono mostrati un po’ più grandi.')} checked={parent.largeText} onChange={(v) => setParent({ largeText: v })} />
       <Toggle label={L('Weniger Bewegung', 'Meno animazioni')} description={L('Animationen werden reduziert.', 'Le animazioni vengono ridotte.')} checked={parent.reduceMotion} onChange={(v) => setParent({ reduceMotion: v })} />

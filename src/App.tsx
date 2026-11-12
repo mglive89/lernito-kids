@@ -86,6 +86,7 @@ export default function App() {
   const [timeUpDismissed, setTimeUpDismissed] = useState<string | null>(null);
   const todaySec = progress.daily[dateKey()]?.seconds ?? 0;
   const isChildArea = !!profile && location.pathname !== '/' && !isAdultRoute(location.pathname);
+  useEffect(() => { document.documentElement.classList.toggle('kinderbereich', isChildArea); }, [isChildArea]);
   const timeUp = isChildArea && settings.timeLimitMin !== null && todaySec >= settings.timeLimitMin * 60 && timeUpDismissed !== `${profile?.id}-${dateKey()}`;
 
   if (!hydrated) return <Loading />;

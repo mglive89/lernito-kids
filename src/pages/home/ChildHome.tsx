@@ -5,6 +5,8 @@ import { Avatar, colorSet, CountUp, IconBadge, Reveal, Stagger, StaggerItem, Pro
 import { sfx } from '../../lib/sound';
 import { lessonLabel, lessonLink } from '../../learning/lessons';
 import { Lino } from '../../components/Lino';
+import { PuppyTap } from '../../components/PuppyTap';
+import { WeekActivity } from '../../components/WeekActivity';
 import { DISCOVER_ITEMS } from '../discover/DiscoverPage';
 import { levelFromXp } from '../../learning/rewards';
 import { allModules, findModule, fitsCountry, schoolModules } from '../../learning/registry';
@@ -75,12 +77,12 @@ export function ChildHome() {
                 </span>
               </div>
               <Link to={lessonLink(cont, pathDoneOf(progress.modules[cont.id]))} onClick={() => sfx.tap()} data-testid="weiterlernen"
-                className="knopf glanz puls mt-5 w-full bg-white text-himmel-700 ring-0 hover:bg-himmel-50 sm:w-auto sm:px-7">
+                className="knopf glanz puls mt-5 w-full bg-white text-[#1D47A8] ring-0 hover:bg-[#EFF5FF] sm:w-auto sm:px-7">
                 <Play size={18} className="fill-himmel-700" /> {L('Los geht’s', 'Iniziamo')}
               </Link>
             </div>
-            <div className="-mb-7 -mr-3 hidden shrink-0 min-[380px]:block sm:hidden"><Lino mood={goalReached ? 'jubel' : 'winken'} size={112} /></div>
-            <div className="-mb-9 mr-2 hidden shrink-0 sm:block"><Lino mood={goalReached ? 'jubel' : 'winken'} size={180} /></div>
+            <div className="-mb-7 -mr-3 hidden shrink-0 min-[380px]:block sm:hidden"><PuppyTap><Lino mood={goalReached ? 'jubel' : 'winken'} size={112} /></PuppyTap></div>
+            <div className="-mb-9 mr-2 hidden shrink-0 sm:block"><PuppyTap><Lino mood={goalReached ? 'jubel' : 'winken'} size={180} /></PuppyTap></div>
           </div>
         </section>
 
@@ -105,6 +107,8 @@ export function ChildHome() {
             <span><span className="block font-display text-lg font-extrabold leading-none sm:text-xl"><CountUp value={learnDays} /></span><span className="text-xs font-medium text-tinte/55">{L('Lerntage', 'Giorni di studio')}</span></span>
           </StaggerItem>
         </Stagger>
+
+        {!isKita && <Reveal className="mt-3 sm:mt-4"><WeekActivity daily={progress.daily} goal={goal} /></Reveal>}
 
         <SectionTitle action={!isKita && (
           <Link to={`/schule?jahr=${year}`} className="flex items-center gap-1 text-sm font-semibold text-himmel-600 hover:text-himmel-700" data-testid="bereich-schule">{L('Alle Fächer', 'Tutte le materie')} <ChevronRight size={16} /></Link>

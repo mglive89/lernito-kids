@@ -94,7 +94,7 @@ export function ChoiceView({ task, onCorrect, onWrong, reveal, done, onPending }
             whileTap={{ scale: 0.94 }}
             className={[
               'knopf relative flex-col text-tinte',
-              isSel ? 'bg-himmel-50 ring-4 ring-himmel-500' : 'bg-white',
+              isSel ? 'bg-himmel-50 ring-4 ring-himmel-500' : 'bg-flaeche',
               style === 'text' ? 'min-h-[4.5rem] justify-center px-4 text-xl sm:text-2xl' : 'aspect-square min-h-[5.5rem] p-2',
               style === 'big' ? 'font-display text-5xl sm:text-6xl' : '',
               isWrong ? 'opacity-40' : '',

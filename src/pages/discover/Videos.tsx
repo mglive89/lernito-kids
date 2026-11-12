@@ -75,11 +75,11 @@ function PlayerControls({ playing, onToggle, onRestart, t, duration, onSeek, cc,
       <input type="range" min={0} max={duration} step={0.1} value={t} onChange={(e) => onSeek(Number(e.target.value))} className="w-full accent-himmel-500" aria-label={L('Position im Video', 'Posizione nel video')} />
       <div className="flex flex-wrap items-center gap-2">
         <button className="knopf h-14 w-14 bg-sonne-500 px-0" onClick={onToggle} aria-label={playing ? L('Pause', 'Pausa') : L('Abspielen', 'Riproduci')} data-testid="play-toggle">{playing ? <Pause /> : <Play />}</button>
-        <button className="knopf h-14 w-14 bg-white px-0" onClick={onRestart} aria-label={L('Von vorn', 'Dall’inizio')}><RotateCcw /></button>
+        <button className="knopf h-14 w-14 bg-flaeche px-0" onClick={onRestart} aria-label={L('Von vorn', 'Dall’inizio')}><RotateCcw /></button>
         <span className="font-mono text-lg" aria-live="off">{fmt(t)} / {fmt(duration)}</span>
         <div className="flex-1" />
-        <button className={`knopf h-14 px-3 text-base ${cc ? 'bg-himmel-300' : 'bg-white'}`} onClick={() => setCc(!cc)} aria-pressed={cc} aria-label={L('Untertitel', 'Sottotitoli')}>{cc ? <Captions /> : <CaptionsOff />} {L('Untertitel', 'Sottotitoli')}</button>
-        {setReadAloud && <button className={`knopf h-14 px-3 text-base ${readAloud ? 'bg-himmel-300' : 'bg-white'}`} onClick={() => setReadAloud(!readAloud)} aria-pressed={readAloud} aria-label={L('Vorlesen', 'Leggi')}>{readAloud ? <Volume2 /> : <VolumeX />} {L('Vorlesen', 'Leggi')}</button>}
+        <button className={`knopf h-14 px-3 text-base ${cc ? 'bg-himmel-300' : 'bg-flaeche'}`} onClick={() => setCc(!cc)} aria-pressed={cc} aria-label={L('Untertitel', 'Sottotitoli')}>{cc ? <Captions /> : <CaptionsOff />} {L('Untertitel', 'Sottotitoli')}</button>
+        {setReadAloud && <button className={`knopf h-14 px-3 text-base ${readAloud ? 'bg-himmel-300' : 'bg-flaeche'}`} onClick={() => setReadAloud(!readAloud)} aria-pressed={readAloud} aria-label={L('Vorlesen', 'Leggi')}>{readAloud ? <Volume2 /> : <VolumeX />} {L('Vorlesen', 'Leggi')}</button>}
       </div>
     </div>
   );
@@ -228,7 +228,7 @@ function FileVideoPlayer({ video }: { video: CustomVideo }) {
       <TopBar title={video.title} back="/videos" />
       <main className="seite flex flex-col items-center gap-4">
         {error && <Notice tone="warn">{error}</Notice>}
-        {!src && !error && <div className="aspect-video w-full max-w-3xl animate-pulse rounded-3xl bg-white" role="status" aria-label={L('Video wird geladen', 'Caricamento del video')} />}
+        {!src && !error && <div className="aspect-video w-full max-w-3xl animate-pulse rounded-3xl bg-flaeche" role="status" aria-label={L('Video wird geladen', 'Caricamento del video')} />}
         {src && (
           <video
             className="aspect-video w-full max-w-3xl rounded-3xl bg-black shadow-karte"

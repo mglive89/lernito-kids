@@ -59,8 +59,8 @@ export default function AdminArea() {
     <Routes>
       <Route path="vorschau/:id" element={<Preview />} />
       <Route path="*" element={
-        <div className="min-h-[100dvh] bg-white/60">
-          <TopBar title="Inhalte verwalten" back="/eltern" right={<button className="knopf bg-white text-base" onClick={() => { setUnlocked(false); nav('/'); }}><LogOut size={20} /> Abmelden</button>} />
+        <div className="min-h-[100dvh] bg-flaeche/60">
+          <TopBar title="Inhalte verwalten" back="/eltern" right={<button className="knopf bg-flaeche text-base" onClick={() => { setUnlocked(false); nav('/'); }}><LogOut size={20} /> Abmelden</button>} />
           <AdminDashboard />
         </div>
       } />
@@ -98,7 +98,7 @@ function AdminDashboard() {
     <main className="seite flex flex-col gap-5">
       <div className="flex gap-2 overflow-x-auto" role="tablist">
         {tabs.map((t) => (
-          <button key={t.id} role="tab" aria-selected={tab === t.id} onClick={() => setTab(t.id)} data-testid={`admin-tab-${t.id}`} className={`flex shrink-0 items-center gap-2 rounded-2xl px-4 py-3 font-bold ${tab === t.id ? 'bg-lila-500 text-white' : 'bg-white'}`}>
+          <button key={t.id} role="tab" aria-selected={tab === t.id} onClick={() => setTab(t.id)} data-testid={`admin-tab-${t.id}`} className={`flex shrink-0 items-center gap-2 rounded-2xl px-4 py-3 font-bold ${tab === t.id ? 'bg-lila-500 text-white' : 'bg-flaeche'}`}>
             <t.icon size={20} /> {t.label}
           </button>
         ))}
@@ -144,8 +144,8 @@ function ModulesTab() {
               Veröffentlicht
             </label>
             <div className="flex gap-2">
-              <button className="knopf bg-white px-3 text-base" onClick={() => nav(`/admin/vorschau/${m.id}`)} aria-label="Vorschau"><Eye size={20} /></button>
-              <button className="knopf bg-white px-3 text-base" onClick={() => setEditing(m)} aria-label="Bearbeiten"><Pencil size={20} /></button>
+              <button className="knopf bg-flaeche px-3 text-base" onClick={() => nav(`/admin/vorschau/${m.id}`)} aria-label="Vorschau"><Eye size={20} /></button>
+              <button className="knopf bg-flaeche px-3 text-base" onClick={() => setEditing(m)} aria-label="Bearbeiten"><Pencil size={20} /></button>
               <button className="knopf bg-koralle-100 px-3 text-base" onClick={() => setToDelete(m)} aria-label="Löschen"><Trash2 size={20} /></button>
             </div>
           </li>
@@ -235,12 +235,12 @@ function ModuleEditor({ initial, onClose }: { initial: CustomModule; onClose: ()
           </div>
         </fieldset>
       ))}
-      <button type="button" className="knopf self-start bg-white" onClick={() => setM({ ...m, questions: [...m.questions, emptyQuestion()] })}><Plus /> Frage hinzufügen</button>
+      <button type="button" className="knopf self-start bg-flaeche" onClick={() => setM({ ...m, questions: [...m.questions, emptyQuestion()] })}><Plus /> Frage hinzufügen</button>
       {errors.length > 0 && <Notice tone="warn"><ul className="list-disc pl-5">{errors.map((e) => <li key={e}>{e}</li>)}</ul></Notice>}
       <div className="flex flex-wrap gap-2">
         <button type="submit" className="knopf bg-himmel-500 text-white" data-testid="modul-speichern">Speichern</button>
         <button type="button" className="knopf bg-minze-500 text-white" onClick={() => submit(true)} data-testid="modul-veroeffentlichen">Speichern & veröffentlichen</button>
-        <button type="button" className="knopf bg-white" onClick={onClose}>Abbrechen</button>
+        <button type="button" className="knopf bg-flaeche" onClick={onClose}>Abbrechen</button>
       </div>
     </form>
   );
@@ -307,7 +307,7 @@ function MediaTab() {
           <li key={m.id} className="karte flex items-center gap-3 p-4">
             <span className="emoji text-3xl">{m.kind === 'image' ? '🖼️' : m.kind === 'video' ? '🎞️' : '💬'}</span>
             <div className="min-w-0 flex-1"><p className="truncate font-bold">{m.name}</p><p className="text-sm text-tinte/60">{(m.size / 1024).toFixed(0)} KB</p></div>
-            {m.kind !== 'subtitle' && <button className="knopf bg-white px-3" onClick={() => void open(m)} aria-label="Ansehen"><Eye size={18} /></button>}
+            {m.kind !== 'subtitle' && <button className="knopf bg-flaeche px-3" onClick={() => void open(m)} aria-label="Ansehen"><Eye size={18} /></button>}
             <button className="knopf bg-koralle-100 px-3" onClick={() => void deleteMedia(m.id).then(reload)} aria-label="Löschen"><Trash2 size={18} /></button>
           </li>
         ))}
@@ -344,7 +344,7 @@ function VideosTab() {
           <li key={v.id} className="karte flex flex-wrap items-center gap-3 p-4">
             <span className="emoji text-3xl">🎞️</span>
             <div className="flex-1"><p className="font-bold">{v.title}</p><p className="text-sm text-tinte/60">{v.topic} · {v.published ? 'veröffentlicht' : 'Entwurf'}</p></div>
-            <button className="knopf bg-white px-3" onClick={() => setDraft(v)} aria-label="Bearbeiten"><Pencil size={18} /></button>
+            <button className="knopf bg-flaeche px-3" onClick={() => setDraft(v)} aria-label="Bearbeiten"><Pencil size={18} /></button>
             <button className="knopf bg-koralle-100 px-3" onClick={() => del(v.id)} aria-label="Löschen"><Trash2 size={18} /></button>
           </li>
         ))}

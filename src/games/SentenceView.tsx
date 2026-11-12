@@ -57,7 +57,7 @@ export function SentenceView({ task, onCorrect, onWrong, reveal, done, onPending
         aria-label={L('Dein Satz', 'La tua frase')} aria-live="polite" data-testid="satz-antwort">
         {picked.map((i, k) => (
           <motion.button key={`${i}-${k}`} layout type="button" onClick={() => untap(k)} data-testid={`antwort-${k}`}
-            className={`knopf h-12 px-4 text-lg font-semibold sm:text-xl ${done ? 'bg-minze-50 text-minze-700 ring-2 ring-minze-300' : 'bg-white'}`}>
+            className={`knopf h-12 px-4 text-lg font-semibold sm:text-xl ${done ? 'bg-minze-50 text-minze-700 ring-2 ring-minze-300' : 'bg-flaeche'}`}>
             {task.tiles[i]}
           </motion.button>
         ))}
@@ -70,7 +70,7 @@ export function SentenceView({ task, onCorrect, onWrong, reveal, done, onPending
           const used = picked.includes(i);
           return (
             <button key={i} type="button" onClick={() => tap(i)} disabled={used || done} data-testid={`wort-${t}`}
-              className={`knopf h-12 px-4 text-lg font-semibold sm:text-xl ${used ? 'bg-tinte/[0.06] text-transparent shadow-none' : 'bg-white'}`}>
+              className={`knopf h-12 px-4 text-lg font-semibold sm:text-xl ${used ? 'bg-tinte/[0.06] text-transparent shadow-none' : 'bg-flaeche'}`}>
               {t}
             </button>
           );

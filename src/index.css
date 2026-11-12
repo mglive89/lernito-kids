@@ -3,6 +3,61 @@
 @tailwind utilities;
 
 :root {
+  --c-tinte: 24 33 61;
+  --c-creme: 246 247 251;
+  --c-flaeche: 255 255 255;
+  --c-tinte-fest: 24 33 61;
+  --c-sonne-50: 255 250 235;
+  --c-sonne-100: 254 240 199;
+  --c-sonne-300: 253 210 114;
+  --c-sonne-700: 161 92 7;
+  --c-himmel-50: 239 245 255;
+  --c-himmel-100: 220 232 254;
+  --c-himmel-300: 157 190 251;
+  --c-himmel-700: 29 71 168;
+  --c-minze-50: 236 253 246;
+  --c-minze-100: 209 250 232;
+  --c-minze-300: 126 221 188;
+  --c-minze-700: 8 114 90;
+  --c-koralle-50: 255 244 242;
+  --c-koralle-100: 255 227 222;
+  --c-koralle-300: 253 163 148;
+  --c-koralle-700: 178 58 40;
+  --c-lila-50: 245 243 255;
+  --c-lila-100: 234 229 255;
+  --c-lila-300: 191 174 253;
+  --c-lila-700: 79 51 194;
+}
+/* Dunkles Thema: nur Flächen, Text und helle/dunkle Farbstufen wechseln; Kräftige Farben (500/600) bleiben gleich. */
+html.dunkel:not(.kontrast) {
+  --c-tinte: 231 235 246;
+  --c-creme: 13 18 32;
+  --c-flaeche: 23 30 51;
+  --c-tinte-fest: 44 55 87;
+  --c-sonne-50: 43 35 18;
+  --c-sonne-100: 61 48 22;
+  --c-sonne-300: 164 122 40;
+  --c-sonne-700: 252 210 122;
+  --c-himmel-50: 22 34 63;
+  --c-himmel-100: 29 46 90;
+  --c-himmel-300: 74 112 196;
+  --c-himmel-700: 170 197 252;
+  --c-minze-50: 15 41 34;
+  --c-minze-100: 19 57 47;
+  --c-minze-300: 46 138 110;
+  --c-minze-700: 128 226 193;
+  --c-koralle-50: 48 26 26;
+  --c-koralle-100: 71 36 33;
+  --c-koralle-300: 176 89 75;
+  --c-koralle-700: 255 174 160;
+  --c-lila-50: 33 27 61;
+  --c-lila-100: 45 36 87;
+  --c-lila-300: 124 103 212;
+  --c-lila-700: 202 189 255;
+  color-scheme: dark;
+}
+
+:root {
   --font-display: 'Plus Jakarta Sans', system-ui, sans-serif;
   --radius-card: 1.25rem;
   --safe-top: env(safe-area-inset-top, 0px);
@@ -44,14 +99,14 @@ html.wenig-bewegung *, html.wenig-bewegung *::before, html.wenig-bewegung *::aft
   /* Kräftige Hauptknöpfe mit „Kante“ unten */
   .knopf-3d { box-shadow: 0 1px 2px rgba(16, 24, 40, 0.06), inset 0 -2px 0 rgba(16, 24, 40, 0.06); }
   .knopf-3d:active { transform: translateY(1px); box-shadow: none; }
-  .karte { @apply rounded-blob bg-white shadow-karte ring-1 ring-tinte/[0.06]; }
+  .karte { @apply rounded-blob bg-flaeche shadow-karte ring-1 ring-tinte/[0.06]; }
   /* Kachel mit „Kante“ unten – wirkt greifbar wie ein Spielstein */
   /* Standardkarte: weiß, feine Linie, weicher Schatten */
-  .karte-3d { @apply rounded-blob bg-white ring-1 ring-tinte/[0.07] transition; box-shadow: 0 1px 2px rgba(16, 24, 40, 0.04), 0 6px 16px -8px rgba(16, 24, 40, 0.10); }
+  .karte-3d { @apply rounded-blob bg-flaeche ring-1 ring-tinte/[0.07] transition; box-shadow: 0 1px 2px rgba(16, 24, 40, 0.04), 0 6px 16px -8px rgba(16, 24, 40, 0.10); }
   a.karte-3d:hover, button.karte-3d:hover, .group:hover > .karte-3d { box-shadow: 0 1px 2px rgba(16, 24, 40, 0.05), 0 14px 30px -12px rgba(16, 24, 40, 0.18); }
   .chip { @apply inline-flex items-center gap-1 rounded-full px-3 py-1 text-sm font-bold; }
   .eyebrow { @apply text-[11px] font-bold uppercase tracking-[0.12em] text-tinte/50; }
-  .feld { @apply w-full rounded-xl border-2 border-tinte/15 bg-white px-4 py-3 text-lg outline-none focus:border-himmel-500; }
+  .feld { @apply w-full rounded-xl border-2 border-tinte/15 bg-flaeche px-4 py-3 text-lg outline-none focus:border-himmel-500; }
   .seite { @apply mx-auto w-full max-w-6xl px-4 pb-24 sm:px-6 2xl:max-w-7xl; padding-bottom: calc(6rem + var(--safe-bottom)); }
   .ueberschrift { @apply font-display text-3xl font-bold sm:text-4xl; }
 }
@@ -60,14 +115,14 @@ html.wenig-bewegung *, html.wenig-bewegung *::before, html.wenig-bewegung *::aft
   background:
     radial-gradient(1200px 500px at 10% -10%, rgba(255, 176, 32, 0.18), transparent 60%),
     radial-gradient(900px 500px at 100% 0%, rgba(47, 125, 235, 0.14), transparent 60%),
-    #F5F7FB;
+    rgb(var(--c-creme));
 }
 
 /* Fröhlicher Hintergrund des Kinderbereichs: weiche Farbflecken und ein feines Punktmuster */
 .kinder-hintergrund {
   background:
     radial-gradient(900px 340px at 50% -120px, rgba(47, 111, 235, 0.08), transparent 70%),
-    #F6F7FB;
+    rgb(var(--c-creme));
 }
 html.kontrast .kinder-hintergrund { background: #fff; }
 
@@ -113,6 +168,17 @@ html:not(.gross-text) { font-size: clamp(100%, 0.95rem + 0.15vw, 106.25%); }
 /* Sanftes Pulsieren für „Hier geht’s weiter“ */
 .puls { animation: puls 2.4s ease-in-out infinite; }
 @keyframes puls { 0%, 100% { box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.45); } 50% { box-shadow: 0 0 0 10px rgba(255, 255, 255, 0); } }
+
+/* Dunkles Thema: Karten heben sich mit feiner heller Linie statt Schatten ab */
+html.dunkel:not(.kontrast) .karte, html.dunkel:not(.kontrast) .karte-3d { box-shadow: 0 1px 0 rgba(255,255,255,0.04) inset, 0 10px 24px -14px rgba(0,0,0,0.6); }
+/* Farbiger Text (Stufe 600) wird im Dunkeln heller, damit er gut lesbar bleibt */
+html.dunkel:not(.kontrast) .text-himmel-600 { color: rgb(var(--c-himmel-700)); }
+html.dunkel:not(.kontrast) .text-lila-600 { color: rgb(var(--c-lila-700)); }
+html.dunkel:not(.kontrast) .text-minze-600 { color: rgb(var(--c-minze-700)); }
+html.dunkel:not(.kontrast) .text-koralle-600 { color: rgb(var(--c-koralle-700)); }
+html.dunkel:not(.kontrast) .text-sonne-600 { color: rgb(var(--c-sonne-700)); }
+html.dunkel:not(.kontrast) .kante-weiss { box-shadow: 0 1px 0 rgba(255,255,255,0.05) inset; }
+html.dunkel:not(.kontrast) img.emoji, html.dunkel:not(.kontrast) .bild-hell { filter: brightness(0.92); }
 
 html.wenig-bewegung .hero-lebendig, html.wenig-bewegung .schwebe, html.wenig-bewegung .schwebe-langsam,
 html.wenig-bewegung .glanz::after, html.wenig-bewegung .puls { animation: none !important; }

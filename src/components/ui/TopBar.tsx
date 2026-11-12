@@ -8,7 +8,7 @@ import { sfx } from '../../lib/sound';
 export function TopBar({ title, back, right, stars }: { title?: string; back?: string | number; right?: ReactNode; stars?: number }) {
   const nav = useNavigate();
   return (
-    <header className="sticky top-0 z-30 border-b border-tinte/[0.06] bg-white/85 backdrop-blur-md" style={{ paddingTop: 'var(--safe-top)' }}>
+    <header className="sticky top-0 z-30 border-b border-tinte/[0.06] bg-flaeche/85 backdrop-blur-md" style={{ paddingTop: 'var(--safe-top)' }}>
       <div className="mx-auto flex h-16 max-w-6xl 2xl:max-w-7xl items-center gap-3 px-4 sm:px-6">
         {back !== undefined && (
           <button
