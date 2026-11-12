@@ -118,3 +118,16 @@ test('Quiz: Antwort mit der Stimme geben', async ({ page }) => {
   await page.getByTestId('pruefen').click();
   await expect(area).toHaveAttribute('data-phase', 'correct');
 });
+
+test('Sprachkurs: Theorie erklärt Wörter, Sätze und Regeln', async ({ page }) => {
+  await createProfile(page, 'Sara', '4', 'IT');
+  await page.goto('/lingue/de');
+  await page.getByTestId('vokabeln-lingua-de-animali').click();
+  await expect(page.getByTestId('sprach-theorie')).toBeVisible();
+  await expect(page.getByTestId('theorie-wort')).toHaveCount(8);
+  await expect(page.getByTestId('theorie-satz')).toHaveCount(3);
+  await expect(page.getByTestId('theorie-regel').first()).toContainText('der');
+  await expect(page.getByText('neutro').first()).toBeVisible();
+  await expect(page.getByTestId('lt-aussprache')).toBeVisible();
+  await expect(page.getByTestId('lt-uebungen')).toBeVisible();
+});

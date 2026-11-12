@@ -64,3 +64,20 @@ describe('Sprachkurse', () => {
     expect(tokens('Comment ça va ?')).toEqual(['Comment', 'ça', 'va']);
   });
 });
+
+describe('Theorie der Sprachkurse', () => {
+  it('hat für jede Einheit und Sprache Regeln mit Schritten und Aussprache-Tipps', async () => {
+    const { NOTES, PRONUNCIATION, genderOf } = await import('../lingue/theory');
+    for (const course of COURSES) {
+      expect(PRONUNCIATION[course.id].length, course.id).toBeGreaterThanOrEqual(4);
+      for (const unit of UNITS) {
+        const notes = NOTES[unit.id]?.[course.id] ?? [];
+        expect(notes.length, `${course.id}/${unit.id}`).toBeGreaterThan(0);
+        for (const n of notes) expect(n.steps.length, `${course.id}/${unit.id}`).toBeGreaterThan(0);
+      }
+    }
+    expect(genderOf('das Pferd', 'de')).toBe('n');
+    expect(genderOf('la mela', 'it')).toBe('f');
+    expect(genderOf('dog', 'en')).toBeNull();
+  });
+});

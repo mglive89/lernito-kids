@@ -167,7 +167,7 @@ function UnitHeader({ m, index, done }: { m: LearningModule; index: number; done
           <p className="u-sub text-sm sm:text-base">{tr(m.subtitle)}</p>
         </div>
         <Link to={`/thema/${m.id}`} className="flex shrink-0 items-center gap-1.5 rounded-xl bg-white px-3 py-2 text-sm font-bold text-tinte shadow-weich transition hover:bg-white/90" data-testid={`vokabeln-${m.id}`}>
-          <BookOpen size={18} /> <span className="hidden sm:inline">{L('Wörter', 'Parole')}</span>
+          <BookOpen size={18} /> <span className="hidden sm:inline">{L('Theorie', 'Teoria')}</span>
         </Link>
       </div>
     </div>

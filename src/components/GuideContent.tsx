@@ -8,12 +8,22 @@ import { workedExamples } from '../learning/examples';
 import type { LearningModule, StudyCard } from '../learning/types';
 import { L, tr } from '../i18n';
 import { sfx } from '../lib/sound';
+import { LanguageTheory } from '../lingue/LanguageTheory';
 
 /** Theorie eines Themas: Das Wichtigste, gelöste Beispiele, Lernkarten. */
 export function GuideContent({ module, compact = false }: { module: LearningModule; compact?: boolean }) {
   const guide = guideFor(module.id);
   const examples = useMemo(() => workedExamples(module, compact ? 2 : 3), [module, compact]);
   const cards = useMemo(() => module.cards?.() ?? [], [module]);
+  // Sprachkurse: eigene Theorie (Wörter, Sätze, Grammatik, Aussprache) statt allgemeiner Beispiele
+  if (module.area === 'lingue') {
+    return (
+      <div className="flex flex-col gap-7" data-testid="theorie">
+        <LanguageTheory module={module} compact={compact} />
+        {cards.length > 0 && <Flashcards cards={cards} max={compact ? 6 : 12} />}
+      </div>
+    );
+  }
   return (
     <div className="flex flex-col gap-6" data-testid="theorie">
       {guide && (
