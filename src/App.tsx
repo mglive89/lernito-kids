@@ -51,6 +51,8 @@ export default function App() {
   setCustomSubjectNames((id) => subjectSettings.find((x) => x.id === id)?.name);
   const teen = !adultOrStart && !!profile && isTeen(profile.country, profile.year);
   useEffect(() => { document.documentElement.classList.toggle('teen', teen); }, [teen]);
+  const kita = !adultOrStart && !!profile && profile.year === 0;
+  useEffect(() => { document.documentElement.classList.toggle('kita', kita); }, [kita]);
 
   useEffect(() => {
     if (!hydrated) return;

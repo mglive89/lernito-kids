@@ -3,16 +3,21 @@
 @tailwind utilities;
 
 :root {
-  --font-display: 'Fredoka', 'Plus Jakarta Sans', system-ui, sans-serif;
-  --radius-card: 1.5rem;
+  --font-display: 'Plus Jakarta Sans', system-ui, sans-serif;
+  --radius-card: 1.25rem;
   --safe-top: env(safe-area-inset-top, 0px);
   --safe-bottom: env(safe-area-inset-bottom, 0px);
   color-scheme: light;
 }
 
-html { -webkit-text-size-adjust: 100%; }
+html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; touch-action: manipulation; }
+/* Immer bildschirmbreit: kein seitliches Verschieben, kein Zoom beim Antippen von Feldern (iOS ab < 16px) */
+html, body, #root { width: 100%; max-width: 100%; overflow-x: clip; }
+input, select, textarea { font-size: max(16px, 1em); }
 /* Sachlicher Stil für Mittel- und Oberstufe */
-html.teen { --font-display: 'Plus Jakarta Sans', system-ui, sans-serif; --radius-card: 1rem; }
+/* Kindergarten: rundere, verspieltere Schrift */
+html.kita { --font-display: 'Fredoka', 'Plus Jakarta Sans', system-ui, sans-serif; --radius-card: 1.5rem; }
+html.teen { --radius-card: 1rem; }
 html.teen .knopf { @apply rounded-xl text-base; }
 html.teen .ueberschrift { @apply tracking-tight; }
 html.gross-text { font-size: 118%; }
@@ -33,18 +38,19 @@ html.wenig-bewegung *, html.wenig-bewegung *::before, html.wenig-bewegung *::aft
 
 @layer components {
   .knopf {
-    @apply inline-flex select-none items-center justify-center gap-2 rounded-2xl px-5 py-3 font-display text-lg font-semibold shadow-knopf ring-1 ring-tinte/5 transition hover:brightness-[1.03] active:translate-y-px active:shadow-none focus-visible:outline focus-visible:outline-4 focus-visible:outline-offset-2 focus-visible:outline-himmel-500 disabled:cursor-not-allowed disabled:opacity-50;
+    @apply inline-flex select-none items-center justify-center gap-2 rounded-xl px-5 py-3 font-display text-base font-bold ring-1 ring-tinte/[0.08] transition hover:brightness-[1.04] active:translate-y-px active:shadow-none sm:text-lg focus-visible:outline focus-visible:outline-4 focus-visible:outline-offset-2 focus-visible:outline-himmel-500 disabled:cursor-not-allowed disabled:opacity-50;
     min-height: 3.25rem;
   }
   /* Kräftige Hauptknöpfe mit „Kante“ unten */
-  .knopf-3d { box-shadow: 0 4px 0 rgba(16, 24, 40, 0.18); }
-  .knopf-3d:active { transform: translateY(3px); box-shadow: 0 1px 0 rgba(16, 24, 40, 0.22); }
+  .knopf-3d { box-shadow: 0 1px 2px rgba(16, 24, 40, 0.06), inset 0 -2px 0 rgba(16, 24, 40, 0.06); }
+  .knopf-3d:active { transform: translateY(1px); box-shadow: none; }
   .karte { @apply rounded-blob bg-white shadow-karte ring-1 ring-tinte/[0.06]; }
   /* Kachel mit „Kante“ unten – wirkt greifbar wie ein Spielstein */
-  .karte-3d { @apply rounded-blob bg-white ring-2 ring-tinte/[0.07] transition-shadow; box-shadow: 0 5px 0 rgba(31, 35, 64, 0.08), 0 14px 28px -18px rgba(31, 35, 64, 0.35); }
-  .karte-3d:hover { box-shadow: 0 7px 0 rgba(31, 35, 64, 0.09), 0 20px 34px -18px rgba(31, 35, 64, 0.38); }
+  /* Standardkarte: weiß, feine Linie, weicher Schatten */
+  .karte-3d { @apply rounded-blob bg-white ring-1 ring-tinte/[0.07] transition; box-shadow: 0 1px 2px rgba(16, 24, 40, 0.04), 0 6px 16px -8px rgba(16, 24, 40, 0.10); }
+  a.karte-3d:hover, button.karte-3d:hover, .group:hover > .karte-3d { box-shadow: 0 1px 2px rgba(16, 24, 40, 0.05), 0 14px 30px -12px rgba(16, 24, 40, 0.18); }
   .chip { @apply inline-flex items-center gap-1 rounded-full px-3 py-1 text-sm font-bold; }
-  .eyebrow { @apply text-xs font-extrabold uppercase tracking-[0.14em] text-tinte/50; }
+  .eyebrow { @apply text-[11px] font-bold uppercase tracking-[0.12em] text-tinte/50; }
   .feld { @apply w-full rounded-xl border-2 border-tinte/15 bg-white px-4 py-3 text-lg outline-none focus:border-himmel-500; }
   .seite { @apply mx-auto w-full max-w-6xl px-4 pb-24 sm:px-6; padding-bottom: calc(6rem + var(--safe-bottom)); }
   .ueberschrift { @apply font-display text-3xl font-bold sm:text-4xl; }
@@ -60,20 +66,15 @@ html.wenig-bewegung *, html.wenig-bewegung *::before, html.wenig-bewegung *::aft
 /* Fröhlicher Hintergrund des Kinderbereichs: weiche Farbflecken und ein feines Punktmuster */
 .kinder-hintergrund {
   background:
-    radial-gradient(circle at 1px 1px, rgba(31, 35, 64, 0.05) 1px, transparent 0) 0 0 / 22px 22px,
-    radial-gradient(700px 380px at 0% 0%, rgba(255, 176, 32, 0.16), transparent 70%),
-    radial-gradient(700px 420px at 100% 10%, rgba(124, 92, 250, 0.12), transparent 70%),
-    radial-gradient(800px 500px at 50% 100%, rgba(20, 184, 166, 0.10), transparent 70%),
-    #F5F7FB;
+    radial-gradient(900px 340px at 50% -120px, rgba(47, 111, 235, 0.08), transparent 70%),
+    #F6F7FB;
 }
-html.teen .kinder-hintergrund { background: #F5F7FB; }
 html.kontrast .kinder-hintergrund { background: #fff; }
 
-/* Farbige Kanten unter kräftigen Flächen */
-.kante-sonne { box-shadow: 0 5px 0 #B86E00; }
-.kante-himmel { box-shadow: 0 5px 0 #1B4FA8; }
-.kante-minze { box-shadow: 0 5px 0 #0B7468; }
-.kante-koralle { box-shadow: 0 5px 0 #B23A28; }
-.kante-lila { box-shadow: 0 5px 0 #4F33C2; }
-.kante-weiss { box-shadow: 0 4px 0 rgba(31, 35, 64, 0.18); }
-
+/* Farbige Hauptknöpfe: feine dunklere Unterkante statt dicker 3D-Kante */
+.kante-sonne { box-shadow: inset 0 -2px 0 rgba(0, 0, 0, 0.12), 0 2px 6px -2px rgba(219, 139, 11, 0.5); }
+.kante-himmel { box-shadow: inset 0 -2px 0 rgba(0, 0, 0, 0.14), 0 2px 6px -2px rgba(36, 89, 209, 0.5); }
+.kante-minze { box-shadow: inset 0 -2px 0 rgba(0, 0, 0, 0.12), 0 2px 6px -2px rgba(12, 154, 112, 0.5); }
+.kante-koralle { box-shadow: inset 0 -2px 0 rgba(0, 0, 0, 0.12), 0 2px 6px -2px rgba(217, 74, 55, 0.5); }
+.kante-lila { box-shadow: inset 0 -2px 0 rgba(0, 0, 0, 0.14), 0 2px 6px -2px rgba(103, 65, 232, 0.5); }
+.kante-weiss { box-shadow: 0 1px 2px rgba(16, 24, 40, 0.08); }

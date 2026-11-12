@@ -11,6 +11,9 @@ import '@fontsource/fredoka/700.css';
 import './index.css';
 import App from './App';
 import { ErrorBoundary } from './components/ErrorBoundary';
+import { preventZoom } from './lib/noZoom';
+
+preventZoom();
 
 // Relativer Build (BASE_PATH=./, z. B. für eine Vorschau-Seite ohne festen Pfad) nutzt Hash-Routen.
 const relative = import.meta.env.BASE_URL === './';

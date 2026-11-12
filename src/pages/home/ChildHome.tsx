@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
-import { ChevronRight, Flame, Play } from 'lucide-react';
+import { ArrowRight, CalendarCheck, ChevronRight, Play, Target, Zap } from 'lucide-react';
 import { useApp, useActiveProfile } from '../../store/useApp';
-import { Avatar, colorSet, ProgressBar, ProgressRing, SectionTitle, StarCount, Tile } from '../../components/ui';
+import { Avatar, colorSet, IconBadge, ProgressBar, ProgressRing, SectionTitle, StarCount, SubjectIcon, subjectIcon, Tile } from '../../components/ui';
 import { sfx } from '../../lib/sound';
 import { lessonLabel, lessonLink } from '../../learning/lessons';
 import { Lino } from '../../components/Lino';
@@ -38,72 +38,74 @@ export function ChildHome() {
   const learnDays = Object.values(progress.daily).filter((d) => d.rounds > 0).length;
   const contStep = Math.min(3, pathDoneOf(progress.modules[cont.id]) + 1);
   const goalReached = today.rounds >= goal;
+  const ContIcon = subjectIcon(cont.subject ?? '');
   const hello = hour < 11 ? L('Guten Morgen', 'Buongiorno') : hour < 18 ? L('Hallo', 'Ciao') : L('Guten Abend', 'Buonasera');
 
   return (
     <div style={{ paddingTop: 'var(--safe-top)' }}>
-      <header className="mx-auto flex max-w-6xl items-center gap-3 px-4 pt-4 sm:px-6">
-        <Link to="/avatar" aria-label={L('Avatar gestalten', 'Personalizza l’avatar')}><Avatar config={profile.avatar} size={52} /></Link>
+      <header className="mx-auto flex max-w-6xl items-center gap-3 px-4 pt-5 sm:px-6">
+        <Link to="/avatar" aria-label={L('Avatar gestalten', 'Personalizza l’avatar')}><Avatar config={profile.avatar} size={48} /></Link>
         <div className="min-w-0 flex-1">
-          <p className="truncate font-display text-xl font-bold tracking-tight sm:text-2xl">{hello}, {profile.name}!</p>
-          <div className="mt-0.5 flex flex-wrap items-center gap-2 text-sm">
-            <span className="chip bg-lila-100 py-0.5 text-lila-700" data-testid="level">Level {lvl.level}</span>
-            <span className="truncate text-tinte/60">{profileLabel(profile)}</span>
-          </div>
+          <p className="truncate font-display text-xl font-extrabold tracking-tight sm:text-2xl">{hello}, {profile.name}!</p>
+          <p className="truncate text-sm text-tinte/55"><span className="font-semibold text-lila-600" data-testid="level">Level {lvl.level}</span> · {profileLabel(profile)}</p>
         </div>
         <StarCount n={progress.stars} />
       </header>
 
       <main className="seite">
-        {/* Puppy und Weiterlernen */}
-        <section className="relative mt-5 overflow-hidden rounded-blob bg-gradient-to-br from-himmel-500 via-himmel-500 to-lila-500 p-5 text-white shadow-karte sm:p-7" aria-label={L('Weiterlernen', 'Continua')}>
-          <span className="pointer-events-none absolute -right-12 -top-16 h-56 w-56 rounded-full bg-white/10" aria-hidden />
-          <span className="pointer-events-none absolute -bottom-20 right-24 h-48 w-48 rounded-full bg-sonne-300/20" aria-hidden />
-          <div className="relative flex items-end gap-2 sm:gap-6">
+        {/* Weiterlernen mit Puppy */}
+        <section className="relative mt-5 overflow-hidden rounded-blob bg-gradient-to-br from-himmel-600 to-himmel-500 text-white shadow-karte" aria-label={L('Weiterlernen', 'Continua')}>
+          <span className="pointer-events-none absolute -right-20 -top-24 h-72 w-72 rounded-full bg-white/[0.07]" aria-hidden />
+          <span className="pointer-events-none absolute -bottom-32 right-32 h-64 w-64 rounded-full bg-white/[0.05]" aria-hidden />
+          <div className="relative flex items-end gap-2 p-5 sm:gap-6 sm:p-7">
             <div className="min-w-0 flex-1">
-              <p className="inline-block rounded-2xl rounded-bl-md bg-white/95 px-4 py-2 font-display text-base font-semibold text-tinte shadow-weich sm:text-lg" aria-live="polite">
+              <p className="text-sm font-medium text-white/80" aria-live="polite">
                 {goalReached ? L('Tagesziel geschafft! Du darfst gern weiterspielen.', 'Obiettivo raggiunto! Puoi continuare, se ti va.') : L('Was möchtest du heute lernen?', 'Che cosa vuoi imparare oggi?')}
               </p>
-              <div className="mt-4 flex items-center gap-3">
-                <span className="emoji flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-white/20 text-3xl ring-2 ring-white/30" aria-hidden>{cont.emoji}</span>
+              <div className="mt-4 flex items-center gap-3.5">
+                <span className="emoji flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-white/15 text-2xl ring-1 ring-white/20 sm:h-14 sm:w-14 sm:text-3xl" aria-hidden>
+                  {cont.subject ? <ContIcon size={26} strokeWidth={2.2} /> : cont.emoji}
+                </span>
                 <span className="min-w-0">
-                  <span className="block text-xs font-extrabold uppercase tracking-wider text-white/80">{L('Weiterlernen', 'Continua')}{cont.area === 'schule' ? ` · ${lessonLabel(contStep)}` : ''}</span>
-                  <span className="line-clamp-2 block font-display text-2xl font-bold leading-tight sm:text-3xl">{tr(cont.title)}</span>
-                  <span className="block truncate text-sm text-white/85 sm:text-base">{tr(cont.subtitle)}</span>
+                  <span className="block text-[11px] font-bold uppercase tracking-[0.12em] text-white/70">{L('Weiterlernen', 'Continua')}{cont.area === 'schule' ? ` · ${lessonLabel(contStep)}` : ''}</span>
+                  <span className="line-clamp-2 block font-display text-2xl font-extrabold leading-tight tracking-tight sm:text-3xl">{tr(cont.title)}</span>
+                  <span className="block truncate text-sm text-white/80 sm:text-base">{tr(cont.subtitle)}</span>
                 </span>
               </div>
               <Link to={lessonLink(cont, pathDoneOf(progress.modules[cont.id]))} onClick={() => sfx.tap()} data-testid="weiterlernen"
-                className="knopf kante-sonne mt-5 w-full bg-sonne-500 text-tinte hover:bg-sonne-300 sm:w-auto sm:px-8">
-                <Play size={22} className="fill-tinte" /> {L('Los geht’s', 'Iniziamo')}
+                className="knopf mt-5 w-full bg-white text-himmel-700 ring-0 hover:bg-himmel-50 sm:w-auto sm:px-7">
+                <Play size={18} className="fill-himmel-700" /> {L('Los geht’s', 'Iniziamo')}
               </Link>
             </div>
-            <div className="-mb-6 -mr-3 hidden shrink-0 min-[380px]:block sm:hidden"><Lino mood={goalReached ? 'jubel' : 'winken'} size={118} /></div>
-            <div className="-mb-8 mr-4 hidden shrink-0 sm:block"><Lino mood={goalReached ? 'jubel' : 'winken'} size={190} /></div>
+            <div className="-mb-7 -mr-3 hidden shrink-0 min-[380px]:block sm:hidden"><Lino mood={goalReached ? 'jubel' : 'winken'} size={112} /></div>
+            <div className="-mb-9 mr-2 hidden shrink-0 sm:block"><Lino mood={goalReached ? 'jubel' : 'winken'} size={180} /></div>
           </div>
         </section>
 
         {/* Tagesziel, Level, Lerntage */}
         <div className="mt-4 grid grid-cols-3 gap-3 sm:gap-4">
-          <div className="karte-3d flex flex-col items-center gap-1.5 p-3 text-center sm:flex-row sm:gap-4 sm:p-4 sm:text-left" aria-label={L('Tagesziel', 'Obiettivo del giorno')}>
-            <ProgressRing value={today.rounds / goal} size={58} label={L('Tagesziel', 'Obiettivo del giorno')}>
-              <span className="font-display text-base font-bold">{Math.min(today.rounds, goal)}/{goal}</span>
+          <div className="karte-3d flex flex-col items-center gap-2 p-3 text-center sm:flex-row sm:gap-4 sm:p-4 sm:text-left" aria-label={L('Tagesziel', 'Obiettivo del giorno')}>
+            <ProgressRing value={today.rounds / goal} size={52} stroke={6} color="#12B886" label={L('Tagesziel', 'Obiettivo del giorno')}>
+              <Target size={20} className="text-minze-600" />
             </ProgressRing>
-            <span><span className="eyebrow block">{L('Tagesziel', 'Obiettivo')}</span><span className="hidden text-xs text-tinte/55 sm:block">{L('Lektionen, freiwillig', 'lezioni, senza obbligo')}</span></span>
+            <span><span className="block font-display text-lg font-extrabold leading-none sm:text-xl">{Math.min(today.rounds, goal)}/{goal}</span><span className="text-xs font-medium text-tinte/55">{L('Tagesziel', 'Obiettivo')}</span></span>
           </div>
-          <div className="karte-3d flex flex-col items-center justify-center gap-1.5 p-3 text-center sm:items-start sm:p-4 sm:text-left" aria-label={L('Level-Fortschritt', 'Progresso di livello')}>
-            <span className="eyebrow">Level {lvl.level}</span>
-            <span className="font-display text-xl font-bold sm:text-2xl">{progress.xp} XP</span>
-            <ProgressBar value={lvl.progress} color="bg-lila-500" label={L('Fortschritt zum nächsten Level', 'Progresso verso il prossimo livello')} />
-            <span className="hidden text-xs text-tinte/55 sm:block">{lvl.next ? L(`Noch ${lvl.next - progress.xp} bis Level ${lvl.level + 1}`, `Ancora ${lvl.next - progress.xp} per il livello ${lvl.level + 1}`) : L('Höchstes Level!', 'Livello massimo!')}</span>
+          <div className="karte-3d flex flex-col items-center gap-2 p-3 text-center sm:flex-row sm:gap-4 sm:p-4 sm:text-left" aria-label={L('Level-Fortschritt', 'Progresso di livello')}>
+            <IconBadge icon={Zap} color="lila" size="lg" />
+            <span className="w-full min-w-0">
+              <span className="block font-display text-lg font-extrabold leading-none sm:text-xl">{progress.xp} XP</span>
+              <span className="text-xs font-medium text-tinte/55">{lvl.next ? L(`noch ${lvl.next - progress.xp} bis Level ${lvl.level + 1}`, `${lvl.next - progress.xp} al livello ${lvl.level + 1}`) : L('Höchstes Level!', 'Livello massimo!')}</span>
+              <span className="mt-1.5 hidden sm:block"><ProgressBar value={lvl.progress} color="bg-lila-500" label={L('Fortschritt zum nächsten Level', 'Progresso verso il prossimo livello')} /></span>
+            </span>
           </div>
-          <div className="karte-3d flex flex-col items-center justify-center gap-1 p-3 text-center sm:flex-row sm:justify-start sm:gap-4 sm:p-4 sm:text-left" aria-label={L('Lerntage', 'Giorni di studio')}>
-            <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-koralle-100 text-koralle-500"><Flame size={28} className="fill-koralle-300" /></span>
-            <span><span className="block font-display text-xl font-bold sm:text-2xl">{learnDays}</span><span className="eyebrow">{L('Lerntage', 'Giorni')}</span></span>
+          <div className="karte-3d flex flex-col items-center gap-2 p-3 text-center sm:flex-row sm:gap-4 sm:p-4 sm:text-left" aria-label={L('Lerntage', 'Giorni di studio')}>
+            <IconBadge icon={CalendarCheck} color="koralle" size="lg" />
+            <span><span className="block font-display text-lg font-extrabold leading-none sm:text-xl">{learnDays}</span><span className="text-xs font-medium text-tinte/55">{L('Lerntage', 'Giorni di studio')}</span></span>
           </div>
         </div>
 
         <SectionTitle action={!isKita && (
-          <Link to={`/schule?jahr=${year}`} className="flex items-center gap-1 text-sm font-bold text-himmel-700 hover:underline" data-testid="bereich-schule">{L('Alle Fächer', 'Tutte le materie')} <ChevronRight size={16} /></Link>
+          <Link to={`/schule?jahr=${year}`} className="flex items-center gap-1 text-sm font-semibold text-himmel-600 hover:text-himmel-700" data-testid="bereich-schule">{L('Alle Fächer', 'Tutte le materie')} <ChevronRight size={16} /></Link>
         )}>{isKita ? L('Spielen und lernen', 'Gioca e impara') : L('Deine Fächer', 'Le tue materie')}</SectionTitle>
         {isKita ? (
           <div className="grid grid-cols-2 gap-3 sm:gap-4">
@@ -120,13 +122,15 @@ export function ChildHome() {
               const c = colorSet(d?.color);
               return (
                 <Link key={id} to={`/schule/${year}/${id}`} onClick={() => sfx.tap()} data-testid={`home-fach-${id}`}
-                  className={`group relative flex min-h-[9.5rem] flex-col justify-between gap-3 overflow-hidden rounded-blob p-4 transition hover:-translate-y-0.5 active:translate-y-1 ${c.grad} ${c.on} ${c.edge}`}>
-                  <span className="pointer-events-none absolute -right-6 -top-6 h-24 w-24 rounded-full bg-white/20" aria-hidden />
-                  <span className="emoji relative flex h-14 w-14 items-center justify-center rounded-2xl bg-white/90 text-3xl shadow-weich transition-transform group-hover:-rotate-6 group-hover:scale-105" aria-hidden>{d?.emoji ?? '📘'}</span>
-                  <span className="relative">
-                    <span className="block truncate font-display text-lg font-bold leading-tight sm:text-xl">{subjectName(id, country)}</span>
-                    <span className="mb-2 block text-xs font-bold opacity-80">{done}/{total} {L('Lektionen', 'lezioni')}</span>
-                    <ProgressBar value={total ? done / total : 0} color="bg-white" track="bg-black/15" label={L(`${done} von ${total} Lektionen`, `${done} di ${total} lezioni`)} />
+                  className="karte-3d group flex flex-col gap-4 p-4 transition hover:-translate-y-0.5 sm:p-5">
+                  <span className="flex items-start justify-between">
+                    <SubjectIcon id={id} color={d?.color} size="lg" />
+                    <ArrowRight size={18} className={`${c.text} opacity-0 transition group-hover:opacity-100`} aria-hidden />
+                  </span>
+                  <span>
+                    <span className="block truncate font-display text-base font-bold leading-tight sm:text-lg">{subjectName(id, country)}</span>
+                    <span className="mb-2.5 mt-0.5 block text-xs font-medium text-tinte/55">{done}/{total} {L('Lektionen', 'lezioni')}</span>
+                    <ProgressBar value={total ? done / total : 0} color={c.bg} label={L(`${done} von ${total} Lektionen`, `${done} di ${total} lezioni`)} />
                   </span>
                 </Link>
               );
@@ -136,10 +140,10 @@ export function ChildHome() {
 
         {assigned.length > 0 && (
           <>
-            <SectionTitle>📬 {L('Aufgaben für dich', 'Compiti per te')}</SectionTitle>
+            <SectionTitle>{L('Aufgaben für dich', 'Compiti per te')}</SectionTitle>
             <div className="grid grid-cols-2 gap-3 sm:grid-cols-4 sm:gap-4">
               {assigned.map((m) => (
-                <Tile key={m.id} to={`/spiel/${m.id}`} emoji={m.emoji} title={tr(m.title)} color={m.color} badge={progress.modules[m.id]?.rounds ? <span className="emoji text-2xl">✅</span> : undefined} />
+                <Tile key={m.id} to={`/spiel/${m.id}`} emoji={m.emoji} title={tr(m.title)} color={m.color} badge={progress.modules[m.id]?.rounds ? <span className="chip bg-minze-50 px-2 py-0.5 text-xs text-minze-700">✓</span> : undefined} />
               ))}
             </div>
           </>
@@ -147,20 +151,20 @@ export function ChildHome() {
 
         {practice.length > 0 && (
           <>
-            <SectionTitle>🔁 {L('Nochmal üben', 'Ripassiamo')}</SectionTitle>
-            <p className="-mt-2 mb-3 text-tinte/60">{L('Diese Themen üben wir gemeinsam in kleinen Schritten.', 'Ripassiamo insieme questi argomenti, a piccoli passi.')}</p>
+            <SectionTitle>{L('Nochmal üben', 'Ripassiamo')}</SectionTitle>
+            <p className="-mt-2 mb-3 text-sm text-tinte/55">{L('Diese Themen üben wir gemeinsam in kleinen Schritten.', 'Ripassiamo insieme questi argomenti, a piccoli passi.')}</p>
             <div className="grid grid-cols-2 gap-3 sm:grid-cols-4 sm:gap-4">
               {practice.map((m) => <Tile key={m.id} to={lessonLink(m, Math.max(0, pathDoneOf(progress.modules[m.id]) - 1))} emoji={m.emoji} title={tr(m.title)} color={m.color} />)}
             </div>
           </>
         )}
 
-        <SectionTitle action={<Link to="/entdecken" className="flex items-center gap-1 text-sm font-bold text-koralle-700 hover:underline">{L('Mehr', 'Altro')} <ChevronRight size={16} /></Link>}>
-          ✨ {L('Entdecken', 'Scopri')}
+        <SectionTitle action={<Link to="/entdecken" className="flex items-center gap-1 text-sm font-semibold text-himmel-600 hover:text-himmel-700">{L('Alle', 'Tutto')} <ChevronRight size={16} /></Link>}>
+          {L('Entdecken', 'Scopri')}
         </SectionTitle>
-        <div className="-mx-4 flex snap-x gap-3 overflow-x-auto px-4 pb-3 sm:mx-0 sm:grid sm:grid-cols-4 sm:gap-4 sm:overflow-visible sm:px-0">
+        <div className="grid grid-cols-2 gap-3 sm:grid-cols-4 sm:gap-4">
           {DISCOVER_ITEMS().map((it) => (
-            <div key={it.to} className="w-40 shrink-0 snap-start sm:w-auto"><Tile to={it.to} emoji={it.emoji} title={it.title} color={it.color} /></div>
+            <Tile key={it.to} to={it.to} icon={<IconBadge icon={it.icon} color={it.color} size="lg" />} title={it.title} subtitle={it.text} color={it.color} />
           ))}
         </div>
       </main>

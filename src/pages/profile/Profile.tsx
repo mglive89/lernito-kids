@@ -1,7 +1,7 @@
 import { Link, useNavigate } from 'react-router-dom';
-import { ChevronRight, Clock, Flame, Lock, Star, Users, Zap, BookOpenCheck } from 'lucide-react';
+import { Award, ChevronRight, Clock, Compass, Flame, Lock, Palette, Star, Users, Zap, BookOpenCheck } from 'lucide-react';
 import { useApp, useActiveProfile } from '../../store/useApp';
-import { Avatar, COLOR_CLASSES, ProgressBar } from '../../components/ui';
+import { Avatar, COLOR_CLASSES, IconBadge, ProgressBar, SubjectIcon } from '../../components/ui';
 import { levelFromXp, BADGES } from '../../learning/rewards';
 import { pathDoneOf } from '../../learning/adaptive';
 import { schoolModules } from '../../learning/registry';
@@ -29,17 +29,17 @@ export function ProfilePage() {
     { icon: <BookOpenCheck size={20} />, tone: 'bg-minze-50 text-minze-700', value: lessons, label: L('Lektionen', 'Lezioni') },
     { icon: <Flame size={20} />, tone: 'bg-koralle-50 text-koralle-700', value: days, label: L('Lerntage', 'Giorni di studio') },
     { icon: <Clock size={20} />, tone: 'bg-himmel-50 text-himmel-700', value: minutes, label: L('Minuten', 'Minuti') },
-    { icon: <span className="emoji text-lg">🏅</span>, tone: 'bg-lila-50', value: `${Object.keys(progress.badges).length}/${BADGES.length}`, label: L('Abzeichen', 'Distintivi') }
+    { icon: <Award size={20} />, tone: 'bg-lila-50 text-lila-700', value: `${Object.keys(progress.badges).length}/${BADGES.length}`, label: L('Abzeichen', 'Distintivi') }
   ];
   const menu = [
-    { to: '/avatar', emoji: '🎨', label: L('Avatar gestalten', 'Personalizza l’avatar') },
-    { to: '/sterne', emoji: '⭐', label: L('Meine Sterne', 'Le mie stelle') },
-    { to: '/erfolge', emoji: '🏅', label: L('Meine Abzeichen', 'I miei distintivi') },
-    { to: '/entdecken', emoji: '✨', label: L('Videos, 3D-Welt und Mini-Spiele', 'Video, mondo 3D e minigiochi') }
+    { to: '/avatar', icon: Palette, color: 'koralle', label: L('Avatar gestalten', 'Personalizza l’avatar') },
+    { to: '/sterne', icon: Star, color: 'sonne', label: L('Meine Sterne', 'Le mie stelle') },
+    { to: '/erfolge', icon: Award, color: 'lila', label: L('Meine Abzeichen', 'I miei distintivi') },
+    { to: '/entdecken', icon: Compass, color: 'himmel', label: L('Videos, 3D-Welt und Mini-Spiele', 'Video, mondo 3D e minigiochi') }
   ];
   return (
     <main className="seite flex max-w-3xl flex-col gap-6" style={{ paddingTop: 'calc(var(--safe-top) + 1.5rem)' }} data-testid="profil-seite">
-      <section className="relative overflow-hidden rounded-blob bg-gradient-to-br from-lila-500 to-himmel-500 p-6 text-white shadow-karte">
+      <section className="relative overflow-hidden rounded-blob bg-gradient-to-br from-himmel-600 to-himmel-500 p-6 text-white shadow-karte">
         <div className="pointer-events-none absolute -right-16 -top-16 h-48 w-48 rounded-full bg-white/15" aria-hidden />
         <div className="relative flex items-center gap-5">
           <Link to="/avatar" aria-label={L('Avatar gestalten', 'Personalizza l’avatar')}><Avatar config={profile.avatar} size={96} /></Link>
@@ -55,7 +55,7 @@ export function ProfilePage() {
       </section>
 
       <section aria-labelledby="stat-titel">
-        <h2 id="stat-titel" className="mb-3 font-display text-xl font-bold">{L('Statistik', 'Statistiche')}</h2>
+        <h2 id="stat-titel" className="mb-3 font-display text-lg font-bold">{L('Statistik', 'Statistiche')}</h2>
         <div className="grid grid-cols-2 gap-3 sm:grid-cols-3">
           {stats.map((s) => (
             <div key={s.label} className="karte-3d flex items-center gap-3 p-4">
@@ -68,7 +68,7 @@ export function ProfilePage() {
 
       {subjects.length > 0 && (
         <section aria-labelledby="faecher-titel">
-          <h2 id="faecher-titel" className="mb-3 font-display text-xl font-bold">{L('Fortschritt in den Fächern', 'Progressi nelle materie')}</h2>
+          <h2 id="faecher-titel" className="mb-3 font-display text-lg font-bold">{L('Fortschritt in den Fächern', 'Progressi nelle materie')}</h2>
           <ul className="karte-3d flex flex-col gap-2 p-3">
             {subjects.map((id) => {
               const mods = schoolModules(profile.country, profile.year, id, custom);
@@ -79,7 +79,7 @@ export function ProfilePage() {
               return (
                 <li key={id}>
                   <Link to={`/schule/${profile.year}/${id}`} className="flex items-center gap-3 rounded-xl p-2 hover:bg-tinte/[0.03]">
-                    <span className={`emoji flex h-10 w-10 shrink-0 items-center justify-center rounded-xl text-xl ${c.soft}`} aria-hidden>{d?.emoji ?? '📘'}</span>
+                    <SubjectIcon id={id} color={d?.color} size="sm" />
                     <span className="min-w-0 flex-1">
                       <span className="flex justify-between gap-2 text-sm font-bold"><span className="truncate">{subjectName(id, profile.country)}</span><span className="text-tinte/50">{done}/{mods.length * 3}</span></span>
                       <ProgressBar value={done / (mods.length * 3)} color={c.bg} />
@@ -93,12 +93,12 @@ export function ProfilePage() {
       )}
 
       <section aria-labelledby="menu-titel">
-        <h2 id="menu-titel" className="mb-3 font-display text-xl font-bold">{L('Mehr für dich', 'Altro per te')}</h2>
+        <h2 id="menu-titel" className="mb-3 font-display text-lg font-bold">{L('Mehr für dich', 'Altro per te')}</h2>
         <ul className="karte-3d divide-y-2 divide-tinte/[0.05] overflow-hidden">
           {menu.map((m) => (
             <li key={m.to}>
               <Link to={m.to} className="flex items-center gap-4 px-5 py-4 font-semibold hover:bg-tinte/[0.03]">
-                <span className="emoji text-2xl" aria-hidden>{m.emoji}</span><span className="flex-1">{m.label}</span><ChevronRight size={20} className="text-tinte/30" />
+                <IconBadge icon={m.icon} color={m.color} size="sm" /><span className="flex-1">{m.label}</span><ChevronRight size={20} className="text-tinte/30" />
               </Link>
             </li>
           ))}
