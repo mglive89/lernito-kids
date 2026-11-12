@@ -81,8 +81,8 @@ export function ChildHome() {
                 <Play size={18} className="fill-himmel-700" /> {L('Los geht’s', 'Iniziamo')}
               </Link>
             </div>
-            <div className="-mb-7 -mr-3 hidden shrink-0 min-[380px]:block sm:hidden"><PuppyTap><Lino mood={goalReached ? 'jubel' : 'winken'} size={112} /></PuppyTap></div>
-            <div className="-mb-9 mr-2 hidden shrink-0 sm:block"><PuppyTap><Lino mood={goalReached ? 'jubel' : 'winken'} size={180} /></PuppyTap></div>
+            <div className="-mr-2 hidden shrink-0 min-[380px]:block sm:hidden"><PuppyTap><Lino mood={goalReached ? 'jubel' : 'winken'} size={112} /></PuppyTap></div>
+            <div className="mr-2 hidden shrink-0 sm:block"><PuppyTap><Lino mood={goalReached ? 'jubel' : 'winken'} size={180} /></PuppyTap></div>
           </div>
         </section>
 
