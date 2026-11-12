@@ -18,7 +18,7 @@ export function childNavItems(year: number): NavItem[] {
   return [
     { to: '/home', label: L('Lernen', 'Impara'), icon: Home, match: ['/home'], testId: 'nav-home', color: 'himmel' },
     { to: kita ? '/kita' : `/schule?jahr=${year || 1}`, label: kita ? L('Spiele', 'Giochi') : L('Fächer', 'Materie'), icon: BookOpenCheck, match: ['/schule', '/kita'], testId: 'nav-faecher', color: 'minze' },
-    { to: '/entdecken', label: L('Entdecken', 'Scopri'), icon: Compass, match: ['/entdecken', '/welt3d', '/videos', '/minispiele', '/abenteuer'], testId: 'nav-entdecken', color: 'koralle' },
+    { to: '/entdecken', label: L('Entdecken', 'Scopri'), icon: Compass, match: ['/entdecken', '/welt3d', '/videos', '/minispiele', '/denkspiele', '/abenteuer'], testId: 'nav-entdecken', color: 'koralle' },
     { to: '/erfolge', label: L('Erfolge', 'Traguardi'), icon: Trophy, match: ['/erfolge', '/sterne'], testId: 'nav-erfolge', color: 'sonne' },
     { to: '/profil', label: L('Profil', 'Profilo'), icon: UserRound, match: ['/profil', '/avatar'], testId: 'nav-profil', color: 'lila' }
   ];

@@ -65,6 +65,8 @@ Aufgabentypen: Auswahl, Zahlenfeld, Wörter/Silben bauen, Reihenfolge, Memory, D
 
 **Sounds:** Alle Töne werden lokal per WebAudio erzeugt (keine Audiodateien, kein Mikrofon): Antippen, Auswahl, richtig (Glocken), sanftes „nochmal“, Serie, Lektion geschafft, Level/Freischaltung, Seitenwechsel, Lernkarten umdrehen. Abschaltbar im Elternbereich.
 
+**Denkspiele (/denkspiele, frei spielbar):** Sudoku (4×4 mit Bildern im Kindergarten, 4×4, 6×6, 9×9 in drei Stufen; eindeutig lösbar), Kreuzworträtsel (DE/IT-Wortlisten in drei Stufen: Bilder, Schule, Fachbegriffe; Bildschirmtastatur), „Zahlen-Zwillinge“ (gleiche Zahlen zusammenschieben, Ziel je nach Alter 64/256/1024, ein Zug zurück) und „Blockregen“ (fallende Formen, volle Reihen verschwinden; für Klasse 0–2 kleinere Formen und langsamer). Logik in src/denkspiele/, Oberfläche in src/pages/denkspiele/, Rekorde nur lokal im Gerät.
+
 **Belohnungen ohne Druck:** Sterne pro gelöster Aufgabe, Levelsystem, 16 Abzeichen, gestaltbarer Avatar (Extras werden über Level freigeschaltet), 3 freischaltbare Mini-Spiele (Seifenblasen, Ballon-Reihe, Puppy ausmalen), freiwilliges Tagesziel. Keine Käufe, kein Glücksspiel, keine Werbung, keine verlierbaren Serien.
 
 **Adaptives Lernen:** Schwierigkeit (Leicht/Mittel/Knifflig) pro Thema passt sich der Quote beim ersten Versuch an. Nach dem ersten Fehler kommt ein verständlicher Hinweis, nach dem zweiten eine Schritt-für-Schritt-Erklärung. Schwache Themen erscheinen unter „Nochmal üben“. Fortschritt wird pro Thema gespeichert. Rückmeldungen sind immer ermutigend.
@@ -105,6 +107,7 @@ src/
     home/            Startseite des Kindes
     learn/           Fächer, Lernpfad, Lektion, Theorie, Kindergarten-Spiele
     discover/        Entdecken: Videos, 3D-Welt, Mini-Spiele
+    denkspiele/      Denkspiele: Sudoku, Kreuzworträtsel, Zahlen-Zwillinge, Blockregen
     rewards/         Sterne, Abzeichen, Abenteuer, Avatar
     profile/ info/   Profil, Datenschutz
     parents/ admin/  Eltern- und Admin-Bereich

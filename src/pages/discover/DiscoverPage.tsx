@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { ArrowRight, Clapperboard, Box, Gamepad2, Languages, Map as MapIcon } from 'lucide-react';
+import { ArrowRight, Brain, Clapperboard, Box, Gamepad2, Languages, Map as MapIcon } from 'lucide-react';
 import { useActiveProfile } from '../../store/useApp';
 import { colorSet, IconBadge, PageHero, StarCount, AnimatedGrid } from '../../components/ui';
 import { Lino } from '../../components/Lino';
@@ -11,6 +11,7 @@ export const DISCOVER_ITEMS = () => [
   { to: '/lingue', icon: Languages, title: L('Sprachen', 'Lingue'), text: L('Sprechen, hören und verstehen', 'Parla, ascolta e capisci'), color: 'sonne' },
   { to: '/videos', icon: Clapperboard, title: L('Lernvideos', 'Video lezioni'), text: L('Kurze Erklärvideos mit Quiz', 'Brevi video con quiz'), color: 'koralle' },
   { to: '/welt3d', icon: Box, title: L('3D-Lernwelt', 'Mondo 3D'), text: L('Drehen, zählen und Körper entdecken', 'Gira, conta e scopri i solidi'), color: 'himmel' },
+  { to: '/denkspiele', icon: Brain, title: L('Denkspiele', 'Giochi di logica'), text: L('Sudoku, Kreuzworträtsel und mehr', 'Sudoku, cruciverba e altro'), color: 'lila' },
   { to: '/minispiele', icon: Gamepad2, title: L('Mini-Spiele', 'Minigiochi'), text: L('Kleine Pausen-Spiele', 'Piccoli giochi per la pausa'), color: 'minze' },
   { to: '/abenteuer', icon: MapIcon, title: L('Lernabenteuer', 'La mia avventura'), text: L('Deine Reise durch die Lernwelt', 'Il tuo viaggio nel mondo dello studio'), color: 'lila' }
 ];
@@ -26,7 +27,7 @@ export function DiscoverPage() {
       </div>
       <main className="seite" data-testid="entdecken-seite">
         <PageHero color="himmel" title={L('Was willst du ausprobieren?', 'Cosa vuoi provare?')}
-          subtitle={L('Videos, 3D-Welt und kleine Spiele für zwischendurch.', 'Video, mondo 3D e piccoli giochi per una pausa.')}
+          subtitle={L('Videos, 3D-Welt, Denkspiele und kleine Spiele für zwischendurch.', 'Video, mondo 3D, giochi di logica e piccoli giochi per una pausa.')}
           art={<span className="-my-8 block"><Lino mood="jubel" size={104} /></span>} />
         <AnimatedGrid className="mt-6 grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-4">
           {DISCOVER_ITEMS().map((it) => {
