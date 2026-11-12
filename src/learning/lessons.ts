@@ -12,6 +12,6 @@ export const lessonLabel = (n: number) => `${L('Lektion', 'Lezione')} ${n} · ${
 
 /** Link zur nächsten Lektion eines Themas (Lernpfad) bzw. zum Spiel. */
 export function lessonLink(m: LearningModule, pathDone?: number): string {
-  if (m.area !== 'schule') return `/spiel/${m.id}`;
+  if (m.area !== 'schule' && m.area !== 'lingue') return `/spiel/${m.id}`;
   return `/spiel/${m.id}?lektion=${Math.min(3, (pathDone ?? 0) + 1)}`;
 }

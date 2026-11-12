@@ -8,6 +8,8 @@ import { MemoryView } from './MemoryView';
 import { DragMatchView } from './DragMatchView';
 import { PuzzleView } from './PuzzleView';
 import { Pick3DView } from './Pick3DView';
+import { SpeakView } from './SpeakView';
+import { SentenceView } from './SentenceView';
 
 export function TaskView(props: TaskViewProps<Task>) {
   const { task } = props;
@@ -20,5 +22,7 @@ export function TaskView(props: TaskViewProps<Task>) {
     case 'dragmatch': return <DragMatchView {...props} task={task} />;
     case 'puzzle': return <PuzzleView {...props} task={task} />;
     case 'pick3d': return <Pick3DView {...props} task={task} />;
+    case 'speak': return <SpeakView {...props} task={task} />;
+    case 'sentence': return <SentenceView {...props} task={task} />;
   }
 }

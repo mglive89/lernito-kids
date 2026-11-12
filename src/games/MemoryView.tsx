@@ -46,12 +46,12 @@ export function MemoryView({ task, onCorrect, done }: TaskViewProps<MemoryTask>)
             type="button"
             data-testid={`card-${c.pair}`}
             onClick={() => flip(c)}
-            className={`knopf aspect-square p-0 text-5xl sm:text-6xl ${found.includes(c.pair) ? 'bg-minze-100 ring-4 ring-minze-500' : visible ? 'bg-white' : 'bg-lila-500'}`}
+            className={`knopf aspect-square p-0 ${c.face.length > 3 ? 'p-1.5 text-sm font-bold leading-tight sm:text-lg' : 'text-5xl sm:text-6xl'} ${found.includes(c.pair) ? 'bg-minze-100 ring-4 ring-minze-500' : visible ? 'bg-white' : 'bg-lila-500'}`}
             animate={{ rotateY: visible ? 0 : 180 }}
             transition={{ duration: 0.3 }}
             aria-label={visible ? c.face : L('Verdeckte Karte', 'Carta coperta')}
           >
-            <span className="emoji" style={{ transform: visible ? undefined : 'rotateY(180deg)' }}>{visible ? c.face : '❔'}</span>
+            <span className={visible && c.face.length > 3 ? 'break-words hyphens-auto' : 'emoji text-5xl sm:text-6xl'} style={{ transform: visible ? undefined : 'rotateY(180deg)' }}>{visible ? c.face : '❔'}</span>
           </motion.button>
         );
       })}

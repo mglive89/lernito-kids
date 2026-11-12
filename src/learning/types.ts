@@ -1,7 +1,7 @@
 import type { Lang, Txt } from '../i18n';
 import type { Country } from '../school/systems';
 export type Difficulty = 1 | 2 | 3;
-export type Area = 'kita' | 'schule' | 'welt3d' | 'video';
+export type Area = 'kita' | 'schule' | 'welt3d' | 'video' | 'lingue';
 export type Grade = 1 | 2 | 3 | 4;
 export type SubjectId = 'deutsch' | 'mathe' | 'sachunterricht' | 'englisch' | string;
 export type ShapeName = 'kreis' | 'quadrat' | 'dreieck' | 'rechteck' | 'stern' | 'herz' | 'oval' | 'raute';
@@ -24,7 +24,9 @@ export type Visual =
   | { kind: 'image'; mediaId: string; alt: string }
   | { kind: 'code'; code: string; lang?: string }
   | { kind: 'robot'; size: number; robot: [number, number]; goal: [number, number]; walls?: [number, number][]; items?: [number, number][] }
-  | { kind: 'table'; head: string[]; rows: string[][] };
+  | { kind: 'table'; head: string[]; rows: string[][] }
+  /** Hörverstehen: Text wird in der Zielsprache vorgelesen (normal und langsam) */
+  | { kind: 'audio'; text: string; lang: string; showText?: boolean };
 
 export interface ChoiceOption {
   id: string;
@@ -38,6 +40,8 @@ export interface ChoiceOption {
   silhouette?: boolean;
   /** Gesprochener Name (z. B. für Farben) */
   speak?: string;
+  /** Sprache für speak, falls nicht die App-Sprache (Sprachkurse), z. B. „en-GB“ */
+  speakLang?: string;
 }
 
 interface TaskBase {
@@ -108,7 +112,30 @@ export interface Pick3DTask extends TaskBase {
   correctId: string;
 }
 
-export type Task = ChoiceTask | InputTask | WordBuildTask | OrderTask | MemoryTask | DragMatchTask | PuzzleTask | Pick3DTask;
+/** Aussprache üben: Satz anhören und ins Mikrofon nachsprechen */
+export interface SpeakTask extends TaskBase {
+  type: 'speak';
+  /** Was gesagt werden soll (Zielsprache) */
+  phrase: string;
+  /** Sprache von phrase, z. B. „en-GB“ */
+  lang: string;
+  /** Übersetzung in der Sprache des Kindes */
+  meaning?: string;
+  emoji?: string;
+}
+
+/** Satz aus Wortkärtchen bauen (Sprachkurse) */
+export interface SentenceTask extends TaskBase {
+  type: 'sentence';
+  /** Lösung als Wortfolge */
+  words: string[];
+  /** Angebotene Wörter (gemischt, mit Ablenkern) */
+  tiles: string[];
+  /** Sprache der Wörter, z. B. „en-GB“ */
+  lang: string;
+}
+
+export type Task = SpeakTask | SentenceTask | ChoiceTask | InputTask | WordBuildTask | OrderTask | MemoryTask | DragMatchTask | PuzzleTask | Pick3DTask;
 
 export type Rng = () => number;
 

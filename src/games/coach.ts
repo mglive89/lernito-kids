@@ -16,6 +16,8 @@ export function howTo(task: Task, check: boolean): string {
     case 'dragmatch': return L('Zieh jedes Teil auf das passende Feld. Du kannst auch zuerst das Teil und dann das Feld antippen.', 'Trascina ogni pezzo nel posto giusto. Puoi anche toccare prima il pezzo e poi il posto.');
     case 'puzzle': return L('Schau dir das Bild an und setz jedes Teil an seine Stelle.', 'Guarda l’immagine e metti ogni pezzo al suo posto.');
     case 'pick3d': return L('Dreh die Welt mit dem Finger und tippe auf das Richtige.', 'Gira il mondo con il dito e tocca quello giusto.');
+    case 'speak': return L('Hör dir den Satz an. Tippe dann auf das Mikrofon und sprich ihn laut und deutlich nach.', 'Ascolta la frase. Poi tocca il microfono e ripetila ad alta voce, in modo chiaro.');
+    case 'sentence': return L('Tippe die Wörter in der richtigen Reihenfolge an. Tippst du ein Wort oben an, geht es zurück.', 'Tocca le parole nell’ordine giusto. Se tocchi una parola in alto, torna indietro.');
   }
 }
 

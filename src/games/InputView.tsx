@@ -4,7 +4,9 @@ import { Delete, Check } from 'lucide-react';
 import type { InputTask } from '../learning/types';
 import type { TaskViewProps } from './types';
 import { sfx } from '../lib/sound';
-import { L } from '../i18n';
+import { L, getLang, locale } from '../i18n';
+import { VoiceAnswer } from '../components/voice/Voice';
+import { parseSpokenNumber } from '../lib/voiceMatch';
 
 export function InputView({ task, onCorrect, onWrong, reveal, done }: TaskViewProps<InputTask>) {
   const [value, setValue] = useState('');
@@ -13,10 +15,23 @@ export function InputView({ task, onCorrect, onWrong, reveal, done }: TaskViewPr
   const maxLen = String(Math.abs(task.answer)).length + 2;
   const signed = task.signed || task.answer < 0;
 
-  const submit = () => {
-    if (!value || value === '-' || done || reveal) return;
-    if (Number(value) === task.answer) onCorrect();
+  const submitValue = (v: string) => {
+    if (!v || v === '-' || done || reveal) return;
+    if (Number(v) === task.answer) onCorrect();
     else { onWrong(); setShake((s) => s + 1); setValue(''); }
+  };
+  const submit = () => submitValue(value);
+  const onHeard = (alts: string[]): string | null => {
+    for (const a of alts) {
+      const n = parseSpokenNumber(a, getLang());
+      if (n !== null && Number.isInteger(n)) {
+        const v = String(n);
+        setValue(v);
+        setTimeout(() => submitValue(v), 500);
+        return null;
+      }
+    }
+    return L(`Ich habe „${alts[0]}“ verstanden. Sag nur die Zahl.`, `Ho capito «${alts[0]}». Di’ solo il numero.`);
   };
   const press = (k: string) => {
     if (done || reveal) return;
@@ -66,6 +81,7 @@ export function InputView({ task, onCorrect, onWrong, reveal, done }: TaskViewPr
           </button>
         ))}
       </div>
+      {!done && !reveal && <VoiceAnswer locale={locale()} onHeard={onHeard} prompt={L('Oder sag die Zahl', 'Oppure di’ il numero')} />}
     </div>
   );
 }

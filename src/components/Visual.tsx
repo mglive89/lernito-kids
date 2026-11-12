@@ -7,12 +7,15 @@ import { getMediaBlob } from '../lib/db';
 import { euro } from '../learning/modules/math';
 import { ErrorBoundary } from './ErrorBoundary';
 import { L } from '../i18n';
+import { AudioPlayer } from './voice/AudioPlayer';
 
 const Solid3D = lazy(() => import('../three/Solid3D'));
 const Count3D = lazy(() => import('../three/Count3D'));
 
 export function Visual({ v }: { v: V }) {
   switch (v.kind) {
+    case 'audio':
+      return <AudioPlayer text={v.text} lang={v.lang} showText={v.showText} />;
     case 'emojis':
       return (
         <div className="flex max-w-2xl flex-wrap items-center justify-center gap-2 sm:gap-3" aria-label={L(`${v.items.length} Bilder`, `${v.items.length} immagini`)}>

@@ -42,7 +42,7 @@ export function GuidePage() {
       </main>
       <div className="fixed inset-x-0 bottom-0 z-20 border-t border-tinte/[0.07] bg-white/95 backdrop-blur" style={{ paddingBottom: 'var(--safe-bottom)' }}>
         <div className="mx-auto flex max-w-3xl px-4 py-3">
-          <Link to={`/spiel/${mod.id}${mod.area === 'schule' ? `?lektion=${step}` : ''}`} className="knopf w-full bg-himmel-500 text-white" data-testid="theorie-ueben">
+          <Link to={`/spiel/${mod.id}${(mod.area === 'schule' || mod.area === 'lingue') ? `?lektion=${step}` : ''}`} className="knopf w-full bg-himmel-500 text-white" data-testid="theorie-ueben">
             <Play size={20} /> {done > 0 ? L('Weiter üben', 'Continua a esercitarti') : L('Jetzt üben', 'Inizia gli esercizi')}
           </Link>
         </div>

@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { ArrowRight, Clapperboard, Box, Gamepad2, Map as MapIcon } from 'lucide-react';
+import { ArrowRight, Clapperboard, Box, Gamepad2, Languages, Map as MapIcon } from 'lucide-react';
 import { useActiveProfile } from '../../store/useApp';
 import { colorSet, IconBadge, PageHero, StarCount } from '../../components/ui';
 import { Lino } from '../../components/Lino';
@@ -8,6 +8,7 @@ import { sfx } from '../../lib/sound';
 
 /** Alles, was über die Fächer hinaus Spaß macht – eine Quelle für die Seite „Entdecken“ und die Startseite. */
 export const DISCOVER_ITEMS = () => [
+  { to: '/lingue', icon: Languages, title: L('Sprachen', 'Lingue'), text: L('Sprechen, hören und verstehen', 'Parla, ascolta e capisci'), color: 'sonne' },
   { to: '/videos', icon: Clapperboard, title: L('Lernvideos', 'Video lezioni'), text: L('Kurze Erklärvideos mit Quiz', 'Brevi video con quiz'), color: 'koralle' },
   { to: '/welt3d', icon: Box, title: L('3D-Lernwelt', 'Mondo 3D'), text: L('Drehen, zählen und Körper entdecken', 'Gira, conta e scopri i solidi'), color: 'himmel' },
   { to: '/minispiele', icon: Gamepad2, title: L('Mini-Spiele', 'Minigiochi'), text: L('Kleine Pausen-Spiele', 'Piccoli giochi per la pausa'), color: 'minze' },

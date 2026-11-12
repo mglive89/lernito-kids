@@ -13,7 +13,9 @@ export interface TaskViewProps<T extends Task = Task> {
    * Die Ansicht meldet die Prüf-Funktion (oder null, wenn nichts gewählt ist).
    */
   onPending?: (check: (() => void) | null) => void;
+  /** Aufgabe überspringen (z. B. „Ich kann gerade nicht sprechen“) – zählt nicht als gelöst */
+  onSkip?: () => void;
 }
 
 /** Aufgabentypen, bei denen Fehler weiche Hinweise sind und das Kind die Aufgabe selbst zu Ende bringt. */
-export const MULTI_STEP: Task['type'][] = ['memory', 'dragmatch', 'puzzle', 'order', 'wordbuild'];
+export const MULTI_STEP: Task['type'][] = ['memory', 'dragmatch', 'puzzle', 'order', 'wordbuild', 'sentence'];
