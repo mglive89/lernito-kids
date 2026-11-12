@@ -31,7 +31,7 @@ export function InstallHint() {
       </div>
       <div className="flex gap-2">
         {evt && <button className="knopf bg-minze-500 text-white" onClick={() => void evt.prompt().then(() => setEvt(null))}><Download /> {L('Installieren', 'Installa')}</button>}
-        <button className="knopf bg-white text-base" onClick={hide}>{L('Später', 'Più tardi')}</button>
+        <button className="knopf bg-flaeche text-base" onClick={hide}>{L('Später', 'Più tardi')}</button>
       </div>
     </div>
   );

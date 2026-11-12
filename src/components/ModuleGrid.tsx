@@ -12,7 +12,7 @@ const stufe = (l: number) => [L('', ''), L('Leicht', 'Facile'), L('Mittel', 'Med
 function ModuleBadge({ p }: { p?: ModuleProgress }) {
   if (!p || p.rounds === 0) return <span className="chip bg-himmel-50 px-2 py-0.5 text-xs text-himmel-700">{L('Neu', 'Nuovo')}</span>;
   return (
-    <span className="flex items-center gap-0.5 rounded-full bg-white px-2 py-0.5 shadow-weich" aria-label={L(`${p.bestStars} von 3 Sternen, Stufe ${stufe(p.level)}`, `${p.bestStars} stelle su 3, livello ${stufe(p.level)}`)}>
+    <span className="flex items-center gap-0.5 rounded-full bg-flaeche px-2 py-0.5 shadow-weich" aria-label={L(`${p.bestStars} von 3 Sternen, Stufe ${stufe(p.level)}`, `${p.bestStars} stelle su 3, livello ${stufe(p.level)}`)}>
       {[1, 2, 3].map((i) => <Star key={i} size={14} className={i <= p.bestStars ? 'fill-sonne-500 text-sonne-500' : 'text-tinte/20'} />)}
     </span>
   );

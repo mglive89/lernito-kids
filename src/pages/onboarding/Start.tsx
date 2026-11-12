@@ -17,10 +17,10 @@ import { MASCOT_NAME } from '../../content/mascot';
 /** Kurzbeschreibung eines Profils, z. B. „🇮🇹 2ª media“ */
 export function LanguageSwitch({ value, onChange, testPrefix = 'sprache' }: { value: Lang; onChange: (l: Lang) => void; testPrefix?: string }) {
   return (
-    <div className="inline-flex rounded-full bg-white p-1 shadow-weich ring-1 ring-tinte/5" role="radiogroup" aria-label={L('Sprache', 'Lingua')}>
+    <div className="inline-flex rounded-full bg-flaeche p-1 shadow-weich ring-1 ring-tinte/5" role="radiogroup" aria-label={L('Sprache', 'Lingua')}>
       {LANGS.map((l) => (
         <button key={l.id} type="button" role="radio" aria-checked={value === l.id} onClick={() => { sfx.tap(); onChange(l.id); }} data-testid={`${testPrefix}-${l.id}`}
-          className={`flex items-center gap-1.5 rounded-full px-3 py-1.5 text-sm font-bold transition ${value === l.id ? 'bg-tinte text-white' : 'text-tinte/70 hover:bg-tinte/5'}`}>
+          className={`flex items-center gap-1.5 rounded-full px-3 py-1.5 text-sm font-bold transition ${value === l.id ? 'bg-tinte-fest text-white' : 'text-tinte/70 hover:bg-tinte/5'}`}>
           <span className="emoji" aria-hidden>{l.flag}</span>{l.name}
         </button>
       ))}
@@ -89,7 +89,7 @@ export function StartPage() {
                 <span className="chip bg-tinte/[0.05] text-tinte/70">{profileLabel(p)}</span>
               </motion.button>
             ))}
-            <Link to="/profil/neu" className="flex min-h-[12rem] flex-col items-center justify-center gap-3 rounded-blob border-2 border-dashed border-tinte/15 bg-white/60 p-5 text-center transition hover:bg-white" data-testid="neues-profil" onClick={() => sfx.tap()}>
+            <Link to="/profil/neu" className="flex min-h-[12rem] flex-col items-center justify-center gap-3 rounded-blob border-2 border-dashed border-tinte/15 bg-flaeche/60 p-5 text-center transition hover:bg-flaeche" data-testid="neues-profil" onClick={() => sfx.tap()}>
               <span className="flex h-16 w-16 items-center justify-center rounded-2xl bg-minze-100 text-minze-700"><Plus size={36} /></span>
               <span className="font-display text-lg font-bold">{L('Neues Profil', 'Nuovo profilo')}</span>
               <span className="flex items-center gap-1 text-xs font-semibold text-tinte/50"><Lock size={12} /> {L('mit Eltern-PIN', 'con PIN genitori')}</span>
@@ -101,8 +101,8 @@ export function StartPage() {
         <div className="w-full"><InstallHint /></div>
 
         <nav className="flex w-full flex-wrap items-center justify-center gap-3" aria-label={L('Für Erwachsene', 'Per gli adulti')}>
-          <Link to="/eltern" className="knopf knopf-3d bg-white text-base" data-testid="elternbereich"><Lock size={18} /> {L('Elternbereich', 'Area genitori')}</Link>
-          <Link to="/datenschutz" className="knopf knopf-3d bg-white text-base"><ShieldCheck size={18} /> {L('Datenschutz', 'Privacy')}</Link>
+          <Link to="/eltern" className="knopf knopf-3d bg-flaeche text-base" data-testid="elternbereich"><Lock size={18} /> {L('Elternbereich', 'Area genitori')}</Link>
+          <Link to="/datenschutz" className="knopf knopf-3d bg-flaeche text-base"><ShieldCheck size={18} /> {L('Datenschutz', 'Privacy')}</Link>
         </nav>
         <p className="max-w-xl text-center text-sm text-tinte/55">{L('Lernito Kids speichert alle Daten nur auf diesem Gerät. Keine Werbung, keine Tracker, keine öffentlichen Profile.', 'Lernito Kids salva tutti i dati solo su questo dispositivo. Niente pubblicità, niente tracker, nessun profilo pubblico.')}</p>
       </main>
@@ -122,7 +122,7 @@ function Step({ n, title, done, children }: { n: number; title: string; done: bo
   );
 }
 
-const choice = (active: boolean) => `knopf flex-col gap-1 py-4 text-base ${active ? 'bg-tinte text-white ring-2 ring-tinte' : 'bg-white'}`;
+const choice = (active: boolean) => `knopf flex-col gap-1 py-4 text-base ${active ? 'bg-tinte-fest text-white ring-2 ring-himmel-500' : 'bg-flaeche'}`;
 
 export function CreateProfilePage() {
   const setActive = useApp((s) => s.setActiveProfile);
@@ -175,7 +175,7 @@ export function ProfileForm({ onCreated, submitLabel }: { onCreated: (p: Profile
       <div className="flex w-full flex-col gap-5">
         <div className="flex flex-col items-center gap-2 pt-2">
           <Avatar config={{ animal, color, extra: 'keins' }} size={104} />
-          {country !== null && year !== null && <span className="chip bg-white text-tinte/70 shadow-weich">{profileLabel({ country, year })}</span>}
+          {country !== null && year !== null && <span className="chip bg-flaeche text-tinte/70 shadow-weich">{profileLabel({ country, year })}</span>}
         </div>
 
         <Step n={1} title={L('Name des Kindes', 'Nome del bambino o della bambina')} done={name.trim().length > 0}>
@@ -214,7 +214,7 @@ export function ProfileForm({ onCreated, submitLabel }: { onCreated: (p: Profile
                 <div className="flex flex-wrap gap-2">
                   {stageDef.years.map((y) => (
                     <button key={y} type="button" onClick={() => { sfx.tap(); setYear(y); }} aria-pressed={year === y} data-testid={`jahr-${y}`}
-                      className={`knopf min-w-[5.5rem] flex-col gap-0 px-4 py-2 text-base ${year === y ? 'bg-himmel-500 text-white' : 'bg-white'}`}>
+                      className={`knopf min-w-[5.5rem] flex-col gap-0 px-4 py-2 text-base ${year === y ? 'bg-himmel-500 text-white' : 'bg-flaeche'}`}>
                       <span>{yearLabel(country, y).replace(/ · .*/, '')}</span>
                       <span className={`text-xs font-semibold ${year === y ? 'text-white/80' : 'text-tinte/50'}`}>{L(`${typicalAge(country, y)} Jahre`, `${typicalAge(country, y)} anni`)}</span>
                     </button>
@@ -228,7 +228,7 @@ export function ProfileForm({ onCreated, submitLabel }: { onCreated: (p: Profile
         <Step n={country ? 4 : 3} title={L('Avatar: am besten gemeinsam mit dem Kind aussuchen', 'Avatar: sceglietelo insieme al bambino')} done>
           <div className="grid grid-cols-6 gap-2 sm:grid-cols-8">
             {AVATAR_TIERE.map((t) => (
-              <button key={t} type="button" onClick={() => { sfx.tap(); setAnimal(t); }} aria-pressed={animal === t} aria-label={L(`Tier ${t}`, `Animale ${t}`)} className={`knopf aspect-square px-0 text-3xl ${animal === t ? 'bg-sonne-100 ring-2 ring-tinte' : 'bg-white'}`}>
+              <button key={t} type="button" onClick={() => { sfx.tap(); setAnimal(t); }} aria-pressed={animal === t} aria-label={L(`Tier ${t}`, `Animale ${t}`)} className={`knopf aspect-square px-0 text-3xl ${animal === t ? 'bg-sonne-100 ring-2 ring-tinte' : 'bg-flaeche'}`}>
                 <span className="emoji">{t}</span>
               </button>
             ))}

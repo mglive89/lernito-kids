@@ -20,7 +20,7 @@ export default function Solid3D({ solid, color }: { solid: SolidName; color: str
   const geo = useMemo(() => makeGeometry(solid), [solid]);
   const edges = useMemo(() => (['wuerfel', 'quader', 'pyramide'].includes(solid) ? new THREE.EdgesGeometry(geo) : null), [geo, solid]);
   return (
-    <div className="h-64 w-full max-w-md cursor-grab overflow-hidden rounded-3xl bg-gradient-to-b from-himmel-100 to-white active:cursor-grabbing sm:h-80" {...handlers} aria-label="3D-Körper, mit dem Finger drehbar" role="img" data-testid="canvas-3d">
+    <div className="h-64 w-full max-w-md cursor-grab overflow-hidden rounded-3xl bg-gradient-to-b from-himmel-100 to-flaeche active:cursor-grabbing sm:h-80" {...handlers} aria-label="3D-Körper, mit dem Finger drehbar" role="img" data-testid="canvas-3d">
       <Canvas {...canvasProps} camera={{ position: [0, 0.6, 4.6], fov: 45 }}>
         <ambientLight intensity={0.7} />
         <directionalLight position={[3, 4, 5]} intensity={1.4} />

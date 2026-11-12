@@ -35,7 +35,7 @@ export function PinPad({ onSubmit, label, error, minLength = 4, testId = 'pin' }
       {error && <p id={`${testId}-err`} className="text-center font-bold text-koralle-700" role="alert">{error}</p>}
       <div className="grid w-full grid-cols-3 gap-2">
         {['1', '2', '3', '4', '5', '6', '7', '8', '9', 'del', '0', 'ok'].map((k) => (
-          <button key={k} type="button" onClick={() => press(k)} className={`knopf h-14 text-2xl ${k === 'ok' ? 'bg-minze-500 text-white' : 'bg-white'}`} aria-label={k === 'del' ? L('Löschen', 'Cancella') : k === 'ok' ? L('Bestätigen', 'Conferma') : k} data-testid={`${testId}-key-${k}`}>
+          <button key={k} type="button" onClick={() => press(k)} className={`knopf h-14 text-2xl ${k === 'ok' ? 'bg-minze-500 text-white' : 'bg-flaeche'}`} aria-label={k === 'del' ? L('Löschen', 'Cancella') : k === 'ok' ? L('Bestätigen', 'Conferma') : k} data-testid={`${testId}-key-${k}`}>
             {k === 'del' ? <Delete /> : k === 'ok' ? 'OK' : k}
           </button>
         ))}

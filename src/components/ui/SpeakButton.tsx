@@ -17,7 +17,7 @@ export function SpeakButton({ text, enabled = true, size = 'md', label }: { text
   return (
     <button
       type="button"
-      className={`knopf ${dim} shrink-0 px-0 ${available ? 'bg-himmel-100 text-himmel-700 ring-2 ring-himmel-300' : 'bg-white'}`}
+      className={`knopf ${dim} shrink-0 px-0 ${available ? 'bg-himmel-100 text-himmel-700 ring-2 ring-himmel-300' : 'bg-flaeche'}`}
       onClick={() => available && speak(text, { force: true })}
       aria-label={available ? `${label}: ${text}` : enabled ? L('Vorlesen ist auf diesem Gerät nicht verfügbar', 'La lettura ad alta voce non è disponibile su questo dispositivo') : L('Vorlesen ist ausgeschaltet', 'La lettura ad alta voce è disattivata')}
       title={available ? (status === 'offline' ? L('Vorlesen (funktioniert offline)', 'Leggi (funziona offline)') : L('Vorlesen (benötigt evtl. Internet)', 'Leggi (potrebbe servire Internet)')) : L('Vorlesen nicht verfügbar', 'Lettura non disponibile')}

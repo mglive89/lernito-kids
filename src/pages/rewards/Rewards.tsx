@@ -68,7 +68,7 @@ export function BadgesPage() {
           {BADGES.map((b) => {
             const has = !!owned[b.id];
             return (
-              <div key={b.id} className={`flex flex-col items-center gap-1.5 p-3 text-center sm:p-4 ${has ? 'karte-3d bg-gradient-to-b from-sonne-50 to-white ring-sonne-300' : 'rounded-blob bg-white/60 border-2 border-dashed border-tinte/15'}`} data-testid={`badge-${b.id}`} data-owned={has}>
+              <div key={b.id} className={`flex flex-col items-center gap-1.5 p-3 text-center sm:p-4 ${has ? 'karte-3d glanz bg-gradient-to-b from-sonne-50 to-flaeche ring-sonne-300' : 'rounded-blob bg-flaeche/60 border-2 border-dashed border-tinte/15'}`} data-testid={`badge-${b.id}`} data-owned={has}>
                 <span className={`emoji flex h-16 w-16 items-center justify-center rounded-full text-4xl sm:h-20 sm:w-20 sm:text-5xl ${has ? 'bg-sonne-100 ring-4 ring-sonne-300' : 'bg-tinte/[0.05] opacity-40 grayscale'}`} aria-hidden>{b.emoji}</span>
                 <span className={`font-display text-sm font-bold leading-tight sm:text-base ${has ? '' : 'text-tinte/60'}`}>{tr(b.title)}</span>
                 <span className="text-xs leading-snug text-tinte/55 sm:text-sm">{tr(b.description)}</span>
@@ -98,7 +98,7 @@ function PathSection({ title, emoji, modules }: { title: string; emoji: string; 
           const p = progress.modules[m.id];
           return (
             <li key={m.id} className="flex items-center gap-2">
-              <Link to={`/spiel/${m.id}`} className={`flex h-16 w-16 items-center justify-center rounded-full text-3xl shadow-knopf ${p?.rounds ? 'bg-minze-300' : 'bg-white'}`} title={tr(m.title)} aria-label={`${tr(m.title)}${p?.rounds ? L(', schon gespielt', ', già giocato') : ''}`}>
+              <Link to={`/spiel/${m.id}`} className={`flex h-16 w-16 items-center justify-center rounded-full text-3xl shadow-knopf ${p?.rounds ? 'bg-minze-300' : 'bg-flaeche'}`} title={tr(m.title)} aria-label={`${tr(m.title)}${p?.rounds ? L(', schon gespielt', ', già giocato') : ''}`}>
                 <span className="emoji">{m.emoji}</span>
               </Link>
               {i < modules.length - 1 && <span className="h-1 w-4 rounded bg-tinte/15" aria-hidden />}
@@ -160,7 +160,7 @@ export function AvatarPage() {
           <legend className="mb-3 font-display text-2xl font-bold">{L('Tier', 'Animale')}</legend>
           <div className="grid grid-cols-4 gap-3 sm:grid-cols-6">
             {AVATAR_TIERE.map((t) => (
-              <button key={t} type="button" onClick={() => set({ animal: t })} aria-pressed={profile.avatar.animal === t} className={`knopf aspect-square text-5xl ${profile.avatar.animal === t ? 'bg-sonne-300 ring-4 ring-tinte' : 'bg-white'}`}><span className="emoji">{t}</span></button>
+              <button key={t} type="button" onClick={() => set({ animal: t })} aria-pressed={profile.avatar.animal === t} className={`knopf aspect-square text-5xl ${profile.avatar.animal === t ? 'bg-sonne-300 ring-4 ring-tinte' : 'bg-flaeche'}`}><span className="emoji">{t}</span></button>
             ))}
           </div>
         </fieldset>
@@ -177,7 +177,7 @@ export function AvatarPage() {
             {AVATAR_EXTRAS.map((e) => {
               const locked = e.level > lvl;
               return (
-                <button key={e.id} type="button" disabled={locked} onClick={() => set({ extra: e.id })} aria-pressed={profile.avatar.extra === e.id} className={`knopf flex-col py-3 text-base ${profile.avatar.extra === e.id ? 'bg-lila-300 ring-4 ring-tinte' : 'bg-white'}`}>
+                <button key={e.id} type="button" disabled={locked} onClick={() => set({ extra: e.id })} aria-pressed={profile.avatar.extra === e.id} className={`knopf flex-col py-3 text-base ${profile.avatar.extra === e.id ? 'bg-lila-300 ring-4 ring-tinte' : 'bg-flaeche'}`}>
                   <span className="emoji text-4xl">{locked ? <Lock /> : e.emoji || '🚫'}</span>
                   <span>{locked ? L(`ab Level ${e.level}`, `dal livello ${e.level}`) : tr(e.name)}</span>
                 </button>

@@ -33,7 +33,7 @@ export function PuzzleView({ task, onCorrect, onWrong, reveal, done }: TaskViewP
         done={done}
         onWrongDrop={onWrong}
         onComplete={onCorrect}
-        targetLayout={`grid gap-1 rounded-3xl bg-white p-2 ${g === 2 ? 'grid-cols-2' : 'grid-cols-3'}`}
+        targetLayout={`grid gap-1 rounded-3xl bg-flaeche p-2 ${g === 2 ? 'grid-cols-2' : 'grid-cols-3'}`}
         targetSize={`${size} !rounded-xl !border-2`}
         pieceSize={size}
         pieces={shuffled.map((id) => {

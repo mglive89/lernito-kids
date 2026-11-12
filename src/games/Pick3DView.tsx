@@ -31,7 +31,7 @@ export function Pick3DView(props: TaskViewProps<Pick3DTask>) {
   return (
     <div className="flex w-full flex-col items-center gap-3">
       <ErrorBoundary compact>
-        <Suspense fallback={<div className="flex h-72 w-full max-w-2xl items-center justify-center rounded-3xl bg-white" role="status">{L('3D-Welt wird geladen …', 'Caricamento del mondo 3D …')}</div>}>
+        <Suspense fallback={<div className="flex h-72 w-full max-w-2xl items-center justify-center rounded-3xl bg-flaeche" role="status">{L('3D-Welt wird geladen …', 'Caricamento del mondo 3D …')}</div>}>
           <Pick3D scene={task.scene} items={task.items} states={shownStates} onPick={pick} />
         </Suspense>
       </ErrorBoundary>

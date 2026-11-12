@@ -42,7 +42,7 @@ export function Visual({ v }: { v: V }) {
       );
     case 'dots':
       return (
-        <div className="grid grid-cols-5 gap-3 rounded-3xl bg-white p-4" aria-label={L(`${v.count} Punkte`, `${v.count} punti`)}>
+        <div className="grid grid-cols-5 gap-3 rounded-3xl bg-flaeche p-4" aria-label={L(`${v.count} Punkte`, `${v.count} punti`)}>
           {Array.from({ length: v.count }, (_, i) => (
             <motion.span key={i} className="h-10 w-10 rounded-full bg-koralle-500 sm:h-12 sm:w-12" initial={{ scale: 0 }} animate={{ scale: 1 }} transition={{ delay: i * 0.06 }} />
           ))}
@@ -50,7 +50,7 @@ export function Visual({ v }: { v: V }) {
       );
     case 'pattern':
       return (
-        <div className="flex flex-wrap items-center justify-center gap-2 rounded-3xl bg-white p-4">
+        <div className="flex flex-wrap items-center justify-center gap-2 rounded-3xl bg-flaeche p-4">
           {v.items.map((e, i) => <span key={i} className={`emoji text-5xl ${e === '❓' ? 'animate-pulse' : ''}`}>{e}</span>)}
         </div>
       );
@@ -101,7 +101,7 @@ export function Visual({ v }: { v: V }) {
     case 'table':
       return (
         <div className="w-full max-w-xl overflow-x-auto">
-          <table className="w-full border-collapse overflow-hidden rounded-2xl bg-white text-center font-mono text-lg shadow-karte">
+          <table className="w-full border-collapse overflow-hidden rounded-2xl bg-flaeche text-center font-mono text-lg shadow-karte">
             <thead><tr>{v.head.map((h, i) => <th key={i} className="border-b-2 border-tinte/10 bg-himmel-100 px-3 py-2">{h}</th>)}</tr></thead>
             <tbody>{v.rows.map((r, i) => <tr key={i}>{r.map((c, k) => <td key={k} className="border-b border-tinte/5 px-3 py-2">{c}</td>)}</tr>)}</tbody>
           </table>
@@ -113,7 +113,7 @@ export function Visual({ v }: { v: V }) {
 }
 
 function Loading3D() {
-  return <div className="flex h-64 w-full max-w-md items-center justify-center rounded-3xl bg-white text-lg" role="status">{L('3D-Welt wird geladen …', 'Caricamento del mondo 3D …')}</div>;
+  return <div className="flex h-64 w-full max-w-md items-center justify-center rounded-3xl bg-flaeche text-lg" role="status">{L('3D-Welt wird geladen …', 'Caricamento del mondo 3D …')}</div>;
 }
 
 function RobotGrid({ v }: { v: Extract<V, { kind: 'robot' }> }) {
@@ -122,7 +122,7 @@ function RobotGrid({ v }: { v: Extract<V, { kind: 'robot' }> }) {
   const isWall = (x: number, y: number) => v.walls?.some(([a, b]) => a === x && b === y);
   const isItem = (x: number, y: number) => v.items?.some(([a, b]) => a === x && b === y);
   return (
-    <svg viewBox={`0 0 ${n * cell} ${n * cell}`} width={Math.min(320, n * cell)} className="max-w-full rounded-2xl bg-white shadow-karte" role="img"
+    <svg viewBox={`0 0 ${n * cell} ${n * cell}`} width={Math.min(320, n * cell)} className="max-w-full rounded-2xl bg-flaeche shadow-karte" role="img"
       aria-label={L(`Spielfeld ${n} mal ${n}: Roboter bei Spalte ${v.robot[0] + 1}, Zeile ${v.robot[1] + 1}; Ziel bei Spalte ${v.goal[0] + 1}, Zeile ${v.goal[1] + 1}`, `Griglia ${n} per ${n}: robot in colonna ${v.robot[0] + 1}, riga ${v.robot[1] + 1}; traguardo in colonna ${v.goal[0] + 1}, riga ${v.goal[1] + 1}`)}>
       {Array.from({ length: n * n }, (_, i) => {
         const x = i % n, y = Math.floor(i / n);
@@ -146,8 +146,8 @@ function MediaImage({ id, alt }: { id: string; alt: string }) {
     void getMediaBlob(id).then((b) => { if (b) { u = URL.createObjectURL(b); setUrl(u); } else setMissing(true); });
     return () => { if (u) URL.revokeObjectURL(u); };
   }, [id]);
-  if (missing) return <div className="rounded-2xl bg-white p-4 text-tinte/60">{L('Bild nicht gefunden', 'Immagine non trovata')}</div>;
-  if (!url) return <div className="h-48 w-64 animate-pulse rounded-2xl bg-white" role="status" aria-label={L('Bild wird geladen', 'Caricamento immagine')} />;
+  if (missing) return <div className="rounded-2xl bg-flaeche p-4 text-tinte/60">{L('Bild nicht gefunden', 'Immagine non trovata')}</div>;
+  if (!url) return <div className="h-48 w-64 animate-pulse rounded-2xl bg-flaeche" role="status" aria-label={L('Bild wird geladen', 'Caricamento immagine')} />;
   return <img src={url} alt={alt} className="max-h-64 max-w-full rounded-2xl object-contain shadow-karte" />;
 }
 
@@ -208,7 +208,7 @@ function Column({ a, b, op }: { a: number; b: number; op: '+' | '-' }) {
   const width = Math.max(String(a).length, String(b).length) + 1;
   const pad = (n: number) => String(n).padStart(width, ' ').split('');
   return (
-    <div className="rounded-3xl bg-white p-5 font-mono text-5xl font-bold leading-tight sm:text-6xl" aria-label={`${a} ${op === '+' ? (L('plus', 'più')) : (L('minus', 'meno'))} ${b}`}>
+    <div className="rounded-3xl bg-flaeche p-5 font-mono text-5xl font-bold leading-tight sm:text-6xl" aria-label={`${a} ${op === '+' ? (L('plus', 'più')) : (L('minus', 'meno'))} ${b}`}>
       <div className="mb-1 flex justify-end gap-3 text-base font-sans text-tinte/60"><span>{L('H', 'h')}</span><span>{L('Z', 'da')}</span><span>{L('E', 'u')}</span></div>
       <div className="flex justify-end gap-3">{pad(a).map((c, i) => <span key={i} className="w-8 text-center">{c}</span>)}</div>
       <div className="flex justify-end gap-3">{[op === '+' ? '+' : '−', ...pad(b).slice(1)].map((c, i) => <span key={i} className="w-8 text-center">{c}</span>)}</div>

@@ -32,11 +32,11 @@ export default function ParentArea() {
     );
   }
   return (
-    <div className="min-h-[100dvh] bg-white/60">
+    <div className="min-h-[100dvh] bg-flaeche/60">
       <TopBar
         title={L('Elternbereich', 'Area genitori')}
         back="/"
-        right={<button className="knopf bg-white text-base" onClick={() => { lock(); nav('/'); }} data-testid="eltern-abmelden"><LogOut size={20} /> {L('Sperren', 'Blocca')}</button>}
+        right={<button className="knopf bg-flaeche text-base" onClick={() => { lock(); nav('/'); }} data-testid="eltern-abmelden"><LogOut size={20} /> {L('Sperren', 'Blocca')}</button>}
       />
       <ParentDashboard />
     </div>

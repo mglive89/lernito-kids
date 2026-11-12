@@ -1,7 +1,7 @@
 import { Link, useNavigate } from 'react-router-dom';
 import { Award, ChevronRight, Clock, Compass, Flame, Lock, Palette, Star, Users, Zap, BookOpenCheck } from 'lucide-react';
 import { useApp, useActiveProfile } from '../../store/useApp';
-import { Avatar, COLOR_CLASSES, IconBadge, ProgressBar, SubjectIcon, AnimatedGrid, CountUp } from '../../components/ui';
+import { Avatar, COLOR_CLASSES, IconBadge, ProgressBar, SubjectIcon, AnimatedGrid, CountUp, ThemePicker } from '../../components/ui';
 import { levelFromXp, BADGES } from '../../learning/rewards';
 import { pathDoneOf } from '../../learning/adaptive';
 import { schoolModules } from '../../learning/registry';
@@ -47,7 +47,7 @@ export function ProfilePage() {
             <h1 className="truncate font-display text-3xl font-bold tracking-tight">{profile.name}</h1>
             <p className="text-white/85">{profileLabel(profile)}</p>
             <div className="mt-3 flex items-center gap-3">
-              <span className="chip bg-white text-lila-700">Level {lvl.level}</span>
+              <span className="chip bg-flaeche text-lila-700">Level {lvl.level}</span>
               <div className="flex-1"><ProgressBar value={lvl.progress} color="bg-sonne-300" track="bg-white/25" label={L('Fortschritt zum nächsten Level', 'Progresso verso il prossimo livello')} /></div>
             </div>
           </div>
@@ -105,9 +105,14 @@ export function ProfilePage() {
         </ul>
       </section>
 
+      <section aria-labelledby="aussehen-titel">
+        <h2 id="aussehen-titel" className="mb-3 font-display text-lg font-bold">{L('Aussehen der App', 'Aspetto dell’app')}</h2>
+        <div className="karte-3d p-3"><ThemePicker /></div>
+      </section>
+
       <div className="flex flex-col gap-3 sm:flex-row">
-        <button className="knopf knopf-3d flex-1 bg-white text-base" onClick={() => { setActive(null); nav('/'); }} data-testid="profil-wechseln"><Users size={18} /> {L('Profil wechseln', 'Cambia profilo')}</button>
-        <Link className="knopf knopf-3d flex-1 bg-white text-base" to="/eltern" data-testid="profil-eltern"><Lock size={18} /> {L('Elternbereich', 'Area genitori')}</Link>
+        <button className="knopf knopf-3d flex-1 bg-flaeche text-base" onClick={() => { setActive(null); nav('/'); }} data-testid="profil-wechseln"><Users size={18} /> {L('Profil wechseln', 'Cambia profilo')}</button>
+        <Link className="knopf knopf-3d flex-1 bg-flaeche text-base" to="/eltern" data-testid="profil-eltern"><Lock size={18} /> {L('Elternbereich', 'Area genitori')}</Link>
       </div>
     </main>
   );

@@ -71,7 +71,7 @@ export function LanguageTheory({ module, compact = false }: { module: LearningMo
   return (
     <div className="flex flex-col gap-7" data-testid="sprach-theorie">
       <Section id="lt-ziel" icon={<GraduationCap size={20} className="text-himmel-700" />} title={L('Das lernst du hier', 'Cosa impari qui')}>
-        <div className="rounded-2xl bg-white p-4 text-base leading-relaxed shadow-weich ring-1 ring-tinte/5 sm:text-lg">
+        <div className="rounded-2xl bg-flaeche p-4 text-base leading-relaxed shadow-weich ring-1 ring-tinte/5 sm:text-lg">
           <p>{L(`${unit.words.length} Wörter und ${unit.sentences.length} Sätze auf ${course.name()}: ${unit.subtitle.de}.`, `${unit.words.length} parole e ${unit.sentences.length} frasi in ${course.name().toLowerCase()}: ${unit.subtitle.it.toLowerCase()}.`)}</p>
           <ol className="mt-3 list-decimal space-y-1 pl-6 text-tinte/80">
             <li>{L('Hör dir jedes Wort an und sprich es nach.', 'Ascolta ogni parola e ripetila.')}</li>
@@ -88,7 +88,7 @@ export function LanguageTheory({ module, compact = false }: { module: LearningMo
           {unit.words.map((w) => {
             const g = genderOf(w[t], t);
             return (
-              <li key={w.emoji} className="flex items-center gap-3 rounded-2xl bg-white p-3 shadow-weich ring-1 ring-tinte/5" data-testid="theorie-wort">
+              <li key={w.emoji} className="flex items-center gap-3 rounded-2xl bg-flaeche p-3 shadow-weich ring-1 ring-tinte/5" data-testid="theorie-wort">
                 <span className="emoji text-3xl" aria-hidden>{w.emoji}</span>
                 <span className="min-w-0 flex-1">
                   <span className="block font-display text-lg font-bold leading-tight" lang={course.locale}>{w[t]}</span>
@@ -110,7 +110,7 @@ export function LanguageTheory({ module, compact = false }: { module: LearningMo
           {unit.sentences.map((s, i) => {
             const words = tokens(s[t]);
             return (
-              <li key={i} className="rounded-2xl bg-white p-4 shadow-weich ring-1 ring-tinte/5" data-testid="theorie-satz">
+              <li key={i} className="rounded-2xl bg-flaeche p-4 shadow-weich ring-1 ring-tinte/5" data-testid="theorie-satz">
                 <div className="flex items-start gap-3">
                   <span className="emoji text-3xl" aria-hidden>{s.emoji}</span>
                   <div className="min-w-0 flex-1">
@@ -142,7 +142,7 @@ export function LanguageTheory({ module, compact = false }: { module: LearningMo
         <Section id="lt-grammatik" icon={<Lightbulb size={20} className="text-sonne-700" />} title={L('So funktioniert es', 'Come funziona')}>
           <div className="flex flex-col gap-3">
             {notes.map((note, i) => (
-              <article key={i} className="rounded-2xl bg-white p-4 shadow-weich ring-1 ring-tinte/5" data-testid="theorie-regel">
+              <article key={i} className="rounded-2xl bg-flaeche p-4 shadow-weich ring-1 ring-tinte/5" data-testid="theorie-regel">
                 <h3 className="mb-2 font-display text-lg font-bold">{pick(note.title)}</h3>
                 <ol className="flex flex-col gap-2">
                   {note.steps.map((st, k) => (
@@ -174,7 +174,7 @@ export function LanguageTheory({ module, compact = false }: { module: LearningMo
             intro={L(`So klingen die schwierigen Laute auf ${course.name()}.`, `Ecco come suonano i suoni difficili in ${course.name().toLowerCase()}.`)}>
             <ul className="flex flex-col gap-2">
               {pron.map((p, i) => (
-                <li key={i} className="flex items-start gap-3 rounded-2xl bg-white p-3 shadow-weich ring-1 ring-tinte/5">
+                <li key={i} className="flex items-start gap-3 rounded-2xl bg-flaeche p-3 shadow-weich ring-1 ring-tinte/5">
                   <span className="min-w-[3.5rem] rounded-xl bg-koralle-50 px-2 py-1 text-center font-display font-bold text-koralle-700">{p.sound}</span>
                   <span className="text-base leading-relaxed sm:text-lg">{pick(p.tip)}</span>
                 </li>
@@ -185,7 +185,7 @@ export function LanguageTheory({ module, compact = false }: { module: LearningMo
           <Section id="lt-uebungen" icon={<ListChecks size={20} className="text-minze-700" />} title={L('So löst du die Übungen', 'Come si fanno gli esercizi')}>
             <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
               {EXERCISES().map((ex) => (
-                <div key={ex.title} className="rounded-2xl bg-white p-4 shadow-weich ring-1 ring-tinte/5">
+                <div key={ex.title} className="rounded-2xl bg-flaeche p-4 shadow-weich ring-1 ring-tinte/5">
                   <p className="mb-2 flex items-center gap-2 font-display text-lg font-bold"><span className="emoji text-2xl" aria-hidden>{ex.icon}</span>{ex.title}</p>
                   <ol className="list-decimal space-y-1 pl-5 text-base text-tinte/80">
                     {ex.steps.map((s, k) => <li key={k}>{s}</li>)}

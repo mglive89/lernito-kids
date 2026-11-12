@@ -12,8 +12,12 @@ import './index.css';
 import App from './App';
 import { ErrorBoundary } from './components/ErrorBoundary';
 import { preventZoom } from './lib/noZoom';
+import { installTapEffects } from './lib/effects';
+import { installTheme } from './lib/theme';
 
+installTheme();
 preventZoom();
+installTapEffects(() => document.documentElement.classList.contains('kinderbereich'));
 
 // Relativer Build (BASE_PATH=./, z. B. für eine Vorschau-Seite ohne festen Pfad) nutzt Hash-Routen.
 const relative = import.meta.env.BASE_URL === './';

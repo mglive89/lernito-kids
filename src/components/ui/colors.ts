@@ -17,7 +17,7 @@ export interface ColorSet {
 }
 
 export const COLOR_CLASSES: Record<string, ColorSet> = {
-  sonne: { bg: 'bg-sonne-500', soft: 'bg-sonne-100', text: 'text-sonne-700', ring: 'ring-sonne-500', grad: 'bg-gradient-to-br from-sonne-300 to-sonne-500', edge: 'kante-sonne', on: 'text-tinte' },
+  sonne: { bg: 'bg-sonne-500', soft: 'bg-sonne-100', text: 'text-sonne-700', ring: 'ring-sonne-500', grad: 'bg-gradient-to-br from-sonne-300 to-sonne-500', edge: 'kante-sonne', on: 'text-nacht' },
   himmel: { bg: 'bg-himmel-500', soft: 'bg-himmel-100', text: 'text-himmel-700', ring: 'ring-himmel-500', grad: 'bg-gradient-to-br from-himmel-300 to-himmel-500', edge: 'kante-himmel', on: 'text-white' },
   minze: { bg: 'bg-minze-500', soft: 'bg-minze-100', text: 'text-minze-700', ring: 'ring-minze-500', grad: 'bg-gradient-to-br from-minze-300 to-minze-500', edge: 'kante-minze', on: 'text-white' },
   koralle: { bg: 'bg-koralle-500', soft: 'bg-koralle-100', text: 'text-koralle-700', ring: 'ring-koralle-500', grad: 'bg-gradient-to-br from-koralle-300 to-koralle-500', edge: 'kante-koralle', on: 'text-white' },

@@ -167,7 +167,7 @@ function Coloring() {
   const stroke = { stroke: '#2B2D42', strokeWidth: 4, strokeLinejoin: 'round' as const, cursor: 'pointer' };
   return (
     <div className="flex flex-col items-center gap-4 lg:flex-row lg:items-start">
-      <svg viewBox="0 0 300 300" className="w-full max-w-lg rounded-3xl bg-white shadow-karte" role="img" aria-label={L('Ausmalbild von Puppy', 'Disegno di Puppy da colorare')}>
+      <svg viewBox="0 0 300 300" className="w-full max-w-lg rounded-3xl bg-flaeche shadow-karte" role="img" aria-label={L('Ausmalbild von Puppy', 'Disegno di Puppy da colorare')}>
         <rect x="2" y="2" width="296" height="210" fill={fills.himmel} {...stroke} onClick={() => paint('himmel')} />
         <rect x="2" y="212" width="296" height="86" fill={fills.wiese} {...stroke} onClick={() => paint('wiese')} />
         <circle cx="250" cy="50" r="28" fill={fills.sonne} {...stroke} onClick={() => paint('sonne')} />
@@ -210,7 +210,7 @@ function Coloring() {
             <button key={c} type="button" role="radio" aria-checked={color === c} aria-label={L(`Farbe ${c}`, `Colore ${c}`)} onClick={() => setColor(c)} className={`h-14 w-14 rounded-full border-2 border-tinte/20 shadow-knopf ${color === c ? 'ring-4 ring-tinte ring-offset-2' : ''}`} style={{ background: c }} />
           ))}
         </div>
-        <button className="knopf bg-white" onClick={() => setFills((f) => Object.fromEntries(Object.keys(f).map((k) => [k, '#fff'])) as Record<Region, string>)}>{L('Neu anfangen', 'Ricomincia')}</button>
+        <button className="knopf bg-flaeche" onClick={() => setFills((f) => Object.fromEntries(Object.keys(f).map((k) => [k, '#fff'])) as Record<Region, string>)}>{L('Neu anfangen', 'Ricomincia')}</button>
       </div>
     </div>
   );

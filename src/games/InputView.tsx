@@ -59,7 +59,7 @@ export function InputView({ task, onCorrect, onWrong, reveal, done }: TaskViewPr
       <motion.output
         key={shake}
         animate={shake ? { x: [0, -12, 12, -8, 8, 0] } : {}}
-        className={`flex h-20 w-full items-center justify-center rounded-3xl border-4 bg-white font-display text-5xl font-bold ${done ? 'border-minze-500' : reveal ? 'border-sonne-500' : 'border-himmel-300'}`}
+        className={`flex h-20 w-full items-center justify-center rounded-3xl border-4 bg-flaeche font-display text-5xl font-bold ${done ? 'border-minze-500' : reveal ? 'border-sonne-500' : 'border-himmel-300'}`}
         aria-live="polite"
         aria-label={L('Deine Antwort', 'La tua risposta')}
         data-testid="input-display"
@@ -74,7 +74,7 @@ export function InputView({ task, onCorrect, onWrong, reveal, done }: TaskViewPr
             data-testid={`key-${k}`}
             onClick={() => press(k)}
             disabled={done || reveal}
-            className={`knopf h-16 font-display text-3xl ${k === 'ok' ? `bg-minze-500 text-white ${signed ? 'col-span-3' : ''}` : k === 'del' ? 'bg-koralle-100' : 'bg-white'}`}
+            className={`knopf h-16 font-display text-3xl ${k === 'ok' ? `bg-minze-500 text-white ${signed ? 'col-span-3' : ''}` : k === 'del' ? 'bg-koralle-100' : 'bg-flaeche'}`}
             aria-label={k === 'del' ? L('Löschen', 'Cancella') : k === 'ok' ? L('Prüfen', 'Controlla') : k === '-' ? L('Minus / Vorzeichen', 'Meno / segno') : k}
           >
             {k === 'del' ? <Delete size={30} /> : k === 'ok' ? <Check size={34} /> : k === '-' ? '±' : k}

@@ -10,3 +10,4 @@ export { Confetti } from './Confetti';
 export { Notice, Toggle } from './Feedback';
 export { IconBadge, SubjectIcon, subjectIcon } from './Icons';
 export { PageTransition, Stagger, StaggerItem, Reveal, CountUp, AnimatedGrid } from './Motion';
+export { ThemePicker } from './ThemePicker';

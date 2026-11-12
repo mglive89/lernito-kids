@@ -30,7 +30,7 @@ export function OrderView({ task, onCorrect, onWrong, reveal, done }: TaskViewPr
 
   return (
     <div className="flex w-full max-w-3xl flex-col items-center gap-6">
-      <ol className="flex min-h-[5rem] flex-wrap justify-center gap-2 rounded-3xl bg-white/70 p-3" aria-label={L('Deine Reihenfolge', 'Il tuo ordine')}>
+      <ol className="flex min-h-[5rem] flex-wrap justify-center gap-2 rounded-3xl bg-flaeche/70 p-3" aria-label={L('Deine Reihenfolge', 'Il tuo ordine')}>
         {task.correctOrder.map((_, k) => (
           <li key={k} className={`flex h-16 min-w-[4.5rem] items-center justify-center rounded-2xl border-4 px-3 font-display text-2xl font-bold sm:text-3xl ${picked[k] ? 'border-minze-500 bg-minze-100' : 'border-dashed border-tinte/20'}`}>
             {picked[k] ? task.items.find((i) => i.id === picked[k])?.label : ''}

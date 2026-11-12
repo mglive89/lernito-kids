@@ -45,7 +45,7 @@ export function PageHero({ eyebrow, title, subtitle, art, color = 'himmel', chil
     himmel: 'from-himmel-600 to-himmel-500 text-white',
     minze: 'from-minze-600 to-minze-500 text-white',
     koralle: 'from-koralle-600 to-koralle-500 text-white',
-    sonne: 'from-sonne-300 to-sonne-500 text-tinte',
+    sonne: 'from-sonne-300 to-sonne-500 text-nacht',
     lila: 'from-lila-600 to-lila-500 text-white'
   }[color];
   return (

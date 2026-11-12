@@ -77,7 +77,7 @@ export default function Count3D({ count, item }: { count: number; item: Item }) 
       </div>
       <div className="flex items-center gap-3" aria-live="polite">
         <span className="font-display text-xl font-bold">Im Korb: {collected.length}</span>
-        {collected.length > 0 && <button type="button" className="rounded-full bg-white px-3 py-1 text-sm shadow" onClick={() => setCollected([])}>Zurücklegen</button>}
+        {collected.length > 0 && <button type="button" className="rounded-full bg-flaeche px-3 py-1 text-sm shadow" onClick={() => setCollected([])}>Zurücklegen</button>}
       </div>
     </div>
   );

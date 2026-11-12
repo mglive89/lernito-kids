@@ -24,7 +24,7 @@ export function TheoryContent({ moduleId, compact = false }: { moduleId: string;
         <h2 id="g-theorie" className="mb-3 flex items-center gap-2 font-display text-xl font-bold"><GraduationCap size={20} className="text-lila-700" aria-hidden /> {L('Ausführlich erklärt', 'Teoria passo per passo')}</h2>
         <div className="flex flex-col gap-3">
           {theory.sections.map((s, i) => (
-            <details key={i} open={!compact} className="group rounded-2xl bg-white shadow-weich ring-1 ring-tinte/5" data-testid="theorie-abschnitt">
+            <details key={i} open={!compact} className="group rounded-2xl bg-flaeche shadow-weich ring-1 ring-tinte/5" data-testid="theorie-abschnitt">
               <summary className="flex cursor-pointer list-none items-center gap-3 p-4 font-display text-lg font-bold [&::-webkit-details-marker]:hidden">
                 <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-lila-50 text-base text-lila-700" aria-hidden>{i + 1}</span>
                 <span className="flex-1">{tr(s.title)}</span>
@@ -64,7 +64,7 @@ export function TheoryContent({ moduleId, compact = false }: { moduleId: string;
           <h2 id="g-begriffe" className="mb-3 flex items-center gap-2 font-display text-xl font-bold"><BookMarked size={20} className="text-minze-700" aria-hidden /> {L('Fachbegriffe', 'Parole chiave')}</h2>
           <dl className="grid grid-cols-1 gap-2 sm:grid-cols-2">
             {theory.terms.map((t, i) => (
-              <div key={i} className="rounded-2xl bg-white p-3 shadow-weich ring-1 ring-tinte/5">
+              <div key={i} className="rounded-2xl bg-flaeche p-3 shadow-weich ring-1 ring-tinte/5">
                 <dt className="font-bold text-minze-700">{tr(t.term)}</dt>
                 <dd className="text-base text-tinte/80">{tr(t.def)}</dd>
               </div>
