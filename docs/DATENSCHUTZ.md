@@ -17,6 +17,7 @@
 | Betroffenenrechte | Export aller Daten als JSON (Art. 15/20 DSGVO), Import, vollständige Löschung inkl. Medien (Art. 17 DSGVO), Löschen einzelner Profile. |
 | KI-Lernhilfe | Vorbereitet, standardmäßig deaktiviert, nur durch Erwachsene aktivierbar. Kein offener Chat. Keine API-Schlüssel im Frontend – nur ein eigener Server-Endpunkt (`VITE_AI_PROXY_URL`) ist vorgesehen. |
 | Vorlesefunktion | Web Speech API des Geräts. Die App zeigt, ob eine lokale Stimme verfügbar ist. Hinweis: Manche Browser nutzen Online-Stimmen des Herstellers – das ist in der Datenschutzinformation zu nennen. Abschaltbar im Elternbereich. |
+| Mikrofon (Sprachkurse, Sprachantworten) | Spracherkennung über die Web Speech API des Browsers. Standardmäßig **aus**; erst nach Freigabe mit Eltern-PIN nutzbar, im Elternbereich (Datenschutz) wieder abschaltbar. Lernito speichert keine Aufnahmen, nur das Ergebnis richtig/falsch. Hinweis: Chrome/Edge senden das Audio zur Erkennung an Server des Herstellers (Google/Microsoft), Safari je nach Einstellung an Apple – das ist in der Datenschutzinformation zu nennen (Drittanbieter, Drittlandübermittlung). Ohne Unterstützung (z. B. Firefox) gibt es einen Ersatzweg ohne Mikrofon. |
 | Belohnungen | Keine Zufallsbelohnungen, keine Käufe, keine Verlustmechaniken (Serien gehen nicht verloren), keine Countdown-Druckelemente. |
 | Barrierefreiheit | Semantische Elemente, ARIA-Labels, Fokus-Rahmen, Vorlesen, hoher Kontrast, größere Schrift, reduzierte Bewegung, Tipp-Alternative zu Drag-and-Drop. |
 

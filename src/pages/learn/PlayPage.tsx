@@ -16,6 +16,7 @@ function backFor(mod: LearningModule, country: Country, profileYear: number): st
   if (mod.area === 'kita') return '/kita';
   if (mod.area === 'welt3d') return '/welt3d';
   if (mod.area === 'video') return '/videos';
+  if (mod.area === 'lingue') return `/lingue/${mod.id.split('-')[1]}`;
   const yrs = moduleYears(mod);
   const y = yrs && (profileYear < yrs[0] || profileYear > yrs[1]) ? yrs[0] : Math.max(1, profileYear);
   const st = stageFor(country, y);
@@ -35,7 +36,7 @@ export function PlayPage() {
   const [step] = useState(() => {
     const asked = Number(search.get('lektion'));
     const done = mod ? pathDoneOf(progress.modules[mod.id]) : 0;
-    return mod?.area === 'schule' && asked >= 1 ? Math.min(asked, done + 1, 3) : 0;
+    return (mod?.area === 'schule' || mod?.area === 'lingue') && asked >= 1 ? Math.min(asked, done + 1, 3) : 0;
   });
   if (!mod) {
     return (
