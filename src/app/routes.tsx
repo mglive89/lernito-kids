@@ -20,6 +20,7 @@ import { StarsPage, BadgesPage, AdventurePage, AvatarPage } from '../pages/rewar
 import { ProfilePage } from '../pages/profile/Profile';
 import { PrivacyPage } from '../pages/info/Privacy';
 import { LanguagesPage, LanguageCoursePage } from '../pages/lingue/Languages';
+import { BrainGamesPage, BrainGamePlayPage } from '../pages/denkspiele/BrainGames';
 
 // Erwachsenenbereiche werden erst bei Bedarf geladen
 const ParentArea = lazy(() => import('../pages/parents/ParentArea'));
@@ -56,6 +57,7 @@ export function AppRoutes() {
         <Route path="/welt3d" element={<World3DPage />} />
         <Route path="/videos" element={<VideosPage />} />
         <Route path="/minispiele" element={<MiniGamesPage />} />
+        <Route path="/denkspiele" element={<BrainGamesPage />} />
         <Route path="/sterne" element={<StarsPage />} />
         <Route path="/erfolge" element={<BadgesPage />} />
         <Route path="/abenteuer" element={<AdventurePage />} />
@@ -69,6 +71,7 @@ export function AppRoutes() {
       <Route path="/spiel/:moduleId" element={<RequireProfile><PlayPage /></RequireProfile>} />
       <Route path="/videos/:lessonId" element={<RequireProfile><VideoPlayerPage /></RequireProfile>} />
       <Route path="/minispiele/:gameId" element={<RequireProfile><MiniGamePlayPage /></RequireProfile>} />
+      <Route path="/denkspiele/:gameId" element={<RequireProfile><BrainGamePlayPage /></RequireProfile>} />
 
       <Route path="/eltern/*" element={<ParentArea />} />
       <Route path="/admin/*" element={<AdminArea />} />
