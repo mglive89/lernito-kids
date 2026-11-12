@@ -2,9 +2,8 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { Mic, ShieldCheck } from 'lucide-react';
 import { useApp } from '../../store/useApp';
-import { listenOnce, recognitionSupported, stopListening, type ListenError } from '../../lib/listen';
+import { finishListening, listenOnce, recognitionSupported, stopListening, type ListenError } from '../../lib/listen';
 import { stopSpeaking } from '../../lib/speech';
-import { sfx } from '../../lib/sound';
 import { Modal, Notice } from '../ui';
 import { PinLogin, PinSetup } from '../ParentAuth';
 import { L } from '../../i18n';
@@ -34,6 +33,8 @@ export function useListen() {
   const allowed = useVoiceAllowed();
   const [state, setState] = useState<'idle' | 'listening'>('idle');
   const [error, setError] = useState<string | null>(null);
+  /** Was gerade gehört wird (live) */
+  const [live, setLive] = useState('');
   const [consentOpen, setConsentOpen] = useState(false);
   const pendingLocale = useRef<string | null>(null);
   const resolver = useRef<((v: string[] | null) => void) | null>(null);
@@ -42,17 +43,17 @@ export function useListen() {
 
   const run = useCallback(async (locale: string): Promise<string[] | null> => {
     setError(null);
+    setLive('');
     stopSpeaking();
     setState('listening');
-    sfx.tap();
     try {
-      const r = await listenOnce(locale);
+      const r = await listenOnce(locale, { onInterim: (t) => { if (mounted.current) setLive(t); } });
       return r.alternatives;
     } catch (e) {
       if (mounted.current) setError(errorText(e as ListenError) || null);
       return null;
     } finally {
-      if (mounted.current) setState('idle');
+      if (mounted.current) { setState('idle'); setLive(''); }
     }
   }, []);
 
@@ -74,8 +75,10 @@ export function useListen() {
     if (ok) setError(L('Super! Tippe jetzt auf das Mikrofon und sprich.', 'Perfetto! Ora tocca il microfono e parla.'));
   }, []);
 
-  const cancel = useCallback(() => { stopListening(); setState('idle'); }, []);
-  return { listen, cancel, state, error, setError, allowed, consentOpen, consentDone };
+  const cancel = useCallback(() => { stopListening(); setState('idle'); setLive(''); }, []);
+  /** Fertig gesprochen: Gehörtes sofort auswerten */
+  const finish = useCallback(() => finishListening(), []);
+  return { listen, cancel, finish, live, state, error, setError, allowed, consentOpen, consentDone };
 }
 
 /** Eltern geben das Mikrofon frei (PIN). */
@@ -119,7 +122,7 @@ export function MicButton({ listening, onClick, disabled, size = 'md', label, te
   const dim = size === 'lg' ? 'h-24 w-24' : 'h-14 w-14';
   return (
     <button type="button" onClick={onClick} disabled={disabled} data-testid={testId} data-listening={listening ? 'true' : undefined}
-      aria-label={listening ? L('Ich höre zu … tippe zum Beenden', 'Ti ascolto… tocca per terminare') : label}
+      aria-label={listening ? L('Ich höre zu … tippe, wenn du fertig bist', 'Ti ascolto… tocca quando hai finito') : label}
       className={`relative flex ${dim} shrink-0 items-center justify-center rounded-full text-white transition active:scale-95 disabled:opacity-40 ${listening ? 'bg-koralle-500' : 'kante-himmel bg-himmel-500 hover:bg-himmel-600'}`}>
       <AnimatePresence>
         {listening && [0, 1].map((i) => (
@@ -148,7 +151,7 @@ export function VoiceAnswer({ locale, onHeard, disabled, prompt }: {
   const [note, setNote] = useState<string | null>(null);
   if (!recognitionSupported()) return null;
   const click = async () => {
-    if (v.state === 'listening') { v.cancel(); return; }
+    if (v.state === 'listening') { v.finish(); return; }
     setNote(null);
     const alts = await v.listen(locale);
     if (alts) setNote(onHeard(alts));
@@ -159,7 +162,7 @@ export function VoiceAnswer({ locale, onHeard, disabled, prompt }: {
       <div className="flex items-center gap-3">
         <MicButton listening={v.state === 'listening'} onClick={click} disabled={disabled} label={prompt ?? L('Antwort sagen', 'Di’ la risposta')} testId="mikrofon-antwort" />
         <span className="text-sm font-semibold text-tinte/60">
-          {v.state === 'listening' ? L('Ich höre zu …', 'Ti ascolto…') : prompt ?? L('Oder sag die Antwort', 'Oppure di’ la risposta')}
+          {v.state === 'listening' ? (v.live ? L(`Ich höre: „${v.live}“`, `Ti sento: «${v.live}»`) : L('Ich höre zu … sprich jetzt', 'Ti ascolto… parla adesso')) : prompt ?? L('Oder sag die Antwort', 'Oppure di’ la risposta')}
         </span>
       </div>
       {msg && <p className="text-center text-base text-tinte/75" role="status" data-testid="sprach-hinweis">{msg}</p>}

@@ -49,7 +49,7 @@ export function similarity(a: string, b: string): number {
   return max ? 1 - levenshtein(a, b) / max : 1;
 }
 
-const WORD_OK = 0.75;
+const WORD_OK = 0.7;
 
 /** Zahlwörter 0–10 der Kurssprachen: die Erkennung liefert oft „7“ statt „seven“. */
 const DIGIT_WORDS: Record<string, string[]> = {
@@ -100,7 +100,7 @@ export function phraseScore(target: string, heard: string[], lang?: string): num
 }
 
 /** Schwelle, ab der eine Aussprache als richtig gilt. */
-export const SPEAK_PASS = 0.7;
+export const SPEAK_PASS = 0.65;
 
 /**
  * Welche Antwortmöglichkeit hat das Kind gesagt?
