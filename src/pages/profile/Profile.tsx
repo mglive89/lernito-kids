@@ -1,7 +1,7 @@
 import { Link, useNavigate } from 'react-router-dom';
 import { Award, ChevronRight, Clock, Compass, Flame, Lock, Palette, Star, Users, Zap, BookOpenCheck } from 'lucide-react';
 import { useApp, useActiveProfile } from '../../store/useApp';
-import { Avatar, COLOR_CLASSES, IconBadge, ProgressBar, SubjectIcon } from '../../components/ui';
+import { Avatar, COLOR_CLASSES, IconBadge, ProgressBar, SubjectIcon, AnimatedGrid, CountUp } from '../../components/ui';
 import { levelFromXp, BADGES } from '../../learning/rewards';
 import { pathDoneOf } from '../../learning/adaptive';
 import { schoolModules } from '../../learning/registry';
@@ -56,14 +56,14 @@ export function ProfilePage() {
 
       <section aria-labelledby="stat-titel">
         <h2 id="stat-titel" className="mb-3 font-display text-lg font-bold">{L('Statistik', 'Statistiche')}</h2>
-        <div className="grid grid-cols-2 gap-3 sm:grid-cols-3">
+        <AnimatedGrid className="grid grid-cols-2 gap-3 sm:grid-cols-3">
           {stats.map((s) => (
             <div key={s.label} className="karte-3d flex items-center gap-3 p-4">
               <span className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-xl ${s.tone}`}>{s.icon}</span>
-              <span><span className="block font-display text-2xl font-bold leading-none">{s.value}</span><span className="text-sm text-tinte/55">{s.label}</span></span>
+              <span><span className="block font-display text-2xl font-bold leading-none">{typeof s.value === 'number' ? <CountUp value={s.value} /> : s.value}</span><span className="text-sm text-tinte/55">{s.label}</span></span>
             </div>
           ))}
-        </div>
+        </AnimatedGrid>
       </section>
 
       {subjects.length > 0 && (

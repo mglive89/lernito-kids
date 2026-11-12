@@ -3,7 +3,7 @@ import { AnimatePresence, motion } from 'framer-motion';
 import { Link, Navigate, useParams } from 'react-router-dom';
 import { ArrowRight, BookOpen, Check, Crown, Lock, Mic, MicOff, Star, Trophy } from 'lucide-react';
 import { useActiveProfile, type ProfileProgress } from '../../store/useApp';
-import { COLOR_CLASSES, PageHero, ProgressBar, StarCount, TopBar } from '../../components/ui';
+import { COLOR_CLASSES, PageHero, ProgressBar, StarCount, TopBar, AnimatedGrid } from '../../components/ui';
 import { Lino } from '../../components/Lino';
 import { useVoiceAllowed, VoiceConsentModal } from '../../components/voice/Voice';
 import { recognitionSupported } from '../../lib/listen';
@@ -55,7 +55,7 @@ export function LanguagesPage() {
   const courses = coursesFor(getLang());
   return (
     <div style={{ paddingTop: 'var(--safe-top)' }}>
-      <div className="mx-auto flex max-w-6xl items-center justify-between px-4 pt-5 sm:px-6">
+      <div className="mx-auto flex max-w-6xl 2xl:max-w-7xl items-center justify-between px-4 pt-5 sm:px-6">
         <h1 className="font-display text-xl font-extrabold tracking-tight sm:text-2xl">{L('Sprachen', 'Lingue')}</h1>
         <StarCount n={progress.stars} />
       </div>
@@ -63,7 +63,7 @@ export function LanguagesPage() {
         <PageHero color="sonne" title={L('Welche Sprache lernst du?', 'Che lingua vuoi imparare?')}
           subtitle={L('Kurze Lektionen: hören, verstehen, Sätze bauen und sprechen.', 'Lezioni brevi: ascolta, capisci, componi frasi e parla.')}
           art={<span className="-my-8 block"><Lino mood="winken" size={104} /></span>} />
-        <div className="mt-6 grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-4">
+        <AnimatedGrid className="mt-6 grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-4">
           {courses.map((c) => {
             const p = courseProgress(c, progress.modules);
             return (
@@ -79,7 +79,7 @@ export function LanguagesPage() {
               </Link>
             );
           })}
-        </div>
+        </AnimatedGrid>
         <div className="mt-6"><MicStatus /></div>
       </main>
     </div>

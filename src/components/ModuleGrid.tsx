@@ -1,6 +1,6 @@
 import { Star } from 'lucide-react';
 import { useActiveProfile } from '../store/useApp';
-import { Tile } from './ui';
+import { Tile, AnimatedGrid } from './ui';
 import type { LearningModule } from '../learning/types';
 import type { ModuleProgress } from '../learning/adaptive';
 import { needsPractice } from '../learning/adaptive';
@@ -22,13 +22,13 @@ function ModuleBadge({ p }: { p?: ModuleProgress }) {
 export function ModuleGrid({ modules }: { modules: LearningModule[] }) {
   const { progress } = useActiveProfile();
   return (
-    <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
+    <AnimatedGrid className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
       {modules.map((m) => (
         <Tile key={m.id} to={`/spiel/${m.id}`} emoji={m.emoji} title={tr(m.title)} subtitle={tr(m.subtitle)} color={m.color} badge={<ModuleBadge p={progress.modules[m.id]} />} testId={`modul-${m.id}`}>
           {progress.modules[m.id]?.rounds ? <span className="relative mt-auto text-xs font-bold text-tinte/55">{L('Stufe', 'Livello')}: {stufe(progress.modules[m.id]!.level)}{needsPractice(progress.modules[m.id]) ? L(' · Nochmal üben', ' · Da ripassare') : ''}</span> : null}
         </Tile>
       ))}
-    </div>
+    </AnimatedGrid>
   );
 }
 

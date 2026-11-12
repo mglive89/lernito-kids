@@ -1,6 +1,6 @@
 import { useSearchParams } from 'react-router-dom';
 import { useApp, useActiveProfile } from '../../store/useApp';
-import { SectionTitle, SubjectIcon, Tile, TopBar } from '../../components/ui';
+import { SectionTitle, SubjectIcon, Tile, TopBar, AnimatedGrid } from '../../components/ui';
 import { schoolModules } from '../../learning/registry';
 import { L, tr } from '../../i18n';
 import { stageFor, stagesOf, yearLabel, type SubjectId } from '../../school/systems';
@@ -56,21 +56,21 @@ export function SchoolPage() {
             </button>
           ))}
         </div>
-        <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-4 lg:grid-cols-4">
+        <AnimatedGrid className="grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-4 lg:grid-cols-4">
           {stage.subjects.filter(allowed).map((id) => tile(id))}
-        </div>
+        </AnimatedGrid>
         {customSubjects.length > 0 && (
           <>
             <SectionTitle>{L('Weitere Fächer', 'Altre materie')}</SectionTitle>
-            <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-4 lg:grid-cols-4">
+            <AnimatedGrid className="grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-4 lg:grid-cols-4">
               {customSubjects.map((c) => <Tile key={c.id} to={`/schule/${year}/${c.id}`} emoji={c.emoji} title={c.name} subtitle={L(`${schoolModules(country, year, c.id, custom).length} Themen`, `${schoolModules(country, year, c.id, custom).length} argomenti`)} color="lila" testId={`fach-${c.id}`} />)}
-            </div>
+            </AnimatedGrid>
           </>
         )}
         {stage.extras.some(allowed) && (
           <>
             <SectionTitle>{L('Zusatzfächer', 'Materie extra')}</SectionTitle>
-            <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-4 lg:grid-cols-4">{stage.extras.filter(allowed).map((id) => tile(id))}</div>
+            <AnimatedGrid className="grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-4 lg:grid-cols-4">{stage.extras.filter(allowed).map((id) => tile(id))}</AnimatedGrid>
           </>
         )}
         <p className="mt-8 text-center text-sm text-tinte/55">

@@ -123,14 +123,15 @@ function PathNode({ m, n, name, state, current, offset, testId, onLocked }: {
     state === 'locked' ? 'bg-tinte/[0.08] text-tinte/30 shadow-[0_3px_0_rgba(24,33,61,0.08)]' : `${c.bg} text-white shadow-[0_4px_0_rgba(24,33,61,0.18)]`}`;
   const icon = state === 'done' ? (n === 3 ? <Crown size={30} /> : <Check size={32} strokeWidth={3} />) : state === 'locked' ? <Lock size={26} /> : <Star size={30} className="fill-white" />;
   const inner = (
-    <span className="flex flex-col items-center gap-1.5">
+    <motion.span className="flex flex-col items-center gap-1.5" initial={{ opacity: 0, scale: 0.6 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }}
+      whileHover={state === 'locked' ? undefined : { scale: 1.06 }} whileTap={{ scale: 0.94 }} transition={{ type: 'spring', stiffness: 380, damping: 22 }}>
       <span className={circle}>
         {current && <span className={`absolute -inset-2 animate-ping rounded-full opacity-20 ${c.bg}`} aria-hidden />}
         {current && <span className={`absolute -inset-1.5 rounded-full ring-4 ${c.ring} ring-offset-2 ring-offset-creme`} aria-hidden />}
         <span className="relative">{icon}</span>
       </span>
       <span className={`text-sm font-bold ${state === 'locked' ? 'text-tinte/35' : 'text-tinte/75'}`}>{name}</span>
-    </span>
+    </motion.span>
   );
   return (
     <div className="relative" style={{ transform: `translateX(${offset}px)` }}>

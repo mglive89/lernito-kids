@@ -13,11 +13,13 @@ export function Tile({ to, onClick, emoji, icon, title, subtitle, color, badge, 
 }) {
   const c = colorSet(color);
   const inner = (
-    <motion.div whileTap={{ scale: 0.98 }} className="karte-3d relative flex h-full flex-col gap-3 p-4 transition-transform duration-200 group-hover:-translate-y-0.5 sm:p-5">
+    <motion.div whileTap={{ scale: 0.98 }} className="karte-3d relative flex h-full flex-col gap-3 p-4 transition-transform duration-200 group-hover:-translate-y-1 sm:p-5">
       <div className="flex items-start justify-between gap-2">
-        {icon ?? (
-          <span className={`emoji flex shrink-0 items-center justify-center rounded-2xl ${c.soft} ${big ? 'h-16 w-16 text-4xl' : 'h-14 w-14 text-3xl'}`} aria-hidden>{emoji}</span>
-        )}
+        <span className="transition-transform duration-300 group-hover:-rotate-6 group-hover:scale-110">
+          {icon ?? (
+            <span className={`emoji flex shrink-0 items-center justify-center rounded-2xl ${c.soft} ${big ? 'h-16 w-16 text-4xl' : 'h-14 w-14 text-3xl'}`} aria-hidden>{emoji}</span>
+          )}
+        </span>
         {badge}
       </div>
       <div className="min-w-0 flex-1">
