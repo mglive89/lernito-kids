@@ -34,6 +34,13 @@ export default defineConfig({
       },
       workbox: {
         globPatterns: ['**/*.{js,css,html,svg,png,woff2,webmanifest}'],
+        // Texterkennung (~7 MB) nicht vorab laden, sondern erst bei der ersten Nutzung zwischenspeichern
+        globIgnores: ['ocr/**'],
+        runtimeCaching: [{
+          urlPattern: ({ url }) => url.pathname.includes('/ocr/'),
+          handler: 'CacheFirst',
+          options: { cacheName: 'lernito-ocr', expiration: { maxEntries: 10 } }
+        }],
         navigateFallback: `${base}index.html`,
         maximumFileSizeToCacheInBytes: 4 * 1024 * 1024
       },

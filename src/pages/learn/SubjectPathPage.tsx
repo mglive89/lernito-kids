@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { Link, useParams } from 'react-router-dom';
-import { BookOpen, Check, Crown, Lock, Star, Trophy } from 'lucide-react';
+import { BookOpen, Camera, Check, ChevronRight, Crown, Lock, Star, Trophy } from 'lucide-react';
 import { useApp, useActiveProfile } from '../../store/useApp';
 import { COLOR_CLASSES, ProgressBar, SubjectIcon, TopBar } from '../../components/ui';
 import { sfx } from '../../lib/sound';
@@ -52,6 +52,16 @@ export function SubjectPage() {
                 <ProgressBar value={total ? done / total : 0} color={c.bg} />
               </div>
             </div>
+            {subject === 'mathe' && (
+              <Link to="/hausaufgaben" className="karte-3d -mt-2 mb-6 flex items-center gap-4 p-4" data-testid="hausaufgaben-hilfe">
+                <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-himmel-500 text-white"><Camera size={24} /></span>
+                <span className="min-w-0 flex-1">
+                  <span className="block font-display font-bold">{L('Hausaufgaben-Hilfe', 'Aiuto compiti')}</span>
+                  <span className="block text-sm text-tinte/60">{L('Aufgabe fotografieren oder eintippen – Puppy erklärt den Lösungsweg', 'Fotografa o scrivi un esercizio: Puppy ti spiega come si risolve')}</span>
+                </span>
+                <ChevronRight size={22} className="shrink-0 text-tinte/40" />
+              </Link>
+            )}
             <ol className="flex flex-col gap-4" aria-label={L('Lernpfad', 'Percorso')}>
               {mods.map((m, ui) => {
                 const pd = pathDoneOf(progress.modules[m.id]);

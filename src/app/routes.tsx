@@ -21,6 +21,7 @@ import { ProfilePage } from '../pages/profile/Profile';
 import { PrivacyPage } from '../pages/info/Privacy';
 import { LanguagesPage, LanguageCoursePage } from '../pages/lingue/Languages';
 import { BrainGamesPage, BrainGamePlayPage } from '../pages/denkspiele/BrainGames';
+import { HomeworkPage } from '../pages/hausaufgaben/HomeworkPage';
 
 // Erwachsenenbereiche werden erst bei Bedarf geladen
 const ParentArea = lazy(() => import('../pages/parents/ParentArea'));
@@ -72,6 +73,7 @@ export function AppRoutes() {
       <Route path="/videos/:lessonId" element={<RequireProfile><VideoPlayerPage /></RequireProfile>} />
       <Route path="/minispiele/:gameId" element={<RequireProfile><MiniGamePlayPage /></RequireProfile>} />
       <Route path="/denkspiele/:gameId" element={<RequireProfile><BrainGamePlayPage /></RequireProfile>} />
+      <Route path="/hausaufgaben" element={<RequireProfile><HomeworkPage /></RequireProfile>} />
 
       <Route path="/eltern/*" element={<ParentArea />} />
       <Route path="/admin/*" element={<AdminArea />} />
