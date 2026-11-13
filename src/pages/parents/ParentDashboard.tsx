@@ -392,6 +392,13 @@ function Privacy() {
         onChange={(v) => consent({ consentVoice: v })}
         testId="consent-voice"
       />
+      <Toggle
+        label={L('Kamera für die Hausaufgaben-Hilfe', 'Fotocamera per l’aiuto compiti')}
+        description={L('Kinder können eine Mathe-Aufgabe fotografieren und bekommen den Lösungsweg erklärt. Das Foto wird nur auf diesem Gerät gelesen, nicht hochgeladen und nicht gespeichert.', 'I bambini possono fotografare un esercizio di matematica e ricevere la spiegazione. La foto viene letta solo su questo dispositivo: non viene caricata né salvata.')}
+        checked={!!parent.consentCamera}
+        onChange={(v) => consent({ consentCamera: v })}
+        testId="consent-camera"
+      />
       {parent.consentUpdatedAt && <p className="text-sm text-tinte/60">{L('Einwilligungen zuletzt geändert:', 'Consensi modificati il:')} {new Date(parent.consentUpdatedAt).toLocaleString(locale())}</p>}
 
       <div className="karte flex flex-col gap-3 p-5">
