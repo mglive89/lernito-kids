@@ -1,5 +1,5 @@
 import { expect, test } from '@playwright/test';
-import { createProfile } from './helpers';
+import { createProfile, startExercises } from './helpers';
 
 /** Ersetzt die Sprachausgabe durch eine Attrappe, die gesprochene Texte mitschreibt (verhält sich wie Chrome: asynchron, mit speaking/pending). */
 const stub = () => {
@@ -33,6 +33,7 @@ test('Vorlesen: Knopf liest die Aufgabe vor, auch wenn gerade etwas gesprochen w
   await createProfile(page, 'Nora', '1');
   await page.goto('/schule/1/deutsch');
   await page.getByTestId('modul-d1-lesen').click();
+  await startExercises(page);
   const prompt = await page.getByTestId('task-prompt').innerText();
   await page.getByRole('button', { name: /^Vorlesen:/ }).first().click();
   await page.getByRole('button', { name: /^Vorlesen:/ }).first().click();

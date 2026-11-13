@@ -1,5 +1,5 @@
 import { expect, test, type Page } from '@playwright/test';
-import { confirmAnswer, createProfile, PIN, waitNext } from './helpers';
+import { confirmAnswer, createProfile, PIN, startExercises, waitNext } from './helpers';
 
 /**
  * Attrappe für die Spracherkennung: liefert, was der Test in window.__say legt.
@@ -71,6 +71,7 @@ test('Sprachkurs: Lektion mit Hören, Memory und Sprechen über das Mikrofon', a
   await allowMic(page);
   await page.getByTestId('kurs-en').click();
   await page.getByTestId('lektion-lingua-en-saluti-1').click();
+  await startExercises(page);
 
   for (let i = 0; i < 12; i++) {
     if (await page.getByTestId('summary').isVisible()) break;
@@ -92,6 +93,7 @@ test('Quiz: Antwort mit der Stimme geben', async ({ page }) => {
   await createProfile(page, 'Mia', '3', 'DE');
   await page.goto('/schule/3/mathe');
   await page.locator('[data-testid^="modul-"]').first().click();
+  await startExercises(page);
   const area = page.getByTestId('task-area');
   await area.waitFor();
   // Erste Aufgabe mit Sprachantwort suchen (Auswahl oder Zahleneingabe)

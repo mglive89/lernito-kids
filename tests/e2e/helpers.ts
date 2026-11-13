@@ -43,6 +43,13 @@ export async function createProfile(page: Page, name: string, age: string, count
   await expect(page.getByText(`${name}!`).first()).toBeVisible();
 }
 
+/** Schulthemen und Sprachkurse zeigen vor der ersten Aufgabe die Theorie: lesen und loslegen. */
+export async function startExercises(page: Page) {
+  await expect(page.getByTestId('theorie-vorher')).toBeVisible();
+  await page.getByTestId('theorie-start').click();
+  await expect(page.getByTestId('task-area')).toBeVisible();
+}
+
 /** Löst die aktuelle Auswahl-Aufgabe korrekt. */
 export async function answerChoice(page: Page) {
   await page.locator('[data-correct="true"]').first().click();

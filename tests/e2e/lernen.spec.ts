@@ -1,5 +1,5 @@
 import { expect, test } from '@playwright/test';
-import { confirmAnswer, createProfile, fillProfileForm, playChoiceRound, PIN, setPinFlow, waitNext } from './helpers';
+import { confirmAnswer, createProfile, startExercises, fillProfileForm, playChoiceRound, PIN, setPinFlow, waitNext } from './helpers';
 
 test('Kindergarten: Zählen spielen, Sterne bleiben nach Neuladen erhalten', async ({ page }) => {
   await createProfile(page, 'Mila', 'kita');
@@ -54,6 +54,7 @@ test('Grundschule Klasse 2: Einmaleins mit Zahlenfeld lösen', async ({ page }) 
   await page.getByTestId('bereich-schule').click();
   await page.getByTestId('fach-mathe').click();
   await page.getByTestId('modul-m2-einmaleins').click();
+  await startExercises(page);
   for (let i = 0; i < 6; i++) {
     const area = page.getByTestId('task-area');
     await area.waitFor();
@@ -76,6 +77,7 @@ test('Grundschule Klasse 1: Deutsch – Silben und Lesen', async ({ page }) => {
   await createProfile(page, 'Ida', '1');
   await page.goto('/schule/1/deutsch');
   await page.getByTestId('modul-d1-lesen').click();
+  await startExercises(page);
   await playChoiceRound(page);
 });
 
@@ -94,6 +96,7 @@ test('Puppy erklärt die Aufgabe und gibt auf Wunsch Schritt-für-Schritt-Hilfe'
   await createProfile(page, 'Ben', '1');
   await page.goto('/schule/1/deutsch');
   await page.getByTestId('modul-d1-lesen').click();
+  await startExercises(page);
   // Jüngere Kinder: Puppy erklärt die erste Aufgabe automatisch
   const tip = page.getByTestId('puppy-tipp');
   await expect(tip).toBeVisible();
@@ -152,9 +155,11 @@ test('Italien: Profil auf Italienisch, 2ª media, Matematica und Programmazione'
   await expect(page.getByTestId('fach-scienze')).toBeVisible();
   await page.getByTestId('fach-programmieren').click();
   await page.getByTestId('modul-code-python').click();
+  await startExercises(page);
   await expect(page.getByTestId('task-prompt')).toHaveText('Che cosa stampa il programma Python?');
   await page.goto('/schule/7/italiano');
   await page.getByTestId('modul-it7-logica').click();
+  await startExercises(page);
   await playChoiceRound(page);
   await expect(page.getByText('Fatto!')).toBeVisible();
 });
@@ -167,6 +172,7 @@ test('Oberstufe Deutschland: Integralrechnung und Ethik vorhanden', async ({ pag
   await expect(page.getByTestId('modul-ms-integral')).toBeVisible();
   await page.goto('/schule/12/religion');
   await page.getByTestId('modul-rel-ethik').click();
+  await startExercises(page);
   await playChoiceRound(page);
 });
 
@@ -174,6 +180,7 @@ test('Programmieren Grundschule: Roboter-Parcours', async ({ page }) => {
   await createProfile(page, 'Lina', '2');
   await page.goto('/schule/2/programmieren');
   await page.getByTestId('modul-code-roboter').click();
+  await startExercises(page);
   await expect(page.getByRole('img', { name: /Spielfeld/ })).toBeVisible();
   await playChoiceRound(page);
 });
@@ -242,4 +249,22 @@ test('Navigation, Profilseite und zweites Kind nur mit Eltern-PIN', async ({ pag
   await page.getByTestId('pin-login-key-ok').click();
   await fillProfileForm(page, 'Bea', '9');
   await expect(page.getByText('Bea!').first()).toBeVisible();
+});
+
+test('Vor der Übung kommt die Theorie: beim ersten Mal ausgeklappt, danach zum Wiederholen eingeklappt', async ({ page }) => {
+  await createProfile(page, 'Emil', '3');
+  await page.goto('/schule/3/mathe');
+  const first = page.locator('[data-testid^="einheit-"]').first();
+  const id = (await first.getAttribute('data-testid'))!.replace('einheit-', '');
+  await page.getByTestId(`modul-${id}`).click();
+  await expect(page.getByTestId('theorie-vorher')).toBeVisible();
+  await expect(page.getByText('Erst die Theorie')).toBeVisible();
+  await expect(page.getByText('Das Wichtigste')).toBeVisible();
+  await expect(page.getByTestId('theorie-abschnitt').first()).toHaveAttribute('open', '');
+  await page.getByTestId('theorie-start').click();
+  await expect(page.getByTestId('task-area')).toBeVisible();
+  // Von der Theorie-Seite aus geht es direkt zu den Aufgaben
+  await page.goto(`/thema/${id}`);
+  await page.getByTestId('theorie-ueben').click();
+  await expect(page.getByTestId('task-area')).toBeVisible();
 });
