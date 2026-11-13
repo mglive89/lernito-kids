@@ -10,6 +10,8 @@ import { subjectDef } from '../../school/subjects';
 import { pathDoneOf } from '../../learning/adaptive';
 import { lessonLabel } from '../../learning/lessons';
 import { GameRunner } from '../../games/GameRunner';
+import { guideFor } from '../../learning/guides';
+import { TheoryIntro } from './TheoryIntro';
 
 /** Zurück-Ziel eines Moduls: das passende Fach der aktuellen Klasse. */
 function backFor(mod: LearningModule, country: Country, profileYear: number): string {
@@ -38,6 +40,9 @@ export function PlayPage() {
     const done = mod ? pathDoneOf(progress.modules[mod.id]) : 0;
     return (mod?.area === 'schule' || mod?.area === 'lingue') && asked >= 1 ? Math.min(asked, done + 1, 3) : 0;
   });
+  // Theorie vor der Übung (Schulthemen und Sprachkurse); ?theorie=0, wenn sie gerade schon gelesen wurde
+  const [intro, setIntro] = useState(() => !!mod && search.get('theorie') !== '0'
+    && ((mod.area === 'schule' && !!guideFor(mod.id)) || mod.area === 'lingue'));
   if (!mod) {
     return (
       <div className="flex min-h-[100dvh] flex-col items-center justify-center gap-4 p-6">
@@ -49,6 +54,10 @@ export function PlayPage() {
   const backTo = backFor(mod, profile?.country ?? 'DE', profile?.year ?? 1);
   const level = (step || progress.modules[mod.id]?.level || 1) as 1 | 2 | 3;
   const kids = mod.area === 'kita' || (profile?.year ?? 0) === 0;
+  if (intro) {
+    return <TheoryIntro module={mod} firstTime={!progress.modules[mod.id]?.rounds} backTo={backTo} stars={progress.stars}
+      lessonLabel={step ? lessonLabel(step) : undefined} onStart={() => { setIntro(false); window.scrollTo(0, 0); }} />;
+  }
   return (
     <GameRunner key={`${mod.id}-${step}`} module={mod} level={level} speechOn={settings.speech} backTo={backTo}
       onFinish={(r) => record(step ? { ...r, pathStep: step } : r)}
