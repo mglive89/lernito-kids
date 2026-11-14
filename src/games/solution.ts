@@ -1,9 +1,9 @@
 import type { Task } from '../learning/types';
 import { num } from '../i18n';
 
-/** Fehlversuche, bis Erklärung und Lösung gezeigt werden: Kita 2 (wenige Antworten), Schule 3. */
-export function maxTries(mode: 'auto' | 'check'): number {
-  return mode === 'auto' ? 2 : 3;
+/** Fehlversuche, bis Erklärung und Lösung gezeigt werden (Kita und Schule: 3). */
+export function maxTries(_mode: 'auto' | 'check'): number {
+  return 3;
 }
 
 /** Richtige Lösung als kurzer Text (für die Erklärung nach dem letzten Fehlversuch). */

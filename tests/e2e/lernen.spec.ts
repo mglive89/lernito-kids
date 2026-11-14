@@ -81,15 +81,16 @@ test('Grundschule Klasse 1: Deutsch – Silben und Lesen', async ({ page }) => {
   await playChoiceRound(page);
 });
 
-test('Nach zwei Fehlversuchen wird die Lösung Schritt für Schritt erklärt', async ({ page }) => {
+test('Kita: nach zwei Fehlversuchen hilft Puppy mit dem ersten Erklärschritt', async ({ page }) => {
   await createProfile(page, 'Lea', 'kita');
   await page.goto('/spiel/kita-farben');
   const wrong = page.locator('[data-testid^="option-"]:not([data-correct])');
   await wrong.nth(0).click();
   await wrong.nth(1).click();
-  await expect(page.getByLabel('Erklärung Schritt für Schritt')).toBeVisible();
-  await page.getByTestId('weiter').click();
-  await expect(page.getByTestId('task-prompt')).toBeVisible();
+  await expect(page.getByTestId('feedback')).toContainText('Denk an diesen Schritt');
+  await expect(page.getByTestId('task-area')).toHaveAttribute('data-phase', 'answer');
+  await page.locator('[data-correct="true"]').first().click();
+  await expect(page.getByTestId('task-area')).not.toHaveAttribute('data-phase', 'answer');
 });
 
 test('Puppy erklärt die Aufgabe und gibt auf Wunsch Schritt-für-Schritt-Hilfe', async ({ page }) => {
