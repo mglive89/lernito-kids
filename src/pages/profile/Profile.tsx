@@ -4,6 +4,7 @@ import { useApp, useActiveProfile } from '../../store/useApp';
 import { Avatar, COLOR_CLASSES, IconBadge, ProgressBar, SubjectIcon, AnimatedGrid, CountUp, ThemePicker } from '../../components/ui';
 import { levelFromXp, BADGES } from '../../learning/rewards';
 import { pathDoneOf } from '../../learning/adaptive';
+import { PATH_STEPS } from '../../learning/challenge';
 import { schoolModules } from '../../learning/registry';
 import { stageFor } from '../../school/systems';
 import { subjectDef, subjectName } from '../../school/subjects';
@@ -81,8 +82,8 @@ export function ProfilePage() {
                   <Link to={`/schule/${profile.year}/${id}`} className="flex items-center gap-3 rounded-xl p-2 hover:bg-tinte/[0.03]">
                     <SubjectIcon id={id} color={d?.color} size="sm" />
                     <span className="min-w-0 flex-1">
-                      <span className="flex justify-between gap-2 text-sm font-bold"><span className="truncate">{subjectName(id, profile.country)}</span><span className="text-tinte/50">{done}/{mods.length * 3}</span></span>
-                      <ProgressBar value={done / (mods.length * 3)} color={c.bg} />
+                      <span className="flex justify-between gap-2 text-sm font-bold"><span className="truncate">{subjectName(id, profile.country)}</span><span className="text-tinte/50">{done}/{mods.length * PATH_STEPS}</span></span>
+                      <ProgressBar value={done / (mods.length * PATH_STEPS)} color={c.bg} />
                     </span>
                   </Link>
                 </li>

@@ -11,6 +11,7 @@ import { KitaPage } from '../pages/learn/KitaPage';
 import { SchoolPage } from '../pages/learn/SchoolPage';
 import { SubjectPage } from '../pages/learn/SubjectPathPage';
 import { PlayPage } from '../pages/learn/PlayPage';
+import { FinalPage } from '../pages/learn/FinalPage';
 import { GuidePage } from '../pages/learn/GuidePage';
 import { DiscoverPage } from '../pages/discover/DiscoverPage';
 import { World3DPage } from '../pages/discover/World3DPage';
@@ -69,6 +70,7 @@ export function AppRoutes() {
 
       <Route path="/thema/:moduleId" element={<RequireProfile><GuidePage /></RequireProfile>} />
       <Route path="/spiel/:moduleId" element={<RequireProfile><PlayPage /></RequireProfile>} />
+      <Route path="/finale/:year/:subject" element={<RequireProfile><FinalPage /></RequireProfile>} />
       <Route path="/videos/:lessonId" element={<RequireProfile><VideoPlayerPage /></RequireProfile>} />
       <Route path="/minispiele/:gameId" element={<RequireProfile><MiniGamePlayPage /></RequireProfile>} />
       <Route path="/denkspiele/:gameId" element={<RequireProfile><BrainGamePlayPage /></RequireProfile>} />

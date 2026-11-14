@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { Link, useParams } from 'react-router-dom';
-import { BookOpen, Check, Crown, Lock, Star, Trophy } from 'lucide-react';
+import { BookOpen, Check, Crown, Flame, Lock, Medal, Star, Trophy } from 'lucide-react';
 import { useApp, useActiveProfile } from '../../store/useApp';
 import { COLOR_CLASSES, ProgressBar, SubjectIcon, TopBar } from '../../components/ui';
 import { sfx } from '../../lib/sound';
@@ -12,6 +12,8 @@ import { L, tr } from '../../i18n';
 import { yearLabel } from '../../school/systems';
 import { subjectDef, subjectName } from '../../school/subjects';
 import { pathDoneOf } from '../../learning/adaptive';
+import { FINAL_TIERS, PATH_STEPS, finalId, finalUnlocked } from '../../learning/challenge';
+import type { ModuleProgress } from '../../learning/adaptive';
 import { PATH_LESSONS, lessonLabel } from '../../learning/lessons';
 
 /** Versatz der Knoten im Pfad (Schlangenlinie) */
@@ -25,7 +27,7 @@ export function SubjectPage() {
   const country = profile?.country ?? 'DE';
   const y = Number(year) || 1;
   const mods = useMemo(() => schoolModules(country, y, subject ?? '', custom), [country, y, subject, custom]);
-  const total = mods.length * 3;
+  const total = mods.length * PATH_STEPS;
   const done = mods.reduce((a, m) => a + pathDoneOf(progress.modules[m.id]), 0);
   // Aktueller Knoten: erste offene Lektion im ganzen Pfad
   const currentId = mods.find((m) => pathDoneOf(progress.modules[m.id]) < 3)?.id;
@@ -65,7 +67,7 @@ export function SubjectPage() {
                         const isCurrent = m.id === currentId && state === 'open';
                         return (
                           <PathNode key={les.n} m={m} n={les.n} name={les.name} state={state} current={isCurrent} offset={off}
-                            testId={state === 'open' || (pd >= 3 && les.n === 3) ? `modul-${m.id}` : undefined}
+                            testId={state === 'open' || (pd >= PATH_STEPS && les.n === PATH_STEPS) ? `modul-${m.id}` : undefined}
                             onLocked={() => setToast(L(`Schließe zuerst Lektion ${les.n - 1} ab.`, `Completa prima la lezione ${les.n - 1}.`))} />
                         );
                       })}
@@ -74,7 +76,9 @@ export function SubjectPage() {
                 );
               })}
             </ol>
-            <div className="mt-10 flex flex-col items-center gap-2 text-center text-tinte/60">
+            <FinalSection mods={mods} modules={progress.modules} subject={subject ?? ''} year={y}
+              onLocked={() => setToast(L('Die Endrunde öffnet sich, wenn du in jeder Einheit Lektion 3 geschafft hast.', 'La sfida finale si apre quando hai completato la lezione 3 in ogni unità.'))} />
+            <div className="mt-8 flex flex-col items-center gap-2 text-center text-tinte/60">
               <Trophy size={36} className={done === total ? 'text-sonne-500' : 'text-tinte/20'} />
               <p className="font-display font-bold">{done === total ? L('Alles gemeistert! Super gemacht.', 'Tutto completato! Bravissimo.') : L('Ziel: alle Lektionen meistern', 'Obiettivo: completare tutte le lezioni')}</p>
             </div>
@@ -102,7 +106,7 @@ function UnitHeader({ m, index, done }: { m: LearningModule; index: number; done
       <div className="flex items-start gap-3">
         <span className="emoji flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-white/20 text-2xl" aria-hidden>{m.emoji}</span>
         <div className="min-w-0 flex-1">
-          <p className="u-sub text-xs font-bold uppercase tracking-wider">{L('Einheit', 'Unità')} {index + 1}{done >= 3 ? ` · ${L('gemeistert', 'completata')}` : ''}</p>
+          <p className="u-sub text-xs font-bold uppercase tracking-wider">{L('Einheit', 'Unità')} {index + 1}{done >= PATH_STEPS ? ` · ${L('Profi', 'Esperto')}` : done >= 3 ? ` · ${L('gemeistert', 'completata')}` : ''}</p>
           <h2 className="font-display text-xl font-bold leading-tight sm:text-2xl">{tr(m.title)}</h2>
           <p className="u-sub text-sm sm:text-base">{tr(m.subtitle)}</p>
         </div>
@@ -120,8 +124,10 @@ function PathNode({ m, n, name, state, current, offset, testId, onLocked }: {
   const c = COLOR_CLASSES[m.color] ?? COLOR_CLASSES.himmel!;
   const label = `${lessonLabel(n)}${state === 'done' ? L(' (erledigt)', ' (completata)') : state === 'locked' ? L(' (gesperrt)', ' (bloccata)') : ''}`;
   const circle = `relative flex h-[4.5rem] w-[4.5rem] items-center justify-center rounded-full transition active:translate-y-1 ${
-    state === 'locked' ? 'bg-tinte/[0.08] text-tinte/30 shadow-[0_3px_0_rgba(24,33,61,0.08)]' : `${c.bg} text-white shadow-[0_4px_0_rgba(24,33,61,0.18)]`}`;
-  const icon = state === 'done' ? (n === 3 ? <Crown size={30} /> : <Check size={32} strokeWidth={3} />) : state === 'locked' ? <Lock size={26} /> : <Star size={30} className="fill-white" />;
+    state === 'locked' ? 'bg-tinte/[0.08] text-tinte/30 shadow-[0_3px_0_rgba(24,33,61,0.08)]' : n === PATH_STEPS ? 'bg-lila-600 text-white shadow-[0_4px_0_rgba(24,33,61,0.25)] ring-4 ring-lila-300/60' : `${c.bg} text-white shadow-[0_4px_0_rgba(24,33,61,0.18)]`}`;
+  const profi = n === PATH_STEPS;
+  const icon = state === 'done' ? (profi ? <Medal size={30} /> : n === 3 ? <Crown size={30} /> : <Check size={32} strokeWidth={3} />)
+    : state === 'locked' ? <Lock size={26} /> : profi ? <Flame size={30} /> : <Star size={30} className="fill-white" />;
   const inner = (
     <motion.span className="flex flex-col items-center gap-1.5" initial={{ opacity: 0, scale: 0.6 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }}
       whileHover={state === 'locked' ? undefined : { scale: 1.06 }} whileTap={{ scale: 0.94 }} transition={{ type: 'spring', stiffness: 380, damping: 22 }}>
@@ -149,3 +155,57 @@ function PathNode({ m, n, name, state, current, offset, testId, onLocked }: {
   );
 }
 
+
+const TIER_STYLE = {
+  bronze: { open: 'bg-[#B87333] text-white', ring: 'ring-[#E2B48A]' },
+  silber: { open: 'bg-[#8A94A6] text-white', ring: 'ring-[#CBD2DE]' },
+  gold: { open: 'bg-sonne-500 text-tinte', ring: 'ring-sonne-300' }
+} as const;
+
+/** Endrunde am Ende des Lernpfads: drei Stufen mit gemischten Aufgaben aus allen Einheiten. */
+function FinalSection({ mods, modules, subject, year, onLocked }: {
+  mods: LearningModule[]; modules: Record<string, ModuleProgress>; subject: string; year: number; onLocked: () => void;
+}) {
+  const open = finalUnlocked(mods, modules);
+  const tiersDone = pathDoneOf(modules[finalId(subject, year)]);
+  const ready = mods.filter((m) => pathDoneOf(modules[m.id]) >= 3).length;
+  return (
+    <section className="karte-3d mt-10 p-5 sm:p-6" aria-labelledby="endrunde-titel" data-testid="endrunde">
+      <div className="mb-4 flex items-start gap-3">
+        <span className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl ${open ? 'bg-sonne-100 text-sonne-700' : 'bg-tinte/[0.06] text-tinte/35'}`}><Trophy size={26} /></span>
+        <div>
+          <p className="eyebrow text-lila-700">{L('Zum Schluss', 'Per finire')}</p>
+          <h2 id="endrunde-titel" className="font-display text-xl font-bold sm:text-2xl">{L('Endrunde', 'Sfida finale')}</h2>
+          <p className="text-sm text-tinte/65 sm:text-base">
+            {open
+              ? L('Gemischte Aufgaben aus allen Einheiten. Jede Stufe ist länger und das Ziel höher.', 'Esercizi misti da tutte le unità. Ogni livello è più lungo e l’obiettivo più alto.')
+              : L(`Schaffe in jeder Einheit Lektion 3 (${ready}/${mods.length}), dann öffnet sich die Endrunde.`, `Completa la lezione 3 in ogni unità (${ready}/${mods.length}) e si apre la sfida finale.`)}
+          </p>
+        </div>
+      </div>
+      <ol className="grid grid-cols-3 gap-3">
+        {FINAL_TIERS.map((t) => {
+          const state = !open ? 'locked' : tiersDone >= t.n ? 'done' : tiersDone + 1 === t.n ? 'open' : 'locked';
+          const st = TIER_STYLE[t.color];
+          const body = (
+            <span className="flex flex-col items-center gap-1.5 text-center">
+              <span className={`relative flex h-16 w-16 items-center justify-center rounded-full shadow-[0_4px_0_rgba(24,33,61,0.18)] ${state === 'locked' ? 'bg-tinte/[0.08] text-tinte/30 shadow-none' : st.open} ${state === 'open' ? `ring-4 ${st.ring}` : ''}`}>
+                {state === 'locked' ? <Lock size={24} /> : state === 'done' ? <Medal size={30} /> : <Trophy size={28} />}
+              </span>
+              <span className={`text-sm font-bold ${state === 'locked' ? 'text-tinte/40' : 'text-tinte/80'}`}>{t.name()}</span>
+              <span className="text-xs font-semibold text-tinte/50">{t.size} {L('Aufgaben', 'esercizi')} · {Math.round(t.goal * 100)} %</span>
+            </span>
+          );
+          const label = `${L('Endrunde', 'Sfida finale')} ${t.name()}${state === 'done' ? L(' (geschafft)', ' (superata)') : state === 'locked' ? L(' (gesperrt)', ' (bloccata)') : ''}`;
+          return (
+            <li key={t.n}>
+              {state === 'locked'
+                ? <button type="button" className="w-full" onClick={open ? undefined : onLocked} aria-label={label} data-testid={`endrunde-${t.n}`}>{body}</button>
+                : <Link to={`/finale/${year}/${subject}?stufe=${t.n}`} className="block w-full transition hover:-translate-y-0.5" aria-label={label} data-testid={`endrunde-${t.n}`} onClick={() => sfx.tap()}>{body}</Link>}
+            </li>
+          );
+        })}
+      </ol>
+    </section>
+  );
+}
