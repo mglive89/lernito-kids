@@ -18,7 +18,11 @@ export const COURSES: Course[] = [
   { id: 'de', flag: '🇩🇪', locale: 'de-DE', native: 'Deutsch', name: () => L('Deutsch', 'Tedesco') },
   { id: 'it', flag: '🇮🇹', locale: 'it-IT', native: 'Italiano', name: () => L('Italienisch', 'Italiano') },
   { id: 'fr', flag: '🇫🇷', locale: 'fr-FR', native: 'Français', name: () => L('Französisch', 'Francese') },
-  { id: 'es', flag: '🇪🇸', locale: 'es-ES', native: 'Español', name: () => L('Spanisch', 'Spagnolo') }
+  { id: 'es', flag: '🇪🇸', locale: 'es-ES', native: 'Español', name: () => L('Spanisch', 'Spagnolo') },
+  { id: 'tr', flag: '🇹🇷', locale: 'tr-TR', native: 'Türkçe', name: () => L('Türkisch', 'Turco') },
+  { id: 'pt', flag: '🇵🇹', locale: 'pt-PT', native: 'Português', name: () => L('Portugiesisch', 'Portoghese') },
+  { id: 'ro', flag: '🇷🇴', locale: 'ro-RO', native: 'Română', name: () => L('Rumänisch', 'Rumeno') },
+  { id: 'pl', flag: '🇵🇱', locale: 'pl-PL', native: 'Polski', name: () => L('Polnisch', 'Polacco') }
 ];
 
 export const courseById = (id: string | undefined) => COURSES.find((c) => c.id === id);

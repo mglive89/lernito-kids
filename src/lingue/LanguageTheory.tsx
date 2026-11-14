@@ -8,6 +8,9 @@ import { UNITS, type CourseLang } from './data';
 import { courseOfModule, tokens } from './course';
 import { NOTES, PRONUNCIATION, genderOf, type P } from './theory';
 
+/** Sprachen, deren Nomen mit vorangestelltem Artikel gelernt werden */
+const HAS_ARTICLES = new Set(['de', 'it', 'fr', 'es', 'pt']);
+
 const pick = (p: P) => (getLang() === 'it' ? p[1] : p[0]);
 
 function say(text: string, lang: string, slow = false) {
@@ -83,7 +86,7 @@ export function LanguageTheory({ module, compact = false }: { module: LearningMo
       </Section>
 
       <Section id="lt-woerter" icon={<BookA size={20} className="text-sonne-700" />} title={L('Die Wörter', 'Le parole')}
-        intro={t !== 'en' ? L('Lerne jedes Nomen mit seinem Artikel – die Farbe zeigt das Geschlecht.', 'Impara ogni nome con il suo articolo: il colore indica il genere.') : L('Tippe auf den Lautsprecher und sprich nach.', 'Tocca l’altoparlante e ripeti.')}>
+        intro={HAS_ARTICLES.has(t) ? L('Lerne jedes Nomen mit seinem Artikel – die Farbe zeigt das Geschlecht.', 'Impara ogni nome con il suo articolo: il colore indica il genere.') : L('Tippe auf den Lautsprecher und sprich nach.', 'Tocca l’altoparlante e ripeti.')}>
         <ul className="grid grid-cols-1 gap-2 sm:grid-cols-2">
           {unit.words.map((w) => {
             const g = genderOf(w[t], t);

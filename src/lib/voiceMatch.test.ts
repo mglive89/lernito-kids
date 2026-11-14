@@ -44,9 +44,17 @@ describe('Antwort per Sprache wählen', () => {
 });
 
 describe('Sprachkurse', () => {
+  it('erkennt Türkisch, Portugiesisch, Rumänisch und Polnisch (auch Ziffern)', () => {
+    expect(phraseScore('Yedi yaşındayım.', ['7 yaşındayım'], 'tr-TR')).toBeGreaterThanOrEqual(SPEAK_PASS);
+    expect(phraseScore('Teşekkürler', ['tesekkurler'], 'tr-TR')).toBe(1);
+    expect(phraseScore('Tenho sete anos.', ['tenho 7 anos'], 'pt-PT')).toBeGreaterThanOrEqual(SPEAK_PASS);
+    expect(phraseScore('Am șapte ani.', ['am 7 ani'], 'ro-RO')).toBeGreaterThanOrEqual(SPEAK_PASS);
+    expect(phraseScore('Mam siedem lat.', ['mam 7 lat'], 'pl-PL')).toBeGreaterThanOrEqual(SPEAK_PASS);
+    expect(phraseScore('Merhaba', ['bom dia'], 'tr-TR')).toBeLessThan(SPEAK_PASS);
+  });
   it('bietet die eigene Sprache nicht als Kurs an', () => {
-    expect(coursesFor('it').map((c) => c.id)).toEqual(['en', 'de', 'fr', 'es']);
-    expect(coursesFor('de').map((c) => c.id)).toEqual(['en', 'it', 'fr', 'es']);
+    expect(coursesFor('it').map((c) => c.id)).toEqual(['en', 'de', 'fr', 'es', 'tr', 'pt', 'ro', 'pl']);
+    expect(coursesFor('de').map((c) => c.id)).toEqual(['en', 'it', 'fr', 'es', 'tr', 'pt', 'ro', 'pl']);
   });
   it('jede Lektion enthält Sprechen, und Sätze sind lösbar', () => {
     for (const course of COURSES) {
