@@ -16,6 +16,7 @@ import { GuideContent } from '../components/GuideContent';
 import { Visual } from '../components/Visual';
 import { TaskView } from './TaskView';
 import { MULTI_STEP } from './types';
+import { maxTries, solutionText } from './solution';
 import { helpSteps, howTo } from './coach';
 import { roundMessage, roundStars, type RoundResult } from '../learning/adaptive';
 import type { RecordResult } from '../store/useApp';
@@ -145,23 +146,32 @@ export function GameRunner({ module, level, speechOn, onFinish, preview, backTo,
     setCoach(null);
     const n = attempts + 1;
     setAttempts(n);
+    const max = maxTries(mode);
     if (n === 1) {
       stats.current.hints++;
       const title = pickOf(NOCHMAL);
       setFeedback({ title, text: task.hint, tone: 'hint' });
       if (speechOn) speak(`${title} ${task.hint}`);
-    } else if (n >= 2) {
+    } else if (n < max) {
+      // Zweiter Fehlversuch: erster Schritt der Erklärung, die Lösung bleibt noch verborgen
+      const step = task.explain[0] ?? task.hint;
+      const title = L('Fast! Denk an diesen Schritt:', 'Quasi! Pensa a questo passaggio:');
+      setFeedback({ title, text: step, tone: 'hint' });
+      if (speechOn) speak(`${title} ${step}`);
+    } else {
+      const sol = solutionText(task);
+      const solLine = sol ? L(`Die Lösung ist: ${sol}`, `La soluzione è: ${sol}`) : undefined;
       if (multi) {
         // Bei mehrschrittigen Aufgaben zeigen wir die Hilfe, das Kind macht selbst weiter.
-        setFeedback({ title: L('Ich helfe dir:', 'Ti aiuto io:'), text: task.explain[0] ?? task.hint, tone: 'hint' });
+        setFeedback({ title: L('Ich helfe dir:', 'Ti aiuto io:'), text: task.explain.join(' ') || task.hint, tone: 'hint' });
         setRevealHelp(true);
       } else {
-        setFeedback({ title: L('Schau mal, so geht es:', 'Guarda, si fa così:'), tone: 'help' });
-        if (speechOn) speak(`${L('Schau mal, so geht es.', 'Guarda, si fa così.')} ${task.explain.join(' ')}`);
+        setFeedback({ title: L('Schau mal, so geht es:', 'Guarda, si fa così:'), text: solLine, tone: 'help' });
+        if (speechOn) speak(`${L('Schau mal, so geht es.', 'Guarda, si fa così.')} ${task.explain.join(' ')} ${solLine ?? ''}`);
         setPhase('reveal');
       }
     }
-  }, [phase, task, attempts, speechOn, multi]);
+  }, [phase, task, attempts, speechOn, multi, mode]);
 
   // „Ich kann gerade nicht sprechen“: Aufgabe zeigen und weiter, zählt nicht als gelöst
   const onSkip = useCallback(() => {
@@ -274,6 +284,11 @@ export function GameRunner({ module, level, speechOn, onFinish, preview, backTo,
                 {task.explain.map((s, i) => (
                   <motion.li key={i} initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.4 + i * 0.6 }}>{s}</motion.li>
                 ))}
+                {solutionText(task) && (
+                  <motion.li initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.4 + task.explain.length * 0.6 }} className="list-none -ml-5 pt-1" data-testid="loesung">
+                    <span className="chip bg-minze-50 px-3 py-1 text-minze-700">{L('Lösung', 'Soluzione')}: {solutionText(task)}</span>
+                  </motion.li>
+                )}
               </motion.ol>
             )}
           </motion.div>
