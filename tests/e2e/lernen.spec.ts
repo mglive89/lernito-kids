@@ -198,6 +198,10 @@ test('Lernpfad: Lektion abschließen schaltet die nächste frei, Theorie mit Bei
   await page.getByTestId(`theorie-${id}`).click();
   await expect(page.getByText('Das Wichtigste')).toBeVisible();
   await expect(page.getByTestId('beispiel').first()).toBeVisible();
+  // Lösung der Beispiele erst auf Knopfdruck
+  await expect(page.getByTestId('beispiel-loesung')).toHaveCount(0);
+  await page.getByTestId('beispiel-zeigen').first().click();
+  await expect(page.getByTestId('beispiel-loesung').first()).toBeVisible();
   await expect(page.getByTestId('theorie-abschnitt').first()).toBeVisible();
   await expect(page.getByText('Typische Fehler')).toBeVisible();
   await page.getByTestId('theorie-ueben').click();
@@ -214,8 +218,8 @@ test('Lernpfad: Lektion abschließen schaltet die nächste frei, Theorie mit Bei
     if ((await area.getAttribute('data-phase')) !== 'answer') await page.getByTestId('weiter').click();
     else if (await page.locator('[data-correct="true"]').count()) { await page.locator('[data-correct="true"]').first().click(); await confirmAnswer(page); }
     else {
-      // Zahlenfeld: Lösung zweimal falsch eingeben, dann wird sie gezeigt
-      for (let t = 0; t < 2; t++) { await page.getByTestId('key-9').click(); await page.getByTestId('key-9').click(); await page.getByTestId('key-9').click(); await page.getByTestId('key-ok').click(); }
+      // Zahlenfeld: Lösung dreimal falsch eingeben, dann wird sie gezeigt
+      for (let t = 0; t < 3; t++) { await page.getByTestId('key-9').click(); await page.getByTestId('key-9').click(); await page.getByTestId('key-9').click(); await page.getByTestId('key-ok').click(); }
       continue;
     }
     await waitNext(page, idx);
@@ -267,4 +271,30 @@ test('Vor der Übung kommt die Theorie: beim ersten Mal ausgeklappt, danach zum 
   await page.goto(`/thema/${id}`);
   await page.getByTestId('theorie-ueben').click();
   await expect(page.getByTestId('task-area')).toBeVisible();
+});
+
+test('Schule: erst nach drei Fehlversuchen kommen Erklärung und Lösung', async ({ page }) => {
+  await createProfile(page, 'Nico', '2');
+  await page.goto('/spiel/m2-einmaleins?theorie=0');
+  await page.getByTestId('task-area').waitFor();
+  // Puppy-Einführung (jüngere Kinder) schließen und bis zu einer Aufgabe mit Zahlenfeld gehen
+  if (await page.getByTestId('puppy-ok').isVisible()) await page.getByTestId('puppy-ok').click();
+  for (let i = 0; i < 6 && !(await page.getByTestId('key-ok').isVisible()); i++) {
+    const idx = await page.getByTestId('task-area').getAttribute('data-index');
+    await page.locator('[data-correct="true"]').first().click();
+    await confirmAnswer(page);
+    await waitNext(page, idx);
+    if (await page.getByTestId('puppy-ok').isVisible()) await page.getByTestId('puppy-ok').click();
+  }
+  const wrong = async () => { for (const k of ['9', '9', '9']) await page.getByTestId(`key-${k}`).click(); await page.getByTestId('key-ok').click(); };
+  await wrong();
+  await expect(page.getByTestId('task-area')).toHaveAttribute('data-phase', 'answer');
+  await wrong();
+  await expect(page.getByTestId('feedback')).toContainText('Denk an diesen Schritt');
+  await expect(page.getByTestId('loesung')).toHaveCount(0);
+  await wrong();
+  await expect(page.getByTestId('task-area')).toHaveAttribute('data-phase', 'reveal');
+  await expect(page.getByLabel('Erklärung Schritt für Schritt')).toBeVisible();
+  await expect(page.getByTestId('loesung')).toBeVisible();
+  await expect(page.getByTestId('feedback')).toContainText('Die Lösung ist');
 });

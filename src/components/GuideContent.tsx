@@ -1,6 +1,6 @@
 import { useMemo, useState } from 'react';
 import { motion } from 'framer-motion';
-import { BookOpen, CheckCircle2, ChevronDown, Lightbulb, Layers } from 'lucide-react';
+import { BookOpen, CheckCircle2, ChevronDown, Eye, Lightbulb, Layers } from 'lucide-react';
 import { Visual } from './Visual';
 import { LinoSays } from './Lino';
 import { TheoryContent } from './TheoryContent';
@@ -44,21 +44,9 @@ export function GuideContent({ module, compact = false }: { module: LearningModu
       <TheoryContent moduleId={module.id} compact={compact} />
       {examples.length > 0 && (
         <section aria-labelledby="g-beispiele">
-          <h2 id="g-beispiele" className="mb-3 flex items-center gap-2 font-display text-xl font-bold"><BookOpen size={20} className="text-himmel-700" /> {L('Beispiele mit Lösung', 'Esempi svolti')}</h2>
+          <h2 id="g-beispiele" className="mb-3 flex items-center gap-2 font-display text-xl font-bold"><BookOpen size={20} className="text-himmel-700" /> {L('Beispiele zum Mitdenken', 'Esempi: prova tu')}</h2>
           <ol className="flex flex-col gap-3">
-            {examples.map((ex, i) => (
-              <li key={i} className="rounded-2xl bg-flaeche p-4 shadow-weich ring-1 ring-tinte/5" data-testid="beispiel">
-                <p className="eyebrow mb-1 text-tinte/50">{L('Beispiel', 'Esempio')} {i + 1}</p>
-                <p className="font-display text-lg font-bold">{ex.prompt}</p>
-                {ex.visual && <div className="my-3 flex justify-center"><Visual v={ex.visual} /></div>}
-                <p className="mt-2"><span className="chip bg-minze-50 px-3 py-1 text-minze-700">{L('Lösung', 'Soluzione')}: {ex.answer}</span></p>
-                {ex.steps.length > 0 && (
-                  <ul className="mt-3 list-disc space-y-1 pl-5 text-base text-tinte/80">
-                    {ex.steps.map((s, j) => <li key={j}>{s}</li>)}
-                  </ul>
-                )}
-              </li>
-            ))}
+            {examples.map((ex, i) => <Example key={i} ex={ex} n={i + 1} />)}
           </ol>
         </section>
       )}
@@ -108,3 +96,30 @@ function Card({ c }: { c: StudyCard }) {
   );
 }
 
+
+/** Gelöstes Beispiel: erst selbst überlegen, die Lösung kommt auf Knopfdruck. */
+function Example({ ex, n }: { ex: ReturnType<typeof workedExamples>[number]; n: number }) {
+  const [open, setOpen] = useState(false);
+  return (
+    <li className="rounded-2xl bg-white p-4 shadow-weich ring-1 ring-tinte/5" data-testid="beispiel">
+      <p className="eyebrow mb-1 text-tinte/50">{L('Beispiel', 'Esempio')} {n}</p>
+      <p className="font-display text-lg font-bold">{ex.prompt}</p>
+      {ex.visual && <div className="my-3 flex justify-center"><Visual v={ex.visual} /></div>}
+      {open ? (
+        <motion.div initial={{ opacity: 0, y: 4 }} animate={{ opacity: 1, y: 0 }} data-testid="beispiel-loesung">
+          <p className="mt-2"><span className="chip bg-minze-50 px-3 py-1 text-minze-700">{L('Lösung', 'Soluzione')}: {ex.answer}</span></p>
+          {ex.steps.length > 0 && (
+            <ul className="mt-3 list-disc space-y-1 pl-5 text-base text-tinte/80">
+              {ex.steps.map((s, j) => <li key={j}>{s}</li>)}
+            </ul>
+          )}
+        </motion.div>
+      ) : (
+        <button type="button" className="mt-3 inline-flex items-center gap-2 rounded-full bg-minze-50 px-4 py-2 text-base font-bold text-minze-700 ring-1 ring-minze-100 transition hover:bg-minze-100"
+          onClick={() => { sfx.flip(); setOpen(true); }} data-testid="beispiel-zeigen">
+          <Eye size={18} aria-hidden /> {L('Erst selbst überlegen – dann Lösung zeigen', 'Pensa prima da solo, poi mostra la soluzione')}
+        </button>
+      )}
+    </li>
+  );
+}
