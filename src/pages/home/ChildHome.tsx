@@ -8,6 +8,7 @@ import { Lino } from '../../components/Lino';
 import { PuppyTap } from '../../components/PuppyTap';
 import { WeekActivity } from '../../components/WeekActivity';
 import { DISCOVER_ITEMS } from '../discover/DiscoverPage';
+import { drivingAvailable } from '../../fuehrerschein/access';
 import { levelFromXp } from '../../learning/rewards';
 import { allModules, findModule, fitsCountry, schoolModules } from '../../learning/registry';
 import { needsPractice, pathDoneOf } from '../../learning/adaptive';
@@ -172,7 +173,7 @@ export function ChildHome() {
           {L('Entdecken', 'Scopri')}
         </SectionTitle>
         <div className="grid grid-cols-2 gap-3 sm:grid-cols-4 sm:gap-4">
-          {DISCOVER_ITEMS().slice(0, 4).map((it) => (
+          {DISCOVER_ITEMS(drivingAvailable(profile?.year ?? 0, settings.drivingTheory)).slice(0, 4).map((it) => (
             <Tile key={it.to} to={it.to} icon={<IconBadge icon={it.icon} color={it.color} size="lg" />} title={it.title} subtitle={it.text} color={it.color} />
           ))}
         </div>
