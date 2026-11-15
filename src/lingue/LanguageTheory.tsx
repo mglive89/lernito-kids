@@ -7,6 +7,11 @@ import { getLang, L } from '../i18n';
 import { UNITS, type CourseLang } from './data';
 import { courseOfModule, tokens } from './course';
 import { NOTES, PRONUNCIATION, genderOf, type P } from './theory';
+import { romanize } from './data-extra2';
+
+/** Sprachen, deren Nomen mit vorangestelltem Artikel gelernt werden */
+const HAS_ARTICLES = new Set(['de', 'it', 'fr', 'es', 'pt', 'nl', 'el']);
+const RTL = new Set(['ar']);
 
 const pick = (p: P) => (getLang() === 'it' ? p[1] : p[0]);
 
@@ -83,7 +88,7 @@ export function LanguageTheory({ module, compact = false }: { module: LearningMo
       </Section>
 
       <Section id="lt-woerter" icon={<BookA size={20} className="text-sonne-700" />} title={L('Die Wörter', 'Le parole')}
-        intro={t !== 'en' ? L('Lerne jedes Nomen mit seinem Artikel – die Farbe zeigt das Geschlecht.', 'Impara ogni nome con il suo articolo: il colore indica il genere.') : L('Tippe auf den Lautsprecher und sprich nach.', 'Tocca l’altoparlante e ripeti.')}>
+        intro={HAS_ARTICLES.has(t) ? L('Lerne jedes Nomen mit seinem Artikel – die Farbe zeigt das Geschlecht.', 'Impara ogni nome con il suo articolo: il colore indica il genere.') : L('Tippe auf den Lautsprecher und sprich nach.', 'Tocca l’altoparlante e ripeti.')}>
         <ul className="grid grid-cols-1 gap-2 sm:grid-cols-2">
           {unit.words.map((w) => {
             const g = genderOf(w[t], t);
@@ -91,7 +96,8 @@ export function LanguageTheory({ module, compact = false }: { module: LearningMo
               <li key={w.emoji} className="flex items-center gap-3 rounded-2xl bg-flaeche p-3 shadow-weich ring-1 ring-tinte/5" data-testid="theorie-wort">
                 <span className="emoji text-3xl" aria-hidden>{w.emoji}</span>
                 <span className="min-w-0 flex-1">
-                  <span className="block font-display text-lg font-bold leading-tight" lang={course.locale}>{w[t]}</span>
+                  <span className="block text-left font-display text-lg font-bold leading-tight" lang={course.locale} dir={RTL.has(t) ? 'rtl' : undefined}>{w[t]}</span>
+                  {romanize(w[t], t) && <span className="block text-sm italic text-tinte/55" data-testid="umschrift">{romanize(w[t], t)}</span>}
                   <span className="flex flex-wrap items-center gap-1.5 text-sm text-tinte/60">
                     {w[n]}
                     {g && <span className={`rounded-full px-2 py-0.5 text-xs font-bold ${GENDER[g].cls}`}>{GENDER[g].label()}</span>}
@@ -114,7 +120,8 @@ export function LanguageTheory({ module, compact = false }: { module: LearningMo
                 <div className="flex items-start gap-3">
                   <span className="emoji text-3xl" aria-hidden>{s.emoji}</span>
                   <div className="min-w-0 flex-1">
-                    <p className="font-display text-xl font-bold leading-snug" lang={course.locale}>{s[t]}</p>
+                    <p className="font-display text-xl font-bold leading-snug" lang={course.locale} dir={RTL.has(t) ? 'rtl' : undefined}>{s[t]}</p>
+                    {romanize(s[t], t) && <p className="text-sm italic text-tinte/55">{romanize(s[t], t)}</p>}
                     <p className="text-tinte/65">{s[n]}</p>
                   </div>
                   <Listen text={s[t]} lang={course.locale} />
@@ -122,7 +129,7 @@ export function LanguageTheory({ module, compact = false }: { module: LearningMo
                 {!compact && (
                   <div className="mt-3 border-t border-tinte/[0.06] pt-3">
                     <p className="eyebrow mb-2 text-tinte/45">{L(`${words.length} Wörter in dieser Reihenfolge`, `${words.length} parole in quest’ordine`)}</p>
-                    <div className="flex flex-wrap items-center gap-1.5" lang={course.locale}>
+                    <div className="flex flex-wrap items-center gap-1.5" lang={course.locale} dir={RTL.has(t) ? 'rtl' : undefined}>
                       {words.map((w, k) => (
                         <button key={k} type="button" onClick={() => say(w, course.locale)}
                           className="flex items-center gap-1 rounded-xl bg-tinte/[0.04] px-2.5 py-1.5 text-base font-semibold ring-1 ring-tinte/[0.06] transition hover:bg-himmel-50">

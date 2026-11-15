@@ -3,8 +3,12 @@
  * Jede Zeile: Emoji | Englisch | Deutsch | Italienisch | Französisch | Spanisch.
  * Nomen mit Artikel (außer im Englischen), damit Kinder den Artikel gleich mitlernen.
  */
-export type CourseLang = 'en' | 'de' | 'it' | 'fr' | 'es';
-export const COURSE_LANGS: CourseLang[] = ['en', 'de', 'it', 'fr', 'es'];
+import { EXTRA, extraRow, type ExtraLang } from './data-extra';
+import { EXTRA2, extraRow2, type ExtraLang2 } from './data-extra2';
+
+export type BaseLang = 'en' | 'de' | 'it' | 'fr' | 'es';
+export type CourseLang = BaseLang | ExtraLang | ExtraLang2;
+export const COURSE_LANGS: CourseLang[] = ['en', 'de', 'it', 'fr', 'es', 'tr', 'pt', 'ro', 'pl', 'ar', 'ru', 'nl', 'el'];
 
 export type Entry = { emoji: string } & Record<CourseLang, string>;
 
@@ -18,13 +22,16 @@ export interface Unit {
   sentences: Entry[];
 }
 
-const row = (s: string): Entry => {
+type BaseEntry = { emoji: string } & Record<BaseLang, string>;
+type BaseUnit = Omit<Unit, 'words' | 'sentences'> & { words: BaseEntry[]; sentences: BaseEntry[] };
+
+const row = (s: string): BaseEntry => {
   const [emoji, en, de, it, fr, es] = s.split('|').map((x) => x.trim());
   return { emoji: emoji!, en: en!, de: de!, it: it!, fr: fr!, es: es! };
 };
 const rows = (lines: string[]) => lines.map(row);
 
-export const UNITS: Unit[] = [
+const BASE_UNITS: BaseUnit[] = [
   {
     id: 'saluti', emoji: '👋', color: 'sonne',
     title: { de: 'Hallo sagen', it: 'Salutare' },
@@ -188,3 +195,18 @@ export const UNITS: Unit[] = [
     ])
   }
 ];
+
+/** Ergänzt jede Zeile um die weiteren Kurssprachen aus data-extra.ts. */
+const withExtra = (list: BaseEntry[], extra: string[], extra2: string[], what: string): Entry[] =>
+  list.map((e, i) => {
+    const line = extra[i];
+    const line2 = extra2[i];
+    if (!line || !line2) throw new Error(`Fehlende Übersetzung: ${what} #${i}`);
+    return { ...e, ...extraRow(line), ...extraRow2(line2) };
+  });
+
+export const UNITS: Unit[] = BASE_UNITS.map((u) => ({
+  ...u,
+  words: withExtra(u.words, EXTRA[u.id]?.words ?? [], EXTRA2[u.id]?.words ?? [], `${u.id}.words`),
+  sentences: withExtra(u.sentences, EXTRA[u.id]?.sentences ?? [], EXTRA2[u.id]?.sentences ?? [], `${u.id}.sentences`)
+}));

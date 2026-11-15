@@ -6,6 +6,7 @@ import type { TaskViewProps } from './types';
 import { AudioPlayer } from '../components/voice/AudioPlayer';
 import { MicButton, useListen, VoiceConsentModal } from '../components/voice/Voice';
 import { recognitionSupported } from '../lib/listen';
+import { romanize } from '../lingue/data-extra2';
 import { phraseScore, SPEAK_PASS, wordsHeard } from '../lib/voiceMatch';
 import { L } from '../i18n';
 
@@ -35,13 +36,14 @@ export function SpeakView({ task, onCorrect, onWrong, onSkip, reveal, done }: Ta
           {task.emoji && <span className="emoji text-6xl sm:text-7xl" aria-hidden>{task.emoji}</span>}
           <AudioPlayer text={task.phrase} lang={task.lang} />
         </div>
-        <p className="text-center font-display text-3xl font-bold leading-snug tracking-tight sm:text-4xl" lang={task.lang} data-testid="sprech-satz">
+        <p className="text-center font-display text-3xl font-bold leading-snug tracking-tight sm:text-4xl" lang={task.lang} dir={task.lang.startsWith('ar') ? 'rtl' : undefined} data-testid="sprech-satz">
           {words.map((w, i) => (
             <span key={i} className={marks ? (marks[i] ? 'text-minze-700' : 'text-koralle-600 underline decoration-wavy decoration-2 underline-offset-4') : ''}>
               {w}{i < words.length - 1 ? ' ' : ''}
             </span>
           ))}
         </p>
+        {romanize(task.phrase, task.lang) && <p className="text-base italic text-tinte/55" data-testid="sprech-umschrift">{romanize(task.phrase, task.lang)}</p>}
         {task.meaning && <p className="text-lg text-tinte/60">{task.meaning}</p>}
       </div>
 

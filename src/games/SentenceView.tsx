@@ -51,7 +51,7 @@ export function SentenceView({ task, onCorrect, onWrong, reveal, done, onPending
   };
 
   return (
-    <div className="flex w-full max-w-2xl flex-col items-center gap-6" lang={task.lang}>
+    <div className="flex w-full max-w-2xl flex-col items-center gap-6" lang={task.lang} dir={task.lang.startsWith('ar') ? 'rtl' : undefined}>
       <motion.div key={shake} animate={shake ? { x: [0, -10, 10, -6, 6, 0] } : {}}
         className={`flex min-h-[7.5rem] w-full flex-wrap content-start gap-2 border-b-2 border-t-2 py-3 ${done ? 'border-minze-300' : 'border-tinte/10'}`}
         aria-label={L('Dein Satz', 'La tua frase')} aria-live="polite" data-testid="satz-antwort">

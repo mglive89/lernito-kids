@@ -18,7 +18,15 @@ export const COURSES: Course[] = [
   { id: 'de', flag: '🇩🇪', locale: 'de-DE', native: 'Deutsch', name: () => L('Deutsch', 'Tedesco') },
   { id: 'it', flag: '🇮🇹', locale: 'it-IT', native: 'Italiano', name: () => L('Italienisch', 'Italiano') },
   { id: 'fr', flag: '🇫🇷', locale: 'fr-FR', native: 'Français', name: () => L('Französisch', 'Francese') },
-  { id: 'es', flag: '🇪🇸', locale: 'es-ES', native: 'Español', name: () => L('Spanisch', 'Spagnolo') }
+  { id: 'es', flag: '🇪🇸', locale: 'es-ES', native: 'Español', name: () => L('Spanisch', 'Spagnolo') },
+  { id: 'tr', flag: '🇹🇷', locale: 'tr-TR', native: 'Türkçe', name: () => L('Türkisch', 'Turco') },
+  { id: 'pt', flag: '🇵🇹', locale: 'pt-PT', native: 'Português', name: () => L('Portugiesisch', 'Portoghese') },
+  { id: 'ro', flag: '🇷🇴', locale: 'ro-RO', native: 'Română', name: () => L('Rumänisch', 'Rumeno') },
+  { id: 'pl', flag: '🇵🇱', locale: 'pl-PL', native: 'Polski', name: () => L('Polnisch', 'Polacco') },
+  { id: 'ar', flag: '🇸🇦', locale: 'ar-SA', native: 'العربية', name: () => L('Arabisch', 'Arabo') },
+  { id: 'ru', flag: '🇷🇺', locale: 'ru-RU', native: 'Русский', name: () => L('Russisch', 'Russo') },
+  { id: 'nl', flag: '🇳🇱', locale: 'nl-NL', native: 'Nederlands', name: () => L('Niederländisch', 'Olandese') },
+  { id: 'el', flag: '🇬🇷', locale: 'el-GR', native: 'Ελληνικά', name: () => L('Griechisch', 'Greco') }
 ];
 
 export const courseById = (id: string | undefined) => COURSES.find((c) => c.id === id);
@@ -48,7 +56,7 @@ const pickN = <T,>(a: T[], n: number, rng: Rng) => shuffle(a, rng).slice(0, n);
 export function tokens(sentence: string): string[] {
   return sentence
     .split(/\s+/)
-    .map((w) => w.replace(/^[¿¡«»"“„(]+|[.,!?;:«»"”)]+$/g, ''))
+    .map((w) => w.replace(/^[¿¡«»"“„(]+|[.,!?;:«»"”)؟،]+$/g, ''))
     .filter((w) => w.length > 0 && /[\p{L}\p{N}]/u.test(w));
 }
 
