@@ -26,11 +26,15 @@ import { BrainGamesPage, BrainGamePlayPage } from '../pages/denkspiele/BrainGame
 // Erwachsenenbereiche werden erst bei Bedarf geladen
 const ParentArea = lazy(() => import('../pages/parents/ParentArea'));
 const AdminArea = lazy(() => import('../pages/admin/AdminArea'));
-// Führerschein-Theorie (ab 18): eigener Chunk
-const DrivingHomePage = lazy(() => import('../pages/fuehrerschein/Driving').then((m) => ({ default: m.DrivingHomePage })));
-const DrivingSignsPage = lazy(() => import('../pages/fuehrerschein/Driving').then((m) => ({ default: m.DrivingSignsPage })));
-const DrivingPracticePage = lazy(() => import('../pages/fuehrerschein/Driving').then((m) => ({ default: m.DrivingPracticePage })));
-const DrivingExamPage = lazy(() => import('../pages/fuehrerschein/Driving').then((m) => ({ default: m.DrivingExamPage })));
+// Fahrschule / Scuola guida (ab 18): eigener Chunk
+const fs = () => import('../pages/fuehrerschein/Fahrschule');
+const FahrschuleHomePage = lazy(() => fs().then((m) => ({ default: m.FahrschuleHomePage })));
+const FahrschuleTheoryPage = lazy(() => fs().then((m) => ({ default: m.FahrschuleTheoryPage })));
+const FahrschuleLessonPage = lazy(() => fs().then((m) => ({ default: m.FahrschuleLessonPage })));
+const FahrschuleSignsPage = lazy(() => fs().then((m) => ({ default: m.FahrschuleSignsPage })));
+const FahrschuleQuizRoute = lazy(() => fs().then((m) => ({ default: m.FahrschuleQuizRoute })));
+const FahrschuleExamPage = lazy(() => fs().then((m) => ({ default: m.FahrschuleExamPage })));
+const FahrschuleCoveragePage = lazy(() => fs().then((m) => ({ default: m.FahrschuleCoveragePage })));
 
 /** Pfade für Erwachsene: ohne Lernzeit-Zähler und in der Gerätesprache. */
 export const ADULT_ROUTES = ['/eltern', '/admin', '/datenschutz', '/einrichtung'];
@@ -79,10 +83,13 @@ export function AppRoutes() {
       <Route path="/videos/:lessonId" element={<RequireProfile><VideoPlayerPage /></RequireProfile>} />
       <Route path="/minispiele/:gameId" element={<RequireProfile><MiniGamePlayPage /></RequireProfile>} />
       <Route path="/denkspiele/:gameId" element={<RequireProfile><BrainGamePlayPage /></RequireProfile>} />
-      <Route path="/fuehrerschein" element={<RequireProfile><DrivingHomePage /></RequireProfile>} />
-      <Route path="/fuehrerschein/schilder" element={<RequireProfile><DrivingSignsPage /></RequireProfile>} />
-      <Route path="/fuehrerschein/ueben/:topic" element={<RequireProfile><DrivingPracticePage /></RequireProfile>} />
-      <Route path="/fuehrerschein/pruefung" element={<RequireProfile><DrivingExamPage /></RequireProfile>} />
+      <Route path="/fuehrerschein" element={<RequireProfile><FahrschuleHomePage /></RequireProfile>} />
+      <Route path="/fuehrerschein/teoria" element={<RequireProfile><FahrschuleTheoryPage /></RequireProfile>} />
+      <Route path="/fuehrerschein/lezione/:id" element={<RequireProfile><FahrschuleLessonPage /></RequireProfile>} />
+      <Route path="/fuehrerschein/segnali" element={<RequireProfile><FahrschuleSignsPage /></RequireProfile>} />
+      <Route path="/fuehrerschein/quiz/:mode" element={<RequireProfile><FahrschuleQuizRoute /></RequireProfile>} />
+      <Route path="/fuehrerschein/esame" element={<RequireProfile><FahrschuleExamPage /></RequireProfile>} />
+      <Route path="/fuehrerschein/copertura" element={<RequireProfile><FahrschuleCoveragePage /></RequireProfile>} />
 
       <Route path="/eltern/*" element={<ParentArea />} />
       <Route path="/admin/*" element={<AdminArea />} />

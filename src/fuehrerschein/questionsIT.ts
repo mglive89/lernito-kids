@@ -1,22 +1,10 @@
 import { tx } from '../i18n';
-import type { DrivingTopic, RawVF } from './types';
+import type { RawVF } from './types';
 
 /**
  * Italia, patente B: affermazioni originali Vero/Falso nello stile del quiz ministeriale
  * (non copiate dal database ufficiale).
  */
-export const TOPICS_IT: DrivingTopic[] = [
-  { id: 'segnali', name: tx('Verkehrszeichen', 'Segnali stradali'), icon: 'schild' },
-  { id: 'precedenza', name: tx('Vorfahrt', 'Precedenza agli incroci'), icon: 'vorfahrt' },
-  { id: 'velocita', name: tx('Geschwindigkeit und Abstand', 'Velocità e distanza di sicurezza'), icon: 'tempo' },
-  { id: 'sorpasso', name: tx('Überholen', 'Sorpasso'), icon: 'auto' },
-  { id: 'sosta', name: tx('Halten und Parken', 'Fermata e sosta'), icon: 'parken' },
-  { id: 'luci', name: tx('Licht und Autobahn', 'Luci e autostrada'), icon: 'licht' },
-  { id: 'sicurezza', name: tx('Sicherheit und Unfall', 'Sicurezza e incidenti'), icon: 'gefahr' },
-  { id: 'patente', name: tx('Führerschein, Punkte, Alkohol', 'Patente, punti, alcol'), icon: 'person' },
-  { id: 'veicolo', name: tx('Fahrzeug und Umwelt', 'Veicolo e ambiente'), icon: 'technik' }
-];
-
 export const RAW_IT: RawVF[] = [
   // Precedenza
   ['it-p1', 'precedenza', tx('An einer Kreuzung ohne Zeichen muss man Fahrzeugen von rechts Vorfahrt lassen.', 'In un incrocio senza segnali si deve dare la precedenza ai veicoli che provengono da destra.'), true,

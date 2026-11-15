@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { ArrowRight, Brain, Car, Clapperboard, Box, Gamepad2, Languages, Map as MapIcon } from 'lucide-react';
+import { ArrowRight, Brain, IdCard, Clapperboard, Box, Gamepad2, Languages, Map as MapIcon } from 'lucide-react';
 import { drivingAvailable } from '../../fuehrerschein/access';
 import { useActiveProfile } from '../../store/useApp';
 import { colorSet, IconBadge, PageHero, StarCount, AnimatedGrid } from '../../components/ui';
@@ -9,7 +9,7 @@ import { sfx } from '../../lib/sound';
 
 /** Alles, was über die Fächer hinaus Spaß macht – eine Quelle für die Seite „Entdecken“ und die Startseite. */
 export const DISCOVER_ITEMS = (driving = false) => [
-  ...(driving ? [{ to: '/fuehrerschein', icon: Car, title: L('Führerschein', 'Patente'), text: L('Schilder, Theorie und Prüfung (ab 18)', 'Segnali, teoria ed esame (dai 18 anni)'), color: 'himmel' }] : []),
+  ...(driving ? [{ to: '/fuehrerschein', icon: IdCard, title: L('Fahrschule', 'Scuola guida'), text: L('Führerschein B: Theorie, Bildfragen, Prüfung (ab 18)', 'Patente B: teoria, quiz illustrati, esame (dai 18 anni)'), color: 'himmel' }] : []),
   { to: '/lingue', icon: Languages, title: L('Sprachen', 'Lingue'), text: L('Sprechen, hören und verstehen', 'Parla, ascolta e capisci'), color: 'sonne' },
   { to: '/videos', icon: Clapperboard, title: L('Lernvideos', 'Video lezioni'), text: L('Kurze Erklärvideos mit Quiz', 'Brevi video con quiz'), color: 'koralle' },
   { to: '/welt3d', icon: Box, title: L('3D-Lernwelt', 'Mondo 3D'), text: L('Drehen, zählen und Körper entdecken', 'Gira, conta e scopri i solidi'), color: 'himmel' },
