@@ -4,10 +4,11 @@
  * Nomen mit Artikel (außer im Englischen), damit Kinder den Artikel gleich mitlernen.
  */
 import { EXTRA, extraRow, type ExtraLang } from './data-extra';
+import { EXTRA2, extraRow2, type ExtraLang2 } from './data-extra2';
 
 export type BaseLang = 'en' | 'de' | 'it' | 'fr' | 'es';
-export type CourseLang = BaseLang | ExtraLang;
-export const COURSE_LANGS: CourseLang[] = ['en', 'de', 'it', 'fr', 'es', 'tr', 'pt', 'ro', 'pl'];
+export type CourseLang = BaseLang | ExtraLang | ExtraLang2;
+export const COURSE_LANGS: CourseLang[] = ['en', 'de', 'it', 'fr', 'es', 'tr', 'pt', 'ro', 'pl', 'ar', 'ru', 'nl', 'el'];
 
 export type Entry = { emoji: string } & Record<CourseLang, string>;
 
@@ -196,15 +197,16 @@ const BASE_UNITS: BaseUnit[] = [
 ];
 
 /** Ergänzt jede Zeile um die weiteren Kurssprachen aus data-extra.ts. */
-const withExtra = (list: BaseEntry[], extra: string[], what: string): Entry[] =>
+const withExtra = (list: BaseEntry[], extra: string[], extra2: string[], what: string): Entry[] =>
   list.map((e, i) => {
     const line = extra[i];
-    if (!line) throw new Error(`Fehlende Übersetzung: ${what} #${i}`);
-    return { ...e, ...extraRow(line) };
+    const line2 = extra2[i];
+    if (!line || !line2) throw new Error(`Fehlende Übersetzung: ${what} #${i}`);
+    return { ...e, ...extraRow(line), ...extraRow2(line2) };
   });
 
 export const UNITS: Unit[] = BASE_UNITS.map((u) => ({
   ...u,
-  words: withExtra(u.words, EXTRA[u.id]?.words ?? [], `${u.id}.words`),
-  sentences: withExtra(u.sentences, EXTRA[u.id]?.sentences ?? [], `${u.id}.sentences`)
+  words: withExtra(u.words, EXTRA[u.id]?.words ?? [], EXTRA2[u.id]?.words ?? [], `${u.id}.words`),
+  sentences: withExtra(u.sentences, EXTRA[u.id]?.sentences ?? [], EXTRA2[u.id]?.sentences ?? [], `${u.id}.sentences`)
 }));

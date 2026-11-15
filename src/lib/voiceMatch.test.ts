@@ -52,9 +52,25 @@ describe('Sprachkurse', () => {
     expect(phraseScore('Mam siedem lat.', ['mam 7 lat'], 'pl-PL')).toBeGreaterThanOrEqual(SPEAK_PASS);
     expect(phraseScore('Merhaba', ['bom dia'], 'tr-TR')).toBeLessThan(SPEAK_PASS);
   });
+  it('erkennt Arabisch, Russisch, Niederländisch und Griechisch', () => {
+    expect(phraseScore('أنا بخير، شكرا.', ['انا بخير شكرا'], 'ar-SA')).toBeGreaterThanOrEqual(SPEAK_PASS);
+    expect(phraseScore('مرحبا', ['مَرْحَبًا'], 'ar-SA')).toBe(1);
+    expect(phraseScore('عمري سبع سنوات.', ['عمري ٧ سنوات'], 'ar-SA')).toBeGreaterThanOrEqual(SPEAK_PASS);
+    expect(phraseScore('Мне семь лет.', ['мне 7 лет'], 'ru-RU')).toBeGreaterThanOrEqual(SPEAK_PASS);
+    expect(phraseScore('Ik ben zeven jaar.', ['ik ben 7 jaar'], 'nl-NL')).toBeGreaterThanOrEqual(SPEAK_PASS);
+    expect(phraseScore('Είμαι επτά χρονών.', ['είμαι 7 χρονών'], 'el-GR')).toBeGreaterThanOrEqual(SPEAK_PASS);
+    expect(phraseScore('Τι κάνεις;', ['τι κανεις'], 'el-GR')).toBe(1);
+  });
+  it('zeigt eine Umschrift für fremde Schriften', async () => {
+    const { romanize } = await import('../lingue/data-extra2');
+    expect(romanize('مرحبا', 'ar-SA')).toBe('marhaban');
+    expect(romanize('Привет', 'ru-RU')).toBe('Privet');
+    expect(romanize('Καλημέρα', 'el-GR')).toBe('Kaliméra');
+    expect(romanize('Hallo', 'nl-NL')).toBeNull();
+  });
   it('bietet die eigene Sprache nicht als Kurs an', () => {
-    expect(coursesFor('it').map((c) => c.id)).toEqual(['en', 'de', 'fr', 'es', 'tr', 'pt', 'ro', 'pl']);
-    expect(coursesFor('de').map((c) => c.id)).toEqual(['en', 'it', 'fr', 'es', 'tr', 'pt', 'ro', 'pl']);
+    expect(coursesFor('it').map((c) => c.id)).toEqual(['en', 'de', 'fr', 'es', 'tr', 'pt', 'ro', 'pl', 'ar', 'ru', 'nl', 'el']);
+    expect(coursesFor('de').map((c) => c.id)).toEqual(['en', 'it', 'fr', 'es', 'tr', 'pt', 'ro', 'pl', 'ar', 'ru', 'nl', 'el']);
   });
   it('jede Lektion enthält Sprechen, und Sätze sind lösbar', () => {
     for (const course of COURSES) {

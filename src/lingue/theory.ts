@@ -1,5 +1,6 @@
 import type { BaseLang, CourseLang } from './data';
 import { NOTES_EXTRA, PRONUNCIATION_EXTRA } from './theory-extra';
+import { NOTES_EXTRA2, PRONUNCIATION_EXTRA2 } from './theory-extra2';
 
 /**
  * Theorie der Sprachkurse – erklärt in der Sprache des Kindes ([Deutsch, Italienisch]).
@@ -21,6 +22,7 @@ export interface Note {
 /** Aussprache-Tipps je Sprache */
 export const PRONUNCIATION: Record<CourseLang, { sound: string; tip: P }[]> = {
   ...PRONUNCIATION_EXTRA,
+  ...PRONUNCIATION_EXTRA2,
   en: [
     { sound: 'th', tip: ['Zungenspitze leicht zwischen die Zähne, dann pusten: the, thank you, three.', 'Punta della lingua tra i denti e soffia: the, thank you, three.'] },
     { sound: 'w', tip: ['Lippen rund wie bei „u“ und schnell öffnen: water, white – nicht wie deutsches „w“.', 'Labbra tonde come per una «u» e aprile subito: water, white.'] },
@@ -262,7 +264,7 @@ const BASE_NOTES: Record<string, Record<BaseLang, Note[]>> = {
 
 /** Artikel am Wortanfang → Geschlecht (für die Wortliste) */
 export const NOTES: Record<string, Record<CourseLang, Note[]>> = Object.fromEntries(
-  Object.entries(BASE_NOTES).map(([id, n]) => [id, { ...n, ...NOTES_EXTRA[id]! }])
+  Object.entries(BASE_NOTES).map(([id, n]) => [id, { ...n, ...NOTES_EXTRA[id]!, ...NOTES_EXTRA2[id]! }])
 );
 
 export function genderOf(word: string, lang: CourseLang): 'm' | 'f' | 'n' | null {
@@ -272,7 +274,9 @@ export function genderOf(word: string, lang: CourseLang): 'm' | 'f' | 'n' | null
     it: { il: 'm', lo: 'm', la: 'f' },
     fr: { le: 'm', la: 'f' },
     es: { el: 'm', la: 'f' },
-    pt: { o: 'm', a: 'f' }
+    pt: { o: 'm', a: 'f' },
+    nl: { het: 'n' },
+    el: { ο: 'm', η: 'f', το: 'n' }
   };
   if (word.split(/\s+/).length < 2) return null;
   return map[lang]?.[first] ?? null;
