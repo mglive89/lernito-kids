@@ -133,3 +133,27 @@ test('Sprachkurs: Theorie erklärt Wörter, Sätze und Regeln', async ({ page })
   await expect(page.getByTestId('lt-aussprache')).toBeVisible();
   await expect(page.getByTestId('lt-uebungen')).toBeVisible();
 });
+
+test('Sprachkurs Türkisch: Kurs, Lektion und Theorie mit Aussprache', async ({ page }) => {
+  await createProfile(page, 'Ela', '3', 'IT');
+  await page.goto('/lingue');
+  for (const id of ['tr', 'pt', 'ro', 'pl']) await expect(page.getByTestId(`kurs-${id}`)).toBeVisible();
+  await page.getByTestId('kurs-tr').click();
+  await expect(page).toHaveURL(/\/lingue\/tr$/);
+  await page.getByTestId('vokabeln-lingua-tr-saluti').click();
+  await expect(page.getByTestId('sprach-theorie')).toBeVisible();
+  await expect(page.getByTestId('theorie-wort')).toHaveCount(8);
+  await expect(page.getByText('Merhaba').first()).toBeVisible();
+  await expect(page.getByTestId('lt-aussprache')).toContainText('ı');
+});
+
+test('Sprachkurs Arabisch: Schrift von rechts nach links mit Umschrift', async ({ page }) => {
+  await createProfile(page, 'Omar', '3', 'IT');
+  await page.goto('/lingue');
+  for (const id of ['ar', 'ru', 'nl', 'el']) await expect(page.getByTestId(`kurs-${id}`)).toBeVisible();
+  await page.goto('/lingue/ar');
+  await page.getByTestId('vokabeln-lingua-ar-saluti').click();
+  await expect(page.getByTestId('theorie-wort')).toHaveCount(8);
+  await expect(page.getByTestId('umschrift').first()).toHaveText('marhaban');
+  await expect(page.locator('[dir="rtl"]').first()).toBeVisible();
+});
