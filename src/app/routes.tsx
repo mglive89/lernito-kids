@@ -26,6 +26,11 @@ import { BrainGamesPage, BrainGamePlayPage } from '../pages/denkspiele/BrainGame
 // Erwachsenenbereiche werden erst bei Bedarf geladen
 const ParentArea = lazy(() => import('../pages/parents/ParentArea'));
 const AdminArea = lazy(() => import('../pages/admin/AdminArea'));
+// Führerschein-Theorie (ab 18): eigener Chunk
+const DrivingHomePage = lazy(() => import('../pages/fuehrerschein/Driving').then((m) => ({ default: m.DrivingHomePage })));
+const DrivingSignsPage = lazy(() => import('../pages/fuehrerschein/Driving').then((m) => ({ default: m.DrivingSignsPage })));
+const DrivingPracticePage = lazy(() => import('../pages/fuehrerschein/Driving').then((m) => ({ default: m.DrivingPracticePage })));
+const DrivingExamPage = lazy(() => import('../pages/fuehrerschein/Driving').then((m) => ({ default: m.DrivingExamPage })));
 
 /** Pfade für Erwachsene: ohne Lernzeit-Zähler und in der Gerätesprache. */
 export const ADULT_ROUTES = ['/eltern', '/admin', '/datenschutz', '/einrichtung'];
@@ -74,6 +79,10 @@ export function AppRoutes() {
       <Route path="/videos/:lessonId" element={<RequireProfile><VideoPlayerPage /></RequireProfile>} />
       <Route path="/minispiele/:gameId" element={<RequireProfile><MiniGamePlayPage /></RequireProfile>} />
       <Route path="/denkspiele/:gameId" element={<RequireProfile><BrainGamePlayPage /></RequireProfile>} />
+      <Route path="/fuehrerschein" element={<RequireProfile><DrivingHomePage /></RequireProfile>} />
+      <Route path="/fuehrerschein/schilder" element={<RequireProfile><DrivingSignsPage /></RequireProfile>} />
+      <Route path="/fuehrerschein/ueben/:topic" element={<RequireProfile><DrivingPracticePage /></RequireProfile>} />
+      <Route path="/fuehrerschein/pruefung" element={<RequireProfile><DrivingExamPage /></RequireProfile>} />
 
       <Route path="/eltern/*" element={<ParentArea />} />
       <Route path="/admin/*" element={<AdminArea />} />
