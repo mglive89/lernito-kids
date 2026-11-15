@@ -1,20 +1,10 @@
 import { tx } from '../i18n';
-import type { DrivingTopic, RawMulti } from './types';
+import type { RawMulti } from './types';
 
 /**
  * Deutschland, Klasse B: eigene Übungsfragen im Stil der amtlichen Theorieprüfung
  * (keine Kopie des amtlichen Fragenkatalogs). Eine oder mehrere Antworten sind richtig.
  */
-export const TOPICS_DE: DrivingTopic[] = [
-  { id: 'gefahren', name: tx('Gefahrenlehre', 'Pericoli'), icon: 'gefahr' },
-  { id: 'verhalten', name: tx('Verhalten im Verkehr', 'Comportamento nel traffico'), icon: 'auto' },
-  { id: 'vorfahrt', name: tx('Vorfahrt und Vorrang', 'Precedenza'), icon: 'vorfahrt' },
-  { id: 'zeichen', name: tx('Verkehrszeichen', 'Segnali stradali'), icon: 'schild' },
-  { id: 'person', name: tx('Alkohol, Probezeit, Recht', 'Alcol, periodo di prova, norme'), icon: 'person' },
-  { id: 'technik', name: tx('Technik und Sicherheit', 'Tecnica e sicurezza'), icon: 'technik' },
-  { id: 'umwelt', name: tx('Umweltschutz', 'Ambiente'), icon: 'umwelt' }
-];
-
 export const RAW_DE: RawMulti[] = [
   // Gefahrenlehre
   ['de-g1', 'gefahren', 4, tx('Ein Ball rollt zwischen parkenden Autos auf die Fahrbahn. Womit müssen Sie rechnen?', 'Un pallone rotola sulla strada tra le auto parcheggiate. Cosa devi aspettarti?'),
@@ -69,7 +59,7 @@ export const RAW_DE: RawMulti[] = [
   ['de-v7', 'verhalten', 4, tx('Die Ampel zeigt Gelb. Was müssen Sie tun?', 'Il semaforo è giallo. Cosa devi fare?'),
     [[tx('Vor der Kreuzung warten, wenn das gefahrlos möglich ist', 'Fermarsi prima dell’incrocio, se si può farlo senza pericolo'), true], [tx('Beschleunigen, um noch durchzukommen', 'Accelerare per passare'), false], [tx('Immer eine Vollbremsung machen', 'Frenare sempre al massimo'), false]],
     tx('Gelb heißt: auf das nächste Zeichen warten. Nur weiterfahren, wenn Anhalten gefährlich wäre.', 'Il giallo significa fermarsi. Si prosegue solo se fermarsi sarebbe pericoloso.')],
-  ['de-v8', 'verhalten', 3, tx('An einer roten Ampel hängt ein grüner Pfeil-Schild nach rechts. Was gilt?', 'Al semaforo rosso c’è un cartello con una freccia verde a destra. Cosa vale?'),
+  ['de-v8', 'verhalten', 3, tx('An einer roten Ampel ist ein Schild mit grünem Pfeil nach rechts angebracht. Was gilt?', 'Al semaforo rosso c’è un cartello con una freccia verde a destra. Cosa vale?'),
     [[tx('Erst anhalten, dann vorsichtig rechts abbiegen', 'Prima fermarsi, poi svoltare a destra con prudenza'), true], [tx('Ohne Halt rechts abbiegen', 'Svoltare a destra senza fermarsi'), false], [tx('Fußgänger und Radfahrer mit Grün haben Vorrang', 'Pedoni e ciclisti con il verde hanno la precedenza'), true]],
     tx('Beim Grünpfeil ist ein Halt an der Haltlinie Pflicht. Niemand darf behindert werden.', 'Con la freccia verde bisogna fermarsi alla linea. Non si deve ostacolare nessuno.')],
   ['de-v9', 'verhalten', 4, tx('Ein Fußgänger wartet am Zebrastreifen. Wie verhalten Sie sich?', 'Un pedone aspetta sulle strisce pedonali. Cosa fai?'),
