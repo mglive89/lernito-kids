@@ -2,6 +2,7 @@ import type { StudyCard, ChoiceTask, Difficulty, LearningModule, Rng, Task, Visu
 import { sample, shuffle } from '../lib/random';
 import { L, getLang, tx } from '../i18n';
 import { getCountry, type Country, type SubjectId } from '../school/systems';
+import { MORE_ITEMS } from './modules/more';
 
 /**
  * Fragenbank im Kurzformat. Eine Zeile pro Sprache:
@@ -41,14 +42,8 @@ export function bankGenerator(items: BankItem[], prefix: string, opts: BankOptio
   return (level: Difficulty, rng: Rng, n = opts.n ?? 6): Task[] => {
     const country = getCountry();
     const usable = items.filter((x) => !x.c || x.c === country);
-    let pool = usable.filter((x) => (x.lv ?? 1) <= level);
-    if (level === 3) {
-      const hard = usable.filter((x) => (x.lv ?? 1) >= 2);
-      if (hard.length >= n) pool = hard;
-    }
-    if (pool.length < n) pool = usable;
     const it = getLang() === 'it';
-    return sample(rng, pool, Math.min(n, pool.length)).map((item, i): ChoiceTask => {
+    return pickByLevel(usable, level, n, rng).map((item, i): ChoiceTask => {
       const p = parseLine(it && item.it ? item.it : item.de);
       const visual: Visual | undefined = p.code ? { kind: 'code', code: p.code, lang: opts.codeLang } : item.e ? { kind: 'bigEmoji', emoji: item.e } : undefined;
       return {
@@ -62,18 +57,36 @@ export function bankGenerator(items: BankItem[], prefix: string, opts: BankOptio
   };
 }
 
-/** Modul aus einer Fragenbank */
+/**
+ * Fragen passend zur Stufe: zuerst genau diese Stufe, aufgefüllt mit der nächstliegenden
+ * (Stufe 3 füllt mit Stufe 2 auf, Stufe 1 mit Stufe 2 usw.). So wird jede Stufe spürbar schwerer.
+ */
+export function pickByLevel(items: BankItem[], level: Difficulty, n: number, rng: Rng): BankItem[] {
+  const lv = (x: BankItem) => x.lv ?? 1;
+  const out = sample(rng, items.filter((x) => lv(x) === level), n);
+  for (const d of [1, 2]) {
+    if (out.length >= n) break;
+    const near = items.filter((x) => Math.abs(lv(x) - level) === d);
+    // Bei Stufe 2 erst leichtere, dann schwerere Fragen; sonst einfach die nächstliegenden
+    const ordered = level === 2 ? [...shuffle(rng, near.filter((x) => lv(x) < level)), ...shuffle(rng, near.filter((x) => lv(x) > level))] : shuffle(rng, near);
+    out.push(...ordered.slice(0, n - out.length));
+  }
+  return shuffle(rng, out);
+}
+
+/** Modul aus einer Fragenbank (plus Zusatzfragen aus modules/more) */
 export function bankModule(def: {
   id: string; subject: SubjectId; years: [number, number]; title: [string, string]; subtitle: [string, string];
   emoji: string; color: LearningModule['color']; items: BankItem[]; countries?: Country[]; codeLang?: string; roundSize?: number;
 }): LearningModule {
-  const n = def.roundSize ?? 6;
+  const n = def.roundSize ?? 8;
+  const items = [...def.items, ...(MORE_ITEMS[def.id] ?? [])];
   return {
     id: def.id, area: 'schule', subject: def.subject, years: def.years, countries: def.countries,
     title: tx(def.title[0], def.title[1]), subtitle: tx(def.subtitle[0], def.subtitle[1]), topic: tx(def.title[0], def.title[1]),
     emoji: def.emoji, color: def.color, roundSize: n,
-    generate: bankGenerator(def.items, def.id, { codeLang: def.codeLang, n }),
-    cards: () => bankCards(def.items)
+    generate: bankGenerator(items, def.id, { codeLang: def.codeLang, n }),
+    cards: () => bankCards(items)
   };
 }
 

@@ -12,6 +12,7 @@ import { drivingAvailable } from '../../fuehrerschein/access';
 import { levelFromXp } from '../../learning/rewards';
 import { allModules, findModule, fitsCountry, schoolModules } from '../../learning/registry';
 import { needsPractice, pathDoneOf } from '../../learning/adaptive';
+import { PATH_STEPS } from '../../learning/challenge';
 import { dateKey } from '../../lib/date';
 import { L, tr } from '../../i18n';
 import { stageFor } from '../../school/systems';
@@ -39,7 +40,7 @@ export function ChildHome() {
   const cont = last ?? findModule(first, custom)!;
   const hour = new Date().getHours();
   const learnDays = Object.values(progress.daily).filter((d) => d.rounds > 0).length;
-  const contStep = Math.min(3, pathDoneOf(progress.modules[cont.id]) + 1);
+  const contStep = Math.min(PATH_STEPS, pathDoneOf(progress.modules[cont.id]) + 1);
   const goalReached = today.rounds >= goal;
   const ContIcon = subjectIcon(cont.subject ?? '');
   const hello = hour < 11 ? L('Guten Morgen', 'Buongiorno') : hour < 18 ? L('Hallo', 'Ciao') : L('Guten Abend', 'Buonasera');
@@ -125,7 +126,7 @@ export function ChildHome() {
               const d = subjectDef(id);
               const mods = schoolModules(country, year, id, custom);
               const done = mods.reduce((a, m) => a + pathDoneOf(progress.modules[m.id]), 0);
-              const total = mods.length * 3;
+              const total = mods.length * PATH_STEPS;
               const c = colorSet(d?.color);
               return (
                 <StaggerItem key={id}>

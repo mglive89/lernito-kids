@@ -1,0 +1,273 @@
+import type { BankItem } from '../../bank';
+import type { Difficulty } from '../../types';
+
+/* Zusatzfragen Deutsch (Sek.), Italiano, English */
+/** Eine Zeile für beide Sprachen (Deutsch- bzw. Italienisch-Grammatik) */
+const s = (line: string, lv?: Difficulty, e?: string): BankItem => ({ de: line, lv, e });
+/** Englisch: Aufgabe auf Englisch, Erklärung in der Sprache des Kindes */
+const en = (q: string, a: string, w: string, de: string, it: string, lv?: Difficulty): BankItem => ({
+  de: `${q} | ${a} | ${w} | ${de}`, it: `${q} | ${a} | ${w} | ${it}`, lv
+});
+
+export const MORE_LANGUAGES: Record<string, BankItem[]> = {
+  /* ---------------- Deutsch Sekundarstufe ---------------- */
+  'd-wortarten-sek': [
+    s('Welche Wortart ist „Freude“? | Nomen | Verb ; Adjektiv ; Adverb | Man kann „die“ davorsetzen.'),
+    s('Welche Wortart ist „sie“ in „Sie lacht“? | Personalpronomen | Artikel ; Präposition ; Nomen | Es steht für eine Person.'),
+    s('Welche Zeitform ist „ich ging“? | Präteritum | Präsens ; Perfekt ; Futur I | Erzählzeit der Vergangenheit.'),
+    s('Welche Zeitform ist „wir haben gespielt“? | Perfekt | Präteritum ; Plusquamperfekt ; Futur II | haben/sein + Partizip II.'),
+    s('Welche Wortart ist „gestern“? | Adverb | Adjektiv ; Präposition ; Konjunktion | Es gibt die Zeit an.', 2),
+    s('Welche Zeitform ist „er wird gekommen sein“? | Futur II | Futur I ; Perfekt ; Plusquamperfekt | Vermutung über Vergangenes.', 2),
+    s('Was ist „dessen“ in „der Mann, dessen Auto rot ist“? | Relativpronomen | Possessivpronomen ; Artikel ; Demonstrativpronomen | Es leitet einen Relativsatz ein.', 2),
+    s('Welche Zeitform ist „sie hatte gelesen“? | Plusquamperfekt | Perfekt ; Präteritum ; Futur II | Vorvergangenheit.', 2),
+    s('Welche Wortart ist „trotz“? | Präposition (mit Genitiv) | Konjunktion ; Adverb ; Adjektiv | trotz des Regens.', 2),
+    s('Was ist ein Partizip I? | Infinitiv + d, z. B. „lachend“ | gelacht ; lachte ; gelacht habend | Es wirkt wie ein Adjektiv.', 3),
+    s('Welches Verb ist stark (unregelmäßig)? | singen – sang – gesungen | spielen – spielte – gespielt ; lachen – lachte – gelacht ; machen – machte – gemacht | Ablaut im Stamm.', 3),
+    s('Welche Wortart ist „obwohl“? | unterordnende Konjunktion (Subjunktion) | Präposition ; Adverb ; nebenordnende Konjunktion | Verb steht am Ende.', 3),
+    s('Was ist ein Modalverb? | z. B. können, müssen, dürfen | z. B. laufen, essen ; z. B. haben, sein ; z. B. schön, groß | Es verändert die Aussage eines Vollverbs.', 3),
+    s('Welche Steigerungsform ist „am besten“? | Superlativ von „gut“ | Komparativ von „gut“ ; Positiv ; Superlativ von „viel“ | gut – besser – am besten.', 3)
+  ],
+  'd-satzglieder': [
+    s('Wie fragt man nach dem Subjekt? | Wer oder was? | Wen oder was? ; Wem? ; Wessen? | Es steht im Nominativ.'),
+    s('Wie fragt man nach dem Akkusativobjekt? | Wen oder was? | Wer oder was? ; Wem? ; Wo? | Ich sehe den Hund.'),
+    s('Was ist das Prädikat in „Lena malt ein Bild“? | malt | Lena ; ein Bild ; Bild | Das Verb.'),
+    s('Welcher Fall ist „des Hauses“? | Genitiv | Nominativ ; Dativ ; Akkusativ | Wessen?'),
+    s('Was ist das Dativobjekt in „Ich helfe meinem Opa“? | meinem Opa | ich ; helfe ; Opa allein | Wem helfe ich?', 2),
+    s('Welche Art Adverbiale ist „im Garten“? | Lokaladverbiale (Ort) | Temporal ; Kausal ; Modal | Wo?', 2),
+    s('Welche Art Adverbiale ist „mit großer Freude“? | Modaladverbiale (Art und Weise) | Temporal ; Lokal ; Kausal | Wie?', 2),
+    s('Welcher Fall steht nach „ohne“? | Akkusativ | Dativ ; Genitiv ; Nominativ | ohne den Schirm.', 2),
+    s('Welcher Fall steht nach „aus“? | Dativ | Akkusativ ; Genitiv ; Nominativ | aus dem Haus.', 2),
+    s('Was ist ein Präpositionalobjekt in „Ich warte auf den Bus“? | auf den Bus | ich ; warte ; den Bus allein | Das Verb verlangt die Präposition.', 3),
+    s('Welche Art Nebensatz ist „damit wir pünktlich sind“? | Finalsatz (Zweck) | Kausalsatz ; Konsekutivsatz ; Temporalsatz | Wozu?', 3),
+    s('Welche Art Nebensatz ist „sodass alle lachten“? | Konsekutivsatz (Folge) | Finalsatz ; Konzessivsatz ; Konditionalsatz | Mit welcher Folge?', 3),
+    s('Wie lautet der Satz im Passiv? „Der Koch bereitet das Essen zu.“ | Das Essen wird vom Koch zubereitet. | Das Essen bereitet den Koch zu. ; Der Koch wurde zubereitet. ; Das Essen hat zubereitet. | werden + Partizip II.', 3),
+    s('Welche Art Nebensatz ist „Wenn es regnet, bleiben wir drinnen“? | Konditionalsatz (Bedingung) | Temporalsatz ; Kausalsatz ; Relativsatz | Unter welcher Bedingung?', 3)
+  ],
+  'd-rechtschreibung-sek': [
+    s('Welches Wort ist richtig geschrieben? | Fahrrad | Farrad ; Fahrad ; Farhrad | Fahr + Rad.'),
+    s('Welches Wort ist richtig geschrieben? | Maschine | Machine ; Maschiene ; Masine | Fremdwort aus dem Französischen.'),
+    s('Groß oder klein: „beim ___ (lesen)“? | Lesen | lesen | Nach „beim“ wird das Verb zum Nomen.'),
+    s('Welches Wort ist richtig? | Straße | Strasse (in Deutschland) ; Strase ; Strahse | Nach langem Vokal ß.'),
+    s('Welches Wort ist richtig geschrieben? | wahrscheinlich | warscheinlich ; wahrscheinlig ; warscheinlig | wahr + scheinlich.', 2),
+    s('Welches Wort ist richtig geschrieben? | Interesse | Intresse ; Interresse ; Inderesse | Von lateinisch „interesse“.', 2),
+    s('Welche Schreibung ist richtig? | Auto fahren | autofahren ; Autofahren (als Verb) ; auto fahren | Nomen + Verb getrennt.', 2),
+    s('Welches Wort fehlt? „Es ist wichtig, ___ wir zusammenhalten.“ | dass | das ; daß ; was | Man kann nicht „welches“ einsetzen.', 2),
+    s('Wo fehlt ein Komma? „Ich glaube dass er recht hat.“ | vor „dass“ | nach „dass“ ; vor „recht“ ; nirgends | Nebensätze werden abgetrennt.', 2),
+    s('Welche Schreibung ist richtig? | heute Abend | heute abend ; Heute abend ; heuteabend | Tageszeiten nach heute/gestern/morgen groß.', 3),
+    s('Wo gehören Kommas hin? „Mein Bruder der in Rom lebt kommt morgen.“ | vor „der“ und nach „lebt“ | nur vor „der“ ; nur nach „Rom“ ; nirgends | Eingeschobener Relativsatz.', 3),
+    s('Welches Wort ist richtig geschrieben? | Reparatur | Reperatur ; Reparatuhr ; Repparatur | Von „reparieren“.', 3),
+    s('Welche Schreibung ist richtig? | im Großen und Ganzen | im großen und ganzen ; Im großen und Ganzen ; im Großen und ganzen | Feste Fügung mit Nomen.', 3),
+    s('Welches Wort ist richtig geschrieben? | Galerie | Gallerie ; Galarie ; Gallerye | Nur ein l.', 3)
+  ],
+  'd-konjunktiv': [
+    s('Welche Form ist Indikativ? | er geht | er gehe ; er ginge ; er würde gehen | Wirklichkeitsform.'),
+    s('Welche Form ist Konjunktiv II von „sein“? | ich wäre | ich sei ; ich war ; ich bin | Wenn ich ein Vogel wäre …'),
+    s('Wofür verwendet man den Konjunktiv II oft? | für Wünsche und Höflichkeit | für Befehle ; für die Gegenwart ; nur für Zahlen | Könnten Sie mir helfen?'),
+    s('Konjunktiv I von „er hat“? | er habe | er hätte ; er hatte ; er hat | Indirekte Rede.', 2),
+    s('Indirekte Rede: Er sagt: „Ich kann schwimmen.“ | Er sagt, er könne schwimmen. | Er sagt, er kann schwimmen. ; Er sagt, ich könne schwimmen. ; Er sagt, er konnte schwimmen. | Konjunktiv I.', 2),
+    s('Welcher Satz ist eine höfliche Bitte im Konjunktiv II? | Würden Sie das Fenster schließen? | Schließen Sie das Fenster! ; Sie schließen das Fenster. ; Das Fenster wird geschlossen. | Würde-Form klingt höflich.', 2),
+    s('Konjunktiv II von „er geht“? | er ginge | er gehe ; er ging ; er gängte | Starke Verben: Präteritum + Umlaut.', 3),
+    s('Indirekte Rede: Sie sagten: „Wir haben keine Zeit.“ | Sie sagten, sie hätten keine Zeit. | Sie sagten, sie haben keine Zeit. ; Sie sagten, wir hätten keine Zeit. ; Sie sagten, sie hatten keine Zeit. | Konjunktiv I = Indikativ, darum Ersatz durch Konjunktiv II.', 3),
+    s('Welcher Satz ist irreal in der Vergangenheit? | Wenn ich das gewusst hätte, wäre ich gekommen. | Wenn ich das weiß, komme ich. ; Wenn ich das wüsste, käme ich. ; Ich wusste es und kam. | Konjunktiv II Plusquamperfekt.', 3),
+    s('Indirekte Frage: Er fragt: „Kommst du morgen?“ | Er fragt, ob ich morgen komme. | Er fragt, kommst du morgen. ; Er fragt, dass ich morgen komme. ; Er fragt, ob du morgen kommst? | Ja/Nein-Frage → ob.', 3)
+  ],
+  'd-texte': [
+    s('Was ist ein Sachtext? | ein Text, der über Tatsachen informiert | ein Märchen ; ein Gedicht ; ein Theaterstück | Zum Beispiel ein Lexikonartikel.'),
+    s('Wie beginnen Märchen oft? | Es war einmal … | Sehr geehrte Damen und Herren ; Liebes Tagebuch ; Ende gut, alles gut | Märchen spielen in einer zeitlosen Welt.'),
+    s('Was ist ein Ich-Erzähler? | eine Figur, die selbst erzählt, was sie erlebt | ein Erzähler, der alles weiß ; der Autor in einem Sachtext ; eine Nebenfigur ohne Stimme | Er kennt nur seine eigenen Gedanken.'),
+    s('Was gehört zu einem Bericht? | sachliche, genaue Angaben im Präteritum | Spannung und Gefühle ; Reime ; wörtliche Rede in jedem Satz | Antwort auf die W-Fragen.', 2),
+    s('Was ist eine Charakterisierung? | eine Beschreibung von Aussehen, Verhalten und Wesen einer Figur | eine Zusammenfassung der Handlung ; ein Brief ; ein Gedicht | Mit Textbelegen.', 2),
+    s('Was ist ein Zitat? | eine wörtlich übernommene Textstelle mit Quellenangabe | eine eigene Meinung ; eine Überschrift ; eine Zusammenfassung | In Anführungszeichen mit Zeilenangabe.', 2),
+    s('Was macht man in einer linearen Erörterung? | Man begründet eine Position mit steigernd geordneten Argumenten. | Man stellt Pro und Contra gegenüber. ; Man erzählt eine Geschichte. ; Man fasst einen Text zusammen. | Das stärkste Argument kommt zum Schluss.', 3),
+    s('Was ist ein Leserbrief? | ein Brief an eine Zeitung mit der eigenen Meinung zu einem Artikel | eine Einladung ; ein Tagebucheintrag ; ein Gedicht | Mit Bezug, Meinung und Begründung.', 2),
+    s('Was ist ein Exzerpt? | ein schriftlicher Auszug der wichtigsten Aussagen eines Textes | eine Gedichtform ; ein Romananfang ; eine Rede | Hilft beim Lernen und Zitieren.', 3),
+    s('Was ist eine Novelle? | eine mittellange Erzählung über eine „unerhörte Begebenheit“ | ein Roman mit 1000 Seiten ; ein Gedicht ; ein Zeitungsartikel | So nannte es Goethe.', 3),
+    s('Was ist eine Parabel? | eine gleichnishafte Erzählung, deren Lehre man übertragen muss | eine Kurzmeldung ; ein Sachbericht ; ein Liebesgedicht | Beispiel: Lessings Ringparabel.', 3),
+    s('Was ist erlebte Rede? | Gedanken einer Figur in der 3. Person und im Präteritum | wörtliche Rede in Anführungszeichen ; indirekte Rede mit Konjunktiv ; ein Dialog im Drama | „Morgen würde sie es ihm sagen.“', 3)
+  ],
+  'd-stilmittel': [
+    s('Welches Stilmittel ist „Der Wind heult“? | Personifikation | Vergleich ; Alliteration ; Hyperbel | Dem Wind wird menschliches Verhalten zugeschrieben.'),
+    s('Was ist ein Reim? | Gleichklang von Wörtern ab dem letzten betonten Vokal | eine Gedichtüberschrift ; ein Vers ohne Klang ; eine Strophe | Haus – Maus.'),
+    s('Was ist eine Strophe? | ein Abschnitt aus mehreren Versen | eine Zeile ; ein Reim ; ein Titel | Gedichte bestehen oft aus Strophen.'),
+    s('Welche Reimform ist aabb? | Paarreim | Kreuzreim ; umarmender Reim ; Schweifreim | Zwei Verse reimen sich direkt.', 2),
+    s('Welche Reimform ist abba? | umarmender Reim | Kreuzreim ; Paarreim ; Haufenreim | Außen a, innen b.', 2),
+    s('Welches Stilmittel ist „Veni, vidi, vici“? | Klimax (Steigerung) und Trikolon | Oxymoron ; Litotes ; Euphemismus | Ich kam, sah, siegte.', 2),
+    s('Welches Stilmittel ist „Er ist von uns gegangen“ für „gestorben“? | Euphemismus | Hyperbel ; Ironie ; Metapher allein | Beschönigung.', 2),
+    s('Was ist eine rhetorische Frage? | eine Frage, auf die keine Antwort erwartet wird | eine Frage im Test ; eine Frage nach dem Weg ; eine Ja/Nein-Frage | Sie bekräftigt eine Aussage.', 2),
+    s('Was ist ein Trochäus? | betont – unbetont | unbetont – betont ; betont – unbetont – unbetont ; unbetont – unbetont – betont | Beispiel: „Son-ne“.', 3),
+    s('Was ist ein Sonett? | ein Gedicht aus zwei Quartetten und zwei Terzetten | ein Gedicht aus vier Strophen zu je acht Versen ; ein Prosatext ; ein Lied ohne Reim | 14 Verse.', 3),
+    s('Was ist ein Enjambement? | der Satz geht über das Versende hinaus | eine Wiederholung am Versende ; ein Reim im Vers ; eine Pause | Zeilensprung.', 3),
+    s('Welches Stilmittel ist „Das Weiße Haus erklärte …“? | Metonymie | Metapher ; Personifikation ; Alliteration | Ort steht für die Regierung.', 3),
+    s('Was ist ein Neologismus? | eine Wortneuschöpfung | ein altes Wort ; ein Fremdwort aus dem Latein ; ein Fehler | Beispiel: „googeln“ war einmal neu.', 3)
+  ],
+  'd-epochen': [
+    s('Wer schrieb „Der Erlkönig“? | Johann Wolfgang von Goethe | Friedrich Schiller ; Heinrich Heine ; Theodor Storm | Eine Ballade.'),
+    s('Wer schrieb die „Kinder- und Hausmärchen“? | die Brüder Grimm | Hans Christian Andersen ; Wilhelm Busch ; Erich Kästner | Romantik.'),
+    s('Wer schrieb „Emil und die Detektive“? | Erich Kästner | Michael Ende ; Cornelia Funke ; Otfried Preußler | 1929.'),
+    s('Welche Epoche stellte die Vernunft in den Mittelpunkt (ca. 1720–1800)? | Aufklärung | Romantik ; Barock ; Expressionismus | Kant, Lessing.', 2),
+    s('Wer schrieb „Kabale und Liebe“? | Friedrich Schiller | Goethe ; Lessing ; Büchner | Bürgerliches Trauerspiel.', 2),
+    s('Wer schrieb „Der Schimmelreiter“? | Theodor Storm | Theodor Fontane ; Gottfried Keller ; E. T. A. Hoffmann | Novelle des Realismus.', 2),
+    s('Wer schrieb „Die Physiker“? | Friedrich Dürrenmatt | Max Frisch ; Bertolt Brecht ; Heinrich Böll | 1962, Komödie über Verantwortung der Wissenschaft.', 2),
+    s('Welche Epoche verarbeitete Großstadt, Krieg und Weltende in greller Sprache (ca. 1910–1925)? | Expressionismus | Realismus ; Klassik ; Biedermeier | Georg Heym, Jakob van Hoddis.', 3),
+    s('Welches Ideal prägte die Weimarer Klassik? | Humanität, Harmonie und Maß nach antikem Vorbild | Gefühl und Genie ohne Regeln ; Großstadt und Krieg ; Vergänglichkeit | Goethe und Schiller in Weimar.', 3),
+    s('Wer gehörte zur „Gruppe 47“? | Heinrich Böll | Goethe ; Kleist ; Rilke | Nachkriegsliteratur.', 3),
+    s('Wer schrieb „Der Prozess“? | Franz Kafka | Thomas Mann ; Robert Musil ; Stefan Zweig | Josef K. wird verhaftet, ohne zu wissen warum.', 3),
+    s('Wer schrieb „Buddenbrooks“? | Thomas Mann | Heinrich Mann ; Hermann Hesse ; Günter Grass | Verfall einer Familie, Nobelpreis 1929.', 3)
+  ],
+  /* ---------------- Italiano ---------------- */
+  'it2-ortografia': [
+    s('Quale parola è scritta giusta? | cuoco | quoco ; cuocco ; quocco | Cuoco si scrive con CU.', 1, '👨‍🍳'),
+    s('Quale parola è scritta giusta? | quadro | cuadro ; qadro ; quaddro | QU davanti a vocale.', 1, '🖼️'),
+    s('Quale parola è scritta giusta? | lavagna | lavagnia ; lavania ; lavanna | GN non vuole la i.', 1, '🧑‍🏫'),
+    s('Quale parola è scritta giusta? | famiglia | familia ; famiglja ; fammiglia | Suono GLI.', 1, '👨‍👩‍👧'),
+    s('Quale parola è scritta giusta? | scienza | scenza ; sciensa ; sienza | Eccezione: scienza vuole la i.', 2, '🔬'),
+    s('Quale parola è scritta giusta? | quaderno | cuaderno ; quadderno ; qaderno | QU davanti a vocale.', 2, '📓'),
+    s('Quale parola è scritta giusta? | funghi | fungi (plurale di fungo) ; funchi ; funghii | Il plurale mantiene il suono duro: GH.', 2, '🍄'),
+    s('Quale parola è scritta giusta? | cielo | celo (sopra di noi) ; chielo ; ciello | Il cielo vuole la i.', 2, '☁️'),
+    s('Quale parola è scritta giusta? | conoscenza | conoscienza ; conossenza ; conoscensa | Senza i dopo SC.', 3),
+    s('Quale parola è scritta giusta? | coscienza | cosienza ; coscenza ; coschienza | Come scienza.', 3),
+    s('Quale parola è scritta giusta? | proficuo | profiquo ; proficquo ; profiquuo | Eccezione con CU.', 3),
+    s('Quale parola è scritta giusta? | eccellente | ecellente ; eccelente ; eccelllente | Doppia C e doppia L.', 3)
+  ],
+  'it2-acca': [
+    s('Completa: «Tu ___ un fratello?» | hai | ai ; hài ; ahi | Verbo avere → con H.'),
+    s('Completa: «Do il libro ___ Luca.» | a | ha ; à ; ah | Preposizione → senza H.'),
+    s('Completa: «Vado ___ casa.» | a | ha ; à ; ah | Preposizione.'),
+    s('Completa: «Lei ___ detto di sì.» | ha | a ; à ; ah | Verbo avere.', 2),
+    s('Completa: «Dammi ___ penna.» | una | un’ ; un ; uno | Femminile davanti a consonante.', 2),
+    s('Completa: «___ inverno fa freddo.» | D’ | Di ; De ; Da | Di + inverno → d’inverno.', 2),
+    s('Quale parola è scritta giusta? | più | piu ; piú ; pìu | Accento grave sulla u.', 2),
+    s('Completa: «Non so se ___ vero.» | è | e ; é ; eh | Verbo essere.', 2),
+    s('Completa: «Non bevo né latte ___ caffè.» | né | ne ; nè ; nò | Negazione: né con accento acuto.', 3),
+    s('Completa: «Di libri ___ ho tanti.» | ne | né ; nè ; n’è | Pronome → senza accento.', 3),
+    s('Quale frase è corretta? | Mi dà una mano. | Mi da una mano. ; Mi dá una mano. ; Mi dà’ una mano. | Verbo dare: dà con accento.', 3),
+    s('Quale forma è corretta? | po’ | pò ; po ; pó | Troncamento di «poco»: apostrofo.', 3)
+  ],
+  'it3-grammatica': [
+    s('Quale articolo va bene? «___ psicologo» | lo | il ; la ; l’ | Davanti a PS si usa LO.'),
+    s('Qual è il plurale di «uomo»? | uomini | uomi ; uomo ; uomini’ | Plurale irregolare.'),
+    s('Qual è il maschile di «regina»? | re | regino ; reggente ; principe | Coppia di nomi diversi.'),
+    s('Che nome è «cane»? | comune di animale | proprio ; astratto ; collettivo | Non indica un cane preciso.'),
+    s('Qual è il plurale di «il bue»? | i buoi | i bui ; i bue ; gli buoi | Plurale irregolare.', 2),
+    s('Che tempo è «io ho mangiato»? | passato prossimo | passato remoto ; imperfetto ; trapassato | Avere + participio.', 2),
+    s('Che tempo è «tu partisti»? | passato remoto | passato prossimo ; futuro ; imperfetto | Azione lontana e conclusa.', 2),
+    s('«Dentista» è un nome… | di genere comune (maschile e femminile) | solo maschile ; solo femminile ; collettivo | Il/la dentista.', 2),
+    s('Qual è il grado comparativo in «Luca è più alto di Marco»? | comparativo di maggioranza | superlativo ; positivo ; comparativo di minoranza | Più … di.', 3),
+    s('«Capostazione» è un nome… | composto | alterato ; derivato ; collettivo | Capo + stazione.', 3),
+    s('Che coniugazione è «finire»? | terza (-ire) | prima (-are) ; seconda (-ere) ; nessuna | Verbi in -ire.', 3),
+    s('Qual è il superlativo assoluto di «buono»? | ottimo / buonissimo | migliore ; più buono ; buonino | Ottimo è irregolare.', 3),
+    s('Qual è il congiuntivo presente di «essere» (che io…)? | sia | fossi ; sono ; sarei | Spero che io sia in tempo.', 3)
+  ],
+  'it6-grammaticale': [
+    s('Che parte del discorso è «sempre»? | avverbio di tempo | aggettivo ; congiunzione ; preposizione | Indica quando.'),
+    s('Che articolo è «un»? | indeterminativo | determinativo ; partitivo ; dimostrativo | Indica una cosa qualsiasi.'),
+    s('Che aggettivo è «questo»? | dimostrativo | possessivo ; qualificativo ; indefinito | Indica vicinanza.'),
+    s('Che pronome è «nessuno»? | indefinito | personale ; relativo ; possessivo | Indica una quantità non precisa.', 2),
+    s('«Del pane» in «Compra del pane» è… | articolo partitivo | preposizione semplice ; aggettivo ; avverbio | Significa «un po’ di».', 2),
+    s('Che modo è «mangiando»? | gerundio | participio ; infinito ; congiuntivo | Modo indefinito.', 2),
+    s('Che tempo è «che io avessi»? | congiuntivo imperfetto | congiuntivo presente ; condizionale ; indicativo imperfetto | Se io avessi tempo…', 2),
+    s('Che tempo è «io avrei voluto»? | condizionale passato | condizionale presente ; congiuntivo trapassato ; futuro anteriore | Avere al condizionale + participio.', 3),
+    s('Che modo è «Mangia!»? | imperativo | indicativo ; congiuntivo ; infinito | Ordine o consiglio.', 3),
+    s('«Saranno partiti» è… | futuro anteriore | futuro semplice ; condizionale ; passato prossimo | Azione futura già compiuta.', 3),
+    s('«Si vendono case» è un «si»… | passivante | riflessivo ; impersonale ; pronome personale | = Case sono vendute.', 3),
+    s('«Correre» è un verbo… | intransitivo (usato senza oggetto) | sempre transitivo ; difettivo ; servile | Corro veloce.', 3)
+  ],
+  'it7-logica': [
+    s('Qual è il soggetto in «Il gatto dorme»? | il gatto | dorme ; gatto e dorme ; nessuno | Chi compie l’azione.'),
+    s('Che predicato è «Paolo corre»? | verbale | nominale ; complemento ; soggetto | Verbo con significato proprio.'),
+    s('Che complemento è «a Roma» in «Vivo a Roma»? | di stato in luogo | di moto a luogo ; di termine ; di tempo | Dove?'),
+    s('Che complemento è «verso casa» in «Corro verso casa»? | di moto a luogo | di stato in luogo ; di moto da luogo ; di mezzo | Verso dove?', 2),
+    s('Che complemento è «con Luca» in «Gioco con Luca»? | di compagnia | di mezzo ; di modo ; di causa | Con chi?', 2),
+    s('Che complemento è «d’oro» in «Un anello d’oro»? | di materia | di specificazione ; di qualità ; di origine | Di che cosa è fatto?', 2),
+    s('Che complemento è «la sera» in «La sera leggo»? | di tempo determinato | di tempo continuato ; di luogo ; oggetto | Quando?', 2),
+    s('Che complemento è «per due ore» in «Ho studiato per due ore»? | di tempo continuato | di tempo determinato ; di fine ; di causa | Per quanto tempo?', 3),
+    s('Nel periodo «Quando arrivi, chiamami», «Quando arrivi» è una proposizione… | temporale | causale ; finale ; relativa | Indica il tempo.', 3),
+    s('Nel periodo «Se studi, sarai promosso», la subordinata è… | condizionale (protasi) | causale ; finale ; consecutiva | Periodo ipotetico.', 3),
+    s('Nel periodo «Era così stanco che si addormentò», la subordinata è… | consecutiva | causale ; finale ; concessiva | Indica una conseguenza.', 3),
+    s('Nel periodo «Benché piovesse, uscimmo», la subordinata è… | concessiva | causale ; temporale ; relativa | Nonostante qualcosa.', 3)
+  ],
+  'it9-retorica': [
+    s('«Il vento sussurra» è… | una personificazione | una similitudine ; un’iperbole ; una litote | Il vento agisce come una persona.'),
+    s('Che cos’è una strofa? | un gruppo di versi | un solo verso ; una rima ; un titolo | Le poesie sono divise in strofe.'),
+    s('Che cos’è la rima? | l’uguaglianza dei suoni finali di due versi dall’ultima vocale accentata | il titolo della poesia ; il numero dei versi ; una pausa | Cuore – amore.'),
+    s('Lo schema ABBA è… | rima incrociata | rima alternata ; rima baciata ; rima incatenata | Le rime esterne si abbracciano.', 2),
+    s('«Il mare è una tavola» è… | una metafora | una similitudine ; un’anafora ; un ossimoro | Paragone senza «come».', 2),
+    s('Ripetere suoni uguali in parole vicine («fresche frasche») si chiama… | allitterazione | anafora ; onomatopea ; litote | Gioco di suoni.', 2),
+    s('«Din don», «bau» sono… | onomatopee | metafore ; allitterazioni ; sinestesie | Imitano suoni.', 2),
+    s('«Leggere Dante» (le sue opere) è… | una metonimia | una sineddoche ; una metafora ; un’iperbole | L’autore per l’opera.', 3),
+    s('«Vela» per «nave» è… | una sineddoche | una metonimia ; una metafora ; un ossimoro | La parte per il tutto.', 3),
+    s('Lo schema ABA BCB CDC è… | terza rima (incatenata) | rima alternata ; ottava ; rima baciata | È il metro della Divina Commedia.', 3),
+    s('Che cos’è la dialefe? | la mancata fusione di due vocali tra parole diverse | la fusione di due vocali ; una rima ; un verso lungo | Il contrario della sinalefe.', 3),
+    s('Che cos’è un’ottava? | una strofa di otto endecasillabi ABABABCC | una poesia di otto strofe ; un verso di otto sillabe ; un sonetto breve | Usata da Ariosto e Tasso.', 3)
+  ],
+  'it10-letteratura': [
+    s('Chi ha scritto «Pinocchio»? | Carlo Collodi | Gianni Rodari ; Edmondo De Amicis ; Italo Calvino | 1881–1883.'),
+    s('Chi ha scritto «Cuore»? | Edmondo De Amicis | Carlo Collodi ; Giovanni Verga ; Alessandro Manzoni | Diario di uno scolaro.'),
+    s('Chi è la donna amata da Dante? | Beatrice | Laura ; Lucia ; Silvia | Lo guida in Paradiso.'),
+    s('Chi è la donna amata da Petrarca nel «Canzoniere»? | Laura | Beatrice ; Fiammetta ; Lucia | Morì nel 1348.', 2),
+    s('Chi ha scritto «Il barone rampante»? | Italo Calvino | Dino Buzzati ; Cesare Pavese ; Elsa Morante | Cosimo vive sugli alberi.', 2),
+    s('Chi ha scritto «X Agosto»? | Giovanni Pascoli | Giosuè Carducci ; Gabriele D’Annunzio ; Eugenio Montale | La morte del padre.', 2),
+    s('Chi ha scritto «L’Orlando furioso»? | Ludovico Ariosto | Torquato Tasso ; Matteo Maria Boiardo ; Petrarca | Poema cavalleresco in ottave.', 2),
+    s('Chi ha scritto «I Malavoglia»? | Giovanni Verga | Luigi Capuana ; Federico De Roberto ; Grazia Deledda | Ciclo dei Vinti.', 2),
+    s('Chi ha scritto «Ossi di seppia»? | Eugenio Montale | Giuseppe Ungaretti ; Salvatore Quasimodo ; Umberto Saba | Nobel 1975.', 3),
+    s('Chi ha scritto «La Gerusalemme liberata»? | Torquato Tasso | Ludovico Ariosto ; Dante ; Vittorio Alfieri | Prima crociata.', 3),
+    s('Che cos’è la «Scapigliatura»? | un movimento milanese di ribellione artistica dell’Ottocento | una corrente del Duecento ; un genere teatrale barocco ; una rivista fascista | Contro il conformismo borghese.', 3),
+    s('Chi ha scritto «Il giorno della civetta»? | Leonardo Sciascia | Andrea Camilleri ; Elio Vittorini ; Alberto Moravia | Romanzo sulla mafia.', 3),
+    s('Chi ricevette il Nobel per la letteratura nel 1926? | Grazia Deledda | Luigi Pirandello ; Giosuè Carducci ; Eugenio Montale | Prima italiana premiata.', 3)
+  ],
+  /* ---------------- English ---------------- */
+  'en-vocab': [
+    en('What is the opposite of “early”?', 'late', 'soon ; fast ; often', 'early = früh, late = spät', 'early = presto, late = tardi'),
+    en('Which word means “Küche / cucina”?', 'kitchen', 'chicken ; kitten ; cook', 'kitchen ≠ chicken (Huhn)', 'kitchen ≠ chicken (pollo)'),
+    en('What do you wear on your feet?', 'shoes', 'gloves ; hats ; scarves', 'shoes = Schuhe', 'shoes = scarpe'),
+    en('Which word is a fruit?', 'pear', 'pea ; pier ; peer', 'pear = Birne', 'pear = pera'),
+    en('What does “to borrow” mean?', 'to take something and give it back later', 'to lend something ; to buy something ; to lose something', 'borrow = sich leihen, lend = verleihen', 'borrow = prendere in prestito, lend = prestare', 2),
+    en('Which word means “Unterricht / lezione” (at school)?', 'lesson', 'lection ; lecture hall ; less', '„lection“ gibt es so nicht', '«lection» non esiste in questo senso', 2),
+    en('“I’m ___ for my keys.” (suchen)', 'looking', 'searching to ; finding ; seeing', 'look for = suchen', 'look for = cercare', 2),
+    en('Which word is a false friend for German “Chef”?', 'chef', 'boss ; manager ; leader', 'chef = Koch, Chef = boss', 'chef = cuoco (in inglese)', 2),
+    en('What does “to look forward to” mean?', 'to be happy about something in the future', 'to look in front of you ; to remember ; to be afraid of', 'sich freuen auf', 'non vedere l’ora di', 3),
+    en('Which word means “Verantwortung / responsabilità”?', 'responsibility', 'response ; answerability ; responsive', 'take responsibility for …', 'take responsibility for …', 3),
+    en('“The meeting was ___ because the boss was ill.”', 'called off', 'called up ; called in ; called back', 'call off = absagen', 'call off = annullare', 3),
+    en('Which word is a false friend for Italian “parenti”?', 'parents', 'relatives ; family members ; cousins', 'parents = Eltern; Verwandte = relatives', 'parents = genitori; parenti = relatives', 3)
+  ],
+  'en-tenses': [
+    en('“I ___ breakfast at 7 every morning.”', 'have', 'am having ; had ; has', 'Gewohnheit → Simple Present', 'abitudine → present simple'),
+    en('What is the past of “to go”?', 'went', 'goed ; gone ; going', 'go – went – gone', 'go – went – gone'),
+    en('“Listen! The baby ___.”', 'is crying', 'cries ; cried ; has cried', 'Jetzt gerade → Present Progressive', 'adesso → present continuous'),
+    en('“Last summer we ___ to Spain.”', 'went', 'go ; have gone ; are going', 'Zeitangabe in der Vergangenheit → Simple Past', 'tempo passato definito → past simple', 2),
+    en('“___ you ever ___ sushi?”', 'Have … eaten', 'Did … eat ; Do … eat ; Are … eating', 'ever → Present Perfect', 'ever → present perfect', 2),
+    en('“I think it ___ tomorrow.” (prediction)', 'will rain', 'rains ; is raining now ; rained', 'Vermutung → will-future', 'previsione → will', 2),
+    en('What is the past participle of “to take”?', 'taken', 'took ; taked ; tooken', 'take – took – taken', 'take – took – taken', 2),
+    en('“She ___ for two hours when I called.”', 'had been studying', 'has studied ; studies ; is studying', 'Past Perfect Progressive', 'past perfect continuous', 3),
+    en('“This time next week I ___ on the beach.”', 'will be lying', 'lie ; am lying ; lay', 'Future Progressive', 'future continuous', 3),
+    en('“I ___ my keys. I can’t open the door.”', 'have lost', 'lost yesterday ; lose ; was losing', 'Folge in der Gegenwart → Present Perfect', 'conseguenza nel presente → present perfect', 3),
+    en('“He ___ in Rome since he was a child.”', 'has been living', 'lives ; is living ; lived', 'since + Dauer bis jetzt', 'since + durata fino ad ora', 3)
+  ],
+  'en-grammar': [
+    en('“This is ___ umbrella.”', 'an', 'a ; the ; any', 'an vor Vokallaut', 'an davanti a suono vocalico'),
+    en('“There are ___ people in the park.”', 'many', 'much ; a ; any one', 'many bei zählbaren Nomen', 'many con i numerabili'),
+    en('“She is good ___ maths.”', 'at', 'in ; on ; for', 'good at', 'good at'),
+    en('“The book is ___ the table.”', 'on', 'at ; in time ; by', 'on = auf', 'on = sopra', 1),
+    en('“I have lived here ___ 2019.”', 'since', 'for ; from ; ago', 'since + Zeitpunkt', 'since + momento', 2),
+    en('“This car is ___ than mine.”', 'more expensive', 'expensiver ; most expensive ; much expensive', 'lange Adjektive: more', 'aggettivi lunghi: more', 2),
+    en('“I don’t have ___ money.”', 'much', 'many ; a few ; several', 'much bei unzählbaren Nomen', 'much con i non numerabili', 2),
+    en('“The house ___ roof is red belongs to my aunt.”', 'whose', 'who ; which ; that’s', 'whose = dessen', 'whose = il cui', 3),
+    en('“If I ___ you, I would apologise.”', 'were', 'am ; was being ; will be', 'Second Conditional: if I were', 'second conditional: if I were', 3),
+    en('“The letter ___ by my grandfather in 1950.”', 'was written', 'wrote ; has written ; is writing', 'Passiv Simple Past', 'passivo al past simple', 3),
+    en('“She asked me where I ___.”', 'lived', 'live ; do live ; did live', 'Indirekte Frage: Zeit zurückverschieben, kein do', 'domanda indiretta: tempo indietro, niente do', 3)
+  ],
+  'en-reading': [
+    en('Which word starts a story?', 'Once upon a time', 'The end ; Yours sincerely ; In conclusion', 'Märchenanfang', 'inizio delle fiabe'),
+    en('What is the capital of Ireland?', 'Dublin', 'Belfast ; Cork ; Edinburgh', 'Belfast liegt in Nordirland.', 'Belfast è in Irlanda del Nord.'),
+    en('How do you end an informal letter to a friend?', 'Best wishes / Love', 'Yours faithfully ; To whom it may concern ; Dear Sir', 'informell vs. formell', 'informale vs formale'),
+    en('Which linking word adds information?', 'moreover', 'however ; although ; instead', 'moreover = außerdem', 'moreover = inoltre', 1),
+    en('What does “scanning” a text mean?', 'looking for specific information', 'reading every word slowly ; translating ; summarising', 'z. B. eine Zahl oder einen Namen suchen', 'es. cercare un numero o un nome', 2),
+    en('Which is the best summary sentence for a text?', 'a short sentence with the main idea', 'a quote from the middle ; your favourite detail ; the title only', 'Das Wichtigste in einem Satz.', 'L’essenziale in una frase.', 2),
+    en('Who wrote “Harry Potter”?', 'J. K. Rowling', 'J. R. R. Tolkien ; Roald Dahl ; C. S. Lewis', 'erschienen ab 1997', 'pubblicato dal 1997', 2),
+    en('In which country is English NOT an official language?', 'Brazil', 'Canada ; India ; New Zealand', 'In Brasilien spricht man Portugiesisch.', 'In Brasile si parla portoghese.', 2),
+    en('What is a “thesis statement” in an essay?', 'the sentence that states the writer’s main argument', 'the last word ; a list of sources ; the title page', 'meist am Ende der Einleitung', 'di solito alla fine dell’introduzione', 3),
+    en('Who wrote “Pride and Prejudice”?', 'Jane Austen', 'Charlotte Brontë ; Virginia Woolf ; Mary Shelley', '1813', '1813', 3),
+    en('What is the tone of a text?', 'the attitude of the writer (e.g. ironic, serious)', 'the font size ; the number of paragraphs ; the title', 'Ton = Haltung des Autors', 'tono = atteggiamento dell’autore', 3),
+    en('Who was the author of “Frankenstein”?', 'Mary Shelley', 'Bram Stoker ; Edgar Allan Poe ; Oscar Wilde', '1818', '1818', 3)
+  ]
+};
