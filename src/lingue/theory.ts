@@ -1,4 +1,6 @@
-import type { CourseLang } from './data';
+import type { BaseLang, CourseLang } from './data';
+import { NOTES_EXTRA, PRONUNCIATION_EXTRA } from './theory-extra';
+import { NOTES_EXTRA2, PRONUNCIATION_EXTRA2 } from './theory-extra2';
 
 /**
  * Theorie der Sprachkurse – erklärt in der Sprache des Kindes ([Deutsch, Italienisch]).
@@ -19,6 +21,8 @@ export interface Note {
 
 /** Aussprache-Tipps je Sprache */
 export const PRONUNCIATION: Record<CourseLang, { sound: string; tip: P }[]> = {
+  ...PRONUNCIATION_EXTRA,
+  ...PRONUNCIATION_EXTRA2,
   en: [
     { sound: 'th', tip: ['Zungenspitze leicht zwischen die Zähne, dann pusten: the, thank you, three.', 'Punta della lingua tra i denti e soffia: the, thank you, three.'] },
     { sound: 'w', tip: ['Lippen rund wie bei „u“ und schnell öffnen: water, white – nicht wie deutsches „w“.', 'Labbra tonde come per una «u» e aprile subito: water, white.'] },
@@ -61,7 +65,7 @@ export const PRONUNCIATION: Record<CourseLang, { sound: string; tip: P }[]> = {
 };
 
 /** Grammatik und Besonderheiten je Einheit und Sprache */
-export const NOTES: Record<string, Record<CourseLang, Note[]>> = {
+const BASE_NOTES: Record<string, Record<BaseLang, Note[]>> = {
   saluti: {
     en: [
       { title: ['Begrüßen und verabschieden', 'Salutare e congedarsi'], steps: [['„Hello“ passt immer. „Good morning“ sagst du bis zum Mittag.', '«Hello» va sempre bene. «Good morning» si dice fino a mezzogiorno.'], ['„Good night“ sagst du nur vor dem Schlafengehen.', '«Good night» si dice solo prima di andare a dormire.'], ['„Goodbye“ oder kurz „Bye“ heißt Tschüss.', '«Goodbye» o semplicemente «Bye» vuol dire ciao/arrivederci.']] },
@@ -259,13 +263,20 @@ export const NOTES: Record<string, Record<CourseLang, Note[]>> = {
 };
 
 /** Artikel am Wortanfang → Geschlecht (für die Wortliste) */
+export const NOTES: Record<string, Record<CourseLang, Note[]>> = Object.fromEntries(
+  Object.entries(BASE_NOTES).map(([id, n]) => [id, { ...n, ...NOTES_EXTRA[id]!, ...NOTES_EXTRA2[id]! }])
+);
+
 export function genderOf(word: string, lang: CourseLang): 'm' | 'f' | 'n' | null {
   const first = word.split(/\s+/)[0]!.toLowerCase();
   const map: Partial<Record<CourseLang, Record<string, 'm' | 'f' | 'n'>>> = {
     de: { der: 'm', die: 'f', das: 'n' },
     it: { il: 'm', lo: 'm', la: 'f' },
     fr: { le: 'm', la: 'f' },
-    es: { el: 'm', la: 'f' }
+    es: { el: 'm', la: 'f' },
+    pt: { o: 'm', a: 'f' },
+    nl: { het: 'n' },
+    el: { ο: 'm', η: 'f', το: 'n' }
   };
   if (word.split(/\s+/).length < 2) return null;
   return map[lang]?.[first] ?? null;
