@@ -373,9 +373,9 @@ export function FlowSettings() {
   const o = useOwner();
   const owner = useOwnerId();
   const patch = useFlowStore((s) => s.patch);
-  const toggle = (k: 'showTranslation' | 'showTranslit', label: string) => (
+  const toggle = (k: 'showTranslation' | 'showTranslit' | 'effects', label: string) => (
     <label className="flex items-center gap-3 py-2">
-      <input type="checkbox" className="h-5 w-5 accent-minze-600" checked={o[k]} onChange={(e) => patch(owner, { [k]: e.target.checked })} data-testid={`opz-${k}`} />
+      <input type="checkbox" className="h-5 w-5 accent-minze-600" checked={o[k] !== false} onChange={(e) => patch(owner, { [k]: e.target.checked })} data-testid={`opz-${k}`} />
       <span>{label}</span>
     </label>
   );
@@ -401,6 +401,7 @@ export function FlowSettings() {
       <section className="karte-3d p-4">
         {toggle('showTranslation', t('settings.translation'))}
         {toggle('showTranslit', t('settings.translit'))}
+        {toggle('effects', t('settings.effects'))}
       </section>
       <p className="text-sm text-tinte/60">{t('settings.data')}</p>
     </div>

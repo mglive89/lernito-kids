@@ -3,7 +3,9 @@
  * (Texte, Segmente, richtige Varianten, Erklärungen).
  */
 import { useEffect, useMemo, useRef, useState, type ReactNode } from 'react';
-import { CheckCircle2, XCircle } from 'lucide-react';
+import { AnimatePresence, motion } from 'framer-motion';
+import { CheckCircle2, Flame, XCircle } from 'lucide-react';
+import { useFx } from './fx';
 import { isAccepted, joinSegments, normalizeAnswer } from './answer';
 import { dirOf, nameOf } from './catalog';
 import { bigButton, cn, PlayButton, SourceText, TargetText } from './components';
@@ -82,17 +84,20 @@ function CheckButton({ disabled, onClick, hidden }: { disabled: boolean; onClick
 function Options({ options, picked, onPick, locked, correct, render }: {
   options: string[]; picked: string | null; onPick: (o: string) => void; locked: boolean; correct: string; render: (o: string) => ReactNode;
 }) {
+  const fx = useFx();
   return (
     <div className="grid gap-2.5" role="radiogroup">
       {options.map((o, i) => (
-        <button key={`${o}-${i}`} type="button" role="radio" aria-checked={picked === o} disabled={locked} onClick={() => onPick(o)}
+        <motion.button key={`${o}-${i}`} type="button" role="radio" aria-checked={picked === o} disabled={locked} onClick={() => { fx.select(); onPick(o); }}
+          initial={fx.on ? { opacity: 0, y: 8 } : false} animate={{ opacity: 1, y: 0, scale: picked === o ? 1.015 : 1 }} transition={{ delay: i * 0.05, type: 'spring', stiffness: 400, damping: 26 }}
+          whileTap={fx.on ? { scale: 0.97 } : undefined}
           data-testid="opzione" data-correct={o === correct ? 'true' : undefined}
           className={cn('flex min-h-[3.25rem] items-center gap-3 rounded-xl border-2 border-b-4 px-4 py-2.5 text-start text-lg transition',
             picked === o ? 'border-himmel-500 bg-himmel-50' : 'border-tinte/15 bg-flaeche hover:bg-tinte/[0.03]',
             locked && o === correct && 'border-minze-500 bg-minze-50')}>
           <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg border-2 border-tinte/15 text-sm font-bold text-tinte/50">{i + 1}</span>
           <span className="min-w-0 flex-1">{render(o)}</span>
-        </button>
+        </motion.button>
       ))}
     </div>
   );
@@ -161,6 +166,7 @@ function Order(p: Sub<Extract<Exercise, { type: 'order' }>>) {
   // Segmente kommen aus der Lektion (nicht nach Leerzeichen getrennt) – nötig für Sprachen ohne Leerzeichen
   const pool = useMemo(() => shuffle([...ex.segments.map((s, i) => ({ s, key: `s${i}`, pos: i })), ...(ex.extra ?? []).map((s, i) => ({ s, key: `x${i}`, pos: -1 }))]), [ex]);
   const [chosen, setChosen] = useState<string[]>([]);
+  const fx = useFx();
   if (!item) return null;
   const byKey = new Map(pool.map((x) => [x.key, x]));
   const answer = chosen.map((k) => byKey.get(k)!.s);
@@ -172,14 +178,16 @@ function Order(p: Sub<Extract<Exercise, { type: 'order' }>>) {
       </div>
       <div lang={target} dir={dirOf(target)} className="flex min-h-[3.75rem] flex-wrap content-start gap-2 border-b-2 border-tinte/15 pb-3" data-testid="risposta-ordine" aria-live="polite">
         {chosen.map((k) => (
-          <button key={k} type="button" className={chip} disabled={p.locked} onClick={() => setChosen((c) => c.filter((x) => x !== k))}>{byKey.get(k)!.s}</button>
+          <motion.button layout layoutId={fx.on ? `seg-${k}` : undefined} key={k} type="button" className={chip} disabled={p.locked} onClick={() => { fx.pop(); setChosen((c) => c.filter((x) => x !== k)); }}>{byKey.get(k)!.s}</motion.button>
         ))}
       </div>
       <p className="text-sm text-tinte/55">{t('ex.tapWords')}</p>
       <div lang={target} dir={dirOf(target)} className="flex flex-wrap gap-2">
         {pool.map((x) => (
-          <button key={x.key} type="button" className={chip} disabled={p.locked || chosen.includes(x.key)} data-testid="segmento" data-pos={x.pos}
-            onClick={() => setChosen((c) => [...c, x.key])}>{x.s}</button>
+          chosen.includes(x.key)
+            ? <span key={x.key} className={cn(chip, 'border-dashed text-transparent')} aria-hidden>{x.s}</span>
+            : <motion.button layout layoutId={fx.on ? `seg-${x.key}` : undefined} key={x.key} type="button" className={chip} disabled={p.locked} data-testid="segmento" data-pos={x.pos}
+                onClick={() => { fx.pop(); setChosen((c) => [...c, x.key]); }}>{x.s}</motion.button>
         ))}
       </div>
       <CheckButton hidden={p.locked} disabled={!chosen.length} onClick={() => {
@@ -252,14 +260,34 @@ function Situation(p: Sub<Extract<Exercise, { type: 'situation' }>>) {
 }
 
 /** Rückmeldung nach dem Prüfen: richtig, oder richtige Antwort + Erklärung in der Ausgangssprache */
-export function Feedback({ result, explain, source, onNext, saved }: { result: CheckResult; explain: string; source: string; onNext: () => void; saved: boolean }) {
+export function Feedback({ result, explain, source, onNext, saved, streak = 0 }: { result: CheckResult; explain: string; source: string; onNext: () => void; saved: boolean; streak?: number }) {
   const { t } = useT();
+  const fx = useFx();
   const btn = useRef<HTMLButtonElement>(null);
-  useEffect(() => { btn.current?.focus(); }, []);
+  const icon = useRef<HTMLSpanElement>(null);
+  useEffect(() => {
+    btn.current?.focus({ preventScroll: true });
+    btn.current?.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+    if (result.ok) { if (streak >= 3) fx.streak(icon.current); else fx.correct(icon.current); } else fx.wrong();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
   return (
-    <div className={cn('rounded-2xl p-4 ring-2', result.ok ? 'bg-minze-50 ring-minze-300' : 'bg-koralle-50 ring-koralle-300')} role="status" aria-live="assertive" data-testid="esito" data-ok={result.ok ? 'true' : 'false'}>
+    <motion.div initial={fx.on ? { opacity: 0, y: 24 } : false} animate={{ opacity: 1, y: 0 }} transition={{ type: 'spring', stiffness: 380, damping: 28 }}
+      className={cn('rounded-2xl p-4 ring-2', result.ok ? 'bg-minze-50 ring-minze-300' : 'bg-koralle-50 ring-koralle-300')} role="status" aria-live="assertive" data-testid="esito" data-ok={result.ok ? 'true' : 'false'}>
       <p className={cn('flex items-center gap-2 font-display text-xl font-bold', result.ok ? 'text-minze-700' : 'text-koralle-700')}>
-        {result.ok ? <CheckCircle2 /> : <XCircle />} {result.ok ? t('ex.right') : t('ex.wrong')}
+        <motion.span ref={icon} className="inline-flex" initial={fx.on ? { scale: 0, rotate: result.ok ? -90 : 0 } : false}
+          animate={result.ok ? { scale: 1, rotate: 0 } : { scale: 1, x: [0, -6, 6, -4, 4, 0] }} transition={{ type: 'spring', stiffness: 500, damping: 15 }}>
+          {result.ok ? <CheckCircle2 /> : <XCircle />}
+        </motion.span>
+        {result.ok ? t('ex.right') : t('ex.wrong')}
+        <AnimatePresence>
+          {result.ok && streak >= 3 && (
+            <motion.span key="streak" initial={{ scale: 0.4, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} transition={{ type: 'spring', stiffness: 500, damping: 14, delay: 0.1 }}
+              className="ms-auto inline-flex items-center gap-1 rounded-full bg-sonne-500 px-2.5 py-0.5 text-sm text-white" data-testid="serie">
+              <Flame size={16} /> {t('ex.streak', { n: streak })}
+            </motion.span>
+          )}
+        </AnimatePresence>
       </p>
       {!result.ok && (
         <div className="mt-2 space-y-2">
@@ -270,6 +298,6 @@ export function Feedback({ result, explain, source, onNext, saved }: { result: C
       )}
       {result.ok && explain && <SourceText lang={source} className="mt-1 block text-sm text-tinte/70">{explain}</SourceText>}
       <button ref={btn} type="button" className={bigButton(result.ok ? 'primary' : 'outline', 'mt-4 w-full')} onClick={onNext} data-testid="continua">{t('ex.continue')}</button>
-    </div>
+    </motion.div>
   );
 }

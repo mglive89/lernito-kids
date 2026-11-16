@@ -86,6 +86,7 @@ test('LinguaFlow: Einrichtung, Lektion IT→DE, Fehler mit Erklärung und Ripass
   }
   expect(types).toEqual(['listen', 'choice', 'cloze', 'order', 'choice', 'write', 'situation']);
   await expect(page.getByTestId('lf-fine')).toHaveAttribute('data-score', '6');
+  await expect(page.getByTestId('lf-fine')).toHaveAttribute('data-stars', '2');
   await page.getByTestId('fine-ripasso').click();
   await expect(page.getByTestId('lf-ripasso')).toHaveAttribute('data-n', '1');
   await page.getByTestId('inizia-ripasso').click();
@@ -253,4 +254,21 @@ test('LinguaFlow: Lektionen und Fortschritt offline', async ({ page, context }) 
   await page.getByTestId('lezione-de-a1-09').click();
   await expect(page.getByTestId('titolo-lezione')).toHaveText('Al ristorante');
   await context.setOffline(false);
+});
+
+test('LinguaFlow: Effekte – Serie, Sterne und Schalter in den Einstellungen', async ({ page }) => {
+  await setup(page, 'it', 'ital', 'es', 'espa');
+  await page.getByTestId('inizia-corso').click();
+  await page.getByTestId('lezione-es-intro-01').click();
+  await page.getByTestId('inizia-esercizi').click();
+  for (let k = 0; k < 3; k++) { await solve(page); if (k < 2) await page.getByTestId('continua').click(); }
+  await expect(page.getByTestId('serie')).toContainText('3');
+  await page.goto('/sprachen/#/impostazioni');
+  await expect(page.getByTestId('opz-effects')).toBeChecked();
+  await page.getByTestId('opz-effects').uncheck();
+  await page.reload();
+  await expect(page.getByTestId('opz-effects')).not.toBeChecked();
+  await page.goto('/sprachen/#/corso');
+  await playLesson(page, 'lezione-es-intro-02');
+  await expect(page.getByTestId('lf-fine')).toHaveAttribute('data-stars', '3');
 });
