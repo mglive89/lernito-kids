@@ -135,7 +135,7 @@ function Dashboard({ ctx }: { ctx: FahrschuleCtx }) {
   const langs = EXAM_LANGUAGES[c];
   const actions = [
     { to: '/fuehrerschein/teoria', icon: BookOpen, color: 'himmel', title: t('Theorie lernen', 'Studia la teoria'), text: t('Lektionen, Verkehrszeichen, Üben nach Kapitel', 'Lezioni, segnali, esercizi per capitolo'), testid: 'fs-azione-teoria' },
-    { to: '/fuehrerschein/quiz/quiz-illustrati', icon: Images, color: 'lila', title: t('Bildfragen und Fangfragen', 'Quiz illustrati e trabocchetti'), text: t('Skizzen von Kreuzungen und typische Fallen', 'Schemi di incroci e tranelli tipici'), testid: 'fs-azione-quiz' },
+    { to: '/fuehrerschein/quiz/quiz-illustrati', icon: Images, color: 'lila', title: t('Bildfragen und Fangfragen', 'Quiz illustrati e trabocchetti'), text: t('Kreuzungen mit Bildern, Skizzen und typische Fallen', 'Incroci con immagini, schemi e tranelli tipici'), testid: 'fs-azione-quiz' },
     { to: '/fuehrerschein/esame', icon: GraduationCap, color: 'koralle', title: t('Prüfung simulieren', 'Simula l’esame'), text: profile.scoring.type === 'errors' ? t(`${profile.questions} Fragen, ${profile.minutes} Min., max. ${profile.scoring.maxErrors} Fehler`, `${profile.questions} quesiti, ${profile.minutes} min, max ${profile.scoring.maxErrors} errori`) : t(`${profile.questions} Fragen, max. ${profile.scoring.maxPoints} Fehlerpunkte`, `${profile.questions} domande, max ${profile.scoring.maxPoints} punti di errore`), testid: 'fs-azione-esame' }
   ];
   return (
@@ -218,6 +218,10 @@ export function FahrschuleTheoryPage() {
                 </Link>
               );
             })}
+            <Link to="/fuehrerschein/quiz/incroci" data-testid="fs-incroci-link" className="karte-3d flex items-center gap-3 p-4">
+              <IconBadge icon={Split} color="minze" size="lg" />
+              <span className="flex-1"><span className="block font-bold leading-tight">{t('Kreuzungen mit Bildern', 'Incroci con immagini')}</span><span className="text-sm text-tinte/55">{t(`${pool.filter((q) => q.image?.type === 'diagram' && q.image.id.startsWith('k-')).length} Aufgaben: Wer fährt zuerst?`, `${pool.filter((q) => q.image?.type === 'diagram' && q.image.id.startsWith('k-')).length} esercizi: chi passa per primo?`)}</span></span>
+            </Link>
             <Link to="/fuehrerschein/segnali" data-testid="fs-segnali-link" className="karte-3d flex items-center gap-3 p-4">
               <span className="flex h-14 w-14 items-center justify-center"><RoadSign id="vorfahrtstrasse" size={52} title="" /></span>
               <span className="flex-1"><span className="block font-bold leading-tight">{t('Verkehrszeichen', 'Segnaletica')}</span><span className="text-sm text-tinte/55">{t(`${SIGNS.length} Zeichen · ${stats.signsKnown.length} sicher erkannt`, `${SIGNS.length} segnali · ${stats.signsKnown.length} riconosciuti`)}</span></span>
@@ -362,7 +366,7 @@ function FahrschuleQuizPage() {
 
   const titles: Record<string, string> = {
     misto: t('Gemischt', 'Misto'), illustrati: t('Bildfragen', 'Quiz illustrati'), trabocchetti: t('Fangfragen', 'Trabocchetti'),
-    'quiz-illustrati': t('Bild- und Fangfragen', 'Quiz illustrati e trabocchetti'), errori: t('Fehler wiederholen', 'Rifai gli errori')
+    'quiz-illustrati': t('Bild- und Fangfragen', 'Quiz illustrati e trabocchetti'), incroci: t('Kreuzungen', 'Incroci'), errori: t('Fehler wiederholen', 'Rifai gli errori')
   };
   const title = titles[mode] ?? (pickText(chapterById(mode)?.name, lang).text || t('Üben', 'Esercizi'));
   const cur = round[i];
@@ -384,6 +388,7 @@ function FahrschuleQuizPage() {
           <div className="flex flex-wrap gap-2">
             <Link to="/fuehrerschein/quiz/illustrati" className="chip bg-flaeche ring-1 ring-tinte/10">{t('Nur Bildfragen', 'Solo illustrati')}</Link>
             <Link to="/fuehrerschein/quiz/trabocchetti" className="chip bg-flaeche ring-1 ring-tinte/10" data-testid="fs-solo-trabocchetti">{t('Nur Fangfragen', 'Solo trabocchetti')}</Link>
+            <Link to="/fuehrerschein/quiz/incroci" className="chip bg-flaeche ring-1 ring-tinte/10" data-testid="fs-solo-incroci">{t('Nur Kreuzungen', 'Solo incroci')}</Link>
           </div>
         )}
         {round.length === 0 && <LinoSays mood="freude" text={mode === 'errori' ? t('Keine Fehler zum Wiederholen. Super!', 'Nessun errore da rifare. Ottimo!') : t('Hier gibt es noch keine Fragen.', 'Qui non ci sono ancora domande.')} />}

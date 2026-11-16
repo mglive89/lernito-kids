@@ -156,3 +156,21 @@ test('Fahrschule: prima dei 18 anni bloccata, i genitori possono attivarla', asy
   await page.goto('/entdecken');
   await expect(page.getByTestId('entdecken-fuehrerschein')).toBeVisible();
 });
+
+test('Fahrschule: Kreuzungsaufgaben mit Bildern in beiden Ländern und Sprachen', async ({ page }) => {
+  await createProfile(page, 'Luca', '13', 'IT');
+  for (const [country, lang, title] of [['DE', 'de', 'Kreuzungen'], ['IT', 'it', 'Incroci']] as const) {
+    await choose(page, country, lang);
+    await page.getByTestId('fs-azione-teoria').click();
+    await page.getByTestId('fs-incroci-link').click();
+    await expect(page.getByTestId('fs-ueben')).toHaveAttribute('data-modus', 'incroci');
+    await expect(page.getByRole('heading', { name: title })).toBeVisible();
+    const fig = page.locator('[data-testid^="diagramm-k-"]');
+    await expect(fig).toBeVisible();
+    await expect(fig.getByTestId('diagramm-hervorhebung')).toHaveCount(0);
+    await answer(page, true);
+    await page.getByTestId('fs-pruefen').click();
+    expect(await fig.getByTestId('diagramm-hervorhebung').count()).toBeGreaterThanOrEqual(2);
+    await expect(page.getByTestId('fs-dettaglio')).toBeVisible();
+  }
+});

@@ -1,5 +1,6 @@
 import type { ReactNode } from 'react';
 import type { I18n } from './schema';
+import { SignGlyph } from './signs';
 
 /**
  * Eigene Verkehrs-Skizzen von oben (SVG). Blau = dein Fahrzeug, Rot = anderes Fahrzeug.
@@ -195,6 +196,74 @@ export const DIAGRAMS: DiagramDef[] = [
     )
   }
 ];
+
+// ---------- Kreuzungsaufgaben: Reihenfolge der Fahrzeuge ----------
+export type Arm = 'S' | 'W' | 'N' | 'E';
+export type Turn = 'geradeaus' | 'links' | 'rechts';
+export type CarColor = 'blau' | 'rot' | 'gruen';
+export interface CrossCar { arm: Arm; turn: Turn; color: CarColor; order: number }
+export interface CrossScene { id: string; signs: Partial<Record<Arm, string>>; cars: CrossCar[]; decisive: I18n }
+
+const ARM_ANGLE: Record<Arm, number> = { S: 0, W: 90, N: 180, E: 270 };
+const CAR_COLOR: Record<CarColor, string> = { blau: BLUE, rot: RED, gruen: '#12B886' };
+const TURN_PATH: Record<Turn, string> = {
+  geradeaus: 'M168 205 V95',
+  rechts: 'M168 205 V192 Q168 168 192 168 H248',
+  links: 'M168 205 V174 Q168 132 122 132 H58'
+};
+/** Punkt um die Kreuzungsmitte drehen (Skizzen sind für den Arm „Süden“ gezeichnet). */
+function turnPoint(x: number, y: number, deg: number): [number, number] {
+  const r = (deg * Math.PI) / 180, dx = x - 150, dy = y - 150;
+  return [150 + dx * Math.cos(r) - dy * Math.sin(r), 150 + dx * Math.sin(r) + dy * Math.cos(r)];
+}
+
+export const CROSS_SCENES: CrossScene[] = [
+  { id: 'k-rechts-drei', signs: {}, cars: [{ arm: 'S', turn: 'geradeaus', color: 'blau', order: 2 }, { arm: 'E', turn: 'geradeaus', color: 'rot', order: 1 }, { arm: 'W', turn: 'geradeaus', color: 'gruen', order: 3 }],
+    decisive: { de: 'Ohne Zeichen: Rot hat niemanden rechts und fährt zuerst. Blau hat Rot rechts, Grün hat Blau rechts.', it: 'Senza segnali: il rosso non ha nessuno a destra e passa per primo. Il blu ha il rosso a destra, il verde ha il blu a destra.' } },
+  { id: 'k-links-gegen', signs: {}, cars: [{ arm: 'S', turn: 'links', color: 'blau', order: 2 }, { arm: 'N', turn: 'geradeaus', color: 'rot', order: 1 }],
+    decisive: { de: 'Blau biegt links ab und muss den entgegenkommenden roten Wagen durchlassen.', it: 'Il blu svolta a sinistra e deve lasciar passare il rosso che arriva di fronte.' } },
+  { id: 'k-hauptstrasse-links', signs: { S: 'vorfahrtstrasse', N: 'vorfahrtstrasse', E: 'vorfahrt-gewaehren', W: 'vorfahrt-gewaehren' },
+    cars: [{ arm: 'S', turn: 'links', color: 'blau', order: 2 }, { arm: 'N', turn: 'geradeaus', color: 'rot', order: 1 }, { arm: 'E', turn: 'geradeaus', color: 'gruen', order: 3 }],
+    decisive: { de: 'Blau und Rot sind auf der Vorfahrtstraße. Blau biegt links ab und lässt Rot zuerst. Grün muss Vorfahrt gewähren und fährt zuletzt.', it: 'Blu e rosso sono sulla strada con diritto di precedenza. Il blu svolta a sinistra e lascia passare il rosso. Il verde deve dare precedenza e passa per ultimo.' } },
+  { id: 'k-stop', signs: { S: 'stop', N: 'stop', E: 'vorfahrtstrasse', W: 'vorfahrtstrasse' },
+    cars: [{ arm: 'S', turn: 'geradeaus', color: 'blau', order: 2 }, { arm: 'W', turn: 'geradeaus', color: 'rot', order: 1 }, { arm: 'E', turn: 'rechts', color: 'gruen', order: 1 }],
+    decisive: { de: 'Blau steht am STOP: anhalten und beide Fahrzeuge auf der Vorfahrtstraße zuerst fahren lassen. Rot und Grün behindern sich nicht.', it: 'Il blu è allo STOP: si ferma e lascia passare entrambi i veicoli sulla strada principale. Rosso e verde non si ostacolano.' } },
+  { id: 'k-rechtsabbieger', signs: {}, cars: [{ arm: 'S', turn: 'rechts', color: 'blau', order: 1 }, { arm: 'W', turn: 'geradeaus', color: 'rot', order: 2 }],
+    decisive: { de: 'Rot hat Blau rechts von sich. Dass Blau abbiegt, ändert nichts: Blau fährt zuerst.', it: 'Il rosso ha il blu alla sua destra. Che il blu svolti non cambia nulla: il blu passa per primo.' } },
+  { id: 'k-nebenstrasse-zwei', signs: { S: 'vorfahrt-gewaehren', N: 'vorfahrt-gewaehren', E: 'vorfahrtstrasse', W: 'vorfahrtstrasse' },
+    cars: [{ arm: 'S', turn: 'geradeaus', color: 'blau', order: 2 }, { arm: 'E', turn: 'geradeaus', color: 'rot', order: 1 }, { arm: 'N', turn: 'rechts', color: 'gruen', order: 2 }],
+    decisive: { de: 'Rot ist auf der Vorfahrtstraße und fährt zuerst. Danach Blau und Grün gleichzeitig: Grün biegt rechts ab, ihre Wege kreuzen sich nicht.', it: 'Il rosso è sulla strada principale e passa per primo. Poi blu e verde insieme: il verde svolta a destra e le traiettorie non si incrociano.' } }
+];
+
+function drawCrossScene(sc: CrossScene, reveal: boolean): ReactNode {
+  return (
+    <>
+      <Crossroads />
+      {(Object.entries(sc.signs) as [Arm, string][]).map(([arm, sign]) => {
+        const [x, y] = turnPoint(203, 214, ARM_ANGLE[arm]);
+        return <SignGlyph key={arm} id={sign} x={x} y={y} size={30} />;
+      })}
+      {sc.cars.map((c) => (
+        <g key={c.color} transform={`rotate(${ARM_ANGLE[c.arm]} 150 150)`}>
+          <Path d={TURN_PATH[c.turn]} color={CAR_COLOR[c.color]} />
+          <Car x={168} y={240} color={CAR_COLOR[c.color]} />
+        </g>
+      ))}
+      {reveal && sc.cars.map((c) => {
+        const [x, y] = turnPoint(168, 240, ARM_ANGLE[c.arm]);
+        return (
+          <g key={`n-${c.color}`} data-testid="diagramm-hervorhebung">
+            <circle cx={x} cy={y} r="15" fill={HI} stroke="#1C1C1C" strokeWidth="2" />
+            <text x={x} y={y + 6} textAnchor="middle" fontFamily="Arial, sans-serif" fontWeight="800" fontSize="17" fill="#1C1C1C">{c.order}</text>
+          </g>
+        );
+      })}
+    </>
+  );
+}
+
+DIAGRAMS.push(...CROSS_SCENES.map((sc): DiagramDef => ({ id: sc.id, decisive: sc.decisive, draw: (r) => drawCrossScene(sc, r) })));
+export const isCrossing = (id: string) => CROSS_SCENES.some((s) => s.id === id);
 
 export const diagramById = (id: string) => DIAGRAMS.find((d) => d.id === id);
 
