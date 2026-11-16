@@ -2,7 +2,7 @@ import { describe, expect, it } from 'vitest';
 import { createRng } from '../lib/random';
 import { buildExam, drivingAvailable, emptyStats, examPool, isCorrect, lessonsFor, practicePool, practiceQuestions, questionsFor, recordAnswer, scoreExam, statsKey } from './bank';
 import { CHAPTERS, COVERAGE } from './chapters';
-import { DIAGRAMS } from './diagrams';
+import { CROSS_SCENES, DIAGRAMS, diagramById } from './diagrams';
 import { PACKS, PACK_FORMAT, SCHEMA_VERSION, validatePack, type ContentPack } from './packs';
 import { EXAM_PROFILES, profileFor } from './profiles';
 import { missingLangs, pickText, validateQuestion, type DrivingCountry, type Question, type StudyLang } from './schema';
@@ -171,5 +171,26 @@ describe('Fahrschule – Fortschritt', () => {
       expect(practiceQuestions(c, 'trabocchetti').every((x) => x.trap)).toBe(true);
       expect(practiceQuestions(c, 'quiz-illustrati').length).toBeGreaterThanOrEqual(8);
     }
+  });
+
+  it('Kreuzungsaufgaben: eigene Skizzen, beide Sprachen, eigener Modus', () => {
+    for (const sc of CROSS_SCENES) {
+      expect(diagramById(sc.id)).toBeTruthy();
+      expect(sc.decisive.de && sc.decisive.it).toBeTruthy();
+      const orders = sc.cars.map((c) => c.order);
+      expect(Math.min(...orders)).toBe(1);
+    }
+    const de = practiceQuestions('DE', 'incroci');
+    const it = practiceQuestions('IT', 'incroci');
+    expect(de.length).toBe(CROSS_SCENES.length);
+    expect(it.length).toBe(CROSS_SCENES.length * 2);
+    for (const x of [...de, ...it]) {
+      expect(validateQuestion(x)).toEqual([]);
+      expect(x.chapter).toBe('precedenza');
+      expect(missingLangs(x)).toEqual([]);
+      expect(x.image?.alt.de && x.image.alt.it).toBeTruthy();
+    }
+    expect(new Set(de.map((x) => x.image?.id)).size).toBe(CROSS_SCENES.length);
+    for (const c of COUNTRIES) expect(lessonsFor(c).some((l) => l.id.endsWith('-l-kreuzungen'))).toBe(true);
   });
 });

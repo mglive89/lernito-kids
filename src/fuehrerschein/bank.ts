@@ -26,6 +26,7 @@ export function practiceQuestions(c: DrivingCountry, mode: PracticeMode, wrongId
   if (mode === 'illustrati') return pool.filter((q) => q.image);
   if (mode === 'trabocchetti') return pool.filter((q) => q.trap);
   if (mode === 'quiz-illustrati') return pool.filter((q) => q.trap || q.image?.type === 'diagram');
+  if (mode === 'incroci') return pool.filter((q) => q.image?.type === 'diagram' && q.image.id.startsWith('k-'));
   if (mode === 'errori') return wrongIds.map((id) => pool.find((q) => q.id === id)).filter((q): q is Question => !!q);
   return pool.filter((q) => q.chapter === mode);
 }

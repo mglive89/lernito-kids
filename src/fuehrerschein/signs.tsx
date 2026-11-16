@@ -278,3 +278,10 @@ export function RoadSign({ id, size = 96, title }: { id: string; size?: number; 
 }
 
 export const hasDrawing = (id: string) => id in DRAW;
+
+/** Zeichen als Teil einer größeren Zeichnung (z. B. Kreuzungsskizze), Mitte bei (x, y). */
+export function SignGlyph({ id, x, y, size }: { id: string; x: number; y: number; size: number }) {
+  const draw = DRAW[id];
+  if (!draw) return null;
+  return <svg x={x - size / 2} y={y - size / 2} width={size} height={size} viewBox="0 0 100 100" data-testid={`skizze-schild-${id}`}>{draw()}</svg>;
+}

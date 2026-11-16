@@ -1,5 +1,6 @@
 import type { Lesson } from '../schema';
-import { DEMO_SOURCE } from './demo';
+import { DEMO_SOURCE } from './source';
+import { CROSSING_LESSONS } from './crossings';
 
 const L = (l: Omit<Lesson, 'source' | 'version' | 'status'>): Lesson => ({ ...l, source: DEMO_SOURCE, version: 1, status: 'demo' });
 const img = (id: string, de: string, it: string) => ({ type: 'diagram' as const, id, alt: { de, it } });
@@ -122,4 +123,6 @@ export const LESSONS: Lesson[] = [
         body: { de: 'Auf den Standstreifen, Warnblinker, Warnweste anziehen, Warndreieck mindestens 50 m dahinter, sichtbar aus 100 m.', it: 'Accostare sulla corsia di emergenza, luci di emergenza, giubbotto, triangolo ad almeno 50 m visibile da 100 m.' } }
     ]
   })
+  ,
+  ...CROSSING_LESSONS
 ];

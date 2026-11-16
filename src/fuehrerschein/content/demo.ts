@@ -2,13 +2,15 @@ import type { Txt } from '../../i18n';
 import { RAW_DE } from '../questionsDE';
 import { RAW_IT } from '../questionsIT';
 import { SIGNS, type SignDef, type SignGroup } from '../signs';
-import type { ChapterId, I18n, Question, QuestionImage, SourceRef } from '../schema';
+import type { ChapterId, I18n, Question, QuestionImage } from '../schema';
+import { DEMO_SOURCE } from './source';
+import { CROSSING_DE, CROSSING_IT } from './crossings';
 
 /**
  * Demo-Inhalt: eigene Fragen von Lernito (keine amtlichen Fragen).
  * Status 'demo' – nicht Frage für Frage mit dem amtlichen Katalog abgeglichen.
  */
-export const DEMO_SOURCE: SourceRef = { kind: 'original', ref: 'Lernito – eigene Frage (Demo-Inhalt)' };
+export { DEMO_SOURCE } from './source';
 const V = 1;
 const asI18n = (t: Txt): I18n => (typeof t === 'string' ? { de: t, it: t } : { de: t.de, it: t.it });
 
@@ -128,6 +130,7 @@ export const DEMO_DE: Question[] = [
   ...RAW_DE.map(([id, , points, q, opts, expl]) => multi(id, CHAPTER_DE[id]!, points, asI18n(q), opts.map(([t, ok]): [I18n, boolean] => [asI18n(t), ok]), asI18n(expl))),
   ...DE_ILLUSTRATED,
   ...DE_TRAPS,
+  ...CROSSING_DE,
   ...signQuestionsDE()
 ];
 
@@ -187,5 +190,6 @@ export const DEMO_IT: Question[] = [
   ...RAW_IT.map(([id, , s, ok, expl]) => vf(id, CHAPTER_IT[id]!, asI18n(s), ok, asI18n(expl))),
   ...IT_ILLUSTRATED,
   ...IT_TRAPS,
+  ...CROSSING_IT,
   ...signQuestionsIT()
 ];
