@@ -16,12 +16,14 @@ import { LESSONS, lessonQuizModule } from '../video/lessons';
 import { customToModule, type CustomModule } from './custom';
 import { subjectDef } from '../school/subjects';
 import type { Country } from '../school/systems';
+import { withPictures } from '../pictures/mix';
 
+/** Schulmodule bekommen zusätzlich Bildaufgaben (siehe src/pictures). */
 export const BUILTIN_MODULES: LearningModule[] = [
   ...KITA_MODULES, ...MATH_MODULES, ...MATH_SEK_MODULES, ...GERMAN_MODULES, ...GERMAN_SEK_MODULES, ...ITALIAN_MODULES,
   ...SACH_MODULES, ...SCIENCE_MODULES, ...HUMANITIES_MODULES, ...ENGLISH_MODULES, ...EXTRA_MODULES, ...CODING_MODULES,
   ...WORLD3D_MODULES, ...LESSONS.map(lessonQuizModule), ...LANGUAGE_MODULES
-];
+].map(withPictures);
 
 export function allModules(custom: CustomModule[] = [], includeDrafts = false): LearningModule[] {
   return [...BUILTIN_MODULES, ...custom.filter((c) => includeDrafts || c.published).map(customToModule)];

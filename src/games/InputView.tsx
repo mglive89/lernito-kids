@@ -55,7 +55,7 @@ export function InputView({ task, onCorrect, onWrong, reveal, done }: TaskViewPr
 
   const shown = (reveal ? String(task.answer) : value).replace('-', '−');
   return (
-    <div className="flex w-full max-w-sm flex-col items-center gap-4">
+    <div className="flex w-full max-w-sm flex-col items-center gap-4" data-testid="eingabe" data-answer={task.answer}>
       <motion.output
         key={shake}
         animate={shake ? { x: [0, -12, 12, -8, 8, 0] } : {}}

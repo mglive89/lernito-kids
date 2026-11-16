@@ -1,5 +1,5 @@
 import { expect, test } from '@playwright/test';
-import { confirmAnswer, createProfile, startExercises, fillProfileForm, playChoiceRound, PIN, setPinFlow, waitNext } from './helpers';
+import { answerCurrent, confirmAnswer, createProfile, startExercises, fillProfileForm, playChoiceRound, PIN, setPinFlow, waitNext } from './helpers';
 
 test('Kindergarten: Zählen spielen, Sterne bleiben nach Neuladen erhalten', async ({ page }) => {
   await createProfile(page, 'Mila', 'kita');
@@ -59,14 +59,7 @@ test('Grundschule Klasse 2: Einmaleins mit Zahlenfeld lösen', async ({ page }) 
     const area = page.getByTestId('task-area');
     await area.waitFor();
     const idx = await area.getAttribute('data-index');
-    const prompt = await page.getByTestId('task-prompt').innerText();
-    if (await page.locator('[data-correct="true"]').count()) {
-      await page.locator('[data-correct="true"]').first().click();
-    } else {
-      const [a, b] = prompt.match(/\d+/g)!.map(Number);
-      for (const d of String(a! * b!)) await page.getByTestId(`key-${d}`).click();
-      await page.getByTestId('key-ok').click();
-    }
+    await answerCurrent(page);
     await confirmAnswer(page);
     await waitNext(page, idx);
   }
