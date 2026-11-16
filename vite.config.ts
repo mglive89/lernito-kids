@@ -9,16 +9,18 @@ export default defineConfig({
   base,
   plugins: [
     react(),
-    // Die Sprachen-App nutzt ihr eigenes Manifest (sprachen/manifest.webmanifest), nicht das von Lernito.
+    // Sprachen-App und MathLens nutzen ihr eigenes Manifest, nicht das von Lernito.
     {
       name: 'sprachen-eigenes-manifest',
       enforce: 'post',
       generateBundle: {
         order: 'post',
         handler(_opts, bundle) {
-          const page = bundle['sprachen/index.html'];
-          if (page && page.type === 'asset') {
-            page.source = String(page.source).replace(/<link rel="manifest" href="[^"]*?\/manifest\.webmanifest"[^>]*>/g, (m) => (m.includes('./manifest') ? m : ''));
+          for (const name of ['sprachen/index.html', 'mathlens/index.html']) {
+            const page = bundle[name];
+            if (page && page.type === 'asset') {
+              page.source = String(page.source).replace(/<link rel="manifest" href="[^"]*?\/manifest\.webmanifest"[^>]*>/g, (m) => (m.includes('./manifest') ? m : ''));
+            }
           }
         }
       }
@@ -57,7 +59,7 @@ export default defineConfig({
         }],
         navigateFallback: `${base}index.html`,
         // Die Sprachen-App hat ihre eigene Startseite
-        navigateFallbackDenylist: [new RegExp(`^${base.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}sprachen/`)],
+        navigateFallbackDenylist: [new RegExp(`^${base.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}(sprachen|mathlens)/`)],
         maximumFileSizeToCacheInBytes: 4 * 1024 * 1024
       },
       devOptions: { enabled: false }
@@ -66,8 +68,8 @@ export default defineConfig({
   build: {
     chunkSizeWarningLimit: 1200,
     rollupOptions: {
-      // Zwei Apps: Lernito (index.html) und Lernito Sprachen (sprachen/index.html)
-      input: { main: 'index.html', sprachen: 'sprachen/index.html' },
+      // Drei Apps: Lernito (index.html), Lernito Sprachen (sprachen/index.html) und MathLens (mathlens/index.html)
+      input: { main: 'index.html', sprachen: 'sprachen/index.html', mathlens: 'mathlens/index.html' },
       output: {
         manualChunks: {
           three: ['three', '@react-three/fiber'],

@@ -3,8 +3,7 @@ import { Link, Navigate, useNavigate, useParams } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import {
   ArrowLeft, ArrowRight, Check, ChefHat, CircleCheck, CircleX, Clock, Code2, Download, Hammer, Lightbulb, ListChecks, Minus, Play, Plus,
-  RotateCcw, Scissors, Search, ShieldAlert, Users, WashingMachine, type LucideIcon
-} from 'lucide-react';
+  RotateCcw, Scissors, Search, ShieldAlert, Users, WashingMachine, type LucideIcon, ScanLine } from 'lucide-react';
 import { AnimatedGrid, Confetti, IconBadge, Notice, ProgressBar, TopBar, colorSet } from '../../components/ui';
 import { Lino, LinoSays } from '../../components/Lino';
 import { Brand, WorldSwitch } from '../../components/WorldSwitch';
@@ -113,6 +112,15 @@ export function AdultHomePage() {
             <ArrowRight className="text-minze-600" aria-hidden />
           </Link>
         )}
+
+        <a href={`${import.meta.env.BASE_URL}mathlens/`} className="karte-3d flex items-center gap-4 p-4 transition hover:-translate-y-0.5" data-testid="adult-mathlens">
+          <span className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-[#1E3A8A] text-white"><ScanLine size={28} /></span>
+          <span className="min-w-0 flex-1">
+            <span className="block font-display text-lg font-bold">{L('Hilf mir bei den Hausaufgaben', 'Aiutami con i compiti')}</span>
+            <span className="block text-sm text-tinte/60">{L('MathLens: Matheaufgabe fotografieren, prüfen und Schritt für Schritt lösen', 'MathLens: fotografa un esercizio di matematica, controllalo e risolvilo passo dopo passo')}</span>
+          </span>
+          <ArrowRight className="text-himmel-600" aria-hidden />
+        </a>
 
         <label className="relative block">
           <Search size={20} className="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-tinte/40" aria-hidden />

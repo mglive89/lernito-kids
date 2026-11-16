@@ -22,6 +22,10 @@ Weitere Befehle:
 
 > Die PWA-Installation und der Offline-Modus funktionieren im Produktions-Build (`npm run build && npm run preview`) bzw. nach dem Deployment über HTTPS. Zum Testen auf dem Handy im WLAN: `npx vite preview --host`.
 
+## MathLens – „Hilf mir bei den Hausaufgaben“
+
+Eigene PWA unter `/mathlens/`: Matheaufgabe fotografieren, Formel prüfen, Lösungsweg Schritt für Schritt. Details, Beispiele und Grenzen der Texterkennung: [mathlens/README.md](mathlens/README.md).
+
 ## Hosting auf GitHub Pages
 
 Bei jedem Push auf `main` baut `.github/workflows/pages.yml` die App (inkl. Unit-Tests) und veröffentlicht sie unter `https://<benutzer>.github.io/<repo>/`. Einmalig nötig: im Repository unter **Settings → Pages → Source** „GitHub Actions“ auswählen. Der Unterpfad wird über die Umgebungsvariable `BASE_PATH` gesetzt; lokal bleibt alles unter `/`.

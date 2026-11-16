@@ -40,30 +40,52 @@ async function getWorker(): Promise<Worker> {
   return workerPromise;
 }
 
-/** Foto verkleinern, in Graustufen umwandeln und den Kontrast erhöhen. */
+/**
+ * Foto für die Texterkennung vorbereiten: Größe anpassen, Graustufen und Schwarz-Weiß nach Otsu
+ * (blasse Linien von kariertem oder liniertem Papier verschwinden), dazu ein weißer Rand.
+ */
 async function prepare(file: Blob): Promise<HTMLCanvasElement> {
   const bmp = await createImageBitmap(file);
-  const max = 2000;
-  const scale = Math.min(1, max / Math.max(bmp.width, bmp.height));
+  const max = 2000, minH = 120;
+  let scale = Math.min(1, max / Math.max(bmp.width, bmp.height));
+  if (bmp.height * scale < minH) scale = Math.min(4, minH / bmp.height);
   const w = Math.round(bmp.width * scale), h = Math.round(bmp.height * scale);
+  const pad = Math.round(Math.max(16, h * 0.08));
   const c = document.createElement('canvas');
-  c.width = w; c.height = h;
+  c.width = w + 2 * pad; c.height = h + 2 * pad;
   const ctx = c.getContext('2d', { willReadFrequently: true })!;
-  ctx.drawImage(bmp, 0, 0, w, h);
+  ctx.fillStyle = '#fff';
+  ctx.fillRect(0, 0, c.width, c.height);
+  ctx.drawImage(bmp, pad, pad, w, h);
   bmp.close();
-  const img = ctx.getImageData(0, 0, w, h);
+  const img = ctx.getImageData(0, 0, c.width, c.height);
   const d = img.data;
-  let lo = 255, hi = 0;
-  const gray = new Uint8ClampedArray(w * h);
-  for (let i = 0, j = 0; i < d.length; i += 4, j++) {
-    const g = 0.299 * d[i]! + 0.587 * d[i + 1]! + 0.114 * d[i + 2]!;
+  const n = c.width * c.height;
+  const gray = new Uint8ClampedArray(n);
+  const hist = new Array<number>(256).fill(0);
+  for (let i = 0, j = 0; j < n; i += 4, j++) {
+    const g = Math.round(0.299 * d[i]! + 0.587 * d[i + 1]! + 0.114 * d[i + 2]!);
     gray[j] = g;
-    if (g < lo) lo = g;
-    if (g > hi) hi = g;
+    hist[g]!++;
   }
-  const range = Math.max(1, hi - lo);
-  for (let i = 0, j = 0; i < d.length; i += 4, j++) {
-    const v = ((gray[j]! - lo) / range) * 255;
+  // Otsu-Schwelle
+  let sum = 0;
+  for (let t = 0; t < 256; t++) sum += t * hist[t]!;
+  let sumB = 0, wB = 0, best = 0, thr = 128;
+  for (let t = 0; t < 256; t++) {
+    wB += hist[t]!;
+    if (!wB) continue;
+    const wF = n - wB;
+    if (!wF) break;
+    sumB += t * hist[t]!;
+    const mB = sumB / wB, mF = (sum - sumB) / wF;
+    const between = wB * wF * (mB - mF) ** 2;
+    if (between > best) { best = between; thr = t; }
+  }
+  // Tinte ist dunkel: blasse Heftlinien sollen nie als Schrift zählen
+  thr = Math.min(thr, 150);
+  for (let i = 0, j = 0; j < n; i += 4, j++) {
+    const v = gray[j]! > thr ? 255 : 0;
     d[i] = d[i + 1] = d[i + 2] = v;
   }
   ctx.putImageData(img, 0, 0);
@@ -72,14 +94,26 @@ async function prepare(file: Blob): Promise<HTMLCanvasElement> {
 
 /** Text aus einem Foto lesen. onProgress bekommt Werte von 0 bis 1. */
 export async function readPhoto(file: Blob, onProgress?: (p: number) => void): Promise<string> {
+  return (await recognizeImage(file, onProgress)).text;
+}
+
+export interface OcrResult {
+  text: string;
+  /** Sicherheit der Erkennung, 0–100 */
+  confidence: number;
+}
+
+/** Wie readPhoto, mit eigener Zeichenauswahl und Sicherheit der Erkennung. */
+export async function recognizeImage(file: Blob, onProgress?: (p: number) => void, whitelist = WHITELIST): Promise<OcrResult> {
   progressCb = onProgress ?? null;
   try {
     onProgress?.(0.02);
     const canvas = await prepare(file);
     const worker = await getWorker();
+    await worker.setParameters({ tessedit_char_whitelist: whitelist });
     const { data } = await worker.recognize(canvas);
     onProgress?.(1);
-    return data.text;
+    return { text: data.text, confidence: data.confidence };
   } finally {
     progressCb = null;
   }

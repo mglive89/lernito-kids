@@ -22,7 +22,7 @@ import { ProfilePage } from '../pages/profile/Profile';
 import { PrivacyPage } from '../pages/info/Privacy';
 import { OpenLanguageApp } from '../pages/lingue/OpenLanguageApp';
 import { BrainGamesPage, BrainGamePlayPage } from '../pages/denkspiele/BrainGames';
-import { HomeworkPage } from '../pages/hausaufgaben/HomeworkPage';
+import { OpenMathLens } from '../pages/hausaufgaben/OpenMathLens';
 
 // Erwachsenenbereiche werden erst bei Bedarf geladen
 const ParentArea = lazy(() => import('../pages/parents/ParentArea'));
@@ -89,7 +89,7 @@ export function AppRoutes() {
       <Route path="/videos/:lessonId" element={<RequireProfile><VideoPlayerPage /></RequireProfile>} />
       <Route path="/minispiele/:gameId" element={<RequireProfile><MiniGamePlayPage /></RequireProfile>} />
       <Route path="/denkspiele/:gameId" element={<RequireProfile><BrainGamePlayPage /></RequireProfile>} />
-      <Route path="/hausaufgaben" element={<RequireProfile><HomeworkPage /></RequireProfile>} />
+      <Route path="/hausaufgaben" element={<OpenMathLens />} />
       <Route path="/fuehrerschein" element={<RequireProfile><FahrschuleHomePage /></RequireProfile>} />
       <Route path="/fuehrerschein/teoria" element={<RequireProfile><FahrschuleTheoryPage /></RequireProfile>} />
       <Route path="/fuehrerschein/lezione/:id" element={<RequireProfile><FahrschuleLessonPage /></RequireProfile>} />

@@ -21,6 +21,12 @@ export interface Step {
   /** Rechenausdruck nach diesem Schritt */
   expr?: string;
   grid?: Grid;
+  /** Hinweis, was als Nächstes zu tun ist (ohne das Ergebnis zu verraten) */
+  hint?: string;
+  /** Gleichung nach diesem Schritt, getrennt in linke und rechte Seite */
+  eq?: { left: string; right: string };
+  /** Rechenschritt, der auf beiden Seiten gemacht wird, z. B. „− 4“ oder „: 3“ */
+  both?: string;
 }
 
 export interface Solution {
@@ -41,4 +47,4 @@ export interface Solution {
   check?: { written: string; correct: boolean };
 }
 
-export type SolveResult = { ok: true; solution: Solution } | { ok: false; reason: string };
+export type SolveResult = { ok: true; solution: Solution } | { ok: false; reason: string; unsupported?: boolean };

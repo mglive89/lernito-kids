@@ -17,6 +17,7 @@ export function solveTask(raw: string): SolveResult {
   try {
     p = parseTask(raw);
   } catch (e) {
+    if (e instanceof ParseError && /[a-wyz]/i.test(normalize(raw))) return { ok: false, unsupported: true, reason: L('Ich kann nur Aufgaben mit Zahlen und der Unbekannten x lösen. Textaufgaben, andere Buchstaben, Geometrie und Gleichungssysteme kommen später.', 'Per ora risolvo solo esercizi con numeri e l’incognita x. Problemi a parole, altre lettere, geometria e sistemi arriveranno più avanti.') };
     if (e instanceof ParseError) return { ok: false, reason: L('Diese Aufgabe kann ich nicht lesen. Prüfe, ob alle Zahlen und Rechenzeichen stimmen.', 'Non riesco a leggere questo esercizio. Controlla che numeri e segni siano giusti.') };
     return { ok: false, reason: L('Die Zahlen sind zu groß für mich.', 'I numeri sono troppo grandi per me.') };
   }
@@ -26,7 +27,7 @@ export function solveTask(raw: string): SolveResult {
   } catch (e) {
     const m = (e as Error).message;
     if (m === 'div0') return { ok: false, reason: L('Durch 0 kann man nicht teilen.', 'Non si può dividere per 0.') };
-    if (m === 'nonlinear') return { ok: false, reason: L('Diese Gleichung ist zu schwer für mich (x kommt mit Hochzahl oder mehrfach multipliziert vor).', 'Questa equazione è troppo difficile per me (la x compare con un esponente o moltiplicata per sé stessa).') };
+    if (m === 'nonlinear') return { ok: false, unsupported: true, reason: L('Diese Gleichung ist zu schwer für mich (x kommt mit Hochzahl oder mehrfach multipliziert vor).', 'Questa equazione è troppo difficile per me (la x compare con un esponente o moltiplicata per sé stessa).') };
     if (m === 'big') return { ok: false, reason: L('Die Zahlen sind zu groß für mich.', 'I numeri sono troppo grandi per me.') };
     return { ok: false, reason: L('Diese Aufgabe kann ich leider noch nicht erklären.', 'Questo esercizio non so ancora spiegarlo.') };
   }
@@ -271,7 +272,7 @@ function reduceExpression(p: Parsed): SolveResult {
     } else {
       why = steps.length ? L('Letzter Rechenschritt.', 'Ultimo calcolo.') : '';
     }
-    steps.push({ title: calc, text: [why, detail].filter(Boolean).join(' ') || undefined, expr: show(next, pf) });
+    steps.push({ title: calc, text: [why, detail].filter(Boolean).join(' ') || undefined, expr: show(next, pf), hint: `${why} ${L('Rechne', 'Calcola')} ${show({ ...node, br: undefined } as Node, pf)}.`.trim() });
     cur = next;
   }
   if (cur.t !== 'num') throw new Error('stuck');
@@ -401,82 +402,176 @@ function showLin(l: Lin, pf: boolean, v = 'x'): string {
 
 function solveEquation(p: Parsed): SolveResult {
   if (!p.right) {
-    return { ok: false, reason: L('Hier fehlt das Gleichheitszeichen. Schreib die ganze Gleichung, z. B. 3x + 5 = 20.', 'Manca il segno uguale. Scrivi tutta l’equazione, ad es. 3x + 5 = 20.') };
+    if (p.placeholder) return { ok: false, reason: L('Hier fehlt das Gleichheitszeichen. Schreib die ganze Gleichung, z. B. 7 + ? = 15.', 'Manca il segno uguale. Scrivi tutta l’equazione, ad es. 7 + ? = 15.') };
+    return solveLinearExpression(p);
   }
   const pf = p.fractions;
   const L0 = linearize(p.left), R0 = linearize(p.right);
   const a = sub(L0.a, R0.a), c = sub(R0.b, L0.b);
   const v = p.placeholder ? '?' : 'x';
   const task = `${show(p.left, pf).replace(/x/g, v)} = ${show(p.right, pf).replace(/x/g, v)}`;
-  if (isZero(a)) {
-    const all = isZero(c);
-    return solution({
-      kind: L('Gleichung', 'Equazione'), task, noValue: true,
-      answer: all ? L('Jede Zahl passt', 'Va bene qualsiasi numero') : L('Keine Lösung', 'Nessuna soluzione'),
-      steps: [{ title: L('Die Unbekannte fällt weg', 'L’incognita sparisce'), text: all ? L('Beide Seiten sind immer gleich: jede Zahl ist eine Lösung.', 'I due lati sono sempre uguali: ogni numero è una soluzione.') : L('Übrig bleibt eine falsche Aussage: Es gibt keine Lösung.', 'Resta un’uguaglianza falsa: non c’è soluzione.') }]
-    }, pf);
-  }
-  const x = div(c, a);
+  const x = isZero(a) ? rat(0) : div(c, a);
   const preferF = pf || (!isInt(x) && terminatingDigits(x) < 0);
 
   // Grundschule: „7 + ? = 15“ mit der Umkehraufgabe
-  if (p.placeholder) {
+  if (p.placeholder && !isZero(a)) {
     const simple = missingNumber(p.left, p.right, x);
     if (simple) return solution({ kind: L('Fehlende Zahl', 'Numero mancante'), task, steps: simple, value: x, answer: `? = ${showNum(x, preferF)}` }, preferF);
   }
 
   const steps: Step[] = [];
-  const T = timesSign();
   const ls = show(p.left, pf), rs = show(p.right, pf);
-  const lsimple = showLin(L0, pf), rsimple = showLin(R0, pf);
-  let cur = `${lsimple} = ${rsimple}`;
-  if (ls !== lsimple || rs !== rsimple) {
-    steps.push({ title: L('Jede Seite vereinfachen', 'Semplifica ogni lato'), text: L('Klammern auflösen und gleiche Teile zusammenfassen: alle x zusammen, alle Zahlen zusammen.', 'Togli le parentesi e raccogli i termini simili: tutte le x insieme, tutti i numeri insieme.'), expr: cur });
+  let Lc = L0, Rc = R0;
+  const push = (title: string, text: string, hint: string, both?: string) => {
+    const left = showLin(Lc, pf), right = showLin(Rc, pf);
+    steps.push({ title, text, hint, both, expr: `${left} = ${right}`, eq: { left, right } });
+  };
+  if (ls !== showLin(L0, pf) || rs !== showLin(R0, pf)) {
+    push(L('Jede Seite vereinfachen', 'Semplifica ogni membro'),
+      L('Klammern auflösen und gleiche Teile zusammenfassen: alle x zusammen, alle Zahlen zusammen.', 'Togli le parentesi e raccogli i termini simili: tutte le x insieme, tutti i numeri insieme.'),
+      L('Löse zuerst die Klammern auf und fasse auf jeder Seite gleiche Terme zusammen.', 'Prima togli le parentesi e raccogli i termini simili su ciascun membro.'));
   }
-  let la = L0.a, lb = L0.b, rb = R0.b;
-  if (!isZero(R0.a)) {
-    const term = showLin({ a: R0.a, b: rat(0) }, pf);
-    la = sub(L0.a, R0.a);
-    cur = `${showLin({ a: la, b: lb }, pf)} = ${showNum(rb, pf)}`;
+  if (isZero(Lc.a) && !isZero(Rc.a)) {
+    [Lc, Rc] = [Rc, Lc];
+    push(L('Seiten tauschen', 'Scambia i membri'), L('Die Seite mit x schreiben wir nach links. Eine Gleichung bleibt richtig, wenn man die Seiten tauscht.', 'Scriviamo a sinistra il membro con la x. Un’equazione resta vera se scambi i due membri.'),
+      L('Schreibe die Seite mit x nach links.', 'Metti a sinistra il membro con la x.'));
+  }
+  if (!isZero(Rc.a)) {
+    const k = Rc.a;
+    const term = showLin({ a: k.n > 0 ? k : rneg(k), b: rat(0) }, pf);
+    const both = k.n > 0 ? `${MINUS} ${term}` : `+ ${term}`;
+    Lc = { a: sub(Lc.a, k), b: Lc.b }; Rc = { a: rat(0), b: Rc.b };
+    push(L('Alle x nach links', 'Tutte le x a sinistra'),
+      k.n > 0 ? L(`Rechne auf beiden Seiten ${MINUS} ${term}. So steht x nur noch links.`, `Togli ${term} da entrambi i membri. Così la x resta solo a sinistra.`)
+        : L(`Rechne auf beiden Seiten + ${term}. So steht x nur noch links.`, `Aggiungi ${term} a entrambi i membri. Così la x resta solo a sinistra.`),
+      L('Bringe alle Terme mit x auf die linke Seite: mach auf beiden Seiten dieselbe Rechnung.', 'Porta tutti i termini con la x a sinistra: fai la stessa operazione su entrambi i membri.'), both);
+  }
+  if (!isZero(Lc.b) && !isZero(Lc.a)) {
+    const k = Lc.b;
+    const both = k.n > 0 ? `${MINUS} ${showNum(k, pf)}` : `+ ${showNum(rneg(k), pf)}`;
+    const old = Rc.b;
+    Rc = { a: rat(0), b: sub(Rc.b, k) }; Lc = { a: Lc.a, b: rat(0) };
+    push(L('Zahlen nach rechts', 'I numeri a destra'),
+      k.n > 0 ? L(`Rechne auf beiden Seiten ${MINUS} ${showNum(k, pf)}: ${showNum(old, pf)} ${MINUS} ${showNum(k, pf)} = ${showNum(Rc.b, pf)}.`, `Togli ${showNum(k, pf)} da entrambi i membri: ${showNum(old, pf)} ${MINUS} ${showNum(k, pf)} = ${showNum(Rc.b, pf)}.`)
+        : L(`Rechne auf beiden Seiten + ${showNum(rneg(k), pf)}: ${showNum(old, pf)} + ${showNum(rneg(k), pf)} = ${showNum(Rc.b, pf)}.`, `Aggiungi ${showNum(rneg(k), pf)} a entrambi i membri: ${showNum(old, pf)} + ${showNum(rneg(k), pf)} = ${showNum(Rc.b, pf)}.`),
+      L('Bringe die Zahlen ohne x nach rechts: mach auf beiden Seiten die Gegenrechnung.', 'Porta i numeri senza x a destra: fai l’operazione opposta su entrambi i membri.'), both);
+  }
+  if (isZero(a)) {
+    const all = isZero(c);
     steps.push({
-      title: L('Alle x nach links', 'Tutte le x a sinistra'),
-      text: R0.a.n > 0
-        ? L(`Rechne auf beiden Seiten ${MINUS} ${term}. So steht x nur noch links.`, `Togli ${term} da entrambi i lati. Così la x resta solo a sinistra.`)
-        : L(`Rechne auf beiden Seiten + ${showLin({ a: rneg(R0.a), b: rat(0) }, pf)}. So steht x nur noch links.`, `Aggiungi ${showLin({ a: rneg(R0.a), b: rat(0) }, pf)} a entrambi i lati. Così la x resta solo a sinistra.`),
-      expr: cur
+      title: L('Die Unbekannte fällt weg', 'L’incognita sparisce'),
+      text: all ? L('Übrig bleibt eine Aussage, die immer stimmt. Jede Zahl ist eine Lösung: die Gleichung hat unendlich viele Lösungen.', 'Resta un’uguaglianza sempre vera. Ogni numero è una soluzione: l’equazione ha infinite soluzioni.')
+        : L('Übrig bleibt eine falsche Aussage. Keine Zahl kann sie wahr machen: die Gleichung hat keine Lösung.', 'Resta un’uguaglianza falsa. Nessun numero la rende vera: l’equazione non ha soluzioni.'),
+      hint: L('Schau, was von x übrig bleibt, wenn du die x-Terme zusammenfasst.', 'Guarda che cosa resta della x quando raccogli i termini con la x.')
     });
+    return solution({ kind: L('Gleichung', 'Equazione'), task, steps, noValue: true, answer: all ? L('Unendlich viele Lösungen', 'Infinite soluzioni') : L('Keine Lösung', 'Nessuna soluzione') }, pf);
   }
-  if (!isZero(lb)) {
-    const rbNew = sub(rb, lb);
-    steps.push({
-      title: L('Zahlen nach rechts', 'I numeri a destra'),
-      text: lb.n > 0
-        ? L(`Rechne auf beiden Seiten ${MINUS} ${showNum(lb, pf)}: ${showNum(rb, pf)} ${MINUS} ${showNum(lb, pf)} = ${showNum(rbNew, pf)}.`, `Togli ${showNum(lb, pf)} da entrambi i lati: ${showNum(rb, pf)} ${MINUS} ${showNum(lb, pf)} = ${showNum(rbNew, pf)}.`)
-        : L(`Rechne auf beiden Seiten + ${showNum(rneg(lb), pf)}: ${showNum(rb, pf)} + ${showNum(rneg(lb), pf)} = ${showNum(rbNew, pf)}.`, `Aggiungi ${showNum(rneg(lb), pf)} a entrambi i lati: ${showNum(rb, pf)} + ${showNum(rneg(lb), pf)} = ${showNum(rbNew, pf)}.`),
-      expr: `${showLin({ a: la, b: rat(0) }, pf)} = ${showNum(rbNew, pf)}`
-    });
-    lb = rat(0); rb = rbNew;
-  }
-  if (!eq(la, rat(1))) {
-    const by = isInt(la) ? showNum(la, pf) : `(${showNum(la, pf)})`;
+  const xs = showNum(x, preferF);
+  if (!eq(Lc.a, rat(1))) {
+    const la = Lc.a;
+    const by = isInt(la) && la.n > 0 ? showNum(la, pf) : `(${showNum(la, pf)})`;
+    const old = Rc.b;
+    Lc = { a: rat(1), b: rat(0) }; Rc = { a: rat(0), b: x };
     steps.push({
       title: L(`Durch ${showNum(la, pf)} teilen`, `Dividi per ${showNum(la, pf)}`),
       text: eq(la, rat(-1))
-        ? L('Auf beiden Seiten das Vorzeichen umdrehen (mal −1).', 'Cambia il segno su entrambi i lati (per −1).')
-        : L(`Teile beide Seiten durch ${by}, damit x allein steht: ${showNum(rb, pf)} : ${by} = ${showNum(x, preferF)}.`, `Dividi entrambi i lati per ${by}, così la x resta da sola: ${showNum(rb, pf)} : ${by} = ${showNum(x, preferF)}.`),
-      expr: `x = ${showNum(x, preferF)}`
+        ? L('Auf beiden Seiten das Vorzeichen umdrehen (mal −1).', 'Cambia il segno su entrambi i membri (per −1).')
+        : L(`Teile beide Seiten durch ${by}, damit x allein steht: ${showNum(old, pf)} : ${by} = ${xs}.`, `Dividi entrambi i membri per ${by}, così la x resta da sola: ${showNum(old, pf)} : ${by} = ${xs}.`),
+      hint: L('Teile beide Seiten durch die Zahl vor dem x.', 'Dividi entrambi i membri per il numero davanti alla x.'),
+      both: `: ${by}`,
+      expr: `x = ${xs}`, eq: { left: 'x', right: xs }
     });
-  } else if (steps.length === 0 || steps[steps.length - 1]!.expr !== `x = ${showNum(x, preferF)}`) {
-    steps.push({ title: L('Fertig', 'Fatto'), expr: `x = ${showNum(x, preferF)}` });
+  } else if (!steps.length || steps[steps.length - 1]!.expr !== `x = ${xs}`) {
+    steps.push({ title: L('Fertig', 'Fatto'), expr: `x = ${xs}`, eq: { left: 'x', right: xs } });
   }
-  // Probe
-  const lv = add(mul(L0.a, x), L0.b), rv = add(mul(R0.a, x), R0.b);
+  // Probe in der ursprünglichen Gleichung
+  const lv = evaluate(withValue(p.left, x)), rv = evaluate(withValue(p.right, x));
+  const ok = eq(lv, rv);
+  const side = (n: Node, v: R) => { const t = show(withValue(n, x), preferF); return t === showNum(v, preferF) ? t : `${t} = ${showNum(v, preferF)}`; };
   steps.push({
     title: L('Probe', 'Verifica'),
-    text: L(`Setze x = ${showNum(x, preferF)} ein: links kommt ${showNum(lv, preferF)} heraus, rechts ${showNum(rv, preferF)}. Beide Seiten sind gleich.`, `Sostituisci x = ${showNum(x, preferF)}: a sinistra viene ${showNum(lv, preferF)}, a destra ${showNum(rv, preferF)}. I due lati sono uguali.`)
+    text: L(`Setze x = ${xs} in die ursprüngliche Gleichung ein: links ${side(p.left, lv)}, rechts ${side(p.right, rv)}. ${ok ? 'Beide Seiten sind gleich.' : 'Die Seiten sind verschieden!'}`,
+      `Sostituisci x = ${xs} nell’equazione di partenza: a sinistra ${side(p.left, lv)}, a destra ${side(p.right, rv)}. ${ok ? 'I due membri sono uguali.' : 'I membri sono diversi!'}`),
+    hint: L('Setze die Lösung in die ursprüngliche Gleichung ein.', 'Sostituisci la soluzione nell’equazione di partenza.')
   });
-  void T;
-  return solution({ kind: L('Gleichung', 'Equazione'), task, steps, value: x, answer: `x = ${showNum(x, preferF)}` }, preferF);
+  return solution({ kind: L('Gleichung', 'Equazione'), task, steps, value: x, answer: `x = ${xs}` }, preferF);
+}
+
+/** x durch eine Zahl ersetzen (in Klammern, wenn nötig). */
+function withValue(n: Node, x: R): Node {
+  switch (n.t) {
+    case 'var': return { t: 'num', v: x, br: n.br ?? (x.n < 0 || !isInt(x) ? '(' : undefined) };
+    case 'num': return n;
+    case 'neg': return { ...n, e: withValue(n.e, x) };
+    case 'pow': return { ...n, b: withValue(n.b, x) };
+    case 'bin': return { ...n, l: withValue(n.l, x), r: withValue(n.r, x) };
+  }
+}
+
+// ───────────── Algebraische Ausdrücke (ohne =) vereinfachen ─────────────
+
+interface Term { c: R; x: boolean }
+function terms(n: Node): Term[] {
+  switch (n.t) {
+    case 'num': return [{ c: n.v, x: false }];
+    case 'var': return [{ c: rat(1), x: true }];
+    case 'neg': return terms(n.e).map((t) => ({ ...t, c: rneg(t.c) }));
+    case 'pow': {
+      const t = terms(n.b);
+      if (t.some((q) => q.x)) { if (n.e === 1) return t; throw new Error('nonlinear'); }
+      return [{ c: powR(t.reduce((s, q) => add(s, q.c), rat(0)), n.e), x: false }];
+    }
+    case 'bin': {
+      const l = terms(n.l), r = terms(n.r);
+      if (n.op === '+') return [...l, ...r];
+      if (n.op === '-') return [...l, ...r.map((t) => ({ ...t, c: rneg(t.c) }))];
+      const lx = l.some((t) => t.x), rx = r.some((t) => t.x);
+      if (n.op === '*') {
+        if (lx && rx) throw new Error('nonlinear');
+        if (!lx && !rx) return [{ c: mul(sumC(l), sumC(r)), x: false }];
+        const k = lx ? sumC(r) : sumC(l);
+        return (lx ? l : r).map((t) => ({ ...t, c: mul(t.c, k) }));
+      }
+      if (rx) throw new Error('nonlinear');
+      const d = sumC(r);
+      if (isZero(d)) throw new Error('div0');
+      return l.map((t) => ({ ...t, c: div(t.c, d) }));
+    }
+  }
+}
+const sumC = (t: Term[]) => t.reduce((s, q) => add(s, q.c), rat(0));
+function showTerms(ts: Term[], pf: boolean): string {
+  if (!ts.length) return '0';
+  return ts.map((t, i) => {
+    const abs = t.c.n < 0 ? rneg(t.c) : t.c;
+    const body = t.x ? (eq(abs, rat(1)) ? 'x' : isInt(abs) ? `${showNum(abs, pf)}x` : `(${showNum(abs, pf)})x`) : showNum(abs, pf);
+    if (i === 0) return t.c.n < 0 ? `${MINUS}${body}` : body;
+    return `${t.c.n < 0 ? MINUS : '+'} ${body}`;
+  }).join(' ');
+}
+
+function solveLinearExpression(p: Parsed): SolveResult {
+  const pf = p.fractions;
+  const task = show(p.left, pf);
+  const ts = terms(p.left);
+  const lin = linearize(p.left);
+  const final = showLin(lin, pf);
+  const steps: Step[] = [];
+  const expanded = showTerms(ts, pf);
+  if (expanded !== task && expanded !== final) {
+    steps.push({ title: L('Klammern auflösen', 'Togli le parentesi'), text: L('Multipliziere jede Zahl in der Klammer mit dem Faktor davor (Distributivgesetz). Achte auf die Vorzeichen.', 'Moltiplica ogni termine dentro la parentesi per il fattore davanti (proprietà distributiva). Attento ai segni.'), expr: expanded,
+      hint: L('Löse zuerst die Klammern auf.', 'Prima togli le parentesi.') });
+  }
+  const xs = ts.filter((t) => t.x), ns = ts.filter((t) => !t.x);
+  const parts: string[] = [];
+  if (xs.length > 1) parts.push(`${showTerms(xs, pf)} = ${showLin({ a: lin.a, b: rat(0) }, pf)}`);
+  if (ns.length > 1) parts.push(`${showTerms(ns, pf)} = ${showNum(lin.b, pf)}`);
+  if (final !== task) {
+    steps.push({ title: L('Gleiche Terme zusammenfassen', 'Raccogli i termini simili'), text: parts.length ? L(`x-Terme zusammen, Zahlen zusammen: ${parts.join('; ')}.`, `Termini con la x insieme, numeri insieme: ${parts.join('; ')}.`) : undefined, expr: final,
+      hint: L('Fasse alle x-Terme und alle Zahlen zusammen.', 'Somma tra loro i termini con la x e tra loro i numeri.') });
+  }
+  if (!steps.length) steps.push({ title: L('Schon vereinfacht', 'Già semplificata'), text: L('Diesen Ausdruck kann man nicht weiter vereinfachen.', 'Questa espressione non si può semplificare di più.'), expr: final });
+  return solution({ kind: L('Algebraischer Ausdruck', 'Espressione letterale'), task, steps, noValue: true, answer: final }, pf);
 }
 
 /** „a + ? = c“ und Verwandte mit der Umkehraufgabe erklären. */

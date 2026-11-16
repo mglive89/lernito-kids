@@ -58,7 +58,7 @@ export function SubjectPage() {
               <Link to="/hausaufgaben" className="karte-3d -mt-2 mb-6 flex items-center gap-4 p-4" data-testid="hausaufgaben-hilfe">
                 <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-himmel-500 text-white"><Camera size={24} /></span>
                 <span className="min-w-0 flex-1">
-                  <span className="block font-display font-bold">{L('Hausaufgaben-Hilfe', 'Aiuto compiti')}</span>
+                  <span className="block font-display font-bold">{L('Hilf mir bei den Hausaufgaben', 'Aiutami con i compiti')}</span>
                   <span className="block text-sm text-tinte/60">{L('Aufgabe fotografieren oder eintippen – Puppy erklärt den Lösungsweg', 'Fotografa o scrivi un esercizio: Puppy ti spiega come si risolve')}</span>
                 </span>
                 <ChevronRight size={22} className="shrink-0 text-tinte/40" />

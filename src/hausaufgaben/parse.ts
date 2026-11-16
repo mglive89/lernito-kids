@@ -10,7 +10,7 @@ export type Bracket = '(' | '[' | '{';
 export type Node =
   | { t: 'num'; v: R; frac?: boolean; fn?: number; fd?: number; pct?: string; br?: Bracket }
   | { t: 'var'; br?: Bracket }
-  | { t: 'bin'; op: Op; l: Node; r: Node; br?: Bracket }
+  | { t: 'bin'; op: Op; l: Node; r: Node; br?: Bracket; slash?: boolean }
   | { t: 'neg'; e: Node; br?: Bracket }
   | { t: 'pow'; b: Node; e: number; br?: Bracket };
 
@@ -103,7 +103,14 @@ class P {
         n = { t: 'bin', op, l: n, r: this.factor() };
       } else if (this.isOp('/')) {
         this.i++;
-        n = { t: 'bin', op: ':', l: n, r: this.factor() };
+        const r = this.factor();
+        // (3)/(4) aus der Bruch-Taste ist ebenfalls ein Bruch
+        if (n.t === 'num' && r.t === 'num' && !n.frac && !r.frac && !n.pct && !r.pct && n.v.d === 1 && r.v.d === 1 && r.v.n > 0 && n.v.n >= 0) {
+          this.sawFrac = true;
+          n = { t: 'num', v: rat(n.v.n, r.v.n), frac: true, fn: n.v.n, fd: r.v.n };
+        } else {
+          n = { t: 'bin', op: ':', l: n, r, slash: true };
+        }
       } else if (this.startsAtom()) {
         // 3x, 2(x + 1), (a)(b)
         n = { t: 'bin', op: '*', l: n, r: this.power() };

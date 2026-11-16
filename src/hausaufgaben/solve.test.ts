@@ -99,3 +99,36 @@ describe('Hausaufgaben-Erklärer', () => {
     setLang('it');
   });
 });
+
+describe('Casi della specifica MathLens', () => {
+  it('risultati richiesti', () => {
+    setLang('it');
+    const e = ok('3(2x − 4) = 18');
+    expect(e.answer).toBe('x = 5');
+    expect(e.steps.some((s) => s.both === ': 6')).toBe(true);
+    expect(e.steps.at(-1)!.text).toContain('3 × (2 × 5 − 4) = 18');
+    expect(ok('1/2 + 3/4').answer).toBe('5/4');
+    expect(ok('15% di 80').answer).toBe('12');
+  });
+  it('casi speciali', () => {
+    const none = ok('x + 1 = x');
+    expect(none.answer).toBe('Nessuna soluzione');
+    expect(none.noValue).toBe(true);
+    expect(ok('2(x + 1) = 2x + 2').answer).toBe('Infinite soluzioni');
+    const z = solveTask('1/0');
+    expect(z.ok).toBe(false);
+    if (!z.ok) expect(z.reason).toContain('dividere per 0');
+  });
+  it('espressioni letterali e non supportati', () => {
+    expect(ok('2(x + 3) − x').answer).toBe('x + 6');
+    const w = solveTask('2y + 3 = 7');
+    expect(w.ok).toBe(false);
+    if (!w.ok) expect(w.unsupported).toBe(true);
+    const q = solveTask('x^2 = 4');
+    expect(!q.ok && q.unsupported).toBe(true);
+  });
+  it('18 = 3x scambia i membri', () => {
+    expect(ok('18 = 3x').answer).toBe('x = 6');
+    expect(ok('5 − 2x = 11').answer).toBe('x = −3');
+  });
+});

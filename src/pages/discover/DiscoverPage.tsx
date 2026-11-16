@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { ArrowRight, Brain, IdCard, Clapperboard, Box, Gamepad2, Languages, Map as MapIcon } from 'lucide-react';
+import { ArrowRight, Brain, ScanLine, IdCard, Clapperboard, Box, Gamepad2, Languages, Map as MapIcon } from 'lucide-react';
 import { drivingAvailable } from '../../fuehrerschein/access';
 import { useActiveProfile } from '../../store/useApp';
 import { colorSet, IconBadge, PageHero, StarCount, AnimatedGrid } from '../../components/ui';
@@ -9,6 +9,7 @@ import { sfx } from '../../lib/sound';
 
 /** Alles, was über die Fächer hinaus Spaß macht – eine Quelle für die Seite „Entdecken“ und die Startseite. */
 export const DISCOVER_ITEMS = (driving = false) => [
+  { to: '/hausaufgaben', icon: ScanLine, title: L('Hilf mir bei den Hausaufgaben', 'Aiutami con i compiti'), text: L('Matheaufgabe fotografieren und Schritt für Schritt verstehen', 'Fotografa un esercizio di matematica e capiscilo passo dopo passo'), color: 'himmel' },
   ...(driving ? [{ to: '/fuehrerschein', icon: IdCard, title: L('Fahrschule', 'Scuola guida'), text: L('Führerschein B: Theorie, Bildfragen, Prüfung (ab 18)', 'Patente B: teoria, quiz illustrati, esame (dai 18 anni)'), color: 'himmel' }] : []),
   { to: '/lingue', icon: Languages, title: L('Sprachen', 'Lingue'), text: L('Sprechen, hören und verstehen', 'Parla, ascolta e capisci'), color: 'sonne' },
   { to: '/videos', icon: Clapperboard, title: L('Lernvideos', 'Video lezioni'), text: L('Kurze Erklärvideos mit Quiz', 'Brevi video con quiz'), color: 'koralle' },
