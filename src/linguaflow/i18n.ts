@@ -7,6 +7,7 @@ import { deviceUiLang, dirOf } from './catalog';
 import type { LangTag } from './types';
 
 const it = {
+  'nav.back': 'Torna a Lernito',
   'settings.effects': 'Suoni ed effetti (coriandoli, stelle, animazioni)', 'ex.streak': '{n} di fila!', 'done.perfect': 'Perfetto, nessun errore!', 'done.stars': '{n} stelle su 3',
   'nav.lessons': 'Lezioni', 'nav.review': 'Ripasso', 'nav.courses': 'Corsi', 'nav.settings': 'Impostazioni', 'nav.practice': 'Pratica con Puppy',
   'loading': 'Un momento …', 'error.load': 'Non riesco a caricare i corsi. Controlla la connessione e riprova.', 'retry': 'Riprova',
@@ -52,6 +53,7 @@ type Dict = typeof it;
 export type Key = keyof Dict;
 
 const de: Dict = {
+  'nav.back': 'Zurück zu Lernito',
   'settings.effects': 'Töne und Effekte (Konfetti, Sterne, Animationen)', 'ex.streak': '{n} in Folge!', 'done.perfect': 'Perfekt, kein Fehler!', 'done.stars': '{n} von 3 Sternen',
   'nav.lessons': 'Lektionen', 'nav.review': 'Wiederholen', 'nav.courses': 'Kurse', 'nav.settings': 'Einstellungen', 'nav.practice': 'Üben mit Puppy',
   'loading': 'Einen Moment …', 'error.load': 'Die Kurse lassen sich nicht laden. Prüfe die Verbindung und versuche es erneut.', 'retry': 'Erneut versuchen',
@@ -95,6 +97,7 @@ const de: Dict = {
 };
 
 const en: Dict = {
+  'nav.back': 'Back to Lernito',
   'settings.effects': 'Sounds and effects (confetti, stars, animations)', 'ex.streak': '{n} in a row!', 'done.perfect': 'Perfect, no mistakes!', 'done.stars': '{n} of 3 stars',
   'nav.lessons': 'Lessons', 'nav.review': 'Review', 'nav.courses': 'Courses', 'nav.settings': 'Settings', 'nav.practice': 'Practise with Puppy',
   'loading': 'One moment …', 'error.load': 'The courses could not be loaded. Check your connection and try again.', 'retry': 'Try again',

@@ -3,7 +3,7 @@
  */
 import { useEffect, useMemo, useState } from 'react';
 import { Link, Navigate, NavLink, Outlet, useLocation, useNavigate } from 'react-router-dom';
-import { BookOpen, CheckCircle2, ChevronRight, Dumbbell, Languages, Plus, RotateCcw, Settings as SettingsIcon } from 'lucide-react';
+import { ArrowLeft, BookOpen, CheckCircle2, ChevronRight, Dumbbell, Languages, Plus, RotateCcw, Settings as SettingsIcon } from 'lucide-react';
 import { Lino } from '../components/Lino';
 import { useApp } from '../store/useApp';
 import { APP_NAME } from './brand';
@@ -13,6 +13,20 @@ import { useT } from './i18n';
 import { availability, bestKind, published, useCourse, useIndex } from './packs';
 import { useCourseProgress, useFlowStore, useOwner, useOwnerId } from './store';
 import type { CourseEntry, CourseIndex, LangTag } from './types';
+
+/** Zurück zur Haupt-App Lernito (auch aus der installierten App) */
+export const LERNITO_HOME = `${import.meta.env.BASE_URL}home`;
+export function BackToLernito({ compact = false, testId = 'lf-torna-lernito' }: { compact?: boolean; testId?: string }) {
+  const { t } = useT();
+  return (
+    <a href={LERNITO_HOME} data-testid={testId} aria-label={t('nav.back')} title={t('nav.back')}
+      className={cn('inline-flex shrink-0 items-center gap-1 rounded-full font-bold text-tinte/70 ring-1 ring-tinte/15 transition hover:bg-tinte/[0.05] active:scale-95',
+        compact ? 'h-10 px-2.5 text-sm' : 'h-11 px-4')}>
+      <ArrowLeft size={20} className="rtl:rotate-180" />
+      <span className={compact ? 'hidden min-[400px]:inline' : ''}>{compact ? 'Lernito' : t('nav.back')}</span>
+    </a>
+  );
+}
 
 /** Schreibrichtung und Sprache der ganzen Oberfläche */
 export function useDocumentLang() {
@@ -52,14 +66,15 @@ export function FlowShell() {
   return (
     <div className="min-h-[100dvh] bg-creme" data-testid="linguaflow" lang={ui} dir={dirOf(ui)}>
       <header className="sticky top-0 z-30 border-b border-tinte/[0.07] bg-flaeche/95 backdrop-blur" style={{ paddingTop: 'var(--safe-top)' }}>
-        <div className="mx-auto flex h-14 max-w-3xl items-center gap-2 px-4">
-          <Link to="/corso" className="flex items-center gap-1.5" aria-label={APP_NAME}>
-            <span className="-my-2 h-12 overflow-hidden"><Lino size={44} still /></span>
-            <span className="font-display text-xl font-extrabold text-minze-700" data-testid="nome-app">{APP_NAME}</span>
+        <div className="mx-auto flex h-14 max-w-3xl items-center gap-2 px-3 sm:px-4">
+          <BackToLernito compact />
+          <Link to="/corso" className="flex min-w-0 items-center gap-1.5" aria-label={APP_NAME}>
+            <span className="-my-2 hidden h-12 overflow-hidden min-[400px]:block"><Lino size={44} still /></span>
+            <span className="truncate font-display text-xl font-extrabold text-minze-700" data-testid="nome-app">{APP_NAME}</span>
           </Link>
           <span className="flex-1" />
           {o.target && (
-            <Link to="/scegli" className="max-w-[45%] truncate rounded-full bg-minze-50 px-3 py-1 text-sm font-bold text-minze-700 ring-1 ring-minze-300" data-testid="lingua-attiva">
+            <Link to="/scegli" className="max-w-[35%] truncate rounded-full bg-minze-50 px-3 py-1 text-sm font-bold text-minze-700 ring-1 ring-minze-300" data-testid="lingua-attiva">
               {nameOf(o.target, ui)}
             </Link>
           )}
@@ -109,7 +124,8 @@ export function FlowWelcome() {
   const [uiPick, setUiPick] = useState<LangTag>(o.ui ?? deviceUiLang('it'));
   if (step === 'ui') {
     return (
-      <div className="mx-auto flex min-h-[100dvh] max-w-xl flex-col gap-5 px-4 py-8" data-testid="lf-benvenuto" lang={ui} dir={dirOf(ui)}>
+      <div className="mx-auto flex min-h-[100dvh] max-w-xl flex-col gap-5 px-4 py-6" data-testid="lf-benvenuto" lang={ui} dir={dirOf(ui)} style={{ paddingTop: 'calc(1.5rem + var(--safe-top))' }}>
+        <div><BackToLernito /></div>
         <div className="flex flex-col items-center gap-2 text-center">
           <Lino mood="winken" size={120} />
           <h1 className="font-display text-3xl font-extrabold">{t('welcome.title', { app: APP_NAME })}</h1>
@@ -133,7 +149,8 @@ export function FlowWelcome() {
     );
   }
   return (
-    <div className="mx-auto min-h-[100dvh] max-w-xl px-4 py-6" lang={ui} dir={dirOf(ui)}>
+    <div className="mx-auto min-h-[100dvh] max-w-xl px-4 py-6" lang={ui} dir={dirOf(ui)} style={{ paddingTop: 'calc(1.5rem + var(--safe-top))' }}>
+      <div className="mb-4"><BackToLernito /></div>
       <ChoosePair first />
     </div>
   );
@@ -370,6 +387,7 @@ export function FlowHome() {
 /* ---------------- Einstellungen ---------------- */
 export function FlowSettings() {
   const { t, ui } = useT();
+  const hasProfile = useApp((s) => s.profiles.some((p) => p.id === s.activeProfileId));
   const o = useOwner();
   const owner = useOwnerId();
   const patch = useFlowStore((s) => s.patch);
@@ -404,6 +422,10 @@ export function FlowSettings() {
         {toggle('effects', t('settings.effects'))}
       </section>
       <p className="text-sm text-tinte/60">{t('settings.data')}</p>
+      <div className="flex flex-wrap gap-2">
+        {hasProfile && <Link to="/lingue" className={bigButton('outline')} data-testid="lf-pratica-impostazioni"><Dumbbell size={18} /> {t('nav.practice')}</Link>}
+        <a href={LERNITO_HOME} className={bigButton('outline')} data-testid="lf-torna-lernito-impostazioni"><ArrowLeft size={18} className="rtl:rotate-180" /> {t('nav.back')}</a>
+      </div>
     </div>
   );
 }
