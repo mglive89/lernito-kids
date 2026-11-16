@@ -272,3 +272,19 @@ test('LinguaFlow: Effekte – Serie, Sterne und Schalter in den Einstellungen', 
   await playLesson(page, 'lezione-es-intro-02');
   await expect(page.getByTestId('lf-fine')).toHaveAttribute('data-stars', '3');
 });
+
+test('LinguaFlow: zurück zu Lernito von jeder Seite', async ({ page }) => {
+  await page.goto('/sprachen/');
+  await expect(page.getByTestId('lf-torna-lernito')).toBeVisible();
+  await setup(page, 'it', 'ital', 'en', 'English');
+  await page.getByTestId('inizia-corso').click();
+  await expect(page.getByTestId('lf-corso')).toBeVisible();
+  await expect(page.getByTestId('lf-torna-lernito')).toBeVisible();
+  const overflow = await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth);
+  expect(overflow).toBeLessThanOrEqual(1);
+  await page.goto('/sprachen/#/impostazioni');
+  await expect(page.getByTestId('lf-torna-lernito-impostazioni')).toBeVisible();
+  await page.getByTestId('lf-torna-lernito').click();
+  await expect(page).not.toHaveURL(/\/sprachen\//);
+  await expect(page.getByTestId('greeting')).toBeVisible();
+});
