@@ -6,7 +6,7 @@ test('PWA: Manifest, Icons und Offline-Start', async ({ page, context }) => {
   const manifest = await page.request.get('/manifest.webmanifest');
   expect(manifest.ok()).toBe(true);
   const json = await manifest.json();
-  expect(json.name).toBe('Lernito Kids');
+  expect(json.name).toBe('Lernito');
   expect(json.lang).toBe('de-DE');
   expect(json.icons.length).toBeGreaterThanOrEqual(3);
   await page.waitForFunction(async () => (await navigator.serviceWorker.ready).active?.state === 'activated');

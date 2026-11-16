@@ -1,7 +1,9 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { Check, Lock, Plus, ShieldCheck } from 'lucide-react';
+import { ArrowRight, Check, ChefHat, Code2, Hammer, Lock, Plus, Scissors, ShieldCheck, WashingMachine } from 'lucide-react';
+import { Brand, WorldSwitch } from '../../components/WorldSwitch';
+import { getWorld } from '../../adult/progress';
 import { useApp, type Profile } from '../../store/useApp';
 import { Avatar, SpeakButton, TopBar } from '../../components/ui';
 import { Lino } from '../../components/Lino';
@@ -15,18 +17,20 @@ import { MASCOT_NAME } from '../../content/mascot';
 
 
 /** Kurzbeschreibung eines Profils, z. B. „🇮🇹 2ª media“ */
-export function LanguageSwitch({ value, onChange, testPrefix = 'sprache' }: { value: Lang; onChange: (l: Lang) => void; testPrefix?: string }) {
+export function LanguageSwitch({ value, onChange, testPrefix = 'sprache', compact = false }: { value: Lang; onChange: (l: Lang) => void; testPrefix?: string; compact?: boolean }) {
   return (
     <div className="inline-flex rounded-full bg-flaeche p-1 shadow-weich ring-1 ring-tinte/5" role="radiogroup" aria-label={L('Sprache', 'Lingua')}>
       {LANGS.map((l) => (
         <button key={l.id} type="button" role="radio" aria-checked={value === l.id} onClick={() => { sfx.tap(); onChange(l.id); }} data-testid={`${testPrefix}-${l.id}`}
           className={`flex items-center gap-1.5 rounded-full px-3 py-1.5 text-sm font-bold transition ${value === l.id ? 'bg-tinte-fest text-white' : 'text-tinte/70 hover:bg-tinte/5'}`}>
-          <span className="emoji" aria-hidden>{l.flag}</span>{l.name}
+          <span className="emoji" aria-hidden>{l.flag}</span><span className={compact ? 'sr-only sm:not-sr-only' : ''}>{l.name}</span>
         </button>
       ))}
     </div>
   );
 }
+
+let coldStart = true;
 
 function Mascot({ size }: { size: number }) {
   return <Lino mood="winken" size={size} />;
@@ -41,11 +45,18 @@ export function StartPage() {
   const lang = uiLang ?? getLang();
   const greet = L('Hallo! Schön, dass du da bist!', 'Ciao! Che bello vederti!');
   const intro = L(`Ich bin ${MASCOT_NAME}. Wer lernt heute mit mir?`, `Sono ${MASCOT_NAME}. Chi impara con me oggi?`);
+  // Beim App-Start dort weitermachen, wo zuletzt gelernt wurde (School oder Adult)
+  useEffect(() => {
+    if (coldStart) { coldStart = false; if (getWorld() === 'adult') nav('/adult', { replace: true }); }
+  }, [nav]);
   return (
     <div className="kinder-hintergrund min-h-[100dvh]" style={{ paddingTop: 'var(--safe-top)' }}>
-      <div className="mx-auto flex max-w-6xl 2xl:max-w-7xl items-center justify-between px-4 pt-4 sm:px-6">
-        <span className="flex items-center gap-2 font-display text-xl font-extrabold tracking-tight"><img src={`${import.meta.env.BASE_URL}puppy/kopf.png`} alt="" className="h-10 w-10 rounded-xl bg-sonne-100 ring-2 ring-sonne-300" /> <span>Lernito<span className="ml-1 rounded-md bg-sonne-100 px-1.5 py-0.5 align-middle text-xs font-bold text-sonne-700">Kids</span></span></span>
-        <LanguageSwitch value={lang} onChange={(l) => { setLang(l); setUiLang(l); }} />
+      <div className="mx-auto flex max-w-6xl 2xl:max-w-7xl flex-wrap items-center justify-between gap-3 px-4 pt-4 sm:px-6">
+        <Brand tag="School" />
+        <div className="flex flex-wrap items-center justify-end gap-2">
+          <WorldSwitch value="school" />
+          <LanguageSwitch value={lang} onChange={(l) => { setLang(l); setUiLang(l); }} compact />
+        </div>
       </div>
       <main className="seite flex flex-col items-center gap-8 pt-4 sm:pt-6">
         <section className="relative flex w-full flex-col items-center gap-4 overflow-hidden rounded-blob bg-gradient-to-br from-himmel-600 to-himmel-500 p-6 text-center text-white shadow-karte sm:flex-row sm:p-8 sm:text-left">
@@ -53,7 +64,7 @@ export function StartPage() {
           <div className="pointer-events-none absolute -bottom-28 right-40 h-60 w-60 rounded-full bg-white/[0.06]" aria-hidden />
           <div className="relative shrink-0"><Mascot size={210} /></div>
           <div className="relative flex-1">
-            <p className="eyebrow text-white/75">{L('Lernen vom Kindergarten bis zum Abitur', 'Dalla scuola dell’infanzia alla maturità')}</p>
+            <p className="eyebrow text-white/75">Lernito School · Kids & Teen · {L('vom Kindergarten bis zum Abitur', 'dall’infanzia alla maturità')}</p>
             <h1 className="mt-2 font-display text-3xl font-extrabold tracking-tight sm:text-5xl" data-testid="greeting">{greet}</h1>
             <p className="mt-3 flex items-center justify-center gap-3 text-lg text-white/90 sm:justify-start">
               {intro} <SpeakButton text={`${greet} ${intro}`} />
@@ -98,15 +109,37 @@ export function StartPage() {
         </section>
         )}
 
+        <AdultTeaser />
+
         <div className="w-full"><InstallHint /></div>
 
         <nav className="flex w-full flex-wrap items-center justify-center gap-3" aria-label={L('Für Erwachsene', 'Per gli adulti')}>
           <Link to="/eltern" className="knopf knopf-3d bg-flaeche text-base" data-testid="elternbereich"><Lock size={18} /> {L('Elternbereich', 'Area genitori')}</Link>
           <Link to="/datenschutz" className="knopf knopf-3d bg-flaeche text-base"><ShieldCheck size={18} /> {L('Datenschutz', 'Privacy')}</Link>
         </nav>
-        <p className="max-w-xl text-center text-sm text-tinte/55">{L('Lernito Kids speichert alle Daten nur auf diesem Gerät. Keine Werbung, keine Tracker, keine öffentlichen Profile.', 'Lernito Kids salva tutti i dati solo su questo dispositivo. Niente pubblicità, niente tracker, nessun profilo pubblico.')}</p>
+        <p className="max-w-xl text-center text-sm text-tinte/55">{L('Lernito speichert alle Daten nur auf diesem Gerät. Keine Werbung, keine Tracker, keine öffentlichen Profile.', 'Lernito salva tutti i dati solo su questo dispositivo. Niente pubblicità, niente tracker, nessun profilo pubblico.')}</p>
       </main>
     </div>
+  );
+}
+
+/** Hinweis auf Lernito Adult für Eltern und Erwachsene. */
+function AdultTeaser() {
+  const icons = [Scissors, WashingMachine, ChefHat, Code2, Hammer];
+  return (
+    <Link to="/adult" onClick={() => sfx.tap()} data-testid="adult-teaser" className="group block w-full rounded-blob">
+      <div className="karte-3d flex flex-col gap-4 p-5 transition-transform duration-200 group-hover:-translate-y-0.5 sm:flex-row sm:items-center sm:p-6">
+        <div className="flex -space-x-2">
+          {icons.map((I, i) => <span key={i} className="flex h-11 w-11 items-center justify-center rounded-xl bg-minze-100 text-minze-700 ring-2 ring-flaeche"><I size={22} aria-hidden /></span>)}
+        </div>
+        <div className="min-w-0 flex-1">
+          <p className="eyebrow">{L('Für Erwachsene', 'Per gli adulti')}</p>
+          <p className="font-display text-xl font-bold tracking-tight">Lernito Adult</p>
+          <p className="text-tinte/65">{L('Servietten falten, Waschmaschine, Rezepte, Websites bauen und Heimwerken – Schritt für Schritt.', 'Tovaglioli decorati, lavatrice, ricette, creare siti e fai da te: passo dopo passo.')}</p>
+        </div>
+        <span className="knopf bg-minze-500 text-white">{L('Öffnen', 'Apri')}<ArrowRight size={18} /></span>
+      </div>
+    </Link>
   );
 }
 

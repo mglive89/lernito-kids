@@ -35,9 +35,14 @@ const FahrschuleSignsPage = lazy(() => fs().then((m) => ({ default: m.Fahrschule
 const FahrschuleQuizRoute = lazy(() => fs().then((m) => ({ default: m.FahrschuleQuizRoute })));
 const FahrschuleExamPage = lazy(() => fs().then((m) => ({ default: m.FahrschuleExamPage })));
 const FahrschuleCoveragePage = lazy(() => fs().then((m) => ({ default: m.FahrschuleCoveragePage })));
+// Lernito Adult: eigener Chunk, ohne Profil
+const adult = () => import('../pages/adult/Adult');
+const AdultHomePage = lazy(() => adult().then((m) => ({ default: m.AdultHomePage })));
+const AdultCategoryPage = lazy(() => adult().then((m) => ({ default: m.AdultCategoryPage })));
+const AdultGuidePage = lazy(() => adult().then((m) => ({ default: m.AdultGuidePage })));
 
 /** Pfade für Erwachsene: ohne Lernzeit-Zähler und in der Gerätesprache. */
-export const ADULT_ROUTES = ['/eltern', '/admin', '/datenschutz', '/einrichtung'];
+export const ADULT_ROUTES = ['/eltern', '/admin', '/datenschutz', '/einrichtung', '/adult'];
 
 export const isAdultRoute = (path: string) => ADULT_ROUTES.some((r) => path.startsWith(r));
 
@@ -90,6 +95,10 @@ export function AppRoutes() {
       <Route path="/fuehrerschein/quiz/:mode" element={<RequireProfile><FahrschuleQuizRoute /></RequireProfile>} />
       <Route path="/fuehrerschein/esame" element={<RequireProfile><FahrschuleExamPage /></RequireProfile>} />
       <Route path="/fuehrerschein/copertura" element={<RequireProfile><FahrschuleCoveragePage /></RequireProfile>} />
+
+      <Route path="/adult" element={<AdultHomePage />} />
+      <Route path="/adult/guida/:id" element={<AdultGuidePage />} />
+      <Route path="/adult/:cat" element={<AdultCategoryPage />} />
 
       <Route path="/eltern/*" element={<ParentArea />} />
       <Route path="/admin/*" element={<AdminArea />} />
