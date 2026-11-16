@@ -1,5 +1,6 @@
 import type { Lang, Txt } from '../i18n';
 import type { Country } from '../school/systems';
+import type { Pic } from '../pictures/types';
 export type Difficulty = 1 | 2 | 3;
 export type Area = 'kita' | 'schule' | 'welt3d' | 'video' | 'lingue';
 export type Grade = 1 | 2 | 3 | 4;
@@ -25,6 +26,8 @@ export type Visual =
   | { kind: 'code'; code: string; lang?: string }
   | { kind: 'robot'; size: number; robot: [number, number]; goal: [number, number]; walls?: [number, number][]; items?: [number, number][] }
   | { kind: 'table'; head: string[]; rows: string[][] }
+  /** Eigene Illustration (SVG) aus src/pictures */
+  | { kind: 'pic'; pic: Pic; alt: string }
   /** Hörverstehen: Text wird in der Zielsprache vorgelesen (normal und langsam) */
   | { kind: 'audio'; text: string; lang: string; showText?: boolean };
 
@@ -42,6 +45,8 @@ export interface ChoiceOption {
   speak?: string;
   /** Sprache für speak, falls nicht die App-Sprache (Sprachkurse), z. B. „en-GB“ */
   speakLang?: string;
+  /** Antwort als eigene Illustration (Bild-Auswahl) */
+  pic?: Pic;
 }
 
 interface TaskBase {
@@ -61,7 +66,7 @@ export interface ChoiceTask extends TaskBase {
   type: 'choice';
   options: ChoiceOption[];
   correctId: string;
-  optionStyle?: 'big' | 'text' | 'color' | 'shape' | 'emoji';
+  optionStyle?: 'big' | 'text' | 'color' | 'shape' | 'emoji' | 'pic';
 }
 
 export interface InputTask extends TaskBase {
