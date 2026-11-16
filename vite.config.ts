@@ -47,7 +47,8 @@ export default defineConfig({
         ]
       },
       workbox: {
-        globPatterns: ['**/*.{js,css,html,svg,png,woff2,webmanifest}'],
+        // json: Kurspakete von LinguaFlow (public/linguaflow) – Lektionen funktionieren nach dem ersten Laden offline
+        globPatterns: ['**/*.{js,css,html,svg,png,woff2,webmanifest,json}'],
         navigateFallback: `${base}index.html`,
         // Die Sprachen-App hat ihre eigene Startseite
         navigateFallbackDenylist: [new RegExp(`^${base.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}sprachen/`)],

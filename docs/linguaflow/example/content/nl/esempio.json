@@ -1,0 +1,128 @@
+{
+  "format": 1,
+  "id": "nl-esempio",
+  "language": "nl",
+  "version": "1.0.0",
+  "lessons": [
+    {
+      "id": "nl-voorbeeld-01",
+      "minutes": 5,
+      "dialogue": [
+        {
+          "id": "nl-voorbeeld-01-d1",
+          "speaker": "Sanne",
+          "text": "Hallo! Ik ben Sanne."
+        },
+        {
+          "id": "nl-voorbeeld-01-d2",
+          "speaker": "Luca",
+          "text": "Hoi Sanne, ik heet Luca."
+        },
+        {
+          "id": "nl-voorbeeld-01-d3",
+          "speaker": "Sanne",
+          "text": "Waar kom je vandaan?"
+        },
+        {
+          "id": "nl-voorbeeld-01-d4",
+          "speaker": "Luca",
+          "text": "Ik kom uit Italië."
+        }
+      ],
+      "vocabulary": [
+        {
+          "id": "nl-voorbeeld-01-v1",
+          "text": "Goedemorgen"
+        },
+        {
+          "id": "nl-voorbeeld-01-v2",
+          "text": "Dank je"
+        },
+        {
+          "id": "nl-voorbeeld-01-v3",
+          "text": "Tot ziens"
+        },
+        {
+          "id": "nl-voorbeeld-01-v4",
+          "text": "Ja"
+        }
+      ],
+      "exercises": [
+        {
+          "id": "nl-voorbeeld-01-e1",
+          "type": "listen",
+          "item": "nl-voorbeeld-01-v3",
+          "options": [
+            "nl-voorbeeld-01-v4",
+            "nl-voorbeeld-01-v1",
+            "nl-voorbeeld-01-v3"
+          ]
+        },
+        {
+          "id": "nl-voorbeeld-01-e2",
+          "type": "choice",
+          "item": "nl-voorbeeld-01-d3",
+          "direction": "toSource",
+          "options": [
+            "nl-voorbeeld-01-d3",
+            "nl-voorbeeld-01-d4",
+            "nl-voorbeeld-01-d1"
+          ]
+        },
+        {
+          "id": "nl-voorbeeld-01-e3",
+          "type": "cloze",
+          "item": "nl-voorbeeld-01-d2",
+          "gap": "heet",
+          "options": [
+            "heet",
+            "ben",
+            "kom"
+          ]
+        },
+        {
+          "id": "nl-voorbeeld-01-e4",
+          "type": "order",
+          "item": "nl-voorbeeld-01-d4",
+          "segments": [
+            "Ik",
+            "kom",
+            "uit Italië"
+          ],
+          "extra": [
+            "van"
+          ]
+        },
+        {
+          "id": "nl-voorbeeld-01-e5",
+          "type": "choice",
+          "item": "nl-voorbeeld-01-v1",
+          "direction": "toTarget",
+          "options": [
+            "nl-voorbeeld-01-v1",
+            "nl-voorbeeld-01-v2",
+            "nl-voorbeeld-01-v3"
+          ]
+        },
+        {
+          "id": "nl-voorbeeld-01-e6",
+          "type": "write",
+          "item": "nl-voorbeeld-01-v2",
+          "accept": [
+            "Dankjewel",
+            "Dank je wel"
+          ]
+        },
+        {
+          "id": "nl-voorbeeld-01-e7",
+          "type": "situation",
+          "mode": "write",
+          "answers": [
+            "Ik heet Anna.",
+            "Ik ben Anna."
+          ]
+        }
+      ]
+    }
+  ]
+}

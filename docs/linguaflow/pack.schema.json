@@ -1,0 +1,109 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "linguaflow/pack.schema.json",
+  "title": "LinguaFlow – pacchetti di corso (formato 1)",
+  "description": "Tre tipi di file: indice dei corsi (courses.json), contenuto nella lingua da imparare (content/…), traduzioni e spiegazioni nella lingua di partenza (translations/…). Il controllo completo (riferimenti, segmenti, traduzioni mancanti, audio) lo fa `npm run packs:check`.",
+  "$defs": {
+    "lang": { "type": "string", "pattern": "^[a-z]{2,3}(-[A-Za-z0-9]{2,8})*$", "description": "Codice BCP 47, es. de, pt-BR, zh-Hans" },
+    "id": { "type": "string", "pattern": "^[a-z0-9][a-z0-9-]*$" },
+    "version": { "type": "string", "pattern": "^\\d+\\.\\d+\\.\\d+$" },
+    "courseEntry": {
+      "type": "object",
+      "required": ["id", "source", "target", "level", "kind", "status", "version", "content", "translations", "lessons"],
+      "additionalProperties": false,
+      "properties": {
+        "id": { "$ref": "#/$defs/id" },
+        "source": { "$ref": "#/$defs/lang", "description": "Lingua di partenza («Parlo…»)" },
+        "target": { "$ref": "#/$defs/lang", "description": "Lingua da imparare («Voglio imparare…»)" },
+        "level": { "type": "string", "description": "Livello QCER, es. A1" },
+        "kind": { "enum": ["course", "intro", "demo"], "description": "course = modulo completo, intro = introduzione, demo = demo" },
+        "status": { "enum": ["published", "draft"], "description": "solo i corsi published compaiono nell'app" },
+        "version": { "$ref": "#/$defs/version" },
+        "content": { "type": "string", "description": "percorso del file di contenuto, relativo alla cartella dei pacchetti" },
+        "translations": { "type": "string", "description": "percorso del file di traduzioni" },
+        "lessons": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/id" }, "description": "lezioni del corso in ordine" }
+      }
+    },
+    "item": {
+      "type": "object",
+      "required": ["id", "text"],
+      "additionalProperties": false,
+      "properties": {
+        "id": { "$ref": "#/$defs/id" },
+        "text": { "type": "string", "minLength": 1, "description": "testo originale nella lingua da imparare" },
+        "translit": { "type": "string", "description": "trascrizione (aiuto facoltativo)" },
+        "speaker": { "type": "string" },
+        "accept": { "type": "array", "items": { "type": "string" }, "description": "altre scritture corrette per gli esercizi scritti" },
+        "audio": { "type": "string", "description": "file audio relativo alla cartella dei pacchetti" }
+      }
+    },
+    "exercise": {
+      "type": "object",
+      "required": ["id", "type"],
+      "properties": {
+        "id": { "$ref": "#/$defs/id" },
+        "type": { "enum": ["listen", "choice", "cloze", "order", "write", "situation"] }
+      },
+      "allOf": [
+        { "if": { "properties": { "type": { "const": "listen" } } }, "then": { "required": ["item", "options"], "properties": { "item": { "type": "string" }, "options": { "type": "array", "minItems": 2, "items": { "type": "string" } } } } },
+        { "if": { "properties": { "type": { "const": "choice" } } }, "then": { "required": ["item", "direction", "options"], "properties": { "direction": { "enum": ["toSource", "toTarget"] }, "options": { "type": "array", "minItems": 2, "items": { "type": "string" } } } } },
+        { "if": { "properties": { "type": { "const": "cloze" } } }, "then": { "required": ["item", "gap", "options"], "properties": { "gap": { "type": "string", "minLength": 1 }, "options": { "type": "array", "minItems": 2, "items": { "type": "string" } } } } },
+        { "if": { "properties": { "type": { "const": "order" } } }, "then": { "required": ["item", "segments"], "properties": { "segments": { "type": "array", "minItems": 2, "items": { "type": "string" } }, "extra": { "type": "array", "items": { "type": "string" } } } } },
+        { "if": { "properties": { "type": { "const": "write" } } }, "then": { "required": ["item"], "properties": { "accept": { "type": "array", "items": { "type": "string" } } } } },
+        { "if": { "properties": { "type": { "const": "situation" } } }, "then": { "required": ["mode", "answers"], "properties": { "mode": { "enum": ["write", "choice"] }, "answers": { "type": "array", "minItems": 1, "items": { "type": "string" } }, "options": { "type": "array", "items": { "type": "string" } }, "translit": { "type": "string" } } } }
+      ]
+    }
+  },
+  "oneOf": [
+    {
+      "title": "courses.json",
+      "type": "object",
+      "required": ["format", "courses"],
+      "properties": { "format": { "const": 1 }, "courses": { "type": "array", "items": { "$ref": "#/$defs/courseEntry" } } }
+    },
+    {
+      "title": "content/<lingua>/<nome>.json",
+      "type": "object",
+      "required": ["format", "id", "language", "version", "lessons"],
+      "properties": {
+        "format": { "const": 1 },
+        "id": { "$ref": "#/$defs/id" },
+        "language": { "$ref": "#/$defs/lang" },
+        "version": { "$ref": "#/$defs/version" },
+        "lessons": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["id", "minutes", "dialogue", "vocabulary", "exercises"],
+            "properties": {
+              "id": { "$ref": "#/$defs/id" },
+              "minutes": { "type": "number", "minimum": 5, "maximum": 10 },
+              "dialogue": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/item" } },
+              "vocabulary": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/item" } },
+              "exercises": { "type": "array", "minItems": 6, "items": { "$ref": "#/$defs/exercise" } }
+            }
+          }
+        }
+      }
+    },
+    {
+      "title": "translations/<lingua>/<nome>.<partenza>.json",
+      "type": "object",
+      "required": ["format", "id", "content", "source", "target", "version", "quality", "course", "lessons", "items", "exercises"],
+      "properties": {
+        "format": { "const": 1 },
+        "id": { "type": "string" },
+        "content": { "$ref": "#/$defs/id" },
+        "source": { "$ref": "#/$defs/lang" },
+        "target": { "$ref": "#/$defs/lang" },
+        "version": { "$ref": "#/$defs/version" },
+        "quality": { "enum": ["reviewed", "unreviewed", "machine"] },
+        "course": { "type": "object", "required": ["title", "description"], "properties": { "title": { "type": "string" }, "description": { "type": "string" } } },
+        "lessons": { "type": "object", "additionalProperties": { "type": "object", "required": ["title", "goal"], "properties": { "title": { "type": "string" }, "goal": { "type": "string" } } } },
+        "items": { "type": "object", "additionalProperties": { "type": "string" } },
+        "notes": { "type": "object", "additionalProperties": { "type": "string" } },
+        "exercises": { "type": "object", "additionalProperties": { "type": "object", "required": ["explain"], "properties": { "explain": { "type": "string" }, "prompt": { "type": "string" } } } }
+      }
+    }
+  ]
+}

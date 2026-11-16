@@ -1,0 +1,120 @@
+{
+  "format": 1,
+  "courses": [
+    {
+      "id": "it-de-a1",
+      "source": "it",
+      "target": "de",
+      "level": "A1",
+      "kind": "course",
+      "status": "published",
+      "version": "1.0.0",
+      "content": "content/de/a1.json",
+      "translations": "translations/de/a1.it.json",
+      "lessons": [
+        "de-a1-01",
+        "de-a1-02",
+        "de-a1-03",
+        "de-a1-04",
+        "de-a1-05",
+        "de-a1-06",
+        "de-a1-07",
+        "de-a1-08",
+        "de-a1-09",
+        "de-a1-10"
+      ]
+    },
+    {
+      "id": "de-it-intro",
+      "source": "de",
+      "target": "it",
+      "level": "A1",
+      "kind": "intro",
+      "status": "published",
+      "version": "1.0.0",
+      "content": "content/it/intro.json",
+      "translations": "translations/it/intro.de.json",
+      "lessons": [
+        "it-intro-01",
+        "it-intro-02",
+        "it-intro-03"
+      ]
+    },
+    {
+      "id": "it-en-intro",
+      "source": "it",
+      "target": "en",
+      "level": "A1",
+      "kind": "intro",
+      "status": "published",
+      "version": "1.0.0",
+      "content": "content/en/intro.json",
+      "translations": "translations/en/intro.it.json",
+      "lessons": [
+        "en-intro-01",
+        "en-intro-02",
+        "en-intro-03"
+      ]
+    },
+    {
+      "id": "it-fr-intro",
+      "source": "it",
+      "target": "fr",
+      "level": "A1",
+      "kind": "intro",
+      "status": "published",
+      "version": "1.0.0",
+      "content": "content/fr/intro.json",
+      "translations": "translations/fr/intro.it.json",
+      "lessons": [
+        "fr-intro-01",
+        "fr-intro-02",
+        "fr-intro-03"
+      ]
+    },
+    {
+      "id": "it-es-intro",
+      "source": "it",
+      "target": "es",
+      "level": "A1",
+      "kind": "intro",
+      "status": "published",
+      "version": "1.0.0",
+      "content": "content/es/intro.json",
+      "translations": "translations/es/intro.it.json",
+      "lessons": [
+        "es-intro-01",
+        "es-intro-02",
+        "es-intro-03"
+      ]
+    },
+    {
+      "id": "it-ar-demo",
+      "source": "it",
+      "target": "ar",
+      "level": "A1",
+      "kind": "demo",
+      "status": "published",
+      "version": "1.0.0",
+      "content": "content/ar/demo.json",
+      "translations": "translations/ar/demo.it.json",
+      "lessons": [
+        "ar-demo-01"
+      ]
+    },
+    {
+      "id": "it-ja-demo",
+      "source": "it",
+      "target": "ja",
+      "level": "A1",
+      "kind": "demo",
+      "status": "published",
+      "version": "1.0.0",
+      "content": "content/ja/demo.json",
+      "translations": "translations/ja/demo.it.json",
+      "lessons": [
+        "ja-demo-01"
+      ]
+    }
+  ]
+}

@@ -65,7 +65,7 @@ async function solveTask(page: Page) {
 test('Sprachkurs: Lektion mit Hören, Memory und Sprechen über das Mikrofon', async ({ page }) => {
   await page.addInitScript(micStub);
   await createProfile(page, 'Luca', '3', 'IT');
-  await page.goto('/lingue');
+  await page.goto('/sprachen/#/lingue');
   await expect(page.getByTestId('kurs-en')).toBeVisible();
   await expect(page.getByTestId('kurs-it')).toHaveCount(0); // eigene Sprache nicht als Kurs
   await allowMic(page);
@@ -136,7 +136,7 @@ test('Sprachkurs: Theorie erklärt Wörter, Sätze und Regeln', async ({ page })
 
 test('Sprachkurs Türkisch: Kurs, Lektion und Theorie mit Aussprache', async ({ page }) => {
   await createProfile(page, 'Ela', '3', 'IT');
-  await page.goto('/lingue');
+  await page.goto('/sprachen/#/lingue');
   for (const id of ['tr', 'pt', 'ro', 'pl']) await expect(page.getByTestId(`kurs-${id}`)).toBeVisible();
   await page.getByTestId('kurs-tr').click();
   await expect(page).toHaveURL(/\/lingue\/tr$/);
@@ -149,7 +149,7 @@ test('Sprachkurs Türkisch: Kurs, Lektion und Theorie mit Aussprache', async ({ 
 
 test('Sprachkurs Arabisch: Schrift von rechts nach links mit Umschrift', async ({ page }) => {
   await createProfile(page, 'Omar', '3', 'IT');
-  await page.goto('/lingue');
+  await page.goto('/sprachen/#/lingue');
   for (const id of ['ar', 'ru', 'nl', 'el']) await expect(page.getByTestId(`kurs-${id}`)).toBeVisible();
   await page.goto('/lingue/ar');
   await page.getByTestId('vokabeln-lingua-ar-saluti').click();
@@ -188,17 +188,20 @@ test('Sprachkurs: Herzen, Tagesmissionen und Rangliste', async ({ page }) => {
   await expect(page.getByTestId('herzen')).toHaveAttribute('data-hearts', '4');
 });
 
-test('Sprachen öffnet die eigene App „Lernito Sprachen“', async ({ page }) => {
+test('Sprachen öffnet die eigene App LinguaFlow', async ({ page }) => {
   await createProfile(page, 'Nina', '4', 'DE');
   await page.goto('/entdecken');
   await page.locator('a[href$="/lingue"]').first().click();
-  await expect(page).toHaveURL(/\/sprachen\/#\/lingue$/);
-  await expect(page.getByTestId('sprachen-app')).toBeVisible();
+  await expect(page).toHaveURL(/\/sprachen\/#\/benvenuto$/);
+  await expect(page.getByTestId('lf-benvenuto')).toBeVisible();
   await expect(page.locator('link[rel="manifest"]')).toHaveAttribute('href', /manifest\.webmanifest/);
+  // Üben mit Puppy (Kurse mit Herzen) bleibt erreichbar
+  await page.goto('/sprachen/#/lingue');
+  await expect(page.getByTestId('sprachen-app')).toBeVisible();
   await page.getByTestId('kurs-tr').click();
   await expect(page.getByTestId('kurs-titel')).toContainText('Türkisch');
   await page.reload();
   await expect(page.getByTestId('kurs-titel')).toContainText('Türkisch');
   const m = await page.request.get('/sprachen/manifest.webmanifest');
-  expect((await m.json()).name).toBe('Lernito Sprachen');
+  expect((await m.json()).name).toBe('LinguaFlow');
 });

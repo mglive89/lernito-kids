@@ -1,0 +1,132 @@
+{
+  "format": 1,
+  "id": "fr-intro.it",
+  "content": "fr-intro",
+  "source": "it",
+  "target": "fr",
+  "version": "1.0.0",
+  "quality": "unreviewed",
+  "course": {
+    "title": "Francese – Introduzione",
+    "description": "Tre lezioni per iniziare: presentarsi, ordinare al bar, chiedere la strada."
+  },
+  "lessons": {
+    "fr-intro-01": {
+      "title": "Bonjour!",
+      "goal": "Salutare e presentarsi in francese."
+    },
+    "fr-intro-02": {
+      "title": "Al caffè",
+      "goal": "Ordinare al bar e chiedere quanto fa."
+    },
+    "fr-intro-03": {
+      "title": "Dov’è la stazione?",
+      "goal": "Chiedere la strada e capire indicazioni semplici."
+    }
+  },
+  "items": {
+    "fr-intro-01-d1": "Ciao! Mi chiamo Claire. E tu?",
+    "fr-intro-01-d2": "Ciao, Claire! Io sono Luca.",
+    "fr-intro-01-d3": "Da dove vieni?",
+    "fr-intro-01-d4": "Vengo dall'Italia, da Torino.",
+    "fr-intro-01-d5": "Piacere, Luca!",
+    "fr-intro-01-v1": "Buonasera",
+    "fr-intro-01-v2": "Arrivederci",
+    "fr-intro-01-v3": "Grazie",
+    "fr-intro-01-v4": "Per favore",
+    "fr-intro-01-v5": "Piacere",
+    "fr-intro-01-v6": "A presto",
+    "fr-intro-02-d1": "Buongiorno, cosa prende?",
+    "fr-intro-02-d2": "Un caffè e un cornetto, per favore.",
+    "fr-intro-02-d3": "Qui o da portare via?",
+    "fr-intro-02-d4": "Qui. Quanto fa?",
+    "fr-intro-02-d5": "Fa quattro euro.",
+    "fr-intro-02-d6": "Ecco. Grazie, buona giornata!",
+    "fr-intro-02-v1": "un tè",
+    "fr-intro-02-v2": "un'acqua minerale",
+    "fr-intro-02-v3": "il conto",
+    "fr-intro-02-v4": "un cornetto",
+    "fr-intro-02-v5": "da portare via",
+    "fr-intro-02-v6": "quanto",
+    "fr-intro-03-d1": "Mi scusi, dov’è la stazione?",
+    "fr-intro-03-d2": "Vada dritto, poi giri a sinistra.",
+    "fr-intro-03-d3": "È lontano?",
+    "fr-intro-03-d4": "No, è a dieci minuti a piedi.",
+    "fr-intro-03-d5": "Grazie mille!",
+    "fr-intro-03-d6": "Di niente!",
+    "fr-intro-03-v1": "a sinistra",
+    "fr-intro-03-v2": "a destra",
+    "fr-intro-03-v3": "dritto",
+    "fr-intro-03-v4": "la stazione",
+    "fr-intro-03-v5": "qui vicino",
+    "fr-intro-03-v6": "a piedi"
+  },
+  "exercises": {
+    "fr-intro-01-e1": {
+      "explain": "«Au revoir» = arrivederci. Si pronuncia circa «o rvuàr»."
+    },
+    "fr-intro-01-e2": {
+      "explain": "«Tu viens d’où ?» = «Da dove vieni?». In francese c’è uno spazio prima di «?»."
+    },
+    "fr-intro-01-e3": {
+      "explain": "«Je m’appelle …» = «Mi chiamo …»."
+    },
+    "fr-intro-01-e4": {
+      "explain": "Per la provenienza: «Je viens de …»; davanti a vocale «de» diventa «d’»: «d’Italie»."
+    },
+    "fr-intro-01-e5": {
+      "explain": "«À bientôt» = a presto. Nota l’accento su «À»."
+    },
+    "fr-intro-01-e6": {
+      "explain": "«Merci» = grazie."
+    },
+    "fr-intro-01-e7": {
+      "explain": "Ad esempio: «Je m’appelle Marta.» oppure «Moi, c’est Marta.»",
+      "prompt": "Un ragazzo francese ti chiede «Comment tu t’appelles ?». Rispondi che ti chiami Marta."
+    },
+    "fr-intro-02-e1": {
+      "explain": "«l’addition» = il conto. «L’addition, s’il vous plaît !»"
+    },
+    "fr-intro-02-e2": {
+      "explain": "«Sur place ou à emporter ?» = «Qui o da portare via?»."
+    },
+    "fr-intro-02-e3": {
+      "explain": "«un croissant» = un cornetto."
+    },
+    "fr-intro-02-e4": {
+      "explain": "«Ça fait combien ?» = «Quanto fa?» – la domanda tipica alla cassa."
+    },
+    "fr-intro-02-e5": {
+      "explain": "«un thé» = un tè. Nota l’accento su «é»."
+    },
+    "fr-intro-02-e6": {
+      "explain": "«combien» = quanto."
+    },
+    "fr-intro-02-e7": {
+      "explain": "Ad esempio: «Un thé, s’il vous plaît.» oppure «Je voudrais un thé.»",
+      "prompt": "Al bar vuoi un tè. Ordina in modo cortese."
+    },
+    "fr-intro-03-e1": {
+      "explain": "«à droite» = a destra, «à gauche» = a sinistra."
+    },
+    "fr-intro-03-e2": {
+      "explain": "«C’est loin ?» = «È lontano?»."
+    },
+    "fr-intro-03-e3": {
+      "explain": "La signora dice «a sinistra»: in francese «à gauche»."
+    },
+    "fr-intro-03-e4": {
+      "explain": "«où» (con l’accento) = dove; «ou» senza accento = oppure."
+    },
+    "fr-intro-03-e5": {
+      "explain": "«près d’ici» = qui vicino."
+    },
+    "fr-intro-03-e6": {
+      "explain": "«la gare» = la stazione (dei treni)."
+    },
+    "fr-intro-03-e7": {
+      "explain": "Ad esempio: «Excusez-moi, où est la gare ?» – attenzione all’accento su «où».",
+      "prompt": "Cerchi la stazione. Chiedi a una passante dov’è."
+    }
+  }
+}

@@ -1,0 +1,1421 @@
+{
+  "format": 1,
+  "id": "de-a1",
+  "language": "de",
+  "version": "1.0.0",
+  "lessons": [
+    {
+      "id": "de-a1-01",
+      "minutes": 7,
+      "dialogue": [
+        {
+          "id": "de-a1-01-d1",
+          "speaker": "Lena",
+          "text": "Hallo! Ich bin Lena."
+        },
+        {
+          "id": "de-a1-01-d2",
+          "speaker": "Marco",
+          "text": "Hallo, Lena! Ich heiße Marco."
+        },
+        {
+          "id": "de-a1-01-d3",
+          "speaker": "Lena",
+          "text": "Woher kommst du?"
+        },
+        {
+          "id": "de-a1-01-d4",
+          "speaker": "Marco",
+          "text": "Ich komme aus Italien. Und du?"
+        },
+        {
+          "id": "de-a1-01-d5",
+          "speaker": "Lena",
+          "text": "Ich komme aus Hamburg. Freut mich!"
+        }
+      ],
+      "vocabulary": [
+        {
+          "id": "de-a1-01-v1",
+          "text": "Guten Morgen"
+        },
+        {
+          "id": "de-a1-01-v2",
+          "text": "Guten Tag"
+        },
+        {
+          "id": "de-a1-01-v3",
+          "text": "Tschüss"
+        },
+        {
+          "id": "de-a1-01-v4",
+          "text": "Wie heißt du?",
+          "accept": [
+            "Wie heisst du?"
+          ]
+        },
+        {
+          "id": "de-a1-01-v5",
+          "text": "Freut mich"
+        },
+        {
+          "id": "de-a1-01-v6",
+          "text": "Danke"
+        }
+      ],
+      "exercises": [
+        {
+          "id": "de-a1-01-e1",
+          "type": "listen",
+          "item": "de-a1-01-v3",
+          "options": [
+            "de-a1-01-v4",
+            "de-a1-01-v5",
+            "de-a1-01-v3"
+          ]
+        },
+        {
+          "id": "de-a1-01-e2",
+          "type": "choice",
+          "item": "de-a1-01-d3",
+          "direction": "toSource",
+          "options": [
+            "de-a1-01-d3",
+            "de-a1-01-d4",
+            "de-a1-01-d5"
+          ]
+        },
+        {
+          "id": "de-a1-01-e3",
+          "type": "cloze",
+          "item": "de-a1-01-d2",
+          "gap": "heiße",
+          "options": [
+            "heiße",
+            "bin",
+            "komme"
+          ]
+        },
+        {
+          "id": "de-a1-01-e4",
+          "type": "order",
+          "item": "de-a1-01-d4",
+          "segments": [
+            "Ich",
+            "komme",
+            "aus Italien.",
+            "Und du?"
+          ],
+          "extra": [
+            "von"
+          ]
+        },
+        {
+          "id": "de-a1-01-e5",
+          "type": "choice",
+          "item": "de-a1-01-v1",
+          "direction": "toTarget",
+          "options": [
+            "de-a1-01-v1",
+            "de-a1-01-v2",
+            "de-a1-01-v3"
+          ]
+        },
+        {
+          "id": "de-a1-01-e6",
+          "type": "write",
+          "item": "de-a1-01-v6"
+        },
+        {
+          "id": "de-a1-01-e7",
+          "type": "situation",
+          "mode": "write",
+          "answers": [
+            "Ich heiße Giulia.",
+            "Ich bin Giulia.",
+            "Mein Name ist Giulia."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "de-a1-02",
+      "minutes": 7,
+      "dialogue": [
+        {
+          "id": "de-a1-02-d1",
+          "speaker": "Verkäuferin",
+          "text": "Guten Morgen! Was darf es sein?"
+        },
+        {
+          "id": "de-a1-02-d2",
+          "speaker": "Marco",
+          "text": "Ich hätte gern zwei Brötchen, bitte."
+        },
+        {
+          "id": "de-a1-02-d3",
+          "speaker": "Verkäuferin",
+          "text": "Sonst noch etwas?"
+        },
+        {
+          "id": "de-a1-02-d4",
+          "speaker": "Marco",
+          "text": "Ja, ein Roggenbrot. Was kostet das?"
+        },
+        {
+          "id": "de-a1-02-d5",
+          "speaker": "Verkäuferin",
+          "text": "Das macht vier Euro zwanzig."
+        },
+        {
+          "id": "de-a1-02-d6",
+          "speaker": "Marco",
+          "text": "Hier, bitte. Schönen Tag noch!"
+        }
+      ],
+      "vocabulary": [
+        {
+          "id": "de-a1-02-v1",
+          "text": "das Brötchen"
+        },
+        {
+          "id": "de-a1-02-v2",
+          "text": "das Brot"
+        },
+        {
+          "id": "de-a1-02-v3",
+          "text": "bitte"
+        },
+        {
+          "id": "de-a1-02-v4",
+          "text": "Was kostet das?"
+        },
+        {
+          "id": "de-a1-02-v5",
+          "text": "zwei"
+        },
+        {
+          "id": "de-a1-02-v6",
+          "text": "Ich hätte gern"
+        }
+      ],
+      "exercises": [
+        {
+          "id": "de-a1-02-e1",
+          "type": "listen",
+          "item": "de-a1-02-v2",
+          "options": [
+            "de-a1-02-v3",
+            "de-a1-02-v4",
+            "de-a1-02-v2"
+          ]
+        },
+        {
+          "id": "de-a1-02-e2",
+          "type": "choice",
+          "item": "de-a1-02-d3",
+          "direction": "toSource",
+          "options": [
+            "de-a1-02-d3",
+            "de-a1-02-d4",
+            "de-a1-02-d5"
+          ]
+        },
+        {
+          "id": "de-a1-02-e3",
+          "type": "cloze",
+          "item": "de-a1-02-d2",
+          "gap": "gern",
+          "options": [
+            "gern",
+            "viel",
+            "sehr"
+          ]
+        },
+        {
+          "id": "de-a1-02-e4",
+          "type": "order",
+          "item": "de-a1-02-d4",
+          "segments": [
+            "Ja,",
+            "ein Roggenbrot.",
+            "Was",
+            "kostet",
+            "das?"
+          ],
+          "extra": [
+            "ist"
+          ]
+        },
+        {
+          "id": "de-a1-02-e5",
+          "type": "choice",
+          "item": "de-a1-02-v4",
+          "direction": "toTarget",
+          "options": [
+            "de-a1-02-v4",
+            "de-a1-02-v5",
+            "de-a1-02-v6"
+          ]
+        },
+        {
+          "id": "de-a1-02-e6",
+          "type": "write",
+          "item": "de-a1-02-v3"
+        },
+        {
+          "id": "de-a1-02-e7",
+          "type": "situation",
+          "mode": "write",
+          "answers": [
+            "Ich hätte gern drei Brötchen, bitte.",
+            "Ich hätte gern drei Brötchen.",
+            "Ich hätte gerne drei Brötchen, bitte.",
+            "Ich hätte gerne drei Brötchen.",
+            "Drei Brötchen, bitte.",
+            "Ich möchte drei Brötchen, bitte.",
+            "Ich möchte drei Brötchen.",
+            "Ich hätte gern drei Brötchen bitte.",
+            "Ich hätte gerne drei Brötchen bitte.",
+            "Drei Brötchen bitte.",
+            "Ich möchte drei Brötchen bitte."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "de-a1-03",
+      "minutes": 6,
+      "dialogue": [
+        {
+          "id": "de-a1-03-d1",
+          "speaker": "Kellner",
+          "text": "Hallo! Was möchten Sie trinken?"
+        },
+        {
+          "id": "de-a1-03-d2",
+          "speaker": "Anna",
+          "text": "Einen Kaffee mit Milch, bitte."
+        },
+        {
+          "id": "de-a1-03-d3",
+          "speaker": "Kellner",
+          "text": "Und für Sie?"
+        },
+        {
+          "id": "de-a1-03-d4",
+          "speaker": "Marco",
+          "text": "Für mich ein Wasser ohne Kohlensäure."
+        },
+        {
+          "id": "de-a1-03-d5",
+          "speaker": "Anna",
+          "text": "Wir möchten zahlen, bitte."
+        },
+        {
+          "id": "de-a1-03-d6",
+          "speaker": "Kellner",
+          "text": "Zusammen oder getrennt?"
+        }
+      ],
+      "vocabulary": [
+        {
+          "id": "de-a1-03-v1",
+          "text": "der Kaffee"
+        },
+        {
+          "id": "de-a1-03-v2",
+          "text": "der Tee"
+        },
+        {
+          "id": "de-a1-03-v3",
+          "text": "das Wasser"
+        },
+        {
+          "id": "de-a1-03-v4",
+          "text": "mit Milch"
+        },
+        {
+          "id": "de-a1-03-v5",
+          "text": "zahlen"
+        },
+        {
+          "id": "de-a1-03-v6",
+          "text": "getrennt"
+        }
+      ],
+      "exercises": [
+        {
+          "id": "de-a1-03-e1",
+          "type": "listen",
+          "item": "de-a1-03-v2",
+          "options": [
+            "de-a1-03-v3",
+            "de-a1-03-v4",
+            "de-a1-03-v2"
+          ]
+        },
+        {
+          "id": "de-a1-03-e2",
+          "type": "choice",
+          "item": "de-a1-03-d6",
+          "direction": "toSource",
+          "options": [
+            "de-a1-03-d6",
+            "de-a1-03-d1",
+            "de-a1-03-d2"
+          ]
+        },
+        {
+          "id": "de-a1-03-e3",
+          "type": "cloze",
+          "item": "de-a1-03-d2",
+          "gap": "Milch",
+          "options": [
+            "Milch",
+            "Zucker",
+            "Wasser"
+          ]
+        },
+        {
+          "id": "de-a1-03-e4",
+          "type": "order",
+          "item": "de-a1-03-d5",
+          "segments": [
+            "Wir",
+            "möchten",
+            "zahlen,",
+            "bitte"
+          ],
+          "extra": [
+            "haben"
+          ]
+        },
+        {
+          "id": "de-a1-03-e5",
+          "type": "choice",
+          "item": "de-a1-03-v3",
+          "direction": "toTarget",
+          "options": [
+            "de-a1-03-v3",
+            "de-a1-03-v4",
+            "de-a1-03-v5"
+          ]
+        },
+        {
+          "id": "de-a1-03-e6",
+          "type": "write",
+          "item": "de-a1-03-v5"
+        },
+        {
+          "id": "de-a1-03-e7",
+          "type": "situation",
+          "mode": "write",
+          "answers": [
+            "Einen Tee, bitte.",
+            "Ich möchte einen Tee, bitte.",
+            "Ich möchte einen Tee.",
+            "Ich hätte gern einen Tee.",
+            "Ich hätte gern einen Tee, bitte.",
+            "Ich hätte gerne einen Tee, bitte.",
+            "Ich hätte gerne einen Tee.",
+            "Ein Tee, bitte.",
+            "Einen Tee bitte.",
+            "Ich möchte einen Tee bitte.",
+            "Ich hätte gern einen Tee bitte.",
+            "Ich hätte gerne einen Tee bitte.",
+            "Ein Tee bitte."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "de-a1-04",
+      "minutes": 7,
+      "dialogue": [
+        {
+          "id": "de-a1-04-d1",
+          "speaker": "Marco",
+          "text": "Entschuldigung, wo finde ich Äpfel?"
+        },
+        {
+          "id": "de-a1-04-d2",
+          "speaker": "Mitarbeiter",
+          "text": "Die Äpfel sind dort hinten, beim Gemüse."
+        },
+        {
+          "id": "de-a1-04-d3",
+          "speaker": "Marco",
+          "text": "Danke! Und haben Sie auch Hafermilch?"
+        },
+        {
+          "id": "de-a1-04-d4",
+          "speaker": "Mitarbeiter",
+          "text": "Ja, im Regal neben dem Käse."
+        },
+        {
+          "id": "de-a1-04-d5",
+          "speaker": "Kassiererin",
+          "text": "Brauchen Sie eine Tüte?"
+        },
+        {
+          "id": "de-a1-04-d6",
+          "speaker": "Marco",
+          "text": "Nein, danke. Ich zahle mit Karte."
+        }
+      ],
+      "vocabulary": [
+        {
+          "id": "de-a1-04-v1",
+          "text": "die Äpfel"
+        },
+        {
+          "id": "de-a1-04-v2",
+          "text": "der Käse"
+        },
+        {
+          "id": "de-a1-04-v3",
+          "text": "die Tüte"
+        },
+        {
+          "id": "de-a1-04-v4",
+          "text": "Entschuldigung"
+        },
+        {
+          "id": "de-a1-04-v5",
+          "text": "mit Karte"
+        },
+        {
+          "id": "de-a1-04-v6",
+          "text": "bar"
+        }
+      ],
+      "exercises": [
+        {
+          "id": "de-a1-04-e1",
+          "type": "listen",
+          "item": "de-a1-04-v2",
+          "options": [
+            "de-a1-04-v3",
+            "de-a1-04-v4",
+            "de-a1-04-v2"
+          ]
+        },
+        {
+          "id": "de-a1-04-e2",
+          "type": "choice",
+          "item": "de-a1-04-d5",
+          "direction": "toSource",
+          "options": [
+            "de-a1-04-d5",
+            "de-a1-04-d6",
+            "de-a1-04-d1"
+          ]
+        },
+        {
+          "id": "de-a1-04-e3",
+          "type": "cloze",
+          "item": "de-a1-04-d1",
+          "gap": "wo",
+          "options": [
+            "wo",
+            "wer",
+            "wie"
+          ]
+        },
+        {
+          "id": "de-a1-04-e4",
+          "type": "order",
+          "item": "de-a1-04-d6",
+          "segments": [
+            "Nein, danke.",
+            "Ich",
+            "zahle",
+            "mit Karte."
+          ],
+          "extra": [
+            "bin"
+          ]
+        },
+        {
+          "id": "de-a1-04-e5",
+          "type": "choice",
+          "item": "de-a1-04-v4",
+          "direction": "toTarget",
+          "options": [
+            "de-a1-04-v4",
+            "de-a1-04-v5",
+            "de-a1-04-v6"
+          ]
+        },
+        {
+          "id": "de-a1-04-e6",
+          "type": "write",
+          "item": "de-a1-04-v6"
+        },
+        {
+          "id": "de-a1-04-e7",
+          "type": "situation",
+          "mode": "write",
+          "answers": [
+            "Entschuldigung, wo finde ich Käse?",
+            "Wo finde ich Käse?",
+            "Entschuldigung, wo finde ich den Käse?",
+            "Wo finde ich den Käse?",
+            "Wo ist der Käse?",
+            "Entschuldigung, wo ist der Käse?",
+            "Entschuldigung wo finde ich Käse?",
+            "Entschuldigung wo finde ich den Käse?",
+            "Entschuldigung wo ist der Käse?"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "de-a1-05",
+      "minutes": 6,
+      "dialogue": [
+        {
+          "id": "de-a1-05-d1",
+          "speaker": "Marco",
+          "text": "Entschuldigung, wie komme ich zum Bahnhof?"
+        },
+        {
+          "id": "de-a1-05-d2",
+          "speaker": "Frau Weber",
+          "text": "Gehen Sie geradeaus und dann links."
+        },
+        {
+          "id": "de-a1-05-d3",
+          "speaker": "Marco",
+          "text": "Ist es weit?"
+        },
+        {
+          "id": "de-a1-05-d4",
+          "speaker": "Frau Weber",
+          "text": "Nein, nur fünf Minuten zu Fuß."
+        },
+        {
+          "id": "de-a1-05-d5",
+          "speaker": "Marco",
+          "text": "Vielen Dank!"
+        },
+        {
+          "id": "de-a1-05-d6",
+          "speaker": "Frau Weber",
+          "text": "Gern geschehen."
+        }
+      ],
+      "vocabulary": [
+        {
+          "id": "de-a1-05-v1",
+          "text": "links"
+        },
+        {
+          "id": "de-a1-05-v2",
+          "text": "rechts"
+        },
+        {
+          "id": "de-a1-05-v3",
+          "text": "geradeaus"
+        },
+        {
+          "id": "de-a1-05-v4",
+          "text": "der Bahnhof"
+        },
+        {
+          "id": "de-a1-05-v5",
+          "text": "zu Fuß"
+        },
+        {
+          "id": "de-a1-05-v6",
+          "text": "weit"
+        }
+      ],
+      "exercises": [
+        {
+          "id": "de-a1-05-e1",
+          "type": "listen",
+          "item": "de-a1-05-v2",
+          "options": [
+            "de-a1-05-v3",
+            "de-a1-05-v4",
+            "de-a1-05-v2"
+          ]
+        },
+        {
+          "id": "de-a1-05-e2",
+          "type": "choice",
+          "item": "de-a1-05-d3",
+          "direction": "toSource",
+          "options": [
+            "de-a1-05-d3",
+            "de-a1-05-d4",
+            "de-a1-05-d5"
+          ]
+        },
+        {
+          "id": "de-a1-05-e3",
+          "type": "cloze",
+          "item": "de-a1-05-d2",
+          "gap": "links",
+          "options": [
+            "links",
+            "rechts",
+            "zu"
+          ]
+        },
+        {
+          "id": "de-a1-05-e4",
+          "type": "order",
+          "item": "de-a1-05-d1",
+          "segments": [
+            "Entschuldigung,",
+            "wie",
+            "komme",
+            "ich",
+            "zum Bahnhof?"
+          ],
+          "extra": [
+            "gehe"
+          ]
+        },
+        {
+          "id": "de-a1-05-e5",
+          "type": "choice",
+          "item": "de-a1-05-v3",
+          "direction": "toTarget",
+          "options": [
+            "de-a1-05-v3",
+            "de-a1-05-v4",
+            "de-a1-05-v5"
+          ]
+        },
+        {
+          "id": "de-a1-05-e6",
+          "type": "write",
+          "item": "de-a1-05-v2"
+        },
+        {
+          "id": "de-a1-05-e7",
+          "type": "situation",
+          "mode": "write",
+          "answers": [
+            "Entschuldigung, wie komme ich zum Bahnhof?",
+            "Wie komme ich zum Bahnhof?",
+            "Wo ist der Bahnhof?",
+            "Entschuldigung, wo ist der Bahnhof?",
+            "Entschuldigung wie komme ich zum Bahnhof?",
+            "Entschuldigung wo ist der Bahnhof?"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "de-a1-06",
+      "minutes": 7,
+      "dialogue": [
+        {
+          "id": "de-a1-06-d1",
+          "speaker": "Marco",
+          "text": "Eine Fahrkarte nach München, bitte."
+        },
+        {
+          "id": "de-a1-06-d2",
+          "speaker": "Mitarbeiterin",
+          "text": "Einfach oder hin und zurück?"
+        },
+        {
+          "id": "de-a1-06-d3",
+          "speaker": "Marco",
+          "text": "Hin und zurück, bitte."
+        },
+        {
+          "id": "de-a1-06-d4",
+          "speaker": "Mitarbeiterin",
+          "text": "Das kostet neunundfünfzig Euro."
+        },
+        {
+          "id": "de-a1-06-d5",
+          "speaker": "Marco",
+          "text": "Von welchem Gleis fährt der Zug?"
+        },
+        {
+          "id": "de-a1-06-d6",
+          "speaker": "Mitarbeiterin",
+          "text": "Von Gleis drei. Gute Fahrt!"
+        }
+      ],
+      "vocabulary": [
+        {
+          "id": "de-a1-06-v1",
+          "text": "die Fahrkarte"
+        },
+        {
+          "id": "de-a1-06-v2",
+          "text": "der Zug"
+        },
+        {
+          "id": "de-a1-06-v3",
+          "text": "das Gleis"
+        },
+        {
+          "id": "de-a1-06-v4",
+          "text": "einfach"
+        },
+        {
+          "id": "de-a1-06-v5",
+          "text": "die Verspätung"
+        },
+        {
+          "id": "de-a1-06-v6",
+          "text": "die Abfahrt"
+        }
+      ],
+      "exercises": [
+        {
+          "id": "de-a1-06-e1",
+          "type": "listen",
+          "item": "de-a1-06-v2",
+          "options": [
+            "de-a1-06-v3",
+            "de-a1-06-v4",
+            "de-a1-06-v2"
+          ]
+        },
+        {
+          "id": "de-a1-06-e2",
+          "type": "choice",
+          "item": "de-a1-06-d2",
+          "direction": "toSource",
+          "options": [
+            "de-a1-06-d2",
+            "de-a1-06-d3",
+            "de-a1-06-d4"
+          ]
+        },
+        {
+          "id": "de-a1-06-e3",
+          "type": "cloze",
+          "item": "de-a1-06-d5",
+          "gap": "Gleis",
+          "options": [
+            "Gleis",
+            "Zug",
+            "Bahnhof"
+          ]
+        },
+        {
+          "id": "de-a1-06-e4",
+          "type": "order",
+          "item": "de-a1-06-d1",
+          "segments": [
+            "Eine Fahrkarte",
+            "nach München,",
+            "bitte"
+          ],
+          "extra": [
+            "zu"
+          ]
+        },
+        {
+          "id": "de-a1-06-e5",
+          "type": "choice",
+          "item": "de-a1-06-v5",
+          "direction": "toTarget",
+          "options": [
+            "de-a1-06-v5",
+            "de-a1-06-v6",
+            "de-a1-06-v1"
+          ]
+        },
+        {
+          "id": "de-a1-06-e6",
+          "type": "write",
+          "item": "de-a1-06-v3",
+          "accept": [
+            "Gleis"
+          ]
+        },
+        {
+          "id": "de-a1-06-e7",
+          "type": "situation",
+          "mode": "choice",
+          "answers": [
+            "Einmal nach Berlin, einfach, bitte."
+          ],
+          "options": [
+            "Einmal nach Berlin, einfach, bitte.",
+            "Einmal nach Berlin, hin und zurück, bitte.",
+            "Von welchem Gleis fährt der Zug nach Berlin?"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "de-a1-07",
+      "minutes": 6,
+      "dialogue": [
+        {
+          "id": "de-a1-07-d1",
+          "speaker": "Arzthelferin",
+          "text": "Praxis Dr. Klein, guten Tag."
+        },
+        {
+          "id": "de-a1-07-d2",
+          "speaker": "Marco",
+          "text": "Guten Tag, ich brauche einen Termin."
+        },
+        {
+          "id": "de-a1-07-d3",
+          "speaker": "Arzthelferin",
+          "text": "Was fehlt Ihnen denn?"
+        },
+        {
+          "id": "de-a1-07-d4",
+          "speaker": "Marco",
+          "text": "Ich habe Fieber und Halsschmerzen."
+        },
+        {
+          "id": "de-a1-07-d5",
+          "speaker": "Arzthelferin",
+          "text": "Können Sie heute um elf Uhr kommen?"
+        },
+        {
+          "id": "de-a1-07-d6",
+          "speaker": "Marco",
+          "text": "Ja, das passt. Danke!"
+        }
+      ],
+      "vocabulary": [
+        {
+          "id": "de-a1-07-v1",
+          "text": "der Termin"
+        },
+        {
+          "id": "de-a1-07-v2",
+          "text": "das Fieber"
+        },
+        {
+          "id": "de-a1-07-v3",
+          "text": "Kopfschmerzen"
+        },
+        {
+          "id": "de-a1-07-v4",
+          "text": "Bauchschmerzen"
+        },
+        {
+          "id": "de-a1-07-v5",
+          "text": "die Versichertenkarte"
+        },
+        {
+          "id": "de-a1-07-v6",
+          "text": "krank"
+        }
+      ],
+      "exercises": [
+        {
+          "id": "de-a1-07-e1",
+          "type": "listen",
+          "item": "de-a1-07-v3",
+          "options": [
+            "de-a1-07-v4",
+            "de-a1-07-v5",
+            "de-a1-07-v3"
+          ]
+        },
+        {
+          "id": "de-a1-07-e2",
+          "type": "choice",
+          "item": "de-a1-07-d3",
+          "direction": "toSource",
+          "options": [
+            "de-a1-07-d3",
+            "de-a1-07-d4",
+            "de-a1-07-d5"
+          ]
+        },
+        {
+          "id": "de-a1-07-e3",
+          "type": "cloze",
+          "item": "de-a1-07-d2",
+          "gap": "Termin",
+          "options": [
+            "Termin",
+            "Fieber",
+            "Arzt"
+          ]
+        },
+        {
+          "id": "de-a1-07-e4",
+          "type": "order",
+          "item": "de-a1-07-d4",
+          "segments": [
+            "Ich",
+            "habe",
+            "Fieber",
+            "und",
+            "Halsschmerzen"
+          ],
+          "extra": [
+            "bin"
+          ]
+        },
+        {
+          "id": "de-a1-07-e5",
+          "type": "choice",
+          "item": "de-a1-07-v6",
+          "direction": "toTarget",
+          "options": [
+            "de-a1-07-v6",
+            "de-a1-07-v1",
+            "de-a1-07-v2"
+          ]
+        },
+        {
+          "id": "de-a1-07-e6",
+          "type": "write",
+          "item": "de-a1-07-v2",
+          "accept": [
+            "Fieber"
+          ]
+        },
+        {
+          "id": "de-a1-07-e7",
+          "type": "situation",
+          "mode": "write",
+          "answers": [
+            "Ich habe Fieber.",
+            "Ich habe Fieber, Herr Doktor.",
+            "Ich habe Fieber, Frau Doktor.",
+            "Ich habe Fieber Herr Doktor.",
+            "Ich habe Fieber Frau Doktor."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "de-a1-08",
+      "minutes": 6,
+      "dialogue": [
+        {
+          "id": "de-a1-08-d1",
+          "speaker": "Sara",
+          "text": "Hast du am Samstag Zeit?"
+        },
+        {
+          "id": "de-a1-08-d2",
+          "speaker": "Marco",
+          "text": "Ja, am Nachmittag. Warum?"
+        },
+        {
+          "id": "de-a1-08-d3",
+          "speaker": "Sara",
+          "text": "Wir gehen ins Kino. Kommst du mit?"
+        },
+        {
+          "id": "de-a1-08-d4",
+          "speaker": "Marco",
+          "text": "Gern! Um wie viel Uhr?"
+        },
+        {
+          "id": "de-a1-08-d5",
+          "speaker": "Sara",
+          "text": "Um halb acht vor dem Kino."
+        },
+        {
+          "id": "de-a1-08-d6",
+          "speaker": "Marco",
+          "text": "Super, bis Samstag!"
+        }
+      ],
+      "vocabulary": [
+        {
+          "id": "de-a1-08-v1",
+          "text": "am Samstag"
+        },
+        {
+          "id": "de-a1-08-v2",
+          "text": "am Sonntag"
+        },
+        {
+          "id": "de-a1-08-v3",
+          "text": "heute"
+        },
+        {
+          "id": "de-a1-08-v4",
+          "text": "morgen"
+        },
+        {
+          "id": "de-a1-08-v5",
+          "text": "um acht Uhr"
+        },
+        {
+          "id": "de-a1-08-v6",
+          "text": "halb acht"
+        }
+      ],
+      "exercises": [
+        {
+          "id": "de-a1-08-e1",
+          "type": "listen",
+          "item": "de-a1-08-v4",
+          "options": [
+            "de-a1-08-v5",
+            "de-a1-08-v6",
+            "de-a1-08-v4"
+          ]
+        },
+        {
+          "id": "de-a1-08-e2",
+          "type": "choice",
+          "item": "de-a1-08-d3",
+          "direction": "toSource",
+          "options": [
+            "de-a1-08-d3",
+            "de-a1-08-d4",
+            "de-a1-08-d5"
+          ]
+        },
+        {
+          "id": "de-a1-08-e3",
+          "type": "cloze",
+          "item": "de-a1-08-d5",
+          "gap": "halb",
+          "options": [
+            "halb",
+            "um",
+            "vor"
+          ]
+        },
+        {
+          "id": "de-a1-08-e4",
+          "type": "order",
+          "item": "de-a1-08-d1",
+          "segments": [
+            "Hast",
+            "du",
+            "am Samstag",
+            "Zeit?"
+          ],
+          "extra": [
+            "bist"
+          ]
+        },
+        {
+          "id": "de-a1-08-e5",
+          "type": "choice",
+          "item": "de-a1-08-v3",
+          "direction": "toTarget",
+          "options": [
+            "de-a1-08-v3",
+            "de-a1-08-v4",
+            "de-a1-08-v5"
+          ]
+        },
+        {
+          "id": "de-a1-08-e6",
+          "type": "write",
+          "item": "de-a1-08-v2",
+          "accept": [
+            "Sonntag"
+          ]
+        },
+        {
+          "id": "de-a1-08-e7",
+          "type": "situation",
+          "mode": "write",
+          "answers": [
+            "Hast du am Sonntag Zeit?",
+            "Hast du Sonntag Zeit?"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "de-a1-09",
+      "minutes": 8,
+      "dialogue": [
+        {
+          "id": "de-a1-09-d1",
+          "speaker": "Kellnerin",
+          "text": "Guten Abend! Haben Sie reserviert?"
+        },
+        {
+          "id": "de-a1-09-d2",
+          "speaker": "Marco",
+          "text": "Ja, auf den Namen Rossi, für zwei Personen."
+        },
+        {
+          "id": "de-a1-09-d3",
+          "speaker": "Kellnerin",
+          "text": "Bitte sehr. Hier ist die Speisekarte."
+        },
+        {
+          "id": "de-a1-09-d4",
+          "speaker": "Marco",
+          "text": "Ich nehme die Gemüsesuppe und ein Wasser."
+        },
+        {
+          "id": "de-a1-09-d5",
+          "speaker": "Kellnerin",
+          "text": "Hat es Ihnen geschmeckt?"
+        },
+        {
+          "id": "de-a1-09-d6",
+          "speaker": "Marco",
+          "text": "Ja, sehr gut. Die Rechnung, bitte."
+        }
+      ],
+      "vocabulary": [
+        {
+          "id": "de-a1-09-v1",
+          "text": "die Speisekarte"
+        },
+        {
+          "id": "de-a1-09-v2",
+          "text": "die Rechnung"
+        },
+        {
+          "id": "de-a1-09-v3",
+          "text": "das Trinkgeld"
+        },
+        {
+          "id": "de-a1-09-v4",
+          "text": "lecker"
+        },
+        {
+          "id": "de-a1-09-v5",
+          "text": "vegetarisch"
+        },
+        {
+          "id": "de-a1-09-v6",
+          "text": "Ich nehme"
+        }
+      ],
+      "exercises": [
+        {
+          "id": "de-a1-09-e1",
+          "type": "listen",
+          "item": "de-a1-09-v2",
+          "options": [
+            "de-a1-09-v3",
+            "de-a1-09-v4",
+            "de-a1-09-v2"
+          ]
+        },
+        {
+          "id": "de-a1-09-e2",
+          "type": "choice",
+          "item": "de-a1-09-d5",
+          "direction": "toSource",
+          "options": [
+            "de-a1-09-d5",
+            "de-a1-09-d6",
+            "de-a1-09-d1"
+          ]
+        },
+        {
+          "id": "de-a1-09-e3",
+          "type": "cloze",
+          "item": "de-a1-09-d4",
+          "gap": "nehme",
+          "options": [
+            "nehme",
+            "bezahle",
+            "heiße"
+          ]
+        },
+        {
+          "id": "de-a1-09-e4",
+          "type": "order",
+          "item": "de-a1-09-d6",
+          "segments": [
+            "Ja,",
+            "sehr gut.",
+            "Die Rechnung,",
+            "bitte"
+          ],
+          "extra": [
+            "der"
+          ]
+        },
+        {
+          "id": "de-a1-09-e5",
+          "type": "choice",
+          "item": "de-a1-09-v3",
+          "direction": "toTarget",
+          "options": [
+            "de-a1-09-v3",
+            "de-a1-09-v4",
+            "de-a1-09-v5"
+          ]
+        },
+        {
+          "id": "de-a1-09-e6",
+          "type": "write",
+          "item": "de-a1-09-v4"
+        },
+        {
+          "id": "de-a1-09-e7",
+          "type": "situation",
+          "mode": "write",
+          "answers": [
+            "Die Rechnung, bitte.",
+            "Ich möchte zahlen.",
+            "Ich möchte bitte zahlen.",
+            "Zahlen, bitte.",
+            "Wir möchten zahlen.",
+            "Ich möchte zahlen, bitte.",
+            "Wir möchten bitte zahlen.",
+            "Wir möchten zahlen, bitte.",
+            "Die Rechnung bitte.",
+            "Zahlen bitte.",
+            "Ich möchte zahlen bitte.",
+            "Wir möchten zahlen bitte."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "de-a1-10",
+      "minutes": 6,
+      "dialogue": [
+        {
+          "id": "de-a1-10-d1",
+          "speaker": "Lena",
+          "text": "Was machst du am Wochenende?"
+        },
+        {
+          "id": "de-a1-10-d2",
+          "speaker": "Marco",
+          "text": "Ich spiele Fußball mit Freunden."
+        },
+        {
+          "id": "de-a1-10-d3",
+          "speaker": "Lena",
+          "text": "Toll! Ich gehe gern wandern."
+        },
+        {
+          "id": "de-a1-10-d4",
+          "speaker": "Marco",
+          "text": "Wohin gehst du?"
+        },
+        {
+          "id": "de-a1-10-d5",
+          "speaker": "Lena",
+          "text": "In die Berge. Das Wetter soll schön sein."
+        },
+        {
+          "id": "de-a1-10-d6",
+          "speaker": "Marco",
+          "text": "Viel Spaß!"
+        }
+      ],
+      "vocabulary": [
+        {
+          "id": "de-a1-10-v1",
+          "text": "das Wochenende"
+        },
+        {
+          "id": "de-a1-10-v2",
+          "text": "spielen"
+        },
+        {
+          "id": "de-a1-10-v3",
+          "text": "lesen"
+        },
+        {
+          "id": "de-a1-10-v4",
+          "text": "kochen"
+        },
+        {
+          "id": "de-a1-10-v5",
+          "text": "das Wetter"
+        },
+        {
+          "id": "de-a1-10-v6",
+          "text": "gern"
+        }
+      ],
+      "exercises": [
+        {
+          "id": "de-a1-10-e1",
+          "type": "listen",
+          "item": "de-a1-10-v4",
+          "options": [
+            "de-a1-10-v5",
+            "de-a1-10-v6",
+            "de-a1-10-v4"
+          ]
+        },
+        {
+          "id": "de-a1-10-e2",
+          "type": "choice",
+          "item": "de-a1-10-d6",
+          "direction": "toSource",
+          "options": [
+            "de-a1-10-d6",
+            "de-a1-10-d1",
+            "de-a1-10-d2"
+          ]
+        },
+        {
+          "id": "de-a1-10-e3",
+          "type": "cloze",
+          "item": "de-a1-10-d3",
+          "gap": "gern",
+          "options": [
+            "gern",
+            "viel",
+            "oft"
+          ]
+        },
+        {
+          "id": "de-a1-10-e4",
+          "type": "order",
+          "item": "de-a1-10-d1",
+          "segments": [
+            "Was",
+            "machst",
+            "du",
+            "am Wochenende?"
+          ],
+          "extra": [
+            "macht"
+          ]
+        },
+        {
+          "id": "de-a1-10-e5",
+          "type": "choice",
+          "item": "de-a1-10-v3",
+          "direction": "toTarget",
+          "options": [
+            "de-a1-10-v3",
+            "de-a1-10-v4",
+            "de-a1-10-v5"
+          ]
+        },
+        {
+          "id": "de-a1-10-e6",
+          "type": "write",
+          "item": "de-a1-10-v1",
+          "accept": [
+            "Wochenende"
+          ]
+        },
+        {
+          "id": "de-a1-10-e7",
+          "type": "situation",
+          "mode": "write",
+          "answers": [
+            "Ich koche gern.",
+            "Ich koche gerne.",
+            "Ich koche sehr gern.",
+            "Ich koche sehr gerne."
+          ]
+        }
+      ]
+    }
+  ]
+}

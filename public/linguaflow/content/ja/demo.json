@@ -1,0 +1,157 @@
+{
+  "format": 1,
+  "id": "ja-demo",
+  "language": "ja",
+  "version": "1.0.0",
+  "lessons": [
+    {
+      "id": "ja-demo-01",
+      "minutes": 8,
+      "dialogue": [
+        {
+          "id": "ja-demo-01-d1",
+          "speaker": "ゆき",
+          "text": "こんにちは。わたしはゆきです。",
+          "translit": "Konnichiwa. Watashi wa Yuki desu."
+        },
+        {
+          "id": "ja-demo-01-d2",
+          "speaker": "マルコ",
+          "text": "こんにちは。マルコです。よろしくおねがいします。",
+          "translit": "Konnichiwa. Maruko desu. Yoroshiku onegaishimasu."
+        },
+        {
+          "id": "ja-demo-01-d3",
+          "speaker": "ゆき",
+          "text": "マルコさんはどこからきましたか。",
+          "translit": "Maruko-san wa doko kara kimashita ka."
+        },
+        {
+          "id": "ja-demo-01-d4",
+          "speaker": "マルコ",
+          "text": "イタリアからきました。",
+          "translit": "Itaria kara kimashita."
+        },
+        {
+          "id": "ja-demo-01-d5",
+          "speaker": "ゆき",
+          "text": "そうですか。どうぞよろしく。",
+          "translit": "Sō desu ka. Dōzo yoroshiku."
+        }
+      ],
+      "vocabulary": [
+        {
+          "id": "ja-demo-01-v1",
+          "text": "ありがとう",
+          "translit": "arigatō"
+        },
+        {
+          "id": "ja-demo-01-v2",
+          "text": "さようなら",
+          "translit": "sayōnara"
+        },
+        {
+          "id": "ja-demo-01-v3",
+          "text": "おはようございます",
+          "translit": "ohayō gozaimasu"
+        },
+        {
+          "id": "ja-demo-01-v4",
+          "text": "はい",
+          "translit": "hai",
+          "accept": [
+            "hai",
+            "ハイ"
+          ]
+        },
+        {
+          "id": "ja-demo-01-v5",
+          "text": "いいえ",
+          "translit": "iie"
+        },
+        {
+          "id": "ja-demo-01-v6",
+          "text": "すみません",
+          "translit": "sumimasen"
+        }
+      ],
+      "exercises": [
+        {
+          "id": "ja-demo-01-e1",
+          "type": "listen",
+          "item": "ja-demo-01-v1",
+          "options": [
+            "ja-demo-01-v2",
+            "ja-demo-01-v3",
+            "ja-demo-01-v1"
+          ]
+        },
+        {
+          "id": "ja-demo-01-e2",
+          "type": "choice",
+          "item": "ja-demo-01-d3",
+          "direction": "toSource",
+          "options": [
+            "ja-demo-01-d3",
+            "ja-demo-01-d4",
+            "ja-demo-01-d5"
+          ]
+        },
+        {
+          "id": "ja-demo-01-e3",
+          "type": "cloze",
+          "item": "ja-demo-01-d4",
+          "gap": "から",
+          "options": [
+            "から",
+            "です",
+            "は"
+          ]
+        },
+        {
+          "id": "ja-demo-01-e4",
+          "type": "order",
+          "item": "ja-demo-01-d4",
+          "segments": [
+            "イタリア",
+            "から",
+            "きました"
+          ],
+          "extra": [
+            "です"
+          ]
+        },
+        {
+          "id": "ja-demo-01-e5",
+          "type": "choice",
+          "item": "ja-demo-01-v6",
+          "direction": "toTarget",
+          "options": [
+            "ja-demo-01-v6",
+            "ja-demo-01-v1",
+            "ja-demo-01-v2"
+          ]
+        },
+        {
+          "id": "ja-demo-01-e6",
+          "type": "write",
+          "item": "ja-demo-01-v4"
+        },
+        {
+          "id": "ja-demo-01-e7",
+          "type": "situation",
+          "mode": "choice",
+          "answers": [
+            "マルコです。よろしくおねがいします。"
+          ],
+          "options": [
+            "マルコです。よろしくおねがいします。",
+            "さようなら。マルコさん。",
+            "いいえ、イタリアです。"
+          ],
+          "translit": "Maruko desu. Yoroshiku onegaishimasu."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,56 @@
+{
+  "format": 1,
+  "id": "ja-demo.it",
+  "content": "ja-demo",
+  "source": "it",
+  "target": "ja",
+  "version": "1.0.0",
+  "quality": "unreviewed",
+  "course": {
+    "title": "Giapponese – Demo",
+    "description": "Una lezione di prova in giapponese (hiragana e katakana), con rōmaji come aiuto."
+  },
+  "lessons": {
+    "ja-demo-01": {
+      "title": "Ciao! Saluti in giapponese",
+      "goal": "Salutare e presentarsi in modo cortese."
+    }
+  },
+  "items": {
+    "ja-demo-01-d1": "Ciao. Sono Yuki.",
+    "ja-demo-01-d2": "Ciao. Sono Marco. Piacere di conoscerti.",
+    "ja-demo-01-d3": "Marco, da dove vieni?",
+    "ja-demo-01-d4": "Vengo dall'Italia.",
+    "ja-demo-01-d5": "Ah, davvero? Piacere.",
+    "ja-demo-01-v1": "grazie",
+    "ja-demo-01-v2": "arrivederci",
+    "ja-demo-01-v3": "buongiorno (di mattina)",
+    "ja-demo-01-v4": "sì",
+    "ja-demo-01-v5": "no",
+    "ja-demo-01-v6": "mi scusi"
+  },
+  "exercises": {
+    "ja-demo-01-e1": {
+      "explain": "«ありがとう» (arigatō) = grazie. Più cortese: «ありがとうございます»."
+    },
+    "ja-demo-01-e2": {
+      "explain": "«どこから» (doko kara) = da dove; «きましたか» = sei venuto? «さん» (san) si aggiunge al nome degli altri, mai al proprio."
+    },
+    "ja-demo-01-e3": {
+      "explain": "«から» (kara) = da. «イタリアから» = dall’Italia."
+    },
+    "ja-demo-01-e4": {
+      "explain": "In giapponese il verbo va alla fine: Italia (イタリア) + da (から) + sono venuto (きました)."
+    },
+    "ja-demo-01-e5": {
+      "explain": "«すみません» (sumimasen) = mi scusi; serve anche per chiamare qualcuno."
+    },
+    "ja-demo-01-e6": {
+      "explain": "Scrivi «はい». Se non hai la tastiera giapponese, vale anche «hai»."
+    },
+    "ja-demo-01-e7": {
+      "explain": "«マルコです。よろしくおねがいします。» = Sono Marco, piacere di conoscerti.",
+      "prompt": "Ti presenti a una persona giapponese. Di’ che ti chiami Marco e saluta in modo cortese."
+    }
+  }
+}
