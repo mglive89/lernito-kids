@@ -27,11 +27,13 @@ export interface FlowOwner {
   active: string | null;
   showTranslation: boolean;
   showTranslit: boolean;
+  /** Töne und Animationen (fehlt bei alten Ständen = an) */
+  effects?: boolean;
   courses: Record<string, CourseProgress>;
 }
 
 export const GUEST = 'ospite';
-export const emptyOwner = (): FlowOwner => ({ ui: null, known: null, target: null, active: null, showTranslation: true, showTranslit: true, courses: {} });
+export const emptyOwner = (): FlowOwner => ({ ui: null, known: null, target: null, active: null, showTranslation: true, showTranslit: true, effects: true, courses: {} });
 export const emptyCourse = (now = Date.now()): CourseProgress => ({ done: {}, mistakes: {}, startedAt: now });
 
 interface State {
