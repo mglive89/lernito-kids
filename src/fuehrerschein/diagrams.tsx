@@ -1,88 +1,13 @@
 import type { ReactNode } from 'react';
 import type { I18n } from './schema';
 import { SignGlyph } from './signs';
+import { BLUE, Bike, Car, Crossroads, GRASS, HI, Hi, LINE, Path, RED, ROAD, Walker } from './sketch';
+import { MORE_SCENES } from './scenes';
 
 /**
  * Eigene Verkehrs-Skizzen von oben (SVG). Blau = dein Fahrzeug, Rot = anderes Fahrzeug.
  * Mit `reveal` wird das entscheidende Detail hervorgehoben.
  */
-const ROAD = '#5B6170';
-const GRASS = '#CFE6C4';
-const LINE = '#FFFFFF';
-const BLUE = '#2F6FEB';
-const RED = '#D7262F';
-const HI = '#F5A524';
-
-function Car({ x, y, rot = 0, color = BLUE }: { x: number; y: number; rot?: number; color?: string }) {
-  return (
-    <g transform={`translate(${x} ${y}) rotate(${rot})`}>
-      <rect x="-13" y="-22" width="26" height="44" rx="7" fill={color} stroke="#1C1C1C" strokeWidth="1.5" />
-      <rect x="-10" y="-14" width="20" height="9" rx="2.5" fill="#DDE8F7" />
-      <rect x="-10" y="9" width="20" height="6" rx="2" fill="#DDE8F7" opacity="0.8" />
-      <rect x="-12" y="-23" width="6" height="3" rx="1" fill="#FFF3B0" />
-      <rect x="6" y="-23" width="6" height="3" rx="1" fill="#FFF3B0" />
-    </g>
-  );
-}
-
-function Bike({ x, y, rot = 0 }: { x: number; y: number; rot?: number }) {
-  return (
-    <g transform={`translate(${x} ${y}) rotate(${rot})`}>
-      <rect x="-2.5" y="-14" width="5" height="28" rx="2.5" fill="#1C1C1C" />
-      <rect x="-9" y="-10" width="18" height="3" rx="1.5" fill="#1C1C1C" />
-      <circle cx="0" cy="0" r="6.5" fill="#12B886" stroke="#1C1C1C" strokeWidth="1.5" />
-    </g>
-  );
-}
-
-function Walker({ x, y }: { x: number; y: number }) {
-  return (
-    <g transform={`translate(${x} ${y})`}>
-      <ellipse cx="0" cy="0" rx="9" ry="6" fill="#7A5AF8" stroke="#1C1C1C" strokeWidth="1.5" />
-      <circle cx="0" cy="0" r="4.5" fill="#F2C9A0" stroke="#1C1C1C" strokeWidth="1.2" />
-    </g>
-  );
-}
-
-/** Fahrtrichtungs-Pfeil (Pfad), Spitze am Ende. */
-function Path({ d, color = BLUE, dashed }: { d: string; color?: string; dashed?: boolean }) {
-  const id = `pfeil-${color.slice(1)}`;
-  return (
-    <>
-      <defs>
-        <marker id={id} viewBox="0 0 10 10" refX="6" refY="5" markerWidth="4" markerHeight="4" orient="auto-start-reverse">
-          <path d="M0 0 L10 5 L0 10 Z" fill={color} />
-        </marker>
-      </defs>
-      <path d={d} fill="none" stroke={color} strokeWidth="4" strokeLinecap="round" strokeDasharray={dashed ? '2 7' : undefined} markerEnd={`url(#${id})`} opacity="0.9" />
-    </>
-  );
-}
-
-/** Hervorhebung: Ring um das entscheidende Detail. */
-function Hi({ on, cx, cy, r }: { on: boolean; cx: number; cy: number; r: number }) {
-  if (!on) return null;
-  return (
-    <g data-testid="diagramm-hervorhebung">
-      <circle cx={cx} cy={cy} r={r} fill={HI} opacity="0.18" />
-      <circle cx={cx} cy={cy} r={r} fill="none" stroke={HI} strokeWidth="5" strokeDasharray="10 6">
-        <animate attributeName="stroke-dashoffset" from="0" to="32" dur="1.2s" repeatCount="indefinite" />
-      </circle>
-    </g>
-  );
-}
-
-const Crossroads = () => (
-  <>
-    <rect width="300" height="300" fill={GRASS} />
-    <rect x="115" y="0" width="70" height="300" fill={ROAD} />
-    <rect x="0" y="115" width="300" height="70" fill={ROAD} />
-    {[[150, 0, 150, 110], [150, 190, 150, 300], [0, 150, 110, 150], [190, 150, 300, 150]].map(([a, b, c, d], i) => (
-      <line key={i} x1={a} y1={b} x2={c} y2={d} stroke={LINE} strokeWidth="2.5" strokeDasharray="12 10" />
-    ))}
-  </>
-);
-
 export interface DiagramDef { id: string; decisive: I18n; draw: (reveal: boolean) => ReactNode }
 
 export const DIAGRAMS: DiagramDef[] = [
@@ -232,7 +157,12 @@ export const CROSS_SCENES: CrossScene[] = [
     decisive: { de: 'Rot hat Blau rechts von sich. Dass Blau abbiegt, ändert nichts: Blau fährt zuerst.', it: 'Il rosso ha il blu alla sua destra. Che il blu svolti non cambia nulla: il blu passa per primo.' } },
   { id: 'k-nebenstrasse-zwei', signs: { S: 'vorfahrt-gewaehren', N: 'vorfahrt-gewaehren', E: 'vorfahrtstrasse', W: 'vorfahrtstrasse' },
     cars: [{ arm: 'S', turn: 'geradeaus', color: 'blau', order: 2 }, { arm: 'E', turn: 'geradeaus', color: 'rot', order: 1 }, { arm: 'N', turn: 'rechts', color: 'gruen', order: 2 }],
-    decisive: { de: 'Rot ist auf der Vorfahrtstraße und fährt zuerst. Danach Blau und Grün gleichzeitig: Grün biegt rechts ab, ihre Wege kreuzen sich nicht.', it: 'Il rosso è sulla strada principale e passa per primo. Poi blu e verde insieme: il verde svolta a destra e le traiettorie non si incrociano.' } }
+    decisive: { de: 'Rot ist auf der Vorfahrtstraße und fährt zuerst. Danach Blau und Grün gleichzeitig: Grün biegt rechts ab, ihre Wege kreuzen sich nicht.', it: 'Il rosso è sulla strada principale e passa per primo. Poi blu e verde insieme: il verde svolta a destra e le traiettorie non si incrociano.' } },
+  { id: 'k-gleiches-ziel', signs: {}, cars: [{ arm: 'S', turn: 'links', color: 'blau', order: 2 }, { arm: 'N', turn: 'rechts', color: 'rot', order: 1 }],
+    decisive: { de: 'Beide wollen in dieselbe Straße. Blau biegt links ab und lässt den entgegenkommenden Rechtsabbieger Rot zuerst fahren.', it: 'Entrambi vogliono entrare nella stessa strada. Il blu svolta a sinistra e lascia passare prima il rosso, che arriva di fronte e svolta a destra.' } },
+  { id: 'k-hauptstrasse-gegen', signs: { S: 'vorfahrt-gewaehren', N: 'vorfahrt-gewaehren', E: 'vorfahrtstrasse', W: 'vorfahrtstrasse' },
+    cars: [{ arm: 'S', turn: 'geradeaus', color: 'blau', order: 3 }, { arm: 'W', turn: 'links', color: 'rot', order: 2 }, { arm: 'E', turn: 'geradeaus', color: 'gruen', order: 1 }],
+    decisive: { de: 'Grün und Rot sind auf der Vorfahrtstraße. Rot biegt links ab und lässt Grün zuerst. Blau muss Vorfahrt gewähren und fährt zuletzt.', it: 'Verde e rosso sono sulla strada principale. Il rosso svolta a sinistra e lascia passare il verde. Il blu deve dare precedenza e passa per ultimo.' } }
 ];
 
 function drawCrossScene(sc: CrossScene, reveal: boolean): ReactNode {
@@ -262,6 +192,7 @@ function drawCrossScene(sc: CrossScene, reveal: boolean): ReactNode {
   );
 }
 
+DIAGRAMS.push(...MORE_SCENES);
 DIAGRAMS.push(...CROSS_SCENES.map((sc): DiagramDef => ({ id: sc.id, decisive: sc.decisive, draw: (r) => drawCrossScene(sc, r) })));
 export const isCrossing = (id: string) => CROSS_SCENES.some((s) => s.id === id);
 
