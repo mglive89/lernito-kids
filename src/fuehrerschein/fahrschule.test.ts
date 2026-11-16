@@ -193,4 +193,16 @@ describe('Fahrschule – Fortschritt', () => {
     expect(new Set(de.map((x) => x.image?.id)).size).toBe(CROSS_SCENES.length);
     for (const c of COUNTRIES) expect(lessonsFor(c).some((l) => l.id.endsWith('-l-kreuzungen'))).toBe(true);
   });
+
+  it('Bildaufgaben: jede Skizze wird genutzt, jede genutzte Skizze existiert', () => {
+    const used = new Set<string>();
+    for (const c of COUNTRIES) for (const x of questionsFor(c)) if (x.image?.type === 'diagram') {
+      expect(diagramById(x.image.id), x.id).toBeTruthy();
+      used.add(x.image.id);
+    }
+    for (const d of DIAGRAMS) expect(used.has(d.id), d.id).toBe(true);
+    for (const c of COUNTRIES) expect(practiceQuestions(c, 'illustrati').filter((x) => x.image?.type === 'diagram').length).toBeGreaterThanOrEqual(20);
+    for (const c of COUNTRIES) for (const l of lessonsFor(c)) for (const sec of l.sections) if (sec.image?.type === 'diagram') expect(diagramById(sec.image.id)).toBeTruthy();
+  });
 });
+

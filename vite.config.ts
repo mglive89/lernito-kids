@@ -15,9 +15,9 @@ export default defineConfig({
       registerType: 'prompt',
       includeAssets: ['favicon.png', 'apple-touch-icon.png', 'icons/*.png', 'puppy/*'],
       manifest: {
-        name: 'Lernito Kids',
+        name: 'Lernito',
         short_name: 'Lernito',
-        description: 'Spielerisch lernen mit Puppy – vom Kindergarten bis zur Oberstufe, auf Deutsch und Italienisch.',
+        description: 'Lernito School (Kids und Teen) und Lernito Adult: lernen mit Puppy, auf Deutsch und Italienisch.',
         lang: 'de-DE',
         start_url: base,
         scope: base,

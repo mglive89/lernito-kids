@@ -157,3 +157,30 @@ test('Sprachkurs Arabisch: Schrift von rechts nach links mit Umschrift', async (
   await expect(page.getByTestId('umschrift').first()).toHaveText('marhaban');
   await expect(page.locator('[dir="rtl"]').first()).toBeVisible();
 });
+
+test('Sprachkurs: Herzen, Tagesmissionen und Rangliste', async ({ page }) => {
+  await createProfile(page, 'Leo', '3', 'IT');
+  await page.goto('/lingue');
+  await expect(page.getByTestId('herzen-reihe')).toHaveAttribute('data-hearts', '5');
+  await expect(page.getByTestId('missioni')).toContainText('Missioni del giorno');
+  await expect(page.getByTestId('classifica-riga')).toHaveCount(1);
+  await page.getByTestId('kurs-en').click();
+  await page.getByTestId('lektion-lingua-en-saluti-1').click();
+  await startExercises(page);
+  await expect(page.getByTestId('herzen')).toHaveAttribute('data-hearts', '5');
+  // Erste Auswahl-Aufgabe falsch beantworten: kostet ein Herz
+  for (let i = 0; i < 10; i++) {
+    const wrong = page.locator('[data-testid^="option-"]:not([data-correct]):not([disabled])').first();
+    if (await wrong.isVisible().catch(() => false)) {
+      await wrong.click();
+      const check = page.getByTestId('pruefen');
+      if (await check.isVisible()) await check.click();
+      break;
+    }
+    const idx = await page.getByTestId('task-area').getAttribute('data-index');
+    await solveTask(page);
+    if (await page.getByTestId('weiter').isVisible()) await page.getByTestId('weiter').click();
+    await waitNext(page, idx);
+  }
+  await expect(page.getByTestId('herzen')).toHaveAttribute('data-hearts', '4');
+});

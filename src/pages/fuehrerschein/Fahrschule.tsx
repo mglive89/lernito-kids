@@ -218,6 +218,10 @@ export function FahrschuleTheoryPage() {
                 </Link>
               );
             })}
+            <Link to="/fuehrerschein/quiz/illustrati" data-testid="fs-illustrati-link" className="karte-3d flex items-center gap-3 p-4">
+              <IconBadge icon={Images} color="lila" size="lg" />
+              <span className="flex-1"><span className="block font-bold leading-tight">{t('Alle Bildaufgaben', 'Tutti i quiz con immagini')}</span><span className="text-sm text-tinte/55" data-testid="fs-illustrati-anzahl">{t(`${pool.filter((q) => q.image?.type === 'diagram').length} Aufgaben mit Skizze`, `${pool.filter((q) => q.image?.type === 'diagram').length} esercizi con schema`)}</span></span>
+            </Link>
             <Link to="/fuehrerschein/quiz/incroci" data-testid="fs-incroci-link" className="karte-3d flex items-center gap-3 p-4">
               <IconBadge icon={Split} color="minze" size="lg" />
               <span className="flex-1"><span className="block font-bold leading-tight">{t('Kreuzungen mit Bildern', 'Incroci con immagini')}</span><span className="text-sm text-tinte/55">{t(`${pool.filter((q) => q.image?.type === 'diagram' && q.image.id.startsWith('k-')).length} Aufgaben: Wer fährt zuerst?`, `${pool.filter((q) => q.image?.type === 'diagram' && q.image.id.startsWith('k-')).length} esercizi: chi passa per primo?`)}</span></span>

@@ -52,7 +52,16 @@ const SPECS: Spec[] = [
   { scene: 'k-nebenstrasse-zwei', alt: alt('Rot auf der Vorfahrtstraße von rechts geradeaus. Blau unten und Grün oben haben „Vorfahrt gewähren“; Blau fährt geradeaus, Grün biegt rechts ab.', 'Rosso sulla strada principale da destra diritto. Blu sotto e verde sopra hanno “dare precedenza”: blu diritto, verde svolta a destra.'),
     right: [['rot'], ['blau', 'gruen']], wrong: [[['rot'], ['gruen'], ['blau']], [['blau', 'gruen'], ['rot']]],
     expl: { de: 'Erst fährt Rot auf der Vorfahrtstraße. Blau und Grün haben das gleiche Zeichen; Grün biegt rechts ab, die Wege kreuzen sich nicht – beide fahren gleichzeitig.', it: 'Prima passa il rosso sulla strada principale. Blu e verde hanno lo stesso segnale; il verde svolta a destra, le traiettorie non si incrociano: passano insieme.' },
-    it: [[{ de: 'Nach Rot fahren Blau und Grün gleichzeitig.', it: 'Dopo il rosso, il veicolo blu e il veicolo verde passano contemporaneamente.' }, true], [{ de: 'Grün fährt als erstes.', it: 'Il veicolo verde passa per primo.' }, false]] }
+    it: [[{ de: 'Nach Rot fahren Blau und Grün gleichzeitig.', it: 'Dopo il rosso, il veicolo blu e il veicolo verde passano contemporaneamente.' }, true], [{ de: 'Grün fährt als erstes.', it: 'Il veicolo verde passa per primo.' }, false]] },
+  { scene: 'k-gleiches-ziel', alt: alt('Ohne Verkehrszeichen. Blau von unten biegt links ab, Rot kommt von oben und biegt rechts ab – beide in dieselbe Straße.', 'Senza segnali. Blu da sotto svolta a sinistra, rosso da sopra svolta a destra: entrambi nella stessa strada.'),
+    right: [['rot'], ['blau']], wrong: [[['blau'], ['rot']], [['blau', 'rot']]],
+    expl: { de: 'Rot kommt Blau entgegen. Wer links abbiegt, lässt den Gegenverkehr durch – auch wenn dieser rechts abbiegt.', it: 'Il rosso arriva di fronte al blu. Chi svolta a sinistra lascia passare chi arriva di fronte, anche se quello svolta a destra.' },
+    trap: { de: 'Sie können nicht gleichzeitig fahren: Beide wollen in dieselbe Straße.', it: 'Non possono passare insieme: entrambi entrano nella stessa strada.' },
+    it: [[{ de: 'Rot fährt vor Blau.', it: 'Il veicolo rosso passa prima del veicolo blu.' }, true], [{ de: 'Blau und Rot können gleichzeitig fahren.', it: 'Il veicolo blu e il veicolo rosso possono passare contemporaneamente.' }, false]] },
+  { scene: 'k-hauptstrasse-gegen', alt: alt('Grün (rechts) und Rot (links) auf der Vorfahrtstraße, unten und oben „Vorfahrt gewähren“. Grün fährt geradeaus, Rot biegt links ab, Blau kommt von unten geradeaus.', 'Verde (destra) e rosso (sinistra) sulla strada principale, sopra e sotto “dare precedenza”. Verde diritto, rosso svolta a sinistra, blu da sotto diritto.'),
+    right: [['gruen'], ['rot'], ['blau']], wrong: [[['rot'], ['gruen'], ['blau']], [['gruen'], ['blau'], ['rot']]],
+    expl: { de: 'Blau hat „Vorfahrt gewähren“ und wartet auf beide. Auf der Vorfahrtstraße lässt der Linksabbieger Rot den Gegenverkehr Grün zuerst fahren.', it: 'Il blu ha “dare precedenza” e aspetta entrambi. Sulla strada principale il rosso, che svolta a sinistra, lascia passare prima il verde.' },
+    it: [[{ de: 'Blau fährt als letztes.', it: 'Il veicolo blu passa per ultimo.' }, true], [{ de: 'Rot fährt vor Grün, weil es von links kommt.', it: 'Il veicolo rosso passa prima del verde perché arriva da sinistra.' }, false]] }
 ];
 
 const image = (s: Spec) => ({ type: 'diagram' as const, id: s.scene, alt: s.alt });

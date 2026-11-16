@@ -174,3 +174,22 @@ test('Fahrschule: Kreuzungsaufgaben mit Bildern in beiden Ländern und Sprachen'
     await expect(page.getByTestId('fs-dettaglio')).toBeVisible();
   }
 });
+
+test('Fahrschule: Lektion «Situationen im Bild» und alle Bildaufgaben', async ({ page }) => {
+  await createProfile(page, 'Luca', '13', 'IT');
+  for (const [country, lang, lesson, title] of [['DE', 'de', 'de-l-situationen', 'Situationen im Bild'], ['IT', 'it', 'it-l-situazioni', 'Situazioni su strada']] as const) {
+    await choose(page, country, lang);
+    await page.getByTestId('fs-azione-teoria').click();
+    await page.getByTestId(`fs-lezione-${lesson}`).click();
+    await expect(page.getByRole('heading', { name: title })).toBeVisible();
+    expect(await page.locator('[data-testid^="diagramm-"]').count()).toBeGreaterThanOrEqual(5);
+    await page.goBack();
+    const n = Number((await page.getByTestId('fs-illustrati-anzahl').innerText()).match(/\d+/)![0]);
+    expect(n).toBeGreaterThanOrEqual(20);
+    await page.getByTestId('fs-illustrati-link').click();
+    await expect(page.getByTestId('fs-ueben')).toHaveAttribute('data-modus', 'illustrati');
+    await answer(page, true);
+    await page.getByTestId('fs-pruefen').click();
+    await expect(page.getByText(lang === 'de' ? 'Richtig!' : 'Giusto!')).toBeVisible();
+  }
+});

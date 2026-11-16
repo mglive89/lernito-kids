@@ -18,7 +18,8 @@ Modul ab 18 (Klasse 13; früher per Elternbereich freischaltbar). Einstieg: Kach
 | `src/fuehrerschein/bank.ts` | Fragenvorrat, Übungsmodi, Prüfungszusammenstellung, Bewertung, Fortschritt |
 | `src/fuehrerschein/packs.ts` | Versionierte Inhaltspakete und Import-Prüfung |
 | `src/fuehrerschein/content/` | Demo-Fragen und Demo-Lektionen (eigene Inhalte) |
-| `src/fuehrerschein/diagrams.tsx`, `signs.tsx` | Eigene SVG-Skizzen und Verkehrszeichen |
+| `src/fuehrerschein/diagrams.tsx`, `scenes.tsx`, `sketch.tsx`, `signs.tsx` | Eigene SVG-Skizzen (Kreuzungen, Überholen, Abstand, Bahnübergang, Bus, Autobahn …) und Verkehrszeichen |
+| `src/fuehrerschein/content/crossings.ts`, `content/scenes.ts` | Bildaufgaben zu den Skizzen: DE Multiple Choice, IT Vero/Falso, je zweisprachig |
 | `src/pages/fuehrerschein/` | Oberfläche |
 
 ## Bewertung
