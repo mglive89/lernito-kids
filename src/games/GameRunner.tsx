@@ -43,12 +43,16 @@ interface Props {
   coachIntro?: boolean;
   /** Herausforderung (Profi-Lektion, Endrunde): Ziel beim ersten Versuch, sonst nochmal versuchen */
   challenge?: Challenge;
+  /** Wird bei jeder Antwort gemeldet (z. B. Herzen im Sprachkurs) */
+  onAnswer?: (ok: boolean, task: Task, attempt: number) => void;
+  /** Zusätzliche Anzeige in der Kopfzeile */
+  headerExtra?: ReactNode;
 }
 
 type Phase = 'answer' | 'correct' | 'reveal';
 type Tone = 'ok' | 'hint' | 'help';
 
-export function GameRunner({ module, level, speechOn, onFinish, preview, backTo, mode = 'auto', lessonLabel, coachIntro = false, challenge }: Props) {
+export function GameRunner({ module, level, speechOn, onFinish, preview, backTo, mode = 'auto', lessonLabel, coachIntro = false, challenge, onAnswer, headerExtra }: Props) {
   const nav = useNavigate();
   const [seed, setSeed] = useState(() => Date.now());
   const tasks = useMemo<Task[]>(() => {
@@ -134,13 +138,14 @@ export function GameRunner({ module, level, speechOn, onFinish, preview, backTo,
     else setStreak(0);
     stats.current.solved++;
     sfx.correct();
+    if (task) onAnswer?.(true, task, attempts);
     burstAt(document.querySelector('[data-testid="task-area"] [data-correct="true"]'), 'sterne', first ? 14 : 10);
     setCoach(null);
     const text = pickOf(LOB);
     setFeedback({ title: text, tone: 'ok' });
     if (speechOn) speak(text);
     setPhase('correct');
-  }, [phase, attempts, speechOn]);
+  }, [phase, attempts, speechOn, task, onAnswer]);
 
   const onWrong = useCallback(() => {
     if (phase !== 'answer' || !task) return;
@@ -149,6 +154,7 @@ export function GameRunner({ module, level, speechOn, onFinish, preview, backTo,
     setCoach(null);
     const n = attempts + 1;
     setAttempts(n);
+    onAnswer?.(false, task, n);
     const max = maxTries(mode);
     if (n === 1) {
       stats.current.hints++;
@@ -174,7 +180,7 @@ export function GameRunner({ module, level, speechOn, onFinish, preview, backTo,
         setPhase('reveal');
       }
     }
-  }, [phase, task, attempts, speechOn, multi, mode]);
+  }, [phase, task, attempts, speechOn, multi, mode, onAnswer]);
 
   // „Ich kann gerade nicht sprechen“: Aufgabe zeigen und weiter, zählt nicht als gelöst
   const onSkip = useCallback(() => {
@@ -251,6 +257,7 @@ export function GameRunner({ module, level, speechOn, onFinish, preview, backTo,
             <BookOpen size={22} />
           </button>
         )}
+        {headerExtra}
         {preview && <span className="rounded-full bg-lila-100 px-3 py-1 text-sm font-bold">{L('Vorschau', 'Anteprima')}</span>}
       </div>
 
