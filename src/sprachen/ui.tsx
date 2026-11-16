@@ -16,6 +16,7 @@ import { sfx } from '../lib/sound';
 import { ProgressRing } from '../components/ui';
 import type { Course } from '../lingue/course';
 import { QUESTS, type LangPlay } from '../lingue/play-state';
+import { APP_NAME } from '../linguaflow/brand';
 
 const BASE = import.meta.env.BASE_URL;
 const cn = (...c: (string | false | null | undefined)[]) => c.filter(Boolean).join(' ');
@@ -50,7 +51,7 @@ export function Brand() {
     <span className="flex items-center gap-x-3">
       <img src={`${BASE}puppy/kopf.png`} alt="" className="h-10 w-10 rounded-xl bg-minze-100" />
       <span className="font-display text-2xl font-extrabold tracking-wide text-minze-700">
-        Lernito <span className="text-tinte/70">{L('Sprachen', 'Lingue')}</span>
+        {APP_NAME}
       </span>
     </span>
   );

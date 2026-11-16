@@ -1,19 +1,35 @@
 {
   "id": "./",
-  "name": "Lernito Sprachen",
-  "short_name": "Sprachen",
-  "description": "Sprachen lernen mit Puppy: 12 Sprachen mit Theorie, Übungen und Aussprache.",
-  "lang": "de-DE",
+  "name": "LinguaFlow",
+  "short_name": "LinguaFlow",
+  "description": "LinguaFlow – Sprachen lernen mit Puppy: kurze Lektionen, echte Dialoge, Übungen und Wiederholung. Offline nutzbar, ohne Konto.",
+  "lang": "it",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",
   "orientation": "any",
   "background_color": "#ECFBF7",
   "theme_color": "#0F9D8A",
-  "categories": ["education", "kids"],
+  "categories": [
+    "education",
+    "kids"
+  ],
   "icons": [
-    { "src": "../icons/icon-192.png", "sizes": "192x192", "type": "image/png" },
-    { "src": "../icons/icon-512.png", "sizes": "512x512", "type": "image/png" },
-    { "src": "../icons/icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+    {
+      "src": "../icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "../icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "../icons/icon-maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
   ]
 }

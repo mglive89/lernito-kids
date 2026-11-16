@@ -1,0 +1,132 @@
+{
+  "format": 1,
+  "id": "en-intro.it",
+  "content": "en-intro",
+  "source": "it",
+  "target": "en",
+  "version": "1.0.0",
+  "quality": "unreviewed",
+  "course": {
+    "title": "Inglese – Introduzione",
+    "description": "Tre lezioni per iniziare: presentarsi, ordinare al bar, chiedere la strada."
+  },
+  "lessons": {
+    "en-intro-01": {
+      "title": "Ciao! Piacere di conoscerti",
+      "goal": "Salutare e presentarsi in inglese."
+    },
+    "en-intro-02": {
+      "title": "Al bar",
+      "goal": "Ordinare da bere e chiedere quanto costa."
+    },
+    "en-intro-03": {
+      "title": "Chiedere la strada",
+      "goal": "Chiedere dov’è un posto e capire indicazioni semplici."
+    }
+  },
+  "items": {
+    "en-intro-01-d1": "Ciao! Sono Emma. Come ti chiami?",
+    "en-intro-01-d2": "Ciao, Emma! Mi chiamo Luca.",
+    "en-intro-01-d3": "Di dove sei?",
+    "en-intro-01-d4": "Sono italiano, di Napoli.",
+    "en-intro-01-d5": "Piacere di conoscerti, Luca!",
+    "en-intro-01-v1": "Buongiorno (di mattina)",
+    "en-intro-01-v2": "Buonasera",
+    "en-intro-01-v3": "Arrivederci",
+    "en-intro-01-v4": "Grazie",
+    "en-intro-01-v5": "Per favore",
+    "en-intro-01-v6": "A dopo",
+    "en-intro-02-d1": "Ciao! Cosa ti preparo?",
+    "en-intro-02-d2": "Posso avere un cappuccino, per favore?",
+    "en-intro-02-d3": "Certo. Piccolo, medio o grande?",
+    "en-intro-02-d4": "Piccolo, per favore. Quanto costa?",
+    "en-intro-02-d5": "Sono tre sterline e cinquanta.",
+    "en-intro-02-d6": "Ecco a lei. Grazie!",
+    "en-intro-02-v1": "una tazza di tè",
+    "en-intro-02-v2": "acqua",
+    "en-intro-02-v3": "da portare via",
+    "en-intro-02-v4": "Quanto costa?",
+    "en-intro-02-v5": "il conto",
+    "en-intro-02-v6": "contanti",
+    "en-intro-03-d1": "Mi scusi, dov’è la stazione?",
+    "en-intro-03-d2": "Vada dritto e giri a sinistra.",
+    "en-intro-03-d3": "È lontano?",
+    "en-intro-03-d4": "No, sono circa cinque minuti a piedi.",
+    "en-intro-03-d5": "Grazie mille!",
+    "en-intro-03-d6": "Prego.",
+    "en-intro-03-v1": "sinistra",
+    "en-intro-03-v2": "destra",
+    "en-intro-03-v3": "dritto",
+    "en-intro-03-v4": "la stazione",
+    "en-intro-03-v5": "vicino",
+    "en-intro-03-v6": "a piedi"
+  },
+  "exercises": {
+    "en-intro-01-e1": {
+      "explain": "«Goodbye» = arrivederci. Più informale: «Bye!»."
+    },
+    "en-intro-01-e2": {
+      "explain": "«Where are you from?» = «Di dove sei?». La preposizione «from» va alla fine."
+    },
+    "en-intro-01-e3": {
+      "explain": "«My name is …» = «Mi chiamo …» (letteralmente «il mio nome è»)."
+    },
+    "en-intro-01-e4": {
+      "explain": "Per la provenienza si usa «from»: «I’m from Italy». Non «of»."
+    },
+    "en-intro-01-e5": {
+      "explain": "«Good evening» = buonasera. «Good night» si usa solo per andare a dormire."
+    },
+    "en-intro-01-e6": {
+      "explain": "«Thank you» = grazie. Più breve: «Thanks»."
+    },
+    "en-intro-01-e7": {
+      "explain": "Ad esempio: «My name is Sara.» oppure «I’m Sara.»",
+      "prompt": "Una ragazza ti chiede «What’s your name?». Rispondi che ti chiami Sara."
+    },
+    "en-intro-02-e1": {
+      "explain": "In Gran Bretagna si dice «to take away», negli Stati Uniti «to go»: da asporto."
+    },
+    "en-intro-02-e2": {
+      "explain": "«Small, medium or large?» = piccolo, medio o grande: le misure del bicchiere."
+    },
+    "en-intro-02-e3": {
+      "explain": "«Can I have …, please?» è il modo cortese per ordinare: «Posso avere …?»."
+    },
+    "en-intro-02-e4": {
+      "explain": "Per il prezzo: «How much is it?». «How many» si usa per contare."
+    },
+    "en-intro-02-e5": {
+      "explain": "«cash» = contanti. «card» = carta."
+    },
+    "en-intro-02-e6": {
+      "explain": "«water» = acqua."
+    },
+    "en-intro-02-e7": {
+      "explain": "Ad esempio: «Can I have a cup of tea, please?» – «please» rende la richiesta cortese.",
+      "prompt": "Al bar vuoi un tè. Chiedilo in modo cortese."
+    },
+    "en-intro-03-e1": {
+      "explain": "«right» = destra (e anche «giusto»)."
+    },
+    "en-intro-03-e2": {
+      "explain": "«Is it far?» = «È lontano?». «far» = lontano."
+    },
+    "en-intro-03-e3": {
+      "explain": "Il signore dice «a sinistra»: in inglese «left»."
+    },
+    "en-intro-03-e4": {
+      "explain": "«the station» è singolare, quindi «where is», non «where are»."
+    },
+    "en-intro-03-e5": {
+      "explain": "«near» = vicino; «far» = lontano."
+    },
+    "en-intro-03-e6": {
+      "explain": "«left» = sinistra."
+    },
+    "en-intro-03-e7": {
+      "explain": "Ad esempio: «Excuse me, where is the station?»",
+      "prompt": "Cerchi la stazione. Chiedi a un passante dov’è."
+    }
+  }
+}

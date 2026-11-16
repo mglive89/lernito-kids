@@ -1,0 +1,429 @@
+{
+  "format": 1,
+  "id": "it-intro",
+  "language": "it",
+  "version": "1.0.0",
+  "lessons": [
+    {
+      "id": "it-intro-01",
+      "minutes": 6,
+      "dialogue": [
+        {
+          "id": "it-intro-01-d1",
+          "speaker": "Giulia",
+          "text": "Ciao! Come ti chiami?"
+        },
+        {
+          "id": "it-intro-01-d2",
+          "speaker": "Jonas",
+          "text": "Mi chiamo Jonas. E tu?"
+        },
+        {
+          "id": "it-intro-01-d3",
+          "speaker": "Giulia",
+          "text": "Io sono Giulia. Di dove sei?"
+        },
+        {
+          "id": "it-intro-01-d4",
+          "speaker": "Jonas",
+          "text": "Sono tedesco, di Berlino."
+        },
+        {
+          "id": "it-intro-01-d5",
+          "speaker": "Giulia",
+          "text": "Piacere! Benvenuto a Roma!"
+        }
+      ],
+      "vocabulary": [
+        {
+          "id": "it-intro-01-v1",
+          "text": "Buongiorno"
+        },
+        {
+          "id": "it-intro-01-v2",
+          "text": "Buonasera"
+        },
+        {
+          "id": "it-intro-01-v3",
+          "text": "Arrivederci"
+        },
+        {
+          "id": "it-intro-01-v4",
+          "text": "grazie"
+        },
+        {
+          "id": "it-intro-01-v5",
+          "text": "prego"
+        },
+        {
+          "id": "it-intro-01-v6",
+          "text": "piacere"
+        }
+      ],
+      "exercises": [
+        {
+          "id": "it-intro-01-e1",
+          "type": "listen",
+          "item": "it-intro-01-v3",
+          "options": [
+            "it-intro-01-v4",
+            "it-intro-01-v5",
+            "it-intro-01-v3"
+          ]
+        },
+        {
+          "id": "it-intro-01-e2",
+          "type": "choice",
+          "item": "it-intro-01-d3",
+          "direction": "toSource",
+          "options": [
+            "it-intro-01-d3",
+            "it-intro-01-d4",
+            "it-intro-01-d5"
+          ]
+        },
+        {
+          "id": "it-intro-01-e3",
+          "type": "cloze",
+          "item": "it-intro-01-d2",
+          "gap": "chiamo",
+          "options": [
+            "chiamo",
+            "sono",
+            "vengo"
+          ]
+        },
+        {
+          "id": "it-intro-01-e4",
+          "type": "order",
+          "item": "it-intro-01-d4",
+          "segments": [
+            "Sono",
+            "tedesco,",
+            "di Berlino"
+          ],
+          "extra": [
+            "ho"
+          ]
+        },
+        {
+          "id": "it-intro-01-e5",
+          "type": "choice",
+          "item": "it-intro-01-v2",
+          "direction": "toTarget",
+          "options": [
+            "it-intro-01-v2",
+            "it-intro-01-v3",
+            "it-intro-01-v4"
+          ]
+        },
+        {
+          "id": "it-intro-01-e6",
+          "type": "write",
+          "item": "it-intro-01-v4"
+        },
+        {
+          "id": "it-intro-01-e7",
+          "type": "situation",
+          "mode": "write",
+          "answers": [
+            "Mi chiamo Lukas.",
+            "Sono Lukas.",
+            "Io sono Lukas.",
+            "Io mi chiamo Lukas."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "it-intro-02",
+      "minutes": 6,
+      "dialogue": [
+        {
+          "id": "it-intro-02-d1",
+          "speaker": "Barista",
+          "text": "Buongiorno! Cosa prende?"
+        },
+        {
+          "id": "it-intro-02-d2",
+          "speaker": "Jonas",
+          "text": "Un cappuccino e un cornetto, per favore."
+        },
+        {
+          "id": "it-intro-02-d3",
+          "speaker": "Barista",
+          "text": "Al bancone o al tavolo?"
+        },
+        {
+          "id": "it-intro-02-d4",
+          "speaker": "Jonas",
+          "text": "Al bancone. Quanto pago?"
+        },
+        {
+          "id": "it-intro-02-d5",
+          "speaker": "Barista",
+          "text": "Sono tre euro e cinquanta."
+        },
+        {
+          "id": "it-intro-02-d6",
+          "speaker": "Jonas",
+          "text": "Ecco a lei. Grazie!"
+        }
+      ],
+      "vocabulary": [
+        {
+          "id": "it-intro-02-v1",
+          "text": "un caffè"
+        },
+        {
+          "id": "it-intro-02-v2",
+          "text": "un'acqua",
+          "accept": [
+            "un acqua"
+          ]
+        },
+        {
+          "id": "it-intro-02-v3",
+          "text": "il conto"
+        },
+        {
+          "id": "it-intro-02-v4",
+          "text": "per favore"
+        },
+        {
+          "id": "it-intro-02-v5",
+          "text": "lo scontrino"
+        },
+        {
+          "id": "it-intro-02-v6",
+          "text": "Quanto costa?"
+        }
+      ],
+      "exercises": [
+        {
+          "id": "it-intro-02-e1",
+          "type": "listen",
+          "item": "it-intro-02-v1",
+          "options": [
+            "it-intro-02-v2",
+            "it-intro-02-v3",
+            "it-intro-02-v1"
+          ]
+        },
+        {
+          "id": "it-intro-02-e2",
+          "type": "choice",
+          "item": "it-intro-02-d3",
+          "direction": "toSource",
+          "options": [
+            "it-intro-02-d3",
+            "it-intro-02-d4",
+            "it-intro-02-d5"
+          ]
+        },
+        {
+          "id": "it-intro-02-e3",
+          "type": "cloze",
+          "item": "it-intro-02-d2",
+          "gap": "cornetto",
+          "options": [
+            "cornetto",
+            "conto",
+            "caffè"
+          ]
+        },
+        {
+          "id": "it-intro-02-e4",
+          "type": "order",
+          "item": "it-intro-02-d4",
+          "segments": [
+            "Al bancone.",
+            "Quanto",
+            "pago?"
+          ],
+          "extra": [
+            "costa"
+          ]
+        },
+        {
+          "id": "it-intro-02-e5",
+          "type": "choice",
+          "item": "it-intro-02-v5",
+          "direction": "toTarget",
+          "options": [
+            "it-intro-02-v5",
+            "it-intro-02-v6",
+            "it-intro-02-v1"
+          ]
+        },
+        {
+          "id": "it-intro-02-e6",
+          "type": "write",
+          "item": "it-intro-02-v4"
+        },
+        {
+          "id": "it-intro-02-e7",
+          "type": "situation",
+          "mode": "write",
+          "answers": [
+            "Un caffè, per favore.",
+            "Vorrei un caffè, per favore.",
+            "Vorrei un caffè.",
+            "Un caffè, grazie.",
+            "Prendo un caffè.",
+            "Prendo un caffè, per favore.",
+            "Un caffè per favore.",
+            "Vorrei un caffè per favore.",
+            "Un caffè grazie.",
+            "Prendo un caffè per favore."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "it-intro-03",
+      "minutes": 6,
+      "dialogue": [
+        {
+          "id": "it-intro-03-d1",
+          "speaker": "Jonas",
+          "text": "Scusi, dov'è la stazione?"
+        },
+        {
+          "id": "it-intro-03-d2",
+          "speaker": "Signora Rossi",
+          "text": "Vada dritto e poi giri a destra."
+        },
+        {
+          "id": "it-intro-03-d3",
+          "speaker": "Jonas",
+          "text": "È lontano?"
+        },
+        {
+          "id": "it-intro-03-d4",
+          "speaker": "Signora Rossi",
+          "text": "No, sono dieci minuti a piedi."
+        },
+        {
+          "id": "it-intro-03-d5",
+          "speaker": "Jonas",
+          "text": "Grazie mille!"
+        },
+        {
+          "id": "it-intro-03-d6",
+          "speaker": "Signora Rossi",
+          "text": "Prego, buona giornata!"
+        }
+      ],
+      "vocabulary": [
+        {
+          "id": "it-intro-03-v1",
+          "text": "a destra"
+        },
+        {
+          "id": "it-intro-03-v2",
+          "text": "a sinistra"
+        },
+        {
+          "id": "it-intro-03-v3",
+          "text": "dritto"
+        },
+        {
+          "id": "it-intro-03-v4",
+          "text": "la stazione"
+        },
+        {
+          "id": "it-intro-03-v5",
+          "text": "vicino"
+        },
+        {
+          "id": "it-intro-03-v6",
+          "text": "a piedi"
+        }
+      ],
+      "exercises": [
+        {
+          "id": "it-intro-03-e1",
+          "type": "listen",
+          "item": "it-intro-03-v2",
+          "options": [
+            "it-intro-03-v3",
+            "it-intro-03-v4",
+            "it-intro-03-v2"
+          ]
+        },
+        {
+          "id": "it-intro-03-e2",
+          "type": "choice",
+          "item": "it-intro-03-d3",
+          "direction": "toSource",
+          "options": [
+            "it-intro-03-d3",
+            "it-intro-03-d4",
+            "it-intro-03-d5"
+          ]
+        },
+        {
+          "id": "it-intro-03-e3",
+          "type": "cloze",
+          "item": "it-intro-03-d2",
+          "gap": "destra",
+          "options": [
+            "destra",
+            "sinistra",
+            "dritto"
+          ]
+        },
+        {
+          "id": "it-intro-03-e4",
+          "type": "order",
+          "item": "it-intro-03-d1",
+          "segments": [
+            "Scusi,",
+            "dov'è",
+            "la stazione?"
+          ],
+          "extra": [
+            "dove"
+          ]
+        },
+        {
+          "id": "it-intro-03-e5",
+          "type": "choice",
+          "item": "it-intro-03-v5",
+          "direction": "toTarget",
+          "options": [
+            "it-intro-03-v5",
+            "it-intro-03-v6",
+            "it-intro-03-v1"
+          ]
+        },
+        {
+          "id": "it-intro-03-e6",
+          "type": "write",
+          "item": "it-intro-03-v3",
+          "accept": [
+            "diritto"
+          ]
+        },
+        {
+          "id": "it-intro-03-e7",
+          "type": "situation",
+          "mode": "write",
+          "answers": [
+            "Scusi, dov'è la stazione?",
+            "Dov'è la stazione?",
+            "Scusi, dove è la stazione?",
+            "Dove è la stazione?",
+            "Mi scusi, dov'è la stazione?",
+            "Scusi, dov'è la stazione, per favore?",
+            "Scusi dov'è la stazione?",
+            "Scusi dove è la stazione?",
+            "Mi scusi dov'è la stazione?",
+            "Scusi dov'è la stazione per favore?"
+          ]
+        }
+      ]
+    }
+  ]
+}

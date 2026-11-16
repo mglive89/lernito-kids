@@ -1,0 +1,156 @@
+{
+  "format": 1,
+  "id": "ar-demo",
+  "language": "ar",
+  "version": "1.0.0",
+  "lessons": [
+    {
+      "id": "ar-demo-01",
+      "minutes": 8,
+      "dialogue": [
+        {
+          "id": "ar-demo-01-d1",
+          "speaker": "سارة",
+          "text": "مرحبا! أنا سارة.",
+          "translit": "marḥaban! ana sāra."
+        },
+        {
+          "id": "ar-demo-01-d2",
+          "speaker": "ماركو",
+          "text": "أهلا يا سارة! اسمي ماركو.",
+          "translit": "ahlan yā sāra! ismī mārkū."
+        },
+        {
+          "id": "ar-demo-01-d3",
+          "speaker": "سارة",
+          "text": "من أين أنت؟",
+          "translit": "min ayna anta?"
+        },
+        {
+          "id": "ar-demo-01-d4",
+          "speaker": "ماركو",
+          "text": "أنا من إيطاليا.",
+          "translit": "ana min īṭāliyā."
+        },
+        {
+          "id": "ar-demo-01-d5",
+          "speaker": "سارة",
+          "text": "تشرفنا!",
+          "translit": "tasharrafnā!"
+        }
+      ],
+      "vocabulary": [
+        {
+          "id": "ar-demo-01-v1",
+          "text": "شكرا",
+          "translit": "shukran",
+          "accept": [
+            "shukran"
+          ]
+        },
+        {
+          "id": "ar-demo-01-v2",
+          "text": "مع السلامة",
+          "translit": "maʿa as-salāma"
+        },
+        {
+          "id": "ar-demo-01-v3",
+          "text": "صباح الخير",
+          "translit": "ṣabāḥ al-khayr"
+        },
+        {
+          "id": "ar-demo-01-v4",
+          "text": "نعم",
+          "translit": "naʿam"
+        },
+        {
+          "id": "ar-demo-01-v5",
+          "text": "لا",
+          "translit": "lā"
+        },
+        {
+          "id": "ar-demo-01-v6",
+          "text": "السلام عليكم",
+          "translit": "as-salāmu ʿalaykum"
+        }
+      ],
+      "exercises": [
+        {
+          "id": "ar-demo-01-e1",
+          "type": "listen",
+          "item": "ar-demo-01-v1",
+          "options": [
+            "ar-demo-01-v2",
+            "ar-demo-01-v3",
+            "ar-demo-01-v1"
+          ]
+        },
+        {
+          "id": "ar-demo-01-e2",
+          "type": "choice",
+          "item": "ar-demo-01-d3",
+          "direction": "toSource",
+          "options": [
+            "ar-demo-01-d3",
+            "ar-demo-01-d4",
+            "ar-demo-01-d5"
+          ]
+        },
+        {
+          "id": "ar-demo-01-e3",
+          "type": "cloze",
+          "item": "ar-demo-01-d2",
+          "gap": "اسمي",
+          "options": [
+            "اسمي",
+            "أنا",
+            "من"
+          ]
+        },
+        {
+          "id": "ar-demo-01-e4",
+          "type": "order",
+          "item": "ar-demo-01-d4",
+          "segments": [
+            "أنا",
+            "من",
+            "إيطاليا"
+          ],
+          "extra": [
+            "أين"
+          ]
+        },
+        {
+          "id": "ar-demo-01-e5",
+          "type": "choice",
+          "item": "ar-demo-01-v3",
+          "direction": "toTarget",
+          "options": [
+            "ar-demo-01-v3",
+            "ar-demo-01-v4",
+            "ar-demo-01-v5"
+          ]
+        },
+        {
+          "id": "ar-demo-01-e6",
+          "type": "write",
+          "item": "ar-demo-01-v1"
+        },
+        {
+          "id": "ar-demo-01-e7",
+          "type": "situation",
+          "mode": "choice",
+          "answers": [
+            "أنا من إيطاليا."
+          ],
+          "options": [
+            "أنا من إيطاليا.",
+            "اسمي إيطاليا.",
+            "مع السلامة!"
+          ],
+          "translit": "ana min īṭāliyā."
+        }
+      ]
+    }
+  ]
+}

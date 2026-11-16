@@ -1,0 +1,53 @@
+{
+  "format": 1,
+  "id": "nl-esempio.it",
+  "content": "nl-esempio",
+  "source": "it",
+  "target": "nl",
+  "version": "1.0.0",
+  "quality": "unreviewed",
+  "course": {
+    "title": "Olandese – Esempio",
+    "description": "Pacchetto di esempio: una lezione per mostrare il formato."
+  },
+  "lessons": {
+    "nl-voorbeeld-01": {
+      "title": "Ciao! (esempio)",
+      "goal": "Salutare e presentarsi in olandese."
+    }
+  },
+  "items": {
+    "nl-voorbeeld-01-d1": "Ciao! Sono Sanne.",
+    "nl-voorbeeld-01-d2": "Ciao Sanne, mi chiamo Luca.",
+    "nl-voorbeeld-01-d3": "Di dove sei?",
+    "nl-voorbeeld-01-d4": "Vengo dall'Italia.",
+    "nl-voorbeeld-01-v1": "Buongiorno",
+    "nl-voorbeeld-01-v2": "Grazie",
+    "nl-voorbeeld-01-v3": "Arrivederci",
+    "nl-voorbeeld-01-v4": "Sì"
+  },
+  "exercises": {
+    "nl-voorbeeld-01-e1": {
+      "explain": "«Tot ziens» = arrivederci."
+    },
+    "nl-voorbeeld-01-e2": {
+      "explain": "«Waar kom je vandaan?» = «Di dove sei?»."
+    },
+    "nl-voorbeeld-01-e3": {
+      "explain": "«Ik heet …» = «Mi chiamo …»."
+    },
+    "nl-voorbeeld-01-e4": {
+      "explain": "Per la provenienza si usa «uit»: «Ik kom uit Italië»."
+    },
+    "nl-voorbeeld-01-e5": {
+      "explain": "«Goedemorgen» = buongiorno (di mattina)."
+    },
+    "nl-voorbeeld-01-e6": {
+      "explain": "«Dank je» = grazie."
+    },
+    "nl-voorbeeld-01-e7": {
+      "explain": "«Ik heet Anna.» oppure «Ik ben Anna.»",
+      "prompt": "Ti chiedono «Hoe heet je?». Rispondi che ti chiami Anna."
+    }
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "format": 1,
+  "id": "ar-demo.it",
+  "content": "ar-demo",
+  "source": "it",
+  "target": "ar",
+  "version": "1.0.0",
+  "quality": "unreviewed",
+  "course": {
+    "title": "Arabo – Demo",
+    "description": "Una lezione di prova in arabo standard, con trascrizione latina come aiuto."
+  },
+  "lessons": {
+    "ar-demo-01": {
+      "title": "Ciao! Saluti in arabo",
+      "goal": "Salutare, dire il tuo nome e da dove vieni (arabo standard)."
+    }
+  },
+  "items": {
+    "ar-demo-01-d1": "Ciao! Sono Sara.",
+    "ar-demo-01-d2": "Ciao, Sara! Mi chiamo Marco.",
+    "ar-demo-01-d3": "Di dove sei?",
+    "ar-demo-01-d4": "Vengo dall'Italia.",
+    "ar-demo-01-d5": "Piacere!",
+    "ar-demo-01-v1": "grazie",
+    "ar-demo-01-v2": "arrivederci",
+    "ar-demo-01-v3": "buongiorno",
+    "ar-demo-01-v4": "sì",
+    "ar-demo-01-v5": "no",
+    "ar-demo-01-v6": "la pace sia con voi (saluto)"
+  },
+  "exercises": {
+    "ar-demo-01-e1": {
+      "explain": "«شكرا» (shukran) = grazie."
+    },
+    "ar-demo-01-e2": {
+      "explain": "«من أين أنت؟» (min ayna anta?) = «Di dove sei?». «من» = da, «أين» = dove. A una donna si dice «أنتِ» (anti)."
+    },
+    "ar-demo-01-e3": {
+      "explain": "«اسمي …» (ismī) = «il mio nome è …». «أنا» (ana) = io."
+    },
+    "ar-demo-01-e4": {
+      "explain": "L’arabo si legge da destra a sinistra: «أنا من إيطاليا» = io (أنا) da (من) Italia (إيطاليا)."
+    },
+    "ar-demo-01-e5": {
+      "explain": "«صباح الخير» (ṣabāḥ al-khayr) = buongiorno, letteralmente «mattino di bene»."
+    },
+    "ar-demo-01-e6": {
+      "explain": "Scrivi «شكرا». Se non hai la tastiera araba, vale anche la trascrizione «shukran»."
+    },
+    "ar-demo-01-e7": {
+      "explain": "«أنا من إيطاليا» (ana min īṭāliyā) = vengo dall’Italia.",
+      "prompt": "Una persona ti chiede «من أين أنت؟». Rispondi che vieni dall’Italia."
+    }
+  }
+}

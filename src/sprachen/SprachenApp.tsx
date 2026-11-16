@@ -18,6 +18,10 @@ import { GuidePage } from '../pages/learn/GuidePage';
 import { PlayPage } from '../pages/learn/PlayPage';
 import { activeCourseId, CoursesPage, LearnPage, LeaderboardPage, QuestsPage, ShopPage } from './pages';
 import { Sidebar, type NavItem } from './ui';
+import { APP_NAME } from '../linguaflow/brand';
+import { FlowChoose, FlowHome, FlowSettings, FlowShell, FlowStart, FlowWelcome } from '../linguaflow/pages';
+import { LessonPage, ReviewPage } from '../linguaflow/Lesson';
+import { GUEST, useFlowStore } from '../linguaflow/store';
 
 const BASE = import.meta.env.BASE_URL;
 
@@ -75,12 +79,14 @@ function Shell() {
   return (
     <div className="min-h-[100dvh]" data-testid="sprachen-app">
       <Sidebar items={items} footer={
+        <><NavLink to="/corso" className="mb-1 flex items-center gap-2 rounded-xl px-3 py-2 text-sm font-bold text-minze-700 hover:bg-minze-50" data-testid="zu-linguaflow-desktop"><LanguagesIcon size={18} /> {APP_NAME}</NavLink>
         <a href={lernitoHome()} className="flex items-center gap-2 rounded-xl px-3 py-2 text-sm font-semibold text-tinte/55 hover:bg-tinte/[0.04]" data-testid="zurueck-zu-lernito">
           <ArrowLeft size={18} /> {L('Zurück zu Lernito', 'Torna a Lernito')}
-        </a>} />
+        </a></>} />
       <header className="fixed inset-x-0 top-0 z-30 flex h-[58px] items-center gap-2 border-b border-minze-700/20 bg-minze-600 px-3 text-white lg:hidden" style={{ paddingTop: 'var(--safe-top)', height: 'calc(58px + var(--safe-top))' }}>
         <a href={lernitoHome()} className="flex h-10 w-10 items-center justify-center rounded-full hover:bg-white/10" aria-label={L('Zurück zu Lernito', 'Torna a Lernito')} data-testid="zurueck-zu-lernito-mobil"><ArrowLeft size={22} /></a>
         <span className="font-display text-lg font-extrabold">{L('Sprachen', 'Lingue')}</span>
+        <NavLink to="/corso" className="rounded-full bg-white/15 px-2.5 py-1 text-xs font-bold" data-testid="zu-linguaflow">{APP_NAME}</NavLink>
         <span className="flex-1" />
         <NavLink to="/lingue" className="emoji flex h-10 items-center px-1 text-2xl" aria-label={L('Kurs wechseln', 'Cambia corso')}>{course?.flag ?? '🌍'}</NavLink>
         <span className="flex items-center gap-1 rounded-full bg-white/15 px-2.5 py-1 text-sm font-bold"><Star size={16} className="fill-sonne-300 text-sonne-300" /> {progress.stars}</span>
@@ -121,7 +127,9 @@ export function SprachenApp() {
   const uiLang = useApp((s) => s.uiLang);
   const location = useLocation();
 
-  const lang = profile?.lang ?? uiLang ?? 'de';
+  // Ohne Profil folgen Lernito-Hinweise (z. B. Update) der Sprache, die in LinguaFlow gewählt wurde
+  const flowUi = useFlowStore((s) => s.byOwner[profile?.id ?? GUEST]?.ui);
+  const lang = profile?.lang ?? (flowUi === 'it' || flowUi === 'de' ? flowUi : uiLang ?? 'de');
   setLang(lang);
   setSpeechLang(lang);
   setCountry(profile?.country ?? 'DE');
@@ -160,22 +168,30 @@ export function SprachenApp() {
   if (!hydrated) return <Loading />;
   return (
     <MotionConfig reducedMotion={parent.reduceMotion ? 'always' : 'user'}>
-      <RequireProfile>
-        <Routes>
-          <Route element={<Shell />}>
-            <Route path="/lingue" element={<CoursesPage />} />
-            <Route path="/lingue/:course" element={<LearnPage />} />
-            <Route path="/rangliste" element={<LeaderboardPage />} />
-            <Route path="/missionen" element={<QuestsPage />} />
-            <Route path="/laden" element={<ShopPage />} />
-          </Route>
-          <Route path="/lernen" element={<Start />} />
-          <Route path="/thema/:moduleId" element={<GuidePage />} />
-          <Route path="/spiel/:moduleId" element={<PlayPage />} />
-          <Route path="/home" element={<ToLernito />} />
-          <Route path="*" element={<Start />} />
-        </Routes>
-      </RequireProfile>
+      <Routes>
+        {/* LinguaFlow: Kurse aus Paketen, ohne Konto – auch ohne Lernito-Profil nutzbar */}
+        <Route path="/benvenuto" element={<FlowWelcome />} />
+        <Route path="/lezione/:courseId/:lessonId" element={<LessonPage />} />
+        <Route element={<FlowShell />}>
+          <Route path="/corso" element={<FlowHome />} />
+          <Route path="/scegli" element={<FlowChoose />} />
+          <Route path="/ripasso/:courseId" element={<ReviewPage />} />
+          <Route path="/impostazioni" element={<FlowSettings />} />
+        </Route>
+        {/* Üben mit Puppy (Herzen, Missionen, Rangliste) – braucht ein Lernito-Profil */}
+        <Route element={<RequireProfile><Shell /></RequireProfile>}>
+          <Route path="/lingue" element={<CoursesPage />} />
+          <Route path="/lingue/:course" element={<LearnPage />} />
+          <Route path="/rangliste" element={<LeaderboardPage />} />
+          <Route path="/missionen" element={<QuestsPage />} />
+          <Route path="/laden" element={<ShopPage />} />
+        </Route>
+        <Route path="/lernen" element={<RequireProfile><Start /></RequireProfile>} />
+        <Route path="/thema/:moduleId" element={<RequireProfile><GuidePage /></RequireProfile>} />
+        <Route path="/spiel/:moduleId" element={<RequireProfile><PlayPage /></RequireProfile>} />
+        <Route path="/home" element={<ToLernito />} />
+        <Route path="*" element={<FlowStart />} />
+      </Routes>
       {timeUp && profile && <TimeUpOverlay onUnlocked={() => setTimeUpDismissed(`${profile.id}-${dateKey()}`)} />}
       <UpdatePrompt />
     </MotionConfig>

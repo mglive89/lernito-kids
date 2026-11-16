@@ -1,0 +1,19 @@
+{
+  "format": 1,
+  "courses": [
+    {
+      "id": "it-nl-esempio",
+      "source": "it",
+      "target": "nl",
+      "level": "A1",
+      "kind": "demo",
+      "status": "published",
+      "version": "1.0.0",
+      "content": "content/nl/esempio.json",
+      "translations": "translations/nl/esempio.it.json",
+      "lessons": [
+        "nl-voorbeeld-01"
+      ]
+    }
+  ]
+}

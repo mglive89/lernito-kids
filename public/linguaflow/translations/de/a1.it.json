@@ -1,0 +1,398 @@
+{
+  "format": 1,
+  "id": "de-a1.it",
+  "content": "de-a1",
+  "source": "it",
+  "target": "de",
+  "version": "1.0.0",
+  "quality": "unreviewed",
+  "course": {
+    "title": "Tedesco A1 – Vita quotidiana in Germania",
+    "description": "Dieci lezioni brevi su situazioni reali: salutare, fare la spesa, al bar, in treno, dal medico, al ristorante."
+  },
+  "lessons": {
+    "de-a1-01": {
+      "title": "Ciao! Mi presento",
+      "goal": "Salutare, dire come ti chiami e da dove vieni."
+    },
+    "de-a1-02": {
+      "title": "Dal panettiere",
+      "goal": "Comprare il pane e chiedere quanto costa."
+    },
+    "de-a1-03": {
+      "title": "Al caffè",
+      "goal": "Ordinare da bere e pagare."
+    },
+    "de-a1-04": {
+      "title": "Al supermercato",
+      "goal": "Chiedere dove si trovano i prodotti e pagare alla cassa."
+    },
+    "de-a1-05": {
+      "title": "Chiedere la strada",
+      "goal": "Chiedere come arrivare in un posto e capire indicazioni semplici."
+    },
+    "de-a1-06": {
+      "title": "In treno",
+      "goal": "Comprare un biglietto e chiedere da quale binario parte il treno."
+    },
+    "de-a1-07": {
+      "title": "Dal medico",
+      "goal": "Prendere un appuntamento e dire cosa non va."
+    },
+    "de-a1-08": {
+      "title": "Hai tempo sabato?",
+      "goal": "Proporre un’uscita, chiedere e dire l’ora."
+    },
+    "de-a1-09": {
+      "title": "Al ristorante",
+      "goal": "Dire che hai prenotato, ordinare e chiedere il conto."
+    },
+    "de-a1-10": {
+      "title": "Il fine settimana",
+      "goal": "Parlare di cosa fai nel tempo libero."
+    }
+  },
+  "items": {
+    "de-a1-01-d1": "Ciao! Sono Lena.",
+    "de-a1-01-d2": "Ciao, Lena! Mi chiamo Marco.",
+    "de-a1-01-d3": "Da dove vieni?",
+    "de-a1-01-d4": "Vengo dall'Italia. E tu?",
+    "de-a1-01-d5": "Vengo da Amburgo. Piacere!",
+    "de-a1-01-v1": "Buongiorno (di mattina)",
+    "de-a1-01-v2": "Buongiorno",
+    "de-a1-01-v3": "Ciao (quando te ne vai)",
+    "de-a1-01-v4": "Come ti chiami?",
+    "de-a1-01-v5": "Piacere",
+    "de-a1-01-v6": "Grazie",
+    "de-a1-02-d1": "Buongiorno! Cosa desidera?",
+    "de-a1-02-d2": "Vorrei due panini, per favore.",
+    "de-a1-02-d3": "Altro?",
+    "de-a1-02-d4": "Sì, un pane di segale. Quanto costa?",
+    "de-a1-02-d5": "Sono quattro euro e venti.",
+    "de-a1-02-d6": "Ecco a lei. Buona giornata!",
+    "de-a1-02-v1": "il panino",
+    "de-a1-02-v2": "il pane",
+    "de-a1-02-v3": "per favore",
+    "de-a1-02-v4": "Quanto costa?",
+    "de-a1-02-v5": "due",
+    "de-a1-02-v6": "Vorrei",
+    "de-a1-03-d1": "Salve! Cosa desidera bere?",
+    "de-a1-03-d2": "Un caffè con latte, per favore.",
+    "de-a1-03-d3": "E per lei?",
+    "de-a1-03-d4": "Per me un'acqua naturale.",
+    "de-a1-03-d5": "Vorremmo pagare, per favore.",
+    "de-a1-03-d6": "Insieme o separato?",
+    "de-a1-03-v1": "il caffè",
+    "de-a1-03-v2": "il tè",
+    "de-a1-03-v3": "l'acqua",
+    "de-a1-03-v4": "con latte",
+    "de-a1-03-v5": "pagare",
+    "de-a1-03-v6": "separatamente",
+    "de-a1-04-d1": "Mi scusi, dove trovo le mele?",
+    "de-a1-04-d2": "Le mele sono là in fondo, vicino alla verdura.",
+    "de-a1-04-d3": "Grazie! E avete anche latte d'avena?",
+    "de-a1-04-d4": "Sì, nello scaffale accanto al formaggio.",
+    "de-a1-04-d5": "Le serve un sacchetto?",
+    "de-a1-04-d6": "No, grazie. Pago con la carta.",
+    "de-a1-04-v1": "le mele",
+    "de-a1-04-v2": "il formaggio",
+    "de-a1-04-v3": "il sacchetto",
+    "de-a1-04-v4": "Mi scusi",
+    "de-a1-04-v5": "con la carta",
+    "de-a1-04-v6": "in contanti",
+    "de-a1-05-d1": "Mi scusi, come arrivo alla stazione?",
+    "de-a1-05-d2": "Vada dritto e poi a sinistra.",
+    "de-a1-05-d3": "È lontano?",
+    "de-a1-05-d4": "No, solo cinque minuti a piedi.",
+    "de-a1-05-d5": "Grazie mille!",
+    "de-a1-05-d6": "Prego.",
+    "de-a1-05-v1": "a sinistra",
+    "de-a1-05-v2": "a destra",
+    "de-a1-05-v3": "dritto",
+    "de-a1-05-v4": "la stazione",
+    "de-a1-05-v5": "a piedi",
+    "de-a1-05-v6": "lontano",
+    "de-a1-06-d1": "Un biglietto per Monaco, per favore.",
+    "de-a1-06-d2": "Solo andata o andata e ritorno?",
+    "de-a1-06-d3": "Andata e ritorno, per favore.",
+    "de-a1-06-d4": "Costa cinquantanove euro.",
+    "de-a1-06-d5": "Da quale binario parte il treno?",
+    "de-a1-06-d6": "Dal binario tre. Buon viaggio!",
+    "de-a1-06-v1": "il biglietto",
+    "de-a1-06-v2": "il treno",
+    "de-a1-06-v3": "il binario",
+    "de-a1-06-v4": "solo andata",
+    "de-a1-06-v5": "il ritardo",
+    "de-a1-06-v6": "la partenza",
+    "de-a1-07-d1": "Studio del dottor Klein, buongiorno.",
+    "de-a1-07-d2": "Buongiorno, ho bisogno di un appuntamento.",
+    "de-a1-07-d3": "Che cosa si sente?",
+    "de-a1-07-d4": "Ho la febbre e mal di gola.",
+    "de-a1-07-d5": "Può venire oggi alle undici?",
+    "de-a1-07-d6": "Sì, va bene. Grazie!",
+    "de-a1-07-v1": "l'appuntamento",
+    "de-a1-07-v2": "la febbre",
+    "de-a1-07-v3": "mal di testa",
+    "de-a1-07-v4": "mal di pancia",
+    "de-a1-07-v5": "la tessera sanitaria",
+    "de-a1-07-v6": "malato",
+    "de-a1-08-d1": "Hai tempo sabato?",
+    "de-a1-08-d2": "Sì, al pomeriggio. Perché?",
+    "de-a1-08-d3": "Andiamo al cinema. Vieni anche tu?",
+    "de-a1-08-d4": "Volentieri! A che ora?",
+    "de-a1-08-d5": "Alle sette e mezza davanti al cinema.",
+    "de-a1-08-d6": "Ottimo, a sabato!",
+    "de-a1-08-v1": "sabato",
+    "de-a1-08-v2": "domenica",
+    "de-a1-08-v3": "oggi",
+    "de-a1-08-v4": "domani",
+    "de-a1-08-v5": "alle otto",
+    "de-a1-08-v6": "le sette e mezza",
+    "de-a1-09-d1": "Buonasera! Avete prenotato?",
+    "de-a1-09-d2": "Sì, a nome Rossi, per due persone.",
+    "de-a1-09-d3": "Prego. Ecco il menù.",
+    "de-a1-09-d4": "Prendo la zuppa di verdure e un'acqua.",
+    "de-a1-09-d5": "Le è piaciuto?",
+    "de-a1-09-d6": "Sì, molto buono. Il conto, per favore.",
+    "de-a1-09-v1": "il menù",
+    "de-a1-09-v2": "il conto",
+    "de-a1-09-v3": "la mancia",
+    "de-a1-09-v4": "buono, gustoso",
+    "de-a1-09-v5": "vegetariano",
+    "de-a1-09-v6": "Prendo",
+    "de-a1-10-d1": "Cosa fai nel fine settimana?",
+    "de-a1-10-d2": "Gioco a calcio con gli amici.",
+    "de-a1-10-d3": "Fantastico! A me piace fare escursioni.",
+    "de-a1-10-d4": "Dove vai?",
+    "de-a1-10-d5": "In montagna. Dovrebbe fare bel tempo.",
+    "de-a1-10-d6": "Divertiti!",
+    "de-a1-10-v1": "il fine settimana",
+    "de-a1-10-v2": "giocare",
+    "de-a1-10-v3": "leggere",
+    "de-a1-10-v4": "cucinare",
+    "de-a1-10-v5": "il tempo (meteo)",
+    "de-a1-10-v6": "volentieri"
+  },
+  "exercises": {
+    "de-a1-01-e1": {
+      "explain": "«Tschüss» si usa per salutare quando ci si congeda, in modo informale."
+    },
+    "de-a1-01-e2": {
+      "explain": "«Woher» significa «da dove»; «kommst» è il verbo «kommen» (venire) con «du»."
+    },
+    "de-a1-01-e3": {
+      "explain": "«Ich heiße …» = «Mi chiamo …». Il verbo è «heißen». «Ich bin Marco» è corretto, ma qui manca il verbo «chiamarsi»."
+    },
+    "de-a1-01-e4": {
+      "explain": "In tedesco il verbo sta al secondo posto: «Ich komme aus …». Per il Paese di provenienza si usa «aus»."
+    },
+    "de-a1-01-e5": {
+      "explain": "«Guten Morgen» si dice la mattina; più tardi si usa «Guten Tag»."
+    },
+    "de-a1-01-e6": {
+      "explain": "«Danke» = «grazie». Le maiuscole non contano, ma ogni lettera sì."
+    },
+    "de-a1-01-e7": {
+      "explain": "Puoi dire «Ich heiße Giulia.», «Ich bin Giulia.» oppure «Mein Name ist Giulia.»",
+      "prompt": "Una nuova collega ti chiede «Wie heißt du?». Rispondi che ti chiami Giulia."
+    },
+    "de-a1-02-e1": {
+      "explain": "«das Brot» è il pane (la pagnotta); «das Brötchen» è il panino piccolo."
+    },
+    "de-a1-02-e2": {
+      "explain": "«Sonst noch etwas?» è la domanda tipica alla cassa: «Altro?»."
+    },
+    "de-a1-02-e3": {
+      "explain": "«Ich hätte gern …» è il modo cortese per dire «vorrei …»."
+    },
+    "de-a1-02-e4": {
+      "explain": "Nelle domande con «Was» il verbo segue subito: «Was kostet das?»."
+    },
+    "de-a1-02-e5": {
+      "explain": "«Was kostet das?» = «Quanto costa?». «kosten» = costare."
+    },
+    "de-a1-02-e6": {
+      "explain": "«bitte» significa «per favore», ma anche «ecco» quando dai qualcosa."
+    },
+    "de-a1-02-e7": {
+      "explain": "Ad esempio: «Ich hätte gern drei Brötchen, bitte.» – «Brötchen» al plurale non cambia.",
+      "prompt": "Sei dal panettiere. Chiedi tre panini in modo cortese."
+    },
+    "de-a1-03-e1": {
+      "explain": "«der Tee» = il tè."
+    },
+    "de-a1-03-e2": {
+      "explain": "In Germania il cameriere chiede spesso se pagate «zusammen» (insieme) o «getrennt» (ognuno il suo)."
+    },
+    "de-a1-03-e3": {
+      "explain": "«mit Milch» = con latte. «Zucker» è lo zucchero."
+    },
+    "de-a1-03-e4": {
+      "explain": "«möchten» (vorremmo) sta al secondo posto, l’infinito «zahlen» va alla fine."
+    },
+    "de-a1-03-e5": {
+      "explain": "«das Wasser» = l’acqua. «ohne Kohlensäure» = naturale, «mit Kohlensäure» = frizzante."
+    },
+    "de-a1-03-e6": {
+      "explain": "«zahlen» = pagare."
+    },
+    "de-a1-03-e7": {
+      "explain": "«Einen Tee, bitte.» – dopo «möchte» o «hätte gern» si usa «einen» (accusativo maschile).",
+      "prompt": "Al caffè vuoi un tè. Ordina in modo cortese."
+    },
+    "de-a1-04-e1": {
+      "explain": "«der Käse» = il formaggio."
+    },
+    "de-a1-04-e2": {
+      "explain": "In Germania i sacchetti si pagano: alla cassa ti chiedono «Brauchen Sie eine Tüte?»."
+    },
+    "de-a1-04-e3": {
+      "explain": "«wo» = dove; «wer» = chi; «wie» = come."
+    },
+    "de-a1-04-e4": {
+      "explain": "«Ich zahle mit Karte» = pago con la carta. Il verbo «zahle» viene subito dopo «Ich»."
+    },
+    "de-a1-04-e5": {
+      "explain": "«Entschuldigung» serve per attirare l’attenzione o per scusarsi."
+    },
+    "de-a1-04-e6": {
+      "explain": "«bar zahlen» = pagare in contanti."
+    },
+    "de-a1-04-e7": {
+      "explain": "Ad esempio: «Entschuldigung, wo finde ich Käse?» oppure «Wo ist der Käse?»",
+      "prompt": "Al supermercato cerchi il formaggio. Chiedi a un commesso dove lo trovi."
+    },
+    "de-a1-05-e1": {
+      "explain": "«rechts» = a destra, «links» = a sinistra."
+    },
+    "de-a1-05-e2": {
+      "explain": "«Ist es weit?» = «È lontano?». «weit» = lontano."
+    },
+    "de-a1-05-e3": {
+      "explain": "La signora dice «a sinistra»: in tedesco «links». «rechts» è a destra."
+    },
+    "de-a1-05-e4": {
+      "explain": "Domanda con «wie»: prima il verbo, poi il soggetto – «wie komme ich …?»."
+    },
+    "de-a1-05-e5": {
+      "explain": "«geradeaus» = dritto."
+    },
+    "de-a1-05-e6": {
+      "explain": "«rechts» = a destra. Attenzione alla «ch»."
+    },
+    "de-a1-05-e7": {
+      "explain": "Ad esempio: «Entschuldigung, wie komme ich zum Bahnhof?» – «zum» = «zu dem».",
+      "prompt": "Sei in centro e cerchi la stazione. Chiedi a un passante come arrivarci."
+    },
+    "de-a1-06-e1": {
+      "explain": "«der Zug» = il treno."
+    },
+    "de-a1-06-e2": {
+      "explain": "«einfach» = solo andata; «hin und zurück» = andata e ritorno."
+    },
+    "de-a1-06-e3": {
+      "explain": "«das Gleis» = il binario. «Von welchem Gleis …?» = «Da quale binario …?»."
+    },
+    "de-a1-06-e4": {
+      "explain": "Per le città si usa «nach»: «nach München», «nach Berlin»."
+    },
+    "de-a1-06-e5": {
+      "explain": "«die Verspätung» = il ritardo. Sui tabelloni leggerai spesso «+10 Min. Verspätung»."
+    },
+    "de-a1-06-e6": {
+      "explain": "«das Gleis» = il binario."
+    },
+    "de-a1-06-e7": {
+      "explain": "«Einmal nach Berlin, einfach» = un biglietto, solo andata, per Berlino.",
+      "prompt": "Sei alla biglietteria. Chiedi un biglietto di sola andata per Berlino."
+    },
+    "de-a1-07-e1": {
+      "explain": "«Kopfschmerzen» = mal di testa: «Kopf» (testa) + «Schmerzen» (dolori)."
+    },
+    "de-a1-07-e2": {
+      "explain": "«Was fehlt Ihnen?» è la domanda tipica del medico: «Che cosa si sente?»."
+    },
+    "de-a1-07-e3": {
+      "explain": "«einen Termin brauchen» = aver bisogno di un appuntamento."
+    },
+    "de-a1-07-e4": {
+      "explain": "Per i disturbi si usa «haben»: «Ich habe Fieber», non «Ich bin Fieber»."
+    },
+    "de-a1-07-e5": {
+      "explain": "«krank» = malato. «Ich bin krank» = sono malato."
+    },
+    "de-a1-07-e6": {
+      "explain": "«das Fieber» = la febbre."
+    },
+    "de-a1-07-e7": {
+      "explain": "«Ich habe Fieber.» – con i disturbi si usa sempre «haben».",
+      "prompt": "Il medico ti chiede «Was fehlt Ihnen?». Rispondi che hai la febbre."
+    },
+    "de-a1-08-e1": {
+      "explain": "«morgen» = domani. «der Morgen» (con la maiuscola) è invece «la mattina»."
+    },
+    "de-a1-08-e2": {
+      "explain": "«mitkommen» = venire insieme: «Kommst du mit?» = «Vieni anche tu?»."
+    },
+    "de-a1-08-e3": {
+      "explain": "«halb acht» = le 7:30, cioè mezz’ora PRIMA delle otto. Non è 8:30!"
+    },
+    "de-a1-08-e4": {
+      "explain": "Domande sì/no: il verbo va all’inizio – «Hast du …?»."
+    },
+    "de-a1-08-e5": {
+      "explain": "«heute» = oggi, «morgen» = domani."
+    },
+    "de-a1-08-e6": {
+      "explain": "«am Sonntag» = domenica. Con i giorni si usa «am»."
+    },
+    "de-a1-08-e7": {
+      "explain": "«Hast du am Sonntag Zeit?» – il verbo «hast» va all’inizio della domanda.",
+      "prompt": "Chiedi a un amico se ha tempo domenica."
+    },
+    "de-a1-09-e1": {
+      "explain": "«die Rechnung» = il conto."
+    },
+    "de-a1-09-e2": {
+      "explain": "«Hat es Ihnen geschmeckt?» = «Le è piaciuto (il cibo)?». «schmecken» = avere un buon sapore."
+    },
+    "de-a1-09-e3": {
+      "explain": "«Ich nehme …» = «Prendo …»: così si ordina al ristorante."
+    },
+    "de-a1-09-e4": {
+      "explain": "«die Rechnung» è femminile: «die». «der» sarebbe maschile."
+    },
+    "de-a1-09-e5": {
+      "explain": "«das Trinkgeld» = la mancia. In Germania si lascia di solito il 5–10 %."
+    },
+    "de-a1-09-e6": {
+      "explain": "«lecker» = buono, gustoso."
+    },
+    "de-a1-09-e7": {
+      "explain": "«Die Rechnung, bitte.» oppure «Ich möchte zahlen.»",
+      "prompt": "Hai finito di mangiare. Chiedi il conto alla cameriera."
+    },
+    "de-a1-10-e1": {
+      "explain": "«kochen» = cucinare."
+    },
+    "de-a1-10-e2": {
+      "explain": "«Viel Spaß!» = «Divertiti!» – letteralmente «molto divertimento»."
+    },
+    "de-a1-10-e3": {
+      "explain": "«gern» + verbo = fare qualcosa volentieri: «Ich gehe gern wandern» = mi piace fare escursioni."
+    },
+    "de-a1-10-e4": {
+      "explain": "Con «du» il verbo finisce in «-st»: «du machst»."
+    },
+    "de-a1-10-e5": {
+      "explain": "«lesen» = leggere."
+    },
+    "de-a1-10-e6": {
+      "explain": "«das Wochenende» = il fine settimana."
+    },
+    "de-a1-10-e7": {
+      "explain": "«Ich koche gern.» – «gern» dopo il verbo indica che una cosa ti piace.",
+      "prompt": "Un amico ti chiede «Was machst du gern?». Rispondi che ti piace cucinare."
+    }
+  }
+}
