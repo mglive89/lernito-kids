@@ -11,13 +11,14 @@
 | Datensparsamkeit | Pro Kind: Spitzname (max. 20 Zeichen), Altersgruppe, Avatar (Emoji + Farbe), Lernstände, Lernzeit pro Tag. Kein Geburtsdatum, kein Foto, keine E-Mail. |
 | Keine Werbung/Tracker | Keine Analyse-SDKs, keine externen Skripte. Schriften sind lokal eingebunden (`@fontsource`). |
 | Keine Kommunikation | Keine Chats, keine öffentlichen Profile, keine Ranglisten mit anderen Kindern. |
-| Sensoren | Kein Zugriff auf Standort, Kamera oder Mikrofon. |
+| Sensoren | Kein Zugriff auf Standort. Kamera und Mikrofon nur nach Freigabe mit Eltern-PIN (siehe unten). |
 | Elternbereich | Erwachsenen-Prüfung (Zahl in Worten) + PIN (4–6 Ziffern), gesalzen und iteriert gehasht (SHA-256). Sperre nach 5 Fehlversuchen für 60 s. Automatische Sperre nach 20 Minuten. |
 | Einwilligungen | Online-Synchronisierung und KI-Lernhilfe sind standardmäßig **aus**. Änderungen werden mit Zeitstempel gespeichert. Ohne Server-Konfiguration bleiben beide Funktionen ohne Wirkung. |
 | Betroffenenrechte | Export aller Daten als JSON (Art. 15/20 DSGVO), Import, vollständige Löschung inkl. Medien (Art. 17 DSGVO), Löschen einzelner Profile. |
 | KI-Lernhilfe | Vorbereitet, standardmäßig deaktiviert, nur durch Erwachsene aktivierbar. Kein offener Chat. Keine API-Schlüssel im Frontend – nur ein eigener Server-Endpunkt (`VITE_AI_PROXY_URL`) ist vorgesehen. |
 | Vorlesefunktion | Web Speech API des Geräts. Die App zeigt, ob eine lokale Stimme verfügbar ist. Hinweis: Manche Browser nutzen Online-Stimmen des Herstellers – das ist in der Datenschutzinformation zu nennen. Abschaltbar im Elternbereich. |
 | Mikrofon (Sprachkurse, Sprachantworten) | Spracherkennung über die Web Speech API des Browsers. Standardmäßig **aus**; erst nach Freigabe mit Eltern-PIN nutzbar, im Elternbereich (Datenschutz) wieder abschaltbar. Lernito speichert keine Aufnahmen, nur das Ergebnis richtig/falsch. Hinweis: Chrome/Edge senden das Audio zur Erkennung an Server des Herstellers (Google/Microsoft), Safari je nach Einstellung an Apple – das ist in der Datenschutzinformation zu nennen (Drittanbieter, Drittlandübermittlung). Ohne Unterstützung (z. B. Firefox) gibt es einen Ersatzweg ohne Mikrofon. |
+| Kamera (Hausaufgaben-Hilfe) | Foto einer Mathe-Aufgabe über `<input type="file" capture>` (Kamera oder Galerie). Standardmäßig **aus**; erst nach Freigabe mit Eltern-PIN, im Elternbereich abschaltbar. Texterkennung mit Tesseract.js vollständig im Browser; Worker, WASM-Kern und Sprachdaten liegen unter `/ocr/` auf der eigenen Seite (kein CDN). Das Foto wird weder hochgeladen noch gespeichert. Abtippen der Aufgabe geht ohne Kamera und ohne Freigabe. |
 | Belohnungen | Keine Zufallsbelohnungen, keine Käufe, keine Verlustmechaniken (Serien gehen nicht verloren), keine Countdown-Druckelemente. |
 | Barrierefreiheit | Semantische Elemente, ARIA-Labels, Fokus-Rahmen, Vorlesen, hoher Kontrast, größere Schrift, reduzierte Bewegung, Tipp-Alternative zu Drag-and-Drop. |
 
