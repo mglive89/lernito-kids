@@ -160,10 +160,13 @@ test('Sprachkurs Arabisch: Schrift von rechts nach links mit Umschrift', async (
 
 test('Sprachkurs: Herzen, Tagesmissionen und Rangliste', async ({ page }) => {
   await createProfile(page, 'Leo', '3', 'IT');
-  await page.goto('/lingue');
+  await page.goto('/sprachen/#/laden');
   await expect(page.getByTestId('herzen-reihe')).toHaveAttribute('data-hearts', '5');
+  await page.goto('/sprachen/#/missionen');
   await expect(page.getByTestId('missioni')).toContainText('Missioni del giorno');
+  await page.goto('/sprachen/#/rangliste');
   await expect(page.getByTestId('classifica-riga')).toHaveCount(1);
+  await page.goto('/sprachen/#/lingue');
   await page.getByTestId('kurs-en').click();
   await page.getByTestId('lektion-lingua-en-saluti-1').click();
   await startExercises(page);
@@ -183,4 +186,19 @@ test('Sprachkurs: Herzen, Tagesmissionen und Rangliste', async ({ page }) => {
     await waitNext(page, idx);
   }
   await expect(page.getByTestId('herzen')).toHaveAttribute('data-hearts', '4');
+});
+
+test('Sprachen öffnet die eigene App „Lernito Sprachen“', async ({ page }) => {
+  await createProfile(page, 'Nina', '4', 'DE');
+  await page.goto('/entdecken');
+  await page.locator('a[href$="/lingue"]').first().click();
+  await expect(page).toHaveURL(/\/sprachen\/#\/lingue$/);
+  await expect(page.getByTestId('sprachen-app')).toBeVisible();
+  await expect(page.locator('link[rel="manifest"]')).toHaveAttribute('href', /manifest\.webmanifest/);
+  await page.getByTestId('kurs-tr').click();
+  await expect(page.getByTestId('kurs-titel')).toContainText('Türkisch');
+  await page.reload();
+  await expect(page.getByTestId('kurs-titel')).toContainText('Türkisch');
+  const m = await page.request.get('/sprachen/manifest.webmanifest');
+  expect((await m.json()).name).toBe('Lernito Sprachen');
 });

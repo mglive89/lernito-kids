@@ -9,6 +9,20 @@ export default defineConfig({
   base,
   plugins: [
     react(),
+    // Die Sprachen-App nutzt ihr eigenes Manifest (sprachen/manifest.webmanifest), nicht das von Lernito.
+    {
+      name: 'sprachen-eigenes-manifest',
+      enforce: 'post',
+      generateBundle: {
+        order: 'post',
+        handler(_opts, bundle) {
+          const page = bundle['sprachen/index.html'];
+          if (page && page.type === 'asset') {
+            page.source = String(page.source).replace(/<link rel="manifest" href="[^"]*?\/manifest\.webmanifest"[^>]*>/g, (m) => (m.includes('./manifest') ? m : ''));
+          }
+        }
+      }
+    },
     VitePWA({
       // Im relativen Vorschau-Build ohne festen Pfad gibt es keinen Service Worker.
       disable: base === './',
@@ -35,6 +49,8 @@ export default defineConfig({
       workbox: {
         globPatterns: ['**/*.{js,css,html,svg,png,woff2,webmanifest}'],
         navigateFallback: `${base}index.html`,
+        // Die Sprachen-App hat ihre eigene Startseite
+        navigateFallbackDenylist: [new RegExp(`^${base.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}sprachen/`)],
         maximumFileSizeToCacheInBytes: 4 * 1024 * 1024
       },
       devOptions: { enabled: false }
@@ -43,6 +59,8 @@ export default defineConfig({
   build: {
     chunkSizeWarningLimit: 1200,
     rollupOptions: {
+      // Zwei Apps: Lernito (index.html) und Lernito Sprachen (sprachen/index.html)
+      input: { main: 'index.html', sprachen: 'sprachen/index.html' },
       output: {
         manualChunks: {
           three: ['three', '@react-three/fiber'],
