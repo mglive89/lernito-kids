@@ -1,6 +1,7 @@
 import type { Lesson } from '../schema';
 import { DEMO_SOURCE } from './source';
 import { CROSSING_LESSONS } from './crossings';
+import { SCENE_LESSONS } from './scenes';
 
 const L = (l: Omit<Lesson, 'source' | 'version' | 'status'>): Lesson => ({ ...l, source: DEMO_SOURCE, version: 1, status: 'demo' });
 const img = (id: string, de: string, it: string) => ({ type: 'diagram' as const, id, alt: { de, it } });
@@ -124,5 +125,6 @@ export const LESSONS: Lesson[] = [
     ]
   })
   ,
-  ...CROSSING_LESSONS
+  ...CROSSING_LESSONS,
+  ...SCENE_LESSONS
 ];

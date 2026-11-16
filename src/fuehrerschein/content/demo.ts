@@ -5,6 +5,7 @@ import { SIGNS, type SignDef, type SignGroup } from '../signs';
 import type { ChapterId, I18n, Question, QuestionImage } from '../schema';
 import { DEMO_SOURCE } from './source';
 import { CROSSING_DE, CROSSING_IT } from './crossings';
+import { SCENE_DE, SCENE_IT } from './scenes';
 
 /**
  * Demo-Inhalt: eigene Fragen von Lernito (keine amtlichen Fragen).
@@ -131,6 +132,7 @@ export const DEMO_DE: Question[] = [
   ...DE_ILLUSTRATED,
   ...DE_TRAPS,
   ...CROSSING_DE,
+  ...SCENE_DE,
   ...signQuestionsDE()
 ];
 
@@ -191,5 +193,6 @@ export const DEMO_IT: Question[] = [
   ...IT_ILLUSTRATED,
   ...IT_TRAPS,
   ...CROSSING_IT,
+  ...SCENE_IT,
   ...signQuestionsIT()
 ];
