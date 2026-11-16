@@ -1,6 +1,6 @@
 import type { ChoiceTask, Difficulty, InputTask, Rng, Task } from '../../learning/types';
 import { shuffle } from '../../lib/random';
-import { L, getLang } from '../../i18n';
+import { L, getLang, num } from '../../i18n';
 import { getCountry, type Country } from '../../school/systems';
 import type { Pic } from '../types';
 
@@ -54,7 +54,19 @@ export function pickPicture(o: { prompt: string; right: { pic: Pic; name: string
 }
 
 /** Zahleneingabe mit Bild */
-export function inputTask(o: { prompt: string; pic: Pic; alt?: string; answer: number; hint?: string; explain: string[]; signed?: boolean; speak?: string }): InputTask {
+export function inputTask(o: { prompt: string; pic: Pic; alt?: string; answer: number; hint?: string; explain: string[]; signed?: boolean; speak?: string }): InputTask | ChoiceTask {
+  // Das Zahlenfeld kennt kein Komma: Dezimalergebnisse werden zur Auswahl mit Nachbarwerten (aufsteigend sortiert).
+  if (!Number.isInteger(o.answer)) {
+    const a = o.answer;
+    const cands = [a - 0.5, a + 0.5, a * 2, a + 1, a - 1].map((x) => Math.round(x * 1000) / 1000).filter((x) => x !== a && (o.signed || x >= 0));
+    const opts = [...new Set([a, ...cands])].slice(0, 4).sort((x, y) => x - y);
+    return {
+      id: tid(o.pic.id), type: 'choice', prompt: o.prompt, speak: o.speak,
+      visual: { kind: 'pic', pic: o.pic, alt: o.alt ?? ALT() },
+      options: opts.map((x) => ({ id: String(x), label: num(x) })), correctId: String(a), optionStyle: 'big',
+      hint: o.hint ?? HINT(), explain: o.explain
+    };
+  }
   return {
     id: tid(o.pic.id), type: 'input', prompt: o.prompt, speak: o.speak,
     visual: { kind: 'pic', pic: o.pic, alt: o.alt ?? ALT() },

@@ -36,6 +36,7 @@ function check(t: Task, ctx: string) {
   expect(t.hint.trim(), `${ctx}: Tipp`).not.toBe('');
   expect(t.explain.length, `${ctx}: Erklärung`).toBeGreaterThan(0);
   expect(pics(t).length > 0 || !!t.visual, `${ctx}: hat ein Bild`).toBe(true);
+  if (t.type === 'input') expect(t.answer, `${ctx}: Zahl unter 7 Stellen`).toBeLessThan(1e6);
   if (t.type === 'choice') {
     const ids = t.options.map((o) => o.id);
     expect(new Set(ids).size, `${ctx}: eindeutige Antworten ${ids.join(' | ')}`).toBe(ids.length);
@@ -46,6 +47,7 @@ function check(t: Task, ctx: string) {
   if (t.type === 'input') {
     expect(Number.isFinite(t.answer), `${ctx}: Zahl`).toBe(true);
     if (!t.signed) expect(t.answer, `${ctx}: nicht negativ`).toBeGreaterThanOrEqual(0);
+    expect(Number.isInteger(t.answer), `${ctx}: ganze Zahl (Zahlenfeld hat kein Komma) ${t.answer}`).toBe(true);
   }
   for (const p of pics(t)) draw(p, ctx);
 }
