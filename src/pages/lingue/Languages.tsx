@@ -20,7 +20,7 @@ import { useLangPlayOf } from '../../lingue/play-state';
 const OFFSETS = [0, 52, 78, 52, 0, -52, -78, -52];
 
 /** Hinweis zum Mikrofon: unterstützt? freigegeben? */
-function MicStatus() {
+export function MicStatus() {
   const allowed = useVoiceAllowed();
   const [open, setOpen] = useState(false);
   const supported = recognitionSupported();

@@ -20,7 +20,7 @@ import { VideosPage, VideoPlayerPage } from '../pages/discover/Videos';
 import { StarsPage, BadgesPage, AdventurePage, AvatarPage } from '../pages/rewards/Rewards';
 import { ProfilePage } from '../pages/profile/Profile';
 import { PrivacyPage } from '../pages/info/Privacy';
-import { LanguagesPage, LanguageCoursePage } from '../pages/lingue/Languages';
+import { OpenLanguageApp } from '../pages/lingue/OpenLanguageApp';
 import { BrainGamesPage, BrainGamePlayPage } from '../pages/denkspiele/BrainGames';
 
 // Erwachsenenbereiche werden erst bei Bedarf geladen
@@ -78,8 +78,8 @@ export function AppRoutes() {
         <Route path="/abenteuer" element={<AdventurePage />} />
         <Route path="/avatar" element={<AvatarPage />} />
         <Route path="/profil" element={<ProfilePage />} />
-        <Route path="/lingue" element={<LanguagesPage />} />
-        <Route path="/lingue/:course" element={<LanguageCoursePage />} />
+        <Route path="/lingue" element={<OpenLanguageApp />} />
+        <Route path="/lingue/:course" element={<OpenLanguageApp />} />
       </Route>
 
       <Route path="/thema/:moduleId" element={<RequireProfile><GuidePage /></RequireProfile>} />

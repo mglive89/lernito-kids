@@ -11,6 +11,8 @@ export const MAX_HEARTS = 5;
 export const HEART_REGEN_MS = 30 * 60_000;
 /** Alle Herzen auffüllen kostet so viele Sterne */
 export const REFILL_STARS = 10;
+/** Ein einzelnes Herz kostet so viele Sterne */
+export const HEART_STARS = 3;
 
 export interface LangPlay {
   hearts: number;
@@ -68,6 +70,7 @@ interface State {
   loseHeart: (pid: string, now?: number) => number;
   gainHearts: (pid: string, n: number, now?: number) => void;
   refillWithStars: (pid: string, now?: number) => boolean;
+  buyHeart: (pid: string, now?: number) => boolean;
   lessonDone: (pid: string, xp: number, now?: number) => void;
   spoken: (pid: string, now?: number) => void;
   claim: (pid: string, questId: string, now?: number) => boolean;
@@ -97,6 +100,14 @@ export const useLangPlay = create<State>()(
           if (!prog || prog.stars < REFILL_STARS || p.hearts >= MAX_HEARTS) return false;
           useApp.setState((s) => ({ progress: { ...s.progress, [pid]: { ...s.progress[pid]!, stars: s.progress[pid]!.stars - REFILL_STARS } } }));
           update(pid, now, (q) => ({ ...q, hearts: MAX_HEARTS, nextAt: null }));
+          return true;
+        },
+        buyHeart: (pid, now = Date.now()) => {
+          const prog = useApp.getState().progress[pid];
+          const p = settle(get().byProfile[pid], now);
+          if (!prog || prog.stars < HEART_STARS || p.hearts >= MAX_HEARTS) return false;
+          useApp.setState((s) => ({ progress: { ...s.progress, [pid]: { ...s.progress[pid]!, stars: s.progress[pid]!.stars - HEART_STARS } } }));
+          update(pid, now, (q) => ({ ...q, hearts: q.hearts + 1, nextAt: q.hearts + 1 >= MAX_HEARTS ? null : q.nextAt }));
           return true;
         },
         lessonDone: (pid, xp, now = Date.now()) => { update(pid, now, (p) => ({ ...p, xp: p.xp + xp, dayXp: p.dayXp + xp, dayLessons: p.dayLessons + 1 })); },
