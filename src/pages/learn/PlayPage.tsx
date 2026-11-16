@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useCallback, useMemo, useState } from 'react';
 import { useNavigate, useParams, useSearchParams } from 'react-router-dom';
 import { useApp, useActiveProfile } from '../../store/useApp';
 import { LinoSays } from '../../components/Lino';
@@ -9,7 +9,13 @@ import { stageFor, type Country } from '../../school/systems';
 import { subjectDef } from '../../school/subjects';
 import { pathDoneOf } from '../../learning/adaptive';
 import { lessonLabel } from '../../learning/lessons';
+import { PATH_STEPS, PROFI_STEP, challengePassed, profiChallenge, profiModule } from '../../learning/challenge';
 import { GameRunner } from '../../games/GameRunner';
+import { guideFor } from '../../learning/guides';
+import { TheoryIntro } from './TheoryIntro';
+import { useLangPlay, useLangPlayOf } from '../../lingue/play-state';
+import { HeartsPill, OutOfHeartsModal } from '../../lingue/PlayExtras';
+import type { Task } from '../../learning/types';
 
 /** Zurück-Ziel eines Moduls: das passende Fach der aktuellen Klasse. */
 function backFor(mod: LearningModule, country: Country, profileYear: number): string {
@@ -32,13 +38,34 @@ export function PlayPage() {
   const nav = useNavigate();
   const [search] = useSearchParams();
   const mod = moduleId ? findModule(moduleId, custom) : undefined;
-  // Lernpfad: Lektion n spielt Stufe n (nur freigeschaltete Lektionen). Einmal beim Start festlegen.
+  // Lernpfad: Lektion n spielt Stufe n, Lektion 4 ist die Profi-Lektion (nur freigeschaltete Lektionen). Einmal beim Start festlegen.
   const [step] = useState(() => {
     const asked = Number(search.get('lektion'));
     const done = mod ? pathDoneOf(progress.modules[mod.id]) : 0;
-    return (mod?.area === 'schule' || mod?.area === 'lingue') && asked >= 1 ? Math.min(asked, done + 1, 3) : 0;
+    return (mod?.area === 'schule' || mod?.area === 'lingue') && asked >= 1 ? Math.min(asked, done + 1, PATH_STEPS) : 0;
   });
-  if (!mod) {
+  // Theorie vor der Übung (Schulthemen und Sprachkurse); ?theorie=0, wenn sie gerade schon gelesen wurde
+  const [intro, setIntro] = useState(() => !!mod && search.get('theorie') !== '0'
+    && ((mod.area === 'schule' && !!guideFor(mod.id)) || mod.area === 'lingue'));
+  // Profi-Lektion: höchste Stufe, mehr Aufgaben; zählt erst als geschafft, wenn das Ziel erreicht ist
+  const profi = step === PROFI_STEP;
+  const playMod = useMemo(() => (mod && profi ? profiModule(mod) : mod), // eslint-disable-line react-hooks/exhaustive-deps
+    [mod?.id, profi]);
+  const challenge = useMemo(() => (profi ? profiChallenge() : undefined), [profi]);
+  // Sprachkurs: Herzen. Wiederholen einer geschafften Lektion kostet keine Herzen und bringt eins zurück.
+  const lingua = mod?.area === 'lingue';
+  const pid = profile?.id;
+  const [practice] = useState(() => !!mod && step > 0 && step <= pathDoneOf(progress.modules[mod.id]));
+  const hearts = useLangPlayOf(pid).hearts;
+  const play = useLangPlay();
+  const [outOfHearts, setOutOfHearts] = useState(false);
+  const onAnswer = useCallback((ok: boolean, task: Task, attempt: number) => {
+    if (!lingua || !pid) return;
+    if (ok && task.type === 'speak') play.spoken(pid);
+    // Aussprache kostet keine Herzen (das Mikrofon kann sich irren); pro Aufgabe höchstens ein Herz
+    if (!ok && attempt === 1 && task.type !== 'speak' && !practice && play.loseHeart(pid) === 0) setOutOfHearts(true);
+  }, [lingua, pid, practice, play]);
+  if (!mod || !playMod) {
     return (
       <div className="flex min-h-[100dvh] flex-col items-center justify-center gap-4 p-6">
         <LinoSays text={L('Dieses Spiel gibt es nicht (mehr).', 'Questo gioco non esiste (più).')} mood="denken" />
@@ -47,12 +74,31 @@ export function PlayPage() {
     );
   }
   const backTo = backFor(mod, profile?.country ?? 'DE', profile?.year ?? 1);
-  const level = (step || progress.modules[mod.id]?.level || 1) as 1 | 2 | 3;
+  const level = (step ? Math.min(step, 3) : progress.modules[mod.id]?.level || 1) as 1 | 2 | 3;
   const kids = mod.area === 'kita' || (profile?.year ?? 0) === 0;
+  const heartsBlocked = lingua && !practice && hearts === 0;
+  const heartsModal = lingua && (
+    <OutOfHeartsModal open={outOfHearts || (heartsBlocked && !intro)} onClose={() => nav(backTo)} courseLink={backTo} />
+  );
+  if (intro) {
+    return <TheoryIntro module={mod} firstTime={!progress.modules[mod.id]?.rounds} backTo={backTo} stars={progress.stars}
+      lessonLabel={step ? lessonLabel(step) : undefined} onStart={() => { setIntro(false); window.scrollTo(0, 0); }} />;
+  }
   return (
-    <GameRunner key={`${mod.id}-${step}`} module={mod} level={level} speechOn={settings.speech} backTo={backTo}
-      onFinish={(r) => record(step ? { ...r, pathStep: step } : r)}
-      mode={kids ? 'auto' : 'check'} coachIntro={kids || (profile?.year ?? 0) <= 4} lessonLabel={step ? lessonLabel(step) : undefined} />
+    <>
+      <GameRunner key={`${mod.id}-${step}`} module={playMod} level={level} speechOn={settings.speech} backTo={backTo} challenge={challenge}
+        onFinish={(r) => {
+          const rec = record(step && (!challenge || challengePassed(r, challenge.goal)) ? { ...r, pathStep: step } : r);
+          if (lingua && pid) {
+            play.lessonDone(pid, rec.xp);
+            if (practice) play.gainHearts(pid, 1);
+          }
+          return rec;
+        }}
+        onAnswer={lingua ? onAnswer : undefined} headerExtra={lingua ? <HeartsPill pid={pid} /> : undefined}
+        mode={kids ? 'auto' : 'check'} coachIntro={kids || (profile?.year ?? 0) <= 4} lessonLabel={step ? lessonLabel(step) : undefined} />
+      {heartsModal}
+    </>
   );
 }
 

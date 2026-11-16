@@ -43,9 +43,29 @@ export async function createProfile(page: Page, name: string, age: string, count
   await expect(page.getByText(`${name}!`).first()).toBeVisible();
 }
 
+/** Schulthemen und Sprachkurse zeigen vor der ersten Aufgabe die Theorie: lesen und loslegen. */
+export async function startExercises(page: Page) {
+  await expect(page.getByTestId('theorie-vorher')).toBeVisible();
+  await page.getByTestId('theorie-start').click();
+  await expect(page.getByTestId('task-area')).toBeVisible();
+}
+
 /** Löst die aktuelle Auswahl-Aufgabe korrekt. */
 export async function answerChoice(page: Page) {
   await page.locator('[data-correct="true"]').first().click();
+}
+
+/** Löst die aktuelle Aufgabe: Auswahl anklicken oder Zahl über das Zahlenfeld eingeben (auch Bildaufgaben). */
+export async function answerCurrent(page: Page) {
+  const input = page.getByTestId('eingabe');
+  if (await input.isVisible().catch(() => false)) {
+    const ans = Number(await input.getAttribute('data-answer'));
+    if (ans < 0) await page.getByTestId('key--').click();
+    for (const d of String(Math.abs(ans))) await page.getByTestId(`key-${d}`).click();
+    await page.getByTestId('key-ok').click();
+    return;
+  }
+  await page.locator('[data-correct="true"]:not([disabled])').first().click();
 }
 
 /** Schule: „Prüfen“ drücken (falls vorhanden) und nach richtiger Antwort „Weiter“. */
@@ -76,7 +96,7 @@ export async function playChoiceRound(page: Page) {
     const idx = await area.getAttribute('data-index');
     if ((await area.getAttribute('data-phase')) !== 'answer') await page.getByTestId('weiter').click();
     else {
-      await page.locator('[data-correct="true"]:not([disabled])').first().click();
+      await answerCurrent(page);
       await confirmAnswer(page);
     }
     await waitNext(page, idx);

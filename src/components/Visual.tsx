@@ -11,9 +11,16 @@ import { AudioPlayer } from './voice/AudioPlayer';
 
 const Solid3D = lazy(() => import('../three/Solid3D'));
 const Count3D = lazy(() => import('../three/Count3D'));
+const Picture = lazy(() => import('../pictures/Picture'));
 
 export function Visual({ v }: { v: V }) {
   switch (v.kind) {
+    case 'pic':
+      return (
+        <Suspense fallback={<div className="h-48 w-full max-w-xl animate-pulse rounded-blob bg-flaeche" />}>
+          <Picture pic={v.pic} alt={v.alt} />
+        </Suspense>
+      );
     case 'audio':
       return <AudioPlayer text={v.text} lang={v.lang} showText={v.showText} />;
     case 'emojis':

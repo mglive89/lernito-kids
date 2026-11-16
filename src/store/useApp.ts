@@ -49,6 +49,8 @@ export interface ChildSettings {
   assigned: string[];
   speech: boolean;
   sounds: boolean;
+  /** Führerschein-Theorie vor dem 18. Lebensjahr freigeschaltet (ab Klasse 13 automatisch) */
+  drivingTheory?: boolean;
 }
 
 export interface ParentSettings {

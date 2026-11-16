@@ -11,6 +11,13 @@ export function normalize(s: string): string {
     .toLowerCase()
     .replace(/ß/g, 'ss')
     .normalize('NFD').replace(/[̀-ͯ]/g, '')
+    // Arabisch: Vokalzeichen und Dehnung weg, Schreibvarianten vereinheitlichen
+    .replace(/[\u064B-\u065F\u0670\u0640]/g, '')
+    .replace(/[أإآٱ]/g, 'ا').replace(/ة/g, 'ه').replace(/ى/g, 'ي')
+    // Griechisch: Schluss-Sigma wie normales Sigma
+    .replace(/ς/g, 'σ')
+    // Arabisch-indische Ziffern
+    .replace(/[٠-٩]/g, (d) => String(d.charCodeAt(0) - 0x0660))
     .replace(/[’'`´]/g, ' ')
     .replace(/[^\p{L}\p{N}\s-]/gu, ' ')
     .replace(/-/g, ' ')
@@ -57,14 +64,22 @@ const DIGIT_WORDS: Record<string, string[]> = {
   de: ['null', 'eins', 'zwei', 'drei', 'vier', 'funf', 'sechs', 'sieben', 'acht', 'neun', 'zehn'],
   it: ['zero', 'uno', 'due', 'tre', 'quattro', 'cinque', 'sei', 'sette', 'otto', 'nove', 'dieci'],
   fr: ['zero', 'un', 'deux', 'trois', 'quatre', 'cinq', 'six', 'sept', 'huit', 'neuf', 'dix'],
-  es: ['cero', 'uno', 'dos', 'tres', 'cuatro', 'cinco', 'seis', 'siete', 'ocho', 'nueve', 'diez']
+  es: ['cero', 'uno', 'dos', 'tres', 'cuatro', 'cinco', 'seis', 'siete', 'ocho', 'nueve', 'diez'],
+  tr: ['sıfır', 'bir', 'iki', 'üç', 'dört', 'beş', 'altı', 'yedi', 'sekiz', 'dokuz', 'on'],
+  pt: ['zero', 'um', 'dois', 'três', 'quatro', 'cinco', 'seis', 'sete', 'oito', 'nove', 'dez'],
+  ro: ['zero', 'unu', 'doi', 'trei', 'patru', 'cinci', 'șase', 'șapte', 'opt', 'nouă', 'zece'],
+  pl: ['zero', 'jeden', 'dwa', 'trzy', 'cztery', 'pięć', 'sześć', 'siedem', 'osiem', 'dziewięć', 'dziesięć'],
+  ar: ['صفر', 'واحد', 'اثنان', 'ثلاثة', 'أربعة', 'خمسة', 'ستة', 'سبعة', 'ثمانية', 'تسعة', 'عشرة'],
+  ru: ['ноль', 'один', 'два', 'три', 'четыре', 'пять', 'шесть', 'семь', 'восемь', 'девять', 'десять'],
+  nl: ['nul', 'een', 'twee', 'drie', 'vier', 'vijf', 'zes', 'zeven', 'acht', 'negen', 'tien'],
+  el: ['μηδέν', 'ένα', 'δύο', 'τρία', 'τέσσερα', 'πέντε', 'έξι', 'επτά', 'οκτώ', 'εννέα', 'δέκα']
 };
 
 /** Gehörtes vorbereiten: normalisieren und einzelne Ziffern als Wort der Sprache schreiben. */
 function prepHeard(h: string, lang?: string): string {
   const n = normalize(h);
   const table = lang ? DIGIT_WORDS[lang.slice(0, 2)] : undefined;
-  return table ? n.replace(/\b(10|\d)\b/g, (d) => table[Number(d)] ?? d) : n;
+  return table ? n.replace(/\b(10|\d)\b/g, (d) => normalize(table[Number(d)] ?? d)) : n;
 }
 
 /** Welche Wörter des Zielsatzes wurden gehört? (für die farbige Rückmeldung) */

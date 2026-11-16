@@ -1,5 +1,5 @@
 import { expect, test, type Page } from '@playwright/test';
-import { confirmAnswer, createProfile, PIN, waitNext } from './helpers';
+import { confirmAnswer, createProfile, PIN, startExercises, waitNext } from './helpers';
 
 /**
  * Attrappe für die Spracherkennung: liefert, was der Test in window.__say legt.
@@ -71,6 +71,7 @@ test('Sprachkurs: Lektion mit Hören, Memory und Sprechen über das Mikrofon', a
   await allowMic(page);
   await page.getByTestId('kurs-en').click();
   await page.getByTestId('lektion-lingua-en-saluti-1').click();
+  await startExercises(page);
 
   for (let i = 0; i < 12; i++) {
     if (await page.getByTestId('summary').isVisible()) break;
@@ -92,6 +93,7 @@ test('Quiz: Antwort mit der Stimme geben', async ({ page }) => {
   await createProfile(page, 'Mia', '3', 'DE');
   await page.goto('/schule/3/mathe');
   await page.locator('[data-testid^="modul-"]').first().click();
+  await startExercises(page);
   const area = page.getByTestId('task-area');
   await area.waitFor();
   // Erste Aufgabe mit Sprachantwort suchen (Auswahl oder Zahleneingabe)
@@ -130,4 +132,73 @@ test('Sprachkurs: Theorie erklärt Wörter, Sätze und Regeln', async ({ page })
   await expect(page.getByText('neutro').first()).toBeVisible();
   await expect(page.getByTestId('lt-aussprache')).toBeVisible();
   await expect(page.getByTestId('lt-uebungen')).toBeVisible();
+});
+
+test('Sprachkurs Türkisch: Kurs, Lektion und Theorie mit Aussprache', async ({ page }) => {
+  await createProfile(page, 'Ela', '3', 'IT');
+  await page.goto('/lingue');
+  for (const id of ['tr', 'pt', 'ro', 'pl']) await expect(page.getByTestId(`kurs-${id}`)).toBeVisible();
+  await page.getByTestId('kurs-tr').click();
+  await expect(page).toHaveURL(/\/lingue\/tr$/);
+  await page.getByTestId('vokabeln-lingua-tr-saluti').click();
+  await expect(page.getByTestId('sprach-theorie')).toBeVisible();
+  await expect(page.getByTestId('theorie-wort')).toHaveCount(8);
+  await expect(page.getByText('Merhaba').first()).toBeVisible();
+  await expect(page.getByTestId('lt-aussprache')).toContainText('ı');
+});
+
+test('Sprachkurs Arabisch: Schrift von rechts nach links mit Umschrift', async ({ page }) => {
+  await createProfile(page, 'Omar', '3', 'IT');
+  await page.goto('/lingue');
+  for (const id of ['ar', 'ru', 'nl', 'el']) await expect(page.getByTestId(`kurs-${id}`)).toBeVisible();
+  await page.goto('/lingue/ar');
+  await page.getByTestId('vokabeln-lingua-ar-saluti').click();
+  await expect(page.getByTestId('theorie-wort')).toHaveCount(8);
+  await expect(page.getByTestId('umschrift').first()).toHaveText('marhaban');
+  await expect(page.locator('[dir="rtl"]').first()).toBeVisible();
+});
+
+test('Sprachkurs: Herzen, Tagesmissionen und Rangliste', async ({ page }) => {
+  await createProfile(page, 'Leo', '3', 'IT');
+  await page.goto('/sprachen/#/laden');
+  await expect(page.getByTestId('herzen-reihe')).toHaveAttribute('data-hearts', '5');
+  await page.goto('/sprachen/#/missionen');
+  await expect(page.getByTestId('missioni')).toContainText('Missioni del giorno');
+  await page.goto('/sprachen/#/rangliste');
+  await expect(page.getByTestId('classifica-riga')).toHaveCount(1);
+  await page.goto('/sprachen/#/lingue');
+  await page.getByTestId('kurs-en').click();
+  await page.getByTestId('lektion-lingua-en-saluti-1').click();
+  await startExercises(page);
+  await expect(page.getByTestId('herzen')).toHaveAttribute('data-hearts', '5');
+  // Erste Auswahl-Aufgabe falsch beantworten: kostet ein Herz
+  for (let i = 0; i < 10; i++) {
+    const wrong = page.locator('[data-testid^="option-"]:not([data-correct]):not([disabled])').first();
+    if (await wrong.isVisible().catch(() => false)) {
+      await wrong.click();
+      const check = page.getByTestId('pruefen');
+      if (await check.isVisible()) await check.click();
+      break;
+    }
+    const idx = await page.getByTestId('task-area').getAttribute('data-index');
+    await solveTask(page);
+    if (await page.getByTestId('weiter').isVisible()) await page.getByTestId('weiter').click();
+    await waitNext(page, idx);
+  }
+  await expect(page.getByTestId('herzen')).toHaveAttribute('data-hearts', '4');
+});
+
+test('Sprachen öffnet die eigene App „Lernito Sprachen“', async ({ page }) => {
+  await createProfile(page, 'Nina', '4', 'DE');
+  await page.goto('/entdecken');
+  await page.locator('a[href$="/lingue"]').first().click();
+  await expect(page).toHaveURL(/\/sprachen\/#\/lingue$/);
+  await expect(page.getByTestId('sprachen-app')).toBeVisible();
+  await expect(page.locator('link[rel="manifest"]')).toHaveAttribute('href', /manifest\.webmanifest/);
+  await page.getByTestId('kurs-tr').click();
+  await expect(page.getByTestId('kurs-titel')).toContainText('Türkisch');
+  await page.reload();
+  await expect(page.getByTestId('kurs-titel')).toContainText('Türkisch');
+  const m = await page.request.get('/sprachen/manifest.webmanifest');
+  expect((await m.json()).name).toBe('Lernito Sprachen');
 });

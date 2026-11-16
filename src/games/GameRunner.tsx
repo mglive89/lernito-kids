@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useMemo, useRef, useState, type ReactNode } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
-import { BookOpen, Check, Clock, Flame, Lightbulb, RotateCcw, Star, Target, X, ArrowRight, Zap } from 'lucide-react';
+import { BookOpen, Check, Clock, Flame, Lightbulb, Medal, RotateCcw, Star, Target, X, ArrowRight, Zap } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import type { LearningModule, Task } from '../learning/types';
 import { createRng } from '../lib/random';
@@ -16,9 +16,11 @@ import { GuideContent } from '../components/GuideContent';
 import { Visual } from '../components/Visual';
 import { TaskView } from './TaskView';
 import { MULTI_STEP } from './types';
+import { maxTries, solutionText } from './solution';
 import { helpSteps, howTo } from './coach';
 import { roundMessage, roundStars, type RoundResult } from '../learning/adaptive';
 import type { RecordResult } from '../store/useApp';
+import { challengePassed, neededFor, type Challenge } from '../learning/challenge';
 import { L, getLang, tr } from '../i18n';
 
 const LOB = { de: ['Super!', 'Klasse gemacht!', 'Toll!', 'Richtig!', 'Wunderbar!', 'Spitze!', 'Genau so!', 'Prima!'], it: ['Super!', 'Bravissimo!', 'Ottimo!', 'Giusto!', 'Fantastico!', 'Grande!', 'Proprio così!', 'Perfetto!'] };
@@ -39,12 +41,18 @@ interface Props {
   lessonLabel?: string;
   /** Puppy erklärt zu Beginn, wie die Aufgabe funktioniert (jüngere Kinder) */
   coachIntro?: boolean;
+  /** Herausforderung (Profi-Lektion, Endrunde): Ziel beim ersten Versuch, sonst nochmal versuchen */
+  challenge?: Challenge;
+  /** Wird bei jeder Antwort gemeldet (z. B. Herzen im Sprachkurs) */
+  onAnswer?: (ok: boolean, task: Task, attempt: number) => void;
+  /** Zusätzliche Anzeige in der Kopfzeile */
+  headerExtra?: ReactNode;
 }
 
 type Phase = 'answer' | 'correct' | 'reveal';
 type Tone = 'ok' | 'hint' | 'help';
 
-export function GameRunner({ module, level, speechOn, onFinish, preview, backTo, mode = 'auto', lessonLabel, coachIntro = false }: Props) {
+export function GameRunner({ module, level, speechOn, onFinish, preview, backTo, mode = 'auto', lessonLabel, coachIntro = false, challenge, onAnswer, headerExtra }: Props) {
   const nav = useNavigate();
   const [seed, setSeed] = useState(() => Date.now());
   const tasks = useMemo<Task[]>(() => {
@@ -130,13 +138,14 @@ export function GameRunner({ module, level, speechOn, onFinish, preview, backTo,
     else setStreak(0);
     stats.current.solved++;
     sfx.correct();
+    if (task) onAnswer?.(true, task, attempts);
     burstAt(document.querySelector('[data-testid="task-area"] [data-correct="true"]'), 'sterne', first ? 14 : 10);
     setCoach(null);
     const text = pickOf(LOB);
     setFeedback({ title: text, tone: 'ok' });
     if (speechOn) speak(text);
     setPhase('correct');
-  }, [phase, attempts, speechOn]);
+  }, [phase, attempts, speechOn, task, onAnswer]);
 
   const onWrong = useCallback(() => {
     if (phase !== 'answer' || !task) return;
@@ -145,23 +154,33 @@ export function GameRunner({ module, level, speechOn, onFinish, preview, backTo,
     setCoach(null);
     const n = attempts + 1;
     setAttempts(n);
+    onAnswer?.(false, task, n);
+    const max = maxTries(mode);
     if (n === 1) {
       stats.current.hints++;
       const title = pickOf(NOCHMAL);
       setFeedback({ title, text: task.hint, tone: 'hint' });
       if (speechOn) speak(`${title} ${task.hint}`);
-    } else if (n >= 2) {
+    } else if (n < max) {
+      // Zweiter Fehlversuch: erster Schritt der Erklärung, die Lösung bleibt noch verborgen
+      const step = task.explain[0] ?? task.hint;
+      const title = L('Fast! Denk an diesen Schritt:', 'Quasi! Pensa a questo passaggio:');
+      setFeedback({ title, text: step, tone: 'hint' });
+      if (speechOn) speak(`${title} ${step}`);
+    } else {
+      const sol = solutionText(task);
+      const solLine = sol ? L(`Die Lösung ist: ${sol}`, `La soluzione è: ${sol}`) : undefined;
       if (multi) {
         // Bei mehrschrittigen Aufgaben zeigen wir die Hilfe, das Kind macht selbst weiter.
-        setFeedback({ title: L('Ich helfe dir:', 'Ti aiuto io:'), text: task.explain[0] ?? task.hint, tone: 'hint' });
+        setFeedback({ title: L('Ich helfe dir:', 'Ti aiuto io:'), text: task.explain.join(' ') || task.hint, tone: 'hint' });
         setRevealHelp(true);
       } else {
-        setFeedback({ title: L('Schau mal, so geht es:', 'Guarda, si fa così:'), tone: 'help' });
-        if (speechOn) speak(`${L('Schau mal, so geht es.', 'Guarda, si fa così.')} ${task.explain.join(' ')}`);
+        setFeedback({ title: L('Schau mal, so geht es:', 'Guarda, si fa così:'), text: solLine, tone: 'help' });
+        if (speechOn) speak(`${L('Schau mal, so geht es.', 'Guarda, si fa così.')} ${task.explain.join(' ')} ${solLine ?? ''}`);
         setPhase('reveal');
       }
     }
-  }, [phase, task, attempts, speechOn, multi]);
+  }, [phase, task, attempts, speechOn, multi, mode, onAnswer]);
 
   // „Ich kann gerade nicht sprechen“: Aufgabe zeigen und weiter, zählt nicht als gelöst
   const onSkip = useCallback(() => {
@@ -205,7 +224,7 @@ export function GameRunner({ module, level, speechOn, onFinish, preview, backTo,
     );
   }
 
-  if (result) return <Summary module={module} result={result} onAgain={restart} onBack={() => nav(backTo)} preview={preview} lessonLabel={lessonLabel} />;
+  if (result) return <Summary module={module} result={result} onAgain={restart} onBack={() => nav(backTo)} preview={preview} lessonLabel={lessonLabel} challenge={challenge} />;
   if (!task) return null;
 
   const tone: Tone | 'idle' = feedback?.tone ?? 'idle';
@@ -222,6 +241,13 @@ export function GameRunner({ module, level, speechOn, onFinish, preview, backTo,
           <ProgressBar value={(index + (phase === 'answer' ? 0 : 1)) / tasks.length} label={L(`Aufgabe ${index + 1} von ${tasks.length}`, `Esercizio ${index + 1} di ${tasks.length}`)} />
         </div>
         <span className="min-w-[2.5rem] text-right font-display text-base font-bold text-tinte/60" aria-hidden>{index + 1}/{tasks.length}</span>
+        {challenge && (
+          <span className="flex h-11 shrink-0 items-center gap-1.5 rounded-full bg-lila-100 px-3 text-sm font-bold text-lila-700" data-testid="ziel"
+            title={L('Beim ersten Versuch richtig / nötig', 'Giuste al primo colpo / necessarie')}
+            aria-label={L(`Ziel: ${neededFor(tasks.length, challenge.goal)} von ${tasks.length} beim ersten Versuch. Bisher ${stats.current.firstTry}.`, `Obiettivo: ${neededFor(tasks.length, challenge.goal)} su ${tasks.length} al primo colpo. Finora ${stats.current.firstTry}.`)}>
+            <Target size={16} /> {stats.current.firstTry}/{neededFor(tasks.length, challenge.goal)}
+          </span>
+        )}
         <button className="flex h-11 shrink-0 items-center gap-1.5 rounded-full bg-sonne-100 pl-1 pr-3 text-sm font-bold text-sonne-700 transition hover:bg-sonne-300/60 disabled:opacity-40" onClick={askPuppy} disabled={phase !== 'answer'}
           aria-label={L('Puppy um Hilfe bitten', 'Chiedi aiuto a Puppy')} data-testid="puppy-hilfe">
           <img src={`${import.meta.env.BASE_URL}puppy/kopf.png`} alt="" className="h-9 w-9" /> <span className="hidden sm:inline">{L('Hilfe', 'Aiuto')}</span>
@@ -231,6 +257,7 @@ export function GameRunner({ module, level, speechOn, onFinish, preview, backTo,
             <BookOpen size={22} />
           </button>
         )}
+        {headerExtra}
         {preview && <span className="rounded-full bg-lila-100 px-3 py-1 text-sm font-bold">{L('Vorschau', 'Anteprima')}</span>}
       </div>
 
@@ -238,6 +265,13 @@ export function GameRunner({ module, level, speechOn, onFinish, preview, backTo,
         <AnimatePresence mode="wait">
           <motion.div key={task.id} initial={{ opacity: 0, x: 40 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -40 }} className="flex w-full flex-col items-center gap-5 sm:gap-6">
             {lessonLabel && index === 0 && phase === 'answer' && <span className="eyebrow self-start text-himmel-700">{lessonLabel}</span>}
+            {challenge && index === 0 && phase === 'answer' && (
+              <p className="flex w-full items-center gap-2 rounded-2xl bg-lila-50 px-4 py-3 text-base font-semibold text-lila-700 ring-1 ring-lila-100" data-testid="ziel-info">
+                <Target size={20} className="shrink-0" />
+                {L(`Herausforderung: Löse ${neededFor(tasks.length, challenge.goal)} von ${tasks.length} Aufgaben beim ersten Versuch, ohne Hilfe.`,
+                  `Sfida: risolvi ${neededFor(tasks.length, challenge.goal)} esercizi su ${tasks.length} al primo colpo, senza aiuto.`)}
+              </p>
+            )}
             <div className="flex w-full items-center gap-3">
               <SpeakButton text={task.speak ?? task.prompt} />
               <h1 className="flex-1 font-display text-2xl font-bold leading-snug tracking-tight sm:text-3xl" data-testid="task-prompt">{task.prompt}</h1>
@@ -274,6 +308,11 @@ export function GameRunner({ module, level, speechOn, onFinish, preview, backTo,
                 {task.explain.map((s, i) => (
                   <motion.li key={i} initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.4 + i * 0.6 }}>{s}</motion.li>
                 ))}
+                {solutionText(task) && (
+                  <motion.li initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.4 + task.explain.length * 0.6 }} className="list-none -ml-5 pt-1" data-testid="loesung">
+                    <span className="chip bg-minze-50 px-3 py-1 text-minze-700">{L('Lösung', 'Soluzione')}: {solutionText(task)}</span>
+                  </motion.li>
+                )}
               </motion.ol>
             )}
           </motion.div>
@@ -333,8 +372,10 @@ function SoundButton({ sound }: { sound: string }) {
   );
 }
 
-function Summary({ module, result, onAgain, onBack, preview, lessonLabel }: { module: LearningModule; result: { round: RoundResult; rec: RecordResult }; onAgain: () => void; onBack: () => void; preview?: boolean; lessonLabel?: string }) {
+function Summary({ module, result, onAgain, onBack, preview, lessonLabel, challenge }: { module: LearningModule; result: { round: RoundResult; rec: RecordResult }; onAgain: () => void; onBack: () => void; preview?: boolean; lessonLabel?: string; challenge?: Challenge }) {
   const { round, rec } = result;
+  const passed = challenge ? challengePassed(round, challenge.goal) : true;
+  const need = challenge ? neededFor(round.total, challenge.goal) : 0;
   const rs = roundStars(round);
   const change = (rec.difficultyAfter - rec.difficultyBefore) as -1 | 0 | 1;
   const acc = round.total ? Math.round((round.firstTry / round.total) * 100) : 0;
@@ -346,7 +387,7 @@ function Summary({ module, result, onAgain, onBack, preview, lessonLabel }: { mo
       <PuppyTap><Lino mood="jubel" size={150} /></PuppyTap>
       <div>
         {lessonLabel && <p className="eyebrow text-himmel-700">{lessonLabel}</p>}
-        <h1 className="font-display text-4xl font-bold tracking-tight">{L('Geschafft!', 'Fatto!')}</h1>
+        <h1 className="font-display text-4xl font-bold tracking-tight">{!passed ? L('Fast geschafft!', 'Quasi!') : challenge ? L('Herausforderung bestanden!', 'Sfida superata!') : L('Geschafft!', 'Fatto!')}</h1>
         <p className="mt-1 text-lg text-tinte/70">{tr(module.title)}</p>
       </div>
       <div className="flex gap-2" aria-label={L(`${rs} von 3 Sternen`, `${rs} stelle su 3`)}>
@@ -362,7 +403,17 @@ function Summary({ module, result, onAgain, onBack, preview, lessonLabel }: { mo
         <Stat icon={<Target size={18} />} tone="text-minze-700 bg-minze-50" value={`${acc} %`} label={L('Genauigkeit', 'Precisione')} />
         <Stat icon={<Clock size={18} />} tone="text-himmel-700 bg-himmel-50" value={`${mins}:${secs}`} label={L('Zeit', 'Tempo')} />
       </div>
-      <p className="w-full rounded-2xl bg-flaeche px-5 py-4 text-lg shadow-weich ring-1 ring-tinte/5">{roundMessage(round, change)}</p>
+      {challenge && (
+        <div className={`flex w-full items-center gap-3 rounded-2xl p-4 text-left ${passed ? 'bg-minze-50 text-minze-700' : 'bg-lila-50 text-lila-700'}`} data-testid={passed ? 'ziel-erreicht' : 'ziel-verfehlt'}>
+          <span className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-full text-white ${passed ? 'bg-minze-500' : 'bg-lila-500'}`}>{passed ? <Medal size={26} /> : <Target size={24} />}</span>
+          <p className="text-base font-semibold sm:text-lg">
+            {passed
+              ? L(`Ziel erreicht: ${round.firstTry} von ${round.total} beim ersten Versuch. Stark!`, `Obiettivo raggiunto: ${round.firstTry} su ${round.total} al primo colpo. Grande!`)
+              : L(`Ziel: ${need} von ${round.total} beim ersten Versuch. Du hattest ${round.firstTry}. Noch ${need - round.firstTry}, dann hast du es!`, `Obiettivo: ${need} su ${round.total} al primo colpo. Ne hai fatti ${round.firstTry}. Ancora ${need - round.firstTry} e ce l’hai fatta!`)}
+          </p>
+        </div>
+      )}
+      <p className="w-full rounded-2xl bg-flaeche px-5 py-4 text-lg shadow-weich ring-1 ring-tinte/5">{roundMessage(round, challenge ? 0 : change)}</p>
       <p className="text-tinte/60"><span data-testid="stars-earned" className="font-bold text-tinte">+{rec.stars}</span> {L('Sterne', 'stelle')} · {round.solved}/{round.total} {L('gelöst', 'risolti')}</p>
       {rec.levelAfter > rec.levelBefore && (
         <motion.div initial={{ scale: 0.8 }} animate={{ scale: 1 }} className="w-full rounded-2xl bg-lila-100 p-4 font-display text-xl font-bold">
@@ -379,7 +430,7 @@ function Summary({ module, result, onAgain, onBack, preview, lessonLabel }: { mo
       )}
       {preview && <p className="text-tinte/60">{L('Vorschau-Modus: Es wurde nichts gespeichert.', 'Modalità anteprima: non è stato salvato nulla.')}</p>}
       <div className="flex w-full flex-col-reverse gap-3 sm:flex-row">
-        <button className="knopf flex-1 bg-flaeche" onClick={onAgain} data-testid="nochmal"><RotateCcw /> {L('Nochmal', 'Ancora')}</button>
+        <button className={`knopf flex-1 ${passed ? 'bg-flaeche' : 'bg-lila-500 text-white'}`} onClick={onAgain} data-testid="nochmal"><RotateCcw /> {passed ? L('Nochmal', 'Ancora') : L('Nochmal versuchen', 'Riprova')}</button>
         <button className="knopf flex-1 bg-himmel-500 text-white" onClick={onBack} data-testid="zurueck" autoFocus>{L('Weiter', 'Continua')} <ArrowRight /></button>
       </div>
     </main>

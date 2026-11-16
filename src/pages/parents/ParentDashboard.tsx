@@ -2,6 +2,7 @@ import { useMemo, useRef, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { BarChart3, BookOpen, ClipboardList, Download, FileText, Settings2, Shield, Trash2, Upload, Users, Accessibility, Wrench } from 'lucide-react';
 import { defaultChildSettings, exportAllData, useApp, type Profile, type ProfileProgress } from '../../store/useApp';
+import { DRIVING_MIN_YEAR } from '../../fuehrerschein/access';
 import { Avatar, Modal, Notice, ProgressBar, Toggle, ThemePicker } from '../../components/ui';
 import { allModules } from '../../learning/registry';
 import { needsPractice } from '../../learning/adaptive';
@@ -256,6 +257,11 @@ function Goals({ child }: { child: Profile }) {
       </div>
       <Toggle label={L('Vorlesefunktion', 'Lettura ad alta voce')} description={L('Aufgaben werden automatisch vorgelesen (Web Speech API des Geräts).', 'Gli esercizi vengono letti automaticamente (Web Speech API del dispositivo).')} checked={settings.speech} onChange={(v) => set(child.id, { speech: v })} />
       <Toggle label={L('Soundeffekte', 'Effetti sonori')} description={L('Kurze, leise Töne bei Antworten.', 'Suoni brevi e leggeri alle risposte.')} checked={settings.sounds} onChange={(v) => set(child.id, { sounds: v })} />
+      {child.year >= 9 && child.year < DRIVING_MIN_YEAR && (
+        <Toggle label={L('Fahrschule (Führerschein B)', 'Scuola guida (patente B)')} testId="fs-freischalten"
+          description={L('Schilder, Übungsfragen und Prüfungssimulation (Klasse B). Ab der letzten Klasse (ca. 18 Jahre) automatisch frei.', 'Segnali, quiz e simulazione d’esame (patente B). Dall’ultimo anno (circa 18 anni) è attiva automaticamente.')}
+          checked={!!settings.drivingTheory} onChange={(v) => set(child.id, { drivingTheory: v })} />
+      )}
     </div>
   );
 }

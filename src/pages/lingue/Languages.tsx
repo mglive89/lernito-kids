@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { Link, Navigate, useParams } from 'react-router-dom';
-import { ArrowRight, BookOpen, Check, Crown, Lock, Mic, MicOff, Star, Trophy } from 'lucide-react';
+import { ArrowRight, BookOpen, Check, Crown, Flame, Lock, Medal, Mic, MicOff, Star, Trophy } from 'lucide-react';
 import { useActiveProfile, type ProfileProgress } from '../../store/useApp';
 import { COLOR_CLASSES, PageHero, ProgressBar, StarCount, TopBar, AnimatedGrid } from '../../components/ui';
 import { Lino } from '../../components/Lino';
@@ -9,15 +9,18 @@ import { useVoiceAllowed, VoiceConsentModal } from '../../components/voice/Voice
 import { recognitionSupported } from '../../lib/listen';
 import { sfx } from '../../lib/sound';
 import { pathDoneOf } from '../../learning/adaptive';
+import { PATH_STEPS } from '../../learning/challenge';
 import { PATH_LESSONS, lessonLabel } from '../../learning/lessons';
 import type { LearningModule } from '../../learning/types';
 import { courseById, courseModules, coursesFor, type Course } from '../../lingue/course';
 import { getLang, L, tr } from '../../i18n';
+import { FamilyLeaderboard, HeartsPanel, HeartsPill, OutOfHeartsModal, QuestsCard } from '../../lingue/PlayExtras';
+import { useLangPlayOf } from '../../lingue/play-state';
 
 const OFFSETS = [0, 52, 78, 52, 0, -52, -78, -52];
 
 /** Hinweis zum Mikrofon: unterstützt? freigegeben? */
-function MicStatus() {
+export function MicStatus() {
   const allowed = useVoiceAllowed();
   const [open, setOpen] = useState(false);
   const supported = recognitionSupported();
@@ -46,7 +49,7 @@ function MicStatus() {
 function courseProgress(c: Course, modules: ProfileProgress['modules']) {
   const mods = courseModules(c.id);
   const done = mods.reduce((a, m) => a + pathDoneOf(modules[m.id]), 0);
-  return { done, total: mods.length * 3 };
+  return { done, total: mods.length * PATH_STEPS };
 }
 
 /** Seite „Sprachen“: Kurs wählen. */
@@ -80,6 +83,10 @@ export function LanguagesPage() {
             );
           })}
         </AnimatedGrid>
+        <div className="mt-6 grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-4">
+          <div className="flex flex-col gap-3 sm:gap-4"><HeartsPanel /><QuestsCard /></div>
+          <FamilyLeaderboard />
+        </div>
         <div className="mt-6"><MicStatus /></div>
       </main>
     </div>
@@ -90,12 +97,14 @@ export function LanguagesPage() {
 export function LanguageCoursePage() {
   const { course: cid } = useParams();
   const course = courseById(cid);
-  const { progress } = useActiveProfile();
+  const { profile, progress } = useActiveProfile();
+  const hearts = useLangPlayOf(profile?.id).hearts;
+  const [noHearts, setNoHearts] = useState(false);
   const mods = useMemo(() => (course ? courseModules(course.id) : []), [course]);
   const [toast, setToast] = useState<string | null>(null);
   useEffect(() => { if (!toast) return; const t = setTimeout(() => setToast(null), 2600); return () => clearTimeout(t); }, [toast]);
   if (!course || course.id === getLang()) return <Navigate to="/lingue" replace />;
-  const total = mods.length * 3;
+  const total = mods.length * PATH_STEPS;
   const done = mods.reduce((a, m) => a + pathDoneOf(progress.modules[m.id]), 0);
   // Einheiten nacheinander freischalten: die nächste beginnt, wenn die vorige mindestens Lektion 1 hat
   const currentId = mods.find((m) => pathDoneOf(progress.modules[m.id]) < 3)?.id;
@@ -113,6 +122,7 @@ export function LanguageCoursePage() {
             </div>
             <ProgressBar value={total ? done / total : 0} />
           </div>
+          <HeartsPill pid={profile?.id} />
         </div>
         <ol className="flex flex-col gap-4" aria-label={L('Lernpfad', 'Percorso')}>
           {mods.map((m, ui) => {
@@ -127,6 +137,7 @@ export function LanguageCoursePage() {
                     const state = pd >= les.n ? 'done' : pd + 1 === les.n && prevStarted ? 'open' : 'locked';
                     return (
                       <PathNode key={les.n} m={m} n={les.n} name={les.name} state={state} current={m.id === currentId && state === 'open'} offset={off}
+                        onNoHearts={state === 'open' && hearts === 0 ? () => setNoHearts(true) : undefined}
                         onLocked={() => setToast(!prevStarted && les.n === 1
                           ? L('Mach zuerst die erste Lektion der Einheit davor.', 'Fai prima la prima lezione dell’unità precedente.')
                           : L(`Schließe zuerst Lektion ${les.n - 1} ab.`, `Completa prima la lezione ${les.n - 1}.`))} />
@@ -142,6 +153,7 @@ export function LanguageCoursePage() {
           <p className="font-display font-bold">{done === total ? L('Kurs geschafft! Super gemacht.', 'Corso completato! Bravissimo.') : L('Ziel: alle Lektionen meistern', 'Obiettivo: completare tutte le lezioni')}</p>
         </div>
       </main>
+      <OutOfHeartsModal open={noHearts} onClose={() => setNoHearts(false)} courseLink={`/lingue/${course.id}`} />
       <AnimatePresence>
         {toast && (
           <motion.div initial={{ y: 40, opacity: 0 }} animate={{ y: 0, opacity: 1 }} exit={{ y: 40, opacity: 0 }} role="status"
@@ -162,7 +174,7 @@ function UnitHeader({ m, index, done }: { m: LearningModule; index: number; done
       <div className="flex items-start gap-3">
         <span className="emoji flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-white/20 text-2xl" aria-hidden>{m.emoji}</span>
         <div className="min-w-0 flex-1">
-          <p className="u-sub text-xs font-bold uppercase tracking-wider">{L('Einheit', 'Unità')} {index + 1}{done >= 3 ? ` · ${L('gemeistert', 'completata')}` : ''}</p>
+          <p className="u-sub text-xs font-bold uppercase tracking-wider">{L('Einheit', 'Unità')} {index + 1}{done >= PATH_STEPS ? ` · ${L('Profi', 'Esperto')}` : done >= 3 ? ` · ${L('gemeistert', 'completata')}` : ''}</p>
           <h2 className="font-display text-xl font-bold leading-tight sm:text-2xl">{tr(m.title)}</h2>
           <p className="u-sub text-sm sm:text-base">{tr(m.subtitle)}</p>
         </div>
@@ -174,14 +186,18 @@ function UnitHeader({ m, index, done }: { m: LearningModule; index: number; done
   );
 }
 
-function PathNode({ m, n, name, state, current, offset, onLocked }: {
+function PathNode({ m, n, name, state, current, offset, onLocked, onNoHearts }: {
   m: LearningModule; n: number; name: string; state: 'done' | 'open' | 'locked'; current: boolean; offset: number; onLocked: () => void;
+  /** Keine Herzen: neue Lektion nicht starten, Hinweis zeigen */
+  onNoHearts?: () => void;
 }) {
   const c = COLOR_CLASSES[m.color] ?? COLOR_CLASSES.himmel!;
   const label = `${lessonLabel(n)}${state === 'done' ? L(' (erledigt)', ' (completata)') : state === 'locked' ? L(' (gesperrt)', ' (bloccata)') : ''}`;
   const circle = `relative flex h-[4.5rem] w-[4.5rem] items-center justify-center rounded-full transition active:translate-y-1 ${
-    state === 'locked' ? 'bg-tinte/[0.08] text-tinte/30 shadow-[0_3px_0_rgba(24,33,61,0.08)]' : `${c.bg} text-white shadow-[0_4px_0_rgba(24,33,61,0.18)]`}`;
-  const icon = state === 'done' ? (n === 3 ? <Crown size={30} /> : <Check size={32} strokeWidth={3} />) : state === 'locked' ? <Lock size={26} /> : n === 3 ? <Mic size={30} /> : <Star size={30} className="fill-white" />;
+    state === 'locked' ? 'bg-tinte/[0.08] text-tinte/30 shadow-[0_3px_0_rgba(24,33,61,0.08)]' : n === PATH_STEPS ? 'bg-lila-600 text-white shadow-[0_4px_0_rgba(24,33,61,0.25)] ring-4 ring-lila-300/60' : `${c.bg} text-white shadow-[0_4px_0_rgba(24,33,61,0.18)]`}`;
+  const profi = n === PATH_STEPS;
+  const icon = state === 'done' ? (profi ? <Medal size={30} /> : n === 3 ? <Crown size={30} /> : <Check size={32} strokeWidth={3} />)
+    : state === 'locked' ? <Lock size={26} /> : profi ? <Flame size={30} /> : n === 3 ? <Mic size={30} /> : <Star size={30} className="fill-white" />;
   const inner = (
     <span className="flex flex-col items-center gap-1.5">
       <span className={circle}>
@@ -203,7 +219,8 @@ function PathNode({ m, n, name, state, current, offset, onLocked }: {
       {current && <span className={`absolute top-0 ${offset > 0 ? '-left-24' : '-right-24'} hidden sm:block`} aria-hidden><Lino mood="winken" size={78} /></span>}
       {state === 'locked'
         ? <button type="button" onClick={onLocked} aria-label={label} data-testid={`lektion-${m.id}-${n}`}>{inner}</button>
-        : <Link to={`/spiel/${m.id}?lektion=${n}`} aria-label={label} data-testid={`lektion-${m.id}-${n}`} onClick={() => sfx.tap()}>{inner}</Link>}
+        : <Link to={`/spiel/${m.id}?lektion=${n}`} aria-label={label} data-testid={`lektion-${m.id}-${n}`}
+          onClick={(e) => { sfx.tap(); if (onNoHearts) { e.preventDefault(); onNoHearts(); } }}>{inner}</Link>}
     </div>
   );
 }

@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { lazy, Suspense, useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { Check } from 'lucide-react';
 import type { ChoiceOption, ChoiceTask } from '../learning/types';
@@ -9,6 +9,8 @@ import { L, getLang, locale } from '../i18n';
 import { VoiceAnswer } from '../components/voice/Voice';
 import { matchOption } from '../lib/voiceMatch';
 import { sfx } from '../lib/sound';
+
+const Picture = lazy(() => import('../pictures/Picture'));
 
 export function ChoiceView({ task, onCorrect, onWrong, reveal, done, onPending }: TaskViewProps<ChoiceTask>) {
   const [wrong, setWrong] = useState<string[]>([]);
@@ -114,6 +116,7 @@ export function ChoiceView({ task, onCorrect, onWrong, reveal, done, onPending }
 }
 
 function ariaFor(o: ChoiceOption): string {
+  if (o.pic) return [o.label, o.speak].filter(Boolean).join(': ') || o.id;
   return o.label ?? o.speak ?? (o.scale ? (o.scale > 1.2 ? 'großes Bild' : o.scale < 0.7 ? 'kleines Bild' : 'mittleres Bild') : o.emoji ?? o.id);
 }
 
@@ -127,6 +130,16 @@ function OptionContent({ o, style }: { o: ChoiceOption; style: string }) {
     );
   }
   if (style === 'shape' && o.shape) return <Shape shape={o.shape} color={o.color} size={96} />;
+  if (o.pic) {
+    return (
+      <>
+        <Suspense fallback={<span className="h-full w-full animate-pulse rounded-xl bg-creme" />}>
+          <Picture pic={o.pic} compact />
+        </Suspense>
+        {o.label && <span className="absolute left-2 top-2 rounded-md bg-creme px-1.5 text-sm font-bold text-tinte/70">{o.label}</span>}
+      </>
+    );
+  }
   if (o.emoji) {
     return (
       <span className={`emoji ${o.silhouette ? 'silhouette' : ''}`} style={{ fontSize: `${(o.scale ?? 1) * 3.6}rem` }} aria-hidden>

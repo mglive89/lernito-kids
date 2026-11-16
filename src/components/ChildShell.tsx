@@ -3,7 +3,7 @@ import { Lock } from 'lucide-react';
 import { useActiveProfile } from '../store/useApp';
 import { motion } from 'framer-motion';
 import { Avatar, PageTransition } from './ui';
-import { profileLabel } from '../school/systems';
+import { isTeen, profileLabel } from '../school/systems';
 import { L } from '../i18n';
 import { sfx } from '../lib/sound';
 import { childNavItems, isNavActive } from '../app/navigation';
@@ -24,7 +24,7 @@ export function ChildShell() {
       <aside className="fixed inset-y-0 left-0 z-30 hidden w-64 flex-col border-r border-tinte/[0.07] bg-flaeche px-4 py-6 lg:flex" aria-label={L('Hauptnavigation', 'Navigazione principale')}>
         <span className="mb-8 flex items-center gap-2.5 px-2 font-display text-xl font-extrabold tracking-tight">
           <img src={`${base}puppy/kopf.png`} alt="" className="h-10 w-10 rounded-xl bg-sonne-100" />
-          <span>Lernito<span className="ml-1 rounded-md bg-sonne-100 px-1.5 py-0.5 align-middle text-xs font-bold text-sonne-700">Kids</span></span>
+          <span>Lernito<span className="ml-1 rounded-md bg-sonne-100 px-1.5 py-0.5 align-middle text-xs font-bold text-sonne-700" data-testid="marke-shell">{profile && isTeen(profile.country, profile.year) ? 'Teen' : 'Kids'}</span></span>
         </span>
         <nav className="flex flex-col gap-1">
           {items.map((it) => {

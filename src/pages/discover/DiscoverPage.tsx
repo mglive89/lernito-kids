@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
-import { ArrowRight, Brain, Clapperboard, Box, Gamepad2, Languages, Map as MapIcon } from 'lucide-react';
+import { ArrowRight, Brain, IdCard, Clapperboard, Box, Gamepad2, Languages, Map as MapIcon } from 'lucide-react';
+import { drivingAvailable } from '../../fuehrerschein/access';
 import { useActiveProfile } from '../../store/useApp';
 import { colorSet, IconBadge, PageHero, StarCount, AnimatedGrid } from '../../components/ui';
 import { Lino } from '../../components/Lino';
@@ -7,7 +8,8 @@ import { L } from '../../i18n';
 import { sfx } from '../../lib/sound';
 
 /** Alles, was über die Fächer hinaus Spaß macht – eine Quelle für die Seite „Entdecken“ und die Startseite. */
-export const DISCOVER_ITEMS = () => [
+export const DISCOVER_ITEMS = (driving = false) => [
+  ...(driving ? [{ to: '/fuehrerschein', icon: IdCard, title: L('Fahrschule', 'Scuola guida'), text: L('Führerschein B: Theorie, Bildfragen, Prüfung (ab 18)', 'Patente B: teoria, quiz illustrati, esame (dai 18 anni)'), color: 'himmel' }] : []),
   { to: '/lingue', icon: Languages, title: L('Sprachen', 'Lingue'), text: L('Sprechen, hören und verstehen', 'Parla, ascolta e capisci'), color: 'sonne' },
   { to: '/videos', icon: Clapperboard, title: L('Lernvideos', 'Video lezioni'), text: L('Kurze Erklärvideos mit Quiz', 'Brevi video con quiz'), color: 'koralle' },
   { to: '/welt3d', icon: Box, title: L('3D-Lernwelt', 'Mondo 3D'), text: L('Drehen, zählen und Körper entdecken', 'Gira, conta e scopri i solidi'), color: 'himmel' },
@@ -18,7 +20,8 @@ export const DISCOVER_ITEMS = () => [
 
 /** Seite „Entdecken“: Videos, 3D-Welt, Mini-Spiele und Abenteuer. */
 export function DiscoverPage() {
-  const { progress } = useActiveProfile();
+  const { progress, profile, settings } = useActiveProfile();
+  const driving = drivingAvailable(profile?.year ?? 0, settings.drivingTheory);
   return (
     <div style={{ paddingTop: 'var(--safe-top)' }}>
       <div className="mx-auto flex max-w-6xl 2xl:max-w-7xl items-center justify-between px-4 pt-5 sm:px-6">
@@ -30,7 +33,7 @@ export function DiscoverPage() {
           subtitle={L('Videos, 3D-Welt, Denkspiele und kleine Spiele für zwischendurch.', 'Video, mondo 3D, giochi di logica e piccoli giochi per una pausa.')}
           art={<span className="-my-8 block"><Lino mood="jubel" size={104} /></span>} />
         <AnimatedGrid className="mt-6 grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-4">
-          {DISCOVER_ITEMS().map((it) => {
+          {DISCOVER_ITEMS(driving).map((it) => {
             const c = colorSet(it.color);
             return (
               <Link key={it.to} to={it.to} onClick={() => sfx.tap()} data-testid={`entdecken-${it.to.slice(1)}`}

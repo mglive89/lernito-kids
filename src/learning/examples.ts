@@ -8,7 +8,7 @@ export function answerText(t: Task): string | null {
   switch (t.type) {
     case 'choice': {
       const o = t.options.find((x) => x.id === t.correctId);
-      return o ? (o.label ?? o.speak ?? o.emoji ?? o.id) : null;
+      return o ? (o.pic ? (o.speak ?? o.label ?? o.id) : (o.label ?? o.speak ?? o.emoji ?? o.id)) : null;
     }
     case 'input': return String(t.answer).replace('-', '−');
     case 'wordbuild': return t.solution.join(t.solution.some((x) => x.length > 1) ? '-' : '');
