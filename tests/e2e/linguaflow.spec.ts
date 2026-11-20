@@ -229,7 +229,8 @@ test('LinguaFlow: neues Kurspaket ohne Änderung an den Komponenten', async ({ p
   });
   await setup(page, 'it', 'ital', 'nl', 'Nederlands');
   await expect(page.getByTestId('corso-it-nl-esempio')).toBeVisible();
-  await page.getByTestId('inizia-corso').click();
+  // accanto al corso completo di olandese compare anche il pacchetto di esempio
+  await page.getByTestId('corso-it-nl-esempio').getByTestId('inizia-corso').click();
   await expect(page.getByTestId('titolo-corso')).toHaveText('Olandese – Esempio');
   await playLesson(page, 'lezione-nl-voorbeeld-01');
 });
