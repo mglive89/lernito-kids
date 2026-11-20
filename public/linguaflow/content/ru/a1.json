@@ -1,0 +1,1712 @@
+{
+  "format": 1,
+  "id": "ru-a1",
+  "language": "ru",
+  "version": "1.0.0",
+  "lessons": [
+    {
+      "id": "ru-a1-01",
+      "minutes": 7,
+      "dialogue": [
+        {
+          "id": "ru-a1-01-d1",
+          "speaker": "Маша",
+          "text": "Привет! Я Маша.",
+          "translit": "Privet! Ya Masha."
+        },
+        {
+          "id": "ru-a1-01-d2",
+          "speaker": "Марко",
+          "text": "Привет, Маша! Меня зовут Марко.",
+          "translit": "Privet, Masha! Menya zovut Marko."
+        },
+        {
+          "id": "ru-a1-01-d3",
+          "speaker": "Маша",
+          "text": "Откуда ты?",
+          "translit": "Otkuda ty?"
+        },
+        {
+          "id": "ru-a1-01-d4",
+          "speaker": "Марко",
+          "text": "Я из Италии. А ты?",
+          "translit": "Ya iz Italii. A ty?"
+        },
+        {
+          "id": "ru-a1-01-d5",
+          "speaker": "Маша",
+          "text": "Я из Казани. Очень приятно!",
+          "translit": "Ya iz Kazani. Ochen priyatno!"
+        },
+        {
+          "id": "ru-a1-01-d6",
+          "speaker": "Марко",
+          "text": "Мне тоже! До встречи.",
+          "translit": "Mne tozhe! Do vstrechi."
+        }
+      ],
+      "vocabulary": [
+        {
+          "id": "ru-a1-01-v1",
+          "text": "Доброе утро",
+          "translit": "Dobroe utro",
+          "accept": [
+            "Dobroe utro"
+          ]
+        },
+        {
+          "id": "ru-a1-01-v2",
+          "text": "Добрый вечер",
+          "translit": "Dobryy vecher",
+          "accept": [
+            "Dobryy vecher"
+          ]
+        },
+        {
+          "id": "ru-a1-01-v3",
+          "text": "До свидания",
+          "translit": "Do svidaniya",
+          "accept": [
+            "Do svidaniya"
+          ]
+        },
+        {
+          "id": "ru-a1-01-v4",
+          "text": "Как тебя зовут?",
+          "translit": "Kak tebya zovut?",
+          "accept": [
+            "Kak tebya zovut?"
+          ]
+        },
+        {
+          "id": "ru-a1-01-v5",
+          "text": "Спасибо",
+          "translit": "Spasibo",
+          "accept": [
+            "Spasibo"
+          ]
+        },
+        {
+          "id": "ru-a1-01-v6",
+          "text": "Пожалуйста",
+          "translit": "Pozhaluysta",
+          "accept": [
+            "Pozhaluysta"
+          ]
+        }
+      ],
+      "exercises": [
+        {
+          "id": "ru-a1-01-e1",
+          "type": "listen",
+          "item": "ru-a1-01-v3",
+          "options": [
+            "ru-a1-01-v3",
+            "ru-a1-01-v4",
+            "ru-a1-01-v5"
+          ]
+        },
+        {
+          "id": "ru-a1-01-e2",
+          "type": "choice",
+          "item": "ru-a1-01-d3",
+          "direction": "toSource",
+          "options": [
+            "ru-a1-01-d3",
+            "ru-a1-01-d4",
+            "ru-a1-01-d5"
+          ]
+        },
+        {
+          "id": "ru-a1-01-e3",
+          "type": "cloze",
+          "item": "ru-a1-01-d2",
+          "gap": "зовут",
+          "options": [
+            "зовут",
+            "зовёт",
+            "есть"
+          ]
+        },
+        {
+          "id": "ru-a1-01-e4",
+          "type": "order",
+          "item": "ru-a1-01-d4",
+          "segments": [
+            "Я",
+            "из",
+            "Италии.",
+            "А",
+            "ты?"
+          ],
+          "extra": [
+            "в"
+          ]
+        },
+        {
+          "id": "ru-a1-01-e5",
+          "type": "choice",
+          "item": "ru-a1-01-v1",
+          "direction": "toTarget",
+          "options": [
+            "ru-a1-01-v1",
+            "ru-a1-01-v2",
+            "ru-a1-01-v3"
+          ]
+        },
+        {
+          "id": "ru-a1-01-e6",
+          "type": "write",
+          "item": "ru-a1-01-v5"
+        },
+        {
+          "id": "ru-a1-01-e7",
+          "type": "situation",
+          "mode": "choice",
+          "answers": [
+            "Меня зовут Джулия."
+          ],
+          "options": [
+            "Меня зовут Джулия.",
+            "Я из Италии.",
+            "До свидания, Джулия!"
+          ],
+          "translit": "Menya zovut Dzhuliya."
+        }
+      ]
+    },
+    {
+      "id": "ru-a1-02",
+      "minutes": 7,
+      "dialogue": [
+        {
+          "id": "ru-a1-02-d1",
+          "speaker": "Продавщица",
+          "text": "Здравствуйте! Что вы хотите?",
+          "translit": "Zdravstvuyte! Chto vy khotite?"
+        },
+        {
+          "id": "ru-a1-02-d2",
+          "speaker": "Марко",
+          "text": "Дайте, пожалуйста, хлеб.",
+          "translit": "Dayte, pozhaluysta, khleb."
+        },
+        {
+          "id": "ru-a1-02-d3",
+          "speaker": "Продавщица",
+          "text": "Пожалуйста. Что-нибудь ещё?",
+          "translit": "Pozhaluysta. Chto-nibud eshchyo?"
+        },
+        {
+          "id": "ru-a1-02-d4",
+          "speaker": "Марко",
+          "text": "Да, ещё три яблока.",
+          "translit": "Da, eshchyo tri yabloka."
+        },
+        {
+          "id": "ru-a1-02-d5",
+          "speaker": "Марко",
+          "text": "Сколько стоит?",
+          "translit": "Skolko stoit?"
+        },
+        {
+          "id": "ru-a1-02-d6",
+          "speaker": "Продавщица",
+          "text": "Двести рублей.",
+          "translit": "Dvesti rubley."
+        }
+      ],
+      "vocabulary": [
+        {
+          "id": "ru-a1-02-v1",
+          "text": "хлеб",
+          "translit": "khleb",
+          "accept": [
+            "khleb"
+          ]
+        },
+        {
+          "id": "ru-a1-02-v2",
+          "text": "яблоко",
+          "translit": "yabloko",
+          "accept": [
+            "yabloko"
+          ]
+        },
+        {
+          "id": "ru-a1-02-v3",
+          "text": "сыр",
+          "translit": "syr",
+          "accept": [
+            "syr"
+          ]
+        },
+        {
+          "id": "ru-a1-02-v4",
+          "text": "торт",
+          "translit": "tort",
+          "accept": [
+            "tort"
+          ]
+        },
+        {
+          "id": "ru-a1-02-v5",
+          "text": "Сколько стоит?",
+          "translit": "Skolko stoit?",
+          "accept": [
+            "Skolko stoit?"
+          ]
+        },
+        {
+          "id": "ru-a1-02-v6",
+          "text": "три",
+          "translit": "tri",
+          "accept": [
+            "tri"
+          ]
+        }
+      ],
+      "exercises": [
+        {
+          "id": "ru-a1-02-e1",
+          "type": "listen",
+          "item": "ru-a1-02-v2",
+          "options": [
+            "ru-a1-02-v1",
+            "ru-a1-02-v2",
+            "ru-a1-02-v3"
+          ]
+        },
+        {
+          "id": "ru-a1-02-e2",
+          "type": "choice",
+          "item": "ru-a1-02-d2",
+          "direction": "toSource",
+          "options": [
+            "ru-a1-02-d2",
+            "ru-a1-02-d3",
+            "ru-a1-02-d5"
+          ]
+        },
+        {
+          "id": "ru-a1-02-e3",
+          "type": "cloze",
+          "item": "ru-a1-02-d2",
+          "gap": "Дайте",
+          "options": [
+            "Дайте",
+            "Даю",
+            "Есть"
+          ]
+        },
+        {
+          "id": "ru-a1-02-e4",
+          "type": "order",
+          "item": "ru-a1-02-d4",
+          "segments": [
+            "Да,",
+            "ещё",
+            "три",
+            "яблока."
+          ],
+          "extra": [
+            "яблоко"
+          ]
+        },
+        {
+          "id": "ru-a1-02-e5",
+          "type": "choice",
+          "item": "ru-a1-02-v4",
+          "direction": "toTarget",
+          "options": [
+            "ru-a1-02-v4",
+            "ru-a1-02-v3",
+            "ru-a1-02-v6"
+          ]
+        },
+        {
+          "id": "ru-a1-02-e6",
+          "type": "write",
+          "item": "ru-a1-02-v1"
+        },
+        {
+          "id": "ru-a1-02-e7",
+          "type": "situation",
+          "mode": "choice",
+          "answers": [
+            "Дайте, пожалуйста, хлеб."
+          ],
+          "options": [
+            "Дайте, пожалуйста, хлеб.",
+            "Сколько стоит хлеб?",
+            "Спасибо, до свидания!"
+          ],
+          "translit": "Dayte, pozhaluysta, khleb."
+        }
+      ]
+    },
+    {
+      "id": "ru-a1-03",
+      "minutes": 6,
+      "dialogue": [
+        {
+          "id": "ru-a1-03-d1",
+          "speaker": "Официант",
+          "text": "Здравствуйте! Что будете пить?",
+          "translit": "Zdravstvuyte! Chto budete pit?"
+        },
+        {
+          "id": "ru-a1-03-d2",
+          "speaker": "Марко",
+          "text": "Чай, пожалуйста.",
+          "translit": "Chay, pozhaluysta."
+        },
+        {
+          "id": "ru-a1-03-d3",
+          "speaker": "Официант",
+          "text": "С молоком или с лимоном?",
+          "translit": "S molokom ili s limonom?"
+        },
+        {
+          "id": "ru-a1-03-d4",
+          "speaker": "Марко",
+          "text": "С лимоном. И стакан воды.",
+          "translit": "S limonom. I stakan vody."
+        },
+        {
+          "id": "ru-a1-03-d5",
+          "speaker": "Марко",
+          "text": "Можно заплатить?",
+          "translit": "Mozhno zaplatit?"
+        },
+        {
+          "id": "ru-a1-03-d6",
+          "speaker": "Официант",
+          "text": "Конечно. Триста рублей.",
+          "translit": "Konechno. Trista rubley."
+        }
+      ],
+      "vocabulary": [
+        {
+          "id": "ru-a1-03-v1",
+          "text": "кофе",
+          "translit": "kofe",
+          "accept": [
+            "kofe"
+          ]
+        },
+        {
+          "id": "ru-a1-03-v2",
+          "text": "чай",
+          "translit": "chay",
+          "accept": [
+            "chay"
+          ]
+        },
+        {
+          "id": "ru-a1-03-v3",
+          "text": "вода",
+          "translit": "voda",
+          "accept": [
+            "voda"
+          ]
+        },
+        {
+          "id": "ru-a1-03-v4",
+          "text": "молоко",
+          "translit": "moloko",
+          "accept": [
+            "moloko"
+          ]
+        },
+        {
+          "id": "ru-a1-03-v5",
+          "text": "апельсиновый сок",
+          "translit": "apelsinovyy sok",
+          "accept": [
+            "apelsinovyy sok"
+          ]
+        },
+        {
+          "id": "ru-a1-03-v6",
+          "text": "счёт",
+          "translit": "schyot",
+          "accept": [
+            "schyot"
+          ]
+        }
+      ],
+      "exercises": [
+        {
+          "id": "ru-a1-03-e1",
+          "type": "listen",
+          "item": "ru-a1-03-v2",
+          "options": [
+            "ru-a1-03-v1",
+            "ru-a1-03-v2",
+            "ru-a1-03-v5"
+          ]
+        },
+        {
+          "id": "ru-a1-03-e2",
+          "type": "choice",
+          "item": "ru-a1-03-d3",
+          "direction": "toSource",
+          "options": [
+            "ru-a1-03-d3",
+            "ru-a1-03-d4",
+            "ru-a1-03-d6"
+          ]
+        },
+        {
+          "id": "ru-a1-03-e3",
+          "type": "cloze",
+          "item": "ru-a1-03-d3",
+          "gap": "или",
+          "options": [
+            "или",
+            "и",
+            "но"
+          ]
+        },
+        {
+          "id": "ru-a1-03-e4",
+          "type": "order",
+          "item": "ru-a1-03-d4",
+          "segments": [
+            "С",
+            "лимоном.",
+            "И",
+            "стакан",
+            "воды."
+          ],
+          "extra": [
+            "два"
+          ]
+        },
+        {
+          "id": "ru-a1-03-e5",
+          "type": "choice",
+          "item": "ru-a1-03-v3",
+          "direction": "toTarget",
+          "options": [
+            "ru-a1-03-v3",
+            "ru-a1-03-v4",
+            "ru-a1-03-v6"
+          ]
+        },
+        {
+          "id": "ru-a1-03-e6",
+          "type": "write",
+          "item": "ru-a1-03-v4"
+        },
+        {
+          "id": "ru-a1-03-e7",
+          "type": "situation",
+          "mode": "choice",
+          "answers": [
+            "Кофе, пожалуйста."
+          ],
+          "options": [
+            "Кофе, пожалуйста.",
+            "Счёт, пожалуйста.",
+            "Чай с лимоном, пожалуйста."
+          ],
+          "translit": "Kofe, pozhaluysta."
+        }
+      ]
+    },
+    {
+      "id": "ru-a1-04",
+      "minutes": 6,
+      "dialogue": [
+        {
+          "id": "ru-a1-04-d1",
+          "speaker": "Марко",
+          "text": "Извините, где рис?",
+          "translit": "Izvinite, gde ris?"
+        },
+        {
+          "id": "ru-a1-04-d2",
+          "speaker": "Продавец",
+          "text": "Рис там, справа.",
+          "translit": "Ris tam, sprava."
+        },
+        {
+          "id": "ru-a1-04-d3",
+          "speaker": "Марко",
+          "text": "А яйца?",
+          "translit": "A yaytsa?"
+        },
+        {
+          "id": "ru-a1-04-d4",
+          "speaker": "Продавец",
+          "text": "Они рядом с молоком.",
+          "translit": "Oni ryadom s molokom."
+        },
+        {
+          "id": "ru-a1-04-d5",
+          "speaker": "Марко",
+          "text": "Большое спасибо!",
+          "translit": "Bolshoe spasibo!"
+        },
+        {
+          "id": "ru-a1-04-d6",
+          "speaker": "Продавец",
+          "text": "Пожалуйста!",
+          "translit": "Pozhaluysta!"
+        }
+      ],
+      "vocabulary": [
+        {
+          "id": "ru-a1-04-v1",
+          "text": "рис",
+          "translit": "ris",
+          "accept": [
+            "ris"
+          ]
+        },
+        {
+          "id": "ru-a1-04-v2",
+          "text": "яйца",
+          "translit": "yaytsa",
+          "accept": [
+            "yaytsa"
+          ]
+        },
+        {
+          "id": "ru-a1-04-v3",
+          "text": "фрукты",
+          "translit": "frukty",
+          "accept": [
+            "frukty"
+          ]
+        },
+        {
+          "id": "ru-a1-04-v4",
+          "text": "справа",
+          "translit": "sprava",
+          "accept": [
+            "sprava"
+          ]
+        },
+        {
+          "id": "ru-a1-04-v5",
+          "text": "слева",
+          "translit": "sleva",
+          "accept": [
+            "sleva"
+          ]
+        },
+        {
+          "id": "ru-a1-04-v6",
+          "text": "касса",
+          "translit": "kassa",
+          "accept": [
+            "kassa"
+          ]
+        }
+      ],
+      "exercises": [
+        {
+          "id": "ru-a1-04-e1",
+          "type": "listen",
+          "item": "ru-a1-04-v4",
+          "options": [
+            "ru-a1-04-v4",
+            "ru-a1-04-v5",
+            "ru-a1-04-v6"
+          ]
+        },
+        {
+          "id": "ru-a1-04-e2",
+          "type": "choice",
+          "item": "ru-a1-04-d1",
+          "direction": "toSource",
+          "options": [
+            "ru-a1-04-d1",
+            "ru-a1-04-d3",
+            "ru-a1-04-d5"
+          ]
+        },
+        {
+          "id": "ru-a1-04-e3",
+          "type": "cloze",
+          "item": "ru-a1-04-d1",
+          "gap": "где",
+          "options": [
+            "где",
+            "что",
+            "кто"
+          ]
+        },
+        {
+          "id": "ru-a1-04-e4",
+          "type": "order",
+          "item": "ru-a1-04-d2",
+          "segments": [
+            "Рис",
+            "там,",
+            "справа."
+          ],
+          "extra": [
+            "слева"
+          ]
+        },
+        {
+          "id": "ru-a1-04-e5",
+          "type": "choice",
+          "item": "ru-a1-04-v5",
+          "direction": "toTarget",
+          "options": [
+            "ru-a1-04-v5",
+            "ru-a1-04-v4",
+            "ru-a1-04-v1"
+          ]
+        },
+        {
+          "id": "ru-a1-04-e6",
+          "type": "write",
+          "item": "ru-a1-04-v1"
+        },
+        {
+          "id": "ru-a1-04-e7",
+          "type": "situation",
+          "mode": "choice",
+          "answers": [
+            "Извините, где молоко?"
+          ],
+          "options": [
+            "Извините, где молоко?",
+            "Извините, где рис?",
+            "Сколько стоит молоко?"
+          ],
+          "translit": "Izvinite, gde moloko?"
+        }
+      ]
+    },
+    {
+      "id": "ru-a1-05",
+      "minutes": 6,
+      "dialogue": [
+        {
+          "id": "ru-a1-05-d1",
+          "speaker": "Марко",
+          "text": "Извините, где вокзал?",
+          "translit": "Izvinite, gde vokzal?"
+        },
+        {
+          "id": "ru-a1-05-d2",
+          "speaker": "Прохожая",
+          "text": "Идите прямо.",
+          "translit": "Idite pryamo."
+        },
+        {
+          "id": "ru-a1-05-d3",
+          "speaker": "Прохожая",
+          "text": "Потом налево.",
+          "translit": "Potom nalevo."
+        },
+        {
+          "id": "ru-a1-05-d4",
+          "speaker": "Марко",
+          "text": "Это далеко?",
+          "translit": "Eto daleko?"
+        },
+        {
+          "id": "ru-a1-05-d5",
+          "speaker": "Прохожая",
+          "text": "Нет, пять минут пешком.",
+          "translit": "Net, pyat minut peshkom."
+        },
+        {
+          "id": "ru-a1-05-d6",
+          "speaker": "Марко",
+          "text": "Спасибо, до свидания!",
+          "translit": "Spasibo, do svidaniya!"
+        }
+      ],
+      "vocabulary": [
+        {
+          "id": "ru-a1-05-v1",
+          "text": "вокзал",
+          "translit": "vokzal",
+          "accept": [
+            "vokzal"
+          ]
+        },
+        {
+          "id": "ru-a1-05-v2",
+          "text": "музей",
+          "translit": "muzey",
+          "accept": [
+            "muzey"
+          ]
+        },
+        {
+          "id": "ru-a1-05-v3",
+          "text": "прямо",
+          "translit": "pryamo",
+          "accept": [
+            "pryamo"
+          ]
+        },
+        {
+          "id": "ru-a1-05-v4",
+          "text": "близко",
+          "translit": "blizko",
+          "accept": [
+            "blizko"
+          ]
+        },
+        {
+          "id": "ru-a1-05-v5",
+          "text": "далеко",
+          "translit": "daleko",
+          "accept": [
+            "daleko"
+          ]
+        },
+        {
+          "id": "ru-a1-05-v6",
+          "text": "автобусная остановка",
+          "translit": "avtobusnaya ostanovka",
+          "accept": [
+            "avtobusnaya ostanovka"
+          ]
+        }
+      ],
+      "exercises": [
+        {
+          "id": "ru-a1-05-e1",
+          "type": "listen",
+          "item": "ru-a1-05-v3",
+          "options": [
+            "ru-a1-05-v3",
+            "ru-a1-05-v4",
+            "ru-a1-05-v5"
+          ]
+        },
+        {
+          "id": "ru-a1-05-e2",
+          "type": "choice",
+          "item": "ru-a1-05-d4",
+          "direction": "toSource",
+          "options": [
+            "ru-a1-05-d4",
+            "ru-a1-05-d2",
+            "ru-a1-05-d5"
+          ]
+        },
+        {
+          "id": "ru-a1-05-e3",
+          "type": "cloze",
+          "item": "ru-a1-05-d3",
+          "gap": "налево",
+          "options": [
+            "налево",
+            "направо",
+            "прямо"
+          ]
+        },
+        {
+          "id": "ru-a1-05-e4",
+          "type": "order",
+          "item": "ru-a1-05-d5",
+          "segments": [
+            "Нет,",
+            "пять",
+            "минут",
+            "пешком."
+          ],
+          "extra": [
+            "на"
+          ]
+        },
+        {
+          "id": "ru-a1-05-e5",
+          "type": "choice",
+          "item": "ru-a1-05-v4",
+          "direction": "toTarget",
+          "options": [
+            "ru-a1-05-v4",
+            "ru-a1-05-v5",
+            "ru-a1-05-v1"
+          ]
+        },
+        {
+          "id": "ru-a1-05-e6",
+          "type": "write",
+          "item": "ru-a1-05-v2"
+        },
+        {
+          "id": "ru-a1-05-e7",
+          "type": "situation",
+          "mode": "choice",
+          "answers": [
+            "Извините, где музей?"
+          ],
+          "options": [
+            "Извините, где музей?",
+            "Извините, где вокзал?",
+            "Музей далеко."
+          ],
+          "translit": "Izvinite, gde muzey?"
+        }
+      ]
+    },
+    {
+      "id": "ru-a1-06",
+      "minutes": 7,
+      "dialogue": [
+        {
+          "id": "ru-a1-06-d1",
+          "speaker": "Марко",
+          "text": "Один билет до Москвы, пожалуйста.",
+          "translit": "Odin bilet do Moskvy, pozhaluysta."
+        },
+        {
+          "id": "ru-a1-06-d2",
+          "speaker": "Касса",
+          "text": "В одну сторону или туда и обратно?",
+          "translit": "V odnu storonu ili tuda i obratno?"
+        },
+        {
+          "id": "ru-a1-06-d3",
+          "speaker": "Марко",
+          "text": "Туда и обратно.",
+          "translit": "Tuda i obratno."
+        },
+        {
+          "id": "ru-a1-06-d4",
+          "speaker": "Марко",
+          "text": "С какой платформы отходит поезд?",
+          "translit": "S kakoy platformy otkhodit poezd?"
+        },
+        {
+          "id": "ru-a1-06-d5",
+          "speaker": "Касса",
+          "text": "С третьей платформы, в десять часов.",
+          "translit": "S tretey platformy, v desyat chasov."
+        },
+        {
+          "id": "ru-a1-06-d6",
+          "speaker": "Марко",
+          "text": "Отлично, спасибо!",
+          "translit": "Otlichno, spasibo!"
+        }
+      ],
+      "vocabulary": [
+        {
+          "id": "ru-a1-06-v1",
+          "text": "поезд",
+          "translit": "poezd",
+          "accept": [
+            "poezd"
+          ]
+        },
+        {
+          "id": "ru-a1-06-v2",
+          "text": "билет",
+          "translit": "bilet",
+          "accept": [
+            "bilet"
+          ]
+        },
+        {
+          "id": "ru-a1-06-v3",
+          "text": "платформа",
+          "translit": "platforma",
+          "accept": [
+            "platforma"
+          ]
+        },
+        {
+          "id": "ru-a1-06-v4",
+          "text": "автобус",
+          "translit": "avtobus",
+          "accept": [
+            "avtobus"
+          ]
+        },
+        {
+          "id": "ru-a1-06-v5",
+          "text": "сегодня",
+          "translit": "segodnya",
+          "accept": [
+            "segodnya"
+          ]
+        },
+        {
+          "id": "ru-a1-06-v6",
+          "text": "завтра",
+          "translit": "zavtra",
+          "accept": [
+            "zavtra"
+          ]
+        }
+      ],
+      "exercises": [
+        {
+          "id": "ru-a1-06-e1",
+          "type": "listen",
+          "item": "ru-a1-06-v2",
+          "options": [
+            "ru-a1-06-v1",
+            "ru-a1-06-v2",
+            "ru-a1-06-v3"
+          ]
+        },
+        {
+          "id": "ru-a1-06-e2",
+          "type": "choice",
+          "item": "ru-a1-06-d2",
+          "direction": "toSource",
+          "options": [
+            "ru-a1-06-d2",
+            "ru-a1-06-d4",
+            "ru-a1-06-d5"
+          ]
+        },
+        {
+          "id": "ru-a1-06-e3",
+          "type": "cloze",
+          "item": "ru-a1-06-d4",
+          "gap": "какой",
+          "options": [
+            "какой",
+            "кто",
+            "где"
+          ]
+        },
+        {
+          "id": "ru-a1-06-e4",
+          "type": "order",
+          "item": "ru-a1-06-d1",
+          "segments": [
+            "Один",
+            "билет",
+            "до",
+            "Москвы,",
+            "пожалуйста."
+          ],
+          "extra": [
+            "в"
+          ]
+        },
+        {
+          "id": "ru-a1-06-e5",
+          "type": "choice",
+          "item": "ru-a1-06-v1",
+          "direction": "toTarget",
+          "options": [
+            "ru-a1-06-v1",
+            "ru-a1-06-v4",
+            "ru-a1-06-v3"
+          ]
+        },
+        {
+          "id": "ru-a1-06-e6",
+          "type": "write",
+          "item": "ru-a1-06-v5"
+        },
+        {
+          "id": "ru-a1-06-e7",
+          "type": "situation",
+          "mode": "choice",
+          "answers": [
+            "Один билет до Москвы, пожалуйста."
+          ],
+          "options": [
+            "Один билет до Москвы, пожалуйста.",
+            "Один билет до Казани, пожалуйста.",
+            "С какой платформы?"
+          ],
+          "translit": "Odin bilet do Moskvy, pozhaluysta."
+        }
+      ]
+    },
+    {
+      "id": "ru-a1-07",
+      "minutes": 6,
+      "dialogue": [
+        {
+          "id": "ru-a1-07-d1",
+          "speaker": "Врач",
+          "text": "Здравствуйте. Что вас беспокоит?",
+          "translit": "Zdravstvuyte. Chto vas bespokoit?"
+        },
+        {
+          "id": "ru-a1-07-d2",
+          "speaker": "Марко",
+          "text": "У меня болит голова.",
+          "translit": "U menya bolit golova."
+        },
+        {
+          "id": "ru-a1-07-d3",
+          "speaker": "Врач",
+          "text": "А температура есть?",
+          "translit": "A temperatura est?"
+        },
+        {
+          "id": "ru-a1-07-d4",
+          "speaker": "Марко",
+          "text": "Да, немного. И я очень устал.",
+          "translit": "Da, nemnogo. I ya ochen ustal."
+        },
+        {
+          "id": "ru-a1-07-d5",
+          "speaker": "Врач",
+          "text": "Пейте много воды и отдыхайте.",
+          "translit": "Peyte mnogo vody i otdykhayte."
+        },
+        {
+          "id": "ru-a1-07-d6",
+          "speaker": "Марко",
+          "text": "Большое спасибо.",
+          "translit": "Bolshoe spasibo."
+        }
+      ],
+      "vocabulary": [
+        {
+          "id": "ru-a1-07-v1",
+          "text": "голова",
+          "translit": "golova",
+          "accept": [
+            "golova"
+          ]
+        },
+        {
+          "id": "ru-a1-07-v2",
+          "text": "живот",
+          "translit": "zhivot",
+          "accept": [
+            "zhivot"
+          ]
+        },
+        {
+          "id": "ru-a1-07-v3",
+          "text": "температура",
+          "translit": "temperatura",
+          "accept": [
+            "temperatura"
+          ]
+        },
+        {
+          "id": "ru-a1-07-v4",
+          "text": "лекарство",
+          "translit": "lekarstvo",
+          "accept": [
+            "lekarstvo"
+          ]
+        },
+        {
+          "id": "ru-a1-07-v5",
+          "text": "больной",
+          "translit": "bolnoy",
+          "accept": [
+            "bolnoy"
+          ]
+        },
+        {
+          "id": "ru-a1-07-v6",
+          "text": "У меня всё хорошо.",
+          "translit": "U menya vsyo khorosho.",
+          "accept": [
+            "U menya vsyo khorosho."
+          ]
+        }
+      ],
+      "exercises": [
+        {
+          "id": "ru-a1-07-e1",
+          "type": "listen",
+          "item": "ru-a1-07-v1",
+          "options": [
+            "ru-a1-07-v1",
+            "ru-a1-07-v2",
+            "ru-a1-07-v3"
+          ]
+        },
+        {
+          "id": "ru-a1-07-e2",
+          "type": "choice",
+          "item": "ru-a1-07-d3",
+          "direction": "toSource",
+          "options": [
+            "ru-a1-07-d3",
+            "ru-a1-07-d2",
+            "ru-a1-07-d5"
+          ]
+        },
+        {
+          "id": "ru-a1-07-e3",
+          "type": "cloze",
+          "item": "ru-a1-07-d2",
+          "gap": "болит",
+          "options": [
+            "болит",
+            "есть",
+            "хочу"
+          ]
+        },
+        {
+          "id": "ru-a1-07-e4",
+          "type": "order",
+          "item": "ru-a1-07-d4",
+          "segments": [
+            "Да,",
+            "немного.",
+            "И",
+            "я",
+            "очень",
+            "устал."
+          ],
+          "extra": [
+            "был"
+          ]
+        },
+        {
+          "id": "ru-a1-07-e5",
+          "type": "choice",
+          "item": "ru-a1-07-v4",
+          "direction": "toTarget",
+          "options": [
+            "ru-a1-07-v4",
+            "ru-a1-07-v3",
+            "ru-a1-07-v5"
+          ]
+        },
+        {
+          "id": "ru-a1-07-e6",
+          "type": "write",
+          "item": "ru-a1-07-v1"
+        },
+        {
+          "id": "ru-a1-07-e7",
+          "type": "situation",
+          "mode": "choice",
+          "answers": [
+            "У меня болит живот."
+          ],
+          "options": [
+            "У меня болит живот.",
+            "У меня болит голова.",
+            "Я очень устал."
+          ],
+          "translit": "U menya bolit zhivot."
+        }
+      ]
+    },
+    {
+      "id": "ru-a1-08",
+      "minutes": 6,
+      "dialogue": [
+        {
+          "id": "ru-a1-08-d1",
+          "speaker": "Маша",
+          "text": "Ты свободен в субботу?",
+          "translit": "Ty svoboden v subbotu?"
+        },
+        {
+          "id": "ru-a1-08-d2",
+          "speaker": "Марко",
+          "text": "Да! Что будем делать?",
+          "translit": "Da! Chto budem delat?"
+        },
+        {
+          "id": "ru-a1-08-d3",
+          "speaker": "Маша",
+          "text": "Пойдём в кино?",
+          "translit": "Poydyom v kino?"
+        },
+        {
+          "id": "ru-a1-08-d4",
+          "speaker": "Марко",
+          "text": "Хорошая идея! Во сколько?",
+          "translit": "Khoroshaya ideya! Vo skolko?"
+        },
+        {
+          "id": "ru-a1-08-d5",
+          "speaker": "Маша",
+          "text": "В семь часов вечера.",
+          "translit": "V sem chasov vechera."
+        },
+        {
+          "id": "ru-a1-08-d6",
+          "speaker": "Марко",
+          "text": "Хорошо, до субботы!",
+          "translit": "Khorosho, do subboty!"
+        }
+      ],
+      "vocabulary": [
+        {
+          "id": "ru-a1-08-v1",
+          "text": "понедельник",
+          "translit": "ponedelnik",
+          "accept": [
+            "ponedelnik"
+          ]
+        },
+        {
+          "id": "ru-a1-08-v2",
+          "text": "пятница",
+          "translit": "pyatnitsa",
+          "accept": [
+            "pyatnitsa"
+          ]
+        },
+        {
+          "id": "ru-a1-08-v3",
+          "text": "суббота",
+          "translit": "subbota",
+          "accept": [
+            "subbota"
+          ]
+        },
+        {
+          "id": "ru-a1-08-v4",
+          "text": "воскресенье",
+          "translit": "voskresene",
+          "accept": [
+            "voskresene"
+          ]
+        },
+        {
+          "id": "ru-a1-08-v5",
+          "text": "Который час?",
+          "translit": "Kotoryy chas?",
+          "accept": [
+            "Kotoryy chas?"
+          ]
+        },
+        {
+          "id": "ru-a1-08-v6",
+          "text": "сегодня вечером",
+          "translit": "segodnya vecherom",
+          "accept": [
+            "segodnya vecherom"
+          ]
+        }
+      ],
+      "exercises": [
+        {
+          "id": "ru-a1-08-e1",
+          "type": "listen",
+          "item": "ru-a1-08-v3",
+          "options": [
+            "ru-a1-08-v2",
+            "ru-a1-08-v3",
+            "ru-a1-08-v4"
+          ]
+        },
+        {
+          "id": "ru-a1-08-e2",
+          "type": "choice",
+          "item": "ru-a1-08-d4",
+          "direction": "toSource",
+          "options": [
+            "ru-a1-08-d4",
+            "ru-a1-08-d1",
+            "ru-a1-08-d5"
+          ]
+        },
+        {
+          "id": "ru-a1-08-e3",
+          "type": "cloze",
+          "item": "ru-a1-08-d1",
+          "gap": "в субботу",
+          "options": [
+            "в субботу",
+            "в субботе",
+            "на субботу"
+          ]
+        },
+        {
+          "id": "ru-a1-08-e4",
+          "type": "order",
+          "item": "ru-a1-08-d3",
+          "segments": [
+            "Пойдём",
+            "в",
+            "кино?"
+          ],
+          "extra": [
+            "на"
+          ]
+        },
+        {
+          "id": "ru-a1-08-e5",
+          "type": "choice",
+          "item": "ru-a1-08-v5",
+          "direction": "toTarget",
+          "options": [
+            "ru-a1-08-v5",
+            "ru-a1-08-v6",
+            "ru-a1-08-v1"
+          ]
+        },
+        {
+          "id": "ru-a1-08-e6",
+          "type": "write",
+          "item": "ru-a1-08-v4"
+        },
+        {
+          "id": "ru-a1-08-e7",
+          "type": "situation",
+          "mode": "choice",
+          "answers": [
+            "Ты свободен в воскресенье?"
+          ],
+          "options": [
+            "Ты свободен в воскресенье?",
+            "Ты свободен в субботу?",
+            "Который час?"
+          ],
+          "translit": "Ty svoboden v voskresene?"
+        }
+      ]
+    },
+    {
+      "id": "ru-a1-09",
+      "minutes": 8,
+      "dialogue": [
+        {
+          "id": "ru-a1-09-d1",
+          "speaker": "Марко",
+          "text": "Добрый вечер, я забронировал столик на двоих.",
+          "translit": "Dobryy vecher, ya zabroniroval stolik na dvoikh."
+        },
+        {
+          "id": "ru-a1-09-d2",
+          "speaker": "Официант",
+          "text": "Проходите, пожалуйста. Вот меню.",
+          "translit": "Prokhodite, pozhaluysta. Vot menyu."
+        },
+        {
+          "id": "ru-a1-09-d3",
+          "speaker": "Официант",
+          "text": "Что будете заказывать?",
+          "translit": "Chto budete zakazyvat?"
+        },
+        {
+          "id": "ru-a1-09-d4",
+          "speaker": "Марко",
+          "text": "Мне суп и салат.",
+          "translit": "Mne sup i salat."
+        },
+        {
+          "id": "ru-a1-09-d5",
+          "speaker": "Марко",
+          "text": "Счёт, пожалуйста.",
+          "translit": "Schyot, pozhaluysta."
+        },
+        {
+          "id": "ru-a1-09-d6",
+          "speaker": "Официант",
+          "text": "Сейчас принесу!",
+          "translit": "Seychas prinesu!"
+        }
+      ],
+      "vocabulary": [
+        {
+          "id": "ru-a1-09-v1",
+          "text": "меню",
+          "translit": "menyu",
+          "accept": [
+            "menyu"
+          ]
+        },
+        {
+          "id": "ru-a1-09-v2",
+          "text": "суп",
+          "translit": "sup",
+          "accept": [
+            "sup"
+          ]
+        },
+        {
+          "id": "ru-a1-09-v3",
+          "text": "рыба",
+          "translit": "ryba",
+          "accept": [
+            "ryba"
+          ]
+        },
+        {
+          "id": "ru-a1-09-v4",
+          "text": "десерт",
+          "translit": "desert",
+          "accept": [
+            "desert"
+          ]
+        },
+        {
+          "id": "ru-a1-09-v5",
+          "text": "очень вкусно",
+          "translit": "ochen vkusno",
+          "accept": [
+            "ochen vkusno"
+          ]
+        },
+        {
+          "id": "ru-a1-09-v6",
+          "text": "столик",
+          "translit": "stolik",
+          "accept": [
+            "stolik"
+          ]
+        }
+      ],
+      "exercises": [
+        {
+          "id": "ru-a1-09-e1",
+          "type": "listen",
+          "item": "ru-a1-09-v5",
+          "options": [
+            "ru-a1-09-v5",
+            "ru-a1-09-v2",
+            "ru-a1-09-v3"
+          ]
+        },
+        {
+          "id": "ru-a1-09-e2",
+          "type": "choice",
+          "item": "ru-a1-09-d3",
+          "direction": "toSource",
+          "options": [
+            "ru-a1-09-d3",
+            "ru-a1-09-d2",
+            "ru-a1-09-d5"
+          ]
+        },
+        {
+          "id": "ru-a1-09-e3",
+          "type": "cloze",
+          "item": "ru-a1-09-d1",
+          "gap": "забронировал",
+          "options": [
+            "забронировал",
+            "забронирую",
+            "бронь"
+          ]
+        },
+        {
+          "id": "ru-a1-09-e4",
+          "type": "order",
+          "item": "ru-a1-09-d4",
+          "segments": [
+            "Мне",
+            "суп",
+            "и",
+            "салат."
+          ],
+          "extra": [
+            "я"
+          ]
+        },
+        {
+          "id": "ru-a1-09-e5",
+          "type": "choice",
+          "item": "ru-a1-09-v3",
+          "direction": "toTarget",
+          "options": [
+            "ru-a1-09-v3",
+            "ru-a1-09-v4",
+            "ru-a1-09-v6"
+          ]
+        },
+        {
+          "id": "ru-a1-09-e6",
+          "type": "write",
+          "item": "ru-a1-09-v2"
+        },
+        {
+          "id": "ru-a1-09-e7",
+          "type": "situation",
+          "mode": "choice",
+          "answers": [
+            "Счёт, пожалуйста."
+          ],
+          "options": [
+            "Счёт, пожалуйста.",
+            "Меню, пожалуйста.",
+            "Суп, пожалуйста."
+          ],
+          "translit": "Schyot, pozhaluysta."
+        }
+      ]
+    },
+    {
+      "id": "ru-a1-10",
+      "minutes": 6,
+      "dialogue": [
+        {
+          "id": "ru-a1-10-d1",
+          "speaker": "Маша",
+          "text": "Что ты делаешь на выходных?",
+          "translit": "Chto ty delaesh na vykhodnykh?"
+        },
+        {
+          "id": "ru-a1-10-d2",
+          "speaker": "Марко",
+          "text": "В субботу я играю в футбол.",
+          "translit": "V subbotu ya igrayu v futbol."
+        },
+        {
+          "id": "ru-a1-10-d3",
+          "speaker": "Марко",
+          "text": "В воскресенье я читаю книгу.",
+          "translit": "V voskresene ya chitayu knigu."
+        },
+        {
+          "id": "ru-a1-10-d4",
+          "speaker": "Маша",
+          "text": "А я хожу в бассейн с сестрой.",
+          "translit": "A ya khozhu v basseyn s sestroy."
+        },
+        {
+          "id": "ru-a1-10-d5",
+          "speaker": "Марко",
+          "text": "Ты любишь плавать?",
+          "translit": "Ty lyubish plavat?"
+        },
+        {
+          "id": "ru-a1-10-d6",
+          "speaker": "Маша",
+          "text": "Да, очень!",
+          "translit": "Da, ochen!"
+        }
+      ],
+      "vocabulary": [
+        {
+          "id": "ru-a1-10-v1",
+          "text": "футбол",
+          "translit": "futbol",
+          "accept": [
+            "futbol"
+          ]
+        },
+        {
+          "id": "ru-a1-10-v2",
+          "text": "книга",
+          "translit": "kniga",
+          "accept": [
+            "kniga"
+          ]
+        },
+        {
+          "id": "ru-a1-10-v3",
+          "text": "музыка",
+          "translit": "muzyka",
+          "accept": [
+            "muzyka"
+          ]
+        },
+        {
+          "id": "ru-a1-10-v4",
+          "text": "готовить",
+          "translit": "gotovit",
+          "accept": [
+            "gotovit"
+          ]
+        },
+        {
+          "id": "ru-a1-10-v5",
+          "text": "плавать",
+          "translit": "plavat",
+          "accept": [
+            "plavat"
+          ]
+        },
+        {
+          "id": "ru-a1-10-v6",
+          "text": "Я люблю музыку.",
+          "translit": "Ya lyublyu muzyku.",
+          "accept": [
+            "Ya lyublyu muzyku."
+          ]
+        }
+      ],
+      "exercises": [
+        {
+          "id": "ru-a1-10-e1",
+          "type": "listen",
+          "item": "ru-a1-10-v3",
+          "options": [
+            "ru-a1-10-v1",
+            "ru-a1-10-v2",
+            "ru-a1-10-v3"
+          ]
+        },
+        {
+          "id": "ru-a1-10-e2",
+          "type": "choice",
+          "item": "ru-a1-10-d1",
+          "direction": "toSource",
+          "options": [
+            "ru-a1-10-d1",
+            "ru-a1-10-d4",
+            "ru-a1-10-d5"
+          ]
+        },
+        {
+          "id": "ru-a1-10-e3",
+          "type": "cloze",
+          "item": "ru-a1-10-d2",
+          "gap": "играю",
+          "options": [
+            "играю",
+            "читаю",
+            "делаю"
+          ]
+        },
+        {
+          "id": "ru-a1-10-e4",
+          "type": "order",
+          "item": "ru-a1-10-d3",
+          "segments": [
+            "В",
+            "воскресенье",
+            "я",
+            "читаю",
+            "книгу."
+          ],
+          "extra": [
+            "книга"
+          ]
+        },
+        {
+          "id": "ru-a1-10-e5",
+          "type": "choice",
+          "item": "ru-a1-10-v5",
+          "direction": "toTarget",
+          "options": [
+            "ru-a1-10-v5",
+            "ru-a1-10-v4",
+            "ru-a1-10-v2"
+          ]
+        },
+        {
+          "id": "ru-a1-10-e6",
+          "type": "write",
+          "item": "ru-a1-10-v2"
+        },
+        {
+          "id": "ru-a1-10-e7",
+          "type": "situation",
+          "mode": "choice",
+          "answers": [
+            "Я люблю готовить."
+          ],
+          "options": [
+            "Я люблю готовить.",
+            "Я люблю плавать.",
+            "Я читаю книгу."
+          ],
+          "translit": "Ya lyublyu gotovit."
+        }
+      ]
+    }
+  ]
+}

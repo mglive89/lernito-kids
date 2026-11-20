@@ -1,0 +1,399 @@
+{
+  "format": 1,
+  "id": "ar-a1.de",
+  "content": "ar-a1",
+  "source": "de",
+  "target": "ar",
+  "version": "1.0.0",
+  "quality": "unreviewed",
+  "course": {
+    "title": "Arabisch A1 – Alltag in Ägypten",
+    "description": "Zehn kurze Lektionen zu echten Situationen: sich vorstellen, einkaufen, im Café, am Bahnhof, beim Arzt, im Restaurant und in der Freizeit."
+  },
+  "lessons": {
+    "ar-a1-01": {
+      "title": "Hallo! Ich stelle mich vor",
+      "goal": "Begrüßen, sagen, wie du heißt und woher du kommst."
+    },
+    "ar-a1-02": {
+      "title": "Auf dem Markt",
+      "goal": "Brot und Obst kaufen und fragen, was es kostet."
+    },
+    "ar-a1-03": {
+      "title": "Im Café",
+      "goal": "Getränke bestellen und bezahlen."
+    },
+    "ar-a1-04": {
+      "title": "Im Supermarkt",
+      "goal": "Fragen, wo es etwas gibt, und die Antwort verstehen."
+    },
+    "ar-a1-05": {
+      "title": "Nach dem Weg fragen",
+      "goal": "Nach dem Weg fragen und einfache Wegbeschreibungen verstehen."
+    },
+    "ar-a1-06": {
+      "title": "Am Bahnhof",
+      "goal": "Eine Fahrkarte kaufen und fragen, von welchem Gleis der Zug fährt."
+    },
+    "ar-a1-07": {
+      "title": "Beim Arzt",
+      "goal": "Sagen, was dir fehlt, und einen Rat verstehen."
+    },
+    "ar-a1-08": {
+      "title": "Hast du am Samstag Zeit?",
+      "goal": "Etwas vorschlagen, Wochentage und Uhrzeit."
+    },
+    "ar-a1-09": {
+      "title": "Im Restaurant",
+      "goal": "Sagen, dass du reserviert hast, bestellen und um die Rechnung bitten."
+    },
+    "ar-a1-10": {
+      "title": "Das Wochenende",
+      "goal": "Über deine Freizeit sprechen und sagen, was du magst."
+    }
+  },
+  "items": {
+    "ar-a1-01-d1": "Hallo! Ich bin Sara.",
+    "ar-a1-01-d2": "Hallo, Sara! Ich heiße Marco.",
+    "ar-a1-01-d3": "Woher kommst du?",
+    "ar-a1-01-d4": "Ich komme aus Italien. Und du?",
+    "ar-a1-01-d5": "Ich komme aus Luxor. Freut mich!",
+    "ar-a1-01-d6": "Freut mich auch! Bis bald.",
+    "ar-a1-01-v1": "Guten Morgen",
+    "ar-a1-01-v2": "Guten Abend",
+    "ar-a1-01-v3": "Auf Wiedersehen",
+    "ar-a1-01-v4": "Wie heißt du?",
+    "ar-a1-01-v5": "Danke",
+    "ar-a1-01-v6": "Bitte",
+    "ar-a1-02-d1": "Guten Tag! Was möchten Sie?",
+    "ar-a1-02-d2": "Ich möchte ein Brot, bitte.",
+    "ar-a1-02-d3": "Bitte schön. Noch etwas?",
+    "ar-a1-02-d4": "Ja, auch drei Äpfel.",
+    "ar-a1-02-d5": "Was kostet das?",
+    "ar-a1-02-d6": "Das macht zwanzig ägyptische Pfund.",
+    "ar-a1-02-v1": "das Brot",
+    "ar-a1-02-v2": "der Apfel",
+    "ar-a1-02-v3": "der Käse",
+    "ar-a1-02-v4": "der Kuchen",
+    "ar-a1-02-v5": "Was kostet das?",
+    "ar-a1-02-v6": "drei",
+    "ar-a1-03-d1": "Guten Tag! Was nehmen Sie?",
+    "ar-a1-03-d2": "Einen Tee, bitte.",
+    "ar-a1-03-d3": "Mit Milch oder mit Zitrone?",
+    "ar-a1-03-d4": "Mit Zitrone. Und ein Glas Wasser.",
+    "ar-a1-03-d5": "Kann ich bitte bezahlen?",
+    "ar-a1-03-d6": "Natürlich. Das macht dreißig ägyptische Pfund.",
+    "ar-a1-03-v1": "der Kaffee",
+    "ar-a1-03-v2": "der Tee",
+    "ar-a1-03-v3": "das Wasser",
+    "ar-a1-03-v4": "die Milch",
+    "ar-a1-03-v5": "der Orangensaft",
+    "ar-a1-03-v6": "die Rechnung",
+    "ar-a1-04-d1": "Entschuldigung, wo ist der Reis?",
+    "ar-a1-04-d2": "Der Reis ist dort, rechts.",
+    "ar-a1-04-d3": "Und die Eier?",
+    "ar-a1-04-d4": "Die sind neben der Milch.",
+    "ar-a1-04-d5": "Vielen Dank!",
+    "ar-a1-04-d6": "Gern geschehen!",
+    "ar-a1-04-v1": "der Reis",
+    "ar-a1-04-v2": "die Eier",
+    "ar-a1-04-v3": "das Obst",
+    "ar-a1-04-v4": "rechts",
+    "ar-a1-04-v5": "links",
+    "ar-a1-04-v6": "die Kasse",
+    "ar-a1-05-d1": "Entschuldigung, wo ist der Bahnhof?",
+    "ar-a1-05-d2": "Gehen Sie immer geradeaus.",
+    "ar-a1-05-d3": "Dann biegen Sie links ab.",
+    "ar-a1-05-d4": "Ist es weit?",
+    "ar-a1-05-d5": "Nein, es sind fünf Minuten zu Fuß.",
+    "ar-a1-05-d6": "Danke, auf Wiedersehen!",
+    "ar-a1-05-v1": "der Bahnhof",
+    "ar-a1-05-v2": "das Museum",
+    "ar-a1-05-v3": "geradeaus",
+    "ar-a1-05-v4": "nah",
+    "ar-a1-05-v5": "weit",
+    "ar-a1-05-v6": "die Bushaltestelle",
+    "ar-a1-06-d1": "Eine Fahrkarte nach Alexandria, bitte.",
+    "ar-a1-06-d2": "Einfach oder hin und zurück?",
+    "ar-a1-06-d3": "Hin und zurück.",
+    "ar-a1-06-d4": "Von welchem Gleis fährt der Zug?",
+    "ar-a1-06-d5": "Von Gleis drei, um zehn Uhr.",
+    "ar-a1-06-d6": "Super, danke!",
+    "ar-a1-06-v1": "der Zug",
+    "ar-a1-06-v2": "die Fahrkarte",
+    "ar-a1-06-v3": "das Gleis",
+    "ar-a1-06-v4": "der Bus",
+    "ar-a1-06-v5": "heute",
+    "ar-a1-06-v6": "morgen",
+    "ar-a1-07-d1": "Guten Tag. Was fehlt Ihnen?",
+    "ar-a1-07-d2": "Mir tut der Kopf weh.",
+    "ar-a1-07-d3": "Haben Sie auch Fieber?",
+    "ar-a1-07-d4": "Ja, ein bisschen. Und ich bin sehr müde.",
+    "ar-a1-07-d5": "Trinken Sie viel Wasser und ruhen Sie sich aus.",
+    "ar-a1-07-d6": "Vielen Dank.",
+    "ar-a1-07-v1": "der Kopf",
+    "ar-a1-07-v2": "der Bauch",
+    "ar-a1-07-v3": "das Fieber",
+    "ar-a1-07-v4": "das Medikament",
+    "ar-a1-07-v5": "krank",
+    "ar-a1-07-v6": "Mir geht es gut.",
+    "ar-a1-08-d1": "Hast du am Samstag Zeit?",
+    "ar-a1-08-d2": "Ja! Was machen wir?",
+    "ar-a1-08-d3": "Gehen wir ins Kino?",
+    "ar-a1-08-d4": "Gute Idee! Um wie viel Uhr?",
+    "ar-a1-08-d5": "Um sieben Uhr abends.",
+    "ar-a1-08-d6": "Okay, bis Samstag!",
+    "ar-a1-08-v1": "Montag",
+    "ar-a1-08-v2": "Freitag",
+    "ar-a1-08-v3": "Samstag",
+    "ar-a1-08-v4": "Sonntag",
+    "ar-a1-08-v5": "Wie spät ist es?",
+    "ar-a1-08-v6": "heute Abend",
+    "ar-a1-09-d1": "Guten Abend, ich habe einen Tisch für zwei reserviert.",
+    "ar-a1-09-d2": "Bitte schön, hier ist die Speisekarte.",
+    "ar-a1-09-d3": "Was möchten Sie?",
+    "ar-a1-09-d4": "Für mich die Suppe und einen Salat.",
+    "ar-a1-09-d5": "Die Rechnung, bitte.",
+    "ar-a1-09-d6": "Sofort!",
+    "ar-a1-09-v1": "die Speisekarte",
+    "ar-a1-09-v2": "die Suppe",
+    "ar-a1-09-v3": "der Fisch",
+    "ar-a1-09-v4": "der Nachtisch",
+    "ar-a1-09-v5": "sehr lecker",
+    "ar-a1-09-v6": "der Tisch",
+    "ar-a1-10-d1": "Was machst du am Wochenende?",
+    "ar-a1-10-d2": "Am Samstag spiele ich Fußball.",
+    "ar-a1-10-d3": "Am Sonntag lese ich ein Buch.",
+    "ar-a1-10-d4": "Ich gehe mit meiner Schwester ins Schwimmbad.",
+    "ar-a1-10-d5": "Schwimmst du gern?",
+    "ar-a1-10-d6": "Ja, sehr gern!",
+    "ar-a1-10-v1": "der Fußball",
+    "ar-a1-10-v2": "das Buch",
+    "ar-a1-10-v3": "die Musik",
+    "ar-a1-10-v4": "kochen",
+    "ar-a1-10-v5": "schwimmen",
+    "ar-a1-10-v6": "Ich mag Musik."
+  },
+  "exercises": {
+    "ar-a1-01-e1": {
+      "explain": "„مع السلامة“ bedeutet „Auf Wiedersehen“. Man liest: maʿa as-salāma."
+    },
+    "ar-a1-01-e2": {
+      "explain": "„من أين أنت؟“ bedeutet „Woher kommst du?“. Man liest: min ayna anta?"
+    },
+    "ar-a1-01-e3": {
+      "explain": "Der ganze Satz heißt „أهلا يا سارة! اسمي ماركو“ = „Hallo, Sara! Ich heiße Marco“. „اسمي“ (ismī) = „mein Name“: das -ī am Ende heißt „mein“. „اسمك“ (ismuk) = „dein Name“."
+    },
+    "ar-a1-01-e4": {
+      "explain": "Richtige Reihenfolge: „أنا من إيطاليا. وأنتِ؟“ = „Ich komme aus Italien. Und du?“. Arabisch schreibt man von rechts nach links. „من“ (min) = „aus“."
+    },
+    "ar-a1-01-e5": {
+      "explain": "„صباح الخير“ bedeutet „Guten Morgen“. Man liest: ṣabāḥ al-khayr."
+    },
+    "ar-a1-01-e6": {
+      "explain": "„Danke“ heißt „شكرا“. Du kannst auch in lateinischen Buchstaben schreiben: shukran."
+    },
+    "ar-a1-01-e7": {
+      "explain": "Du kannst sagen: „اسمي جوليا“.",
+      "prompt": "Eine neue Mitschülerin fragt dich, wie du heißt. Antworte, dass du Giulia heißt."
+    },
+    "ar-a1-02-e1": {
+      "explain": "„التفاحة“ bedeutet „der Apfel“. Man liest: at-tuffāḥa."
+    },
+    "ar-a1-02-e2": {
+      "explain": "„أريد خبزا، من فضلك“ bedeutet „Ich möchte ein Brot, bitte“. Man liest: urīdu khubzan, min faḍlik."
+    },
+    "ar-a1-02-e3": {
+      "explain": "Der ganze Satz heißt „أريد خبزا، من فضلك“ = „Ich möchte ein Brot, bitte“. „أريد“ (urīdu) = „ich möchte“."
+    },
+    "ar-a1-02-e4": {
+      "explain": "Richtige Reihenfolge: „أريد خبزا، من فضلك“ = „Ich möchte ein Brot, bitte“."
+    },
+    "ar-a1-02-e5": {
+      "explain": "„الكعكة“ bedeutet „der Kuchen“. Man liest: al-kaʿka."
+    },
+    "ar-a1-02-e6": {
+      "explain": "„das Brot“ heißt „الخبز“. Du kannst auch in lateinischen Buchstaben schreiben: al-khubz."
+    },
+    "ar-a1-02-e7": {
+      "explain": "Du kannst sagen: „أريد خبزا، من فضلك“.",
+      "prompt": "Du bist auf dem Markt und möchtest ein Brot kaufen. Was sagst du zur Verkäuferin?"
+    },
+    "ar-a1-03-e1": {
+      "explain": "„الشاي“ bedeutet „der Tee“. Man liest: ash-shāy."
+    },
+    "ar-a1-03-e2": {
+      "explain": "„بالحليب أم بالليمون؟“ bedeutet „Mit Milch oder mit Zitrone?“. Man liest: bil-ḥalīb am bil-laymūn?"
+    },
+    "ar-a1-03-e3": {
+      "explain": "Der ganze Satz heißt „بالحليب أم بالليمون؟“ = „Mit Milch oder mit Zitrone?“. „أم“ (am) = „oder“ in Fragen mit zwei Möglichkeiten; „بـ“ (bi-) = „mit“."
+    },
+    "ar-a1-03-e4": {
+      "explain": "Richtige Reihenfolge: „هل يمكنني أن أدفع؟“ = „Kann ich bitte bezahlen?“. „هل“ (hal) am Anfang macht den Satz zur Frage."
+    },
+    "ar-a1-03-e5": {
+      "explain": "„الماء“ bedeutet „das Wasser“. Man liest: al-māʾ."
+    },
+    "ar-a1-03-e6": {
+      "explain": "„die Milch“ heißt „الحليب“. Du kannst auch in lateinischen Buchstaben schreiben: al-ḥalīb."
+    },
+    "ar-a1-03-e7": {
+      "explain": "Du kannst sagen: „قهوة، من فضلك“.",
+      "prompt": "Du bist im Café und möchtest einen Kaffee bestellen. Was sagst du?"
+    },
+    "ar-a1-04-e1": {
+      "explain": "„على اليمين“ bedeutet „rechts“. Man liest: ʿalā al-yamīn."
+    },
+    "ar-a1-04-e2": {
+      "explain": "„عفوا، أين الأرز؟“ bedeutet „Entschuldigung, wo ist der Reis?“. Man liest: ʿafwan, ayna al-aruzz?"
+    },
+    "ar-a1-04-e3": {
+      "explain": "Der ganze Satz heißt „عفوا، أين الأرز؟“ = „Entschuldigung, wo ist der Reis?“. „أين“ (ayna) = wo, „ماذا“ (mādhā) = was, „من“ (man) = wer."
+    },
+    "ar-a1-04-e4": {
+      "explain": "Richtige Reihenfolge: „الأرز هناك، على اليمين“ = „Der Reis ist dort, rechts“. „عفوا“ (ʿafwan) heißt „Entschuldigung“, aber auch „gern geschehen“."
+    },
+    "ar-a1-04-e5": {
+      "explain": "„على اليسار“ bedeutet „links“. Man liest: ʿalā al-yasār."
+    },
+    "ar-a1-04-e6": {
+      "explain": "„der Reis“ heißt „الأرز“. Du kannst auch in lateinischen Buchstaben schreiben: al-aruzz."
+    },
+    "ar-a1-04-e7": {
+      "explain": "Du kannst sagen: „عفوا، أين الحليب؟“.",
+      "prompt": "Du findest die Milch nicht. Frag einen Mitarbeiter, wo sie ist."
+    },
+    "ar-a1-05-e1": {
+      "explain": "„إلى الأمام“ bedeutet „geradeaus“. Man liest: ilā al-amām."
+    },
+    "ar-a1-05-e2": {
+      "explain": "„هل هي بعيدة؟“ bedeutet „Ist es weit?“. Man liest: hal hiya baʿīda?"
+    },
+    "ar-a1-05-e3": {
+      "explain": "Der ganze Satz heißt „ثم انعطف يسارا“ = „Dann biegen Sie links ab“. „يسارا“ (yasāran) = nach links, „يمينا“ (yamīnan) = nach rechts."
+    },
+    "ar-a1-05-e4": {
+      "explain": "Richtige Reihenfolge: „لا، خمس دقائق مشيا“ = „Nein, es sind fünf Minuten zu Fuß“. „مشيا“ (mashyan) = zu Fuß."
+    },
+    "ar-a1-05-e5": {
+      "explain": "„قريب“ bedeutet „nah“. Man liest: qarīb."
+    },
+    "ar-a1-05-e6": {
+      "explain": "„das Museum“ heißt „المتحف“. Du kannst auch in lateinischen Buchstaben schreiben: al-matḥaf."
+    },
+    "ar-a1-05-e7": {
+      "explain": "Du kannst sagen: „عفوا، أين المتحف؟“.",
+      "prompt": "Du suchst das Museum. Frag eine Passantin, wo es ist."
+    },
+    "ar-a1-06-e1": {
+      "explain": "„التذكرة“ bedeutet „die Fahrkarte“. Man liest: at-tadhkira."
+    },
+    "ar-a1-06-e2": {
+      "explain": "„ذهاب فقط أم ذهاب وعودة؟“ bedeutet „Einfach oder hin und zurück?“. Man liest: dhahāb faqaṭ am dhahāb wa-ʿawda?"
+    },
+    "ar-a1-06-e3": {
+      "explain": "Der ganze Satz heißt „من أي رصيف يغادر القطار؟“ = „Von welchem Gleis fährt der Zug?“. „أي“ (ayy) = „welcher“."
+    },
+    "ar-a1-06-e4": {
+      "explain": "Richtige Reihenfolge: „تذكرة إلى الإسكندرية، من فضلك“ = „Eine Fahrkarte nach Alexandria, bitte“. „إلى“ (ilā) = „nach“: إلى الإسكندرية = nach Alexandria."
+    },
+    "ar-a1-06-e5": {
+      "explain": "„القطار“ bedeutet „der Zug“. Man liest: al-qiṭār."
+    },
+    "ar-a1-06-e6": {
+      "explain": "„heute“ heißt „اليوم“. Du kannst auch in lateinischen Buchstaben schreiben: al-yawm."
+    },
+    "ar-a1-06-e7": {
+      "explain": "Du kannst sagen: „تذكرة إلى الإسكندرية، من فضلك“.",
+      "prompt": "Am Schalter möchtest du eine Fahrkarte nach Alexandria. Was sagst du?"
+    },
+    "ar-a1-07-e1": {
+      "explain": "„الرأس“ bedeutet „der Kopf“. Man liest: ar-raʾs."
+    },
+    "ar-a1-07-e2": {
+      "explain": "„هل عندك حرارة أيضا؟“ bedeutet „Haben Sie auch Fieber?“. Man liest: hal ʿindak ḥarāra ayḍan?"
+    },
+    "ar-a1-07-e3": {
+      "explain": "Der ganze Satz heißt „عندي صداع“ = „Mir tut der Kopf weh“. „عندي“ (ʿindī) = „ich habe“: عندي صداع = ich habe Kopfschmerzen."
+    },
+    "ar-a1-07-e4": {
+      "explain": "Richtige Reihenfolge: „نعم، قليلا. وأنا متعب جدا“ = „Ja, ein bisschen. Und ich bin sehr müde“."
+    },
+    "ar-a1-07-e5": {
+      "explain": "„الدواء“ bedeutet „das Medikament“. Man liest: ad-dawāʾ."
+    },
+    "ar-a1-07-e6": {
+      "explain": "„der Kopf“ heißt „الرأس“. Du kannst auch in lateinischen Buchstaben schreiben: ar-raʾs."
+    },
+    "ar-a1-07-e7": {
+      "explain": "Du kannst sagen: „عندي ألم في البطن“.",
+      "prompt": "Die Ärztin fragt, was dir fehlt. Sag, dass dir der Bauch wehtut."
+    },
+    "ar-a1-08-e1": {
+      "explain": "„السبت“ bedeutet „Samstag“. Man liest: as-sabt."
+    },
+    "ar-a1-08-e2": {
+      "explain": "„فكرة جيدة! في أي ساعة؟“ bedeutet „Gute Idee! Um wie viel Uhr?“. Man liest: fikra jayyida! fī ayy sāʿa?"
+    },
+    "ar-a1-08-e3": {
+      "explain": "Der ganze Satz heißt „في الساعة السابعة مساء“ = „Um sieben Uhr abends“. „الساعة السابعة“ (as-sāʿa as-sābiʿa) = „sieben Uhr“: bei der Uhrzeit benutzt man die Ordnungszahl („die siebte“)."
+    },
+    "ar-a1-08-e4": {
+      "explain": "Richtige Reihenfolge: „هل أنت متفرغ يوم السبت؟“ = „Hast du am Samstag Zeit?“."
+    },
+    "ar-a1-08-e5": {
+      "explain": "„كم الساعة؟“ bedeutet „Wie spät ist es?“. Man liest: kam as-sāʿa?"
+    },
+    "ar-a1-08-e6": {
+      "explain": "„Sonntag“ heißt „الأحد“. Du kannst auch in lateinischen Buchstaben schreiben: al-aḥad."
+    },
+    "ar-a1-08-e7": {
+      "explain": "Du kannst sagen: „هل أنت متفرغ يوم الأحد؟“.",
+      "prompt": "Du möchtest mit einem Freund ins Kino. Frag ihn, ob er am Sonntag Zeit hat."
+    },
+    "ar-a1-09-e1": {
+      "explain": "„لذيذ جدا“ bedeutet „sehr lecker“. Man liest: ladhīdh jiddan."
+    },
+    "ar-a1-09-e2": {
+      "explain": "„ماذا تطلبون؟“ bedeutet „Was möchten Sie?“. Man liest: mādhā taṭlubūn?"
+    },
+    "ar-a1-09-e3": {
+      "explain": "Der ganze Satz heißt „مساء الخير، حجزت طاولة لشخصين“ = „Guten Abend, ich habe einen Tisch für zwei reserviert“. „حجزتُ“ (ḥajaztu) = „ich habe reserviert“: das -tu am Ende heißt „ich“ in der Vergangenheit."
+    },
+    "ar-a1-09-e4": {
+      "explain": "Richtige Reihenfolge: „الحساب، من فضلك“ = „Die Rechnung, bitte“."
+    },
+    "ar-a1-09-e5": {
+      "explain": "„السمك“ bedeutet „der Fisch“. Man liest: as-samak."
+    },
+    "ar-a1-09-e6": {
+      "explain": "„die Suppe“ heißt „الشوربة“. Du kannst auch in lateinischen Buchstaben schreiben: ash-shūrba."
+    },
+    "ar-a1-09-e7": {
+      "explain": "Du kannst sagen: „الحساب، من فضلك“.",
+      "prompt": "Du bist fertig mit dem Essen. Bitte den Kellner um die Rechnung."
+    },
+    "ar-a1-10-e1": {
+      "explain": "„الموسيقى“ bedeutet „die Musik“. Man liest: al-mūsīqā."
+    },
+    "ar-a1-10-e2": {
+      "explain": "„ماذا تفعل في عطلة نهاية الأسبوع؟“ bedeutet „Was machst du am Wochenende?“. Man liest: mādhā tafʿal fī ʿuṭlat nihāyat al-usbūʿ?"
+    },
+    "ar-a1-10-e3": {
+      "explain": "Der ganze Satz heißt „يوم السبت ألعب كرة القدم“ = „Am Samstag spiele ich Fußball“. „ألعب“ (alʿabu) = „ich spiele“: das a- am Anfang heißt „ich“."
+    },
+    "ar-a1-10-e4": {
+      "explain": "Richtige Reihenfolge: „يوم الأحد أقرأ كتابا“ = „Am Sonntag lese ich ein Buch“."
+    },
+    "ar-a1-10-e5": {
+      "explain": "„السباحة“ bedeutet „schwimmen“. Man liest: as-sibāḥa."
+    },
+    "ar-a1-10-e6": {
+      "explain": "„das Buch“ heißt „الكتاب“. Du kannst auch in lateinischen Buchstaben schreiben: al-kitāb."
+    },
+    "ar-a1-10-e7": {
+      "explain": "Du kannst sagen: „أحب الطبخ“.",
+      "prompt": "Eine neue Freundin fragt, was du gern machst. Antworte, dass du gern kochst."
+    }
+  }
+}

@@ -1,0 +1,399 @@
+{
+  "format": 1,
+  "id": "ro-a1.de",
+  "content": "ro-a1",
+  "source": "de",
+  "target": "ro",
+  "version": "1.0.0",
+  "quality": "unreviewed",
+  "course": {
+    "title": "Rumänisch A1 – Alltag in Rumänien",
+    "description": "Zehn kurze Lektionen zu echten Situationen: sich vorstellen, einkaufen, im Café, am Bahnhof, beim Arzt, im Restaurant und in der Freizeit."
+  },
+  "lessons": {
+    "ro-a1-01": {
+      "title": "Hallo! Ich stelle mich vor",
+      "goal": "Begrüßen, sagen, wie du heißt und woher du kommst."
+    },
+    "ro-a1-02": {
+      "title": "Auf dem Markt",
+      "goal": "Brot und Obst kaufen und fragen, was es kostet."
+    },
+    "ro-a1-03": {
+      "title": "Im Café",
+      "goal": "Getränke bestellen und bezahlen."
+    },
+    "ro-a1-04": {
+      "title": "Im Supermarkt",
+      "goal": "Fragen, wo es etwas gibt, und die Antwort verstehen."
+    },
+    "ro-a1-05": {
+      "title": "Nach dem Weg fragen",
+      "goal": "Nach dem Weg fragen und einfache Wegbeschreibungen verstehen."
+    },
+    "ro-a1-06": {
+      "title": "Am Bahnhof",
+      "goal": "Eine Fahrkarte kaufen und fragen, von welchem Gleis der Zug fährt."
+    },
+    "ro-a1-07": {
+      "title": "Beim Arzt",
+      "goal": "Sagen, was dir fehlt, und einen Rat verstehen."
+    },
+    "ro-a1-08": {
+      "title": "Hast du am Samstag Zeit?",
+      "goal": "Etwas vorschlagen, Wochentage und Uhrzeit."
+    },
+    "ro-a1-09": {
+      "title": "Im Restaurant",
+      "goal": "Sagen, dass du reserviert hast, bestellen und um die Rechnung bitten."
+    },
+    "ro-a1-10": {
+      "title": "Das Wochenende",
+      "goal": "Über deine Freizeit sprechen und sagen, was du magst."
+    }
+  },
+  "items": {
+    "ro-a1-01-d1": "Hallo! Ich bin Ioana.",
+    "ro-a1-01-d2": "Hallo, Ioana! Ich heiße Marco.",
+    "ro-a1-01-d3": "Woher kommst du?",
+    "ro-a1-01-d4": "Ich komme aus Italien. Und du?",
+    "ro-a1-01-d5": "Ich komme aus Cluj. Freut mich!",
+    "ro-a1-01-d6": "Freut mich auch! Bis bald.",
+    "ro-a1-01-v1": "Guten Morgen",
+    "ro-a1-01-v2": "Guten Abend",
+    "ro-a1-01-v3": "Auf Wiedersehen",
+    "ro-a1-01-v4": "Wie heißt du?",
+    "ro-a1-01-v5": "Danke",
+    "ro-a1-01-v6": "Bitte",
+    "ro-a1-02-d1": "Guten Tag! Was möchten Sie?",
+    "ro-a1-02-d2": "Ich möchte ein Brot, bitte.",
+    "ro-a1-02-d3": "Bitte schön. Noch etwas?",
+    "ro-a1-02-d4": "Ja, auch drei Äpfel.",
+    "ro-a1-02-d5": "Was kostet das?",
+    "ro-a1-02-d6": "Das macht zehn Lei.",
+    "ro-a1-02-v1": "das Brot",
+    "ro-a1-02-v2": "der Apfel",
+    "ro-a1-02-v3": "der Käse",
+    "ro-a1-02-v4": "der Kuchen",
+    "ro-a1-02-v5": "Was kostet das?",
+    "ro-a1-02-v6": "drei",
+    "ro-a1-03-d1": "Guten Tag! Was nehmen Sie?",
+    "ro-a1-03-d2": "Einen Tee, bitte.",
+    "ro-a1-03-d3": "Mit Milch oder mit Zitrone?",
+    "ro-a1-03-d4": "Mit Zitrone. Und ein Glas Wasser.",
+    "ro-a1-03-d5": "Kann ich bitte bezahlen?",
+    "ro-a1-03-d6": "Natürlich. Das macht fünfzehn Lei.",
+    "ro-a1-03-v1": "der Kaffee",
+    "ro-a1-03-v2": "der Tee",
+    "ro-a1-03-v3": "das Wasser",
+    "ro-a1-03-v4": "die Milch",
+    "ro-a1-03-v5": "der Orangensaft",
+    "ro-a1-03-v6": "die Rechnung",
+    "ro-a1-04-d1": "Entschuldigung, wo ist der Reis?",
+    "ro-a1-04-d2": "Der Reis ist dort, rechts.",
+    "ro-a1-04-d3": "Und die Eier?",
+    "ro-a1-04-d4": "Die sind neben der Milch.",
+    "ro-a1-04-d5": "Vielen Dank!",
+    "ro-a1-04-d6": "Gern geschehen!",
+    "ro-a1-04-v1": "der Reis",
+    "ro-a1-04-v2": "die Eier",
+    "ro-a1-04-v3": "das Obst",
+    "ro-a1-04-v4": "rechts",
+    "ro-a1-04-v5": "links",
+    "ro-a1-04-v6": "die Kasse",
+    "ro-a1-05-d1": "Entschuldigung, wo ist der Bahnhof?",
+    "ro-a1-05-d2": "Gehen Sie immer geradeaus.",
+    "ro-a1-05-d3": "Dann biegen Sie links ab.",
+    "ro-a1-05-d4": "Ist es weit?",
+    "ro-a1-05-d5": "Nein, es sind fünf Minuten zu Fuß.",
+    "ro-a1-05-d6": "Danke, auf Wiedersehen!",
+    "ro-a1-05-v1": "der Bahnhof",
+    "ro-a1-05-v2": "das Museum",
+    "ro-a1-05-v3": "geradeaus",
+    "ro-a1-05-v4": "nah",
+    "ro-a1-05-v5": "weit",
+    "ro-a1-05-v6": "die Bushaltestelle",
+    "ro-a1-06-d1": "Eine Fahrkarte nach Brașov, bitte.",
+    "ro-a1-06-d2": "Einfach oder hin und zurück?",
+    "ro-a1-06-d3": "Hin und zurück.",
+    "ro-a1-06-d4": "Von welchem Gleis fährt der Zug?",
+    "ro-a1-06-d5": "Von Gleis drei, um zehn Uhr.",
+    "ro-a1-06-d6": "Super, danke!",
+    "ro-a1-06-v1": "der Zug",
+    "ro-a1-06-v2": "die Fahrkarte",
+    "ro-a1-06-v3": "das Gleis",
+    "ro-a1-06-v4": "der Bus",
+    "ro-a1-06-v5": "heute",
+    "ro-a1-06-v6": "morgen",
+    "ro-a1-07-d1": "Guten Tag. Was fehlt Ihnen?",
+    "ro-a1-07-d2": "Mir tut der Kopf weh.",
+    "ro-a1-07-d3": "Haben Sie auch Fieber?",
+    "ro-a1-07-d4": "Ja, ein bisschen. Und ich bin sehr müde.",
+    "ro-a1-07-d5": "Trinken Sie viel Wasser und ruhen Sie sich aus.",
+    "ro-a1-07-d6": "Vielen Dank.",
+    "ro-a1-07-v1": "der Kopf",
+    "ro-a1-07-v2": "der Bauch",
+    "ro-a1-07-v3": "das Fieber",
+    "ro-a1-07-v4": "das Medikament",
+    "ro-a1-07-v5": "krank",
+    "ro-a1-07-v6": "Mir geht es gut.",
+    "ro-a1-08-d1": "Hast du am Samstag Zeit?",
+    "ro-a1-08-d2": "Ja! Was machen wir?",
+    "ro-a1-08-d3": "Gehen wir ins Kino?",
+    "ro-a1-08-d4": "Gute Idee! Um wie viel Uhr?",
+    "ro-a1-08-d5": "Um sieben Uhr abends.",
+    "ro-a1-08-d6": "Okay, bis Samstag!",
+    "ro-a1-08-v1": "Montag",
+    "ro-a1-08-v2": "Freitag",
+    "ro-a1-08-v3": "Samstag",
+    "ro-a1-08-v4": "Sonntag",
+    "ro-a1-08-v5": "Wie spät ist es?",
+    "ro-a1-08-v6": "heute Abend",
+    "ro-a1-09-d1": "Guten Abend, ich habe einen Tisch für zwei reserviert.",
+    "ro-a1-09-d2": "Bitte schön, hier ist die Speisekarte.",
+    "ro-a1-09-d3": "Was möchten Sie?",
+    "ro-a1-09-d4": "Für mich die Suppe und einen Salat.",
+    "ro-a1-09-d5": "Die Rechnung, bitte.",
+    "ro-a1-09-d6": "Sofort!",
+    "ro-a1-09-v1": "die Speisekarte",
+    "ro-a1-09-v2": "die Suppe",
+    "ro-a1-09-v3": "der Fisch",
+    "ro-a1-09-v4": "der Nachtisch",
+    "ro-a1-09-v5": "sehr lecker",
+    "ro-a1-09-v6": "der Tisch",
+    "ro-a1-10-d1": "Was machst du am Wochenende?",
+    "ro-a1-10-d2": "Am Samstag spiele ich Fußball.",
+    "ro-a1-10-d3": "Am Sonntag lese ich ein Buch.",
+    "ro-a1-10-d4": "Ich gehe mit meiner Schwester ins Schwimmbad.",
+    "ro-a1-10-d5": "Schwimmst du gern?",
+    "ro-a1-10-d6": "Ja, sehr gern!",
+    "ro-a1-10-v1": "der Fußball",
+    "ro-a1-10-v2": "das Buch",
+    "ro-a1-10-v3": "die Musik",
+    "ro-a1-10-v4": "kochen",
+    "ro-a1-10-v5": "schwimmen",
+    "ro-a1-10-v6": "Ich mag Musik."
+  },
+  "exercises": {
+    "ro-a1-01-e1": {
+      "explain": "„La revedere“ bedeutet „Auf Wiedersehen“."
+    },
+    "ro-a1-01-e2": {
+      "explain": "„De unde ești?“ bedeutet „Woher kommst du?“."
+    },
+    "ro-a1-01-e3": {
+      "explain": "Der ganze Satz heißt „Bună, Ioana! Mă numesc Marco“ = „Hallo, Ioana! Ich heiße Marco“. „Mă numesc …“ = „Ich heiße …“; „Cum te numești?“ = „Wie heißt du?“"
+    },
+    "ro-a1-01-e4": {
+      "explain": "Richtige Reihenfolge: „Sunt din Italia. Și tu?“ = „Ich komme aus Italien. Und du?“. Für die Herkunft benutzt man „din“: sunt din Italia."
+    },
+    "ro-a1-01-e5": {
+      "explain": "„Bună dimineața“ bedeutet „Guten Morgen“."
+    },
+    "ro-a1-01-e6": {
+      "explain": "„Danke“ heißt „Mulțumesc“. Groß- und Kleinschreibung zählt nicht, aber jeder Buchstabe und jedes Zeichen."
+    },
+    "ro-a1-01-e7": {
+      "explain": "Du kannst sagen: „Mă numesc Giulia“ oder „Sunt Giulia“ oder „Numele meu este Giulia“.",
+      "prompt": "Eine neue Mitschülerin fragt dich, wie du heißt. Antworte, dass du Giulia heißt."
+    },
+    "ro-a1-02-e1": {
+      "explain": "„mărul“ bedeutet „der Apfel“."
+    },
+    "ro-a1-02-e2": {
+      "explain": "„Aș vrea o pâine, vă rog“ bedeutet „Ich möchte ein Brot, bitte“."
+    },
+    "ro-a1-02-e3": {
+      "explain": "Der ganze Satz heißt „Aș vrea o pâine, vă rog“ = „Ich möchte ein Brot, bitte“. „Aș vrea …“ = „Ich möchte …“: die höfliche Bitte."
+    },
+    "ro-a1-02-e4": {
+      "explain": "Richtige Reihenfolge: „Da, și trei mere“ = „Ja, auch drei Äpfel“. Im Rumänischen hängt der Artikel hinten: măr = Apfel, mărul = der Apfel; mere = Äpfel."
+    },
+    "ro-a1-02-e5": {
+      "explain": "„prăjitura“ bedeutet „der Kuchen“."
+    },
+    "ro-a1-02-e6": {
+      "explain": "„das Brot“ heißt „pâinea“. Groß- und Kleinschreibung zählt nicht, aber jeder Buchstabe und jedes Zeichen."
+    },
+    "ro-a1-02-e7": {
+      "explain": "Du kannst sagen: „Aș vrea o pâine, vă rog“ oder „O pâine, vă rog“ oder „Aș dori o pâine, vă rog“.",
+      "prompt": "Du bist auf dem Markt und möchtest ein Brot kaufen. Was sagst du zur Verkäuferin?"
+    },
+    "ro-a1-03-e1": {
+      "explain": "„ceaiul“ bedeutet „der Tee“."
+    },
+    "ro-a1-03-e2": {
+      "explain": "„Cu lapte sau cu lămâie?“ bedeutet „Mit Milch oder mit Zitrone?“."
+    },
+    "ro-a1-03-e3": {
+      "explain": "Der ganze Satz heißt „Cu lapte sau cu lămâie?“ = „Mit Milch oder mit Zitrone?“. „sau“ = „oder“, „și“ = „und“, „dar“ = „aber“."
+    },
+    "ro-a1-03-e4": {
+      "explain": "Richtige Reihenfolge: „Pot să plătesc, vă rog?“ = „Kann ich bitte bezahlen?“. Nach „pot“ (ich kann) steht „să“ + Verb: pot să plătesc."
+    },
+    "ro-a1-03-e5": {
+      "explain": "„apa“ bedeutet „das Wasser“."
+    },
+    "ro-a1-03-e6": {
+      "explain": "„die Milch“ heißt „laptele“. Groß- und Kleinschreibung zählt nicht, aber jeder Buchstabe und jedes Zeichen."
+    },
+    "ro-a1-03-e7": {
+      "explain": "Du kannst sagen: „O cafea, vă rog“ oder „Aș vrea o cafea, vă rog“ oder „Aș dori o cafea, vă rog“.",
+      "prompt": "Du bist im Café und möchtest einen Kaffee bestellen. Was sagst du?"
+    },
+    "ro-a1-04-e1": {
+      "explain": "„în dreapta“ bedeutet „rechts“."
+    },
+    "ro-a1-04-e2": {
+      "explain": "„Scuzați-mă, unde este orezul?“ bedeutet „Entschuldigung, wo ist der Reis?“."
+    },
+    "ro-a1-04-e3": {
+      "explain": "Der ganze Satz heißt „Scuzați-mă, unde este orezul?“ = „Entschuldigung, wo ist der Reis?“. „unde“ = wo, „ce“ = was, „cine“ = wer."
+    },
+    "ro-a1-04-e4": {
+      "explain": "Richtige Reihenfolge: „Orezul este acolo, în dreapta“ = „Der Reis ist dort, rechts“."
+    },
+    "ro-a1-04-e5": {
+      "explain": "„în stânga“ bedeutet „links“."
+    },
+    "ro-a1-04-e6": {
+      "explain": "„der Reis“ heißt „orezul“. Groß- und Kleinschreibung zählt nicht, aber jeder Buchstabe und jedes Zeichen."
+    },
+    "ro-a1-04-e7": {
+      "explain": "Du kannst sagen: „Scuzați-mă, unde este laptele?“ oder „Unde este laptele?“ oder „Scuze, unde e laptele?“.",
+      "prompt": "Du findest die Milch nicht. Frag einen Mitarbeiter, wo sie ist."
+    },
+    "ro-a1-05-e1": {
+      "explain": "„drept înainte“ bedeutet „geradeaus“."
+    },
+    "ro-a1-05-e2": {
+      "explain": "„Este departe?“ bedeutet „Ist es weit?“."
+    },
+    "ro-a1-05-e3": {
+      "explain": "Der ganze Satz heißt „Apoi faceți la stânga“ = „Dann biegen Sie links ab“. „la stânga“ = links, „la dreapta“ = rechts, „drept înainte“ = geradeaus."
+    },
+    "ro-a1-05-e4": {
+      "explain": "Richtige Reihenfolge: „Nu, sunt cinci minute pe jos“ = „Nein, es sind fünf Minuten zu Fuß“. „pe jos“ = zu Fuß."
+    },
+    "ro-a1-05-e5": {
+      "explain": "„aproape“ bedeutet „nah“."
+    },
+    "ro-a1-05-e6": {
+      "explain": "„das Museum“ heißt „muzeul“. Groß- und Kleinschreibung zählt nicht, aber jeder Buchstabe und jedes Zeichen."
+    },
+    "ro-a1-05-e7": {
+      "explain": "Du kannst sagen: „Scuzați-mă, unde este muzeul?“ oder „Unde este muzeul?“ oder „Unde e muzeul?“.",
+      "prompt": "Du suchst das Museum. Frag eine Passantin, wo es ist."
+    },
+    "ro-a1-06-e1": {
+      "explain": "„biletul“ bedeutet „die Fahrkarte“."
+    },
+    "ro-a1-06-e2": {
+      "explain": "„Doar dus sau dus-întors?“ bedeutet „Einfach oder hin und zurück?“."
+    },
+    "ro-a1-06-e3": {
+      "explain": "Der ganze Satz heißt „De la linia trei, la ora zece“ = „Von Gleis drei, um zehn Uhr“. Bei der Uhrzeit sagt man „la ora …“: la ora zece = um zehn Uhr."
+    },
+    "ro-a1-06-e4": {
+      "explain": "Richtige Reihenfolge: „Un bilet pentru Brașov, vă rog“ = „Eine Fahrkarte nach Brașov, bitte“."
+    },
+    "ro-a1-06-e5": {
+      "explain": "„trenul“ bedeutet „der Zug“."
+    },
+    "ro-a1-06-e6": {
+      "explain": "„heute“ heißt „azi“. Groß- und Kleinschreibung zählt nicht, aber jeder Buchstabe und jedes Zeichen."
+    },
+    "ro-a1-06-e7": {
+      "explain": "Du kannst sagen: „Un bilet pentru Brașov, vă rog“ oder „Un bilet dus-întors pentru Brașov, vă rog“ oder „Aș vrea un bilet pentru Brașov, vă rog“.",
+      "prompt": "Am Schalter möchtest du eine Fahrkarte nach Brașov. Was sagst du?"
+    },
+    "ro-a1-07-e1": {
+      "explain": "„capul“ bedeutet „der Kopf“."
+    },
+    "ro-a1-07-e2": {
+      "explain": "„Aveți și febră?“ bedeutet „Haben Sie auch Fieber?“."
+    },
+    "ro-a1-07-e3": {
+      "explain": "Der ganze Satz heißt „Mă doare capul“ = „Mir tut der Kopf weh“. „Mă doare …“ = „Mir tut … weh“: mă doare capul."
+    },
+    "ro-a1-07-e4": {
+      "explain": "Richtige Reihenfolge: „Da, puțin. Și sunt foarte obosit“ = „Ja, ein bisschen. Und ich bin sehr müde“."
+    },
+    "ro-a1-07-e5": {
+      "explain": "„medicamentul“ bedeutet „das Medikament“."
+    },
+    "ro-a1-07-e6": {
+      "explain": "„der Kopf“ heißt „capul“. Groß- und Kleinschreibung zählt nicht, aber jeder Buchstabe und jedes Zeichen."
+    },
+    "ro-a1-07-e7": {
+      "explain": "Du kannst sagen: „Mă doare burta“ oder „Mă doare stomacul“.",
+      "prompt": "Die Ärztin fragt, was dir fehlt. Sag, dass dir der Bauch wehtut."
+    },
+    "ro-a1-08-e1": {
+      "explain": "„sâmbătă“ bedeutet „Samstag“."
+    },
+    "ro-a1-08-e2": {
+      "explain": "„Bună idee! La ce oră?“ bedeutet „Gute Idee! Um wie viel Uhr?“."
+    },
+    "ro-a1-08-e3": {
+      "explain": "Der ganze Satz heißt „La ora șapte seara“ = „Um sieben Uhr abends“. „seara“ = abends, „dimineața“ = morgens, „noaptea“ = nachts."
+    },
+    "ro-a1-08-e4": {
+      "explain": "Richtige Reihenfolge: „Ai timp sâmbătă?“ = „Hast du am Samstag Zeit?“."
+    },
+    "ro-a1-08-e5": {
+      "explain": "„Cât e ceasul?“ bedeutet „Wie spät ist es?“."
+    },
+    "ro-a1-08-e6": {
+      "explain": "„Sonntag“ heißt „duminică“. Groß- und Kleinschreibung zählt nicht, aber jeder Buchstabe und jedes Zeichen."
+    },
+    "ro-a1-08-e7": {
+      "explain": "Du kannst sagen: „Ai timp duminică?“ oder „Ești liber duminică?“ oder „Ai timp duminica?“.",
+      "prompt": "Du möchtest mit einem Freund ins Kino. Frag ihn, ob er am Sonntag Zeit hat."
+    },
+    "ro-a1-09-e1": {
+      "explain": "„delicios“ bedeutet „sehr lecker“."
+    },
+    "ro-a1-09-e2": {
+      "explain": "„Ce doriți?“ bedeutet „Was möchten Sie?“."
+    },
+    "ro-a1-09-e3": {
+      "explain": "Der ganze Satz heißt „Bună seara, am rezervat o masă pentru două persoane“ = „Guten Abend, ich habe einen Tisch für zwei reserviert“. „Am rezervat“ = „ich habe reserviert“: am + Partizip."
+    },
+    "ro-a1-09-e4": {
+      "explain": "Richtige Reihenfolge: „Nota, vă rog“ = „Die Rechnung, bitte“."
+    },
+    "ro-a1-09-e5": {
+      "explain": "„peștele“ bedeutet „der Fisch“."
+    },
+    "ro-a1-09-e6": {
+      "explain": "„die Suppe“ heißt „supa“. Groß- und Kleinschreibung zählt nicht, aber jeder Buchstabe und jedes Zeichen."
+    },
+    "ro-a1-09-e7": {
+      "explain": "Du kannst sagen: „Nota, vă rog“ oder „Nota de plată, vă rog“ oder „Aș vrea nota, vă rog“.",
+      "prompt": "Du bist fertig mit dem Essen. Bitte den Kellner um die Rechnung."
+    },
+    "ro-a1-10-e1": {
+      "explain": "„muzica“ bedeutet „die Musik“."
+    },
+    "ro-a1-10-e2": {
+      "explain": "„Ce faci în weekend?“ bedeutet „Was machst du am Wochenende?“."
+    },
+    "ro-a1-10-e3": {
+      "explain": "Der ganze Satz heißt „Sâmbăta joc fotbal“ = „Am Samstag spiele ich Fußball“. „a juca“ = spielen: joc fotbal = ich spiele Fußball."
+    },
+    "ro-a1-10-e4": {
+      "explain": "Richtige Reihenfolge: „Duminica citesc o carte“ = „Am Sonntag lese ich ein Buch“. „duminica“ mit Artikel = sonntags."
+    },
+    "ro-a1-10-e5": {
+      "explain": "„a înota“ bedeutet „schwimmen“."
+    },
+    "ro-a1-10-e6": {
+      "explain": "„das Buch“ heißt „cartea“. Groß- und Kleinschreibung zählt nicht, aber jeder Buchstabe und jedes Zeichen."
+    },
+    "ro-a1-10-e7": {
+      "explain": "Du kannst sagen: „Îmi place să gătesc“ oder „Îmi place să gătesc foarte mult“. „Îmi place să …“ = „Ich … gern“.",
+      "prompt": "Eine neue Freundin fragt, was du gern machst. Antworte, dass du gern kochst."
+    }
+  }
+}

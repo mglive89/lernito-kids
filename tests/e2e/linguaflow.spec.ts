@@ -106,17 +106,18 @@ test('LinguaFlow: Kurswechsel ohne Verlust von Fortschritt und Fehlern', async (
   await page.getByTestId('torna-lezioni').click();
   await expect(page.getByTestId('progresso-corso')).toHaveAttribute('data-done', '1');
 
-  // Zweiter Kurs: Inglese (Introduzione, 3 Lektionen)
+  // Zweiter Kurs: Inglese (vollständiges Modul, 10 Lektionen)
   await page.getByTestId('aggiungi-corso').click();
   await page.getByTestId('picker-imparo').getByTestId('cerca-lingua').fill('English');
   await page.getByTestId('picker-imparo').getByTestId('lingua-en').first().click();
-  await expect(page.getByTestId('corso-it-en-intro').getByTestId('tipo-corso')).toHaveAttribute('data-kind', 'intro');
+  await expect(page.getByTestId('corso-it-en-a1').getByTestId('tipo-corso')).toHaveAttribute('data-kind', 'course');
+  await expect(page.getByTestId('corso-it-en-a1').getByTestId('numero-lezioni')).toHaveAttribute('data-n', '10');
   await page.getByTestId('inizia-corso').click();
-  await expect(page.getByTestId('lf-corso')).toHaveAttribute('data-course', 'it-en-intro');
-  await expect(page.getByTestId('corso-breve')).toBeVisible();
+  await expect(page.getByTestId('lf-corso')).toHaveAttribute('data-course', 'it-en-a1');
+  await expect(page.getByTestId('corso-breve')).toHaveCount(0);
   await expect(page.getByTestId('progresso-corso')).toHaveAttribute('data-done', '0');
   await expect(page.getByTestId('vai-ripasso')).toHaveAttribute('data-n', '0');
-  await playLesson(page, 'lezione-en-intro-01');
+  await playLesson(page, 'lezione-en-a1-01');
   await page.getByTestId('torna-lezioni').click();
 
   // Zurück zu Tedesco: Fortschritt und Fehler sind noch da
@@ -128,7 +129,7 @@ test('LinguaFlow: Kurswechsel ohne Verlust von Fortschritt und Fehlern', async (
   await page.reload();
   await expect(page.getByTestId('lf-corso')).toHaveAttribute('data-course', 'it-de-a1');
   await page.goto('/sprachen/#/scegli');
-  await page.getByTestId('mio-corso-it-en-intro').click();
+  await page.getByTestId('mio-corso-it-en-a1').click();
   await expect(page.getByTestId('progresso-corso')).toHaveAttribute('data-done', '1');
 });
 
@@ -153,7 +154,7 @@ test('LinguaFlow: Kurs nicht verfügbar – Hinweis, Ausgangssprachen, Auswahl b
 test('LinguaFlow: ohne Stimme wird Hören zu Lesen, mit Stimme gibt es Audio', async ({ page }) => {
   await setup(page, 'it', 'ital', 'fr', 'franc');
   await page.getByTestId('inizia-corso').click();
-  await page.getByTestId('lezione-fr-intro-01').click();
+  await page.getByTestId('lezione-fr-a1-01').click();
   await expect(page.getByTestId('nessuna-voce')).toBeVisible();
   await expect(page.getByTestId('ascolta')).toHaveCount(0);
   await page.getByTestId('inizia-esercizi').click();
@@ -170,7 +171,7 @@ test('LinguaFlow: ohne Stimme wird Hören zu Lesen, mit Stimme gibt es Audio', a
     Object.defineProperty(synth, 'speak', { value: (u: SpeechSynthesisUtterance) => { (window as unknown as { spoken: string[] }).spoken = [...((window as unknown as { spoken?: string[] }).spoken ?? []), u.text]; } });
   });
   await page.reload();
-  await page.goto('/sprachen/#/lezione/it-fr-intro/fr-intro-01');
+  await page.goto('/sprachen/#/lezione/it-fr-a1/fr-a1-01');
   await expect(page.getByTestId('nessuna-voce')).toHaveCount(0);
   await expect(page.getByTestId('ascolta').first()).toBeVisible();
   await page.getByTestId('inizia-esercizi').click();
@@ -179,12 +180,12 @@ test('LinguaFlow: ohne Stimme wird Hören zu Lesen, mit Stimme gibt es Audio', a
   await expect.poll(() => page.evaluate(() => (window as unknown as { spoken?: string[] }).spoken ?? [])).toContain('Au revoir');
 });
 
-test('LinguaFlow: Demo Arabisch (RTL, Umschrift) und Japanisch (Segmente ohne Leerzeichen)', async ({ page }) => {
+test('LinguaFlow: Arabisch (RTL, Umschrift) und Japanisch (Segmente ohne Leerzeichen) als vollständige Module', async ({ page }) => {
   await setup(page, 'it', 'ital', 'ar', 'العربية');
-  await expect(page.getByTestId('corso-it-ar-demo').getByTestId('tipo-corso')).toHaveAttribute('data-kind', 'demo');
-  await expect(page.getByTestId('corso-it-ar-demo').getByTestId('numero-lezioni')).toHaveAttribute('data-n', '1');
+  await expect(page.getByTestId('corso-it-ar-a1').getByTestId('tipo-corso')).toHaveAttribute('data-kind', 'course');
+  await expect(page.getByTestId('corso-it-ar-a1').getByTestId('numero-lezioni')).toHaveAttribute('data-n', '10');
   await page.getByTestId('inizia-corso').click();
-  await page.getByTestId('lezione-ar-demo-01').click();
+  await page.getByTestId('lezione-ar-a1-01').click();
   const first = page.getByTestId('dialogo').getByTestId('testo-lingua').first();
   await expect(first).toHaveAttribute('dir', 'rtl');
   await expect(first).toHaveAttribute('lang', 'ar');
@@ -197,20 +198,20 @@ test('LinguaFlow: Demo Arabisch (RTL, Umschrift) und Japanisch (Segmente ohne Le
   expect(overflow).toBeLessThanOrEqual(1);
   await page.screenshot({ path: test.info().outputPath('arabo.png'), fullPage: true });
   await page.getByTestId('chiudi-lezione').click();
-  const types = await playLesson(page, 'lezione-ar-demo-01');
+  const types = await playLesson(page, 'lezione-ar-a1-01');
   expect(types).toContain('order');
 
   await page.goto('/sprachen/#/scegli');
   await page.getByTestId('picker-imparo').getByTestId('cerca-lingua').fill('日本語');
   await page.getByTestId('picker-imparo').getByTestId('lingua-ja').first().click();
   await page.getByTestId('inizia-corso').click();
-  await page.getByTestId('lezione-ja-demo-01').click();
+  await page.getByTestId('lezione-ja-a1-01').click();
   await page.getByTestId('inizia-esercizi').click();
   for (let k = 0; k < 3; k++) { await solve(page); await page.getByTestId('continua').click(); }
   await expect(page.getByTestId('esercizio')).toHaveAttribute('data-type', 'order');
-  await expect(page.getByTestId('segmento')).toHaveCount(4);
+  await expect(page.getByTestId('segmento')).toHaveCount(6);
   await solve(page);
-  await expect(page.getByTestId('risposta-ordine')).toHaveText('イタリアからきました');
+  await expect(page.getByTestId('risposta-ordine')).toHaveText('イタリアからきました。ゆきさんは？');
 });
 
 test('LinguaFlow: neues Kurspaket ohne Änderung an den Komponenten', async ({ page }) => {
@@ -238,7 +239,7 @@ test('LinguaFlow: Lektionen und Fortschritt offline', async ({ page, context }) 
   await page.waitForFunction(async () => (await navigator.serviceWorker.ready).active?.state === 'activated');
   await setup(page, 'it', 'ital', 'es', 'espa');
   await page.getByTestId('inizia-corso').click();
-  await playLesson(page, 'lezione-es-intro-01');
+  await playLesson(page, 'lezione-es-a1-01');
   await page.getByTestId('torna-lezioni').click();
   await page.reload();
   await page.waitForFunction(() => !!navigator.serviceWorker.controller);
@@ -259,7 +260,7 @@ test('LinguaFlow: Lektionen und Fortschritt offline', async ({ page, context }) 
 test('LinguaFlow: Effekte – Serie, Sterne und Schalter in den Einstellungen', async ({ page }) => {
   await setup(page, 'it', 'ital', 'es', 'espa');
   await page.getByTestId('inizia-corso').click();
-  await page.getByTestId('lezione-es-intro-01').click();
+  await page.getByTestId('lezione-es-a1-01').click();
   await page.getByTestId('inizia-esercizi').click();
   for (let k = 0; k < 3; k++) { await solve(page); if (k < 2) await page.getByTestId('continua').click(); }
   await expect(page.getByTestId('serie')).toContainText('3');
@@ -269,7 +270,7 @@ test('LinguaFlow: Effekte – Serie, Sterne und Schalter in den Einstellungen', 
   await page.reload();
   await expect(page.getByTestId('opz-effects')).not.toBeChecked();
   await page.goto('/sprachen/#/corso');
-  await playLesson(page, 'lezione-es-intro-02');
+  await playLesson(page, 'lezione-es-a1-02');
   await expect(page.getByTestId('lf-fine')).toHaveAttribute('data-stars', '3');
 });
 

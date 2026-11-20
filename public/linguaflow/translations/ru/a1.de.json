@@ -1,0 +1,399 @@
+{
+  "format": 1,
+  "id": "ru-a1.de",
+  "content": "ru-a1",
+  "source": "de",
+  "target": "ru",
+  "version": "1.0.0",
+  "quality": "unreviewed",
+  "course": {
+    "title": "Russisch A1 – Alltag in Russland",
+    "description": "Zehn kurze Lektionen zu echten Situationen: sich vorstellen, einkaufen, im Café, am Bahnhof, beim Arzt, im Restaurant und in der Freizeit."
+  },
+  "lessons": {
+    "ru-a1-01": {
+      "title": "Hallo! Ich stelle mich vor",
+      "goal": "Begrüßen, sagen, wie du heißt und woher du kommst."
+    },
+    "ru-a1-02": {
+      "title": "Auf dem Markt",
+      "goal": "Brot und Obst kaufen und fragen, was es kostet."
+    },
+    "ru-a1-03": {
+      "title": "Im Café",
+      "goal": "Getränke bestellen und bezahlen."
+    },
+    "ru-a1-04": {
+      "title": "Im Supermarkt",
+      "goal": "Fragen, wo es etwas gibt, und die Antwort verstehen."
+    },
+    "ru-a1-05": {
+      "title": "Nach dem Weg fragen",
+      "goal": "Nach dem Weg fragen und einfache Wegbeschreibungen verstehen."
+    },
+    "ru-a1-06": {
+      "title": "Am Bahnhof",
+      "goal": "Eine Fahrkarte kaufen und fragen, von welchem Gleis der Zug fährt."
+    },
+    "ru-a1-07": {
+      "title": "Beim Arzt",
+      "goal": "Sagen, was dir fehlt, und einen Rat verstehen."
+    },
+    "ru-a1-08": {
+      "title": "Hast du am Samstag Zeit?",
+      "goal": "Etwas vorschlagen, Wochentage und Uhrzeit."
+    },
+    "ru-a1-09": {
+      "title": "Im Restaurant",
+      "goal": "Sagen, dass du reserviert hast, bestellen und um die Rechnung bitten."
+    },
+    "ru-a1-10": {
+      "title": "Das Wochenende",
+      "goal": "Über deine Freizeit sprechen und sagen, was du magst."
+    }
+  },
+  "items": {
+    "ru-a1-01-d1": "Hallo! Ich bin Mascha.",
+    "ru-a1-01-d2": "Hallo, Mascha! Ich heiße Marco.",
+    "ru-a1-01-d3": "Woher kommst du?",
+    "ru-a1-01-d4": "Ich komme aus Italien. Und du?",
+    "ru-a1-01-d5": "Ich komme aus Kasan. Freut mich!",
+    "ru-a1-01-d6": "Freut mich auch! Bis bald.",
+    "ru-a1-01-v1": "Guten Morgen",
+    "ru-a1-01-v2": "Guten Abend",
+    "ru-a1-01-v3": "Auf Wiedersehen",
+    "ru-a1-01-v4": "Wie heißt du?",
+    "ru-a1-01-v5": "Danke",
+    "ru-a1-01-v6": "Bitte",
+    "ru-a1-02-d1": "Guten Tag! Was möchten Sie?",
+    "ru-a1-02-d2": "Ich möchte ein Brot, bitte.",
+    "ru-a1-02-d3": "Bitte schön. Noch etwas?",
+    "ru-a1-02-d4": "Ja, auch drei Äpfel.",
+    "ru-a1-02-d5": "Was kostet das?",
+    "ru-a1-02-d6": "Das macht zweihundert Rubel.",
+    "ru-a1-02-v1": "das Brot",
+    "ru-a1-02-v2": "der Apfel",
+    "ru-a1-02-v3": "der Käse",
+    "ru-a1-02-v4": "der Kuchen",
+    "ru-a1-02-v5": "Was kostet das?",
+    "ru-a1-02-v6": "drei",
+    "ru-a1-03-d1": "Guten Tag! Was nehmen Sie?",
+    "ru-a1-03-d2": "Einen Tee, bitte.",
+    "ru-a1-03-d3": "Mit Milch oder mit Zitrone?",
+    "ru-a1-03-d4": "Mit Zitrone. Und ein Glas Wasser.",
+    "ru-a1-03-d5": "Kann ich bitte bezahlen?",
+    "ru-a1-03-d6": "Natürlich. Das macht dreihundert Rubel.",
+    "ru-a1-03-v1": "der Kaffee",
+    "ru-a1-03-v2": "der Tee",
+    "ru-a1-03-v3": "das Wasser",
+    "ru-a1-03-v4": "die Milch",
+    "ru-a1-03-v5": "der Orangensaft",
+    "ru-a1-03-v6": "die Rechnung",
+    "ru-a1-04-d1": "Entschuldigung, wo ist der Reis?",
+    "ru-a1-04-d2": "Der Reis ist dort, rechts.",
+    "ru-a1-04-d3": "Und die Eier?",
+    "ru-a1-04-d4": "Die sind neben der Milch.",
+    "ru-a1-04-d5": "Vielen Dank!",
+    "ru-a1-04-d6": "Gern geschehen!",
+    "ru-a1-04-v1": "der Reis",
+    "ru-a1-04-v2": "die Eier",
+    "ru-a1-04-v3": "das Obst",
+    "ru-a1-04-v4": "rechts",
+    "ru-a1-04-v5": "links",
+    "ru-a1-04-v6": "die Kasse",
+    "ru-a1-05-d1": "Entschuldigung, wo ist der Bahnhof?",
+    "ru-a1-05-d2": "Gehen Sie immer geradeaus.",
+    "ru-a1-05-d3": "Dann biegen Sie links ab.",
+    "ru-a1-05-d4": "Ist es weit?",
+    "ru-a1-05-d5": "Nein, es sind fünf Minuten zu Fuß.",
+    "ru-a1-05-d6": "Danke, auf Wiedersehen!",
+    "ru-a1-05-v1": "der Bahnhof",
+    "ru-a1-05-v2": "das Museum",
+    "ru-a1-05-v3": "geradeaus",
+    "ru-a1-05-v4": "nah",
+    "ru-a1-05-v5": "weit",
+    "ru-a1-05-v6": "die Bushaltestelle",
+    "ru-a1-06-d1": "Eine Fahrkarte nach Moskau, bitte.",
+    "ru-a1-06-d2": "Einfach oder hin und zurück?",
+    "ru-a1-06-d3": "Hin und zurück.",
+    "ru-a1-06-d4": "Von welchem Gleis fährt der Zug?",
+    "ru-a1-06-d5": "Von Gleis drei, um zehn Uhr.",
+    "ru-a1-06-d6": "Super, danke!",
+    "ru-a1-06-v1": "der Zug",
+    "ru-a1-06-v2": "die Fahrkarte",
+    "ru-a1-06-v3": "das Gleis",
+    "ru-a1-06-v4": "der Bus",
+    "ru-a1-06-v5": "heute",
+    "ru-a1-06-v6": "morgen",
+    "ru-a1-07-d1": "Guten Tag. Was fehlt Ihnen?",
+    "ru-a1-07-d2": "Mir tut der Kopf weh.",
+    "ru-a1-07-d3": "Haben Sie auch Fieber?",
+    "ru-a1-07-d4": "Ja, ein bisschen. Und ich bin sehr müde.",
+    "ru-a1-07-d5": "Trinken Sie viel Wasser und ruhen Sie sich aus.",
+    "ru-a1-07-d6": "Vielen Dank.",
+    "ru-a1-07-v1": "der Kopf",
+    "ru-a1-07-v2": "der Bauch",
+    "ru-a1-07-v3": "das Fieber",
+    "ru-a1-07-v4": "das Medikament",
+    "ru-a1-07-v5": "krank",
+    "ru-a1-07-v6": "Mir geht es gut.",
+    "ru-a1-08-d1": "Hast du am Samstag Zeit?",
+    "ru-a1-08-d2": "Ja! Was machen wir?",
+    "ru-a1-08-d3": "Gehen wir ins Kino?",
+    "ru-a1-08-d4": "Gute Idee! Um wie viel Uhr?",
+    "ru-a1-08-d5": "Um sieben Uhr abends.",
+    "ru-a1-08-d6": "Okay, bis Samstag!",
+    "ru-a1-08-v1": "Montag",
+    "ru-a1-08-v2": "Freitag",
+    "ru-a1-08-v3": "Samstag",
+    "ru-a1-08-v4": "Sonntag",
+    "ru-a1-08-v5": "Wie spät ist es?",
+    "ru-a1-08-v6": "heute Abend",
+    "ru-a1-09-d1": "Guten Abend, ich habe einen Tisch für zwei reserviert.",
+    "ru-a1-09-d2": "Bitte schön, hier ist die Speisekarte.",
+    "ru-a1-09-d3": "Was möchten Sie?",
+    "ru-a1-09-d4": "Für mich die Suppe und einen Salat.",
+    "ru-a1-09-d5": "Die Rechnung, bitte.",
+    "ru-a1-09-d6": "Sofort!",
+    "ru-a1-09-v1": "die Speisekarte",
+    "ru-a1-09-v2": "die Suppe",
+    "ru-a1-09-v3": "der Fisch",
+    "ru-a1-09-v4": "der Nachtisch",
+    "ru-a1-09-v5": "sehr lecker",
+    "ru-a1-09-v6": "der Tisch",
+    "ru-a1-10-d1": "Was machst du am Wochenende?",
+    "ru-a1-10-d2": "Am Samstag spiele ich Fußball.",
+    "ru-a1-10-d3": "Am Sonntag lese ich ein Buch.",
+    "ru-a1-10-d4": "Ich gehe mit meiner Schwester ins Schwimmbad.",
+    "ru-a1-10-d5": "Schwimmst du gern?",
+    "ru-a1-10-d6": "Ja, sehr gern!",
+    "ru-a1-10-v1": "der Fußball",
+    "ru-a1-10-v2": "das Buch",
+    "ru-a1-10-v3": "die Musik",
+    "ru-a1-10-v4": "kochen",
+    "ru-a1-10-v5": "schwimmen",
+    "ru-a1-10-v6": "Ich mag Musik."
+  },
+  "exercises": {
+    "ru-a1-01-e1": {
+      "explain": "„До свидания“ bedeutet „Auf Wiedersehen“. Man liest: Do svidaniya."
+    },
+    "ru-a1-01-e2": {
+      "explain": "„Откуда ты?“ bedeutet „Woher kommst du?“. Man liest: Otkuda ty?"
+    },
+    "ru-a1-01-e3": {
+      "explain": "Der ganze Satz heißt „Привет, Маша! Меня зовут Марко“ = „Hallo, Mascha! Ich heiße Marco“. „Меня зовут …“ = „Ich heiße …“ (wörtlich „mich nennt man …“)."
+    },
+    "ru-a1-01-e4": {
+      "explain": "Richtige Reihenfolge: „Я из Италии. А ты?“ = „Ich komme aus Italien. Und du?“. „из“ = „aus“: я из Италии = ich komme aus Italien. Im Präsens fällt „bin“ weg."
+    },
+    "ru-a1-01-e5": {
+      "explain": "„Доброе утро“ bedeutet „Guten Morgen“. Man liest: Dobroe utro."
+    },
+    "ru-a1-01-e6": {
+      "explain": "„Danke“ heißt „Спасибо“. Du kannst auch in lateinischen Buchstaben schreiben: Spasibo."
+    },
+    "ru-a1-01-e7": {
+      "explain": "Du kannst sagen: „Меня зовут Джулия“.",
+      "prompt": "Eine neue Mitschülerin fragt dich, wie du heißt. Antworte, dass du Giulia heißt."
+    },
+    "ru-a1-02-e1": {
+      "explain": "„яблоко“ bedeutet „der Apfel“. Man liest: yabloko."
+    },
+    "ru-a1-02-e2": {
+      "explain": "„Дайте, пожалуйста, хлеб“ bedeutet „Ich möchte ein Brot, bitte“. Man liest: Dayte, pozhaluysta, khleb."
+    },
+    "ru-a1-02-e3": {
+      "explain": "Der ganze Satz heißt „Дайте, пожалуйста, хлеб“ = „Ich möchte ein Brot, bitte“. „Дайте, пожалуйста, …“ = „Geben Sie mir bitte …“: so bittet man im Geschäft."
+    },
+    "ru-a1-02-e4": {
+      "explain": "Richtige Reihenfolge: „Да, ещё три яблока“ = „Ja, auch drei Äpfel“. Nach 2, 3 und 4 steht der Genitiv Singular: три яблока."
+    },
+    "ru-a1-02-e5": {
+      "explain": "„торт“ bedeutet „der Kuchen“. Man liest: tort."
+    },
+    "ru-a1-02-e6": {
+      "explain": "„das Brot“ heißt „хлеб“. Du kannst auch in lateinischen Buchstaben schreiben: khleb."
+    },
+    "ru-a1-02-e7": {
+      "explain": "Du kannst sagen: „Дайте, пожалуйста, хлеб“.",
+      "prompt": "Du bist auf dem Markt und möchtest ein Brot kaufen. Was sagst du zur Verkäuferin?"
+    },
+    "ru-a1-03-e1": {
+      "explain": "„чай“ bedeutet „der Tee“. Man liest: chay."
+    },
+    "ru-a1-03-e2": {
+      "explain": "„С молоком или с лимоном?“ bedeutet „Mit Milch oder mit Zitrone?“. Man liest: S molokom ili s limonom?"
+    },
+    "ru-a1-03-e3": {
+      "explain": "Der ganze Satz heißt „С молоком или с лимоном?“ = „Mit Milch oder mit Zitrone?“. „или“ = „oder“, „и“ = „und“, „но“ = „aber“."
+    },
+    "ru-a1-03-e4": {
+      "explain": "Richtige Reihenfolge: „С лимоном. И стакан воды“ = „Mit Zitrone. Und ein Glas Wasser“. „с“ + Instrumental = „mit“: с лимоном, с молоком."
+    },
+    "ru-a1-03-e5": {
+      "explain": "„вода“ bedeutet „das Wasser“. Man liest: voda."
+    },
+    "ru-a1-03-e6": {
+      "explain": "„die Milch“ heißt „молоко“. Du kannst auch in lateinischen Buchstaben schreiben: moloko."
+    },
+    "ru-a1-03-e7": {
+      "explain": "Du kannst sagen: „Кофе, пожалуйста“.",
+      "prompt": "Du bist im Café und möchtest einen Kaffee bestellen. Was sagst du?"
+    },
+    "ru-a1-04-e1": {
+      "explain": "„справа“ bedeutet „rechts“. Man liest: sprava."
+    },
+    "ru-a1-04-e2": {
+      "explain": "„Извините, где рис?“ bedeutet „Entschuldigung, wo ist der Reis?“. Man liest: Izvinite, gde ris?"
+    },
+    "ru-a1-04-e3": {
+      "explain": "Der ganze Satz heißt „Извините, где рис?“ = „Entschuldigung, wo ist der Reis?“. „где“ = wo, „что“ = was, „кто“ = wer."
+    },
+    "ru-a1-04-e4": {
+      "explain": "Richtige Reihenfolge: „Рис там, справа“ = „Der Reis ist dort, rechts“."
+    },
+    "ru-a1-04-e5": {
+      "explain": "„слева“ bedeutet „links“. Man liest: sleva."
+    },
+    "ru-a1-04-e6": {
+      "explain": "„der Reis“ heißt „рис“. Du kannst auch in lateinischen Buchstaben schreiben: ris."
+    },
+    "ru-a1-04-e7": {
+      "explain": "Du kannst sagen: „Извините, где молоко?“.",
+      "prompt": "Du findest die Milch nicht. Frag einen Mitarbeiter, wo sie ist."
+    },
+    "ru-a1-05-e1": {
+      "explain": "„прямо“ bedeutet „geradeaus“. Man liest: pryamo."
+    },
+    "ru-a1-05-e2": {
+      "explain": "„Это далеко?“ bedeutet „Ist es weit?“. Man liest: Eto daleko?"
+    },
+    "ru-a1-05-e3": {
+      "explain": "Der ganze Satz heißt „Потом налево“ = „Dann biegen Sie links ab“. „налево“ = nach links, „направо“ = nach rechts, „прямо“ = geradeaus."
+    },
+    "ru-a1-05-e4": {
+      "explain": "Richtige Reihenfolge: „Нет, пять минут пешком“ = „Nein, es sind fünf Minuten zu Fuß“. „пешком“ = zu Fuß."
+    },
+    "ru-a1-05-e5": {
+      "explain": "„близко“ bedeutet „nah“. Man liest: blizko."
+    },
+    "ru-a1-05-e6": {
+      "explain": "„das Museum“ heißt „музей“. Du kannst auch in lateinischen Buchstaben schreiben: muzey."
+    },
+    "ru-a1-05-e7": {
+      "explain": "Du kannst sagen: „Извините, где музей?“.",
+      "prompt": "Du suchst das Museum. Frag eine Passantin, wo es ist."
+    },
+    "ru-a1-06-e1": {
+      "explain": "„билет“ bedeutet „die Fahrkarte“. Man liest: bilet."
+    },
+    "ru-a1-06-e2": {
+      "explain": "„В одну сторону или туда и обратно?“ bedeutet „Einfach oder hin und zurück?“. Man liest: V odnu storonu ili tuda i obratno?"
+    },
+    "ru-a1-06-e3": {
+      "explain": "Der ganze Satz heißt „С какой платформы отходит поезд?“ = „Von welchem Gleis fährt der Zug?“. „С какой платформы?“ = „Von welchem Gleis?“"
+    },
+    "ru-a1-06-e4": {
+      "explain": "Richtige Reihenfolge: „Один билет до Москвы, пожалуйста“ = „Eine Fahrkarte nach Moskau, bitte“. Für das Ziel benutzt man „до“ + Genitiv: до Москвы."
+    },
+    "ru-a1-06-e5": {
+      "explain": "„поезд“ bedeutet „der Zug“. Man liest: poezd."
+    },
+    "ru-a1-06-e6": {
+      "explain": "„heute“ heißt „сегодня“. Du kannst auch in lateinischen Buchstaben schreiben: segodnya."
+    },
+    "ru-a1-06-e7": {
+      "explain": "Du kannst sagen: „Один билет до Москвы, пожалуйста“.",
+      "prompt": "Am Schalter möchtest du eine Fahrkarte nach Moskau. Was sagst du?"
+    },
+    "ru-a1-07-e1": {
+      "explain": "„голова“ bedeutet „der Kopf“. Man liest: golova."
+    },
+    "ru-a1-07-e2": {
+      "explain": "„А температура есть?“ bedeutet „Haben Sie auch Fieber?“. Man liest: A temperatura est?"
+    },
+    "ru-a1-07-e3": {
+      "explain": "Der ganze Satz heißt „У меня болит голова“ = „Mir tut der Kopf weh“. „У меня болит …“ = „Mir tut … weh“: у меня болит голова."
+    },
+    "ru-a1-07-e4": {
+      "explain": "Richtige Reihenfolge: „Да, немного. И я очень устал“ = „Ja, ein bisschen. Und ich bin sehr müde“."
+    },
+    "ru-a1-07-e5": {
+      "explain": "„лекарство“ bedeutet „das Medikament“. Man liest: lekarstvo."
+    },
+    "ru-a1-07-e6": {
+      "explain": "„der Kopf“ heißt „голова“. Du kannst auch in lateinischen Buchstaben schreiben: golova."
+    },
+    "ru-a1-07-e7": {
+      "explain": "Du kannst sagen: „У меня болит живот“.",
+      "prompt": "Die Ärztin fragt, was dir fehlt. Sag, dass dir der Bauch wehtut."
+    },
+    "ru-a1-08-e1": {
+      "explain": "„суббота“ bedeutet „Samstag“. Man liest: subbota."
+    },
+    "ru-a1-08-e2": {
+      "explain": "„Хорошая идея! Во сколько?“ bedeutet „Gute Idee! Um wie viel Uhr?“. Man liest: Khoroshaya ideya! Vo skolko?"
+    },
+    "ru-a1-08-e3": {
+      "explain": "Der ganze Satz heißt „Ты свободен в субботу?“ = „Hast du am Samstag Zeit?“. „в субботу“ = am Samstag: bei Tagen steht „в“ + Akkusativ."
+    },
+    "ru-a1-08-e4": {
+      "explain": "Richtige Reihenfolge: „Пойдём в кино?“ = „Gehen wir ins Kino?“."
+    },
+    "ru-a1-08-e5": {
+      "explain": "„Который час?“ bedeutet „Wie spät ist es?“. Man liest: Kotoryy chas?"
+    },
+    "ru-a1-08-e6": {
+      "explain": "„Sonntag“ heißt „воскресенье“. Du kannst auch in lateinischen Buchstaben schreiben: voskresene."
+    },
+    "ru-a1-08-e7": {
+      "explain": "Du kannst sagen: „Ты свободен в воскресенье?“.",
+      "prompt": "Du möchtest mit einem Freund ins Kino. Frag ihn, ob er am Sonntag Zeit hat."
+    },
+    "ru-a1-09-e1": {
+      "explain": "„очень вкусно“ bedeutet „sehr lecker“. Man liest: ochen vkusno."
+    },
+    "ru-a1-09-e2": {
+      "explain": "„Что будете заказывать?“ bedeutet „Was möchten Sie?“. Man liest: Chto budete zakazyvat?"
+    },
+    "ru-a1-09-e3": {
+      "explain": "Der ganze Satz heißt „Добрый вечер, я забронировал столик на двоих“ = „Guten Abend, ich habe einen Tisch für zwei reserviert“. „я забронировал“ = „ich habe reserviert“ (Vergangenheit, männlich; eine Frau sagt „забронировала“)."
+    },
+    "ru-a1-09-e4": {
+      "explain": "Richtige Reihenfolge: „Мне суп и салат“ = „Für mich die Suppe und einen Salat“. „Мне …“ = „Für mich …“ beim Bestellen."
+    },
+    "ru-a1-09-e5": {
+      "explain": "„рыба“ bedeutet „der Fisch“. Man liest: ryba."
+    },
+    "ru-a1-09-e6": {
+      "explain": "„die Suppe“ heißt „суп“. Du kannst auch in lateinischen Buchstaben schreiben: sup."
+    },
+    "ru-a1-09-e7": {
+      "explain": "Du kannst sagen: „Счёт, пожалуйста“.",
+      "prompt": "Du bist fertig mit dem Essen. Bitte den Kellner um die Rechnung."
+    },
+    "ru-a1-10-e1": {
+      "explain": "„музыка“ bedeutet „die Musik“. Man liest: muzyka."
+    },
+    "ru-a1-10-e2": {
+      "explain": "„Что ты делаешь на выходных?“ bedeutet „Was machst du am Wochenende?“. Man liest: Chto ty delaesh na vykhodnykh?"
+    },
+    "ru-a1-10-e3": {
+      "explain": "Der ganze Satz heißt „В субботу я играю в футбол“ = „Am Samstag spiele ich Fußball“. „играть в …“ = … spielen: я играю в футбол."
+    },
+    "ru-a1-10-e4": {
+      "explain": "Richtige Reihenfolge: „В воскресенье я читаю книгу“ = „Am Sonntag lese ich ein Buch“. книга wird zu книгу, wenn es das Objekt ist: я читаю книгу."
+    },
+    "ru-a1-10-e5": {
+      "explain": "„плавать“ bedeutet „schwimmen“. Man liest: plavat."
+    },
+    "ru-a1-10-e6": {
+      "explain": "„das Buch“ heißt „книга“. Du kannst auch in lateinischen Buchstaben schreiben: kniga."
+    },
+    "ru-a1-10-e7": {
+      "explain": "Du kannst sagen: „Я люблю готовить“.",
+      "prompt": "Eine neue Freundin fragt, was du gern machst. Antworte, dass du gern kochst."
+    }
+  }
+}

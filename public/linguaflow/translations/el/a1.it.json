@@ -1,0 +1,399 @@
+{
+  "format": 1,
+  "id": "el-a1.it",
+  "content": "el-a1",
+  "source": "it",
+  "target": "el",
+  "version": "1.0.0",
+  "quality": "unreviewed",
+  "course": {
+    "title": "Greco A1 – Vita di tutti i giorni in Grecia",
+    "description": "Dieci lezioni brevi su situazioni reali: presentarsi, fare la spesa, al bar, in stazione, dal medico, al ristorante e nel tempo libero."
+  },
+  "lessons": {
+    "el-a1-01": {
+      "title": "Ciao! Mi presento",
+      "goal": "Salutare, dire come ti chiami e da dove vieni."
+    },
+    "el-a1-02": {
+      "title": "Al mercato",
+      "goal": "Comprare pane e frutta e chiedere quanto costa."
+    },
+    "el-a1-03": {
+      "title": "Al bar",
+      "goal": "Ordinare da bere e pagare."
+    },
+    "el-a1-04": {
+      "title": "Al supermercato",
+      "goal": "Chiedere dove si trovano i prodotti e capire la risposta."
+    },
+    "el-a1-05": {
+      "title": "Chiedere la strada",
+      "goal": "Chiedere come arrivare in un posto e capire indicazioni semplici."
+    },
+    "el-a1-06": {
+      "title": "In stazione",
+      "goal": "Comprare un biglietto e chiedere da quale binario parte il treno."
+    },
+    "el-a1-07": {
+      "title": "Dal medico",
+      "goal": "Dire cosa non va e capire un consiglio."
+    },
+    "el-a1-08": {
+      "title": "Hai tempo sabato?",
+      "goal": "Proporre un’uscita, i giorni della settimana e l’ora."
+    },
+    "el-a1-09": {
+      "title": "Al ristorante",
+      "goal": "Dire che hai prenotato, ordinare e chiedere il conto."
+    },
+    "el-a1-10": {
+      "title": "Il fine settimana",
+      "goal": "Parlare di cosa fai nel tempo libero e di cosa ti piace."
+    }
+  },
+  "items": {
+    "el-a1-01-d1": "Ciao! Sono Eleni.",
+    "el-a1-01-d2": "Ciao, Eleni! Mi chiamo Marco.",
+    "el-a1-01-d3": "Di dove sei?",
+    "el-a1-01-d4": "Vengo dall’Italia. E tu?",
+    "el-a1-01-d5": "Io sono di Salonicco. Piacere!",
+    "el-a1-01-d6": "Piacere mio! A presto.",
+    "el-a1-01-v1": "Buongiorno",
+    "el-a1-01-v2": "Buonasera",
+    "el-a1-01-v3": "Arrivederci",
+    "el-a1-01-v4": "Come ti chiami?",
+    "el-a1-01-v5": "Grazie",
+    "el-a1-01-v6": "Per favore",
+    "el-a1-02-d1": "Buongiorno! Cosa desidera?",
+    "el-a1-02-d2": "Vorrei un pane, per favore.",
+    "el-a1-02-d3": "Ecco a lei. Qualcos’altro?",
+    "el-a1-02-d4": "Sì, anche tre mele.",
+    "el-a1-02-d5": "Quanto costa?",
+    "el-a1-02-d6": "Sono quattro euro.",
+    "el-a1-02-v1": "il pane",
+    "el-a1-02-v2": "la mela",
+    "el-a1-02-v3": "il formaggio",
+    "el-a1-02-v4": "la torta",
+    "el-a1-02-v5": "Quanto costa?",
+    "el-a1-02-v6": "tre",
+    "el-a1-03-d1": "Buongiorno! Cosa prende?",
+    "el-a1-03-d2": "Un tè, per favore.",
+    "el-a1-03-d3": "Con latte o con limone?",
+    "el-a1-03-d4": "Con limone. E un bicchiere d’acqua.",
+    "el-a1-03-d5": "Posso pagare, per favore?",
+    "el-a1-03-d6": "Certo. Sono tre euro e cinquanta.",
+    "el-a1-03-v1": "il caffè",
+    "el-a1-03-v2": "il tè",
+    "el-a1-03-v3": "l’acqua",
+    "el-a1-03-v4": "il latte",
+    "el-a1-03-v5": "il succo d’arancia",
+    "el-a1-03-v6": "il conto",
+    "el-a1-04-d1": "Scusi, dov’è il riso?",
+    "el-a1-04-d2": "Il riso è lì, a destra.",
+    "el-a1-04-d3": "E le uova?",
+    "el-a1-04-d4": "Sono vicino al latte.",
+    "el-a1-04-d5": "Grazie mille!",
+    "el-a1-04-d6": "Prego!",
+    "el-a1-04-v1": "il riso",
+    "el-a1-04-v2": "le uova",
+    "el-a1-04-v3": "la frutta",
+    "el-a1-04-v4": "a destra",
+    "el-a1-04-v5": "a sinistra",
+    "el-a1-04-v6": "la cassa",
+    "el-a1-05-d1": "Scusi, dov’è la stazione?",
+    "el-a1-05-d2": "Vada sempre dritto.",
+    "el-a1-05-d3": "Poi giri a sinistra.",
+    "el-a1-05-d4": "È lontano?",
+    "el-a1-05-d5": "No, sono cinque minuti a piedi.",
+    "el-a1-05-d6": "Grazie, arrivederci!",
+    "el-a1-05-v1": "la stazione",
+    "el-a1-05-v2": "il museo",
+    "el-a1-05-v3": "dritto",
+    "el-a1-05-v4": "vicino",
+    "el-a1-05-v5": "lontano",
+    "el-a1-05-v6": "la fermata dell’autobus",
+    "el-a1-06-d1": "Un biglietto per Atene, per favore.",
+    "el-a1-06-d2": "Solo andata o andata e ritorno?",
+    "el-a1-06-d3": "Andata e ritorno.",
+    "el-a1-06-d4": "Da quale binario parte il treno?",
+    "el-a1-06-d5": "Dal binario tre, alle dieci.",
+    "el-a1-06-d6": "Perfetto, grazie!",
+    "el-a1-06-v1": "il treno",
+    "el-a1-06-v2": "il biglietto",
+    "el-a1-06-v3": "il binario",
+    "el-a1-06-v4": "l’autobus",
+    "el-a1-06-v5": "oggi",
+    "el-a1-06-v6": "domani",
+    "el-a1-07-d1": "Buongiorno. Cosa c’è che non va?",
+    "el-a1-07-d2": "Mi fa male la testa.",
+    "el-a1-07-d3": "Ha anche la febbre?",
+    "el-a1-07-d4": "Sì, un po’. E sono molto stanco.",
+    "el-a1-07-d5": "Beva molta acqua e riposi.",
+    "el-a1-07-d6": "Grazie mille.",
+    "el-a1-07-v1": "la testa",
+    "el-a1-07-v2": "la pancia",
+    "el-a1-07-v3": "la febbre",
+    "el-a1-07-v4": "la medicina",
+    "el-a1-07-v5": "malato",
+    "el-a1-07-v6": "Sto bene.",
+    "el-a1-08-d1": "Hai tempo sabato?",
+    "el-a1-08-d2": "Sì! Cosa facciamo?",
+    "el-a1-08-d3": "Andiamo al cinema?",
+    "el-a1-08-d4": "Bella idea! A che ora?",
+    "el-a1-08-d5": "Alle sette di sera.",
+    "el-a1-08-d6": "Va bene, a sabato!",
+    "el-a1-08-v1": "lunedì",
+    "el-a1-08-v2": "venerdì",
+    "el-a1-08-v3": "sabato",
+    "el-a1-08-v4": "domenica",
+    "el-a1-08-v5": "Che ore sono?",
+    "el-a1-08-v6": "stasera",
+    "el-a1-09-d1": "Buonasera, ho prenotato un tavolo per due.",
+    "el-a1-09-d2": "Prego, ecco il menù.",
+    "el-a1-09-d3": "Cosa desiderate?",
+    "el-a1-09-d4": "Per me la zuppa e un’insalata.",
+    "el-a1-09-d5": "Il conto, per favore.",
+    "el-a1-09-d6": "Subito!",
+    "el-a1-09-v1": "il menù",
+    "el-a1-09-v2": "la zuppa",
+    "el-a1-09-v3": "il pesce",
+    "el-a1-09-v4": "il dolce",
+    "el-a1-09-v5": "buonissimo",
+    "el-a1-09-v6": "il tavolo",
+    "el-a1-10-d1": "Cosa fai nel fine settimana?",
+    "el-a1-10-d2": "Il sabato gioco a calcio.",
+    "el-a1-10-d3": "La domenica leggo un libro.",
+    "el-a1-10-d4": "Io vado in piscina con mia sorella.",
+    "el-a1-10-d5": "Ti piace nuotare?",
+    "el-a1-10-d6": "Sì, moltissimo!",
+    "el-a1-10-v1": "il calcio",
+    "el-a1-10-v2": "il libro",
+    "el-a1-10-v3": "la musica",
+    "el-a1-10-v4": "cucinare",
+    "el-a1-10-v5": "nuotare",
+    "el-a1-10-v6": "Mi piace la musica."
+  },
+  "exercises": {
+    "el-a1-01-e1": {
+      "explain": "«Αντίο» significa «Arrivederci». Si legge: Antío."
+    },
+    "el-a1-01-e2": {
+      "explain": "«Από πού είσαι;» significa «Di dove sei?». Si legge: Apó poú íse?"
+    },
+    "el-a1-01-e3": {
+      "explain": "La frase completa è «Γεια σου, Ελένη! Με λένε Μάρκο» = «Ciao, Eleni! Mi chiamo Marco». «Με λένε …» = «Mi chiamo …» (letteralmente «mi dicono …»)."
+    },
+    "el-a1-01-e4": {
+      "explain": "Ordine giusto: «Είμαι από την Ιταλία. Εσύ;» = «Vengo dall’Italia. E tu?». In greco il punto e virgola «;» è il punto di domanda."
+    },
+    "el-a1-01-e5": {
+      "explain": "«Καλημέρα» significa «Buongiorno». Si legge: Kaliméra."
+    },
+    "el-a1-01-e6": {
+      "explain": "«Grazie» si dice «Ευχαριστώ». Puoi scrivere anche in lettere latine: Evcharistó."
+    },
+    "el-a1-01-e7": {
+      "explain": "Puoi dire: «Με λένε Τζούλια».",
+      "prompt": "Una nuova compagna di corso ti chiede come ti chiami. Rispondi che ti chiami Giulia."
+    },
+    "el-a1-02-e1": {
+      "explain": "«το μήλο» significa «la mela». Si legge: to mílo."
+    },
+    "el-a1-02-e2": {
+      "explain": "«Θα ήθελα ένα ψωμί, παρακαλώ» significa «Vorrei un pane, per favore». Si legge: Tha íthela éna psomí, parakaló."
+    },
+    "el-a1-02-e3": {
+      "explain": "La frase completa è «Θα ήθελα ένα ψωμί, παρακαλώ» = «Vorrei un pane, per favore». «Θα ήθελα …» = «Vorrei …»: il modo gentile per chiedere."
+    },
+    "el-a1-02-e4": {
+      "explain": "Ordine giusto: «Ναι, και τρία μήλα» = «Sì, anche tre mele». το μήλο = la mela, τα μήλα = le mele."
+    },
+    "el-a1-02-e5": {
+      "explain": "«η τούρτα» significa «la torta». Si legge: i toúrta."
+    },
+    "el-a1-02-e6": {
+      "explain": "«il pane» si dice «το ψωμί». Puoi scrivere anche in lettere latine: to psomí."
+    },
+    "el-a1-02-e7": {
+      "explain": "Puoi dire: «Θα ήθελα ένα ψωμί, παρακαλώ».",
+      "prompt": "Sei al mercato e vuoi comprare un pane. Cosa dici alla venditrice?"
+    },
+    "el-a1-03-e1": {
+      "explain": "«το τσάι» significa «il tè». Si legge: to tsái."
+    },
+    "el-a1-03-e2": {
+      "explain": "«Με γάλα ή με λεμόνι;» significa «Con latte o con limone?». Si legge: Me gála í me lemóni?"
+    },
+    "el-a1-03-e3": {
+      "explain": "La frase completa è «Με γάλα ή με λεμόνι;» = «Con latte o con limone?». «ή» = «o», «και» = «e», «αλλά» = «ma»."
+    },
+    "el-a1-03-e4": {
+      "explain": "Ordine giusto: «Με λεμόνι. Και ένα ποτήρι νερό» = «Con limone. E un bicchiere d’acqua». «Μπορώ να …» = «Posso …»: dopo «να» viene il verbo."
+    },
+    "el-a1-03-e5": {
+      "explain": "«το νερό» significa «l’acqua». Si legge: to neró."
+    },
+    "el-a1-03-e6": {
+      "explain": "«il latte» si dice «το γάλα». Puoi scrivere anche in lettere latine: to gála."
+    },
+    "el-a1-03-e7": {
+      "explain": "Puoi dire: «Έναν καφέ, παρακαλώ».",
+      "prompt": "Sei al bar e vuoi ordinare un caffè. Cosa dici?"
+    },
+    "el-a1-04-e1": {
+      "explain": "«δεξιά» significa «a destra». Si legge: dexiá."
+    },
+    "el-a1-04-e2": {
+      "explain": "«Συγγνώμη, πού είναι το ρύζι;» significa «Scusi, dov’è il riso?». Si legge: Singnómi, poú íne to rízi?"
+    },
+    "el-a1-04-e3": {
+      "explain": "La frase completa è «Συγγνώμη, πού είναι το ρύζι;» = «Scusi, dov’è il riso?». «πού» con l’accento = dove; «τι» = che cosa; «ποιος» = chi."
+    },
+    "el-a1-04-e4": {
+      "explain": "Ordine giusto: «Το ρύζι είναι εκεί, δεξιά» = «Il riso è lì, a destra»."
+    },
+    "el-a1-04-e5": {
+      "explain": "«αριστερά» significa «a sinistra». Si legge: aristerá."
+    },
+    "el-a1-04-e6": {
+      "explain": "«il riso» si dice «το ρύζι». Puoi scrivere anche in lettere latine: to rízi."
+    },
+    "el-a1-04-e7": {
+      "explain": "Puoi dire: «Συγγνώμη, πού είναι το γάλα;».",
+      "prompt": "Non trovi il latte. Chiedi a un commesso dov’è."
+    },
+    "el-a1-05-e1": {
+      "explain": "«ευθεία» significa «dritto». Si legge: evthía."
+    },
+    "el-a1-05-e2": {
+      "explain": "«Είναι μακριά;» significa «È lontano?». Si legge: Íne makriá?"
+    },
+    "el-a1-05-e3": {
+      "explain": "La frase completa è «Μετά στρίψτε αριστερά» = «Poi giri a sinistra». «αριστερά» = a sinistra, «δεξιά» = a destra, «ευθεία» = dritto."
+    },
+    "el-a1-05-e4": {
+      "explain": "Ordine giusto: «Όχι, πέντε λεπτά με τα πόδια» = «No, sono cinque minuti a piedi». «με τα πόδια» = a piedi."
+    },
+    "el-a1-05-e5": {
+      "explain": "«κοντά» significa «vicino». Si legge: kontá."
+    },
+    "el-a1-05-e6": {
+      "explain": "«il museo» si dice «το μουσείο». Puoi scrivere anche in lettere latine: to mousío."
+    },
+    "el-a1-05-e7": {
+      "explain": "Puoi dire: «Συγγνώμη, πού είναι το μουσείο;».",
+      "prompt": "Cerchi il museo. Chiedi a una passante dov’è."
+    },
+    "el-a1-06-e1": {
+      "explain": "«το εισιτήριο» significa «il biglietto». Si legge: to isitírio."
+    },
+    "el-a1-06-e2": {
+      "explain": "«Απλό ή με επιστροφή;» significa «Solo andata o andata e ritorno?». Si legge: Apló í me epistrofí?"
+    },
+    "el-a1-06-e3": {
+      "explain": "La frase completa è «Από ποια αποβάθρα φεύγει το τρένο;» = «Da quale binario parte il treno?». «ποια» = «quale» con le parole femminili (η αποβάθρα)."
+    },
+    "el-a1-06-e4": {
+      "explain": "Ordine giusto: «Ένα εισιτήριο για την Αθήνα, παρακαλώ» = «Un biglietto per Atene, per favore». Per la destinazione si usa «για»: για την Αθήνα."
+    },
+    "el-a1-06-e5": {
+      "explain": "«το τρένο» significa «il treno». Si legge: to tréno."
+    },
+    "el-a1-06-e6": {
+      "explain": "«oggi» si dice «σήμερα». Puoi scrivere anche in lettere latine: símera."
+    },
+    "el-a1-06-e7": {
+      "explain": "Puoi dire: «Ένα εισιτήριο για την Αθήνα, παρακαλώ».",
+      "prompt": "Alla biglietteria vuoi un biglietto per Atene. Cosa dici?"
+    },
+    "el-a1-07-e1": {
+      "explain": "«το κεφάλι» significa «la testa». Si legge: to kefáli."
+    },
+    "el-a1-07-e2": {
+      "explain": "«Έχετε και πυρετό;» significa «Ha anche la febbre?». Si legge: Échete ke piretó?"
+    },
+    "el-a1-07-e3": {
+      "explain": "La frase completa è «Με πονάει το κεφάλι μου» = «Mi fa male la testa». «Με πονάει …» = «Mi fa male …»: με πονάει το κεφάλι μου."
+    },
+    "el-a1-07-e4": {
+      "explain": "Ordine giusto: «Ναι, λίγο. Και είμαι πολύ κουρασμένος» = «Sì, un po’. E sono molto stanco»."
+    },
+    "el-a1-07-e5": {
+      "explain": "«το φάρμακο» significa «la medicina». Si legge: to fármako."
+    },
+    "el-a1-07-e6": {
+      "explain": "«la testa» si dice «το κεφάλι». Puoi scrivere anche in lettere latine: to kefáli."
+    },
+    "el-a1-07-e7": {
+      "explain": "Puoi dire: «Με πονάει η κοιλιά μου».",
+      "prompt": "Il medico ti chiede cosa non va. Digli che ti fa male la pancia."
+    },
+    "el-a1-08-e1": {
+      "explain": "«το Σάββατο» significa «sabato». Si legge: to Sávvato."
+    },
+    "el-a1-08-e2": {
+      "explain": "«Καλή ιδέα! Τι ώρα;» significa «Bella idea! A che ora?». Si legge: Kalí idéa! Ti óra?"
+    },
+    "el-a1-08-e3": {
+      "explain": "La frase completa è «Στις επτά το βράδυ» = «Alle sette di sera». Per l’ora si usa «στις»: στις επτά = alle sette."
+    },
+    "el-a1-08-e4": {
+      "explain": "Ordine giusto: «Είσαι ελεύθερος το Σάββατο;» = «Hai tempo sabato?»."
+    },
+    "el-a1-08-e5": {
+      "explain": "«Τι ώρα είναι;» significa «Che ore sono?». Si legge: Ti óra íne?"
+    },
+    "el-a1-08-e6": {
+      "explain": "«domenica» si dice «η Κυριακή». Puoi scrivere anche in lettere latine: i Kiriakí."
+    },
+    "el-a1-08-e7": {
+      "explain": "Puoi dire: «Είσαι ελεύθερος την Κυριακή;».",
+      "prompt": "Vuoi andare al cinema con un amico. Chiedigli se ha tempo domenica."
+    },
+    "el-a1-09-e1": {
+      "explain": "«πολύ νόστιμο» significa «buonissimo». Si legge: polí nóstimo."
+    },
+    "el-a1-09-e2": {
+      "explain": "«Τι θα πάρετε;» significa «Cosa desiderate?». Si legge: Ti tha párete?"
+    },
+    "el-a1-09-e3": {
+      "explain": "La frase completa è «Καλησπέρα, έχω κλείσει τραπέζι για δύο» = «Buonasera, ho prenotato un tavolo per due». «Έχω κλείσει τραπέζι» = «Ho prenotato un tavolo»: κλείνω vuol dire chiudere, ma anche prenotare."
+    },
+    "el-a1-09-e4": {
+      "explain": "Ordine giusto: «Τον λογαριασμό, παρακαλώ» = «Il conto, per favore»."
+    },
+    "el-a1-09-e5": {
+      "explain": "«το ψάρι» significa «il pesce». Si legge: to psári."
+    },
+    "el-a1-09-e6": {
+      "explain": "«la zuppa» si dice «η σούπα». Puoi scrivere anche in lettere latine: i soúpa."
+    },
+    "el-a1-09-e7": {
+      "explain": "Puoi dire: «Τον λογαριασμό, παρακαλώ».",
+      "prompt": "Hai finito di mangiare. Chiedi il conto al cameriere."
+    },
+    "el-a1-10-e1": {
+      "explain": "«η μουσική» significa «la musica». Si legge: i mousikí."
+    },
+    "el-a1-10-e2": {
+      "explain": "«Τι κάνεις το Σαββατοκύριακο;» significa «Cosa fai nel fine settimana?». Si legge: Ti kánis to Savvatokíriako?"
+    },
+    "el-a1-10-e3": {
+      "explain": "La frase completa è «Το Σάββατο παίζω ποδόσφαιρο» = «Il sabato gioco a calcio». «παίζω» = gioco: παίζω ποδόσφαιρο = gioco a calcio."
+    },
+    "el-a1-10-e4": {
+      "explain": "Ordine giusto: «Την Κυριακή διαβάζω ένα βιβλίο» = «La domenica leggo un libro». In greco non c’è l’infinito: «μαγειρεύω» = cucino / cucinare."
+    },
+    "el-a1-10-e5": {
+      "explain": "«κολυμπάω» significa «nuotare». Si legge: kolibáo."
+    },
+    "el-a1-10-e6": {
+      "explain": "«il libro» si dice «το βιβλίο». Puoi scrivere anche in lettere latine: to vivlío."
+    },
+    "el-a1-10-e7": {
+      "explain": "Puoi dire: «Μου αρέσει να μαγειρεύω».",
+      "prompt": "Una nuova amica ti chiede cosa ti piace. Rispondi che ti piace cucinare."
+    }
+  }
+}

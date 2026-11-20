@@ -1,0 +1,1805 @@
+{
+  "format": 1,
+  "id": "el-a1",
+  "language": "el",
+  "version": "1.0.0",
+  "lessons": [
+    {
+      "id": "el-a1-01",
+      "minutes": 7,
+      "dialogue": [
+        {
+          "id": "el-a1-01-d1",
+          "speaker": "Ελένη",
+          "text": "Γεια σου! Είμαι η Ελένη.",
+          "translit": "Gia sou! Íme i Eléni."
+        },
+        {
+          "id": "el-a1-01-d2",
+          "speaker": "Μάρκο",
+          "text": "Γεια σου, Ελένη! Με λένε Μάρκο.",
+          "translit": "Gia sou, Eléni! Me léne Márko."
+        },
+        {
+          "id": "el-a1-01-d3",
+          "speaker": "Ελένη",
+          "text": "Από πού είσαι;",
+          "translit": "Apó poú íse?"
+        },
+        {
+          "id": "el-a1-01-d4",
+          "speaker": "Μάρκο",
+          "text": "Είμαι από την Ιταλία. Εσύ;",
+          "translit": "Íme apó tin Italía. Esí?"
+        },
+        {
+          "id": "el-a1-01-d5",
+          "speaker": "Ελένη",
+          "text": "Εγώ είμαι από τη Θεσσαλονίκη. Χάρηκα!",
+          "translit": "Egó íme apó ti Thessaloníki. Chárika!"
+        },
+        {
+          "id": "el-a1-01-d6",
+          "speaker": "Μάρκο",
+          "text": "Κι εγώ! Τα λέμε σύντομα.",
+          "translit": "Ki egó! Ta léme síntoma."
+        }
+      ],
+      "vocabulary": [
+        {
+          "id": "el-a1-01-v1",
+          "text": "Καλημέρα",
+          "translit": "Kaliméra",
+          "accept": [
+            "Kaliméra",
+            "Kalimera"
+          ]
+        },
+        {
+          "id": "el-a1-01-v2",
+          "text": "Καλησπέρα",
+          "translit": "Kalispéra",
+          "accept": [
+            "Kalispéra",
+            "Kalispera"
+          ]
+        },
+        {
+          "id": "el-a1-01-v3",
+          "text": "Αντίο",
+          "translit": "Antío",
+          "accept": [
+            "Antío",
+            "Antio"
+          ]
+        },
+        {
+          "id": "el-a1-01-v4",
+          "text": "Πώς σε λένε;",
+          "translit": "Pós se léne?",
+          "accept": [
+            "Pós se léne?",
+            "Pos se lene?"
+          ]
+        },
+        {
+          "id": "el-a1-01-v5",
+          "text": "Ευχαριστώ",
+          "translit": "Evcharistó",
+          "accept": [
+            "Evcharistó",
+            "Evcharisto"
+          ]
+        },
+        {
+          "id": "el-a1-01-v6",
+          "text": "Παρακαλώ",
+          "translit": "Parakaló",
+          "accept": [
+            "Parakaló",
+            "Parakalo"
+          ]
+        }
+      ],
+      "exercises": [
+        {
+          "id": "el-a1-01-e1",
+          "type": "listen",
+          "item": "el-a1-01-v3",
+          "options": [
+            "el-a1-01-v3",
+            "el-a1-01-v4",
+            "el-a1-01-v5"
+          ]
+        },
+        {
+          "id": "el-a1-01-e2",
+          "type": "choice",
+          "item": "el-a1-01-d3",
+          "direction": "toSource",
+          "options": [
+            "el-a1-01-d3",
+            "el-a1-01-d4",
+            "el-a1-01-d5"
+          ]
+        },
+        {
+          "id": "el-a1-01-e3",
+          "type": "cloze",
+          "item": "el-a1-01-d2",
+          "gap": "λένε",
+          "options": [
+            "λένε",
+            "λέω",
+            "είναι"
+          ]
+        },
+        {
+          "id": "el-a1-01-e4",
+          "type": "order",
+          "item": "el-a1-01-d4",
+          "segments": [
+            "Είμαι",
+            "από",
+            "την",
+            "Ιταλία.",
+            "Εσύ;"
+          ],
+          "extra": [
+            "στην"
+          ]
+        },
+        {
+          "id": "el-a1-01-e5",
+          "type": "choice",
+          "item": "el-a1-01-v1",
+          "direction": "toTarget",
+          "options": [
+            "el-a1-01-v1",
+            "el-a1-01-v2",
+            "el-a1-01-v3"
+          ]
+        },
+        {
+          "id": "el-a1-01-e6",
+          "type": "write",
+          "item": "el-a1-01-v5"
+        },
+        {
+          "id": "el-a1-01-e7",
+          "type": "situation",
+          "mode": "choice",
+          "answers": [
+            "Με λένε Τζούλια."
+          ],
+          "options": [
+            "Με λένε Τζούλια.",
+            "Είμαι από την Ιταλία.",
+            "Αντίο, Τζούλια!"
+          ],
+          "translit": "Me léne Tzoúlia."
+        }
+      ]
+    },
+    {
+      "id": "el-a1-02",
+      "minutes": 7,
+      "dialogue": [
+        {
+          "id": "el-a1-02-d1",
+          "speaker": "Πωλήτρια",
+          "text": "Καλημέρα! Τι θα θέλατε;",
+          "translit": "Kaliméra! Ti tha thélate?"
+        },
+        {
+          "id": "el-a1-02-d2",
+          "speaker": "Μάρκο",
+          "text": "Θα ήθελα ένα ψωμί, παρακαλώ.",
+          "translit": "Tha íthela éna psomí, parakaló."
+        },
+        {
+          "id": "el-a1-02-d3",
+          "speaker": "Πωλήτρια",
+          "text": "Ορίστε. Κάτι άλλο;",
+          "translit": "Oríste. Káti állo?"
+        },
+        {
+          "id": "el-a1-02-d4",
+          "speaker": "Μάρκο",
+          "text": "Ναι, και τρία μήλα.",
+          "translit": "Ne, ke tría míla."
+        },
+        {
+          "id": "el-a1-02-d5",
+          "speaker": "Μάρκο",
+          "text": "Πόσο κάνει;",
+          "translit": "Póso káni?"
+        },
+        {
+          "id": "el-a1-02-d6",
+          "speaker": "Πωλήτρια",
+          "text": "Τέσσερα ευρώ.",
+          "translit": "Téssera evró."
+        }
+      ],
+      "vocabulary": [
+        {
+          "id": "el-a1-02-v1",
+          "text": "το ψωμί",
+          "translit": "to psomí",
+          "accept": [
+            "ψωμί",
+            "to psomí",
+            "to psomi",
+            "psomí",
+            "psomi"
+          ]
+        },
+        {
+          "id": "el-a1-02-v2",
+          "text": "το μήλο",
+          "translit": "to mílo",
+          "accept": [
+            "to mílo",
+            "to milo"
+          ]
+        },
+        {
+          "id": "el-a1-02-v3",
+          "text": "το τυρί",
+          "translit": "to tirí",
+          "accept": [
+            "to tirí",
+            "to tiri"
+          ]
+        },
+        {
+          "id": "el-a1-02-v4",
+          "text": "η τούρτα",
+          "translit": "i toúrta",
+          "accept": [
+            "i toúrta",
+            "i tourta"
+          ]
+        },
+        {
+          "id": "el-a1-02-v5",
+          "text": "Πόσο κάνει;",
+          "translit": "Póso káni?",
+          "accept": [
+            "Póso káni?",
+            "Poso kani?"
+          ]
+        },
+        {
+          "id": "el-a1-02-v6",
+          "text": "τρία",
+          "translit": "tría",
+          "accept": [
+            "tría",
+            "tria"
+          ]
+        }
+      ],
+      "exercises": [
+        {
+          "id": "el-a1-02-e1",
+          "type": "listen",
+          "item": "el-a1-02-v2",
+          "options": [
+            "el-a1-02-v1",
+            "el-a1-02-v2",
+            "el-a1-02-v3"
+          ]
+        },
+        {
+          "id": "el-a1-02-e2",
+          "type": "choice",
+          "item": "el-a1-02-d2",
+          "direction": "toSource",
+          "options": [
+            "el-a1-02-d2",
+            "el-a1-02-d3",
+            "el-a1-02-d5"
+          ]
+        },
+        {
+          "id": "el-a1-02-e3",
+          "type": "cloze",
+          "item": "el-a1-02-d2",
+          "gap": "Θα ήθελα",
+          "options": [
+            "Θα ήθελα",
+            "Έχω",
+            "Είμαι"
+          ]
+        },
+        {
+          "id": "el-a1-02-e4",
+          "type": "order",
+          "item": "el-a1-02-d4",
+          "segments": [
+            "Ναι,",
+            "και",
+            "τρία",
+            "μήλα."
+          ],
+          "extra": [
+            "μήλο"
+          ]
+        },
+        {
+          "id": "el-a1-02-e5",
+          "type": "choice",
+          "item": "el-a1-02-v4",
+          "direction": "toTarget",
+          "options": [
+            "el-a1-02-v4",
+            "el-a1-02-v3",
+            "el-a1-02-v6"
+          ]
+        },
+        {
+          "id": "el-a1-02-e6",
+          "type": "write",
+          "item": "el-a1-02-v1"
+        },
+        {
+          "id": "el-a1-02-e7",
+          "type": "situation",
+          "mode": "choice",
+          "answers": [
+            "Θα ήθελα ένα ψωμί, παρακαλώ."
+          ],
+          "options": [
+            "Θα ήθελα ένα ψωμί, παρακαλώ.",
+            "Πόσο κάνει το ψωμί;",
+            "Ευχαριστώ, αντίο!"
+          ],
+          "translit": "Tha íthela éna psomí, parakaló."
+        }
+      ]
+    },
+    {
+      "id": "el-a1-03",
+      "minutes": 6,
+      "dialogue": [
+        {
+          "id": "el-a1-03-d1",
+          "speaker": "Σερβιτόρος",
+          "text": "Καλημέρα! Τι θα πάρετε;",
+          "translit": "Kaliméra! Ti tha párete?"
+        },
+        {
+          "id": "el-a1-03-d2",
+          "speaker": "Μάρκο",
+          "text": "Ένα τσάι, παρακαλώ.",
+          "translit": "Éna tsái, parakaló."
+        },
+        {
+          "id": "el-a1-03-d3",
+          "speaker": "Σερβιτόρος",
+          "text": "Με γάλα ή με λεμόνι;",
+          "translit": "Me gála í me lemóni?"
+        },
+        {
+          "id": "el-a1-03-d4",
+          "speaker": "Μάρκο",
+          "text": "Με λεμόνι. Και ένα ποτήρι νερό.",
+          "translit": "Me lemóni. Ke éna potíri neró."
+        },
+        {
+          "id": "el-a1-03-d5",
+          "speaker": "Μάρκο",
+          "text": "Μπορώ να πληρώσω;",
+          "translit": "Boró na pliróso?"
+        },
+        {
+          "id": "el-a1-03-d6",
+          "speaker": "Σερβιτόρος",
+          "text": "Βεβαίως. Τρία ευρώ και πενήντα.",
+          "translit": "Vevéos. Tría evró ke penínta."
+        }
+      ],
+      "vocabulary": [
+        {
+          "id": "el-a1-03-v1",
+          "text": "ο καφές",
+          "translit": "o kafés",
+          "accept": [
+            "o kafés",
+            "o kafes"
+          ]
+        },
+        {
+          "id": "el-a1-03-v2",
+          "text": "το τσάι",
+          "translit": "to tsái",
+          "accept": [
+            "to tsái",
+            "to tsai"
+          ]
+        },
+        {
+          "id": "el-a1-03-v3",
+          "text": "το νερό",
+          "translit": "to neró",
+          "accept": [
+            "to neró",
+            "to nero"
+          ]
+        },
+        {
+          "id": "el-a1-03-v4",
+          "text": "το γάλα",
+          "translit": "to gála",
+          "accept": [
+            "γάλα",
+            "to gála",
+            "to gala",
+            "gála",
+            "gala"
+          ]
+        },
+        {
+          "id": "el-a1-03-v5",
+          "text": "ο χυμός πορτοκάλι",
+          "translit": "o chimós portokáli",
+          "accept": [
+            "o chimós portokáli",
+            "o chimos portokali"
+          ]
+        },
+        {
+          "id": "el-a1-03-v6",
+          "text": "ο λογαριασμός",
+          "translit": "o logariasmós",
+          "accept": [
+            "o logariasmós",
+            "o logariasmos"
+          ]
+        }
+      ],
+      "exercises": [
+        {
+          "id": "el-a1-03-e1",
+          "type": "listen",
+          "item": "el-a1-03-v2",
+          "options": [
+            "el-a1-03-v1",
+            "el-a1-03-v2",
+            "el-a1-03-v5"
+          ]
+        },
+        {
+          "id": "el-a1-03-e2",
+          "type": "choice",
+          "item": "el-a1-03-d3",
+          "direction": "toSource",
+          "options": [
+            "el-a1-03-d3",
+            "el-a1-03-d4",
+            "el-a1-03-d6"
+          ]
+        },
+        {
+          "id": "el-a1-03-e3",
+          "type": "cloze",
+          "item": "el-a1-03-d3",
+          "gap": "ή",
+          "options": [
+            "ή",
+            "και",
+            "αλλά"
+          ]
+        },
+        {
+          "id": "el-a1-03-e4",
+          "type": "order",
+          "item": "el-a1-03-d4",
+          "segments": [
+            "Με",
+            "λεμόνι.",
+            "Και",
+            "ένα",
+            "ποτήρι",
+            "νερό."
+          ],
+          "extra": [
+            "δύο"
+          ]
+        },
+        {
+          "id": "el-a1-03-e5",
+          "type": "choice",
+          "item": "el-a1-03-v3",
+          "direction": "toTarget",
+          "options": [
+            "el-a1-03-v3",
+            "el-a1-03-v4",
+            "el-a1-03-v6"
+          ]
+        },
+        {
+          "id": "el-a1-03-e6",
+          "type": "write",
+          "item": "el-a1-03-v4"
+        },
+        {
+          "id": "el-a1-03-e7",
+          "type": "situation",
+          "mode": "choice",
+          "answers": [
+            "Έναν καφέ, παρακαλώ."
+          ],
+          "options": [
+            "Έναν καφέ, παρακαλώ.",
+            "Τον λογαριασμό, παρακαλώ.",
+            "Ένα τσάι με λεμόνι, παρακαλώ."
+          ],
+          "translit": "Énan kafé, parakaló."
+        }
+      ]
+    },
+    {
+      "id": "el-a1-04",
+      "minutes": 6,
+      "dialogue": [
+        {
+          "id": "el-a1-04-d1",
+          "speaker": "Μάρκο",
+          "text": "Συγγνώμη, πού είναι το ρύζι;",
+          "translit": "Singnómi, poú íne to rízi?"
+        },
+        {
+          "id": "el-a1-04-d2",
+          "speaker": "Υπάλληλος",
+          "text": "Το ρύζι είναι εκεί, δεξιά.",
+          "translit": "To rízi íne ekí, dexiá."
+        },
+        {
+          "id": "el-a1-04-d3",
+          "speaker": "Μάρκο",
+          "text": "Και τα αυγά;",
+          "translit": "Ke ta avgá?"
+        },
+        {
+          "id": "el-a1-04-d4",
+          "speaker": "Υπάλληλος",
+          "text": "Είναι δίπλα στο γάλα.",
+          "translit": "Íne dípla sto gála."
+        },
+        {
+          "id": "el-a1-04-d5",
+          "speaker": "Μάρκο",
+          "text": "Ευχαριστώ πολύ!",
+          "translit": "Evcharistó polí!"
+        },
+        {
+          "id": "el-a1-04-d6",
+          "speaker": "Υπάλληλος",
+          "text": "Τίποτα!",
+          "translit": "Típota!"
+        }
+      ],
+      "vocabulary": [
+        {
+          "id": "el-a1-04-v1",
+          "text": "το ρύζι",
+          "translit": "to rízi",
+          "accept": [
+            "ρύζι",
+            "to rízi",
+            "to rizi",
+            "rízi",
+            "rizi"
+          ]
+        },
+        {
+          "id": "el-a1-04-v2",
+          "text": "τα αυγά",
+          "translit": "ta avgá",
+          "accept": [
+            "ta avgá",
+            "ta avga"
+          ]
+        },
+        {
+          "id": "el-a1-04-v3",
+          "text": "τα φρούτα",
+          "translit": "ta froúta",
+          "accept": [
+            "ta froúta",
+            "ta frouta"
+          ]
+        },
+        {
+          "id": "el-a1-04-v4",
+          "text": "δεξιά",
+          "translit": "dexiá",
+          "accept": [
+            "dexiá",
+            "dexia"
+          ]
+        },
+        {
+          "id": "el-a1-04-v5",
+          "text": "αριστερά",
+          "translit": "aristerá",
+          "accept": [
+            "aristerá",
+            "aristera"
+          ]
+        },
+        {
+          "id": "el-a1-04-v6",
+          "text": "το ταμείο",
+          "translit": "to tamío",
+          "accept": [
+            "to tamío",
+            "to tamio"
+          ]
+        }
+      ],
+      "exercises": [
+        {
+          "id": "el-a1-04-e1",
+          "type": "listen",
+          "item": "el-a1-04-v4",
+          "options": [
+            "el-a1-04-v4",
+            "el-a1-04-v5",
+            "el-a1-04-v6"
+          ]
+        },
+        {
+          "id": "el-a1-04-e2",
+          "type": "choice",
+          "item": "el-a1-04-d1",
+          "direction": "toSource",
+          "options": [
+            "el-a1-04-d1",
+            "el-a1-04-d3",
+            "el-a1-04-d5"
+          ]
+        },
+        {
+          "id": "el-a1-04-e3",
+          "type": "cloze",
+          "item": "el-a1-04-d1",
+          "gap": "πού",
+          "options": [
+            "πού",
+            "τι",
+            "ποιος"
+          ]
+        },
+        {
+          "id": "el-a1-04-e4",
+          "type": "order",
+          "item": "el-a1-04-d2",
+          "segments": [
+            "Το",
+            "ρύζι",
+            "είναι",
+            "εκεί,",
+            "δεξιά."
+          ],
+          "extra": [
+            "αριστερά"
+          ]
+        },
+        {
+          "id": "el-a1-04-e5",
+          "type": "choice",
+          "item": "el-a1-04-v5",
+          "direction": "toTarget",
+          "options": [
+            "el-a1-04-v5",
+            "el-a1-04-v4",
+            "el-a1-04-v1"
+          ]
+        },
+        {
+          "id": "el-a1-04-e6",
+          "type": "write",
+          "item": "el-a1-04-v1"
+        },
+        {
+          "id": "el-a1-04-e7",
+          "type": "situation",
+          "mode": "choice",
+          "answers": [
+            "Συγγνώμη, πού είναι το γάλα;"
+          ],
+          "options": [
+            "Συγγνώμη, πού είναι το γάλα;",
+            "Συγγνώμη, πού είναι το ρύζι;",
+            "Πόσο κάνει το γάλα;"
+          ],
+          "translit": "Singnómi, poú íne to gála?"
+        }
+      ]
+    },
+    {
+      "id": "el-a1-05",
+      "minutes": 6,
+      "dialogue": [
+        {
+          "id": "el-a1-05-d1",
+          "speaker": "Μάρκο",
+          "text": "Συγγνώμη, πού είναι ο σταθμός;",
+          "translit": "Singnómi, poú íne o stathmós?"
+        },
+        {
+          "id": "el-a1-05-d2",
+          "speaker": "Περαστική",
+          "text": "Πηγαίνετε ευθεία.",
+          "translit": "Pigénete evthía."
+        },
+        {
+          "id": "el-a1-05-d3",
+          "speaker": "Περαστική",
+          "text": "Μετά στρίψτε αριστερά.",
+          "translit": "Metá strípste aristerá."
+        },
+        {
+          "id": "el-a1-05-d4",
+          "speaker": "Μάρκο",
+          "text": "Είναι μακριά;",
+          "translit": "Íne makriá?"
+        },
+        {
+          "id": "el-a1-05-d5",
+          "speaker": "Περαστική",
+          "text": "Όχι, πέντε λεπτά με τα πόδια.",
+          "translit": "Óchi, pénte leptá me ta pódia."
+        },
+        {
+          "id": "el-a1-05-d6",
+          "speaker": "Μάρκο",
+          "text": "Ευχαριστώ, αντίο!",
+          "translit": "Evcharistó, antío!"
+        }
+      ],
+      "vocabulary": [
+        {
+          "id": "el-a1-05-v1",
+          "text": "ο σταθμός",
+          "translit": "o stathmós",
+          "accept": [
+            "o stathmós",
+            "o stathmos"
+          ]
+        },
+        {
+          "id": "el-a1-05-v2",
+          "text": "το μουσείο",
+          "translit": "to mousío",
+          "accept": [
+            "μουσείο",
+            "to mousío",
+            "to mousio",
+            "mousío",
+            "mousio"
+          ]
+        },
+        {
+          "id": "el-a1-05-v3",
+          "text": "ευθεία",
+          "translit": "evthía",
+          "accept": [
+            "evthía",
+            "evthia"
+          ]
+        },
+        {
+          "id": "el-a1-05-v4",
+          "text": "κοντά",
+          "translit": "kontá",
+          "accept": [
+            "kontá",
+            "konta"
+          ]
+        },
+        {
+          "id": "el-a1-05-v5",
+          "text": "μακριά",
+          "translit": "makriá",
+          "accept": [
+            "makriá",
+            "makria"
+          ]
+        },
+        {
+          "id": "el-a1-05-v6",
+          "text": "η στάση του λεωφορείου",
+          "translit": "i stási tou leoforíou",
+          "accept": [
+            "i stási tou leoforíou",
+            "i stasi tou leoforiou"
+          ]
+        }
+      ],
+      "exercises": [
+        {
+          "id": "el-a1-05-e1",
+          "type": "listen",
+          "item": "el-a1-05-v3",
+          "options": [
+            "el-a1-05-v3",
+            "el-a1-05-v4",
+            "el-a1-05-v5"
+          ]
+        },
+        {
+          "id": "el-a1-05-e2",
+          "type": "choice",
+          "item": "el-a1-05-d4",
+          "direction": "toSource",
+          "options": [
+            "el-a1-05-d4",
+            "el-a1-05-d2",
+            "el-a1-05-d5"
+          ]
+        },
+        {
+          "id": "el-a1-05-e3",
+          "type": "cloze",
+          "item": "el-a1-05-d3",
+          "gap": "αριστερά",
+          "options": [
+            "αριστερά",
+            "δεξιά",
+            "ευθεία"
+          ]
+        },
+        {
+          "id": "el-a1-05-e4",
+          "type": "order",
+          "item": "el-a1-05-d5",
+          "segments": [
+            "Όχι,",
+            "πέντε",
+            "λεπτά",
+            "με",
+            "τα",
+            "πόδια."
+          ],
+          "extra": [
+            "στα"
+          ]
+        },
+        {
+          "id": "el-a1-05-e5",
+          "type": "choice",
+          "item": "el-a1-05-v4",
+          "direction": "toTarget",
+          "options": [
+            "el-a1-05-v4",
+            "el-a1-05-v5",
+            "el-a1-05-v1"
+          ]
+        },
+        {
+          "id": "el-a1-05-e6",
+          "type": "write",
+          "item": "el-a1-05-v2"
+        },
+        {
+          "id": "el-a1-05-e7",
+          "type": "situation",
+          "mode": "choice",
+          "answers": [
+            "Συγγνώμη, πού είναι το μουσείο;"
+          ],
+          "options": [
+            "Συγγνώμη, πού είναι το μουσείο;",
+            "Συγγνώμη, πού είναι ο σταθμός;",
+            "Το μουσείο είναι κοντά."
+          ],
+          "translit": "Singnómi, poú íne to mousío?"
+        }
+      ]
+    },
+    {
+      "id": "el-a1-06",
+      "minutes": 7,
+      "dialogue": [
+        {
+          "id": "el-a1-06-d1",
+          "speaker": "Μάρκο",
+          "text": "Ένα εισιτήριο για την Αθήνα, παρακαλώ.",
+          "translit": "Éna isitírio gia tin Athína, parakaló."
+        },
+        {
+          "id": "el-a1-06-d2",
+          "speaker": "Ταμείο",
+          "text": "Απλό ή με επιστροφή;",
+          "translit": "Apló í me epistrofí?"
+        },
+        {
+          "id": "el-a1-06-d3",
+          "speaker": "Μάρκο",
+          "text": "Με επιστροφή.",
+          "translit": "Me epistrofí."
+        },
+        {
+          "id": "el-a1-06-d4",
+          "speaker": "Μάρκο",
+          "text": "Από ποια αποβάθρα φεύγει το τρένο;",
+          "translit": "Apó pia apováthra févgi to tréno?"
+        },
+        {
+          "id": "el-a1-06-d5",
+          "speaker": "Ταμείο",
+          "text": "Από την αποβάθρα τρία, στις δέκα.",
+          "translit": "Apó tin apováthra tría, stis déka."
+        },
+        {
+          "id": "el-a1-06-d6",
+          "speaker": "Μάρκο",
+          "text": "Τέλεια, ευχαριστώ!",
+          "translit": "Télia, evcharistó!"
+        }
+      ],
+      "vocabulary": [
+        {
+          "id": "el-a1-06-v1",
+          "text": "το τρένο",
+          "translit": "to tréno",
+          "accept": [
+            "to tréno",
+            "to treno"
+          ]
+        },
+        {
+          "id": "el-a1-06-v2",
+          "text": "το εισιτήριο",
+          "translit": "to isitírio",
+          "accept": [
+            "to isitírio",
+            "to isitirio"
+          ]
+        },
+        {
+          "id": "el-a1-06-v3",
+          "text": "η αποβάθρα",
+          "translit": "i apováthra",
+          "accept": [
+            "i apováthra",
+            "i apovathra"
+          ]
+        },
+        {
+          "id": "el-a1-06-v4",
+          "text": "το λεωφορείο",
+          "translit": "to leoforío",
+          "accept": [
+            "to leoforío",
+            "to leoforio"
+          ]
+        },
+        {
+          "id": "el-a1-06-v5",
+          "text": "σήμερα",
+          "translit": "símera",
+          "accept": [
+            "símera",
+            "simera"
+          ]
+        },
+        {
+          "id": "el-a1-06-v6",
+          "text": "αύριο",
+          "translit": "ávrio",
+          "accept": [
+            "ávrio",
+            "avrio"
+          ]
+        }
+      ],
+      "exercises": [
+        {
+          "id": "el-a1-06-e1",
+          "type": "listen",
+          "item": "el-a1-06-v2",
+          "options": [
+            "el-a1-06-v1",
+            "el-a1-06-v2",
+            "el-a1-06-v3"
+          ]
+        },
+        {
+          "id": "el-a1-06-e2",
+          "type": "choice",
+          "item": "el-a1-06-d2",
+          "direction": "toSource",
+          "options": [
+            "el-a1-06-d2",
+            "el-a1-06-d4",
+            "el-a1-06-d5"
+          ]
+        },
+        {
+          "id": "el-a1-06-e3",
+          "type": "cloze",
+          "item": "el-a1-06-d4",
+          "gap": "ποια",
+          "options": [
+            "ποια",
+            "ποιος",
+            "τι"
+          ]
+        },
+        {
+          "id": "el-a1-06-e4",
+          "type": "order",
+          "item": "el-a1-06-d1",
+          "segments": [
+            "Ένα",
+            "εισιτήριο",
+            "για",
+            "την",
+            "Αθήνα,",
+            "παρακαλώ."
+          ],
+          "extra": [
+            "στην"
+          ]
+        },
+        {
+          "id": "el-a1-06-e5",
+          "type": "choice",
+          "item": "el-a1-06-v1",
+          "direction": "toTarget",
+          "options": [
+            "el-a1-06-v1",
+            "el-a1-06-v4",
+            "el-a1-06-v3"
+          ]
+        },
+        {
+          "id": "el-a1-06-e6",
+          "type": "write",
+          "item": "el-a1-06-v5"
+        },
+        {
+          "id": "el-a1-06-e7",
+          "type": "situation",
+          "mode": "choice",
+          "answers": [
+            "Ένα εισιτήριο για την Αθήνα, παρακαλώ."
+          ],
+          "options": [
+            "Ένα εισιτήριο για την Αθήνα, παρακαλώ.",
+            "Ένα εισιτήριο για τη Θεσσαλονίκη, παρακαλώ.",
+            "Από ποια αποβάθρα;"
+          ],
+          "translit": "Éna isitírio gia tin Athína, parakaló."
+        }
+      ]
+    },
+    {
+      "id": "el-a1-07",
+      "minutes": 6,
+      "dialogue": [
+        {
+          "id": "el-a1-07-d1",
+          "speaker": "Γιατρός",
+          "text": "Καλημέρα. Τι σας συμβαίνει;",
+          "translit": "Kaliméra. Ti sas simvéni?"
+        },
+        {
+          "id": "el-a1-07-d2",
+          "speaker": "Μάρκο",
+          "text": "Με πονάει το κεφάλι μου.",
+          "translit": "Me ponái to kefáli mou."
+        },
+        {
+          "id": "el-a1-07-d3",
+          "speaker": "Γιατρός",
+          "text": "Έχετε και πυρετό;",
+          "translit": "Échete ke piretó?"
+        },
+        {
+          "id": "el-a1-07-d4",
+          "speaker": "Μάρκο",
+          "text": "Ναι, λίγο. Και είμαι πολύ κουρασμένος.",
+          "translit": "Ne, lígo. Ke íme polí kourasménos."
+        },
+        {
+          "id": "el-a1-07-d5",
+          "speaker": "Γιατρός",
+          "text": "Πίνετε πολύ νερό και ξεκουραστείτε.",
+          "translit": "Pínete polí neró ke xekourastíte."
+        },
+        {
+          "id": "el-a1-07-d6",
+          "speaker": "Μάρκο",
+          "text": "Ευχαριστώ πολύ.",
+          "translit": "Evcharistó polí."
+        }
+      ],
+      "vocabulary": [
+        {
+          "id": "el-a1-07-v1",
+          "text": "το κεφάλι",
+          "translit": "to kefáli",
+          "accept": [
+            "κεφάλι",
+            "to kefáli",
+            "to kefali",
+            "kefáli",
+            "kefali"
+          ]
+        },
+        {
+          "id": "el-a1-07-v2",
+          "text": "η κοιλιά",
+          "translit": "i kiliá",
+          "accept": [
+            "i kiliá",
+            "i kilia"
+          ]
+        },
+        {
+          "id": "el-a1-07-v3",
+          "text": "ο πυρετός",
+          "translit": "o piretós",
+          "accept": [
+            "o piretós",
+            "o piretos"
+          ]
+        },
+        {
+          "id": "el-a1-07-v4",
+          "text": "το φάρμακο",
+          "translit": "to fármako",
+          "accept": [
+            "to fármako",
+            "to farmako"
+          ]
+        },
+        {
+          "id": "el-a1-07-v5",
+          "text": "άρρωστος",
+          "translit": "árrostos",
+          "accept": [
+            "árrostos",
+            "arrostos"
+          ]
+        },
+        {
+          "id": "el-a1-07-v6",
+          "text": "Είμαι καλά.",
+          "translit": "Íme kalá.",
+          "accept": [
+            "Íme kalá.",
+            "Ime kala."
+          ]
+        }
+      ],
+      "exercises": [
+        {
+          "id": "el-a1-07-e1",
+          "type": "listen",
+          "item": "el-a1-07-v1",
+          "options": [
+            "el-a1-07-v1",
+            "el-a1-07-v2",
+            "el-a1-07-v3"
+          ]
+        },
+        {
+          "id": "el-a1-07-e2",
+          "type": "choice",
+          "item": "el-a1-07-d3",
+          "direction": "toSource",
+          "options": [
+            "el-a1-07-d3",
+            "el-a1-07-d2",
+            "el-a1-07-d5"
+          ]
+        },
+        {
+          "id": "el-a1-07-e3",
+          "type": "cloze",
+          "item": "el-a1-07-d2",
+          "gap": "πονάει",
+          "options": [
+            "πονάει",
+            "έχει",
+            "είναι"
+          ]
+        },
+        {
+          "id": "el-a1-07-e4",
+          "type": "order",
+          "item": "el-a1-07-d4",
+          "segments": [
+            "Ναι,",
+            "λίγο.",
+            "Και",
+            "είμαι",
+            "πολύ",
+            "κουρασμένος."
+          ],
+          "extra": [
+            "έχω"
+          ]
+        },
+        {
+          "id": "el-a1-07-e5",
+          "type": "choice",
+          "item": "el-a1-07-v4",
+          "direction": "toTarget",
+          "options": [
+            "el-a1-07-v4",
+            "el-a1-07-v3",
+            "el-a1-07-v5"
+          ]
+        },
+        {
+          "id": "el-a1-07-e6",
+          "type": "write",
+          "item": "el-a1-07-v1"
+        },
+        {
+          "id": "el-a1-07-e7",
+          "type": "situation",
+          "mode": "choice",
+          "answers": [
+            "Με πονάει η κοιλιά μου."
+          ],
+          "options": [
+            "Με πονάει η κοιλιά μου.",
+            "Με πονάει το κεφάλι μου.",
+            "Είμαι καλά, ευχαριστώ."
+          ],
+          "translit": "Me ponái i kiliá mou."
+        }
+      ]
+    },
+    {
+      "id": "el-a1-08",
+      "minutes": 6,
+      "dialogue": [
+        {
+          "id": "el-a1-08-d1",
+          "speaker": "Ελένη",
+          "text": "Είσαι ελεύθερος το Σάββατο;",
+          "translit": "Íse elévtheros to Sávvato?"
+        },
+        {
+          "id": "el-a1-08-d2",
+          "speaker": "Μάρκο",
+          "text": "Ναι! Τι θα κάνουμε;",
+          "translit": "Ne! Ti tha kánoume?"
+        },
+        {
+          "id": "el-a1-08-d3",
+          "speaker": "Ελένη",
+          "text": "Πάμε σινεμά;",
+          "translit": "Páme sinemá?"
+        },
+        {
+          "id": "el-a1-08-d4",
+          "speaker": "Μάρκο",
+          "text": "Καλή ιδέα! Τι ώρα;",
+          "translit": "Kalí idéa! Ti óra?"
+        },
+        {
+          "id": "el-a1-08-d5",
+          "speaker": "Ελένη",
+          "text": "Στις επτά το βράδυ.",
+          "translit": "Stis eptá to vrádi."
+        },
+        {
+          "id": "el-a1-08-d6",
+          "speaker": "Μάρκο",
+          "text": "Εντάξει, τα λέμε το Σάββατο!",
+          "translit": "Entáxi, ta léme to Sávvato!"
+        }
+      ],
+      "vocabulary": [
+        {
+          "id": "el-a1-08-v1",
+          "text": "η Δευτέρα",
+          "translit": "i Devtéra",
+          "accept": [
+            "i Devtéra",
+            "i Devtera"
+          ]
+        },
+        {
+          "id": "el-a1-08-v2",
+          "text": "η Παρασκευή",
+          "translit": "i Paraskeví",
+          "accept": [
+            "i Paraskeví",
+            "i Paraskevi"
+          ]
+        },
+        {
+          "id": "el-a1-08-v3",
+          "text": "το Σάββατο",
+          "translit": "to Sávvato",
+          "accept": [
+            "to Sávvato",
+            "to Savvato"
+          ]
+        },
+        {
+          "id": "el-a1-08-v4",
+          "text": "η Κυριακή",
+          "translit": "i Kiriakí",
+          "accept": [
+            "Κυριακή",
+            "i Kiriakí",
+            "i Kiriaki",
+            "Kiriakí",
+            "Kiriaki"
+          ]
+        },
+        {
+          "id": "el-a1-08-v5",
+          "text": "Τι ώρα είναι;",
+          "translit": "Ti óra íne?",
+          "accept": [
+            "Ti óra íne?",
+            "Ti ora ine?"
+          ]
+        },
+        {
+          "id": "el-a1-08-v6",
+          "text": "απόψε",
+          "translit": "apópse",
+          "accept": [
+            "apópse",
+            "apopse"
+          ]
+        }
+      ],
+      "exercises": [
+        {
+          "id": "el-a1-08-e1",
+          "type": "listen",
+          "item": "el-a1-08-v3",
+          "options": [
+            "el-a1-08-v2",
+            "el-a1-08-v3",
+            "el-a1-08-v4"
+          ]
+        },
+        {
+          "id": "el-a1-08-e2",
+          "type": "choice",
+          "item": "el-a1-08-d4",
+          "direction": "toSource",
+          "options": [
+            "el-a1-08-d4",
+            "el-a1-08-d1",
+            "el-a1-08-d5"
+          ]
+        },
+        {
+          "id": "el-a1-08-e3",
+          "type": "cloze",
+          "item": "el-a1-08-d5",
+          "gap": "Στις",
+          "options": [
+            "Στις",
+            "Στο",
+            "Την"
+          ]
+        },
+        {
+          "id": "el-a1-08-e4",
+          "type": "order",
+          "item": "el-a1-08-d1",
+          "segments": [
+            "Είσαι",
+            "ελεύθερος",
+            "το",
+            "Σάββατο;"
+          ],
+          "extra": [
+            "την"
+          ]
+        },
+        {
+          "id": "el-a1-08-e5",
+          "type": "choice",
+          "item": "el-a1-08-v5",
+          "direction": "toTarget",
+          "options": [
+            "el-a1-08-v5",
+            "el-a1-08-v6",
+            "el-a1-08-v1"
+          ]
+        },
+        {
+          "id": "el-a1-08-e6",
+          "type": "write",
+          "item": "el-a1-08-v4"
+        },
+        {
+          "id": "el-a1-08-e7",
+          "type": "situation",
+          "mode": "choice",
+          "answers": [
+            "Είσαι ελεύθερος την Κυριακή;"
+          ],
+          "options": [
+            "Είσαι ελεύθερος την Κυριακή;",
+            "Είσαι ελεύθερος το Σάββατο;",
+            "Τι ώρα είναι;"
+          ],
+          "translit": "Íse elévtheros tin Kiriakí?"
+        }
+      ]
+    },
+    {
+      "id": "el-a1-09",
+      "minutes": 8,
+      "dialogue": [
+        {
+          "id": "el-a1-09-d1",
+          "speaker": "Μάρκο",
+          "text": "Καλησπέρα, έχω κλείσει τραπέζι για δύο.",
+          "translit": "Kalispéra, écho klísi trapézi gia dío."
+        },
+        {
+          "id": "el-a1-09-d2",
+          "speaker": "Σερβιτόρος",
+          "text": "Περάστε. Ορίστε ο κατάλογος.",
+          "translit": "Peráste. Oríste o katálogos."
+        },
+        {
+          "id": "el-a1-09-d3",
+          "speaker": "Σερβιτόρος",
+          "text": "Τι θα πάρετε;",
+          "translit": "Ti tha párete?"
+        },
+        {
+          "id": "el-a1-09-d4",
+          "speaker": "Μάρκο",
+          "text": "Για μένα τη σούπα και μια σαλάτα.",
+          "translit": "Gia ména ti soúpa ke mia saláta."
+        },
+        {
+          "id": "el-a1-09-d5",
+          "speaker": "Μάρκο",
+          "text": "Τον λογαριασμό, παρακαλώ.",
+          "translit": "Ton logariasmó, parakaló."
+        },
+        {
+          "id": "el-a1-09-d6",
+          "speaker": "Σερβιτόρος",
+          "text": "Αμέσως!",
+          "translit": "Amésos!"
+        }
+      ],
+      "vocabulary": [
+        {
+          "id": "el-a1-09-v1",
+          "text": "ο κατάλογος",
+          "translit": "o katálogos",
+          "accept": [
+            "o katálogos",
+            "o katalogos"
+          ]
+        },
+        {
+          "id": "el-a1-09-v2",
+          "text": "η σούπα",
+          "translit": "i soúpa",
+          "accept": [
+            "σούπα",
+            "i soúpa",
+            "i soupa",
+            "soúpa",
+            "soupa"
+          ]
+        },
+        {
+          "id": "el-a1-09-v3",
+          "text": "το ψάρι",
+          "translit": "to psári",
+          "accept": [
+            "to psári",
+            "to psari"
+          ]
+        },
+        {
+          "id": "el-a1-09-v4",
+          "text": "το γλυκό",
+          "translit": "to glikó",
+          "accept": [
+            "to glikó",
+            "to gliko"
+          ]
+        },
+        {
+          "id": "el-a1-09-v5",
+          "text": "πολύ νόστιμο",
+          "translit": "polí nóstimo",
+          "accept": [
+            "polí nóstimo",
+            "poli nostimo"
+          ]
+        },
+        {
+          "id": "el-a1-09-v6",
+          "text": "το τραπέζι",
+          "translit": "to trapézi",
+          "accept": [
+            "to trapézi",
+            "to trapezi"
+          ]
+        }
+      ],
+      "exercises": [
+        {
+          "id": "el-a1-09-e1",
+          "type": "listen",
+          "item": "el-a1-09-v5",
+          "options": [
+            "el-a1-09-v5",
+            "el-a1-09-v2",
+            "el-a1-09-v3"
+          ]
+        },
+        {
+          "id": "el-a1-09-e2",
+          "type": "choice",
+          "item": "el-a1-09-d3",
+          "direction": "toSource",
+          "options": [
+            "el-a1-09-d3",
+            "el-a1-09-d2",
+            "el-a1-09-d5"
+          ]
+        },
+        {
+          "id": "el-a1-09-e3",
+          "type": "cloze",
+          "item": "el-a1-09-d1",
+          "gap": "κλείσει",
+          "options": [
+            "κλείσει",
+            "κλείνω",
+            "κλειδί"
+          ]
+        },
+        {
+          "id": "el-a1-09-e4",
+          "type": "order",
+          "item": "el-a1-09-d5",
+          "segments": [
+            "Τον",
+            "λογαριασμό,",
+            "παρακαλώ."
+          ],
+          "extra": [
+            "ο"
+          ]
+        },
+        {
+          "id": "el-a1-09-e5",
+          "type": "choice",
+          "item": "el-a1-09-v3",
+          "direction": "toTarget",
+          "options": [
+            "el-a1-09-v3",
+            "el-a1-09-v4",
+            "el-a1-09-v6"
+          ]
+        },
+        {
+          "id": "el-a1-09-e6",
+          "type": "write",
+          "item": "el-a1-09-v2"
+        },
+        {
+          "id": "el-a1-09-e7",
+          "type": "situation",
+          "mode": "choice",
+          "answers": [
+            "Τον λογαριασμό, παρακαλώ."
+          ],
+          "options": [
+            "Τον λογαριασμό, παρακαλώ.",
+            "Τον κατάλογο, παρακαλώ.",
+            "Μια σούπα, παρακαλώ."
+          ],
+          "translit": "Ton logariasmó, parakaló."
+        }
+      ]
+    },
+    {
+      "id": "el-a1-10",
+      "minutes": 6,
+      "dialogue": [
+        {
+          "id": "el-a1-10-d1",
+          "speaker": "Ελένη",
+          "text": "Τι κάνεις το Σαββατοκύριακο;",
+          "translit": "Ti kánis to Savvatokíriako?"
+        },
+        {
+          "id": "el-a1-10-d2",
+          "speaker": "Μάρκο",
+          "text": "Το Σάββατο παίζω ποδόσφαιρο.",
+          "translit": "To Sávvato pézo podósfero."
+        },
+        {
+          "id": "el-a1-10-d3",
+          "speaker": "Μάρκο",
+          "text": "Την Κυριακή διαβάζω ένα βιβλίο.",
+          "translit": "Tin Kiriakí diavázo éna vivlío."
+        },
+        {
+          "id": "el-a1-10-d4",
+          "speaker": "Ελένη",
+          "text": "Εγώ πηγαίνω στην πισίνα με την αδερφή μου.",
+          "translit": "Egó pigéno stin pisína me tin aderfí mou."
+        },
+        {
+          "id": "el-a1-10-d5",
+          "speaker": "Μάρκο",
+          "text": "Σου αρέσει το κολύμπι;",
+          "translit": "Sou arési to kolíbi?"
+        },
+        {
+          "id": "el-a1-10-d6",
+          "speaker": "Ελένη",
+          "text": "Ναι, πάρα πολύ!",
+          "translit": "Ne, pára polí!"
+        }
+      ],
+      "vocabulary": [
+        {
+          "id": "el-a1-10-v1",
+          "text": "το ποδόσφαιρο",
+          "translit": "to podósfero",
+          "accept": [
+            "to podósfero",
+            "to podosfero"
+          ]
+        },
+        {
+          "id": "el-a1-10-v2",
+          "text": "το βιβλίο",
+          "translit": "to vivlío",
+          "accept": [
+            "βιβλίο",
+            "ένα βιβλίο",
+            "to vivlío",
+            "to vivlio",
+            "vivlío",
+            "vivlio",
+            "éna vivlío",
+            "ena vivlio"
+          ]
+        },
+        {
+          "id": "el-a1-10-v3",
+          "text": "η μουσική",
+          "translit": "i mousikí",
+          "accept": [
+            "i mousikí",
+            "i mousiki"
+          ]
+        },
+        {
+          "id": "el-a1-10-v4",
+          "text": "μαγειρεύω",
+          "translit": "magirévo",
+          "accept": [
+            "magirévo",
+            "magirevo"
+          ]
+        },
+        {
+          "id": "el-a1-10-v5",
+          "text": "κολυμπάω",
+          "translit": "kolibáo",
+          "accept": [
+            "kolibáo",
+            "kolibao"
+          ]
+        },
+        {
+          "id": "el-a1-10-v6",
+          "text": "Μου αρέσει η μουσική.",
+          "translit": "Mou arési i mousikí.",
+          "accept": [
+            "Mou arési i mousikí.",
+            "Mou aresi i mousiki."
+          ]
+        }
+      ],
+      "exercises": [
+        {
+          "id": "el-a1-10-e1",
+          "type": "listen",
+          "item": "el-a1-10-v3",
+          "options": [
+            "el-a1-10-v1",
+            "el-a1-10-v2",
+            "el-a1-10-v3"
+          ]
+        },
+        {
+          "id": "el-a1-10-e2",
+          "type": "choice",
+          "item": "el-a1-10-d1",
+          "direction": "toSource",
+          "options": [
+            "el-a1-10-d1",
+            "el-a1-10-d4",
+            "el-a1-10-d5"
+          ]
+        },
+        {
+          "id": "el-a1-10-e3",
+          "type": "cloze",
+          "item": "el-a1-10-d2",
+          "gap": "παίζω",
+          "options": [
+            "παίζω",
+            "διαβάζω",
+            "πηγαίνω"
+          ]
+        },
+        {
+          "id": "el-a1-10-e4",
+          "type": "order",
+          "item": "el-a1-10-d3",
+          "segments": [
+            "Την",
+            "Κυριακή",
+            "διαβάζω",
+            "ένα",
+            "βιβλίο."
+          ],
+          "extra": [
+            "το"
+          ]
+        },
+        {
+          "id": "el-a1-10-e5",
+          "type": "choice",
+          "item": "el-a1-10-v5",
+          "direction": "toTarget",
+          "options": [
+            "el-a1-10-v5",
+            "el-a1-10-v4",
+            "el-a1-10-v2"
+          ]
+        },
+        {
+          "id": "el-a1-10-e6",
+          "type": "write",
+          "item": "el-a1-10-v2"
+        },
+        {
+          "id": "el-a1-10-e7",
+          "type": "situation",
+          "mode": "choice",
+          "answers": [
+            "Μου αρέσει να μαγειρεύω."
+          ],
+          "options": [
+            "Μου αρέσει να μαγειρεύω.",
+            "Μου αρέσει το κολύμπι.",
+            "Διαβάζω ένα βιβλίο."
+          ],
+          "translit": "Mou arési na magirévo."
+        }
+      ]
+    }
+  ]
+}
