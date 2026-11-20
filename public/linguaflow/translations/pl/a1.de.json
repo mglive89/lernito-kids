@@ -1,0 +1,399 @@
+{
+  "format": 1,
+  "id": "pl-a1.de",
+  "content": "pl-a1",
+  "source": "de",
+  "target": "pl",
+  "version": "1.0.0",
+  "quality": "unreviewed",
+  "course": {
+    "title": "Polnisch A1 – Alltag in Polen",
+    "description": "Zehn kurze Lektionen zu echten Situationen: sich vorstellen, einkaufen, im Café, am Bahnhof, beim Arzt, im Restaurant und in der Freizeit."
+  },
+  "lessons": {
+    "pl-a1-01": {
+      "title": "Hallo! Ich stelle mich vor",
+      "goal": "Begrüßen, sagen, wie du heißt und woher du kommst."
+    },
+    "pl-a1-02": {
+      "title": "Auf dem Markt",
+      "goal": "Brot und Obst kaufen und fragen, was es kostet."
+    },
+    "pl-a1-03": {
+      "title": "Im Café",
+      "goal": "Getränke bestellen und bezahlen."
+    },
+    "pl-a1-04": {
+      "title": "Im Supermarkt",
+      "goal": "Fragen, wo es etwas gibt, und die Antwort verstehen."
+    },
+    "pl-a1-05": {
+      "title": "Nach dem Weg fragen",
+      "goal": "Nach dem Weg fragen und einfache Wegbeschreibungen verstehen."
+    },
+    "pl-a1-06": {
+      "title": "Am Bahnhof",
+      "goal": "Eine Fahrkarte kaufen und fragen, von welchem Gleis der Zug fährt."
+    },
+    "pl-a1-07": {
+      "title": "Beim Arzt",
+      "goal": "Sagen, was dir fehlt, und einen Rat verstehen."
+    },
+    "pl-a1-08": {
+      "title": "Hast du am Samstag Zeit?",
+      "goal": "Etwas vorschlagen, Wochentage und Uhrzeit."
+    },
+    "pl-a1-09": {
+      "title": "Im Restaurant",
+      "goal": "Sagen, dass du reserviert hast, bestellen und um die Rechnung bitten."
+    },
+    "pl-a1-10": {
+      "title": "Das Wochenende",
+      "goal": "Über deine Freizeit sprechen und sagen, was du magst."
+    }
+  },
+  "items": {
+    "pl-a1-01-d1": "Hallo! Ich bin Zosia.",
+    "pl-a1-01-d2": "Hallo, Zosia! Ich heiße Marco.",
+    "pl-a1-01-d3": "Woher kommst du?",
+    "pl-a1-01-d4": "Ich komme aus Italien. Und du?",
+    "pl-a1-01-d5": "Ich komme aus Krakau. Freut mich!",
+    "pl-a1-01-d6": "Freut mich auch! Bis bald.",
+    "pl-a1-01-v1": "Guten Morgen",
+    "pl-a1-01-v2": "Guten Abend",
+    "pl-a1-01-v3": "Auf Wiedersehen",
+    "pl-a1-01-v4": "Wie heißt du?",
+    "pl-a1-01-v5": "Danke",
+    "pl-a1-01-v6": "Bitte",
+    "pl-a1-02-d1": "Guten Tag! Was möchten Sie?",
+    "pl-a1-02-d2": "Ich möchte ein Brot, bitte.",
+    "pl-a1-02-d3": "Bitte schön. Noch etwas?",
+    "pl-a1-02-d4": "Ja, auch drei Äpfel.",
+    "pl-a1-02-d5": "Was kostet das?",
+    "pl-a1-02-d6": "Das macht zwölf Złoty.",
+    "pl-a1-02-v1": "das Brot",
+    "pl-a1-02-v2": "der Apfel",
+    "pl-a1-02-v3": "der Käse",
+    "pl-a1-02-v4": "der Kuchen",
+    "pl-a1-02-v5": "Was kostet das?",
+    "pl-a1-02-v6": "drei",
+    "pl-a1-03-d1": "Guten Tag! Was nehmen Sie?",
+    "pl-a1-03-d2": "Einen Tee, bitte.",
+    "pl-a1-03-d3": "Mit Milch oder mit Zitrone?",
+    "pl-a1-03-d4": "Mit Zitrone. Und ein Glas Wasser.",
+    "pl-a1-03-d5": "Kann ich bitte bezahlen?",
+    "pl-a1-03-d6": "Natürlich. Das macht achtzehn Złoty.",
+    "pl-a1-03-v1": "der Kaffee",
+    "pl-a1-03-v2": "der Tee",
+    "pl-a1-03-v3": "das Wasser",
+    "pl-a1-03-v4": "die Milch",
+    "pl-a1-03-v5": "der Orangensaft",
+    "pl-a1-03-v6": "die Rechnung",
+    "pl-a1-04-d1": "Entschuldigung, wo ist der Reis?",
+    "pl-a1-04-d2": "Der Reis ist dort, rechts.",
+    "pl-a1-04-d3": "Und die Eier?",
+    "pl-a1-04-d4": "Die sind neben der Milch.",
+    "pl-a1-04-d5": "Vielen Dank!",
+    "pl-a1-04-d6": "Gern geschehen!",
+    "pl-a1-04-v1": "der Reis",
+    "pl-a1-04-v2": "die Eier",
+    "pl-a1-04-v3": "das Obst",
+    "pl-a1-04-v4": "rechts",
+    "pl-a1-04-v5": "links",
+    "pl-a1-04-v6": "die Kasse",
+    "pl-a1-05-d1": "Entschuldigung, wo ist der Bahnhof?",
+    "pl-a1-05-d2": "Gehen Sie immer geradeaus.",
+    "pl-a1-05-d3": "Dann biegen Sie links ab.",
+    "pl-a1-05-d4": "Ist es weit?",
+    "pl-a1-05-d5": "Nein, es sind fünf Minuten zu Fuß.",
+    "pl-a1-05-d6": "Danke, auf Wiedersehen!",
+    "pl-a1-05-v1": "der Bahnhof",
+    "pl-a1-05-v2": "das Museum",
+    "pl-a1-05-v3": "geradeaus",
+    "pl-a1-05-v4": "nah",
+    "pl-a1-05-v5": "weit",
+    "pl-a1-05-v6": "die Bushaltestelle",
+    "pl-a1-06-d1": "Eine Fahrkarte nach Warschau, bitte.",
+    "pl-a1-06-d2": "Einfach oder hin und zurück?",
+    "pl-a1-06-d3": "Hin und zurück.",
+    "pl-a1-06-d4": "Von welchem Gleis fährt der Zug?",
+    "pl-a1-06-d5": "Von Gleis drei, um zehn Uhr.",
+    "pl-a1-06-d6": "Super, danke!",
+    "pl-a1-06-v1": "der Zug",
+    "pl-a1-06-v2": "die Fahrkarte",
+    "pl-a1-06-v3": "das Gleis",
+    "pl-a1-06-v4": "der Bus",
+    "pl-a1-06-v5": "heute",
+    "pl-a1-06-v6": "morgen",
+    "pl-a1-07-d1": "Guten Tag. Was fehlt Ihnen?",
+    "pl-a1-07-d2": "Mir tut der Kopf weh.",
+    "pl-a1-07-d3": "Haben Sie auch Fieber?",
+    "pl-a1-07-d4": "Ja, ein bisschen. Und ich bin sehr müde.",
+    "pl-a1-07-d5": "Trinken Sie viel Wasser und ruhen Sie sich aus.",
+    "pl-a1-07-d6": "Vielen Dank.",
+    "pl-a1-07-v1": "der Kopf",
+    "pl-a1-07-v2": "der Bauch",
+    "pl-a1-07-v3": "das Fieber",
+    "pl-a1-07-v4": "das Medikament",
+    "pl-a1-07-v5": "krank",
+    "pl-a1-07-v6": "Mir geht es gut.",
+    "pl-a1-08-d1": "Hast du am Samstag Zeit?",
+    "pl-a1-08-d2": "Ja! Was machen wir?",
+    "pl-a1-08-d3": "Gehen wir ins Kino?",
+    "pl-a1-08-d4": "Gute Idee! Um wie viel Uhr?",
+    "pl-a1-08-d5": "Um sieben Uhr abends.",
+    "pl-a1-08-d6": "Okay, bis Samstag!",
+    "pl-a1-08-v1": "Montag",
+    "pl-a1-08-v2": "Freitag",
+    "pl-a1-08-v3": "Samstag",
+    "pl-a1-08-v4": "Sonntag",
+    "pl-a1-08-v5": "Wie spät ist es?",
+    "pl-a1-08-v6": "heute Abend",
+    "pl-a1-09-d1": "Guten Abend, ich habe einen Tisch für zwei reserviert.",
+    "pl-a1-09-d2": "Bitte schön, hier ist die Speisekarte.",
+    "pl-a1-09-d3": "Was möchten Sie?",
+    "pl-a1-09-d4": "Für mich die Suppe und einen Salat.",
+    "pl-a1-09-d5": "Die Rechnung, bitte.",
+    "pl-a1-09-d6": "Sofort!",
+    "pl-a1-09-v1": "die Speisekarte",
+    "pl-a1-09-v2": "die Suppe",
+    "pl-a1-09-v3": "der Fisch",
+    "pl-a1-09-v4": "der Nachtisch",
+    "pl-a1-09-v5": "sehr lecker",
+    "pl-a1-09-v6": "der Tisch",
+    "pl-a1-10-d1": "Was machst du am Wochenende?",
+    "pl-a1-10-d2": "Am Samstag spiele ich Fußball.",
+    "pl-a1-10-d3": "Am Sonntag lese ich ein Buch.",
+    "pl-a1-10-d4": "Ich gehe mit meiner Schwester ins Schwimmbad.",
+    "pl-a1-10-d5": "Schwimmst du gern?",
+    "pl-a1-10-d6": "Ja, sehr gern!",
+    "pl-a1-10-v1": "der Fußball",
+    "pl-a1-10-v2": "das Buch",
+    "pl-a1-10-v3": "die Musik",
+    "pl-a1-10-v4": "kochen",
+    "pl-a1-10-v5": "schwimmen",
+    "pl-a1-10-v6": "Ich mag Musik."
+  },
+  "exercises": {
+    "pl-a1-01-e1": {
+      "explain": "„Do widzenia“ bedeutet „Auf Wiedersehen“."
+    },
+    "pl-a1-01-e2": {
+      "explain": "„Skąd jesteś?“ bedeutet „Woher kommst du?“."
+    },
+    "pl-a1-01-e3": {
+      "explain": "Der ganze Satz heißt „Cześć, Zosiu! Mam na imię Marco“ = „Hallo, Zosia! Ich heiße Marco“. „Mam na imię …“ (wörtlich „ich habe als Vornamen …“) = „Ich heiße …“."
+    },
+    "pl-a1-01-e4": {
+      "explain": "Richtige Reihenfolge: „Jestem z Włoch. A ty?“ = „Ich komme aus Italien. Und du?“. „z“ + Genitiv = „aus“: z Włoch (aus Italien), z Krakowa (aus Krakau)."
+    },
+    "pl-a1-01-e5": {
+      "explain": "„Dzień dobry“ bedeutet „Guten Morgen“."
+    },
+    "pl-a1-01-e6": {
+      "explain": "„Danke“ heißt „Dziękuję“. Groß- und Kleinschreibung zählt nicht, aber jeder Buchstabe und jedes Zeichen."
+    },
+    "pl-a1-01-e7": {
+      "explain": "Du kannst sagen: „Mam na imię Giulia“ oder „Jestem Giulia“ oder „Nazywam się Giulia“.",
+      "prompt": "Eine neue Mitschülerin fragt dich, wie du heißt. Antworte, dass du Giulia heißt."
+    },
+    "pl-a1-02-e1": {
+      "explain": "„jabłko“ bedeutet „der Apfel“."
+    },
+    "pl-a1-02-e2": {
+      "explain": "„Poproszę chleb“ bedeutet „Ich möchte ein Brot, bitte“."
+    },
+    "pl-a1-02-e3": {
+      "explain": "Der ganze Satz heißt „Poproszę chleb“ = „Ich möchte ein Brot, bitte“. „Poproszę …“ = „Ich hätte gern …“: so bittet man im Geschäft um etwas."
+    },
+    "pl-a1-02-e4": {
+      "explain": "Richtige Reihenfolge: „Tak, jeszcze trzy jabłka“ = „Ja, auch drei Äpfel“. jabłko = Apfel, jabłka = Äpfel."
+    },
+    "pl-a1-02-e5": {
+      "explain": "„ciasto“ bedeutet „der Kuchen“."
+    },
+    "pl-a1-02-e6": {
+      "explain": "„das Brot“ heißt „chleb“. Groß- und Kleinschreibung zählt nicht, aber jeder Buchstabe und jedes Zeichen."
+    },
+    "pl-a1-02-e7": {
+      "explain": "Du kannst sagen: „Poproszę chleb“ oder „Poproszę jeden chleb“ oder „Chciałbym chleb“.",
+      "prompt": "Du bist auf dem Markt und möchtest ein Brot kaufen. Was sagst du zur Verkäuferin?"
+    },
+    "pl-a1-03-e1": {
+      "explain": "„herbata“ bedeutet „der Tee“."
+    },
+    "pl-a1-03-e2": {
+      "explain": "„Z mlekiem czy z cytryną?“ bedeutet „Mit Milch oder mit Zitrone?“."
+    },
+    "pl-a1-03-e3": {
+      "explain": "Der ganze Satz heißt „Z mlekiem czy z cytryną?“ = „Mit Milch oder mit Zitrone?“. „czy“ = „oder“ in Fragen mit zwei Möglichkeiten; „i“ = „und“, „ale“ = „aber“."
+    },
+    "pl-a1-03-e4": {
+      "explain": "Richtige Reihenfolge: „Czy mogę zapłacić?“ = „Kann ich bitte bezahlen?“. „Czy“ am Anfang macht den Satz zur Frage."
+    },
+    "pl-a1-03-e5": {
+      "explain": "„woda“ bedeutet „das Wasser“."
+    },
+    "pl-a1-03-e6": {
+      "explain": "„die Milch“ heißt „mleko“. Groß- und Kleinschreibung zählt nicht, aber jeder Buchstabe und jedes Zeichen."
+    },
+    "pl-a1-03-e7": {
+      "explain": "Du kannst sagen: „Poproszę kawę“ oder „Poproszę jedną kawę“ oder „Kawę, proszę“. Nach „poproszę“ wird kawa zu kawę.",
+      "prompt": "Du bist im Café und möchtest einen Kaffee bestellen. Was sagst du?"
+    },
+    "pl-a1-04-e1": {
+      "explain": "„po prawej“ bedeutet „rechts“."
+    },
+    "pl-a1-04-e2": {
+      "explain": "„Przepraszam, gdzie jest ryż?“ bedeutet „Entschuldigung, wo ist der Reis?“."
+    },
+    "pl-a1-04-e3": {
+      "explain": "Der ganze Satz heißt „Przepraszam, gdzie jest ryż?“ = „Entschuldigung, wo ist der Reis?“. „gdzie“ = wo, „co“ = was, „kto“ = wer."
+    },
+    "pl-a1-04-e4": {
+      "explain": "Richtige Reihenfolge: „Ryż jest tam, po prawej“ = „Der Reis ist dort, rechts“."
+    },
+    "pl-a1-04-e5": {
+      "explain": "„po lewej“ bedeutet „links“."
+    },
+    "pl-a1-04-e6": {
+      "explain": "„der Reis“ heißt „ryż“. Groß- und Kleinschreibung zählt nicht, aber jeder Buchstabe und jedes Zeichen."
+    },
+    "pl-a1-04-e7": {
+      "explain": "Du kannst sagen: „Przepraszam, gdzie jest mleko?“ oder „Gdzie jest mleko?“.",
+      "prompt": "Du findest die Milch nicht. Frag einen Mitarbeiter, wo sie ist."
+    },
+    "pl-a1-05-e1": {
+      "explain": "„prosto“ bedeutet „geradeaus“."
+    },
+    "pl-a1-05-e2": {
+      "explain": "„Czy to daleko?“ bedeutet „Ist es weit?“."
+    },
+    "pl-a1-05-e3": {
+      "explain": "Der ganze Satz heißt „Potem w lewo“ = „Dann biegen Sie links ab“. „w lewo“ = nach links, „w prawo“ = nach rechts, „prosto“ = geradeaus."
+    },
+    "pl-a1-05-e4": {
+      "explain": "Richtige Reihenfolge: „Nie, pięć minut pieszo“ = „Nein, es sind fünf Minuten zu Fuß“. „pieszo“ = zu Fuß."
+    },
+    "pl-a1-05-e5": {
+      "explain": "„blisko“ bedeutet „nah“."
+    },
+    "pl-a1-05-e6": {
+      "explain": "„das Museum“ heißt „muzeum“. Groß- und Kleinschreibung zählt nicht, aber jeder Buchstabe und jedes Zeichen."
+    },
+    "pl-a1-05-e7": {
+      "explain": "Du kannst sagen: „Przepraszam, gdzie jest muzeum?“ oder „Gdzie jest muzeum?“.",
+      "prompt": "Du suchst das Museum. Frag eine Passantin, wo es ist."
+    },
+    "pl-a1-06-e1": {
+      "explain": "„bilet“ bedeutet „die Fahrkarte“."
+    },
+    "pl-a1-06-e2": {
+      "explain": "„W jedną stronę czy w obie strony?“ bedeutet „Einfach oder hin und zurück?“."
+    },
+    "pl-a1-06-e3": {
+      "explain": "Der ganze Satz heißt „Z którego peronu odjeżdża pociąg?“ = „Von welchem Gleis fährt der Zug?“. „Z którego peronu?“ = „Von welchem Gleis?“: nach „z“ steht der Genitiv."
+    },
+    "pl-a1-06-e4": {
+      "explain": "Richtige Reihenfolge: „Poproszę bilet do Warszawy“ = „Eine Fahrkarte nach Warschau, bitte“. Für das Ziel: „do“ + Genitiv: do Warszawy."
+    },
+    "pl-a1-06-e5": {
+      "explain": "„pociąg“ bedeutet „der Zug“."
+    },
+    "pl-a1-06-e6": {
+      "explain": "„heute“ heißt „dzisiaj“. Groß- und Kleinschreibung zählt nicht, aber jeder Buchstabe und jedes Zeichen."
+    },
+    "pl-a1-06-e7": {
+      "explain": "Du kannst sagen: „Poproszę bilet do Warszawy“ oder „Bilet do Warszawy, proszę“ oder „Poproszę bilet w obie strony do Warszawy“.",
+      "prompt": "Am Schalter möchtest du eine Fahrkarte nach Warschau. Was sagst du?"
+    },
+    "pl-a1-07-e1": {
+      "explain": "„głowa“ bedeutet „der Kopf“."
+    },
+    "pl-a1-07-e2": {
+      "explain": "„Czy ma pan też gorączkę?“ bedeutet „Haben Sie auch Fieber?“."
+    },
+    "pl-a1-07-e3": {
+      "explain": "Der ganze Satz heißt „Boli mnie głowa“ = „Mir tut der Kopf weh“. „Boli mnie …“ = „Mir tut … weh“: boli mnie głowa."
+    },
+    "pl-a1-07-e4": {
+      "explain": "Richtige Reihenfolge: „Tak, trochę. I jestem bardzo zmęczony“ = „Ja, ein bisschen. Und ich bin sehr müde“."
+    },
+    "pl-a1-07-e5": {
+      "explain": "„lekarstwo“ bedeutet „das Medikament“."
+    },
+    "pl-a1-07-e6": {
+      "explain": "„der Kopf“ heißt „głowa“. Groß- und Kleinschreibung zählt nicht, aber jeder Buchstabe und jedes Zeichen."
+    },
+    "pl-a1-07-e7": {
+      "explain": "Du kannst sagen: „Boli mnie brzuch“ oder „Brzuch mnie boli“.",
+      "prompt": "Die Ärztin fragt, was dir fehlt. Sag, dass dir der Bauch wehtut."
+    },
+    "pl-a1-08-e1": {
+      "explain": "„sobota“ bedeutet „Samstag“."
+    },
+    "pl-a1-08-e2": {
+      "explain": "„Dobry pomysł! O której?“ bedeutet „Gute Idee! Um wie viel Uhr?“."
+    },
+    "pl-a1-08-e3": {
+      "explain": "Der ganze Satz heißt „Masz czas w sobotę?“ = „Hast du am Samstag Zeit?“. „w sobotę“ = am Samstag: nach „w“ wird sobota zu sobotę."
+    },
+    "pl-a1-08-e4": {
+      "explain": "Richtige Reihenfolge: „Idziemy do kina?“ = „Gehen wir ins Kino?“."
+    },
+    "pl-a1-08-e5": {
+      "explain": "„Która godzina?“ bedeutet „Wie spät ist es?“."
+    },
+    "pl-a1-08-e6": {
+      "explain": "„Sonntag“ heißt „niedziela“. Groß- und Kleinschreibung zählt nicht, aber jeder Buchstabe und jedes Zeichen."
+    },
+    "pl-a1-08-e7": {
+      "explain": "Du kannst sagen: „Masz czas w niedzielę?“ oder „Czy masz czas w niedzielę?“.",
+      "prompt": "Du möchtest mit einem Freund ins Kino. Frag ihn, ob er am Sonntag Zeit hat."
+    },
+    "pl-a1-09-e1": {
+      "explain": "„pyszny“ bedeutet „sehr lecker“."
+    },
+    "pl-a1-09-e2": {
+      "explain": "„Co państwo zamawiają?“ bedeutet „Was möchten Sie?“."
+    },
+    "pl-a1-09-e3": {
+      "explain": "Der ganze Satz heißt „Dobry wieczór, mam rezerwację na dwie osoby“ = „Guten Abend, ich habe einen Tisch für zwei reserviert“. „Mam rezerwację“ = „Ich habe eine Reservierung“."
+    },
+    "pl-a1-09-e4": {
+      "explain": "Richtige Reihenfolge: „Dla mnie zupa i sałatka“ = „Für mich die Suppe und einen Salat“."
+    },
+    "pl-a1-09-e5": {
+      "explain": "„ryba“ bedeutet „der Fisch“."
+    },
+    "pl-a1-09-e6": {
+      "explain": "„die Suppe“ heißt „zupa“. Groß- und Kleinschreibung zählt nicht, aber jeder Buchstabe und jedes Zeichen."
+    },
+    "pl-a1-09-e7": {
+      "explain": "Du kannst sagen: „Poproszę rachunek“ oder „Rachunek, proszę“ oder „Czy mogę prosić o rachunek?“.",
+      "prompt": "Du bist fertig mit dem Essen. Bitte den Kellner um die Rechnung."
+    },
+    "pl-a1-10-e1": {
+      "explain": "„muzyka“ bedeutet „die Musik“."
+    },
+    "pl-a1-10-e2": {
+      "explain": "„Co robisz w weekend?“ bedeutet „Was machst du am Wochenende?“."
+    },
+    "pl-a1-10-e3": {
+      "explain": "Der ganze Satz heißt „W sobotę gram w piłkę nożną“ = „Am Samstag spiele ich Fußball“. „grać w …“ = … spielen: gram w piłkę nożną = ich spiele Fußball."
+    },
+    "pl-a1-10-e4": {
+      "explain": "Richtige Reihenfolge: „W niedzielę czytam książkę“ = „Am Sonntag lese ich ein Buch“."
+    },
+    "pl-a1-10-e5": {
+      "explain": "„pływać“ bedeutet „schwimmen“."
+    },
+    "pl-a1-10-e6": {
+      "explain": "„das Buch“ heißt „książka“. Groß- und Kleinschreibung zählt nicht, aber jeder Buchstabe und jedes Zeichen."
+    },
+    "pl-a1-10-e7": {
+      "explain": "Du kannst sagen: „Lubię gotować“ oder „Bardzo lubię gotować“. „Lubię“ + Infinitiv = „Ich … gern“.",
+      "prompt": "Eine neue Freundin fragt, was du gern machst. Antworte, dass du gern kochst."
+    }
+  }
+}

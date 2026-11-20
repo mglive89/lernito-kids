@@ -1,0 +1,399 @@
+{
+  "format": 1,
+  "id": "en-a1.de",
+  "content": "en-a1",
+  "source": "de",
+  "target": "en",
+  "version": "1.0.0",
+  "quality": "unreviewed",
+  "course": {
+    "title": "Englisch A1 – Alltag in England",
+    "description": "Zehn kurze Lektionen zu echten Situationen: sich vorstellen, einkaufen, im Café, am Bahnhof, beim Arzt, im Restaurant und in der Freizeit."
+  },
+  "lessons": {
+    "en-a1-01": {
+      "title": "Hallo! Ich stelle mich vor",
+      "goal": "Begrüßen, sagen, wie du heißt und woher du kommst."
+    },
+    "en-a1-02": {
+      "title": "Auf dem Markt",
+      "goal": "Brot und Obst kaufen und fragen, was es kostet."
+    },
+    "en-a1-03": {
+      "title": "Im Café",
+      "goal": "Getränke bestellen und bezahlen."
+    },
+    "en-a1-04": {
+      "title": "Im Supermarkt",
+      "goal": "Fragen, wo es etwas gibt, und die Antwort verstehen."
+    },
+    "en-a1-05": {
+      "title": "Nach dem Weg fragen",
+      "goal": "Nach dem Weg fragen und einfache Wegbeschreibungen verstehen."
+    },
+    "en-a1-06": {
+      "title": "Am Bahnhof",
+      "goal": "Eine Fahrkarte kaufen und fragen, von welchem Gleis der Zug fährt."
+    },
+    "en-a1-07": {
+      "title": "Beim Arzt",
+      "goal": "Sagen, was dir fehlt, und einen Rat verstehen."
+    },
+    "en-a1-08": {
+      "title": "Hast du am Samstag Zeit?",
+      "goal": "Etwas vorschlagen, Wochentage und Uhrzeit."
+    },
+    "en-a1-09": {
+      "title": "Im Restaurant",
+      "goal": "Sagen, dass du reserviert hast, bestellen und um die Rechnung bitten."
+    },
+    "en-a1-10": {
+      "title": "Das Wochenende",
+      "goal": "Über deine Freizeit sprechen und sagen, was du magst."
+    }
+  },
+  "items": {
+    "en-a1-01-d1": "Hallo! Ich bin Emma.",
+    "en-a1-01-d2": "Hallo, Emma! Ich heiße Marco.",
+    "en-a1-01-d3": "Woher kommst du?",
+    "en-a1-01-d4": "Ich komme aus Italien. Und du?",
+    "en-a1-01-d5": "Ich komme aus Manchester. Freut mich!",
+    "en-a1-01-d6": "Freut mich auch! Bis bald.",
+    "en-a1-01-v1": "Guten Morgen",
+    "en-a1-01-v2": "Guten Abend",
+    "en-a1-01-v3": "Auf Wiedersehen",
+    "en-a1-01-v4": "Wie heißt du?",
+    "en-a1-01-v5": "Danke",
+    "en-a1-01-v6": "Bitte",
+    "en-a1-02-d1": "Guten Tag! Was möchten Sie?",
+    "en-a1-02-d2": "Ich möchte ein Brot, bitte.",
+    "en-a1-02-d3": "Bitte schön. Noch etwas?",
+    "en-a1-02-d4": "Ja, auch drei Äpfel.",
+    "en-a1-02-d5": "Was kostet das?",
+    "en-a1-02-d6": "Das macht vier Pfund.",
+    "en-a1-02-v1": "das Brot",
+    "en-a1-02-v2": "der Apfel",
+    "en-a1-02-v3": "der Käse",
+    "en-a1-02-v4": "der Kuchen",
+    "en-a1-02-v5": "Was kostet das?",
+    "en-a1-02-v6": "drei",
+    "en-a1-03-d1": "Guten Tag! Was nehmen Sie?",
+    "en-a1-03-d2": "Einen Tee, bitte.",
+    "en-a1-03-d3": "Mit Milch oder mit Zitrone?",
+    "en-a1-03-d4": "Mit Zitrone. Und ein Glas Wasser.",
+    "en-a1-03-d5": "Kann ich bitte bezahlen?",
+    "en-a1-03-d6": "Natürlich. Das macht drei Pfund fünfzig.",
+    "en-a1-03-v1": "der Kaffee",
+    "en-a1-03-v2": "der Tee",
+    "en-a1-03-v3": "das Wasser",
+    "en-a1-03-v4": "die Milch",
+    "en-a1-03-v5": "der Orangensaft",
+    "en-a1-03-v6": "die Rechnung",
+    "en-a1-04-d1": "Entschuldigung, wo ist der Reis?",
+    "en-a1-04-d2": "Der Reis ist dort, rechts.",
+    "en-a1-04-d3": "Und die Eier?",
+    "en-a1-04-d4": "Die sind neben der Milch.",
+    "en-a1-04-d5": "Vielen Dank!",
+    "en-a1-04-d6": "Gern geschehen!",
+    "en-a1-04-v1": "der Reis",
+    "en-a1-04-v2": "die Eier",
+    "en-a1-04-v3": "das Obst",
+    "en-a1-04-v4": "rechts",
+    "en-a1-04-v5": "links",
+    "en-a1-04-v6": "die Kasse",
+    "en-a1-05-d1": "Entschuldigung, wo ist der Bahnhof?",
+    "en-a1-05-d2": "Gehen Sie immer geradeaus.",
+    "en-a1-05-d3": "Dann biegen Sie links ab.",
+    "en-a1-05-d4": "Ist es weit?",
+    "en-a1-05-d5": "Nein, es sind fünf Minuten zu Fuß.",
+    "en-a1-05-d6": "Danke, auf Wiedersehen!",
+    "en-a1-05-v1": "der Bahnhof",
+    "en-a1-05-v2": "das Museum",
+    "en-a1-05-v3": "geradeaus",
+    "en-a1-05-v4": "nah",
+    "en-a1-05-v5": "weit",
+    "en-a1-05-v6": "die Bushaltestelle",
+    "en-a1-06-d1": "Eine Fahrkarte nach London, bitte.",
+    "en-a1-06-d2": "Einfach oder hin und zurück?",
+    "en-a1-06-d3": "Hin und zurück.",
+    "en-a1-06-d4": "Von welchem Gleis fährt der Zug?",
+    "en-a1-06-d5": "Von Gleis drei, um zehn Uhr.",
+    "en-a1-06-d6": "Super, danke!",
+    "en-a1-06-v1": "der Zug",
+    "en-a1-06-v2": "die Fahrkarte",
+    "en-a1-06-v3": "das Gleis",
+    "en-a1-06-v4": "der Bus",
+    "en-a1-06-v5": "heute",
+    "en-a1-06-v6": "morgen",
+    "en-a1-07-d1": "Guten Tag. Was fehlt Ihnen?",
+    "en-a1-07-d2": "Mir tut der Kopf weh.",
+    "en-a1-07-d3": "Haben Sie auch Fieber?",
+    "en-a1-07-d4": "Ja, ein bisschen. Und ich bin sehr müde.",
+    "en-a1-07-d5": "Trinken Sie viel Wasser und ruhen Sie sich aus.",
+    "en-a1-07-d6": "Vielen Dank.",
+    "en-a1-07-v1": "der Kopf",
+    "en-a1-07-v2": "der Bauch",
+    "en-a1-07-v3": "das Fieber",
+    "en-a1-07-v4": "das Medikament",
+    "en-a1-07-v5": "krank",
+    "en-a1-07-v6": "Mir geht es gut.",
+    "en-a1-08-d1": "Hast du am Samstag Zeit?",
+    "en-a1-08-d2": "Ja! Was machen wir?",
+    "en-a1-08-d3": "Gehen wir ins Kino?",
+    "en-a1-08-d4": "Gute Idee! Um wie viel Uhr?",
+    "en-a1-08-d5": "Um sieben Uhr abends.",
+    "en-a1-08-d6": "Okay, bis Samstag!",
+    "en-a1-08-v1": "Montag",
+    "en-a1-08-v2": "Freitag",
+    "en-a1-08-v3": "Samstag",
+    "en-a1-08-v4": "Sonntag",
+    "en-a1-08-v5": "Wie spät ist es?",
+    "en-a1-08-v6": "heute Abend",
+    "en-a1-09-d1": "Guten Abend, ich habe einen Tisch für zwei reserviert.",
+    "en-a1-09-d2": "Bitte schön, hier ist die Speisekarte.",
+    "en-a1-09-d3": "Was möchten Sie?",
+    "en-a1-09-d4": "Für mich die Suppe und einen Salat.",
+    "en-a1-09-d5": "Die Rechnung, bitte.",
+    "en-a1-09-d6": "Sofort!",
+    "en-a1-09-v1": "die Speisekarte",
+    "en-a1-09-v2": "die Suppe",
+    "en-a1-09-v3": "der Fisch",
+    "en-a1-09-v4": "der Nachtisch",
+    "en-a1-09-v5": "sehr lecker",
+    "en-a1-09-v6": "der Tisch",
+    "en-a1-10-d1": "Was machst du am Wochenende?",
+    "en-a1-10-d2": "Am Samstag spiele ich Fußball.",
+    "en-a1-10-d3": "Am Sonntag lese ich ein Buch.",
+    "en-a1-10-d4": "Ich gehe mit meiner Schwester ins Schwimmbad.",
+    "en-a1-10-d5": "Schwimmst du gern?",
+    "en-a1-10-d6": "Ja, sehr gern!",
+    "en-a1-10-v1": "der Fußball",
+    "en-a1-10-v2": "das Buch",
+    "en-a1-10-v3": "die Musik",
+    "en-a1-10-v4": "kochen",
+    "en-a1-10-v5": "schwimmen",
+    "en-a1-10-v6": "Ich mag Musik."
+  },
+  "exercises": {
+    "en-a1-01-e1": {
+      "explain": "„Goodbye“ bedeutet „Auf Wiedersehen“."
+    },
+    "en-a1-01-e2": {
+      "explain": "„Where are you from?“ bedeutet „Woher kommst du?“."
+    },
+    "en-a1-01-e3": {
+      "explain": "Der ganze Satz heißt „Hi, Emma! My name is Marco“ = „Hallo, Emma! Ich heiße Marco“. Bei „my name“ steht „is“; bei „I“ steht „am“ (I am = I’m)."
+    },
+    "en-a1-01-e4": {
+      "explain": "Richtige Reihenfolge: „I'm from Italy. And you?“ = „Ich komme aus Italien. Und du?“. Für die Herkunft benutzt man „from“."
+    },
+    "en-a1-01-e5": {
+      "explain": "„Good morning“ bedeutet „Guten Morgen“."
+    },
+    "en-a1-01-e6": {
+      "explain": "„Danke“ heißt „Thank you“. Groß- und Kleinschreibung zählt nicht, aber jeder Buchstabe und jedes Zeichen."
+    },
+    "en-a1-01-e7": {
+      "explain": "Du kannst sagen: „My name is Giulia“ oder „I'm Giulia“ oder „I am Giulia“.",
+      "prompt": "Eine neue Mitschülerin fragt dich, wie du heißt. Antworte, dass du Giulia heißt."
+    },
+    "en-a1-02-e1": {
+      "explain": "„an apple“ bedeutet „der Apfel“."
+    },
+    "en-a1-02-e2": {
+      "explain": "„I'd like a loaf of bread, please“ bedeutet „Ich möchte ein Brot, bitte“."
+    },
+    "en-a1-02-e3": {
+      "explain": "Der ganze Satz heißt „I'd like a loaf of bread, please“ = „Ich möchte ein Brot, bitte“. „I’d like“ (= I would like) ist die höfliche Bitte; „I like“ heißt „ich mag“."
+    },
+    "en-a1-02-e4": {
+      "explain": "Richtige Reihenfolge: „Yes, three apples too“ = „Ja, auch drei Äpfel“. Die Mehrzahl bildet man fast immer mit -s: one apple, three apples."
+    },
+    "en-a1-02-e5": {
+      "explain": "„cake“ bedeutet „der Kuchen“."
+    },
+    "en-a1-02-e6": {
+      "explain": "„das Brot“ heißt „bread“. Groß- und Kleinschreibung zählt nicht, aber jeder Buchstabe und jedes Zeichen."
+    },
+    "en-a1-02-e7": {
+      "explain": "Du kannst sagen: „I'd like a loaf of bread, please“ oder „I would like a loaf of bread, please“ oder „A loaf of bread, please“.",
+      "prompt": "Du bist auf dem Markt und möchtest ein Brot kaufen. Was sagst du zur Verkäuferin?"
+    },
+    "en-a1-03-e1": {
+      "explain": "„tea“ bedeutet „der Tee“."
+    },
+    "en-a1-03-e2": {
+      "explain": "„With milk or with lemon?“ bedeutet „Mit Milch oder mit Zitrone?“."
+    },
+    "en-a1-03-e3": {
+      "explain": "Der ganze Satz heißt „With milk or with lemon?“ = „Mit Milch oder mit Zitrone?“. „or“ = „oder“, „and“ = „und“, „but“ = „aber“."
+    },
+    "en-a1-03-e4": {
+      "explain": "Richtige Reihenfolge: „Can I pay, please?“ = „Kann ich bitte bezahlen?“. In Fragen steht „can“ vor dem Subjekt: „Can I …?“"
+    },
+    "en-a1-03-e5": {
+      "explain": "„water“ bedeutet „das Wasser“."
+    },
+    "en-a1-03-e6": {
+      "explain": "„die Milch“ heißt „milk“. Groß- und Kleinschreibung zählt nicht, aber jeder Buchstabe und jedes Zeichen."
+    },
+    "en-a1-03-e7": {
+      "explain": "Du kannst sagen: „A coffee, please“ oder „Can I have a coffee, please?“ oder „I'd like a coffee, please“.",
+      "prompt": "Du bist im Café und möchtest einen Kaffee bestellen. Was sagst du?"
+    },
+    "en-a1-04-e1": {
+      "explain": "„on the right“ bedeutet „rechts“."
+    },
+    "en-a1-04-e2": {
+      "explain": "„Excuse me, where is the rice?“ bedeutet „Entschuldigung, wo ist der Reis?“."
+    },
+    "en-a1-04-e3": {
+      "explain": "Der ganze Satz heißt „Excuse me, where is the rice?“ = „Entschuldigung, wo ist der Reis?“. „where“ = wo, „what“ = was, „who“ = wer."
+    },
+    "en-a1-04-e4": {
+      "explain": "Richtige Reihenfolge: „Excuse me, where is the rice?“ = „Entschuldigung, wo ist der Reis?“."
+    },
+    "en-a1-04-e5": {
+      "explain": "„on the left“ bedeutet „links“."
+    },
+    "en-a1-04-e6": {
+      "explain": "„der Reis“ heißt „rice“. Groß- und Kleinschreibung zählt nicht, aber jeder Buchstabe und jedes Zeichen."
+    },
+    "en-a1-04-e7": {
+      "explain": "Du kannst sagen: „Excuse me, where is the milk?“ oder „Where is the milk?“ oder „Excuse me, where's the milk?“.",
+      "prompt": "Du findest die Milch nicht. Frag einen Mitarbeiter, wo sie ist."
+    },
+    "en-a1-05-e1": {
+      "explain": "„straight on“ bedeutet „geradeaus“."
+    },
+    "en-a1-05-e2": {
+      "explain": "„Is it far?“ bedeutet „Ist es weit?“."
+    },
+    "en-a1-05-e3": {
+      "explain": "Der ganze Satz heißt „Then turn left“ = „Dann biegen Sie links ab“. „left“ = links, „right“ = rechts, „straight on“ = geradeaus."
+    },
+    "en-a1-05-e4": {
+      "explain": "Richtige Reihenfolge: „No, it's five minutes on foot“ = „Nein, es sind fünf Minuten zu Fuß“. „on foot“ = zu Fuß."
+    },
+    "en-a1-05-e5": {
+      "explain": "„near“ bedeutet „nah“."
+    },
+    "en-a1-05-e6": {
+      "explain": "„das Museum“ heißt „the museum“. Groß- und Kleinschreibung zählt nicht, aber jeder Buchstabe und jedes Zeichen."
+    },
+    "en-a1-05-e7": {
+      "explain": "Du kannst sagen: „Excuse me, where is the museum?“ oder „Where is the museum?“ oder „Excuse me, where's the museum?“.",
+      "prompt": "Du suchst das Museum. Frag eine Passantin, wo es ist."
+    },
+    "en-a1-06-e1": {
+      "explain": "„the ticket“ bedeutet „die Fahrkarte“."
+    },
+    "en-a1-06-e2": {
+      "explain": "„Single or return?“ bedeutet „Einfach oder hin und zurück?“."
+    },
+    "en-a1-06-e3": {
+      "explain": "Der ganze Satz heißt „Which platform does the train leave from?“ = „Von welchem Gleis fährt der Zug?“. „Which …?“ = „Welcher …?“, wenn man zwischen mehreren Dingen wählt."
+    },
+    "en-a1-06-e4": {
+      "explain": "Richtige Reihenfolge: „A ticket to London, please“ = „Eine Fahrkarte nach London, bitte“. Für das Ziel benutzt man „to“: a ticket to London."
+    },
+    "en-a1-06-e5": {
+      "explain": "„the train“ bedeutet „der Zug“."
+    },
+    "en-a1-06-e6": {
+      "explain": "„heute“ heißt „today“. Groß- und Kleinschreibung zählt nicht, aber jeder Buchstabe und jedes Zeichen."
+    },
+    "en-a1-06-e7": {
+      "explain": "Du kannst sagen: „A ticket to London, please“ oder „A return ticket to London, please“ oder „A single to London, please“.",
+      "prompt": "Am Schalter möchtest du eine Fahrkarte nach London. Was sagst du?"
+    },
+    "en-a1-07-e1": {
+      "explain": "„the head“ bedeutet „der Kopf“."
+    },
+    "en-a1-07-e2": {
+      "explain": "„Do you have a temperature too?“ bedeutet „Haben Sie auch Fieber?“."
+    },
+    "en-a1-07-e3": {
+      "explain": "Der ganze Satz heißt „I have a headache“ = „Mir tut der Kopf weh“. „I have a headache“ = ich habe Kopfschmerzen: man benutzt „have“."
+    },
+    "en-a1-07-e4": {
+      "explain": "Richtige Reihenfolge: „Yes, a little. And I'm very tired“ = „Ja, ein bisschen. Und ich bin sehr müde“."
+    },
+    "en-a1-07-e5": {
+      "explain": "„the medicine“ bedeutet „das Medikament“."
+    },
+    "en-a1-07-e6": {
+      "explain": "„der Kopf“ heißt „the head“. Groß- und Kleinschreibung zählt nicht, aber jeder Buchstabe und jedes Zeichen."
+    },
+    "en-a1-07-e7": {
+      "explain": "Du kannst sagen: „I have a stomach ache“ oder „I have a stomachache“ oder „I've got a stomach ache“.",
+      "prompt": "Die Ärztin fragt, was dir fehlt. Sag, dass dir der Bauch wehtut."
+    },
+    "en-a1-08-e1": {
+      "explain": "„Saturday“ bedeutet „Samstag“."
+    },
+    "en-a1-08-e2": {
+      "explain": "„Good idea! What time?“ bedeutet „Gute Idee! Um wie viel Uhr?“."
+    },
+    "en-a1-08-e3": {
+      "explain": "Der ganze Satz heißt „At seven in the evening“ = „Um sieben Uhr abends“. Bei der Uhrzeit steht „at“ (at seven), bei Tagen „on“ (on Saturday)."
+    },
+    "en-a1-08-e4": {
+      "explain": "Richtige Reihenfolge: „Are you free on Saturday?“ = „Hast du am Samstag Zeit?“. Wochentage schreibt man im Englischen immer groß."
+    },
+    "en-a1-08-e5": {
+      "explain": "„What time is it?“ bedeutet „Wie spät ist es?“."
+    },
+    "en-a1-08-e6": {
+      "explain": "„Sonntag“ heißt „Sunday“. Groß- und Kleinschreibung zählt nicht, aber jeder Buchstabe und jedes Zeichen."
+    },
+    "en-a1-08-e7": {
+      "explain": "Du kannst sagen: „Are you free on Sunday?“ oder „Do you have time on Sunday?“ oder „Have you got time on Sunday?“.",
+      "prompt": "Du möchtest mit einem Freund ins Kino. Frag ihn, ob er am Sonntag Zeit hat."
+    },
+    "en-a1-09-e1": {
+      "explain": "„delicious“ bedeutet „sehr lecker“."
+    },
+    "en-a1-09-e2": {
+      "explain": "„What would you like?“ bedeutet „Was möchten Sie?“."
+    },
+    "en-a1-09-e3": {
+      "explain": "Der ganze Satz heißt „Good evening, I've booked a table for two“ = „Guten Abend, ich habe einen Tisch für zwei reserviert“. „I’ve booked“ = ich habe reserviert (to book = reservieren)."
+    },
+    "en-a1-09-e4": {
+      "explain": "Richtige Reihenfolge: „The bill, please“ = „Die Rechnung, bitte“."
+    },
+    "en-a1-09-e5": {
+      "explain": "„the fish“ bedeutet „der Fisch“."
+    },
+    "en-a1-09-e6": {
+      "explain": "„die Suppe“ heißt „the soup“. Groß- und Kleinschreibung zählt nicht, aber jeder Buchstabe und jedes Zeichen."
+    },
+    "en-a1-09-e7": {
+      "explain": "Du kannst sagen: „The bill, please“ oder „Can I have the bill, please?“ oder „Could we have the bill, please?“.",
+      "prompt": "Du bist fertig mit dem Essen. Bitte den Kellner um die Rechnung."
+    },
+    "en-a1-10-e1": {
+      "explain": "„music“ bedeutet „die Musik“."
+    },
+    "en-a1-10-e2": {
+      "explain": "„What do you do at the weekend?“ bedeutet „Was machst du am Wochenende?“."
+    },
+    "en-a1-10-e3": {
+      "explain": "Der ganze Satz heißt „On Saturdays I play football“ = „Am Samstag spiele ich Fußball“. Bei Ballsportarten sagt man „play“: play football."
+    },
+    "en-a1-10-e4": {
+      "explain": "Richtige Reihenfolge: „On Sundays I read a book“ = „Am Sonntag lese ich ein Buch“."
+    },
+    "en-a1-10-e5": {
+      "explain": "„to swim“ bedeutet „schwimmen“."
+    },
+    "en-a1-10-e6": {
+      "explain": "„das Buch“ heißt „the book“. Groß- und Kleinschreibung zählt nicht, aber jeder Buchstabe und jedes Zeichen."
+    },
+    "en-a1-10-e7": {
+      "explain": "Du kannst sagen: „I like cooking“ oder „I like to cook“ oder „I love cooking“.",
+      "prompt": "Eine neue Freundin fragt, was du gern machst. Antworte, dass du gern kochst."
+    }
+  }
+}

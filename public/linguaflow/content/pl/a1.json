@@ -1,0 +1,1370 @@
+{
+  "format": 1,
+  "id": "pl-a1",
+  "language": "pl",
+  "version": "1.0.0",
+  "lessons": [
+    {
+      "id": "pl-a1-01",
+      "minutes": 7,
+      "dialogue": [
+        {
+          "id": "pl-a1-01-d1",
+          "speaker": "Zosia",
+          "text": "Cześć! Jestem Zosia."
+        },
+        {
+          "id": "pl-a1-01-d2",
+          "speaker": "Marco",
+          "text": "Cześć, Zosiu! Mam na imię Marco."
+        },
+        {
+          "id": "pl-a1-01-d3",
+          "speaker": "Zosia",
+          "text": "Skąd jesteś?"
+        },
+        {
+          "id": "pl-a1-01-d4",
+          "speaker": "Marco",
+          "text": "Jestem z Włoch. A ty?"
+        },
+        {
+          "id": "pl-a1-01-d5",
+          "speaker": "Zosia",
+          "text": "Ja jestem z Krakowa. Miło mi!"
+        },
+        {
+          "id": "pl-a1-01-d6",
+          "speaker": "Marco",
+          "text": "Mnie też miło! Do zobaczenia."
+        }
+      ],
+      "vocabulary": [
+        {
+          "id": "pl-a1-01-v1",
+          "text": "Dzień dobry"
+        },
+        {
+          "id": "pl-a1-01-v2",
+          "text": "Dobry wieczór"
+        },
+        {
+          "id": "pl-a1-01-v3",
+          "text": "Do widzenia"
+        },
+        {
+          "id": "pl-a1-01-v4",
+          "text": "Jak masz na imię?"
+        },
+        {
+          "id": "pl-a1-01-v5",
+          "text": "Dziękuję"
+        },
+        {
+          "id": "pl-a1-01-v6",
+          "text": "Proszę"
+        }
+      ],
+      "exercises": [
+        {
+          "id": "pl-a1-01-e1",
+          "type": "listen",
+          "item": "pl-a1-01-v3",
+          "options": [
+            "pl-a1-01-v3",
+            "pl-a1-01-v4",
+            "pl-a1-01-v5"
+          ]
+        },
+        {
+          "id": "pl-a1-01-e2",
+          "type": "choice",
+          "item": "pl-a1-01-d3",
+          "direction": "toSource",
+          "options": [
+            "pl-a1-01-d3",
+            "pl-a1-01-d4",
+            "pl-a1-01-d5"
+          ]
+        },
+        {
+          "id": "pl-a1-01-e3",
+          "type": "cloze",
+          "item": "pl-a1-01-d2",
+          "gap": "Mam",
+          "options": [
+            "Mam",
+            "Jestem",
+            "Masz"
+          ]
+        },
+        {
+          "id": "pl-a1-01-e4",
+          "type": "order",
+          "item": "pl-a1-01-d4",
+          "segments": [
+            "Jestem",
+            "z",
+            "Włoch.",
+            "A",
+            "ty?"
+          ],
+          "extra": [
+            "w"
+          ]
+        },
+        {
+          "id": "pl-a1-01-e5",
+          "type": "choice",
+          "item": "pl-a1-01-v1",
+          "direction": "toTarget",
+          "options": [
+            "pl-a1-01-v1",
+            "pl-a1-01-v2",
+            "pl-a1-01-v3"
+          ]
+        },
+        {
+          "id": "pl-a1-01-e6",
+          "type": "write",
+          "item": "pl-a1-01-v5"
+        },
+        {
+          "id": "pl-a1-01-e7",
+          "type": "situation",
+          "mode": "write",
+          "answers": [
+            "Mam na imię Giulia.",
+            "Jestem Giulia.",
+            "Nazywam się Giulia."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "pl-a1-02",
+      "minutes": 7,
+      "dialogue": [
+        {
+          "id": "pl-a1-02-d1",
+          "speaker": "Sprzedawczyni",
+          "text": "Dzień dobry! Co podać?"
+        },
+        {
+          "id": "pl-a1-02-d2",
+          "speaker": "Marco",
+          "text": "Poproszę chleb."
+        },
+        {
+          "id": "pl-a1-02-d3",
+          "speaker": "Sprzedawczyni",
+          "text": "Proszę bardzo. Coś jeszcze?"
+        },
+        {
+          "id": "pl-a1-02-d4",
+          "speaker": "Marco",
+          "text": "Tak, jeszcze trzy jabłka."
+        },
+        {
+          "id": "pl-a1-02-d5",
+          "speaker": "Marco",
+          "text": "Ile to kosztuje?"
+        },
+        {
+          "id": "pl-a1-02-d6",
+          "speaker": "Sprzedawczyni",
+          "text": "Dwanaście złotych."
+        }
+      ],
+      "vocabulary": [
+        {
+          "id": "pl-a1-02-v1",
+          "text": "chleb"
+        },
+        {
+          "id": "pl-a1-02-v2",
+          "text": "jabłko"
+        },
+        {
+          "id": "pl-a1-02-v3",
+          "text": "ser"
+        },
+        {
+          "id": "pl-a1-02-v4",
+          "text": "ciasto"
+        },
+        {
+          "id": "pl-a1-02-v5",
+          "text": "Ile to kosztuje?"
+        },
+        {
+          "id": "pl-a1-02-v6",
+          "text": "trzy"
+        }
+      ],
+      "exercises": [
+        {
+          "id": "pl-a1-02-e1",
+          "type": "listen",
+          "item": "pl-a1-02-v2",
+          "options": [
+            "pl-a1-02-v1",
+            "pl-a1-02-v2",
+            "pl-a1-02-v3"
+          ]
+        },
+        {
+          "id": "pl-a1-02-e2",
+          "type": "choice",
+          "item": "pl-a1-02-d2",
+          "direction": "toSource",
+          "options": [
+            "pl-a1-02-d2",
+            "pl-a1-02-d3",
+            "pl-a1-02-d5"
+          ]
+        },
+        {
+          "id": "pl-a1-02-e3",
+          "type": "cloze",
+          "item": "pl-a1-02-d2",
+          "gap": "Poproszę",
+          "options": [
+            "Poproszę",
+            "Dziękuję",
+            "Jestem"
+          ]
+        },
+        {
+          "id": "pl-a1-02-e4",
+          "type": "order",
+          "item": "pl-a1-02-d4",
+          "segments": [
+            "Tak,",
+            "jeszcze",
+            "trzy",
+            "jabłka."
+          ],
+          "extra": [
+            "jabłko"
+          ]
+        },
+        {
+          "id": "pl-a1-02-e5",
+          "type": "choice",
+          "item": "pl-a1-02-v4",
+          "direction": "toTarget",
+          "options": [
+            "pl-a1-02-v4",
+            "pl-a1-02-v3",
+            "pl-a1-02-v6"
+          ]
+        },
+        {
+          "id": "pl-a1-02-e6",
+          "type": "write",
+          "item": "pl-a1-02-v1"
+        },
+        {
+          "id": "pl-a1-02-e7",
+          "type": "situation",
+          "mode": "write",
+          "answers": [
+            "Poproszę chleb.",
+            "Poproszę jeden chleb.",
+            "Chciałbym chleb.",
+            "Chciałabym chleb."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "pl-a1-03",
+      "minutes": 6,
+      "dialogue": [
+        {
+          "id": "pl-a1-03-d1",
+          "speaker": "Kelner",
+          "text": "Dzień dobry! Co dla pana?"
+        },
+        {
+          "id": "pl-a1-03-d2",
+          "speaker": "Marco",
+          "text": "Poproszę herbatę."
+        },
+        {
+          "id": "pl-a1-03-d3",
+          "speaker": "Kelner",
+          "text": "Z mlekiem czy z cytryną?"
+        },
+        {
+          "id": "pl-a1-03-d4",
+          "speaker": "Marco",
+          "text": "Z cytryną. I szklankę wody."
+        },
+        {
+          "id": "pl-a1-03-d5",
+          "speaker": "Marco",
+          "text": "Czy mogę zapłacić?"
+        },
+        {
+          "id": "pl-a1-03-d6",
+          "speaker": "Kelner",
+          "text": "Oczywiście. Osiemnaście złotych."
+        }
+      ],
+      "vocabulary": [
+        {
+          "id": "pl-a1-03-v1",
+          "text": "kawa"
+        },
+        {
+          "id": "pl-a1-03-v2",
+          "text": "herbata"
+        },
+        {
+          "id": "pl-a1-03-v3",
+          "text": "woda"
+        },
+        {
+          "id": "pl-a1-03-v4",
+          "text": "mleko"
+        },
+        {
+          "id": "pl-a1-03-v5",
+          "text": "sok pomarańczowy"
+        },
+        {
+          "id": "pl-a1-03-v6",
+          "text": "rachunek"
+        }
+      ],
+      "exercises": [
+        {
+          "id": "pl-a1-03-e1",
+          "type": "listen",
+          "item": "pl-a1-03-v2",
+          "options": [
+            "pl-a1-03-v1",
+            "pl-a1-03-v2",
+            "pl-a1-03-v5"
+          ]
+        },
+        {
+          "id": "pl-a1-03-e2",
+          "type": "choice",
+          "item": "pl-a1-03-d3",
+          "direction": "toSource",
+          "options": [
+            "pl-a1-03-d3",
+            "pl-a1-03-d4",
+            "pl-a1-03-d6"
+          ]
+        },
+        {
+          "id": "pl-a1-03-e3",
+          "type": "cloze",
+          "item": "pl-a1-03-d3",
+          "gap": "czy",
+          "options": [
+            "czy",
+            "i",
+            "ale"
+          ]
+        },
+        {
+          "id": "pl-a1-03-e4",
+          "type": "order",
+          "item": "pl-a1-03-d5",
+          "segments": [
+            "Czy",
+            "mogę",
+            "zapłacić?"
+          ],
+          "extra": [
+            "chcę"
+          ]
+        },
+        {
+          "id": "pl-a1-03-e5",
+          "type": "choice",
+          "item": "pl-a1-03-v3",
+          "direction": "toTarget",
+          "options": [
+            "pl-a1-03-v3",
+            "pl-a1-03-v4",
+            "pl-a1-03-v6"
+          ]
+        },
+        {
+          "id": "pl-a1-03-e6",
+          "type": "write",
+          "item": "pl-a1-03-v4"
+        },
+        {
+          "id": "pl-a1-03-e7",
+          "type": "situation",
+          "mode": "write",
+          "answers": [
+            "Poproszę kawę.",
+            "Poproszę jedną kawę.",
+            "Kawę, proszę."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "pl-a1-04",
+      "minutes": 6,
+      "dialogue": [
+        {
+          "id": "pl-a1-04-d1",
+          "speaker": "Marco",
+          "text": "Przepraszam, gdzie jest ryż?"
+        },
+        {
+          "id": "pl-a1-04-d2",
+          "speaker": "Pracownik",
+          "text": "Ryż jest tam, po prawej."
+        },
+        {
+          "id": "pl-a1-04-d3",
+          "speaker": "Marco",
+          "text": "A jajka?"
+        },
+        {
+          "id": "pl-a1-04-d4",
+          "speaker": "Pracownik",
+          "text": "Są obok mleka."
+        },
+        {
+          "id": "pl-a1-04-d5",
+          "speaker": "Marco",
+          "text": "Dziękuję bardzo!"
+        },
+        {
+          "id": "pl-a1-04-d6",
+          "speaker": "Pracownik",
+          "text": "Nie ma za co!"
+        }
+      ],
+      "vocabulary": [
+        {
+          "id": "pl-a1-04-v1",
+          "text": "ryż"
+        },
+        {
+          "id": "pl-a1-04-v2",
+          "text": "jajka"
+        },
+        {
+          "id": "pl-a1-04-v3",
+          "text": "owoce"
+        },
+        {
+          "id": "pl-a1-04-v4",
+          "text": "po prawej"
+        },
+        {
+          "id": "pl-a1-04-v5",
+          "text": "po lewej"
+        },
+        {
+          "id": "pl-a1-04-v6",
+          "text": "kasa"
+        }
+      ],
+      "exercises": [
+        {
+          "id": "pl-a1-04-e1",
+          "type": "listen",
+          "item": "pl-a1-04-v4",
+          "options": [
+            "pl-a1-04-v4",
+            "pl-a1-04-v5",
+            "pl-a1-04-v6"
+          ]
+        },
+        {
+          "id": "pl-a1-04-e2",
+          "type": "choice",
+          "item": "pl-a1-04-d1",
+          "direction": "toSource",
+          "options": [
+            "pl-a1-04-d1",
+            "pl-a1-04-d3",
+            "pl-a1-04-d5"
+          ]
+        },
+        {
+          "id": "pl-a1-04-e3",
+          "type": "cloze",
+          "item": "pl-a1-04-d1",
+          "gap": "gdzie",
+          "options": [
+            "gdzie",
+            "co",
+            "kto"
+          ]
+        },
+        {
+          "id": "pl-a1-04-e4",
+          "type": "order",
+          "item": "pl-a1-04-d2",
+          "segments": [
+            "Ryż",
+            "jest",
+            "tam,",
+            "po",
+            "prawej."
+          ],
+          "extra": [
+            "lewej"
+          ]
+        },
+        {
+          "id": "pl-a1-04-e5",
+          "type": "choice",
+          "item": "pl-a1-04-v5",
+          "direction": "toTarget",
+          "options": [
+            "pl-a1-04-v5",
+            "pl-a1-04-v4",
+            "pl-a1-04-v1"
+          ]
+        },
+        {
+          "id": "pl-a1-04-e6",
+          "type": "write",
+          "item": "pl-a1-04-v1"
+        },
+        {
+          "id": "pl-a1-04-e7",
+          "type": "situation",
+          "mode": "write",
+          "answers": [
+            "Przepraszam, gdzie jest mleko?",
+            "Gdzie jest mleko?"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "pl-a1-05",
+      "minutes": 6,
+      "dialogue": [
+        {
+          "id": "pl-a1-05-d1",
+          "speaker": "Marco",
+          "text": "Przepraszam, gdzie jest dworzec?"
+        },
+        {
+          "id": "pl-a1-05-d2",
+          "speaker": "Przechodzień",
+          "text": "Proszę iść prosto."
+        },
+        {
+          "id": "pl-a1-05-d3",
+          "speaker": "Przechodzień",
+          "text": "Potem w lewo."
+        },
+        {
+          "id": "pl-a1-05-d4",
+          "speaker": "Marco",
+          "text": "Czy to daleko?"
+        },
+        {
+          "id": "pl-a1-05-d5",
+          "speaker": "Przechodzień",
+          "text": "Nie, pięć minut pieszo."
+        },
+        {
+          "id": "pl-a1-05-d6",
+          "speaker": "Marco",
+          "text": "Dziękuję, do widzenia!"
+        }
+      ],
+      "vocabulary": [
+        {
+          "id": "pl-a1-05-v1",
+          "text": "dworzec"
+        },
+        {
+          "id": "pl-a1-05-v2",
+          "text": "muzeum"
+        },
+        {
+          "id": "pl-a1-05-v3",
+          "text": "prosto"
+        },
+        {
+          "id": "pl-a1-05-v4",
+          "text": "blisko"
+        },
+        {
+          "id": "pl-a1-05-v5",
+          "text": "daleko"
+        },
+        {
+          "id": "pl-a1-05-v6",
+          "text": "przystanek autobusowy"
+        }
+      ],
+      "exercises": [
+        {
+          "id": "pl-a1-05-e1",
+          "type": "listen",
+          "item": "pl-a1-05-v3",
+          "options": [
+            "pl-a1-05-v3",
+            "pl-a1-05-v4",
+            "pl-a1-05-v5"
+          ]
+        },
+        {
+          "id": "pl-a1-05-e2",
+          "type": "choice",
+          "item": "pl-a1-05-d4",
+          "direction": "toSource",
+          "options": [
+            "pl-a1-05-d4",
+            "pl-a1-05-d2",
+            "pl-a1-05-d5"
+          ]
+        },
+        {
+          "id": "pl-a1-05-e3",
+          "type": "cloze",
+          "item": "pl-a1-05-d3",
+          "gap": "w lewo",
+          "options": [
+            "w lewo",
+            "w prawo",
+            "prosto"
+          ]
+        },
+        {
+          "id": "pl-a1-05-e4",
+          "type": "order",
+          "item": "pl-a1-05-d5",
+          "segments": [
+            "Nie,",
+            "pięć",
+            "minut",
+            "pieszo."
+          ],
+          "extra": [
+            "na"
+          ]
+        },
+        {
+          "id": "pl-a1-05-e5",
+          "type": "choice",
+          "item": "pl-a1-05-v4",
+          "direction": "toTarget",
+          "options": [
+            "pl-a1-05-v4",
+            "pl-a1-05-v5",
+            "pl-a1-05-v1"
+          ]
+        },
+        {
+          "id": "pl-a1-05-e6",
+          "type": "write",
+          "item": "pl-a1-05-v2"
+        },
+        {
+          "id": "pl-a1-05-e7",
+          "type": "situation",
+          "mode": "write",
+          "answers": [
+            "Przepraszam, gdzie jest muzeum?",
+            "Gdzie jest muzeum?"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "pl-a1-06",
+      "minutes": 7,
+      "dialogue": [
+        {
+          "id": "pl-a1-06-d1",
+          "speaker": "Marco",
+          "text": "Poproszę bilet do Warszawy."
+        },
+        {
+          "id": "pl-a1-06-d2",
+          "speaker": "Kasa biletowa",
+          "text": "W jedną stronę czy w obie strony?"
+        },
+        {
+          "id": "pl-a1-06-d3",
+          "speaker": "Marco",
+          "text": "W obie strony."
+        },
+        {
+          "id": "pl-a1-06-d4",
+          "speaker": "Marco",
+          "text": "Z którego peronu odjeżdża pociąg?"
+        },
+        {
+          "id": "pl-a1-06-d5",
+          "speaker": "Kasa biletowa",
+          "text": "Z peronu trzeciego, o dziesiątej."
+        },
+        {
+          "id": "pl-a1-06-d6",
+          "speaker": "Marco",
+          "text": "Super, dziękuję!"
+        }
+      ],
+      "vocabulary": [
+        {
+          "id": "pl-a1-06-v1",
+          "text": "pociąg"
+        },
+        {
+          "id": "pl-a1-06-v2",
+          "text": "bilet"
+        },
+        {
+          "id": "pl-a1-06-v3",
+          "text": "peron"
+        },
+        {
+          "id": "pl-a1-06-v4",
+          "text": "autobus"
+        },
+        {
+          "id": "pl-a1-06-v5",
+          "text": "dzisiaj",
+          "accept": [
+            "dziś"
+          ]
+        },
+        {
+          "id": "pl-a1-06-v6",
+          "text": "jutro"
+        }
+      ],
+      "exercises": [
+        {
+          "id": "pl-a1-06-e1",
+          "type": "listen",
+          "item": "pl-a1-06-v2",
+          "options": [
+            "pl-a1-06-v1",
+            "pl-a1-06-v2",
+            "pl-a1-06-v3"
+          ]
+        },
+        {
+          "id": "pl-a1-06-e2",
+          "type": "choice",
+          "item": "pl-a1-06-d2",
+          "direction": "toSource",
+          "options": [
+            "pl-a1-06-d2",
+            "pl-a1-06-d4",
+            "pl-a1-06-d5"
+          ]
+        },
+        {
+          "id": "pl-a1-06-e3",
+          "type": "cloze",
+          "item": "pl-a1-06-d4",
+          "gap": "którego",
+          "options": [
+            "którego",
+            "który",
+            "kto"
+          ]
+        },
+        {
+          "id": "pl-a1-06-e4",
+          "type": "order",
+          "item": "pl-a1-06-d1",
+          "segments": [
+            "Poproszę",
+            "bilet",
+            "do",
+            "Warszawy."
+          ],
+          "extra": [
+            "na"
+          ]
+        },
+        {
+          "id": "pl-a1-06-e5",
+          "type": "choice",
+          "item": "pl-a1-06-v1",
+          "direction": "toTarget",
+          "options": [
+            "pl-a1-06-v1",
+            "pl-a1-06-v4",
+            "pl-a1-06-v3"
+          ]
+        },
+        {
+          "id": "pl-a1-06-e6",
+          "type": "write",
+          "item": "pl-a1-06-v5"
+        },
+        {
+          "id": "pl-a1-06-e7",
+          "type": "situation",
+          "mode": "write",
+          "answers": [
+            "Poproszę bilet do Warszawy.",
+            "Bilet do Warszawy, proszę.",
+            "Poproszę bilet w obie strony do Warszawy."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "pl-a1-07",
+      "minutes": 6,
+      "dialogue": [
+        {
+          "id": "pl-a1-07-d1",
+          "speaker": "Lekarka",
+          "text": "Dzień dobry. Co panu dolega?"
+        },
+        {
+          "id": "pl-a1-07-d2",
+          "speaker": "Marco",
+          "text": "Boli mnie głowa."
+        },
+        {
+          "id": "pl-a1-07-d3",
+          "speaker": "Lekarka",
+          "text": "Czy ma pan też gorączkę?"
+        },
+        {
+          "id": "pl-a1-07-d4",
+          "speaker": "Marco",
+          "text": "Tak, trochę. I jestem bardzo zmęczony."
+        },
+        {
+          "id": "pl-a1-07-d5",
+          "speaker": "Lekarka",
+          "text": "Proszę pić dużo wody i odpoczywać."
+        },
+        {
+          "id": "pl-a1-07-d6",
+          "speaker": "Marco",
+          "text": "Dziękuję bardzo."
+        }
+      ],
+      "vocabulary": [
+        {
+          "id": "pl-a1-07-v1",
+          "text": "głowa"
+        },
+        {
+          "id": "pl-a1-07-v2",
+          "text": "brzuch"
+        },
+        {
+          "id": "pl-a1-07-v3",
+          "text": "gorączka"
+        },
+        {
+          "id": "pl-a1-07-v4",
+          "text": "lekarstwo"
+        },
+        {
+          "id": "pl-a1-07-v5",
+          "text": "chory"
+        },
+        {
+          "id": "pl-a1-07-v6",
+          "text": "Czuję się dobrze."
+        }
+      ],
+      "exercises": [
+        {
+          "id": "pl-a1-07-e1",
+          "type": "listen",
+          "item": "pl-a1-07-v1",
+          "options": [
+            "pl-a1-07-v1",
+            "pl-a1-07-v2",
+            "pl-a1-07-v3"
+          ]
+        },
+        {
+          "id": "pl-a1-07-e2",
+          "type": "choice",
+          "item": "pl-a1-07-d3",
+          "direction": "toSource",
+          "options": [
+            "pl-a1-07-d3",
+            "pl-a1-07-d2",
+            "pl-a1-07-d5"
+          ]
+        },
+        {
+          "id": "pl-a1-07-e3",
+          "type": "cloze",
+          "item": "pl-a1-07-d2",
+          "gap": "Boli",
+          "options": [
+            "Boli",
+            "Mam",
+            "Jest"
+          ]
+        },
+        {
+          "id": "pl-a1-07-e4",
+          "type": "order",
+          "item": "pl-a1-07-d4",
+          "segments": [
+            "Tak,",
+            "trochę.",
+            "I",
+            "jestem",
+            "bardzo",
+            "zmęczony."
+          ],
+          "extra": [
+            "mam"
+          ]
+        },
+        {
+          "id": "pl-a1-07-e5",
+          "type": "choice",
+          "item": "pl-a1-07-v4",
+          "direction": "toTarget",
+          "options": [
+            "pl-a1-07-v4",
+            "pl-a1-07-v3",
+            "pl-a1-07-v5"
+          ]
+        },
+        {
+          "id": "pl-a1-07-e6",
+          "type": "write",
+          "item": "pl-a1-07-v1"
+        },
+        {
+          "id": "pl-a1-07-e7",
+          "type": "situation",
+          "mode": "write",
+          "answers": [
+            "Boli mnie brzuch.",
+            "Brzuch mnie boli."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "pl-a1-08",
+      "minutes": 6,
+      "dialogue": [
+        {
+          "id": "pl-a1-08-d1",
+          "speaker": "Zosia",
+          "text": "Masz czas w sobotę?"
+        },
+        {
+          "id": "pl-a1-08-d2",
+          "speaker": "Marco",
+          "text": "Tak! Co robimy?"
+        },
+        {
+          "id": "pl-a1-08-d3",
+          "speaker": "Zosia",
+          "text": "Idziemy do kina?"
+        },
+        {
+          "id": "pl-a1-08-d4",
+          "speaker": "Marco",
+          "text": "Dobry pomysł! O której?"
+        },
+        {
+          "id": "pl-a1-08-d5",
+          "speaker": "Zosia",
+          "text": "O siódmej wieczorem."
+        },
+        {
+          "id": "pl-a1-08-d6",
+          "speaker": "Marco",
+          "text": "Dobrze, do soboty!"
+        }
+      ],
+      "vocabulary": [
+        {
+          "id": "pl-a1-08-v1",
+          "text": "poniedziałek"
+        },
+        {
+          "id": "pl-a1-08-v2",
+          "text": "piątek"
+        },
+        {
+          "id": "pl-a1-08-v3",
+          "text": "sobota"
+        },
+        {
+          "id": "pl-a1-08-v4",
+          "text": "niedziela"
+        },
+        {
+          "id": "pl-a1-08-v5",
+          "text": "Która godzina?"
+        },
+        {
+          "id": "pl-a1-08-v6",
+          "text": "dziś wieczorem"
+        }
+      ],
+      "exercises": [
+        {
+          "id": "pl-a1-08-e1",
+          "type": "listen",
+          "item": "pl-a1-08-v3",
+          "options": [
+            "pl-a1-08-v2",
+            "pl-a1-08-v3",
+            "pl-a1-08-v4"
+          ]
+        },
+        {
+          "id": "pl-a1-08-e2",
+          "type": "choice",
+          "item": "pl-a1-08-d4",
+          "direction": "toSource",
+          "options": [
+            "pl-a1-08-d4",
+            "pl-a1-08-d1",
+            "pl-a1-08-d5"
+          ]
+        },
+        {
+          "id": "pl-a1-08-e3",
+          "type": "cloze",
+          "item": "pl-a1-08-d1",
+          "gap": "w sobotę",
+          "options": [
+            "w sobotę",
+            "w sobota",
+            "na sobotę"
+          ]
+        },
+        {
+          "id": "pl-a1-08-e4",
+          "type": "order",
+          "item": "pl-a1-08-d3",
+          "segments": [
+            "Idziemy",
+            "do",
+            "kina?"
+          ],
+          "extra": [
+            "na"
+          ]
+        },
+        {
+          "id": "pl-a1-08-e5",
+          "type": "choice",
+          "item": "pl-a1-08-v5",
+          "direction": "toTarget",
+          "options": [
+            "pl-a1-08-v5",
+            "pl-a1-08-v6",
+            "pl-a1-08-v1"
+          ]
+        },
+        {
+          "id": "pl-a1-08-e6",
+          "type": "write",
+          "item": "pl-a1-08-v4"
+        },
+        {
+          "id": "pl-a1-08-e7",
+          "type": "situation",
+          "mode": "write",
+          "answers": [
+            "Masz czas w niedzielę?",
+            "Czy masz czas w niedzielę?"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "pl-a1-09",
+      "minutes": 8,
+      "dialogue": [
+        {
+          "id": "pl-a1-09-d1",
+          "speaker": "Marco",
+          "text": "Dobry wieczór, mam rezerwację na dwie osoby."
+        },
+        {
+          "id": "pl-a1-09-d2",
+          "speaker": "Kelner",
+          "text": "Proszę tędy. Oto karta."
+        },
+        {
+          "id": "pl-a1-09-d3",
+          "speaker": "Kelner",
+          "text": "Co państwo zamawiają?"
+        },
+        {
+          "id": "pl-a1-09-d4",
+          "speaker": "Marco",
+          "text": "Dla mnie zupa i sałatka."
+        },
+        {
+          "id": "pl-a1-09-d5",
+          "speaker": "Marco",
+          "text": "Poproszę rachunek."
+        },
+        {
+          "id": "pl-a1-09-d6",
+          "speaker": "Kelner",
+          "text": "Już podaję!"
+        }
+      ],
+      "vocabulary": [
+        {
+          "id": "pl-a1-09-v1",
+          "text": "karta"
+        },
+        {
+          "id": "pl-a1-09-v2",
+          "text": "zupa"
+        },
+        {
+          "id": "pl-a1-09-v3",
+          "text": "ryba"
+        },
+        {
+          "id": "pl-a1-09-v4",
+          "text": "deser"
+        },
+        {
+          "id": "pl-a1-09-v5",
+          "text": "pyszny"
+        },
+        {
+          "id": "pl-a1-09-v6",
+          "text": "stolik"
+        }
+      ],
+      "exercises": [
+        {
+          "id": "pl-a1-09-e1",
+          "type": "listen",
+          "item": "pl-a1-09-v5",
+          "options": [
+            "pl-a1-09-v5",
+            "pl-a1-09-v2",
+            "pl-a1-09-v3"
+          ]
+        },
+        {
+          "id": "pl-a1-09-e2",
+          "type": "choice",
+          "item": "pl-a1-09-d3",
+          "direction": "toSource",
+          "options": [
+            "pl-a1-09-d3",
+            "pl-a1-09-d2",
+            "pl-a1-09-d5"
+          ]
+        },
+        {
+          "id": "pl-a1-09-e3",
+          "type": "cloze",
+          "item": "pl-a1-09-d1",
+          "gap": "rezerwację",
+          "options": [
+            "rezerwację",
+            "rachunek",
+            "kartę"
+          ]
+        },
+        {
+          "id": "pl-a1-09-e4",
+          "type": "order",
+          "item": "pl-a1-09-d4",
+          "segments": [
+            "Dla",
+            "mnie",
+            "zupa",
+            "i",
+            "sałatka."
+          ],
+          "extra": [
+            "na"
+          ]
+        },
+        {
+          "id": "pl-a1-09-e5",
+          "type": "choice",
+          "item": "pl-a1-09-v3",
+          "direction": "toTarget",
+          "options": [
+            "pl-a1-09-v3",
+            "pl-a1-09-v4",
+            "pl-a1-09-v6"
+          ]
+        },
+        {
+          "id": "pl-a1-09-e6",
+          "type": "write",
+          "item": "pl-a1-09-v2"
+        },
+        {
+          "id": "pl-a1-09-e7",
+          "type": "situation",
+          "mode": "write",
+          "answers": [
+            "Poproszę rachunek.",
+            "Rachunek, proszę.",
+            "Czy mogę prosić o rachunek?"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "pl-a1-10",
+      "minutes": 6,
+      "dialogue": [
+        {
+          "id": "pl-a1-10-d1",
+          "speaker": "Zosia",
+          "text": "Co robisz w weekend?"
+        },
+        {
+          "id": "pl-a1-10-d2",
+          "speaker": "Marco",
+          "text": "W sobotę gram w piłkę nożną."
+        },
+        {
+          "id": "pl-a1-10-d3",
+          "speaker": "Marco",
+          "text": "W niedzielę czytam książkę."
+        },
+        {
+          "id": "pl-a1-10-d4",
+          "speaker": "Zosia",
+          "text": "Ja chodzę na basen z siostrą."
+        },
+        {
+          "id": "pl-a1-10-d5",
+          "speaker": "Marco",
+          "text": "Lubisz pływać?"
+        },
+        {
+          "id": "pl-a1-10-d6",
+          "speaker": "Zosia",
+          "text": "Tak, bardzo!"
+        }
+      ],
+      "vocabulary": [
+        {
+          "id": "pl-a1-10-v1",
+          "text": "piłka nożna"
+        },
+        {
+          "id": "pl-a1-10-v2",
+          "text": "książka"
+        },
+        {
+          "id": "pl-a1-10-v3",
+          "text": "muzyka"
+        },
+        {
+          "id": "pl-a1-10-v4",
+          "text": "gotować"
+        },
+        {
+          "id": "pl-a1-10-v5",
+          "text": "pływać"
+        },
+        {
+          "id": "pl-a1-10-v6",
+          "text": "Lubię muzykę."
+        }
+      ],
+      "exercises": [
+        {
+          "id": "pl-a1-10-e1",
+          "type": "listen",
+          "item": "pl-a1-10-v3",
+          "options": [
+            "pl-a1-10-v1",
+            "pl-a1-10-v2",
+            "pl-a1-10-v3"
+          ]
+        },
+        {
+          "id": "pl-a1-10-e2",
+          "type": "choice",
+          "item": "pl-a1-10-d1",
+          "direction": "toSource",
+          "options": [
+            "pl-a1-10-d1",
+            "pl-a1-10-d4",
+            "pl-a1-10-d5"
+          ]
+        },
+        {
+          "id": "pl-a1-10-e3",
+          "type": "cloze",
+          "item": "pl-a1-10-d2",
+          "gap": "gram",
+          "options": [
+            "gram",
+            "robię",
+            "idę"
+          ]
+        },
+        {
+          "id": "pl-a1-10-e4",
+          "type": "order",
+          "item": "pl-a1-10-d3",
+          "segments": [
+            "W",
+            "niedzielę",
+            "czytam",
+            "książkę."
+          ],
+          "extra": [
+            "na"
+          ]
+        },
+        {
+          "id": "pl-a1-10-e5",
+          "type": "choice",
+          "item": "pl-a1-10-v5",
+          "direction": "toTarget",
+          "options": [
+            "pl-a1-10-v5",
+            "pl-a1-10-v4",
+            "pl-a1-10-v2"
+          ]
+        },
+        {
+          "id": "pl-a1-10-e6",
+          "type": "write",
+          "item": "pl-a1-10-v2"
+        },
+        {
+          "id": "pl-a1-10-e7",
+          "type": "situation",
+          "mode": "write",
+          "answers": [
+            "Lubię gotować.",
+            "Bardzo lubię gotować."
+          ]
+        }
+      ]
+    }
+  ]
+}

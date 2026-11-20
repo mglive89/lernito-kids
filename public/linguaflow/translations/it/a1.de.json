@@ -1,0 +1,399 @@
+{
+  "format": 1,
+  "id": "it-a1.de",
+  "content": "it-a1",
+  "source": "de",
+  "target": "it",
+  "version": "1.0.0",
+  "quality": "unreviewed",
+  "course": {
+    "title": "Italienisch A1 – Alltag in Italien",
+    "description": "Zehn kurze Lektionen zu echten Situationen: sich vorstellen, einkaufen, im Café, am Bahnhof, beim Arzt, im Restaurant und in der Freizeit."
+  },
+  "lessons": {
+    "it-a1-01": {
+      "title": "Hallo! Ich stelle mich vor",
+      "goal": "Begrüßen, sagen, wie du heißt und woher du kommst."
+    },
+    "it-a1-02": {
+      "title": "Auf dem Markt",
+      "goal": "Brot und Obst kaufen und fragen, was es kostet."
+    },
+    "it-a1-03": {
+      "title": "Im Café",
+      "goal": "Getränke bestellen und bezahlen."
+    },
+    "it-a1-04": {
+      "title": "Im Supermarkt",
+      "goal": "Fragen, wo es etwas gibt, und die Antwort verstehen."
+    },
+    "it-a1-05": {
+      "title": "Nach dem Weg fragen",
+      "goal": "Nach dem Weg fragen und einfache Wegbeschreibungen verstehen."
+    },
+    "it-a1-06": {
+      "title": "Am Bahnhof",
+      "goal": "Eine Fahrkarte kaufen und fragen, von welchem Gleis der Zug fährt."
+    },
+    "it-a1-07": {
+      "title": "Beim Arzt",
+      "goal": "Sagen, was dir fehlt, und einen Rat verstehen."
+    },
+    "it-a1-08": {
+      "title": "Hast du am Samstag Zeit?",
+      "goal": "Etwas vorschlagen, Wochentage und Uhrzeit."
+    },
+    "it-a1-09": {
+      "title": "Im Restaurant",
+      "goal": "Sagen, dass du reserviert hast, bestellen und um die Rechnung bitten."
+    },
+    "it-a1-10": {
+      "title": "Das Wochenende",
+      "goal": "Über deine Freizeit sprechen und sagen, was du magst."
+    }
+  },
+  "items": {
+    "it-a1-01-d1": "Hallo! Ich bin Sofia.",
+    "it-a1-01-d2": "Hallo, Sofia! Ich heiße Lukas.",
+    "it-a1-01-d3": "Woher kommst du?",
+    "it-a1-01-d4": "Ich komme aus Deutschland. Und du?",
+    "it-a1-01-d5": "Ich komme aus Bologna. Freut mich!",
+    "it-a1-01-d6": "Freut mich auch! Bis bald.",
+    "it-a1-01-v1": "Guten Tag",
+    "it-a1-01-v2": "Guten Abend",
+    "it-a1-01-v3": "Auf Wiedersehen",
+    "it-a1-01-v4": "Wie heißt du?",
+    "it-a1-01-v5": "Danke",
+    "it-a1-01-v6": "Bitte",
+    "it-a1-02-d1": "Guten Tag! Was möchten Sie?",
+    "it-a1-02-d2": "Ich möchte ein Brot, bitte.",
+    "it-a1-02-d3": "Bitte schön. Noch etwas?",
+    "it-a1-02-d4": "Ja, auch drei Äpfel.",
+    "it-a1-02-d5": "Was kostet das?",
+    "it-a1-02-d6": "Das macht vier Euro.",
+    "it-a1-02-v1": "das Brot",
+    "it-a1-02-v2": "der Apfel",
+    "it-a1-02-v3": "der Käse",
+    "it-a1-02-v4": "der Kuchen",
+    "it-a1-02-v5": "Was kostet das?",
+    "it-a1-02-v6": "drei",
+    "it-a1-03-d1": "Guten Tag! Was nehmen Sie?",
+    "it-a1-03-d2": "Einen Tee, bitte.",
+    "it-a1-03-d3": "Mit Milch oder mit Zitrone?",
+    "it-a1-03-d4": "Mit Zitrone. Und ein Glas Wasser.",
+    "it-a1-03-d5": "Kann ich bitte bezahlen?",
+    "it-a1-03-d6": "Natürlich. Das macht drei Euro fünfzig.",
+    "it-a1-03-v1": "der Kaffee",
+    "it-a1-03-v2": "der Tee",
+    "it-a1-03-v3": "das Wasser",
+    "it-a1-03-v4": "die Milch",
+    "it-a1-03-v5": "der Orangensaft",
+    "it-a1-03-v6": "die Rechnung",
+    "it-a1-04-d1": "Entschuldigung, wo ist der Reis?",
+    "it-a1-04-d2": "Der Reis ist dort, rechts.",
+    "it-a1-04-d3": "Und die Eier?",
+    "it-a1-04-d4": "Die sind neben der Milch.",
+    "it-a1-04-d5": "Vielen Dank!",
+    "it-a1-04-d6": "Gern geschehen!",
+    "it-a1-04-v1": "der Reis",
+    "it-a1-04-v2": "die Eier",
+    "it-a1-04-v3": "das Obst",
+    "it-a1-04-v4": "rechts",
+    "it-a1-04-v5": "links",
+    "it-a1-04-v6": "die Kasse",
+    "it-a1-05-d1": "Entschuldigung, wo ist der Bahnhof?",
+    "it-a1-05-d2": "Gehen Sie immer geradeaus.",
+    "it-a1-05-d3": "Dann biegen Sie links ab.",
+    "it-a1-05-d4": "Ist es weit?",
+    "it-a1-05-d5": "Nein, es sind fünf Minuten zu Fuß.",
+    "it-a1-05-d6": "Danke, auf Wiedersehen!",
+    "it-a1-05-v1": "der Bahnhof",
+    "it-a1-05-v2": "das Museum",
+    "it-a1-05-v3": "geradeaus",
+    "it-a1-05-v4": "nah",
+    "it-a1-05-v5": "weit",
+    "it-a1-05-v6": "die Bushaltestelle",
+    "it-a1-06-d1": "Eine Fahrkarte nach Florenz, bitte.",
+    "it-a1-06-d2": "Einfach oder hin und zurück?",
+    "it-a1-06-d3": "Hin und zurück.",
+    "it-a1-06-d4": "Von welchem Gleis fährt der Zug?",
+    "it-a1-06-d5": "Von Gleis drei, um zehn Uhr.",
+    "it-a1-06-d6": "Super, danke!",
+    "it-a1-06-v1": "der Zug",
+    "it-a1-06-v2": "die Fahrkarte",
+    "it-a1-06-v3": "das Gleis",
+    "it-a1-06-v4": "der Bus",
+    "it-a1-06-v5": "heute",
+    "it-a1-06-v6": "morgen",
+    "it-a1-07-d1": "Guten Tag. Was fehlt Ihnen?",
+    "it-a1-07-d2": "Mir tut der Kopf weh.",
+    "it-a1-07-d3": "Haben Sie auch Fieber?",
+    "it-a1-07-d4": "Ja, ein bisschen. Und ich bin sehr müde.",
+    "it-a1-07-d5": "Trinken Sie viel Wasser und ruhen Sie sich aus.",
+    "it-a1-07-d6": "Vielen Dank.",
+    "it-a1-07-v1": "der Kopf",
+    "it-a1-07-v2": "der Bauch",
+    "it-a1-07-v3": "das Fieber",
+    "it-a1-07-v4": "das Medikament",
+    "it-a1-07-v5": "krank",
+    "it-a1-07-v6": "Mir geht es gut.",
+    "it-a1-08-d1": "Hast du am Samstag Zeit?",
+    "it-a1-08-d2": "Ja! Was machen wir?",
+    "it-a1-08-d3": "Gehen wir ins Kino?",
+    "it-a1-08-d4": "Gute Idee! Um wie viel Uhr?",
+    "it-a1-08-d5": "Um sieben Uhr abends.",
+    "it-a1-08-d6": "Okay, bis Samstag!",
+    "it-a1-08-v1": "Montag",
+    "it-a1-08-v2": "Freitag",
+    "it-a1-08-v3": "Samstag",
+    "it-a1-08-v4": "Sonntag",
+    "it-a1-08-v5": "Wie spät ist es?",
+    "it-a1-08-v6": "heute Abend",
+    "it-a1-09-d1": "Guten Abend, ich habe einen Tisch für zwei reserviert.",
+    "it-a1-09-d2": "Bitte schön, hier ist die Speisekarte.",
+    "it-a1-09-d3": "Was möchten Sie?",
+    "it-a1-09-d4": "Für mich die Suppe und einen Salat.",
+    "it-a1-09-d5": "Die Rechnung, bitte.",
+    "it-a1-09-d6": "Sofort!",
+    "it-a1-09-v1": "die Speisekarte",
+    "it-a1-09-v2": "die Suppe",
+    "it-a1-09-v3": "der Fisch",
+    "it-a1-09-v4": "der Nachtisch",
+    "it-a1-09-v5": "sehr lecker",
+    "it-a1-09-v6": "der Tisch",
+    "it-a1-10-d1": "Was machst du am Wochenende?",
+    "it-a1-10-d2": "Am Samstag spiele ich Fußball.",
+    "it-a1-10-d3": "Am Sonntag lese ich ein Buch.",
+    "it-a1-10-d4": "Ich gehe mit meiner Schwester ins Schwimmbad.",
+    "it-a1-10-d5": "Schwimmst du gern?",
+    "it-a1-10-d6": "Ja, sehr gern!",
+    "it-a1-10-v1": "der Fußball",
+    "it-a1-10-v2": "das Buch",
+    "it-a1-10-v3": "die Musik",
+    "it-a1-10-v4": "kochen",
+    "it-a1-10-v5": "schwimmen",
+    "it-a1-10-v6": "Ich mag Musik."
+  },
+  "exercises": {
+    "it-a1-01-e1": {
+      "explain": "„Arrivederci“ bedeutet „Auf Wiedersehen“."
+    },
+    "it-a1-01-e2": {
+      "explain": "„Di dove sei?“ bedeutet „Woher kommst du?“."
+    },
+    "it-a1-01-e3": {
+      "explain": "Der ganze Satz heißt „Ciao, Sofia! Mi chiamo Lukas“ = „Hallo, Sofia! Ich heiße Lukas“. „Mi chiamo …“ = „Ich heiße …“; „Come ti chiami?“ = „Wie heißt du?“"
+    },
+    "it-a1-01-e4": {
+      "explain": "Richtige Reihenfolge: „Vengo dalla Germania. E tu?“ = „Ich komme aus Deutschland. Und du?“. „dalla“ = da + la: vengo dalla Germania = ich komme aus Deutschland."
+    },
+    "it-a1-01-e5": {
+      "explain": "„Buongiorno“ bedeutet „Guten Tag“."
+    },
+    "it-a1-01-e6": {
+      "explain": "„Danke“ heißt „Grazie“. Groß- und Kleinschreibung zählt nicht, aber jeder Buchstabe und jedes Zeichen."
+    },
+    "it-a1-01-e7": {
+      "explain": "Du kannst sagen: „Mi chiamo Giulia“ oder „Sono Giulia“ oder „Il mio nome è Giulia“.",
+      "prompt": "Eine neue Mitschülerin fragt dich, wie du heißt. Antworte, dass du Giulia heißt."
+    },
+    "it-a1-02-e1": {
+      "explain": "„la mela“ bedeutet „der Apfel“."
+    },
+    "it-a1-02-e2": {
+      "explain": "„Vorrei del pane, per favore“ bedeutet „Ich möchte ein Brot, bitte“."
+    },
+    "it-a1-02-e3": {
+      "explain": "Der ganze Satz heißt „Vorrei del pane, per favore“ = „Ich möchte ein Brot, bitte“. „Vorrei …“ = „Ich möchte …“: die höfliche Bitte."
+    },
+    "it-a1-02-e4": {
+      "explain": "Richtige Reihenfolge: „Sì, anche tre mele“ = „Ja, auch drei Äpfel“. Mehrzahl: la mela → le mele, il pane → i pani."
+    },
+    "it-a1-02-e5": {
+      "explain": "„la torta“ bedeutet „der Kuchen“."
+    },
+    "it-a1-02-e6": {
+      "explain": "„das Brot“ heißt „il pane“. Groß- und Kleinschreibung zählt nicht, aber jeder Buchstabe und jedes Zeichen."
+    },
+    "it-a1-02-e7": {
+      "explain": "Du kannst sagen: „Vorrei del pane, per favore“ oder „Vorrei un pane, per favore“ oder „Del pane, per favore“.",
+      "prompt": "Du bist auf dem Markt und möchtest ein Brot kaufen. Was sagst du zur Verkäuferin?"
+    },
+    "it-a1-03-e1": {
+      "explain": "„il tè“ bedeutet „der Tee“."
+    },
+    "it-a1-03-e2": {
+      "explain": "„Con latte o con limone?“ bedeutet „Mit Milch oder mit Zitrone?“."
+    },
+    "it-a1-03-e3": {
+      "explain": "Der ganze Satz heißt „Con limone. E un bicchiere d'acqua“ = „Mit Zitrone. Und ein Glas Wasser“. „un bicchiere d’acqua“ = „ein Glas Wasser“; „d’“ = di vor einem Vokal."
+    },
+    "it-a1-03-e4": {
+      "explain": "Richtige Reihenfolge: „Posso pagare, per favore?“ = „Kann ich bitte bezahlen?“. „Posso …?“ = „Kann ich …?“: danach folgt der Infinitiv."
+    },
+    "it-a1-03-e5": {
+      "explain": "„l'acqua“ bedeutet „das Wasser“."
+    },
+    "it-a1-03-e6": {
+      "explain": "„die Milch“ heißt „il latte“. Groß- und Kleinschreibung zählt nicht, aber jeder Buchstabe und jedes Zeichen."
+    },
+    "it-a1-03-e7": {
+      "explain": "Du kannst sagen: „Un caffè, per favore“ oder „Vorrei un caffè, per favore“ oder „Un caffè, grazie“.",
+      "prompt": "Du bist im Café und möchtest einen Kaffee bestellen. Was sagst du?"
+    },
+    "it-a1-04-e1": {
+      "explain": "„a destra“ bedeutet „rechts“."
+    },
+    "it-a1-04-e2": {
+      "explain": "„Scusi, dov'è il riso?“ bedeutet „Entschuldigung, wo ist der Reis?“."
+    },
+    "it-a1-04-e3": {
+      "explain": "Der ganze Satz heißt „Scusi, dov'è il riso?“ = „Entschuldigung, wo ist der Reis?“. „dov’è“ = dove + è = „wo ist“; „cos’è“ = „was ist“; „chi è“ = „wer ist“."
+    },
+    "it-a1-04-e4": {
+      "explain": "Richtige Reihenfolge: „Il riso è lì, a destra“ = „Der Reis ist dort, rechts“."
+    },
+    "it-a1-04-e5": {
+      "explain": "„a sinistra“ bedeutet „links“."
+    },
+    "it-a1-04-e6": {
+      "explain": "„der Reis“ heißt „il riso“. Groß- und Kleinschreibung zählt nicht, aber jeder Buchstabe und jedes Zeichen."
+    },
+    "it-a1-04-e7": {
+      "explain": "Du kannst sagen: „Scusi, dov'è il latte?“ oder „Dov'è il latte?“ oder „Scusi, dove si trova il latte?“.",
+      "prompt": "Du findest die Milch nicht. Frag einen Mitarbeiter, wo sie ist."
+    },
+    "it-a1-05-e1": {
+      "explain": "„dritto“ bedeutet „geradeaus“."
+    },
+    "it-a1-05-e2": {
+      "explain": "„È lontano?“ bedeutet „Ist es weit?“."
+    },
+    "it-a1-05-e3": {
+      "explain": "Der ganze Satz heißt „Poi giri a sinistra“ = „Dann biegen Sie links ab“. „a sinistra“ = links, „a destra“ = rechts, „sempre dritto“ = immer geradeaus."
+    },
+    "it-a1-05-e4": {
+      "explain": "Richtige Reihenfolge: „No, sono cinque minuti a piedi“ = „Nein, es sind fünf Minuten zu Fuß“. „a piedi“ = zu Fuß."
+    },
+    "it-a1-05-e5": {
+      "explain": "„vicino“ bedeutet „nah“."
+    },
+    "it-a1-05-e6": {
+      "explain": "„das Museum“ heißt „il museo“. Groß- und Kleinschreibung zählt nicht, aber jeder Buchstabe und jedes Zeichen."
+    },
+    "it-a1-05-e7": {
+      "explain": "Du kannst sagen: „Scusi, dov'è il museo?“ oder „Dov'è il museo?“ oder „Mi scusi, dov'è il museo?“.",
+      "prompt": "Du suchst das Museum. Frag eine Passantin, wo es ist."
+    },
+    "it-a1-06-e1": {
+      "explain": "„il biglietto“ bedeutet „die Fahrkarte“."
+    },
+    "it-a1-06-e2": {
+      "explain": "„Solo andata o andata e ritorno?“ bedeutet „Einfach oder hin und zurück?“."
+    },
+    "it-a1-06-e3": {
+      "explain": "Der ganze Satz heißt „Dal binario tre, alle dieci“ = „Von Gleis drei, um zehn Uhr“. „dal“ = da + il: dal binario tre = von Gleis drei."
+    },
+    "it-a1-06-e4": {
+      "explain": "Richtige Reihenfolge: „Un biglietto per Firenze, per favore“ = „Eine Fahrkarte nach Florenz, bitte“. Für das Ziel benutzt man „per“: un biglietto per Firenze."
+    },
+    "it-a1-06-e5": {
+      "explain": "„il treno“ bedeutet „der Zug“."
+    },
+    "it-a1-06-e6": {
+      "explain": "„heute“ heißt „oggi“. Groß- und Kleinschreibung zählt nicht, aber jeder Buchstabe und jedes Zeichen."
+    },
+    "it-a1-06-e7": {
+      "explain": "Du kannst sagen: „Un biglietto per Firenze, per favore“ oder „Un biglietto di andata e ritorno per Firenze, per favore“ oder „Vorrei un biglietto per Firenze, per favore“.",
+      "prompt": "Am Schalter möchtest du eine Fahrkarte nach Florenz. Was sagst du?"
+    },
+    "it-a1-07-e1": {
+      "explain": "„la testa“ bedeutet „der Kopf“."
+    },
+    "it-a1-07-e2": {
+      "explain": "„Ha anche la febbre?“ bedeutet „Haben Sie auch Fieber?“."
+    },
+    "it-a1-07-e3": {
+      "explain": "Der ganze Satz heißt „Mi fa male la testa“ = „Mir tut der Kopf weh“. „Mi fa male …“ = „Mir tut … weh“: mi fa male la testa."
+    },
+    "it-a1-07-e4": {
+      "explain": "Richtige Reihenfolge: „Sì, un po'. E sono molto stanco“ = „Ja, ein bisschen. Und ich bin sehr müde“."
+    },
+    "it-a1-07-e5": {
+      "explain": "„la medicina“ bedeutet „das Medikament“."
+    },
+    "it-a1-07-e6": {
+      "explain": "„der Kopf“ heißt „la testa“. Groß- und Kleinschreibung zählt nicht, aber jeder Buchstabe und jedes Zeichen."
+    },
+    "it-a1-07-e7": {
+      "explain": "Du kannst sagen: „Mi fa male la pancia“ oder „Ho mal di pancia“.",
+      "prompt": "Die Ärztin fragt, was dir fehlt. Sag, dass dir der Bauch wehtut."
+    },
+    "it-a1-08-e1": {
+      "explain": "„sabato“ bedeutet „Samstag“."
+    },
+    "it-a1-08-e2": {
+      "explain": "„Bella idea! A che ora?“ bedeutet „Gute Idee! Um wie viel Uhr?“."
+    },
+    "it-a1-08-e3": {
+      "explain": "Der ganze Satz heißt „Alle sette di sera“ = „Um sieben Uhr abends“. Bei der Uhrzeit: „alle sette“ = um sieben (a + le)."
+    },
+    "it-a1-08-e4": {
+      "explain": "Richtige Reihenfolge: „Andiamo al cinema?“ = „Gehen wir ins Kino?“. „al cinema“ = a + il cinema = ins Kino."
+    },
+    "it-a1-08-e5": {
+      "explain": "„Che ore sono?“ bedeutet „Wie spät ist es?“."
+    },
+    "it-a1-08-e6": {
+      "explain": "„Sonntag“ heißt „domenica“. Groß- und Kleinschreibung zählt nicht, aber jeder Buchstabe und jedes Zeichen."
+    },
+    "it-a1-08-e7": {
+      "explain": "Du kannst sagen: „Hai tempo domenica?“ oder „Sei libero domenica?“ oder „Sei libera domenica?“.",
+      "prompt": "Du möchtest mit einem Freund ins Kino. Frag ihn, ob er am Sonntag Zeit hat."
+    },
+    "it-a1-09-e1": {
+      "explain": "„buonissimo“ bedeutet „sehr lecker“."
+    },
+    "it-a1-09-e2": {
+      "explain": "„Cosa desiderate?“ bedeutet „Was möchten Sie?“."
+    },
+    "it-a1-09-e3": {
+      "explain": "Der ganze Satz heißt „Buonasera, ho prenotato un tavolo per due“ = „Guten Abend, ich habe einen Tisch für zwei reserviert“. „ho prenotato“ = „ich habe reserviert“: avere + Partizip (prenotato)."
+    },
+    "it-a1-09-e4": {
+      "explain": "Richtige Reihenfolge: „Per me la zuppa e un'insalata“ = „Für mich die Suppe und einen Salat“."
+    },
+    "it-a1-09-e5": {
+      "explain": "„il pesce“ bedeutet „der Fisch“."
+    },
+    "it-a1-09-e6": {
+      "explain": "„die Suppe“ heißt „la zuppa“. Groß- und Kleinschreibung zählt nicht, aber jeder Buchstabe und jedes Zeichen."
+    },
+    "it-a1-09-e7": {
+      "explain": "Du kannst sagen: „Il conto, per favore“ oder „Ci porta il conto, per favore?“ oder „Mi porta il conto, per favore?“.",
+      "prompt": "Du bist fertig mit dem Essen. Bitte den Kellner um die Rechnung."
+    },
+    "it-a1-10-e1": {
+      "explain": "„la musica“ bedeutet „die Musik“."
+    },
+    "it-a1-10-e2": {
+      "explain": "„Cosa fai nel fine settimana?“ bedeutet „Was machst du am Wochenende?“."
+    },
+    "it-a1-10-e3": {
+      "explain": "Der ganze Satz heißt „Il sabato gioco a calcio“ = „Am Samstag spiele ich Fußball“. „giocare a …“ = … spielen: gioco a calcio = ich spiele Fußball."
+    },
+    "it-a1-10-e4": {
+      "explain": "Richtige Reihenfolge: „La domenica leggo un libro“ = „Am Sonntag lese ich ein Buch“. „la domenica“ mit Artikel = jeden Sonntag."
+    },
+    "it-a1-10-e5": {
+      "explain": "„nuotare“ bedeutet „schwimmen“."
+    },
+    "it-a1-10-e6": {
+      "explain": "„das Buch“ heißt „il libro“. Groß- und Kleinschreibung zählt nicht, aber jeder Buchstabe und jedes Zeichen."
+    },
+    "it-a1-10-e7": {
+      "explain": "Du kannst sagen: „Mi piace cucinare“ oder „Mi piace molto cucinare“ oder „Adoro cucinare“. „Mi piace …“ = „Ich … gern“ / „Mir gefällt …“.",
+      "prompt": "Eine neue Freundin fragt, was du gern machst. Antworte, dass du gern kochst."
+    }
+  }
+}

@@ -113,6 +113,22 @@ Non c'è nessuna valutazione della pronuncia simulata.
    Esce con codice 1 se ci sono errori. Gli stessi controlli girano in `npm test`.
 5. Prova la lezione con `npm run dev`, poi metti `"status": "published"` e aumenta `version`.
 
+## Corsi A1 completi (generati da un programma comune)
+
+Tutti i corsi tranne «Tedesco A1 per chi parla italiano» (`it-de-a1`, scritto a mano) nascono da un programma comune
+di 10 lezioni: presentarsi, al mercato, al bar, al supermercato, chiedere la strada, in stazione, dal medico,
+il tempo libero (giorni e ore), al ristorante, il fine settimana.
+
+- Programma, titoli, obiettivi e consegne (it, de): `scripts/linguaflow-a1/skeleton.py`
+- Testi di ogni lingua, spiegazioni grammaticali (it, de) ed esercizi: `scripts/linguaflow-a1/langs/<lingua>.py`
+- Generatore: `python3 scripts/linguaflow-a1/build.py` (poi `npm run packs:check`)
+
+Lingue da imparare: inglese, francese, spagnolo, portoghese (Portogallo), olandese, rumeno, polacco, turco, russo,
+greco, arabo, giapponese (per chi parla italiano e per chi parla tedesco) e italiano (per chi parla tedesco).
+Russo e greco hanno la trascrizione automatica, arabo e giapponese (solo kana) la trascrizione scritta a mano;
+in queste lingue gli esercizi di scrittura accettano anche le lettere latine.
+Tutti i pacchetti sono `unreviewed`: scritti a mano, non ancora controllati da madrelingua.
+
 ## Pubblicare
 
 I file in `public/linguaflow/` finiscono nella build e vengono salvati dal service worker

@@ -28,10 +28,13 @@ describe('Kurspakete', () => {
   it('die verlangten Kombinationen haben die richtige Zahl Lektionen', () => {
     const n = (s: string, t: string) => real.index.courses.filter((c) => c.source === s && c.target === t).map((c) => [c.kind, c.lessons.length]);
     expect(n('it', 'de')).toEqual([['course', 10]]);
-    expect(n('de', 'it')).toEqual([['intro', 3]]);
-    for (const t of ['en', 'fr', 'es']) expect(n('it', t)).toEqual([['intro', 3]]);
-    expect(n('it', 'ar')).toEqual([['demo', 1]]);
-    expect(n('it', 'ja')).toEqual([['demo', 1]]);
+    expect(n('de', 'it')).toEqual([['course', 10]]);
+    // alle Sprachen als vollständige Module – keine Einführungen, keine Demos
+    for (const t of ['en', 'fr', 'es', 'pt-PT', 'nl', 'ro', 'pl', 'tr', 'ru', 'el', 'ar', 'ja']) {
+      expect(n('it', t)).toEqual([['course', 10]]);
+      expect(n('de', t)).toEqual([['course', 10]]);
+    }
+    expect(real.index.courses.filter((c) => c.kind !== 'course')).toEqual([]);
   });
   it('jede Lektion hat mindestens 6 Übungen und endet mit einer Situation', () => {
     for (const c of Object.values(real.content)) for (const l of c!.lessons) {

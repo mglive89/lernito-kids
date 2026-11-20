@@ -1,0 +1,399 @@
+{
+  "format": 1,
+  "id": "es-a1.it",
+  "content": "es-a1",
+  "source": "it",
+  "target": "es",
+  "version": "1.0.0",
+  "quality": "unreviewed",
+  "course": {
+    "title": "Spagnolo A1 – Vita di tutti i giorni in Spagna",
+    "description": "Dieci lezioni brevi su situazioni reali: presentarsi, fare la spesa, al bar, in stazione, dal medico, al ristorante e nel tempo libero."
+  },
+  "lessons": {
+    "es-a1-01": {
+      "title": "Ciao! Mi presento",
+      "goal": "Salutare, dire come ti chiami e da dove vieni."
+    },
+    "es-a1-02": {
+      "title": "Al mercato",
+      "goal": "Comprare pane e frutta e chiedere quanto costa."
+    },
+    "es-a1-03": {
+      "title": "Al bar",
+      "goal": "Ordinare da bere e pagare."
+    },
+    "es-a1-04": {
+      "title": "Al supermercato",
+      "goal": "Chiedere dove si trovano i prodotti e capire la risposta."
+    },
+    "es-a1-05": {
+      "title": "Chiedere la strada",
+      "goal": "Chiedere come arrivare in un posto e capire indicazioni semplici."
+    },
+    "es-a1-06": {
+      "title": "In stazione",
+      "goal": "Comprare un biglietto e chiedere da quale binario parte il treno."
+    },
+    "es-a1-07": {
+      "title": "Dal medico",
+      "goal": "Dire cosa non va e capire un consiglio."
+    },
+    "es-a1-08": {
+      "title": "Hai tempo sabato?",
+      "goal": "Proporre un’uscita, i giorni della settimana e l’ora."
+    },
+    "es-a1-09": {
+      "title": "Al ristorante",
+      "goal": "Dire che hai prenotato, ordinare e chiedere il conto."
+    },
+    "es-a1-10": {
+      "title": "Il fine settimana",
+      "goal": "Parlare di cosa fai nel tempo libero e di cosa ti piace."
+    }
+  },
+  "items": {
+    "es-a1-01-d1": "Ciao! Sono Lucía.",
+    "es-a1-01-d2": "Ciao, Lucía! Mi chiamo Marco.",
+    "es-a1-01-d3": "Di dove sei?",
+    "es-a1-01-d4": "Vengo dall’Italia. E tu?",
+    "es-a1-01-d5": "Io sono di Siviglia. Piacere!",
+    "es-a1-01-d6": "Piacere mio! A presto.",
+    "es-a1-01-v1": "Buongiorno",
+    "es-a1-01-v2": "Buonasera",
+    "es-a1-01-v3": "Arrivederci",
+    "es-a1-01-v4": "Come ti chiami?",
+    "es-a1-01-v5": "Grazie",
+    "es-a1-01-v6": "Per favore",
+    "es-a1-02-d1": "Buongiorno! Cosa desidera?",
+    "es-a1-02-d2": "Vorrei un pane, per favore.",
+    "es-a1-02-d3": "Ecco a lei. Qualcos’altro?",
+    "es-a1-02-d4": "Sì, anche tre mele.",
+    "es-a1-02-d5": "Quanto costa?",
+    "es-a1-02-d6": "Sono quattro euro.",
+    "es-a1-02-v1": "il pane",
+    "es-a1-02-v2": "la mela",
+    "es-a1-02-v3": "il formaggio",
+    "es-a1-02-v4": "la torta",
+    "es-a1-02-v5": "Quanto costa?",
+    "es-a1-02-v6": "tre",
+    "es-a1-03-d1": "Buongiorno! Cosa prende?",
+    "es-a1-03-d2": "Un tè, per favore.",
+    "es-a1-03-d3": "Con latte o con limone?",
+    "es-a1-03-d4": "Con limone. E un bicchiere d’acqua.",
+    "es-a1-03-d5": "Posso pagare, per favore?",
+    "es-a1-03-d6": "Certo. Sono tre euro e cinquanta.",
+    "es-a1-03-v1": "il caffè",
+    "es-a1-03-v2": "il tè",
+    "es-a1-03-v3": "l’acqua",
+    "es-a1-03-v4": "il latte",
+    "es-a1-03-v5": "il succo d’arancia",
+    "es-a1-03-v6": "il conto",
+    "es-a1-04-d1": "Scusi, dov’è il riso?",
+    "es-a1-04-d2": "Il riso è lì, a destra.",
+    "es-a1-04-d3": "E le uova?",
+    "es-a1-04-d4": "Sono vicino al latte.",
+    "es-a1-04-d5": "Grazie mille!",
+    "es-a1-04-d6": "Prego!",
+    "es-a1-04-v1": "il riso",
+    "es-a1-04-v2": "le uova",
+    "es-a1-04-v3": "la frutta",
+    "es-a1-04-v4": "a destra",
+    "es-a1-04-v5": "a sinistra",
+    "es-a1-04-v6": "la cassa",
+    "es-a1-05-d1": "Scusi, dov’è la stazione?",
+    "es-a1-05-d2": "Vada sempre dritto.",
+    "es-a1-05-d3": "Poi giri a sinistra.",
+    "es-a1-05-d4": "È lontano?",
+    "es-a1-05-d5": "No, sono cinque minuti a piedi.",
+    "es-a1-05-d6": "Grazie, arrivederci!",
+    "es-a1-05-v1": "la stazione",
+    "es-a1-05-v2": "il museo",
+    "es-a1-05-v3": "dritto",
+    "es-a1-05-v4": "vicino",
+    "es-a1-05-v5": "lontano",
+    "es-a1-05-v6": "la fermata dell’autobus",
+    "es-a1-06-d1": "Un biglietto per Madrid, per favore.",
+    "es-a1-06-d2": "Solo andata o andata e ritorno?",
+    "es-a1-06-d3": "Andata e ritorno.",
+    "es-a1-06-d4": "Da quale binario parte il treno?",
+    "es-a1-06-d5": "Dal binario tre, alle dieci.",
+    "es-a1-06-d6": "Perfetto, grazie!",
+    "es-a1-06-v1": "il treno",
+    "es-a1-06-v2": "il biglietto",
+    "es-a1-06-v3": "il binario",
+    "es-a1-06-v4": "l’autobus",
+    "es-a1-06-v5": "oggi",
+    "es-a1-06-v6": "domani",
+    "es-a1-07-d1": "Buongiorno. Cosa c’è che non va?",
+    "es-a1-07-d2": "Mi fa male la testa.",
+    "es-a1-07-d3": "Ha anche la febbre?",
+    "es-a1-07-d4": "Sì, un po’. E sono molto stanco.",
+    "es-a1-07-d5": "Beva molta acqua e riposi.",
+    "es-a1-07-d6": "Grazie mille.",
+    "es-a1-07-v1": "la testa",
+    "es-a1-07-v2": "la pancia",
+    "es-a1-07-v3": "la febbre",
+    "es-a1-07-v4": "la medicina",
+    "es-a1-07-v5": "malato",
+    "es-a1-07-v6": "Sto bene.",
+    "es-a1-08-d1": "Hai tempo sabato?",
+    "es-a1-08-d2": "Sì! Cosa facciamo?",
+    "es-a1-08-d3": "Andiamo al cinema?",
+    "es-a1-08-d4": "Bella idea! A che ora?",
+    "es-a1-08-d5": "Alle sette di sera.",
+    "es-a1-08-d6": "Va bene, a sabato!",
+    "es-a1-08-v1": "lunedì",
+    "es-a1-08-v2": "venerdì",
+    "es-a1-08-v3": "sabato",
+    "es-a1-08-v4": "domenica",
+    "es-a1-08-v5": "Che ore sono?",
+    "es-a1-08-v6": "stasera",
+    "es-a1-09-d1": "Buonasera, ho prenotato un tavolo per due.",
+    "es-a1-09-d2": "Prego, ecco il menù.",
+    "es-a1-09-d3": "Cosa desiderate?",
+    "es-a1-09-d4": "Per me la zuppa e un’insalata.",
+    "es-a1-09-d5": "Il conto, per favore.",
+    "es-a1-09-d6": "Subito!",
+    "es-a1-09-v1": "il menù",
+    "es-a1-09-v2": "la zuppa",
+    "es-a1-09-v3": "il pesce",
+    "es-a1-09-v4": "il dolce",
+    "es-a1-09-v5": "buonissimo",
+    "es-a1-09-v6": "il tavolo",
+    "es-a1-10-d1": "Cosa fai nel fine settimana?",
+    "es-a1-10-d2": "Il sabato gioco a calcio.",
+    "es-a1-10-d3": "La domenica leggo un libro.",
+    "es-a1-10-d4": "Io vado in piscina con mia sorella.",
+    "es-a1-10-d5": "Ti piace nuotare?",
+    "es-a1-10-d6": "Sì, moltissimo!",
+    "es-a1-10-v1": "il calcio",
+    "es-a1-10-v2": "il libro",
+    "es-a1-10-v3": "la musica",
+    "es-a1-10-v4": "cucinare",
+    "es-a1-10-v5": "nuotare",
+    "es-a1-10-v6": "Mi piace la musica."
+  },
+  "exercises": {
+    "es-a1-01-e1": {
+      "explain": "«Adiós» significa «Arrivederci»."
+    },
+    "es-a1-01-e2": {
+      "explain": "«¿De dónde eres?» significa «Di dove sei?»."
+    },
+    "es-a1-01-e3": {
+      "explain": "La frase completa è «¡Hola, Lucía! Me llamo Marco» = «Ciao, Lucía! Mi chiamo Marco». «Me llamo …» = «Mi chiamo …»; «¿Cómo te llamas?» = «Come ti chiami?»"
+    },
+    "es-a1-01-e4": {
+      "explain": "Ordine giusto: «Soy de Italia. ¿Y tú?» = «Vengo dall’Italia. E tu?». In spagnolo le domande iniziano con «¿» e finiscono con «?»."
+    },
+    "es-a1-01-e5": {
+      "explain": "«Buenos días» significa «Buongiorno»."
+    },
+    "es-a1-01-e6": {
+      "explain": "«Grazie» si dice «Gracias». Le maiuscole non contano, ma ogni lettera e ogni accento sì."
+    },
+    "es-a1-01-e7": {
+      "explain": "Puoi dire: «Me llamo Giulia» oppure «Soy Giulia» oppure «Mi nombre es Giulia».",
+      "prompt": "Una nuova compagna di corso ti chiede come ti chiami. Rispondi che ti chiami Giulia."
+    },
+    "es-a1-02-e1": {
+      "explain": "«la manzana» significa «la mela»."
+    },
+    "es-a1-02-e2": {
+      "explain": "«Quería una barra de pan, por favor» significa «Vorrei un pane, per favore»."
+    },
+    "es-a1-02-e3": {
+      "explain": "La frase completa è «Quería una barra de pan, por favor» = «Vorrei un pane, per favore». «Quería …» (letteralmente «volevo») è il modo gentile per chiedere nei negozi."
+    },
+    "es-a1-02-e4": {
+      "explain": "Ordine giusto: «Sí, también tres manzanas» = «Sì, anche tre mele»."
+    },
+    "es-a1-02-e5": {
+      "explain": "«la tarta» significa «la torta»."
+    },
+    "es-a1-02-e6": {
+      "explain": "«il pane» si dice «el pan». Le maiuscole non contano, ma ogni lettera e ogni accento sì."
+    },
+    "es-a1-02-e7": {
+      "explain": "Puoi dire: «Quería una barra de pan, por favor» oppure «Una barra de pan, por favor» oppure «Quiero un pan, por favor».",
+      "prompt": "Sei al mercato e vuoi comprare un pane. Cosa dici alla venditrice?"
+    },
+    "es-a1-03-e1": {
+      "explain": "«el té» significa «il tè»."
+    },
+    "es-a1-03-e2": {
+      "explain": "«¿Con leche o con limón?» significa «Con latte o con limone?»."
+    },
+    "es-a1-03-e3": {
+      "explain": "La frase completa è «Con limón. Y un vaso de agua» = «Con limone. E un bicchiere d’acqua». «un vaso de agua» = «un bicchiere d’acqua»."
+    },
+    "es-a1-03-e4": {
+      "explain": "Ordine giusto: «¿Puedo pagar, por favor?» = «Posso pagare, per favore?». «¿Puedo …?» = «Posso …?»: dopo «puedo» il verbo resta all’infinito."
+    },
+    "es-a1-03-e5": {
+      "explain": "«el agua» significa «l’acqua»."
+    },
+    "es-a1-03-e6": {
+      "explain": "«il latte» si dice «la leche». Le maiuscole non contano, ma ogni lettera e ogni accento sì."
+    },
+    "es-a1-03-e7": {
+      "explain": "Puoi dire: «Un café, por favor» oppure «Quería un café, por favor» oppure «Quiero un café, por favor».",
+      "prompt": "Sei al bar e vuoi ordinare un caffè. Cosa dici?"
+    },
+    "es-a1-04-e1": {
+      "explain": "«a la derecha» significa «a destra»."
+    },
+    "es-a1-04-e2": {
+      "explain": "«Perdone, ¿dónde está el arroz?» significa «Scusi, dov’è il riso?»."
+    },
+    "es-a1-04-e3": {
+      "explain": "La frase completa è «Perdone, ¿dónde está el arroz?» = «Scusi, dov’è il riso?». «¿Dónde está …?» = «Dov’è …?». Per dire dove si trova qualcosa si usa «estar»."
+    },
+    "es-a1-04-e4": {
+      "explain": "Ordine giusto: «El arroz está allí, a la derecha» = «Il riso è lì, a destra»."
+    },
+    "es-a1-04-e5": {
+      "explain": "«a la izquierda» significa «a sinistra»."
+    },
+    "es-a1-04-e6": {
+      "explain": "«il riso» si dice «el arroz». Le maiuscole non contano, ma ogni lettera e ogni accento sì."
+    },
+    "es-a1-04-e7": {
+      "explain": "Puoi dire: «Perdone, ¿dónde está la leche?» oppure «¿Dónde está la leche?» oppure «Perdón, ¿dónde está la leche?».",
+      "prompt": "Non trovi il latte. Chiedi a un commesso dov’è."
+    },
+    "es-a1-05-e1": {
+      "explain": "«todo recto» significa «dritto»."
+    },
+    "es-a1-05-e2": {
+      "explain": "«¿Está lejos?» significa «È lontano?»."
+    },
+    "es-a1-05-e3": {
+      "explain": "La frase completa è «Luego gire a la izquierda» = «Poi giri a sinistra». «a la izquierda» = a sinistra, «a la derecha» = a destra, «todo recto» = sempre dritto."
+    },
+    "es-a1-05-e4": {
+      "explain": "Ordine giusto: «No, está a cinco minutos a pie» = «No, sono cinque minuti a piedi». «a pie» = a piedi."
+    },
+    "es-a1-05-e5": {
+      "explain": "«cerca» significa «vicino»."
+    },
+    "es-a1-05-e6": {
+      "explain": "«il museo» si dice «el museo». Le maiuscole non contano, ma ogni lettera e ogni accento sì."
+    },
+    "es-a1-05-e7": {
+      "explain": "Puoi dire: «Perdone, ¿dónde está el museo?» oppure «¿Dónde está el museo?» oppure «Disculpe, ¿dónde está el museo?».",
+      "prompt": "Cerchi il museo. Chiedi a una passante dov’è."
+    },
+    "es-a1-06-e1": {
+      "explain": "«el billete» significa «il biglietto»."
+    },
+    "es-a1-06-e2": {
+      "explain": "«¿Solo ida o ida y vuelta?» significa «Solo andata o andata e ritorno?»."
+    },
+    "es-a1-06-e3": {
+      "explain": "La frase completa è «Del andén tres, a las diez» = «Dal binario tre, alle dieci». de + el = del: «del andén tres» (dal binario tre)."
+    },
+    "es-a1-06-e4": {
+      "explain": "Ordine giusto: «Un billete para Madrid, por favor» = «Un biglietto per Madrid, per favore». Per la destinazione si usa «para»: un billete para Madrid."
+    },
+    "es-a1-06-e5": {
+      "explain": "«el tren» significa «il treno»."
+    },
+    "es-a1-06-e6": {
+      "explain": "«oggi» si dice «hoy». Le maiuscole non contano, ma ogni lettera e ogni accento sì."
+    },
+    "es-a1-06-e7": {
+      "explain": "Puoi dire: «Un billete para Madrid, por favor» oppure «Un billete de ida y vuelta para Madrid, por favor» oppure «Quería un billete para Madrid, por favor».",
+      "prompt": "Alla biglietteria vuoi un biglietto per Madrid. Cosa dici?"
+    },
+    "es-a1-07-e1": {
+      "explain": "«la cabeza» significa «la testa»."
+    },
+    "es-a1-07-e2": {
+      "explain": "«¿Tiene también fiebre?» significa «Ha anche la febbre?»."
+    },
+    "es-a1-07-e3": {
+      "explain": "La frase completa è «Me duele la cabeza» = «Mi fa male la testa». «Me duele …» = «Mi fa male …», proprio come in italiano."
+    },
+    "es-a1-07-e4": {
+      "explain": "Ordine giusto: «Sí, un poco. Y estoy muy cansado» = «Sì, un po’. E sono molto stanco». Per come ti senti si usa «estar»: estoy cansado."
+    },
+    "es-a1-07-e5": {
+      "explain": "«el medicamento» significa «la medicina»."
+    },
+    "es-a1-07-e6": {
+      "explain": "«la testa» si dice «la cabeza». Le maiuscole non contano, ma ogni lettera e ogni accento sì."
+    },
+    "es-a1-07-e7": {
+      "explain": "Puoi dire: «Me duele la barriga» oppure «Me duele el estómago» oppure «Me duele la tripa».",
+      "prompt": "Il medico ti chiede cosa non va. Digli che ti fa male la pancia."
+    },
+    "es-a1-08-e1": {
+      "explain": "«el sábado» significa «sabato»."
+    },
+    "es-a1-08-e2": {
+      "explain": "«¡Buena idea! ¿A qué hora?» significa «Bella idea! A che ora?»."
+    },
+    "es-a1-08-e3": {
+      "explain": "La frase completa è «A las siete de la tarde» = «Alle sette di sera». Per l’ora: «a las siete» = alle sette, «a la una» = all’una."
+    },
+    "es-a1-08-e4": {
+      "explain": "Ordine giusto: «¿Tienes tiempo el sábado?» = «Hai tempo sabato?». Con i giorni si usa l’articolo: «el sábado» = sabato (questo sabato)."
+    },
+    "es-a1-08-e5": {
+      "explain": "«¿Qué hora es?» significa «Che ore sono?»."
+    },
+    "es-a1-08-e6": {
+      "explain": "«domenica» si dice «el domingo». Le maiuscole non contano, ma ogni lettera e ogni accento sì."
+    },
+    "es-a1-08-e7": {
+      "explain": "Puoi dire: «¿Tienes tiempo el domingo?» oppure «¿Estás libre el domingo?» oppure «¿Tienes tiempo el domingo? ¿Vamos al cine?».",
+      "prompt": "Vuoi andare al cinema con un amico. Chiedigli se ha tempo domenica."
+    },
+    "es-a1-09-e1": {
+      "explain": "«riquísimo» significa «buonissimo»."
+    },
+    "es-a1-09-e2": {
+      "explain": "«¿Qué desean?» significa «Cosa desiderate?»."
+    },
+    "es-a1-09-e3": {
+      "explain": "La frase completa è «Buenas noches, he reservado una mesa para dos» = «Buonasera, ho prenotato un tavolo per due». «He reservado» = «ho prenotato»: haber + participio (reservado)."
+    },
+    "es-a1-09-e4": {
+      "explain": "Ordine giusto: «Para mí, la sopa y una ensalada» = «Per me la zuppa e un’insalata»."
+    },
+    "es-a1-09-e5": {
+      "explain": "«el pescado» significa «il pesce»."
+    },
+    "es-a1-09-e6": {
+      "explain": "«la zuppa» si dice «la sopa». Le maiuscole non contano, ma ogni lettera e ogni accento sì."
+    },
+    "es-a1-09-e7": {
+      "explain": "Puoi dire: «La cuenta, por favor» oppure «¿Me trae la cuenta, por favor?» oppure «¿Nos trae la cuenta, por favor?».",
+      "prompt": "Hai finito di mangiare. Chiedi il conto al cameriere."
+    },
+    "es-a1-10-e1": {
+      "explain": "«la música» significa «la musica»."
+    },
+    "es-a1-10-e2": {
+      "explain": "«¿Qué haces el fin de semana?» significa «Cosa fai nel fine settimana?»."
+    },
+    "es-a1-10-e3": {
+      "explain": "La frase completa è «Los sábados juego al fútbol» = «Il sabato gioco a calcio». Per gli sport con la palla: «jugar al …» (juego al fútbol)."
+    },
+    "es-a1-10-e4": {
+      "explain": "Ordine giusto: «Los domingos leo un libro» = «La domenica leggo un libro». «los domingos» (plurale) = ogni domenica."
+    },
+    "es-a1-10-e5": {
+      "explain": "«nadar» significa «nuotare»."
+    },
+    "es-a1-10-e6": {
+      "explain": "«il libro» si dice «el libro». Le maiuscole non contano, ma ogni lettera e ogni accento sì."
+    },
+    "es-a1-10-e7": {
+      "explain": "Puoi dire: «Me gusta cocinar» oppure «Me encanta cocinar».",
+      "prompt": "Una nuova amica ti chiede cosa ti piace. Rispondi che ti piace cucinare."
+    }
+  }
+}

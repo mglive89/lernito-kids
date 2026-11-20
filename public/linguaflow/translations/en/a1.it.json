@@ -1,0 +1,399 @@
+{
+  "format": 1,
+  "id": "en-a1.it",
+  "content": "en-a1",
+  "source": "it",
+  "target": "en",
+  "version": "1.0.0",
+  "quality": "unreviewed",
+  "course": {
+    "title": "Inglese A1 – Vita di tutti i giorni in Inghilterra",
+    "description": "Dieci lezioni brevi su situazioni reali: presentarsi, fare la spesa, al bar, in stazione, dal medico, al ristorante e nel tempo libero."
+  },
+  "lessons": {
+    "en-a1-01": {
+      "title": "Ciao! Mi presento",
+      "goal": "Salutare, dire come ti chiami e da dove vieni."
+    },
+    "en-a1-02": {
+      "title": "Al mercato",
+      "goal": "Comprare pane e frutta e chiedere quanto costa."
+    },
+    "en-a1-03": {
+      "title": "Al bar",
+      "goal": "Ordinare da bere e pagare."
+    },
+    "en-a1-04": {
+      "title": "Al supermercato",
+      "goal": "Chiedere dove si trovano i prodotti e capire la risposta."
+    },
+    "en-a1-05": {
+      "title": "Chiedere la strada",
+      "goal": "Chiedere come arrivare in un posto e capire indicazioni semplici."
+    },
+    "en-a1-06": {
+      "title": "In stazione",
+      "goal": "Comprare un biglietto e chiedere da quale binario parte il treno."
+    },
+    "en-a1-07": {
+      "title": "Dal medico",
+      "goal": "Dire cosa non va e capire un consiglio."
+    },
+    "en-a1-08": {
+      "title": "Hai tempo sabato?",
+      "goal": "Proporre un’uscita, i giorni della settimana e l’ora."
+    },
+    "en-a1-09": {
+      "title": "Al ristorante",
+      "goal": "Dire che hai prenotato, ordinare e chiedere il conto."
+    },
+    "en-a1-10": {
+      "title": "Il fine settimana",
+      "goal": "Parlare di cosa fai nel tempo libero e di cosa ti piace."
+    }
+  },
+  "items": {
+    "en-a1-01-d1": "Ciao! Sono Emma.",
+    "en-a1-01-d2": "Ciao, Emma! Mi chiamo Marco.",
+    "en-a1-01-d3": "Di dove sei?",
+    "en-a1-01-d4": "Vengo dall’Italia. E tu?",
+    "en-a1-01-d5": "Io sono di Manchester. Piacere!",
+    "en-a1-01-d6": "Piacere mio! A presto.",
+    "en-a1-01-v1": "Buongiorno",
+    "en-a1-01-v2": "Buonasera",
+    "en-a1-01-v3": "Arrivederci",
+    "en-a1-01-v4": "Come ti chiami?",
+    "en-a1-01-v5": "Grazie",
+    "en-a1-01-v6": "Per favore",
+    "en-a1-02-d1": "Buongiorno! Cosa desidera?",
+    "en-a1-02-d2": "Vorrei un pane, per favore.",
+    "en-a1-02-d3": "Ecco a lei. Qualcos’altro?",
+    "en-a1-02-d4": "Sì, anche tre mele.",
+    "en-a1-02-d5": "Quanto costa?",
+    "en-a1-02-d6": "Sono quattro sterline.",
+    "en-a1-02-v1": "il pane",
+    "en-a1-02-v2": "la mela",
+    "en-a1-02-v3": "il formaggio",
+    "en-a1-02-v4": "la torta",
+    "en-a1-02-v5": "Quanto costa?",
+    "en-a1-02-v6": "tre",
+    "en-a1-03-d1": "Buongiorno! Cosa prende?",
+    "en-a1-03-d2": "Un tè, per favore.",
+    "en-a1-03-d3": "Con latte o con limone?",
+    "en-a1-03-d4": "Con limone. E un bicchiere d’acqua.",
+    "en-a1-03-d5": "Posso pagare, per favore?",
+    "en-a1-03-d6": "Certo. Sono tre sterline e cinquanta.",
+    "en-a1-03-v1": "il caffè",
+    "en-a1-03-v2": "il tè",
+    "en-a1-03-v3": "l’acqua",
+    "en-a1-03-v4": "il latte",
+    "en-a1-03-v5": "il succo d’arancia",
+    "en-a1-03-v6": "il conto",
+    "en-a1-04-d1": "Scusi, dov’è il riso?",
+    "en-a1-04-d2": "Il riso è lì, a destra.",
+    "en-a1-04-d3": "E le uova?",
+    "en-a1-04-d4": "Sono vicino al latte.",
+    "en-a1-04-d5": "Grazie mille!",
+    "en-a1-04-d6": "Prego!",
+    "en-a1-04-v1": "il riso",
+    "en-a1-04-v2": "le uova",
+    "en-a1-04-v3": "la frutta",
+    "en-a1-04-v4": "a destra",
+    "en-a1-04-v5": "a sinistra",
+    "en-a1-04-v6": "la cassa",
+    "en-a1-05-d1": "Scusi, dov’è la stazione?",
+    "en-a1-05-d2": "Vada sempre dritto.",
+    "en-a1-05-d3": "Poi giri a sinistra.",
+    "en-a1-05-d4": "È lontano?",
+    "en-a1-05-d5": "No, sono cinque minuti a piedi.",
+    "en-a1-05-d6": "Grazie, arrivederci!",
+    "en-a1-05-v1": "la stazione",
+    "en-a1-05-v2": "il museo",
+    "en-a1-05-v3": "dritto",
+    "en-a1-05-v4": "vicino",
+    "en-a1-05-v5": "lontano",
+    "en-a1-05-v6": "la fermata dell’autobus",
+    "en-a1-06-d1": "Un biglietto per London, per favore.",
+    "en-a1-06-d2": "Solo andata o andata e ritorno?",
+    "en-a1-06-d3": "Andata e ritorno.",
+    "en-a1-06-d4": "Da quale binario parte il treno?",
+    "en-a1-06-d5": "Dal binario tre, alle dieci.",
+    "en-a1-06-d6": "Perfetto, grazie!",
+    "en-a1-06-v1": "il treno",
+    "en-a1-06-v2": "il biglietto",
+    "en-a1-06-v3": "il binario",
+    "en-a1-06-v4": "l’autobus",
+    "en-a1-06-v5": "oggi",
+    "en-a1-06-v6": "domani",
+    "en-a1-07-d1": "Buongiorno. Cosa c’è che non va?",
+    "en-a1-07-d2": "Mi fa male la testa.",
+    "en-a1-07-d3": "Ha anche la febbre?",
+    "en-a1-07-d4": "Sì, un po’. E sono molto stanco.",
+    "en-a1-07-d5": "Beva molta acqua e riposi.",
+    "en-a1-07-d6": "Grazie mille.",
+    "en-a1-07-v1": "la testa",
+    "en-a1-07-v2": "la pancia",
+    "en-a1-07-v3": "la febbre",
+    "en-a1-07-v4": "la medicina",
+    "en-a1-07-v5": "malato",
+    "en-a1-07-v6": "Sto bene.",
+    "en-a1-08-d1": "Hai tempo sabato?",
+    "en-a1-08-d2": "Sì! Cosa facciamo?",
+    "en-a1-08-d3": "Andiamo al cinema?",
+    "en-a1-08-d4": "Bella idea! A che ora?",
+    "en-a1-08-d5": "Alle sette di sera.",
+    "en-a1-08-d6": "Va bene, a sabato!",
+    "en-a1-08-v1": "lunedì",
+    "en-a1-08-v2": "venerdì",
+    "en-a1-08-v3": "sabato",
+    "en-a1-08-v4": "domenica",
+    "en-a1-08-v5": "Che ore sono?",
+    "en-a1-08-v6": "stasera",
+    "en-a1-09-d1": "Buonasera, ho prenotato un tavolo per due.",
+    "en-a1-09-d2": "Prego, ecco il menù.",
+    "en-a1-09-d3": "Cosa desiderate?",
+    "en-a1-09-d4": "Per me la zuppa e un’insalata.",
+    "en-a1-09-d5": "Il conto, per favore.",
+    "en-a1-09-d6": "Subito!",
+    "en-a1-09-v1": "il menù",
+    "en-a1-09-v2": "la zuppa",
+    "en-a1-09-v3": "il pesce",
+    "en-a1-09-v4": "il dolce",
+    "en-a1-09-v5": "buonissimo",
+    "en-a1-09-v6": "il tavolo",
+    "en-a1-10-d1": "Cosa fai nel fine settimana?",
+    "en-a1-10-d2": "Il sabato gioco a calcio.",
+    "en-a1-10-d3": "La domenica leggo un libro.",
+    "en-a1-10-d4": "Io vado in piscina con mia sorella.",
+    "en-a1-10-d5": "Ti piace nuotare?",
+    "en-a1-10-d6": "Sì, moltissimo!",
+    "en-a1-10-v1": "il calcio",
+    "en-a1-10-v2": "il libro",
+    "en-a1-10-v3": "la musica",
+    "en-a1-10-v4": "cucinare",
+    "en-a1-10-v5": "nuotare",
+    "en-a1-10-v6": "Mi piace la musica."
+  },
+  "exercises": {
+    "en-a1-01-e1": {
+      "explain": "«Goodbye» significa «Arrivederci»."
+    },
+    "en-a1-01-e2": {
+      "explain": "«Where are you from?» significa «Di dove sei?»."
+    },
+    "en-a1-01-e3": {
+      "explain": "La frase completa è «Hi, Emma! My name is Marco» = «Ciao, Emma! Mi chiamo Marco». Con «my name» si usa «is»; con «I» si usa «am» (I am = I’m)."
+    },
+    "en-a1-01-e4": {
+      "explain": "Ordine giusto: «I'm from Italy. And you?» = «Vengo dall’Italia. E tu?». Per dire da dove vieni si usa «from»."
+    },
+    "en-a1-01-e5": {
+      "explain": "«Good morning» significa «Buongiorno»."
+    },
+    "en-a1-01-e6": {
+      "explain": "«Grazie» si dice «Thank you». Le maiuscole non contano, ma ogni lettera e ogni accento sì."
+    },
+    "en-a1-01-e7": {
+      "explain": "Puoi dire: «My name is Giulia» oppure «I'm Giulia» oppure «I am Giulia».",
+      "prompt": "Una nuova compagna di corso ti chiede come ti chiami. Rispondi che ti chiami Giulia."
+    },
+    "en-a1-02-e1": {
+      "explain": "«an apple» significa «la mela»."
+    },
+    "en-a1-02-e2": {
+      "explain": "«I'd like a loaf of bread, please» significa «Vorrei un pane, per favore»."
+    },
+    "en-a1-02-e3": {
+      "explain": "La frase completa è «I'd like a loaf of bread, please» = «Vorrei un pane, per favore». «I’d like» (= I would like) è il modo gentile per chiedere qualcosa; «I like» vuol dire «mi piace»."
+    },
+    "en-a1-02-e4": {
+      "explain": "Ordine giusto: «Yes, three apples too» = «Sì, anche tre mele». Il plurale si fa quasi sempre con -s: one apple, three apples."
+    },
+    "en-a1-02-e5": {
+      "explain": "«cake» significa «la torta»."
+    },
+    "en-a1-02-e6": {
+      "explain": "«il pane» si dice «bread». Le maiuscole non contano, ma ogni lettera e ogni accento sì."
+    },
+    "en-a1-02-e7": {
+      "explain": "Puoi dire: «I'd like a loaf of bread, please» oppure «I would like a loaf of bread, please» oppure «A loaf of bread, please».",
+      "prompt": "Sei al mercato e vuoi comprare un pane. Cosa dici alla venditrice?"
+    },
+    "en-a1-03-e1": {
+      "explain": "«tea» significa «il tè»."
+    },
+    "en-a1-03-e2": {
+      "explain": "«With milk or with lemon?» significa «Con latte o con limone?»."
+    },
+    "en-a1-03-e3": {
+      "explain": "La frase completa è «With milk or with lemon?» = «Con latte o con limone?». «or» = «o», «and» = «e», «but» = «ma»."
+    },
+    "en-a1-03-e4": {
+      "explain": "Ordine giusto: «Can I pay, please?» = «Posso pagare, per favore?». Nelle domande «can» va prima del soggetto: «Can I …?»"
+    },
+    "en-a1-03-e5": {
+      "explain": "«water» significa «l’acqua»."
+    },
+    "en-a1-03-e6": {
+      "explain": "«il latte» si dice «milk». Le maiuscole non contano, ma ogni lettera e ogni accento sì."
+    },
+    "en-a1-03-e7": {
+      "explain": "Puoi dire: «A coffee, please» oppure «Can I have a coffee, please?» oppure «I'd like a coffee, please».",
+      "prompt": "Sei al bar e vuoi ordinare un caffè. Cosa dici?"
+    },
+    "en-a1-04-e1": {
+      "explain": "«on the right» significa «a destra»."
+    },
+    "en-a1-04-e2": {
+      "explain": "«Excuse me, where is the rice?» significa «Scusi, dov’è il riso?»."
+    },
+    "en-a1-04-e3": {
+      "explain": "La frase completa è «Excuse me, where is the rice?» = «Scusi, dov’è il riso?». «where» = dove, «what» = che cosa, «who» = chi."
+    },
+    "en-a1-04-e4": {
+      "explain": "Ordine giusto: «Excuse me, where is the rice?» = «Scusi, dov’è il riso?»."
+    },
+    "en-a1-04-e5": {
+      "explain": "«on the left» significa «a sinistra»."
+    },
+    "en-a1-04-e6": {
+      "explain": "«il riso» si dice «rice». Le maiuscole non contano, ma ogni lettera e ogni accento sì."
+    },
+    "en-a1-04-e7": {
+      "explain": "Puoi dire: «Excuse me, where is the milk?» oppure «Where is the milk?» oppure «Excuse me, where's the milk?».",
+      "prompt": "Non trovi il latte. Chiedi a un commesso dov’è."
+    },
+    "en-a1-05-e1": {
+      "explain": "«straight on» significa «dritto»."
+    },
+    "en-a1-05-e2": {
+      "explain": "«Is it far?» significa «È lontano?»."
+    },
+    "en-a1-05-e3": {
+      "explain": "La frase completa è «Then turn left» = «Poi giri a sinistra». «left» = sinistra, «right» = destra, «straight on» = dritto."
+    },
+    "en-a1-05-e4": {
+      "explain": "Ordine giusto: «No, it's five minutes on foot» = «No, sono cinque minuti a piedi». «on foot» = a piedi."
+    },
+    "en-a1-05-e5": {
+      "explain": "«near» significa «vicino»."
+    },
+    "en-a1-05-e6": {
+      "explain": "«il museo» si dice «the museum». Le maiuscole non contano, ma ogni lettera e ogni accento sì."
+    },
+    "en-a1-05-e7": {
+      "explain": "Puoi dire: «Excuse me, where is the museum?» oppure «Where is the museum?» oppure «Excuse me, where's the museum?».",
+      "prompt": "Cerchi il museo. Chiedi a una passante dov’è."
+    },
+    "en-a1-06-e1": {
+      "explain": "«the ticket» significa «il biglietto»."
+    },
+    "en-a1-06-e2": {
+      "explain": "«Single or return?» significa «Solo andata o andata e ritorno?»."
+    },
+    "en-a1-06-e3": {
+      "explain": "La frase completa è «Which platform does the train leave from?» = «Da quale binario parte il treno?». «Which …?» = «Quale …?» quando si sceglie tra più cose."
+    },
+    "en-a1-06-e4": {
+      "explain": "Ordine giusto: «A ticket to London, please» = «Un biglietto per London, per favore». Per la destinazione si usa «to»: a ticket to London."
+    },
+    "en-a1-06-e5": {
+      "explain": "«the train» significa «il treno»."
+    },
+    "en-a1-06-e6": {
+      "explain": "«oggi» si dice «today». Le maiuscole non contano, ma ogni lettera e ogni accento sì."
+    },
+    "en-a1-06-e7": {
+      "explain": "Puoi dire: «A ticket to London, please» oppure «A return ticket to London, please» oppure «A single to London, please».",
+      "prompt": "Alla biglietteria vuoi un biglietto per London. Cosa dici?"
+    },
+    "en-a1-07-e1": {
+      "explain": "«the head» significa «la testa»."
+    },
+    "en-a1-07-e2": {
+      "explain": "«Do you have a temperature too?» significa «Ha anche la febbre?»."
+    },
+    "en-a1-07-e3": {
+      "explain": "La frase completa è «I have a headache» = «Mi fa male la testa». «I have a headache» = ho mal di testa: in inglese si usa «have» (avere)."
+    },
+    "en-a1-07-e4": {
+      "explain": "Ordine giusto: «Yes, a little. And I'm very tired» = «Sì, un po’. E sono molto stanco»."
+    },
+    "en-a1-07-e5": {
+      "explain": "«the medicine» significa «la medicina»."
+    },
+    "en-a1-07-e6": {
+      "explain": "«la testa» si dice «the head». Le maiuscole non contano, ma ogni lettera e ogni accento sì."
+    },
+    "en-a1-07-e7": {
+      "explain": "Puoi dire: «I have a stomach ache» oppure «I have a stomachache» oppure «I've got a stomach ache».",
+      "prompt": "Il medico ti chiede cosa non va. Digli che ti fa male la pancia."
+    },
+    "en-a1-08-e1": {
+      "explain": "«Saturday» significa «sabato»."
+    },
+    "en-a1-08-e2": {
+      "explain": "«Good idea! What time?» significa «Bella idea! A che ora?»."
+    },
+    "en-a1-08-e3": {
+      "explain": "La frase completa è «At seven in the evening» = «Alle sette di sera». Con l’ora si usa «at» (at seven); con i giorni «on» (on Saturday)."
+    },
+    "en-a1-08-e4": {
+      "explain": "Ordine giusto: «Are you free on Saturday?» = «Hai tempo sabato?». I giorni della settimana in inglese si scrivono sempre con la maiuscola."
+    },
+    "en-a1-08-e5": {
+      "explain": "«What time is it?» significa «Che ore sono?»."
+    },
+    "en-a1-08-e6": {
+      "explain": "«domenica» si dice «Sunday». Le maiuscole non contano, ma ogni lettera e ogni accento sì."
+    },
+    "en-a1-08-e7": {
+      "explain": "Puoi dire: «Are you free on Sunday?» oppure «Do you have time on Sunday?» oppure «Have you got time on Sunday?».",
+      "prompt": "Vuoi andare al cinema con un amico. Chiedigli se ha tempo domenica."
+    },
+    "en-a1-09-e1": {
+      "explain": "«delicious» significa «buonissimo»."
+    },
+    "en-a1-09-e2": {
+      "explain": "«What would you like?» significa «Cosa desiderate?»."
+    },
+    "en-a1-09-e3": {
+      "explain": "La frase completa è «Good evening, I've booked a table for two» = «Buonasera, ho prenotato un tavolo per due». «I’ve booked» = ho prenotato (to book = prenotare)."
+    },
+    "en-a1-09-e4": {
+      "explain": "Ordine giusto: «The bill, please» = «Il conto, per favore»."
+    },
+    "en-a1-09-e5": {
+      "explain": "«the fish» significa «il pesce»."
+    },
+    "en-a1-09-e6": {
+      "explain": "«la zuppa» si dice «the soup». Le maiuscole non contano, ma ogni lettera e ogni accento sì."
+    },
+    "en-a1-09-e7": {
+      "explain": "Puoi dire: «The bill, please» oppure «Can I have the bill, please?» oppure «Could we have the bill, please?».",
+      "prompt": "Hai finito di mangiare. Chiedi il conto al cameriere."
+    },
+    "en-a1-10-e1": {
+      "explain": "«music» significa «la musica»."
+    },
+    "en-a1-10-e2": {
+      "explain": "«What do you do at the weekend?» significa «Cosa fai nel fine settimana?»."
+    },
+    "en-a1-10-e3": {
+      "explain": "La frase completa è «On Saturdays I play football» = «Il sabato gioco a calcio». Con gli sport con la palla si usa «play»: play football."
+    },
+    "en-a1-10-e4": {
+      "explain": "Ordine giusto: «On Sundays I read a book» = «La domenica leggo un libro»."
+    },
+    "en-a1-10-e5": {
+      "explain": "«to swim» significa «nuotare»."
+    },
+    "en-a1-10-e6": {
+      "explain": "«il libro» si dice «the book». Le maiuscole non contano, ma ogni lettera e ogni accento sì."
+    },
+    "en-a1-10-e7": {
+      "explain": "Puoi dire: «I like cooking» oppure «I like to cook» oppure «I love cooking».",
+      "prompt": "Una nuova amica ti chiede cosa ti piace. Rispondi che ti piace cucinare."
+    }
+  }
+}

@@ -1,0 +1,399 @@
+{
+  "format": 1,
+  "id": "pt-a1.de",
+  "content": "pt-a1",
+  "source": "de",
+  "target": "pt-PT",
+  "version": "1.0.0",
+  "quality": "unreviewed",
+  "course": {
+    "title": "Portugiesisch A1 – Alltag in Portugal",
+    "description": "Zehn kurze Lektionen zu echten Situationen: sich vorstellen, einkaufen, im Café, am Bahnhof, beim Arzt, im Restaurant und in der Freizeit."
+  },
+  "lessons": {
+    "pt-a1-01": {
+      "title": "Hallo! Ich stelle mich vor",
+      "goal": "Begrüßen, sagen, wie du heißt und woher du kommst."
+    },
+    "pt-a1-02": {
+      "title": "Auf dem Markt",
+      "goal": "Brot und Obst kaufen und fragen, was es kostet."
+    },
+    "pt-a1-03": {
+      "title": "Im Café",
+      "goal": "Getränke bestellen und bezahlen."
+    },
+    "pt-a1-04": {
+      "title": "Im Supermarkt",
+      "goal": "Fragen, wo es etwas gibt, und die Antwort verstehen."
+    },
+    "pt-a1-05": {
+      "title": "Nach dem Weg fragen",
+      "goal": "Nach dem Weg fragen und einfache Wegbeschreibungen verstehen."
+    },
+    "pt-a1-06": {
+      "title": "Am Bahnhof",
+      "goal": "Eine Fahrkarte kaufen und fragen, von welchem Gleis der Zug fährt."
+    },
+    "pt-a1-07": {
+      "title": "Beim Arzt",
+      "goal": "Sagen, was dir fehlt, und einen Rat verstehen."
+    },
+    "pt-a1-08": {
+      "title": "Hast du am Samstag Zeit?",
+      "goal": "Etwas vorschlagen, Wochentage und Uhrzeit."
+    },
+    "pt-a1-09": {
+      "title": "Im Restaurant",
+      "goal": "Sagen, dass du reserviert hast, bestellen und um die Rechnung bitten."
+    },
+    "pt-a1-10": {
+      "title": "Das Wochenende",
+      "goal": "Über deine Freizeit sprechen und sagen, was du magst."
+    }
+  },
+  "items": {
+    "pt-a1-01-d1": "Hallo! Ich bin Inês.",
+    "pt-a1-01-d2": "Hallo, Inês! Ich heiße Marco.",
+    "pt-a1-01-d3": "Woher kommst du?",
+    "pt-a1-01-d4": "Ich komme aus Italien. Und du?",
+    "pt-a1-01-d5": "Ich komme aus Porto. Freut mich!",
+    "pt-a1-01-d6": "Freut mich auch! Bis bald.",
+    "pt-a1-01-v1": "Guten Morgen",
+    "pt-a1-01-v2": "Guten Abend",
+    "pt-a1-01-v3": "Auf Wiedersehen",
+    "pt-a1-01-v4": "Wie heißt du?",
+    "pt-a1-01-v5": "Danke",
+    "pt-a1-01-v6": "Bitte",
+    "pt-a1-02-d1": "Guten Tag! Was möchten Sie?",
+    "pt-a1-02-d2": "Ich möchte ein Brot, bitte.",
+    "pt-a1-02-d3": "Bitte schön. Noch etwas?",
+    "pt-a1-02-d4": "Ja, auch drei Äpfel.",
+    "pt-a1-02-d5": "Was kostet das?",
+    "pt-a1-02-d6": "Das macht vier Euro.",
+    "pt-a1-02-v1": "das Brot",
+    "pt-a1-02-v2": "der Apfel",
+    "pt-a1-02-v3": "der Käse",
+    "pt-a1-02-v4": "der Kuchen",
+    "pt-a1-02-v5": "Was kostet das?",
+    "pt-a1-02-v6": "drei",
+    "pt-a1-03-d1": "Guten Tag! Was nehmen Sie?",
+    "pt-a1-03-d2": "Einen Tee, bitte.",
+    "pt-a1-03-d3": "Mit Milch oder mit Zitrone?",
+    "pt-a1-03-d4": "Mit Zitrone. Und ein Glas Wasser.",
+    "pt-a1-03-d5": "Kann ich bitte bezahlen?",
+    "pt-a1-03-d6": "Natürlich. Das macht drei Euro fünfzig.",
+    "pt-a1-03-v1": "der Kaffee",
+    "pt-a1-03-v2": "der Tee",
+    "pt-a1-03-v3": "das Wasser",
+    "pt-a1-03-v4": "die Milch",
+    "pt-a1-03-v5": "der Orangensaft",
+    "pt-a1-03-v6": "die Rechnung",
+    "pt-a1-04-d1": "Entschuldigung, wo ist der Reis?",
+    "pt-a1-04-d2": "Der Reis ist dort, rechts.",
+    "pt-a1-04-d3": "Und die Eier?",
+    "pt-a1-04-d4": "Die sind neben der Milch.",
+    "pt-a1-04-d5": "Vielen Dank!",
+    "pt-a1-04-d6": "Gern geschehen!",
+    "pt-a1-04-v1": "der Reis",
+    "pt-a1-04-v2": "die Eier",
+    "pt-a1-04-v3": "das Obst",
+    "pt-a1-04-v4": "rechts",
+    "pt-a1-04-v5": "links",
+    "pt-a1-04-v6": "die Kasse",
+    "pt-a1-05-d1": "Entschuldigung, wo ist der Bahnhof?",
+    "pt-a1-05-d2": "Gehen Sie immer geradeaus.",
+    "pt-a1-05-d3": "Dann biegen Sie links ab.",
+    "pt-a1-05-d4": "Ist es weit?",
+    "pt-a1-05-d5": "Nein, es sind fünf Minuten zu Fuß.",
+    "pt-a1-05-d6": "Danke, auf Wiedersehen!",
+    "pt-a1-05-v1": "der Bahnhof",
+    "pt-a1-05-v2": "das Museum",
+    "pt-a1-05-v3": "geradeaus",
+    "pt-a1-05-v4": "nah",
+    "pt-a1-05-v5": "weit",
+    "pt-a1-05-v6": "die Bushaltestelle",
+    "pt-a1-06-d1": "Eine Fahrkarte nach Lissabon, bitte.",
+    "pt-a1-06-d2": "Einfach oder hin und zurück?",
+    "pt-a1-06-d3": "Hin und zurück.",
+    "pt-a1-06-d4": "Von welchem Gleis fährt der Zug?",
+    "pt-a1-06-d5": "Von Gleis drei, um zehn Uhr.",
+    "pt-a1-06-d6": "Super, danke!",
+    "pt-a1-06-v1": "der Zug",
+    "pt-a1-06-v2": "die Fahrkarte",
+    "pt-a1-06-v3": "das Gleis",
+    "pt-a1-06-v4": "der Bus",
+    "pt-a1-06-v5": "heute",
+    "pt-a1-06-v6": "morgen",
+    "pt-a1-07-d1": "Guten Tag. Was fehlt Ihnen?",
+    "pt-a1-07-d2": "Mir tut der Kopf weh.",
+    "pt-a1-07-d3": "Haben Sie auch Fieber?",
+    "pt-a1-07-d4": "Ja, ein bisschen. Und ich bin sehr müde.",
+    "pt-a1-07-d5": "Trinken Sie viel Wasser und ruhen Sie sich aus.",
+    "pt-a1-07-d6": "Vielen Dank.",
+    "pt-a1-07-v1": "der Kopf",
+    "pt-a1-07-v2": "der Bauch",
+    "pt-a1-07-v3": "das Fieber",
+    "pt-a1-07-v4": "das Medikament",
+    "pt-a1-07-v5": "krank",
+    "pt-a1-07-v6": "Mir geht es gut.",
+    "pt-a1-08-d1": "Hast du am Samstag Zeit?",
+    "pt-a1-08-d2": "Ja! Was machen wir?",
+    "pt-a1-08-d3": "Gehen wir ins Kino?",
+    "pt-a1-08-d4": "Gute Idee! Um wie viel Uhr?",
+    "pt-a1-08-d5": "Um sieben Uhr abends.",
+    "pt-a1-08-d6": "Okay, bis Samstag!",
+    "pt-a1-08-v1": "Montag",
+    "pt-a1-08-v2": "Freitag",
+    "pt-a1-08-v3": "Samstag",
+    "pt-a1-08-v4": "Sonntag",
+    "pt-a1-08-v5": "Wie spät ist es?",
+    "pt-a1-08-v6": "heute Abend",
+    "pt-a1-09-d1": "Guten Abend, ich habe einen Tisch für zwei reserviert.",
+    "pt-a1-09-d2": "Bitte schön, hier ist die Speisekarte.",
+    "pt-a1-09-d3": "Was möchten Sie?",
+    "pt-a1-09-d4": "Für mich die Suppe und einen Salat.",
+    "pt-a1-09-d5": "Die Rechnung, bitte.",
+    "pt-a1-09-d6": "Sofort!",
+    "pt-a1-09-v1": "die Speisekarte",
+    "pt-a1-09-v2": "die Suppe",
+    "pt-a1-09-v3": "der Fisch",
+    "pt-a1-09-v4": "der Nachtisch",
+    "pt-a1-09-v5": "sehr lecker",
+    "pt-a1-09-v6": "der Tisch",
+    "pt-a1-10-d1": "Was machst du am Wochenende?",
+    "pt-a1-10-d2": "Am Samstag spiele ich Fußball.",
+    "pt-a1-10-d3": "Am Sonntag lese ich ein Buch.",
+    "pt-a1-10-d4": "Ich gehe mit meiner Schwester ins Schwimmbad.",
+    "pt-a1-10-d5": "Schwimmst du gern?",
+    "pt-a1-10-d6": "Ja, sehr gern!",
+    "pt-a1-10-v1": "der Fußball",
+    "pt-a1-10-v2": "das Buch",
+    "pt-a1-10-v3": "die Musik",
+    "pt-a1-10-v4": "kochen",
+    "pt-a1-10-v5": "schwimmen",
+    "pt-a1-10-v6": "Ich mag Musik."
+  },
+  "exercises": {
+    "pt-a1-01-e1": {
+      "explain": "„Adeus“ bedeutet „Auf Wiedersehen“."
+    },
+    "pt-a1-01-e2": {
+      "explain": "„De onde és?“ bedeutet „Woher kommst du?“."
+    },
+    "pt-a1-01-e3": {
+      "explain": "Der ganze Satz heißt „Olá, Inês! Chamo-me Marco“ = „Hallo, Inês! Ich heiße Marco“. „Chamo-me …“ = „Ich heiße …“. In Portugal steht das Pronomen mit Bindestrich nach dem Verb."
+    },
+    "pt-a1-01-e4": {
+      "explain": "Richtige Reihenfolge: „Sou de Itália. E tu?“ = „Ich komme aus Italien. Und du?“."
+    },
+    "pt-a1-01-e5": {
+      "explain": "„Bom dia“ bedeutet „Guten Morgen“."
+    },
+    "pt-a1-01-e6": {
+      "explain": "„Danke“ heißt „Obrigado“. Groß- und Kleinschreibung zählt nicht, aber jeder Buchstabe und jedes Zeichen."
+    },
+    "pt-a1-01-e7": {
+      "explain": "Du kannst sagen: „Chamo-me Giulia“ oder „Sou a Giulia“ oder „Sou Giulia“.",
+      "prompt": "Eine neue Mitschülerin fragt dich, wie du heißt. Antworte, dass du Giulia heißt."
+    },
+    "pt-a1-02-e1": {
+      "explain": "„a maçã“ bedeutet „der Apfel“."
+    },
+    "pt-a1-02-e2": {
+      "explain": "„Queria um pão, por favor“ bedeutet „Ich möchte ein Brot, bitte“."
+    },
+    "pt-a1-02-e3": {
+      "explain": "Der ganze Satz heißt „Queria um pão, por favor“ = „Ich möchte ein Brot, bitte“. „Queria …“ (wörtlich „ich wollte“) ist die höfliche Bitte im Geschäft."
+    },
+    "pt-a1-02-e4": {
+      "explain": "Richtige Reihenfolge: „Sim, também três maçãs“ = „Ja, auch drei Äpfel“."
+    },
+    "pt-a1-02-e5": {
+      "explain": "„o bolo“ bedeutet „der Kuchen“."
+    },
+    "pt-a1-02-e6": {
+      "explain": "„das Brot“ heißt „o pão“. Groß- und Kleinschreibung zählt nicht, aber jeder Buchstabe und jedes Zeichen."
+    },
+    "pt-a1-02-e7": {
+      "explain": "Du kannst sagen: „Queria um pão, por favor“ oder „Um pão, por favor“ oder „Queria pão, por favor“.",
+      "prompt": "Du bist auf dem Markt und möchtest ein Brot kaufen. Was sagst du zur Verkäuferin?"
+    },
+    "pt-a1-03-e1": {
+      "explain": "„o chá“ bedeutet „der Tee“."
+    },
+    "pt-a1-03-e2": {
+      "explain": "„Com leite ou com limão?“ bedeutet „Mit Milch oder mit Zitrone?“."
+    },
+    "pt-a1-03-e3": {
+      "explain": "Der ganze Satz heißt „Com leite ou com limão?“ = „Mit Milch oder mit Zitrone?“. „ou“ = „oder“, „e“ = „und“, „mas“ = „aber“."
+    },
+    "pt-a1-03-e4": {
+      "explain": "Richtige Reihenfolge: „Posso pagar, por favor?“ = „Kann ich bitte bezahlen?“."
+    },
+    "pt-a1-03-e5": {
+      "explain": "„a água“ bedeutet „das Wasser“."
+    },
+    "pt-a1-03-e6": {
+      "explain": "„die Milch“ heißt „o leite“. Groß- und Kleinschreibung zählt nicht, aber jeder Buchstabe und jedes Zeichen."
+    },
+    "pt-a1-03-e7": {
+      "explain": "Du kannst sagen: „Um café, por favor“ oder „Queria um café, por favor“ oder „Quero um café, por favor“.",
+      "prompt": "Du bist im Café und möchtest einen Kaffee bestellen. Was sagst du?"
+    },
+    "pt-a1-04-e1": {
+      "explain": "„à direita“ bedeutet „rechts“."
+    },
+    "pt-a1-04-e2": {
+      "explain": "„Desculpe, onde está o arroz?“ bedeutet „Entschuldigung, wo ist der Reis?“."
+    },
+    "pt-a1-04-e3": {
+      "explain": "Der ganze Satz heißt „Desculpe, onde está o arroz?“ = „Entschuldigung, wo ist der Reis?“. „onde“ = wo, „quem“ = wer, „quando“ = wann."
+    },
+    "pt-a1-04-e4": {
+      "explain": "Richtige Reihenfolge: „O arroz está ali, à direita“ = „Der Reis ist dort, rechts“."
+    },
+    "pt-a1-04-e5": {
+      "explain": "„à esquerda“ bedeutet „links“."
+    },
+    "pt-a1-04-e6": {
+      "explain": "„der Reis“ heißt „o arroz“. Groß- und Kleinschreibung zählt nicht, aber jeder Buchstabe und jedes Zeichen."
+    },
+    "pt-a1-04-e7": {
+      "explain": "Du kannst sagen: „Desculpe, onde está o leite?“ oder „Onde está o leite?“ oder „Desculpe, onde é o leite?“.",
+      "prompt": "Du findest die Milch nicht. Frag einen Mitarbeiter, wo sie ist."
+    },
+    "pt-a1-05-e1": {
+      "explain": "„em frente“ bedeutet „geradeaus“."
+    },
+    "pt-a1-05-e2": {
+      "explain": "„É longe?“ bedeutet „Ist es weit?“."
+    },
+    "pt-a1-05-e3": {
+      "explain": "Der ganze Satz heißt „Depois vire à esquerda“ = „Dann biegen Sie links ab“. „à esquerda“ = links, „à direita“ = rechts, „em frente“ = geradeaus."
+    },
+    "pt-a1-05-e4": {
+      "explain": "Richtige Reihenfolge: „Não, são cinco minutos a pé“ = „Nein, es sind fünf Minuten zu Fuß“. „a pé“ = zu Fuß."
+    },
+    "pt-a1-05-e5": {
+      "explain": "„perto“ bedeutet „nah“."
+    },
+    "pt-a1-05-e6": {
+      "explain": "„das Museum“ heißt „o museu“. Groß- und Kleinschreibung zählt nicht, aber jeder Buchstabe und jedes Zeichen."
+    },
+    "pt-a1-05-e7": {
+      "explain": "Du kannst sagen: „Desculpe, onde é o museu?“ oder „Onde é o museu?“ oder „Desculpe, onde fica o museu?“.",
+      "prompt": "Du suchst das Museum. Frag eine Passantin, wo es ist."
+    },
+    "pt-a1-06-e1": {
+      "explain": "„o bilhete“ bedeutet „die Fahrkarte“."
+    },
+    "pt-a1-06-e2": {
+      "explain": "„Só ida ou ida e volta?“ bedeutet „Einfach oder hin und zurück?“."
+    },
+    "pt-a1-06-e3": {
+      "explain": "Der ganze Satz heißt „Da linha três, às dez“ = „Von Gleis drei, um zehn Uhr“. de + a = da: „da linha três“ (von Gleis drei). In Portugal heißt das Gleis „linha“."
+    },
+    "pt-a1-06-e4": {
+      "explain": "Richtige Reihenfolge: „Um bilhete para Lisboa, por favor“ = „Eine Fahrkarte nach Lissabon, bitte“."
+    },
+    "pt-a1-06-e5": {
+      "explain": "„o comboio“ bedeutet „der Zug“."
+    },
+    "pt-a1-06-e6": {
+      "explain": "„heute“ heißt „hoje“. Groß- und Kleinschreibung zählt nicht, aber jeder Buchstabe und jedes Zeichen."
+    },
+    "pt-a1-06-e7": {
+      "explain": "Du kannst sagen: „Um bilhete para Lisboa, por favor“ oder „Um bilhete de ida e volta para Lisboa, por favor“ oder „Queria um bilhete para Lisboa, por favor“.",
+      "prompt": "Am Schalter möchtest du eine Fahrkarte nach Lissabon. Was sagst du?"
+    },
+    "pt-a1-07-e1": {
+      "explain": "„a cabeça“ bedeutet „der Kopf“."
+    },
+    "pt-a1-07-e2": {
+      "explain": "„Também tem febre?“ bedeutet „Haben Sie auch Fieber?“."
+    },
+    "pt-a1-07-e3": {
+      "explain": "Der ganze Satz heißt „Dói-me a cabeça“ = „Mir tut der Kopf weh“. „Dói-me …“ = „Mir tut … weh“."
+    },
+    "pt-a1-07-e4": {
+      "explain": "Richtige Reihenfolge: „Sim, um pouco. E estou muito cansado“ = „Ja, ein bisschen. Und ich bin sehr müde“. Für das Befinden benutzt man „estar“: estou cansado."
+    },
+    "pt-a1-07-e5": {
+      "explain": "„o medicamento“ bedeutet „das Medikament“."
+    },
+    "pt-a1-07-e6": {
+      "explain": "„der Kopf“ heißt „a cabeça“. Groß- und Kleinschreibung zählt nicht, aber jeder Buchstabe und jedes Zeichen."
+    },
+    "pt-a1-07-e7": {
+      "explain": "Du kannst sagen: „Dói-me a barriga“ oder „Tenho dores de barriga“ oder „Dói-me a barriga, doutora“.",
+      "prompt": "Die Ärztin fragt, was dir fehlt. Sag, dass dir der Bauch wehtut."
+    },
+    "pt-a1-08-e1": {
+      "explain": "„sábado“ bedeutet „Samstag“."
+    },
+    "pt-a1-08-e2": {
+      "explain": "„Boa ideia! A que horas?“ bedeutet „Gute Idee! Um wie viel Uhr?“."
+    },
+    "pt-a1-08-e3": {
+      "explain": "Der ganze Satz heißt „Às sete da tarde“ = „Um sieben Uhr abends“. a + as = às: „às sete“ = um sieben."
+    },
+    "pt-a1-08-e4": {
+      "explain": "Richtige Reihenfolge: „Tens tempo no sábado?“ = „Hast du am Samstag Zeit?“. em + o = no: „no sábado“ = am Samstag."
+    },
+    "pt-a1-08-e5": {
+      "explain": "„Que horas são?“ bedeutet „Wie spät ist es?“."
+    },
+    "pt-a1-08-e6": {
+      "explain": "„Sonntag“ heißt „domingo“. Groß- und Kleinschreibung zählt nicht, aber jeder Buchstabe und jedes Zeichen."
+    },
+    "pt-a1-08-e7": {
+      "explain": "Du kannst sagen: „Tens tempo no domingo?“ oder „Estás livre no domingo?“ oder „Tens tempo domingo?“.",
+      "prompt": "Du möchtest mit einem Freund ins Kino. Frag ihn, ob er am Sonntag Zeit hat."
+    },
+    "pt-a1-09-e1": {
+      "explain": "„delicioso“ bedeutet „sehr lecker“."
+    },
+    "pt-a1-09-e2": {
+      "explain": "„O que desejam?“ bedeutet „Was möchten Sie?“."
+    },
+    "pt-a1-09-e3": {
+      "explain": "Der ganze Satz heißt „Boa noite, reservei uma mesa para dois“ = „Guten Abend, ich habe einen Tisch für zwei reserviert“. „Reservei“ = „ich habe reserviert“ (Vergangenheit von reservar)."
+    },
+    "pt-a1-09-e4": {
+      "explain": "Richtige Reihenfolge: „Para mim, a sopa e uma salada“ = „Für mich die Suppe und einen Salat“."
+    },
+    "pt-a1-09-e5": {
+      "explain": "„o peixe“ bedeutet „der Fisch“."
+    },
+    "pt-a1-09-e6": {
+      "explain": "„die Suppe“ heißt „a sopa“. Groß- und Kleinschreibung zählt nicht, aber jeder Buchstabe und jedes Zeichen."
+    },
+    "pt-a1-09-e7": {
+      "explain": "Du kannst sagen: „A conta, por favor“ oder „Pode trazer a conta, por favor?“ oder „Traga a conta, por favor“.",
+      "prompt": "Du bist fertig mit dem Essen. Bitte den Kellner um die Rechnung."
+    },
+    "pt-a1-10-e1": {
+      "explain": "„a música“ bedeutet „die Musik“."
+    },
+    "pt-a1-10-e2": {
+      "explain": "„O que fazes ao fim de semana?“ bedeutet „Was machst du am Wochenende?“."
+    },
+    "pt-a1-10-e3": {
+      "explain": "Der ganze Satz heißt „Ao sábado jogo futebol“ = „Am Samstag spiele ich Fußball“. „jogar futebol“ = Fußball spielen; „jogo“ = ich spiele."
+    },
+    "pt-a1-10-e4": {
+      "explain": "Richtige Reihenfolge: „Ao domingo leio um livro“ = „Am Sonntag lese ich ein Buch“. „ao domingo“ = sonntags."
+    },
+    "pt-a1-10-e5": {
+      "explain": "„nadar“ bedeutet „schwimmen“."
+    },
+    "pt-a1-10-e6": {
+      "explain": "„das Buch“ heißt „o livro“. Groß- und Kleinschreibung zählt nicht, aber jeder Buchstabe und jedes Zeichen."
+    },
+    "pt-a1-10-e7": {
+      "explain": "Du kannst sagen: „Gosto de cozinhar“ oder „Adoro cozinhar“ oder „Eu gosto de cozinhar“. Nach „gostar“ steht immer „de“.",
+      "prompt": "Eine neue Freundin fragt, was du gern machst. Antworte, dass du gern kochst."
+    }
+  }
+}

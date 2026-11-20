@@ -1,0 +1,1407 @@
+{
+  "format": 1,
+  "id": "en-a1",
+  "language": "en",
+  "version": "1.0.0",
+  "lessons": [
+    {
+      "id": "en-a1-01",
+      "minutes": 7,
+      "dialogue": [
+        {
+          "id": "en-a1-01-d1",
+          "speaker": "Emma",
+          "text": "Hi! I'm Emma."
+        },
+        {
+          "id": "en-a1-01-d2",
+          "speaker": "Marco",
+          "text": "Hi, Emma! My name is Marco."
+        },
+        {
+          "id": "en-a1-01-d3",
+          "speaker": "Emma",
+          "text": "Where are you from?"
+        },
+        {
+          "id": "en-a1-01-d4",
+          "speaker": "Marco",
+          "text": "I'm from Italy. And you?"
+        },
+        {
+          "id": "en-a1-01-d5",
+          "speaker": "Emma",
+          "text": "I'm from Manchester. Nice to meet you!"
+        },
+        {
+          "id": "en-a1-01-d6",
+          "speaker": "Marco",
+          "text": "Nice to meet you too! See you soon."
+        }
+      ],
+      "vocabulary": [
+        {
+          "id": "en-a1-01-v1",
+          "text": "Good morning"
+        },
+        {
+          "id": "en-a1-01-v2",
+          "text": "Good evening"
+        },
+        {
+          "id": "en-a1-01-v3",
+          "text": "Goodbye"
+        },
+        {
+          "id": "en-a1-01-v4",
+          "text": "What's your name?",
+          "accept": [
+            "What is your name?"
+          ]
+        },
+        {
+          "id": "en-a1-01-v5",
+          "text": "Thank you",
+          "accept": [
+            "Thanks"
+          ]
+        },
+        {
+          "id": "en-a1-01-v6",
+          "text": "Please"
+        }
+      ],
+      "exercises": [
+        {
+          "id": "en-a1-01-e1",
+          "type": "listen",
+          "item": "en-a1-01-v3",
+          "options": [
+            "en-a1-01-v3",
+            "en-a1-01-v4",
+            "en-a1-01-v5"
+          ]
+        },
+        {
+          "id": "en-a1-01-e2",
+          "type": "choice",
+          "item": "en-a1-01-d3",
+          "direction": "toSource",
+          "options": [
+            "en-a1-01-d3",
+            "en-a1-01-d4",
+            "en-a1-01-d5"
+          ]
+        },
+        {
+          "id": "en-a1-01-e3",
+          "type": "cloze",
+          "item": "en-a1-01-d2",
+          "gap": "is",
+          "options": [
+            "is",
+            "am",
+            "are"
+          ]
+        },
+        {
+          "id": "en-a1-01-e4",
+          "type": "order",
+          "item": "en-a1-01-d4",
+          "segments": [
+            "I'm",
+            "from",
+            "Italy.",
+            "And",
+            "you?"
+          ],
+          "extra": [
+            "of"
+          ]
+        },
+        {
+          "id": "en-a1-01-e5",
+          "type": "choice",
+          "item": "en-a1-01-v1",
+          "direction": "toTarget",
+          "options": [
+            "en-a1-01-v1",
+            "en-a1-01-v2",
+            "en-a1-01-v3"
+          ]
+        },
+        {
+          "id": "en-a1-01-e6",
+          "type": "write",
+          "item": "en-a1-01-v5"
+        },
+        {
+          "id": "en-a1-01-e7",
+          "type": "situation",
+          "mode": "write",
+          "answers": [
+            "My name is Giulia.",
+            "I'm Giulia.",
+            "I am Giulia."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "en-a1-02",
+      "minutes": 7,
+      "dialogue": [
+        {
+          "id": "en-a1-02-d1",
+          "speaker": "Seller",
+          "text": "Good morning! What would you like?"
+        },
+        {
+          "id": "en-a1-02-d2",
+          "speaker": "Marco",
+          "text": "I'd like a loaf of bread, please."
+        },
+        {
+          "id": "en-a1-02-d3",
+          "speaker": "Seller",
+          "text": "Here you are. Anything else?"
+        },
+        {
+          "id": "en-a1-02-d4",
+          "speaker": "Marco",
+          "text": "Yes, three apples too."
+        },
+        {
+          "id": "en-a1-02-d5",
+          "speaker": "Marco",
+          "text": "How much is it?"
+        },
+        {
+          "id": "en-a1-02-d6",
+          "speaker": "Seller",
+          "text": "That's four pounds, please."
+        }
+      ],
+      "vocabulary": [
+        {
+          "id": "en-a1-02-v1",
+          "text": "bread"
+        },
+        {
+          "id": "en-a1-02-v2",
+          "text": "an apple"
+        },
+        {
+          "id": "en-a1-02-v3",
+          "text": "cheese"
+        },
+        {
+          "id": "en-a1-02-v4",
+          "text": "cake"
+        },
+        {
+          "id": "en-a1-02-v5",
+          "text": "How much is it?",
+          "accept": [
+            "How much is that?"
+          ]
+        },
+        {
+          "id": "en-a1-02-v6",
+          "text": "three"
+        }
+      ],
+      "exercises": [
+        {
+          "id": "en-a1-02-e1",
+          "type": "listen",
+          "item": "en-a1-02-v2",
+          "options": [
+            "en-a1-02-v1",
+            "en-a1-02-v2",
+            "en-a1-02-v3"
+          ]
+        },
+        {
+          "id": "en-a1-02-e2",
+          "type": "choice",
+          "item": "en-a1-02-d2",
+          "direction": "toSource",
+          "options": [
+            "en-a1-02-d2",
+            "en-a1-02-d3",
+            "en-a1-02-d5"
+          ]
+        },
+        {
+          "id": "en-a1-02-e3",
+          "type": "cloze",
+          "item": "en-a1-02-d2",
+          "gap": "I'd like",
+          "options": [
+            "I'd like",
+            "I like",
+            "I have"
+          ]
+        },
+        {
+          "id": "en-a1-02-e4",
+          "type": "order",
+          "item": "en-a1-02-d4",
+          "segments": [
+            "Yes,",
+            "three",
+            "apples",
+            "too."
+          ],
+          "extra": [
+            "four"
+          ]
+        },
+        {
+          "id": "en-a1-02-e5",
+          "type": "choice",
+          "item": "en-a1-02-v4",
+          "direction": "toTarget",
+          "options": [
+            "en-a1-02-v4",
+            "en-a1-02-v3",
+            "en-a1-02-v6"
+          ]
+        },
+        {
+          "id": "en-a1-02-e6",
+          "type": "write",
+          "item": "en-a1-02-v1"
+        },
+        {
+          "id": "en-a1-02-e7",
+          "type": "situation",
+          "mode": "write",
+          "answers": [
+            "I'd like a loaf of bread, please.",
+            "I would like a loaf of bread, please.",
+            "A loaf of bread, please.",
+            "I'd like some bread, please."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "en-a1-03",
+      "minutes": 6,
+      "dialogue": [
+        {
+          "id": "en-a1-03-d1",
+          "speaker": "Waiter",
+          "text": "Hello! What can I get you?"
+        },
+        {
+          "id": "en-a1-03-d2",
+          "speaker": "Marco",
+          "text": "A tea, please."
+        },
+        {
+          "id": "en-a1-03-d3",
+          "speaker": "Waiter",
+          "text": "With milk or with lemon?"
+        },
+        {
+          "id": "en-a1-03-d4",
+          "speaker": "Marco",
+          "text": "With lemon. And a glass of water."
+        },
+        {
+          "id": "en-a1-03-d5",
+          "speaker": "Marco",
+          "text": "Can I pay, please?"
+        },
+        {
+          "id": "en-a1-03-d6",
+          "speaker": "Waiter",
+          "text": "Sure. That's three pounds fifty."
+        }
+      ],
+      "vocabulary": [
+        {
+          "id": "en-a1-03-v1",
+          "text": "coffee"
+        },
+        {
+          "id": "en-a1-03-v2",
+          "text": "tea"
+        },
+        {
+          "id": "en-a1-03-v3",
+          "text": "water"
+        },
+        {
+          "id": "en-a1-03-v4",
+          "text": "milk"
+        },
+        {
+          "id": "en-a1-03-v5",
+          "text": "orange juice"
+        },
+        {
+          "id": "en-a1-03-v6",
+          "text": "the bill"
+        }
+      ],
+      "exercises": [
+        {
+          "id": "en-a1-03-e1",
+          "type": "listen",
+          "item": "en-a1-03-v2",
+          "options": [
+            "en-a1-03-v1",
+            "en-a1-03-v2",
+            "en-a1-03-v5"
+          ]
+        },
+        {
+          "id": "en-a1-03-e2",
+          "type": "choice",
+          "item": "en-a1-03-d3",
+          "direction": "toSource",
+          "options": [
+            "en-a1-03-d3",
+            "en-a1-03-d4",
+            "en-a1-03-d6"
+          ]
+        },
+        {
+          "id": "en-a1-03-e3",
+          "type": "cloze",
+          "item": "en-a1-03-d3",
+          "gap": "or",
+          "options": [
+            "or",
+            "and",
+            "but"
+          ]
+        },
+        {
+          "id": "en-a1-03-e4",
+          "type": "order",
+          "item": "en-a1-03-d5",
+          "segments": [
+            "Can",
+            "I",
+            "pay,",
+            "please?"
+          ],
+          "extra": [
+            "do"
+          ]
+        },
+        {
+          "id": "en-a1-03-e5",
+          "type": "choice",
+          "item": "en-a1-03-v3",
+          "direction": "toTarget",
+          "options": [
+            "en-a1-03-v3",
+            "en-a1-03-v4",
+            "en-a1-03-v6"
+          ]
+        },
+        {
+          "id": "en-a1-03-e6",
+          "type": "write",
+          "item": "en-a1-03-v4"
+        },
+        {
+          "id": "en-a1-03-e7",
+          "type": "situation",
+          "mode": "write",
+          "answers": [
+            "A coffee, please.",
+            "Can I have a coffee, please?",
+            "I'd like a coffee, please.",
+            "One coffee, please."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "en-a1-04",
+      "minutes": 6,
+      "dialogue": [
+        {
+          "id": "en-a1-04-d1",
+          "speaker": "Marco",
+          "text": "Excuse me, where is the rice?"
+        },
+        {
+          "id": "en-a1-04-d2",
+          "speaker": "Shop assistant",
+          "text": "The rice is over there, on the right."
+        },
+        {
+          "id": "en-a1-04-d3",
+          "speaker": "Marco",
+          "text": "And the eggs?"
+        },
+        {
+          "id": "en-a1-04-d4",
+          "speaker": "Shop assistant",
+          "text": "They're next to the milk."
+        },
+        {
+          "id": "en-a1-04-d5",
+          "speaker": "Marco",
+          "text": "Thank you very much!"
+        },
+        {
+          "id": "en-a1-04-d6",
+          "speaker": "Shop assistant",
+          "text": "You're welcome!"
+        }
+      ],
+      "vocabulary": [
+        {
+          "id": "en-a1-04-v1",
+          "text": "rice"
+        },
+        {
+          "id": "en-a1-04-v2",
+          "text": "eggs"
+        },
+        {
+          "id": "en-a1-04-v3",
+          "text": "fruit"
+        },
+        {
+          "id": "en-a1-04-v4",
+          "text": "on the right"
+        },
+        {
+          "id": "en-a1-04-v5",
+          "text": "on the left"
+        },
+        {
+          "id": "en-a1-04-v6",
+          "text": "the checkout"
+        }
+      ],
+      "exercises": [
+        {
+          "id": "en-a1-04-e1",
+          "type": "listen",
+          "item": "en-a1-04-v4",
+          "options": [
+            "en-a1-04-v4",
+            "en-a1-04-v5",
+            "en-a1-04-v6"
+          ]
+        },
+        {
+          "id": "en-a1-04-e2",
+          "type": "choice",
+          "item": "en-a1-04-d1",
+          "direction": "toSource",
+          "options": [
+            "en-a1-04-d1",
+            "en-a1-04-d3",
+            "en-a1-04-d5"
+          ]
+        },
+        {
+          "id": "en-a1-04-e3",
+          "type": "cloze",
+          "item": "en-a1-04-d1",
+          "gap": "where",
+          "options": [
+            "where",
+            "what",
+            "who"
+          ]
+        },
+        {
+          "id": "en-a1-04-e4",
+          "type": "order",
+          "item": "en-a1-04-d1",
+          "segments": [
+            "Excuse",
+            "me,",
+            "where",
+            "is",
+            "the",
+            "rice?"
+          ],
+          "extra": [
+            "are"
+          ]
+        },
+        {
+          "id": "en-a1-04-e5",
+          "type": "choice",
+          "item": "en-a1-04-v5",
+          "direction": "toTarget",
+          "options": [
+            "en-a1-04-v5",
+            "en-a1-04-v4",
+            "en-a1-04-v1"
+          ]
+        },
+        {
+          "id": "en-a1-04-e6",
+          "type": "write",
+          "item": "en-a1-04-v1"
+        },
+        {
+          "id": "en-a1-04-e7",
+          "type": "situation",
+          "mode": "write",
+          "answers": [
+            "Excuse me, where is the milk?",
+            "Where is the milk?",
+            "Excuse me, where's the milk?",
+            "Where's the milk?"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "en-a1-05",
+      "minutes": 6,
+      "dialogue": [
+        {
+          "id": "en-a1-05-d1",
+          "speaker": "Marco",
+          "text": "Excuse me, where is the station?"
+        },
+        {
+          "id": "en-a1-05-d2",
+          "speaker": "Passer-by",
+          "text": "Go straight on."
+        },
+        {
+          "id": "en-a1-05-d3",
+          "speaker": "Passer-by",
+          "text": "Then turn left."
+        },
+        {
+          "id": "en-a1-05-d4",
+          "speaker": "Marco",
+          "text": "Is it far?"
+        },
+        {
+          "id": "en-a1-05-d5",
+          "speaker": "Passer-by",
+          "text": "No, it's five minutes on foot."
+        },
+        {
+          "id": "en-a1-05-d6",
+          "speaker": "Marco",
+          "text": "Thank you, goodbye!"
+        }
+      ],
+      "vocabulary": [
+        {
+          "id": "en-a1-05-v1",
+          "text": "the station"
+        },
+        {
+          "id": "en-a1-05-v2",
+          "text": "the museum",
+          "accept": [
+            "museum"
+          ]
+        },
+        {
+          "id": "en-a1-05-v3",
+          "text": "straight on"
+        },
+        {
+          "id": "en-a1-05-v4",
+          "text": "near"
+        },
+        {
+          "id": "en-a1-05-v5",
+          "text": "far"
+        },
+        {
+          "id": "en-a1-05-v6",
+          "text": "the bus stop"
+        }
+      ],
+      "exercises": [
+        {
+          "id": "en-a1-05-e1",
+          "type": "listen",
+          "item": "en-a1-05-v3",
+          "options": [
+            "en-a1-05-v3",
+            "en-a1-05-v4",
+            "en-a1-05-v5"
+          ]
+        },
+        {
+          "id": "en-a1-05-e2",
+          "type": "choice",
+          "item": "en-a1-05-d4",
+          "direction": "toSource",
+          "options": [
+            "en-a1-05-d4",
+            "en-a1-05-d2",
+            "en-a1-05-d5"
+          ]
+        },
+        {
+          "id": "en-a1-05-e3",
+          "type": "cloze",
+          "item": "en-a1-05-d3",
+          "gap": "left",
+          "options": [
+            "left",
+            "right",
+            "straight"
+          ]
+        },
+        {
+          "id": "en-a1-05-e4",
+          "type": "order",
+          "item": "en-a1-05-d5",
+          "segments": [
+            "No,",
+            "it's",
+            "five",
+            "minutes",
+            "on",
+            "foot."
+          ],
+          "extra": [
+            "in"
+          ]
+        },
+        {
+          "id": "en-a1-05-e5",
+          "type": "choice",
+          "item": "en-a1-05-v4",
+          "direction": "toTarget",
+          "options": [
+            "en-a1-05-v4",
+            "en-a1-05-v5",
+            "en-a1-05-v1"
+          ]
+        },
+        {
+          "id": "en-a1-05-e6",
+          "type": "write",
+          "item": "en-a1-05-v2"
+        },
+        {
+          "id": "en-a1-05-e7",
+          "type": "situation",
+          "mode": "write",
+          "answers": [
+            "Excuse me, where is the museum?",
+            "Where is the museum?",
+            "Excuse me, where's the museum?",
+            "Where's the museum?"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "en-a1-06",
+      "minutes": 7,
+      "dialogue": [
+        {
+          "id": "en-a1-06-d1",
+          "speaker": "Marco",
+          "text": "A ticket to London, please."
+        },
+        {
+          "id": "en-a1-06-d2",
+          "speaker": "Ticket office",
+          "text": "Single or return?"
+        },
+        {
+          "id": "en-a1-06-d3",
+          "speaker": "Marco",
+          "text": "Return, please."
+        },
+        {
+          "id": "en-a1-06-d4",
+          "speaker": "Marco",
+          "text": "Which platform does the train leave from?"
+        },
+        {
+          "id": "en-a1-06-d5",
+          "speaker": "Ticket office",
+          "text": "From platform three, at ten o'clock."
+        },
+        {
+          "id": "en-a1-06-d6",
+          "speaker": "Marco",
+          "text": "Great, thanks!"
+        }
+      ],
+      "vocabulary": [
+        {
+          "id": "en-a1-06-v1",
+          "text": "the train"
+        },
+        {
+          "id": "en-a1-06-v2",
+          "text": "the ticket"
+        },
+        {
+          "id": "en-a1-06-v3",
+          "text": "the platform"
+        },
+        {
+          "id": "en-a1-06-v4",
+          "text": "the bus"
+        },
+        {
+          "id": "en-a1-06-v5",
+          "text": "today"
+        },
+        {
+          "id": "en-a1-06-v6",
+          "text": "tomorrow"
+        }
+      ],
+      "exercises": [
+        {
+          "id": "en-a1-06-e1",
+          "type": "listen",
+          "item": "en-a1-06-v2",
+          "options": [
+            "en-a1-06-v1",
+            "en-a1-06-v2",
+            "en-a1-06-v3"
+          ]
+        },
+        {
+          "id": "en-a1-06-e2",
+          "type": "choice",
+          "item": "en-a1-06-d2",
+          "direction": "toSource",
+          "options": [
+            "en-a1-06-d2",
+            "en-a1-06-d4",
+            "en-a1-06-d5"
+          ]
+        },
+        {
+          "id": "en-a1-06-e3",
+          "type": "cloze",
+          "item": "en-a1-06-d4",
+          "gap": "Which",
+          "options": [
+            "Which",
+            "Who",
+            "Where"
+          ]
+        },
+        {
+          "id": "en-a1-06-e4",
+          "type": "order",
+          "item": "en-a1-06-d1",
+          "segments": [
+            "A",
+            "ticket",
+            "to",
+            "London,",
+            "please."
+          ],
+          "extra": [
+            "for"
+          ]
+        },
+        {
+          "id": "en-a1-06-e5",
+          "type": "choice",
+          "item": "en-a1-06-v1",
+          "direction": "toTarget",
+          "options": [
+            "en-a1-06-v1",
+            "en-a1-06-v4",
+            "en-a1-06-v3"
+          ]
+        },
+        {
+          "id": "en-a1-06-e6",
+          "type": "write",
+          "item": "en-a1-06-v5"
+        },
+        {
+          "id": "en-a1-06-e7",
+          "type": "situation",
+          "mode": "write",
+          "answers": [
+            "A ticket to London, please.",
+            "A return ticket to London, please.",
+            "A single to London, please.",
+            "One ticket to London, please."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "en-a1-07",
+      "minutes": 6,
+      "dialogue": [
+        {
+          "id": "en-a1-07-d1",
+          "speaker": "Doctor",
+          "text": "Hello. What's the matter?"
+        },
+        {
+          "id": "en-a1-07-d2",
+          "speaker": "Marco",
+          "text": "I have a headache."
+        },
+        {
+          "id": "en-a1-07-d3",
+          "speaker": "Doctor",
+          "text": "Do you have a temperature too?"
+        },
+        {
+          "id": "en-a1-07-d4",
+          "speaker": "Marco",
+          "text": "Yes, a little. And I'm very tired."
+        },
+        {
+          "id": "en-a1-07-d5",
+          "speaker": "Doctor",
+          "text": "Drink lots of water and rest."
+        },
+        {
+          "id": "en-a1-07-d6",
+          "speaker": "Marco",
+          "text": "Thank you very much."
+        }
+      ],
+      "vocabulary": [
+        {
+          "id": "en-a1-07-v1",
+          "text": "the head",
+          "accept": [
+            "head"
+          ]
+        },
+        {
+          "id": "en-a1-07-v2",
+          "text": "the stomach"
+        },
+        {
+          "id": "en-a1-07-v3",
+          "text": "a fever"
+        },
+        {
+          "id": "en-a1-07-v4",
+          "text": "the medicine"
+        },
+        {
+          "id": "en-a1-07-v5",
+          "text": "ill"
+        },
+        {
+          "id": "en-a1-07-v6",
+          "text": "I'm fine."
+        }
+      ],
+      "exercises": [
+        {
+          "id": "en-a1-07-e1",
+          "type": "listen",
+          "item": "en-a1-07-v1",
+          "options": [
+            "en-a1-07-v1",
+            "en-a1-07-v2",
+            "en-a1-07-v3"
+          ]
+        },
+        {
+          "id": "en-a1-07-e2",
+          "type": "choice",
+          "item": "en-a1-07-d3",
+          "direction": "toSource",
+          "options": [
+            "en-a1-07-d3",
+            "en-a1-07-d2",
+            "en-a1-07-d5"
+          ]
+        },
+        {
+          "id": "en-a1-07-e3",
+          "type": "cloze",
+          "item": "en-a1-07-d2",
+          "gap": "have",
+          "options": [
+            "have",
+            "am",
+            "is"
+          ]
+        },
+        {
+          "id": "en-a1-07-e4",
+          "type": "order",
+          "item": "en-a1-07-d4",
+          "segments": [
+            "Yes,",
+            "a",
+            "little.",
+            "And",
+            "I'm",
+            "very tired."
+          ],
+          "extra": [
+            "so"
+          ]
+        },
+        {
+          "id": "en-a1-07-e5",
+          "type": "choice",
+          "item": "en-a1-07-v4",
+          "direction": "toTarget",
+          "options": [
+            "en-a1-07-v4",
+            "en-a1-07-v3",
+            "en-a1-07-v5"
+          ]
+        },
+        {
+          "id": "en-a1-07-e6",
+          "type": "write",
+          "item": "en-a1-07-v1"
+        },
+        {
+          "id": "en-a1-07-e7",
+          "type": "situation",
+          "mode": "write",
+          "answers": [
+            "I have a stomach ache.",
+            "I have a stomachache.",
+            "I've got a stomach ache.",
+            "My stomach hurts."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "en-a1-08",
+      "minutes": 6,
+      "dialogue": [
+        {
+          "id": "en-a1-08-d1",
+          "speaker": "Emma",
+          "text": "Are you free on Saturday?"
+        },
+        {
+          "id": "en-a1-08-d2",
+          "speaker": "Marco",
+          "text": "Yes! What shall we do?"
+        },
+        {
+          "id": "en-a1-08-d3",
+          "speaker": "Emma",
+          "text": "Shall we go to the cinema?"
+        },
+        {
+          "id": "en-a1-08-d4",
+          "speaker": "Marco",
+          "text": "Good idea! What time?"
+        },
+        {
+          "id": "en-a1-08-d5",
+          "speaker": "Emma",
+          "text": "At seven in the evening."
+        },
+        {
+          "id": "en-a1-08-d6",
+          "speaker": "Marco",
+          "text": "OK, see you on Saturday!"
+        }
+      ],
+      "vocabulary": [
+        {
+          "id": "en-a1-08-v1",
+          "text": "Monday"
+        },
+        {
+          "id": "en-a1-08-v2",
+          "text": "Friday"
+        },
+        {
+          "id": "en-a1-08-v3",
+          "text": "Saturday"
+        },
+        {
+          "id": "en-a1-08-v4",
+          "text": "Sunday"
+        },
+        {
+          "id": "en-a1-08-v5",
+          "text": "What time is it?"
+        },
+        {
+          "id": "en-a1-08-v6",
+          "text": "tonight"
+        }
+      ],
+      "exercises": [
+        {
+          "id": "en-a1-08-e1",
+          "type": "listen",
+          "item": "en-a1-08-v3",
+          "options": [
+            "en-a1-08-v2",
+            "en-a1-08-v3",
+            "en-a1-08-v4"
+          ]
+        },
+        {
+          "id": "en-a1-08-e2",
+          "type": "choice",
+          "item": "en-a1-08-d4",
+          "direction": "toSource",
+          "options": [
+            "en-a1-08-d4",
+            "en-a1-08-d1",
+            "en-a1-08-d5"
+          ]
+        },
+        {
+          "id": "en-a1-08-e3",
+          "type": "cloze",
+          "item": "en-a1-08-d5",
+          "gap": "At",
+          "options": [
+            "At",
+            "On",
+            "In"
+          ]
+        },
+        {
+          "id": "en-a1-08-e4",
+          "type": "order",
+          "item": "en-a1-08-d1",
+          "segments": [
+            "Are",
+            "you",
+            "free",
+            "on",
+            "Saturday?"
+          ],
+          "extra": [
+            "at"
+          ]
+        },
+        {
+          "id": "en-a1-08-e5",
+          "type": "choice",
+          "item": "en-a1-08-v5",
+          "direction": "toTarget",
+          "options": [
+            "en-a1-08-v5",
+            "en-a1-08-v6",
+            "en-a1-08-v1"
+          ]
+        },
+        {
+          "id": "en-a1-08-e6",
+          "type": "write",
+          "item": "en-a1-08-v4"
+        },
+        {
+          "id": "en-a1-08-e7",
+          "type": "situation",
+          "mode": "write",
+          "answers": [
+            "Are you free on Sunday?",
+            "Do you have time on Sunday?",
+            "Have you got time on Sunday?"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "en-a1-09",
+      "minutes": 8,
+      "dialogue": [
+        {
+          "id": "en-a1-09-d1",
+          "speaker": "Marco",
+          "text": "Good evening, I've booked a table for two."
+        },
+        {
+          "id": "en-a1-09-d2",
+          "speaker": "Waiter",
+          "text": "This way, please. Here's the menu."
+        },
+        {
+          "id": "en-a1-09-d3",
+          "speaker": "Waiter",
+          "text": "What would you like?"
+        },
+        {
+          "id": "en-a1-09-d4",
+          "speaker": "Marco",
+          "text": "The soup and a salad for me, please."
+        },
+        {
+          "id": "en-a1-09-d5",
+          "speaker": "Marco",
+          "text": "The bill, please."
+        },
+        {
+          "id": "en-a1-09-d6",
+          "speaker": "Waiter",
+          "text": "Right away!"
+        }
+      ],
+      "vocabulary": [
+        {
+          "id": "en-a1-09-v1",
+          "text": "the menu"
+        },
+        {
+          "id": "en-a1-09-v2",
+          "text": "the soup",
+          "accept": [
+            "soup"
+          ]
+        },
+        {
+          "id": "en-a1-09-v3",
+          "text": "the fish"
+        },
+        {
+          "id": "en-a1-09-v4",
+          "text": "the dessert"
+        },
+        {
+          "id": "en-a1-09-v5",
+          "text": "delicious"
+        },
+        {
+          "id": "en-a1-09-v6",
+          "text": "the table"
+        }
+      ],
+      "exercises": [
+        {
+          "id": "en-a1-09-e1",
+          "type": "listen",
+          "item": "en-a1-09-v5",
+          "options": [
+            "en-a1-09-v5",
+            "en-a1-09-v2",
+            "en-a1-09-v3"
+          ]
+        },
+        {
+          "id": "en-a1-09-e2",
+          "type": "choice",
+          "item": "en-a1-09-d3",
+          "direction": "toSource",
+          "options": [
+            "en-a1-09-d3",
+            "en-a1-09-d2",
+            "en-a1-09-d5"
+          ]
+        },
+        {
+          "id": "en-a1-09-e3",
+          "type": "cloze",
+          "item": "en-a1-09-d1",
+          "gap": "booked",
+          "options": [
+            "booked",
+            "cooked",
+            "looked"
+          ]
+        },
+        {
+          "id": "en-a1-09-e4",
+          "type": "order",
+          "item": "en-a1-09-d5",
+          "segments": [
+            "The",
+            "bill,",
+            "please."
+          ],
+          "extra": [
+            "a"
+          ]
+        },
+        {
+          "id": "en-a1-09-e5",
+          "type": "choice",
+          "item": "en-a1-09-v3",
+          "direction": "toTarget",
+          "options": [
+            "en-a1-09-v3",
+            "en-a1-09-v4",
+            "en-a1-09-v6"
+          ]
+        },
+        {
+          "id": "en-a1-09-e6",
+          "type": "write",
+          "item": "en-a1-09-v2"
+        },
+        {
+          "id": "en-a1-09-e7",
+          "type": "situation",
+          "mode": "write",
+          "answers": [
+            "The bill, please.",
+            "Can I have the bill, please?",
+            "Could we have the bill, please?",
+            "Can we have the bill, please?"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "en-a1-10",
+      "minutes": 6,
+      "dialogue": [
+        {
+          "id": "en-a1-10-d1",
+          "speaker": "Emma",
+          "text": "What do you do at the weekend?"
+        },
+        {
+          "id": "en-a1-10-d2",
+          "speaker": "Marco",
+          "text": "On Saturdays I play football."
+        },
+        {
+          "id": "en-a1-10-d3",
+          "speaker": "Marco",
+          "text": "On Sundays I read a book."
+        },
+        {
+          "id": "en-a1-10-d4",
+          "speaker": "Emma",
+          "text": "I go swimming with my sister."
+        },
+        {
+          "id": "en-a1-10-d5",
+          "speaker": "Marco",
+          "text": "Do you like swimming?"
+        },
+        {
+          "id": "en-a1-10-d6",
+          "speaker": "Emma",
+          "text": "Yes, I love it!"
+        }
+      ],
+      "vocabulary": [
+        {
+          "id": "en-a1-10-v1",
+          "text": "football"
+        },
+        {
+          "id": "en-a1-10-v2",
+          "text": "the book",
+          "accept": [
+            "book",
+            "a book"
+          ]
+        },
+        {
+          "id": "en-a1-10-v3",
+          "text": "music"
+        },
+        {
+          "id": "en-a1-10-v4",
+          "text": "to cook"
+        },
+        {
+          "id": "en-a1-10-v5",
+          "text": "to swim"
+        },
+        {
+          "id": "en-a1-10-v6",
+          "text": "I like music."
+        }
+      ],
+      "exercises": [
+        {
+          "id": "en-a1-10-e1",
+          "type": "listen",
+          "item": "en-a1-10-v3",
+          "options": [
+            "en-a1-10-v1",
+            "en-a1-10-v2",
+            "en-a1-10-v3"
+          ]
+        },
+        {
+          "id": "en-a1-10-e2",
+          "type": "choice",
+          "item": "en-a1-10-d1",
+          "direction": "toSource",
+          "options": [
+            "en-a1-10-d1",
+            "en-a1-10-d4",
+            "en-a1-10-d5"
+          ]
+        },
+        {
+          "id": "en-a1-10-e3",
+          "type": "cloze",
+          "item": "en-a1-10-d2",
+          "gap": "play",
+          "options": [
+            "play",
+            "go",
+            "do"
+          ]
+        },
+        {
+          "id": "en-a1-10-e4",
+          "type": "order",
+          "item": "en-a1-10-d3",
+          "segments": [
+            "On",
+            "Sundays",
+            "I",
+            "read",
+            "a",
+            "book."
+          ],
+          "extra": [
+            "the"
+          ]
+        },
+        {
+          "id": "en-a1-10-e5",
+          "type": "choice",
+          "item": "en-a1-10-v5",
+          "direction": "toTarget",
+          "options": [
+            "en-a1-10-v5",
+            "en-a1-10-v4",
+            "en-a1-10-v2"
+          ]
+        },
+        {
+          "id": "en-a1-10-e6",
+          "type": "write",
+          "item": "en-a1-10-v2"
+        },
+        {
+          "id": "en-a1-10-e7",
+          "type": "situation",
+          "mode": "write",
+          "answers": [
+            "I like cooking.",
+            "I like to cook.",
+            "I love cooking."
+          ]
+        }
+      ]
+    }
+  ]
+}

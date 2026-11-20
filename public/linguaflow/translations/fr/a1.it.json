@@ -1,0 +1,399 @@
+{
+  "format": 1,
+  "id": "fr-a1.it",
+  "content": "fr-a1",
+  "source": "it",
+  "target": "fr",
+  "version": "1.0.0",
+  "quality": "unreviewed",
+  "course": {
+    "title": "Francese A1 – Vita di tutti i giorni in Francia",
+    "description": "Dieci lezioni brevi su situazioni reali: presentarsi, fare la spesa, al bar, in stazione, dal medico, al ristorante e nel tempo libero."
+  },
+  "lessons": {
+    "fr-a1-01": {
+      "title": "Ciao! Mi presento",
+      "goal": "Salutare, dire come ti chiami e da dove vieni."
+    },
+    "fr-a1-02": {
+      "title": "Al mercato",
+      "goal": "Comprare pane e frutta e chiedere quanto costa."
+    },
+    "fr-a1-03": {
+      "title": "Al bar",
+      "goal": "Ordinare da bere e pagare."
+    },
+    "fr-a1-04": {
+      "title": "Al supermercato",
+      "goal": "Chiedere dove si trovano i prodotti e capire la risposta."
+    },
+    "fr-a1-05": {
+      "title": "Chiedere la strada",
+      "goal": "Chiedere come arrivare in un posto e capire indicazioni semplici."
+    },
+    "fr-a1-06": {
+      "title": "In stazione",
+      "goal": "Comprare un biglietto e chiedere da quale binario parte il treno."
+    },
+    "fr-a1-07": {
+      "title": "Dal medico",
+      "goal": "Dire cosa non va e capire un consiglio."
+    },
+    "fr-a1-08": {
+      "title": "Hai tempo sabato?",
+      "goal": "Proporre un’uscita, i giorni della settimana e l’ora."
+    },
+    "fr-a1-09": {
+      "title": "Al ristorante",
+      "goal": "Dire che hai prenotato, ordinare e chiedere il conto."
+    },
+    "fr-a1-10": {
+      "title": "Il fine settimana",
+      "goal": "Parlare di cosa fai nel tempo libero e di cosa ti piace."
+    }
+  },
+  "items": {
+    "fr-a1-01-d1": "Ciao! Sono Léa.",
+    "fr-a1-01-d2": "Ciao, Léa! Mi chiamo Marco.",
+    "fr-a1-01-d3": "Di dove sei?",
+    "fr-a1-01-d4": "Vengo dall’Italia. E tu?",
+    "fr-a1-01-d5": "Io sono di Lione. Piacere!",
+    "fr-a1-01-d6": "Piacere mio! A presto.",
+    "fr-a1-01-v1": "Buongiorno",
+    "fr-a1-01-v2": "Buonasera",
+    "fr-a1-01-v3": "Arrivederci",
+    "fr-a1-01-v4": "Come ti chiami?",
+    "fr-a1-01-v5": "Grazie",
+    "fr-a1-01-v6": "Per favore",
+    "fr-a1-02-d1": "Buongiorno! Cosa desidera?",
+    "fr-a1-02-d2": "Vorrei un pane, per favore.",
+    "fr-a1-02-d3": "Ecco a lei. Qualcos’altro?",
+    "fr-a1-02-d4": "Sì, anche tre mele.",
+    "fr-a1-02-d5": "Quanto costa?",
+    "fr-a1-02-d6": "Sono quattro euro.",
+    "fr-a1-02-v1": "il pane",
+    "fr-a1-02-v2": "la mela",
+    "fr-a1-02-v3": "il formaggio",
+    "fr-a1-02-v4": "la torta",
+    "fr-a1-02-v5": "Quanto costa?",
+    "fr-a1-02-v6": "tre",
+    "fr-a1-03-d1": "Buongiorno! Cosa prende?",
+    "fr-a1-03-d2": "Un tè, per favore.",
+    "fr-a1-03-d3": "Con latte o con limone?",
+    "fr-a1-03-d4": "Con limone. E un bicchiere d’acqua.",
+    "fr-a1-03-d5": "Posso pagare, per favore?",
+    "fr-a1-03-d6": "Certo. Sono tre euro e cinquanta.",
+    "fr-a1-03-v1": "il caffè",
+    "fr-a1-03-v2": "il tè",
+    "fr-a1-03-v3": "l’acqua",
+    "fr-a1-03-v4": "il latte",
+    "fr-a1-03-v5": "il succo d’arancia",
+    "fr-a1-03-v6": "il conto",
+    "fr-a1-04-d1": "Scusi, dov’è il riso?",
+    "fr-a1-04-d2": "Il riso è lì, a destra.",
+    "fr-a1-04-d3": "E le uova?",
+    "fr-a1-04-d4": "Sono vicino al latte.",
+    "fr-a1-04-d5": "Grazie mille!",
+    "fr-a1-04-d6": "Prego!",
+    "fr-a1-04-v1": "il riso",
+    "fr-a1-04-v2": "le uova",
+    "fr-a1-04-v3": "la frutta",
+    "fr-a1-04-v4": "a destra",
+    "fr-a1-04-v5": "a sinistra",
+    "fr-a1-04-v6": "la cassa",
+    "fr-a1-05-d1": "Scusi, dov’è la stazione?",
+    "fr-a1-05-d2": "Vada sempre dritto.",
+    "fr-a1-05-d3": "Poi giri a sinistra.",
+    "fr-a1-05-d4": "È lontano?",
+    "fr-a1-05-d5": "No, sono cinque minuti a piedi.",
+    "fr-a1-05-d6": "Grazie, arrivederci!",
+    "fr-a1-05-v1": "la stazione",
+    "fr-a1-05-v2": "il museo",
+    "fr-a1-05-v3": "dritto",
+    "fr-a1-05-v4": "vicino",
+    "fr-a1-05-v5": "lontano",
+    "fr-a1-05-v6": "la fermata dell’autobus",
+    "fr-a1-06-d1": "Un biglietto per Parigi, per favore.",
+    "fr-a1-06-d2": "Solo andata o andata e ritorno?",
+    "fr-a1-06-d3": "Andata e ritorno.",
+    "fr-a1-06-d4": "Da quale binario parte il treno?",
+    "fr-a1-06-d5": "Dal binario tre, alle dieci.",
+    "fr-a1-06-d6": "Perfetto, grazie!",
+    "fr-a1-06-v1": "il treno",
+    "fr-a1-06-v2": "il biglietto",
+    "fr-a1-06-v3": "il binario",
+    "fr-a1-06-v4": "l’autobus",
+    "fr-a1-06-v5": "oggi",
+    "fr-a1-06-v6": "domani",
+    "fr-a1-07-d1": "Buongiorno. Cosa c’è che non va?",
+    "fr-a1-07-d2": "Mi fa male la testa.",
+    "fr-a1-07-d3": "Ha anche la febbre?",
+    "fr-a1-07-d4": "Sì, un po’. E sono molto stanco.",
+    "fr-a1-07-d5": "Beva molta acqua e riposi.",
+    "fr-a1-07-d6": "Grazie mille.",
+    "fr-a1-07-v1": "la testa",
+    "fr-a1-07-v2": "la pancia",
+    "fr-a1-07-v3": "la febbre",
+    "fr-a1-07-v4": "la medicina",
+    "fr-a1-07-v5": "malato",
+    "fr-a1-07-v6": "Sto bene.",
+    "fr-a1-08-d1": "Hai tempo sabato?",
+    "fr-a1-08-d2": "Sì! Cosa facciamo?",
+    "fr-a1-08-d3": "Andiamo al cinema?",
+    "fr-a1-08-d4": "Bella idea! A che ora?",
+    "fr-a1-08-d5": "Alle sette di sera.",
+    "fr-a1-08-d6": "Va bene, a sabato!",
+    "fr-a1-08-v1": "lunedì",
+    "fr-a1-08-v2": "venerdì",
+    "fr-a1-08-v3": "sabato",
+    "fr-a1-08-v4": "domenica",
+    "fr-a1-08-v5": "Che ore sono?",
+    "fr-a1-08-v6": "stasera",
+    "fr-a1-09-d1": "Buonasera, ho prenotato un tavolo per due.",
+    "fr-a1-09-d2": "Prego, ecco il menù.",
+    "fr-a1-09-d3": "Cosa desiderate?",
+    "fr-a1-09-d4": "Per me la zuppa e un’insalata.",
+    "fr-a1-09-d5": "Il conto, per favore.",
+    "fr-a1-09-d6": "Subito!",
+    "fr-a1-09-v1": "il menù",
+    "fr-a1-09-v2": "la zuppa",
+    "fr-a1-09-v3": "il pesce",
+    "fr-a1-09-v4": "il dolce",
+    "fr-a1-09-v5": "buonissimo",
+    "fr-a1-09-v6": "il tavolo",
+    "fr-a1-10-d1": "Cosa fai nel fine settimana?",
+    "fr-a1-10-d2": "Il sabato gioco a calcio.",
+    "fr-a1-10-d3": "La domenica leggo un libro.",
+    "fr-a1-10-d4": "Io vado in piscina con mia sorella.",
+    "fr-a1-10-d5": "Ti piace nuotare?",
+    "fr-a1-10-d6": "Sì, moltissimo!",
+    "fr-a1-10-v1": "il calcio",
+    "fr-a1-10-v2": "il libro",
+    "fr-a1-10-v3": "la musica",
+    "fr-a1-10-v4": "cucinare",
+    "fr-a1-10-v5": "nuotare",
+    "fr-a1-10-v6": "Mi piace la musica."
+  },
+  "exercises": {
+    "fr-a1-01-e1": {
+      "explain": "«Au revoir» significa «Arrivederci»."
+    },
+    "fr-a1-01-e2": {
+      "explain": "«Tu viens d'où ?» significa «Di dove sei?»."
+    },
+    "fr-a1-01-e3": {
+      "explain": "La frase completa è «Salut, Léa ! Je m'appelle Marco» = «Ciao, Léa! Mi chiamo Marco». «Je m’appelle …» = «Mi chiamo …» (verbo s’appeler). Con «tu» si dice «tu t’appelles»."
+    },
+    "fr-a1-01-e4": {
+      "explain": "Ordine giusto: «Je viens d'Italie. Et toi ?» = «Vengo dall’Italia. E tu?». Davanti a vocale «de» diventa «d’»: je viens d’Italie."
+    },
+    "fr-a1-01-e5": {
+      "explain": "«Bonjour» significa «Buongiorno»."
+    },
+    "fr-a1-01-e6": {
+      "explain": "«Grazie» si dice «Merci». Le maiuscole non contano, ma ogni lettera e ogni accento sì."
+    },
+    "fr-a1-01-e7": {
+      "explain": "Puoi dire: «Je m'appelle Giulia» oppure «Je suis Giulia» oppure «Moi, c'est Giulia».",
+      "prompt": "Una nuova compagna di corso ti chiede come ti chiami. Rispondi che ti chiami Giulia."
+    },
+    "fr-a1-02-e1": {
+      "explain": "«la pomme» significa «la mela»."
+    },
+    "fr-a1-02-e2": {
+      "explain": "«Je voudrais un pain, s'il vous plaît» significa «Vorrei un pane, per favore»."
+    },
+    "fr-a1-02-e3": {
+      "explain": "La frase completa è «Je voudrais un pain, s'il vous plaît» = «Vorrei un pane, per favore». «Je voudrais» = «vorrei»: è il modo gentile per chiedere qualcosa."
+    },
+    "fr-a1-02-e4": {
+      "explain": "Ordine giusto: «Oui, et trois pommes aussi» = «Sì, anche tre mele»."
+    },
+    "fr-a1-02-e5": {
+      "explain": "«le gâteau» significa «la torta»."
+    },
+    "fr-a1-02-e6": {
+      "explain": "«il pane» si dice «le pain». Le maiuscole non contano, ma ogni lettera e ogni accento sì."
+    },
+    "fr-a1-02-e7": {
+      "explain": "Puoi dire: «Je voudrais un pain, s'il vous plaît» oppure «Un pain, s'il vous plaît» oppure «Je voudrais une baguette, s'il vous plaît».",
+      "prompt": "Sei al mercato e vuoi comprare un pane. Cosa dici alla venditrice?"
+    },
+    "fr-a1-03-e1": {
+      "explain": "«le thé» significa «il tè»."
+    },
+    "fr-a1-03-e2": {
+      "explain": "«Avec du lait ou avec du citron ?» significa «Con latte o con limone?»."
+    },
+    "fr-a1-03-e3": {
+      "explain": "La frase completa è «Avec du lait ou avec du citron ?» = «Con latte o con limone?». «ou» = «o», «et» = «e», «mais» = «ma». Attenzione: «où» con l’accento vuol dire «dove»."
+    },
+    "fr-a1-03-e4": {
+      "explain": "Ordine giusto: «Je peux payer, s'il vous plaît ?» = «Posso pagare, per favore?»."
+    },
+    "fr-a1-03-e5": {
+      "explain": "«l'eau» significa «l’acqua»."
+    },
+    "fr-a1-03-e6": {
+      "explain": "«il latte» si dice «le lait». Le maiuscole non contano, ma ogni lettera e ogni accento sì."
+    },
+    "fr-a1-03-e7": {
+      "explain": "Puoi dire: «Un café, s'il vous plaît» oppure «Je voudrais un café, s'il vous plaît» oppure «Un café, s'il te plaît».",
+      "prompt": "Sei al bar e vuoi ordinare un caffè. Cosa dici?"
+    },
+    "fr-a1-04-e1": {
+      "explain": "«à droite» significa «a destra»."
+    },
+    "fr-a1-04-e2": {
+      "explain": "«Pardon, où est le riz ?» significa «Scusi, dov’è il riso?»."
+    },
+    "fr-a1-04-e3": {
+      "explain": "La frase completa è «Pardon, où est le riz ?» = «Scusi, dov’è il riso?». «où» con l’accento = «dove»; «ou» senza accento = «o»."
+    },
+    "fr-a1-04-e4": {
+      "explain": "Ordine giusto: «Le riz est là-bas, à droite» = «Il riso è lì, a destra»."
+    },
+    "fr-a1-04-e5": {
+      "explain": "«à gauche» significa «a sinistra»."
+    },
+    "fr-a1-04-e6": {
+      "explain": "«il riso» si dice «le riz». Le maiuscole non contano, ma ogni lettera e ogni accento sì."
+    },
+    "fr-a1-04-e7": {
+      "explain": "Puoi dire: «Pardon, où est le lait ?» oppure «Où est le lait ?» oppure «Excusez-moi, où est le lait ?».",
+      "prompt": "Non trovi il latte. Chiedi a un commesso dov’è."
+    },
+    "fr-a1-05-e1": {
+      "explain": "«tout droit» significa «dritto»."
+    },
+    "fr-a1-05-e2": {
+      "explain": "«C'est loin ?» significa «È lontano?»."
+    },
+    "fr-a1-05-e3": {
+      "explain": "La frase completa è «Puis tournez à gauche» = «Poi giri a sinistra». «à gauche» = a sinistra, «à droite» = a destra, «tout droit» = dritto."
+    },
+    "fr-a1-05-e4": {
+      "explain": "Ordine giusto: «Non, c'est à cinq minutes à pied» = «No, sono cinque minuti a piedi». «à pied» = a piedi."
+    },
+    "fr-a1-05-e5": {
+      "explain": "«près» significa «vicino»."
+    },
+    "fr-a1-05-e6": {
+      "explain": "«il museo» si dice «le musée». Le maiuscole non contano, ma ogni lettera e ogni accento sì."
+    },
+    "fr-a1-05-e7": {
+      "explain": "Puoi dire: «Pardon, où est le musée ?» oppure «Où est le musée ?» oppure «Excusez-moi, où est le musée ?».",
+      "prompt": "Cerchi il museo. Chiedi a una passante dov’è."
+    },
+    "fr-a1-06-e1": {
+      "explain": "«le billet» significa «il biglietto»."
+    },
+    "fr-a1-06-e2": {
+      "explain": "«Aller simple ou aller-retour ?» significa «Solo andata o andata e ritorno?»."
+    },
+    "fr-a1-06-e3": {
+      "explain": "La frase completa è «Le train part de quelle voie ?» = «Da quale binario parte il treno?». «quel / quelle» = «quale». «Voie» è femminile, quindi «quelle voie»."
+    },
+    "fr-a1-06-e4": {
+      "explain": "Ordine giusto: «Un billet pour Paris, s'il vous plaît» = «Un biglietto per Parigi, per favore». Per la destinazione si usa «pour»: un billet pour Paris."
+    },
+    "fr-a1-06-e5": {
+      "explain": "«le train» significa «il treno»."
+    },
+    "fr-a1-06-e6": {
+      "explain": "«oggi» si dice «aujourd'hui». Le maiuscole non contano, ma ogni lettera e ogni accento sì."
+    },
+    "fr-a1-06-e7": {
+      "explain": "Puoi dire: «Un billet pour Paris, s'il vous plaît» oppure «Un aller-retour pour Paris, s'il vous plaît» oppure «Je voudrais un billet pour Paris, s'il vous plaît».",
+      "prompt": "Alla biglietteria vuoi un biglietto per Parigi. Cosa dici?"
+    },
+    "fr-a1-07-e1": {
+      "explain": "«la tête» significa «la testa»."
+    },
+    "fr-a1-07-e2": {
+      "explain": "«Vous avez aussi de la fièvre ?» significa «Ha anche la febbre?»."
+    },
+    "fr-a1-07-e3": {
+      "explain": "La frase completa è «J'ai mal à la tête» = «Mi fa male la testa». «J’ai mal à …» = «Mi fa male …»: j’ai mal à la tête, j’ai mal au ventre."
+    },
+    "fr-a1-07-e4": {
+      "explain": "Ordine giusto: «J'ai mal à la tête» = «Mi fa male la testa»."
+    },
+    "fr-a1-07-e5": {
+      "explain": "«le médicament» significa «la medicina»."
+    },
+    "fr-a1-07-e6": {
+      "explain": "«la testa» si dice «la tête». Le maiuscole non contano, ma ogni lettera e ogni accento sì."
+    },
+    "fr-a1-07-e7": {
+      "explain": "Puoi dire: «J'ai mal au ventre» oppure «J'ai mal au ventre, docteur».",
+      "prompt": "Il medico ti chiede cosa non va. Digli che ti fa male la pancia."
+    },
+    "fr-a1-08-e1": {
+      "explain": "«samedi» significa «sabato»."
+    },
+    "fr-a1-08-e2": {
+      "explain": "«Bonne idée ! À quelle heure ?» significa «Bella idea! A che ora?»."
+    },
+    "fr-a1-08-e3": {
+      "explain": "La frase completa è «On va au cinéma ?» = «Andiamo al cinema?». à + le = au: «au cinéma», ma «à la gare»."
+    },
+    "fr-a1-08-e4": {
+      "explain": "Ordine giusto: «Tu es libre samedi ?» = «Hai tempo sabato?». In francese i giorni si scrivono con la minuscola e senza articolo: samedi = sabato (questo sabato)."
+    },
+    "fr-a1-08-e5": {
+      "explain": "«Quelle heure est-il ?» significa «Che ore sono?»."
+    },
+    "fr-a1-08-e6": {
+      "explain": "«domenica» si dice «dimanche». Le maiuscole non contano, ma ogni lettera e ogni accento sì."
+    },
+    "fr-a1-08-e7": {
+      "explain": "Puoi dire: «Tu es libre dimanche ?» oppure «Tu as le temps dimanche ?» oppure «Est-ce que tu es libre dimanche ?».",
+      "prompt": "Vuoi andare al cinema con un amico. Chiedigli se ha tempo domenica."
+    },
+    "fr-a1-09-e1": {
+      "explain": "«délicieux» significa «buonissimo»."
+    },
+    "fr-a1-09-e2": {
+      "explain": "«Qu'est-ce que vous désirez ?» significa «Cosa desiderate?»."
+    },
+    "fr-a1-09-e3": {
+      "explain": "La frase completa è «Bonsoir, j'ai réservé une table pour deux» = «Buonasera, ho prenotato un tavolo per due». «J’ai réservé» = «ho prenotato»: avoir + participio (réservé)."
+    },
+    "fr-a1-09-e4": {
+      "explain": "Ordine giusto: «Pour moi, la soupe et une salade» = «Per me la zuppa e un’insalata»."
+    },
+    "fr-a1-09-e5": {
+      "explain": "«le poisson» significa «il pesce»."
+    },
+    "fr-a1-09-e6": {
+      "explain": "«la zuppa» si dice «la soupe». Le maiuscole non contano, ma ogni lettera e ogni accento sì."
+    },
+    "fr-a1-09-e7": {
+      "explain": "Puoi dire: «L'addition, s'il vous plaît» oppure «L'addition, s'il te plaît» oppure «Je voudrais l'addition, s'il vous plaît».",
+      "prompt": "Hai finito di mangiare. Chiedi il conto al cameriere."
+    },
+    "fr-a1-10-e1": {
+      "explain": "«la musique» significa «la musica»."
+    },
+    "fr-a1-10-e2": {
+      "explain": "«Qu'est-ce que tu fais le week-end ?» significa «Cosa fai nel fine settimana?»."
+    },
+    "fr-a1-10-e3": {
+      "explain": "La frase completa è «Le samedi, je joue au foot» = «Il sabato gioco a calcio». Per gli sport con la palla: «jouer au …» (je joue au foot)."
+    },
+    "fr-a1-10-e4": {
+      "explain": "Ordine giusto: «Le dimanche, je lis un livre» = «La domenica leggo un libro». «le dimanche» con l’articolo = ogni domenica."
+    },
+    "fr-a1-10-e5": {
+      "explain": "«nager» significa «nuotare»."
+    },
+    "fr-a1-10-e6": {
+      "explain": "«il libro» si dice «le livre». Le maiuscole non contano, ma ogni lettera e ogni accento sì."
+    },
+    "fr-a1-10-e7": {
+      "explain": "Puoi dire: «J'aime cuisiner» oppure «J'adore cuisiner» oppure «Moi, j'aime cuisiner».",
+      "prompt": "Una nuova amica ti chiede cosa ti piace. Rispondi che ti piace cucinare."
+    }
+  }
+}

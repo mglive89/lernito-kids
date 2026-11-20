@@ -1,0 +1,1408 @@
+{
+  "format": 1,
+  "id": "es-a1",
+  "language": "es",
+  "version": "1.0.0",
+  "lessons": [
+    {
+      "id": "es-a1-01",
+      "minutes": 7,
+      "dialogue": [
+        {
+          "id": "es-a1-01-d1",
+          "speaker": "Lucía",
+          "text": "¡Hola! Soy Lucía."
+        },
+        {
+          "id": "es-a1-01-d2",
+          "speaker": "Marco",
+          "text": "¡Hola, Lucía! Me llamo Marco."
+        },
+        {
+          "id": "es-a1-01-d3",
+          "speaker": "Lucía",
+          "text": "¿De dónde eres?"
+        },
+        {
+          "id": "es-a1-01-d4",
+          "speaker": "Marco",
+          "text": "Soy de Italia. ¿Y tú?"
+        },
+        {
+          "id": "es-a1-01-d5",
+          "speaker": "Lucía",
+          "text": "Yo soy de Sevilla. ¡Encantada!"
+        },
+        {
+          "id": "es-a1-01-d6",
+          "speaker": "Marco",
+          "text": "¡Encantado! Hasta pronto."
+        }
+      ],
+      "vocabulary": [
+        {
+          "id": "es-a1-01-v1",
+          "text": "Buenos días"
+        },
+        {
+          "id": "es-a1-01-v2",
+          "text": "Buenas tardes"
+        },
+        {
+          "id": "es-a1-01-v3",
+          "text": "Adiós"
+        },
+        {
+          "id": "es-a1-01-v4",
+          "text": "¿Cómo te llamas?"
+        },
+        {
+          "id": "es-a1-01-v5",
+          "text": "Gracias"
+        },
+        {
+          "id": "es-a1-01-v6",
+          "text": "Por favor"
+        }
+      ],
+      "exercises": [
+        {
+          "id": "es-a1-01-e1",
+          "type": "listen",
+          "item": "es-a1-01-v3",
+          "options": [
+            "es-a1-01-v3",
+            "es-a1-01-v4",
+            "es-a1-01-v5"
+          ]
+        },
+        {
+          "id": "es-a1-01-e2",
+          "type": "choice",
+          "item": "es-a1-01-d3",
+          "direction": "toSource",
+          "options": [
+            "es-a1-01-d3",
+            "es-a1-01-d4",
+            "es-a1-01-d5"
+          ]
+        },
+        {
+          "id": "es-a1-01-e3",
+          "type": "cloze",
+          "item": "es-a1-01-d2",
+          "gap": "llamo",
+          "options": [
+            "llamo",
+            "llamas",
+            "soy"
+          ]
+        },
+        {
+          "id": "es-a1-01-e4",
+          "type": "order",
+          "item": "es-a1-01-d4",
+          "segments": [
+            "Soy",
+            "de",
+            "Italia.",
+            "¿Y",
+            "tú?"
+          ],
+          "extra": [
+            "en"
+          ]
+        },
+        {
+          "id": "es-a1-01-e5",
+          "type": "choice",
+          "item": "es-a1-01-v1",
+          "direction": "toTarget",
+          "options": [
+            "es-a1-01-v1",
+            "es-a1-01-v2",
+            "es-a1-01-v3"
+          ]
+        },
+        {
+          "id": "es-a1-01-e6",
+          "type": "write",
+          "item": "es-a1-01-v5"
+        },
+        {
+          "id": "es-a1-01-e7",
+          "type": "situation",
+          "mode": "write",
+          "answers": [
+            "Me llamo Giulia.",
+            "Soy Giulia.",
+            "Mi nombre es Giulia."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "es-a1-02",
+      "minutes": 7,
+      "dialogue": [
+        {
+          "id": "es-a1-02-d1",
+          "speaker": "Vendedora",
+          "text": "¡Buenos días! ¿Qué desea?"
+        },
+        {
+          "id": "es-a1-02-d2",
+          "speaker": "Marco",
+          "text": "Quería una barra de pan, por favor."
+        },
+        {
+          "id": "es-a1-02-d3",
+          "speaker": "Vendedora",
+          "text": "Aquí tiene. ¿Algo más?"
+        },
+        {
+          "id": "es-a1-02-d4",
+          "speaker": "Marco",
+          "text": "Sí, también tres manzanas."
+        },
+        {
+          "id": "es-a1-02-d5",
+          "speaker": "Marco",
+          "text": "¿Cuánto es?"
+        },
+        {
+          "id": "es-a1-02-d6",
+          "speaker": "Vendedora",
+          "text": "Son cuatro euros."
+        }
+      ],
+      "vocabulary": [
+        {
+          "id": "es-a1-02-v1",
+          "text": "el pan",
+          "accept": [
+            "pan"
+          ]
+        },
+        {
+          "id": "es-a1-02-v2",
+          "text": "la manzana"
+        },
+        {
+          "id": "es-a1-02-v3",
+          "text": "el queso"
+        },
+        {
+          "id": "es-a1-02-v4",
+          "text": "la tarta"
+        },
+        {
+          "id": "es-a1-02-v5",
+          "text": "¿Cuánto cuesta?"
+        },
+        {
+          "id": "es-a1-02-v6",
+          "text": "tres"
+        }
+      ],
+      "exercises": [
+        {
+          "id": "es-a1-02-e1",
+          "type": "listen",
+          "item": "es-a1-02-v2",
+          "options": [
+            "es-a1-02-v1",
+            "es-a1-02-v2",
+            "es-a1-02-v3"
+          ]
+        },
+        {
+          "id": "es-a1-02-e2",
+          "type": "choice",
+          "item": "es-a1-02-d2",
+          "direction": "toSource",
+          "options": [
+            "es-a1-02-d2",
+            "es-a1-02-d3",
+            "es-a1-02-d5"
+          ]
+        },
+        {
+          "id": "es-a1-02-e3",
+          "type": "cloze",
+          "item": "es-a1-02-d2",
+          "gap": "Quería",
+          "options": [
+            "Quería",
+            "Tengo",
+            "Soy"
+          ]
+        },
+        {
+          "id": "es-a1-02-e4",
+          "type": "order",
+          "item": "es-a1-02-d4",
+          "segments": [
+            "Sí,",
+            "también",
+            "tres",
+            "manzanas."
+          ],
+          "extra": [
+            "las"
+          ]
+        },
+        {
+          "id": "es-a1-02-e5",
+          "type": "choice",
+          "item": "es-a1-02-v4",
+          "direction": "toTarget",
+          "options": [
+            "es-a1-02-v4",
+            "es-a1-02-v3",
+            "es-a1-02-v6"
+          ]
+        },
+        {
+          "id": "es-a1-02-e6",
+          "type": "write",
+          "item": "es-a1-02-v1"
+        },
+        {
+          "id": "es-a1-02-e7",
+          "type": "situation",
+          "mode": "write",
+          "answers": [
+            "Quería una barra de pan, por favor.",
+            "Una barra de pan, por favor.",
+            "Quiero un pan, por favor.",
+            "Un pan, por favor."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "es-a1-03",
+      "minutes": 6,
+      "dialogue": [
+        {
+          "id": "es-a1-03-d1",
+          "speaker": "Camarero",
+          "text": "¡Hola! ¿Qué va a tomar?"
+        },
+        {
+          "id": "es-a1-03-d2",
+          "speaker": "Marco",
+          "text": "Un té, por favor."
+        },
+        {
+          "id": "es-a1-03-d3",
+          "speaker": "Camarero",
+          "text": "¿Con leche o con limón?"
+        },
+        {
+          "id": "es-a1-03-d4",
+          "speaker": "Marco",
+          "text": "Con limón. Y un vaso de agua."
+        },
+        {
+          "id": "es-a1-03-d5",
+          "speaker": "Marco",
+          "text": "¿Puedo pagar, por favor?"
+        },
+        {
+          "id": "es-a1-03-d6",
+          "speaker": "Camarero",
+          "text": "Claro. Son tres euros cincuenta."
+        }
+      ],
+      "vocabulary": [
+        {
+          "id": "es-a1-03-v1",
+          "text": "el café"
+        },
+        {
+          "id": "es-a1-03-v2",
+          "text": "el té"
+        },
+        {
+          "id": "es-a1-03-v3",
+          "text": "el agua"
+        },
+        {
+          "id": "es-a1-03-v4",
+          "text": "la leche",
+          "accept": [
+            "leche"
+          ]
+        },
+        {
+          "id": "es-a1-03-v5",
+          "text": "el zumo de naranja"
+        },
+        {
+          "id": "es-a1-03-v6",
+          "text": "la cuenta"
+        }
+      ],
+      "exercises": [
+        {
+          "id": "es-a1-03-e1",
+          "type": "listen",
+          "item": "es-a1-03-v2",
+          "options": [
+            "es-a1-03-v1",
+            "es-a1-03-v2",
+            "es-a1-03-v5"
+          ]
+        },
+        {
+          "id": "es-a1-03-e2",
+          "type": "choice",
+          "item": "es-a1-03-d3",
+          "direction": "toSource",
+          "options": [
+            "es-a1-03-d3",
+            "es-a1-03-d4",
+            "es-a1-03-d6"
+          ]
+        },
+        {
+          "id": "es-a1-03-e3",
+          "type": "cloze",
+          "item": "es-a1-03-d4",
+          "gap": "vaso",
+          "options": [
+            "vaso",
+            "plato",
+            "zumo"
+          ]
+        },
+        {
+          "id": "es-a1-03-e4",
+          "type": "order",
+          "item": "es-a1-03-d5",
+          "segments": [
+            "¿Puedo",
+            "pagar,",
+            "por",
+            "favor?"
+          ],
+          "extra": [
+            "Quiero"
+          ]
+        },
+        {
+          "id": "es-a1-03-e5",
+          "type": "choice",
+          "item": "es-a1-03-v3",
+          "direction": "toTarget",
+          "options": [
+            "es-a1-03-v3",
+            "es-a1-03-v4",
+            "es-a1-03-v6"
+          ]
+        },
+        {
+          "id": "es-a1-03-e6",
+          "type": "write",
+          "item": "es-a1-03-v4"
+        },
+        {
+          "id": "es-a1-03-e7",
+          "type": "situation",
+          "mode": "write",
+          "answers": [
+            "Un café, por favor.",
+            "Quería un café, por favor.",
+            "Quiero un café, por favor.",
+            "¿Me pone un café, por favor?"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "es-a1-04",
+      "minutes": 6,
+      "dialogue": [
+        {
+          "id": "es-a1-04-d1",
+          "speaker": "Marco",
+          "text": "Perdone, ¿dónde está el arroz?"
+        },
+        {
+          "id": "es-a1-04-d2",
+          "speaker": "Dependiente",
+          "text": "El arroz está allí, a la derecha."
+        },
+        {
+          "id": "es-a1-04-d3",
+          "speaker": "Marco",
+          "text": "¿Y los huevos?"
+        },
+        {
+          "id": "es-a1-04-d4",
+          "speaker": "Dependiente",
+          "text": "Están al lado de la leche."
+        },
+        {
+          "id": "es-a1-04-d5",
+          "speaker": "Marco",
+          "text": "¡Muchas gracias!"
+        },
+        {
+          "id": "es-a1-04-d6",
+          "speaker": "Dependiente",
+          "text": "¡De nada!"
+        }
+      ],
+      "vocabulary": [
+        {
+          "id": "es-a1-04-v1",
+          "text": "el arroz",
+          "accept": [
+            "arroz"
+          ]
+        },
+        {
+          "id": "es-a1-04-v2",
+          "text": "los huevos"
+        },
+        {
+          "id": "es-a1-04-v3",
+          "text": "la fruta"
+        },
+        {
+          "id": "es-a1-04-v4",
+          "text": "a la derecha"
+        },
+        {
+          "id": "es-a1-04-v5",
+          "text": "a la izquierda"
+        },
+        {
+          "id": "es-a1-04-v6",
+          "text": "la caja"
+        }
+      ],
+      "exercises": [
+        {
+          "id": "es-a1-04-e1",
+          "type": "listen",
+          "item": "es-a1-04-v4",
+          "options": [
+            "es-a1-04-v4",
+            "es-a1-04-v5",
+            "es-a1-04-v6"
+          ]
+        },
+        {
+          "id": "es-a1-04-e2",
+          "type": "choice",
+          "item": "es-a1-04-d1",
+          "direction": "toSource",
+          "options": [
+            "es-a1-04-d1",
+            "es-a1-04-d3",
+            "es-a1-04-d5"
+          ]
+        },
+        {
+          "id": "es-a1-04-e3",
+          "type": "cloze",
+          "item": "es-a1-04-d1",
+          "gap": "dónde",
+          "options": [
+            "dónde",
+            "qué",
+            "quién"
+          ]
+        },
+        {
+          "id": "es-a1-04-e4",
+          "type": "order",
+          "item": "es-a1-04-d2",
+          "segments": [
+            "El",
+            "arroz",
+            "está",
+            "allí,",
+            "a",
+            "la derecha."
+          ],
+          "extra": [
+            "es"
+          ]
+        },
+        {
+          "id": "es-a1-04-e5",
+          "type": "choice",
+          "item": "es-a1-04-v5",
+          "direction": "toTarget",
+          "options": [
+            "es-a1-04-v5",
+            "es-a1-04-v4",
+            "es-a1-04-v1"
+          ]
+        },
+        {
+          "id": "es-a1-04-e6",
+          "type": "write",
+          "item": "es-a1-04-v1"
+        },
+        {
+          "id": "es-a1-04-e7",
+          "type": "situation",
+          "mode": "write",
+          "answers": [
+            "Perdone, ¿dónde está la leche?",
+            "¿Dónde está la leche?",
+            "Perdón, ¿dónde está la leche?",
+            "Disculpe, ¿dónde está la leche?"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "es-a1-05",
+      "minutes": 6,
+      "dialogue": [
+        {
+          "id": "es-a1-05-d1",
+          "speaker": "Marco",
+          "text": "Perdone, ¿dónde está la estación?"
+        },
+        {
+          "id": "es-a1-05-d2",
+          "speaker": "Señora",
+          "text": "Siga todo recto."
+        },
+        {
+          "id": "es-a1-05-d3",
+          "speaker": "Señora",
+          "text": "Luego gire a la izquierda."
+        },
+        {
+          "id": "es-a1-05-d4",
+          "speaker": "Marco",
+          "text": "¿Está lejos?"
+        },
+        {
+          "id": "es-a1-05-d5",
+          "speaker": "Señora",
+          "text": "No, está a cinco minutos a pie."
+        },
+        {
+          "id": "es-a1-05-d6",
+          "speaker": "Marco",
+          "text": "¡Gracias, adiós!"
+        }
+      ],
+      "vocabulary": [
+        {
+          "id": "es-a1-05-v1",
+          "text": "la estación"
+        },
+        {
+          "id": "es-a1-05-v2",
+          "text": "el museo",
+          "accept": [
+            "museo"
+          ]
+        },
+        {
+          "id": "es-a1-05-v3",
+          "text": "todo recto"
+        },
+        {
+          "id": "es-a1-05-v4",
+          "text": "cerca"
+        },
+        {
+          "id": "es-a1-05-v5",
+          "text": "lejos"
+        },
+        {
+          "id": "es-a1-05-v6",
+          "text": "la parada de autobús"
+        }
+      ],
+      "exercises": [
+        {
+          "id": "es-a1-05-e1",
+          "type": "listen",
+          "item": "es-a1-05-v3",
+          "options": [
+            "es-a1-05-v3",
+            "es-a1-05-v4",
+            "es-a1-05-v5"
+          ]
+        },
+        {
+          "id": "es-a1-05-e2",
+          "type": "choice",
+          "item": "es-a1-05-d4",
+          "direction": "toSource",
+          "options": [
+            "es-a1-05-d4",
+            "es-a1-05-d2",
+            "es-a1-05-d5"
+          ]
+        },
+        {
+          "id": "es-a1-05-e3",
+          "type": "cloze",
+          "item": "es-a1-05-d3",
+          "gap": "izquierda",
+          "options": [
+            "izquierda",
+            "derecha",
+            "recto"
+          ]
+        },
+        {
+          "id": "es-a1-05-e4",
+          "type": "order",
+          "item": "es-a1-05-d5",
+          "segments": [
+            "No,",
+            "está",
+            "a",
+            "cinco",
+            "minutos",
+            "a pie."
+          ],
+          "extra": [
+            "en"
+          ]
+        },
+        {
+          "id": "es-a1-05-e5",
+          "type": "choice",
+          "item": "es-a1-05-v4",
+          "direction": "toTarget",
+          "options": [
+            "es-a1-05-v4",
+            "es-a1-05-v5",
+            "es-a1-05-v1"
+          ]
+        },
+        {
+          "id": "es-a1-05-e6",
+          "type": "write",
+          "item": "es-a1-05-v2"
+        },
+        {
+          "id": "es-a1-05-e7",
+          "type": "situation",
+          "mode": "write",
+          "answers": [
+            "Perdone, ¿dónde está el museo?",
+            "¿Dónde está el museo?",
+            "Disculpe, ¿dónde está el museo?",
+            "Perdón, ¿dónde está el museo?"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "es-a1-06",
+      "minutes": 7,
+      "dialogue": [
+        {
+          "id": "es-a1-06-d1",
+          "speaker": "Marco",
+          "text": "Un billete para Madrid, por favor."
+        },
+        {
+          "id": "es-a1-06-d2",
+          "speaker": "Taquilla",
+          "text": "¿Solo ida o ida y vuelta?"
+        },
+        {
+          "id": "es-a1-06-d3",
+          "speaker": "Marco",
+          "text": "Ida y vuelta."
+        },
+        {
+          "id": "es-a1-06-d4",
+          "speaker": "Marco",
+          "text": "¿De qué andén sale el tren?"
+        },
+        {
+          "id": "es-a1-06-d5",
+          "speaker": "Taquilla",
+          "text": "Del andén tres, a las diez."
+        },
+        {
+          "id": "es-a1-06-d6",
+          "speaker": "Marco",
+          "text": "¡Perfecto, gracias!"
+        }
+      ],
+      "vocabulary": [
+        {
+          "id": "es-a1-06-v1",
+          "text": "el tren"
+        },
+        {
+          "id": "es-a1-06-v2",
+          "text": "el billete"
+        },
+        {
+          "id": "es-a1-06-v3",
+          "text": "el andén"
+        },
+        {
+          "id": "es-a1-06-v4",
+          "text": "el autobús"
+        },
+        {
+          "id": "es-a1-06-v5",
+          "text": "hoy"
+        },
+        {
+          "id": "es-a1-06-v6",
+          "text": "mañana"
+        }
+      ],
+      "exercises": [
+        {
+          "id": "es-a1-06-e1",
+          "type": "listen",
+          "item": "es-a1-06-v2",
+          "options": [
+            "es-a1-06-v1",
+            "es-a1-06-v2",
+            "es-a1-06-v3"
+          ]
+        },
+        {
+          "id": "es-a1-06-e2",
+          "type": "choice",
+          "item": "es-a1-06-d2",
+          "direction": "toSource",
+          "options": [
+            "es-a1-06-d2",
+            "es-a1-06-d4",
+            "es-a1-06-d5"
+          ]
+        },
+        {
+          "id": "es-a1-06-e3",
+          "type": "cloze",
+          "item": "es-a1-06-d5",
+          "gap": "Del",
+          "options": [
+            "Del",
+            "De la",
+            "En el"
+          ]
+        },
+        {
+          "id": "es-a1-06-e4",
+          "type": "order",
+          "item": "es-a1-06-d1",
+          "segments": [
+            "Un",
+            "billete",
+            "para",
+            "Madrid,",
+            "por",
+            "favor."
+          ],
+          "extra": [
+            "a"
+          ]
+        },
+        {
+          "id": "es-a1-06-e5",
+          "type": "choice",
+          "item": "es-a1-06-v1",
+          "direction": "toTarget",
+          "options": [
+            "es-a1-06-v1",
+            "es-a1-06-v4",
+            "es-a1-06-v3"
+          ]
+        },
+        {
+          "id": "es-a1-06-e6",
+          "type": "write",
+          "item": "es-a1-06-v5"
+        },
+        {
+          "id": "es-a1-06-e7",
+          "type": "situation",
+          "mode": "write",
+          "answers": [
+            "Un billete para Madrid, por favor.",
+            "Un billete de ida y vuelta para Madrid, por favor.",
+            "Quería un billete para Madrid, por favor."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "es-a1-07",
+      "minutes": 6,
+      "dialogue": [
+        {
+          "id": "es-a1-07-d1",
+          "speaker": "Médica",
+          "text": "Buenos días. ¿Qué le pasa?"
+        },
+        {
+          "id": "es-a1-07-d2",
+          "speaker": "Marco",
+          "text": "Me duele la cabeza."
+        },
+        {
+          "id": "es-a1-07-d3",
+          "speaker": "Médica",
+          "text": "¿Tiene también fiebre?"
+        },
+        {
+          "id": "es-a1-07-d4",
+          "speaker": "Marco",
+          "text": "Sí, un poco. Y estoy muy cansado."
+        },
+        {
+          "id": "es-a1-07-d5",
+          "speaker": "Médica",
+          "text": "Beba mucha agua y descanse."
+        },
+        {
+          "id": "es-a1-07-d6",
+          "speaker": "Marco",
+          "text": "Muchas gracias."
+        }
+      ],
+      "vocabulary": [
+        {
+          "id": "es-a1-07-v1",
+          "text": "la cabeza",
+          "accept": [
+            "cabeza"
+          ]
+        },
+        {
+          "id": "es-a1-07-v2",
+          "text": "la barriga"
+        },
+        {
+          "id": "es-a1-07-v3",
+          "text": "la fiebre"
+        },
+        {
+          "id": "es-a1-07-v4",
+          "text": "el medicamento"
+        },
+        {
+          "id": "es-a1-07-v5",
+          "text": "enfermo"
+        },
+        {
+          "id": "es-a1-07-v6",
+          "text": "Estoy bien."
+        }
+      ],
+      "exercises": [
+        {
+          "id": "es-a1-07-e1",
+          "type": "listen",
+          "item": "es-a1-07-v1",
+          "options": [
+            "es-a1-07-v1",
+            "es-a1-07-v2",
+            "es-a1-07-v3"
+          ]
+        },
+        {
+          "id": "es-a1-07-e2",
+          "type": "choice",
+          "item": "es-a1-07-d3",
+          "direction": "toSource",
+          "options": [
+            "es-a1-07-d3",
+            "es-a1-07-d2",
+            "es-a1-07-d5"
+          ]
+        },
+        {
+          "id": "es-a1-07-e3",
+          "type": "cloze",
+          "item": "es-a1-07-d2",
+          "gap": "duele",
+          "options": [
+            "duele",
+            "tengo",
+            "soy"
+          ]
+        },
+        {
+          "id": "es-a1-07-e4",
+          "type": "order",
+          "item": "es-a1-07-d4",
+          "segments": [
+            "Sí,",
+            "un",
+            "poco.",
+            "Y",
+            "estoy",
+            "muy cansado."
+          ],
+          "extra": [
+            "soy"
+          ]
+        },
+        {
+          "id": "es-a1-07-e5",
+          "type": "choice",
+          "item": "es-a1-07-v4",
+          "direction": "toTarget",
+          "options": [
+            "es-a1-07-v4",
+            "es-a1-07-v3",
+            "es-a1-07-v5"
+          ]
+        },
+        {
+          "id": "es-a1-07-e6",
+          "type": "write",
+          "item": "es-a1-07-v1"
+        },
+        {
+          "id": "es-a1-07-e7",
+          "type": "situation",
+          "mode": "write",
+          "answers": [
+            "Me duele la barriga.",
+            "Me duele el estómago.",
+            "Me duele la tripa."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "es-a1-08",
+      "minutes": 6,
+      "dialogue": [
+        {
+          "id": "es-a1-08-d1",
+          "speaker": "Lucía",
+          "text": "¿Tienes tiempo el sábado?"
+        },
+        {
+          "id": "es-a1-08-d2",
+          "speaker": "Marco",
+          "text": "¡Sí! ¿Qué hacemos?"
+        },
+        {
+          "id": "es-a1-08-d3",
+          "speaker": "Lucía",
+          "text": "¿Vamos al cine?"
+        },
+        {
+          "id": "es-a1-08-d4",
+          "speaker": "Marco",
+          "text": "¡Buena idea! ¿A qué hora?"
+        },
+        {
+          "id": "es-a1-08-d5",
+          "speaker": "Lucía",
+          "text": "A las siete de la tarde."
+        },
+        {
+          "id": "es-a1-08-d6",
+          "speaker": "Marco",
+          "text": "Vale, ¡hasta el sábado!"
+        }
+      ],
+      "vocabulary": [
+        {
+          "id": "es-a1-08-v1",
+          "text": "el lunes"
+        },
+        {
+          "id": "es-a1-08-v2",
+          "text": "el viernes"
+        },
+        {
+          "id": "es-a1-08-v3",
+          "text": "el sábado"
+        },
+        {
+          "id": "es-a1-08-v4",
+          "text": "el domingo",
+          "accept": [
+            "domingo"
+          ]
+        },
+        {
+          "id": "es-a1-08-v5",
+          "text": "¿Qué hora es?"
+        },
+        {
+          "id": "es-a1-08-v6",
+          "text": "esta noche"
+        }
+      ],
+      "exercises": [
+        {
+          "id": "es-a1-08-e1",
+          "type": "listen",
+          "item": "es-a1-08-v3",
+          "options": [
+            "es-a1-08-v2",
+            "es-a1-08-v3",
+            "es-a1-08-v4"
+          ]
+        },
+        {
+          "id": "es-a1-08-e2",
+          "type": "choice",
+          "item": "es-a1-08-d4",
+          "direction": "toSource",
+          "options": [
+            "es-a1-08-d4",
+            "es-a1-08-d1",
+            "es-a1-08-d5"
+          ]
+        },
+        {
+          "id": "es-a1-08-e3",
+          "type": "cloze",
+          "item": "es-a1-08-d5",
+          "gap": "las",
+          "options": [
+            "las",
+            "los",
+            "el"
+          ]
+        },
+        {
+          "id": "es-a1-08-e4",
+          "type": "order",
+          "item": "es-a1-08-d1",
+          "segments": [
+            "¿Tienes",
+            "tiempo",
+            "el",
+            "sábado?"
+          ],
+          "extra": [
+            "en"
+          ]
+        },
+        {
+          "id": "es-a1-08-e5",
+          "type": "choice",
+          "item": "es-a1-08-v5",
+          "direction": "toTarget",
+          "options": [
+            "es-a1-08-v5",
+            "es-a1-08-v6",
+            "es-a1-08-v1"
+          ]
+        },
+        {
+          "id": "es-a1-08-e6",
+          "type": "write",
+          "item": "es-a1-08-v4"
+        },
+        {
+          "id": "es-a1-08-e7",
+          "type": "situation",
+          "mode": "write",
+          "answers": [
+            "¿Tienes tiempo el domingo?",
+            "¿Estás libre el domingo?",
+            "¿Tienes tiempo el domingo? ¿Vamos al cine?"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "es-a1-09",
+      "minutes": 8,
+      "dialogue": [
+        {
+          "id": "es-a1-09-d1",
+          "speaker": "Marco",
+          "text": "Buenas noches, he reservado una mesa para dos."
+        },
+        {
+          "id": "es-a1-09-d2",
+          "speaker": "Camarero",
+          "text": "Por aquí, por favor. Aquí tiene la carta."
+        },
+        {
+          "id": "es-a1-09-d3",
+          "speaker": "Camarero",
+          "text": "¿Qué desean?"
+        },
+        {
+          "id": "es-a1-09-d4",
+          "speaker": "Marco",
+          "text": "Para mí, la sopa y una ensalada."
+        },
+        {
+          "id": "es-a1-09-d5",
+          "speaker": "Marco",
+          "text": "La cuenta, por favor."
+        },
+        {
+          "id": "es-a1-09-d6",
+          "speaker": "Camarero",
+          "text": "¡Ahora mismo!"
+        }
+      ],
+      "vocabulary": [
+        {
+          "id": "es-a1-09-v1",
+          "text": "la carta"
+        },
+        {
+          "id": "es-a1-09-v2",
+          "text": "la sopa",
+          "accept": [
+            "sopa"
+          ]
+        },
+        {
+          "id": "es-a1-09-v3",
+          "text": "el pescado"
+        },
+        {
+          "id": "es-a1-09-v4",
+          "text": "el postre"
+        },
+        {
+          "id": "es-a1-09-v5",
+          "text": "riquísimo"
+        },
+        {
+          "id": "es-a1-09-v6",
+          "text": "la mesa"
+        }
+      ],
+      "exercises": [
+        {
+          "id": "es-a1-09-e1",
+          "type": "listen",
+          "item": "es-a1-09-v5",
+          "options": [
+            "es-a1-09-v5",
+            "es-a1-09-v2",
+            "es-a1-09-v3"
+          ]
+        },
+        {
+          "id": "es-a1-09-e2",
+          "type": "choice",
+          "item": "es-a1-09-d3",
+          "direction": "toSource",
+          "options": [
+            "es-a1-09-d3",
+            "es-a1-09-d2",
+            "es-a1-09-d5"
+          ]
+        },
+        {
+          "id": "es-a1-09-e3",
+          "type": "cloze",
+          "item": "es-a1-09-d1",
+          "gap": "reservado",
+          "options": [
+            "reservado",
+            "reservar",
+            "reserva"
+          ]
+        },
+        {
+          "id": "es-a1-09-e4",
+          "type": "order",
+          "item": "es-a1-09-d4",
+          "segments": [
+            "Para",
+            "mí,",
+            "la",
+            "sopa",
+            "y",
+            "una ensalada."
+          ],
+          "extra": [
+            "de"
+          ]
+        },
+        {
+          "id": "es-a1-09-e5",
+          "type": "choice",
+          "item": "es-a1-09-v3",
+          "direction": "toTarget",
+          "options": [
+            "es-a1-09-v3",
+            "es-a1-09-v4",
+            "es-a1-09-v6"
+          ]
+        },
+        {
+          "id": "es-a1-09-e6",
+          "type": "write",
+          "item": "es-a1-09-v2"
+        },
+        {
+          "id": "es-a1-09-e7",
+          "type": "situation",
+          "mode": "write",
+          "answers": [
+            "La cuenta, por favor.",
+            "¿Me trae la cuenta, por favor?",
+            "¿Nos trae la cuenta, por favor?"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "es-a1-10",
+      "minutes": 6,
+      "dialogue": [
+        {
+          "id": "es-a1-10-d1",
+          "speaker": "Lucía",
+          "text": "¿Qué haces el fin de semana?"
+        },
+        {
+          "id": "es-a1-10-d2",
+          "speaker": "Marco",
+          "text": "Los sábados juego al fútbol."
+        },
+        {
+          "id": "es-a1-10-d3",
+          "speaker": "Marco",
+          "text": "Los domingos leo un libro."
+        },
+        {
+          "id": "es-a1-10-d4",
+          "speaker": "Lucía",
+          "text": "Yo voy a la piscina con mi hermana."
+        },
+        {
+          "id": "es-a1-10-d5",
+          "speaker": "Marco",
+          "text": "¿Te gusta nadar?"
+        },
+        {
+          "id": "es-a1-10-d6",
+          "speaker": "Lucía",
+          "text": "¡Sí, muchísimo!"
+        }
+      ],
+      "vocabulary": [
+        {
+          "id": "es-a1-10-v1",
+          "text": "el fútbol"
+        },
+        {
+          "id": "es-a1-10-v2",
+          "text": "el libro",
+          "accept": [
+            "libro",
+            "un libro"
+          ]
+        },
+        {
+          "id": "es-a1-10-v3",
+          "text": "la música"
+        },
+        {
+          "id": "es-a1-10-v4",
+          "text": "cocinar"
+        },
+        {
+          "id": "es-a1-10-v5",
+          "text": "nadar"
+        },
+        {
+          "id": "es-a1-10-v6",
+          "text": "Me gusta la música."
+        }
+      ],
+      "exercises": [
+        {
+          "id": "es-a1-10-e1",
+          "type": "listen",
+          "item": "es-a1-10-v3",
+          "options": [
+            "es-a1-10-v1",
+            "es-a1-10-v2",
+            "es-a1-10-v3"
+          ]
+        },
+        {
+          "id": "es-a1-10-e2",
+          "type": "choice",
+          "item": "es-a1-10-d1",
+          "direction": "toSource",
+          "options": [
+            "es-a1-10-d1",
+            "es-a1-10-d4",
+            "es-a1-10-d5"
+          ]
+        },
+        {
+          "id": "es-a1-10-e3",
+          "type": "cloze",
+          "item": "es-a1-10-d2",
+          "gap": "juego",
+          "options": [
+            "juego",
+            "hago",
+            "voy"
+          ]
+        },
+        {
+          "id": "es-a1-10-e4",
+          "type": "order",
+          "item": "es-a1-10-d3",
+          "segments": [
+            "Los",
+            "domingos",
+            "leo",
+            "un",
+            "libro."
+          ],
+          "extra": [
+            "el"
+          ]
+        },
+        {
+          "id": "es-a1-10-e5",
+          "type": "choice",
+          "item": "es-a1-10-v5",
+          "direction": "toTarget",
+          "options": [
+            "es-a1-10-v5",
+            "es-a1-10-v4",
+            "es-a1-10-v2"
+          ]
+        },
+        {
+          "id": "es-a1-10-e6",
+          "type": "write",
+          "item": "es-a1-10-v2"
+        },
+        {
+          "id": "es-a1-10-e7",
+          "type": "situation",
+          "mode": "write",
+          "answers": [
+            "Me gusta cocinar.",
+            "Me encanta cocinar."
+          ]
+        }
+      ]
+    }
+  ]
+}

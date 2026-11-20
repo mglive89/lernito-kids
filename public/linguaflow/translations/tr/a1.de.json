@@ -1,0 +1,399 @@
+{
+  "format": 1,
+  "id": "tr-a1.de",
+  "content": "tr-a1",
+  "source": "de",
+  "target": "tr",
+  "version": "1.0.0",
+  "quality": "unreviewed",
+  "course": {
+    "title": "Türkisch A1 – Alltag in der Türkei",
+    "description": "Zehn kurze Lektionen zu echten Situationen: sich vorstellen, einkaufen, im Café, am Bahnhof, beim Arzt, im Restaurant und in der Freizeit."
+  },
+  "lessons": {
+    "tr-a1-01": {
+      "title": "Hallo! Ich stelle mich vor",
+      "goal": "Begrüßen, sagen, wie du heißt und woher du kommst."
+    },
+    "tr-a1-02": {
+      "title": "Auf dem Markt",
+      "goal": "Brot und Obst kaufen und fragen, was es kostet."
+    },
+    "tr-a1-03": {
+      "title": "Im Café",
+      "goal": "Getränke bestellen und bezahlen."
+    },
+    "tr-a1-04": {
+      "title": "Im Supermarkt",
+      "goal": "Fragen, wo es etwas gibt, und die Antwort verstehen."
+    },
+    "tr-a1-05": {
+      "title": "Nach dem Weg fragen",
+      "goal": "Nach dem Weg fragen und einfache Wegbeschreibungen verstehen."
+    },
+    "tr-a1-06": {
+      "title": "Am Bahnhof",
+      "goal": "Eine Fahrkarte kaufen und fragen, von welchem Gleis der Zug fährt."
+    },
+    "tr-a1-07": {
+      "title": "Beim Arzt",
+      "goal": "Sagen, was dir fehlt, und einen Rat verstehen."
+    },
+    "tr-a1-08": {
+      "title": "Hast du am Samstag Zeit?",
+      "goal": "Etwas vorschlagen, Wochentage und Uhrzeit."
+    },
+    "tr-a1-09": {
+      "title": "Im Restaurant",
+      "goal": "Sagen, dass du reserviert hast, bestellen und um die Rechnung bitten."
+    },
+    "tr-a1-10": {
+      "title": "Das Wochenende",
+      "goal": "Über deine Freizeit sprechen und sagen, was du magst."
+    }
+  },
+  "items": {
+    "tr-a1-01-d1": "Hallo! Ich bin Elif.",
+    "tr-a1-01-d2": "Hallo, Elif! Ich heiße Marco.",
+    "tr-a1-01-d3": "Woher kommst du?",
+    "tr-a1-01-d4": "Ich komme aus Italien. Und du?",
+    "tr-a1-01-d5": "Ich komme aus Izmir. Freut mich!",
+    "tr-a1-01-d6": "Freut mich auch! Bis bald.",
+    "tr-a1-01-v1": "Guten Morgen",
+    "tr-a1-01-v2": "Guten Abend",
+    "tr-a1-01-v3": "Auf Wiedersehen",
+    "tr-a1-01-v4": "Wie heißt du?",
+    "tr-a1-01-v5": "Danke",
+    "tr-a1-01-v6": "Bitte",
+    "tr-a1-02-d1": "Guten Tag! Was möchten Sie?",
+    "tr-a1-02-d2": "Ich möchte ein Brot, bitte.",
+    "tr-a1-02-d3": "Bitte schön. Noch etwas?",
+    "tr-a1-02-d4": "Ja, auch drei Äpfel.",
+    "tr-a1-02-d5": "Was kostet das?",
+    "tr-a1-02-d6": "Das macht vierzig Lira.",
+    "tr-a1-02-v1": "das Brot",
+    "tr-a1-02-v2": "der Apfel",
+    "tr-a1-02-v3": "der Käse",
+    "tr-a1-02-v4": "der Kuchen",
+    "tr-a1-02-v5": "Was kostet das?",
+    "tr-a1-02-v6": "drei",
+    "tr-a1-03-d1": "Guten Tag! Was nehmen Sie?",
+    "tr-a1-03-d2": "Einen Tee, bitte.",
+    "tr-a1-03-d3": "Mit Milch oder mit Zitrone?",
+    "tr-a1-03-d4": "Mit Zitrone. Und ein Glas Wasser.",
+    "tr-a1-03-d5": "Kann ich bitte bezahlen?",
+    "tr-a1-03-d6": "Natürlich. Das macht sechzig Lira.",
+    "tr-a1-03-v1": "der Kaffee",
+    "tr-a1-03-v2": "der Tee",
+    "tr-a1-03-v3": "das Wasser",
+    "tr-a1-03-v4": "die Milch",
+    "tr-a1-03-v5": "der Orangensaft",
+    "tr-a1-03-v6": "die Rechnung",
+    "tr-a1-04-d1": "Entschuldigung, wo ist der Reis?",
+    "tr-a1-04-d2": "Der Reis ist dort, rechts.",
+    "tr-a1-04-d3": "Und die Eier?",
+    "tr-a1-04-d4": "Die sind neben der Milch.",
+    "tr-a1-04-d5": "Vielen Dank!",
+    "tr-a1-04-d6": "Gern geschehen!",
+    "tr-a1-04-v1": "der Reis",
+    "tr-a1-04-v2": "die Eier",
+    "tr-a1-04-v3": "das Obst",
+    "tr-a1-04-v4": "rechts",
+    "tr-a1-04-v5": "links",
+    "tr-a1-04-v6": "die Kasse",
+    "tr-a1-05-d1": "Entschuldigung, wo ist der Bahnhof?",
+    "tr-a1-05-d2": "Gehen Sie immer geradeaus.",
+    "tr-a1-05-d3": "Dann biegen Sie links ab.",
+    "tr-a1-05-d4": "Ist es weit?",
+    "tr-a1-05-d5": "Nein, es sind fünf Minuten zu Fuß.",
+    "tr-a1-05-d6": "Danke, auf Wiedersehen!",
+    "tr-a1-05-v1": "der Bahnhof",
+    "tr-a1-05-v2": "das Museum",
+    "tr-a1-05-v3": "geradeaus",
+    "tr-a1-05-v4": "nah",
+    "tr-a1-05-v5": "weit",
+    "tr-a1-05-v6": "die Bushaltestelle",
+    "tr-a1-06-d1": "Eine Fahrkarte nach Ankara, bitte.",
+    "tr-a1-06-d2": "Einfach oder hin und zurück?",
+    "tr-a1-06-d3": "Hin und zurück.",
+    "tr-a1-06-d4": "Von welchem Gleis fährt der Zug?",
+    "tr-a1-06-d5": "Von Gleis drei, um zehn Uhr.",
+    "tr-a1-06-d6": "Super, danke!",
+    "tr-a1-06-v1": "der Zug",
+    "tr-a1-06-v2": "die Fahrkarte",
+    "tr-a1-06-v3": "das Gleis",
+    "tr-a1-06-v4": "der Bus",
+    "tr-a1-06-v5": "heute",
+    "tr-a1-06-v6": "morgen",
+    "tr-a1-07-d1": "Guten Tag. Was fehlt Ihnen?",
+    "tr-a1-07-d2": "Mir tut der Kopf weh.",
+    "tr-a1-07-d3": "Haben Sie auch Fieber?",
+    "tr-a1-07-d4": "Ja, ein bisschen. Und ich bin sehr müde.",
+    "tr-a1-07-d5": "Trinken Sie viel Wasser und ruhen Sie sich aus.",
+    "tr-a1-07-d6": "Vielen Dank.",
+    "tr-a1-07-v1": "der Kopf",
+    "tr-a1-07-v2": "der Bauch",
+    "tr-a1-07-v3": "das Fieber",
+    "tr-a1-07-v4": "das Medikament",
+    "tr-a1-07-v5": "krank",
+    "tr-a1-07-v6": "Mir geht es gut.",
+    "tr-a1-08-d1": "Hast du am Samstag Zeit?",
+    "tr-a1-08-d2": "Ja! Was machen wir?",
+    "tr-a1-08-d3": "Gehen wir ins Kino?",
+    "tr-a1-08-d4": "Gute Idee! Um wie viel Uhr?",
+    "tr-a1-08-d5": "Um sieben Uhr abends.",
+    "tr-a1-08-d6": "Okay, bis Samstag!",
+    "tr-a1-08-v1": "Montag",
+    "tr-a1-08-v2": "Freitag",
+    "tr-a1-08-v3": "Samstag",
+    "tr-a1-08-v4": "Sonntag",
+    "tr-a1-08-v5": "Wie spät ist es?",
+    "tr-a1-08-v6": "heute Abend",
+    "tr-a1-09-d1": "Guten Abend, ich habe einen Tisch für zwei reserviert.",
+    "tr-a1-09-d2": "Bitte schön, hier ist die Speisekarte.",
+    "tr-a1-09-d3": "Was möchten Sie?",
+    "tr-a1-09-d4": "Für mich die Suppe und einen Salat.",
+    "tr-a1-09-d5": "Die Rechnung, bitte.",
+    "tr-a1-09-d6": "Sofort!",
+    "tr-a1-09-v1": "die Speisekarte",
+    "tr-a1-09-v2": "die Suppe",
+    "tr-a1-09-v3": "der Fisch",
+    "tr-a1-09-v4": "der Nachtisch",
+    "tr-a1-09-v5": "sehr lecker",
+    "tr-a1-09-v6": "der Tisch",
+    "tr-a1-10-d1": "Was machst du am Wochenende?",
+    "tr-a1-10-d2": "Am Samstag spiele ich Fußball.",
+    "tr-a1-10-d3": "Am Sonntag lese ich ein Buch.",
+    "tr-a1-10-d4": "Ich gehe mit meiner Schwester ins Schwimmbad.",
+    "tr-a1-10-d5": "Schwimmst du gern?",
+    "tr-a1-10-d6": "Ja, sehr gern!",
+    "tr-a1-10-v1": "der Fußball",
+    "tr-a1-10-v2": "das Buch",
+    "tr-a1-10-v3": "die Musik",
+    "tr-a1-10-v4": "kochen",
+    "tr-a1-10-v5": "schwimmen",
+    "tr-a1-10-v6": "Ich mag Musik."
+  },
+  "exercises": {
+    "tr-a1-01-e1": {
+      "explain": "„Hoşça kal“ bedeutet „Auf Wiedersehen“."
+    },
+    "tr-a1-01-e2": {
+      "explain": "„Nerelisin?“ bedeutet „Woher kommst du?“."
+    },
+    "tr-a1-01-e3": {
+      "explain": "Der ganze Satz heißt „Merhaba Elif! Benim adım Marco“ = „Hallo, Elif! Ich heiße Marco“. „Benim adım …“ = „Mein Name ist …“: -ım heißt „mein“. „Adın ne?“ = „Wie heißt du?“"
+    },
+    "tr-a1-01-e4": {
+      "explain": "Richtige Reihenfolge: „Ben İtalya'danım. Ya sen?“ = „Ich komme aus Italien. Und du?“. „-dan / -den“ = „aus“: İtalya’dan = aus Italien."
+    },
+    "tr-a1-01-e5": {
+      "explain": "„Günaydın“ bedeutet „Guten Morgen“."
+    },
+    "tr-a1-01-e6": {
+      "explain": "„Danke“ heißt „Teşekkürler“. Groß- und Kleinschreibung zählt nicht, aber jeder Buchstabe und jedes Zeichen."
+    },
+    "tr-a1-01-e7": {
+      "explain": "Du kannst sagen: „Benim adım Giulia“ oder „Adım Giulia“ oder „Ben Giulia“.",
+      "prompt": "Eine neue Mitschülerin fragt dich, wie du heißt. Antworte, dass du Giulia heißt."
+    },
+    "tr-a1-02-e1": {
+      "explain": "„elma“ bedeutet „der Apfel“."
+    },
+    "tr-a1-02-e2": {
+      "explain": "„Bir ekmek istiyorum, lütfen“ bedeutet „Ich möchte ein Brot, bitte“."
+    },
+    "tr-a1-02-e3": {
+      "explain": "Der ganze Satz heißt „Bir ekmek istiyorum, lütfen“ = „Ich möchte ein Brot, bitte“. „istiyorum“ = „ich möchte“. Das Verb steht am Satzende."
+    },
+    "tr-a1-02-e4": {
+      "explain": "Richtige Reihenfolge: „Evet, üç elma da“ = „Ja, auch drei Äpfel“. Nach einer Zahl bleibt das Nomen in der Einzahl: üç elma = drei Äpfel."
+    },
+    "tr-a1-02-e5": {
+      "explain": "„pasta“ bedeutet „der Kuchen“."
+    },
+    "tr-a1-02-e6": {
+      "explain": "„das Brot“ heißt „ekmek“. Groß- und Kleinschreibung zählt nicht, aber jeder Buchstabe und jedes Zeichen."
+    },
+    "tr-a1-02-e7": {
+      "explain": "Du kannst sagen: „Bir ekmek istiyorum, lütfen“ oder „Bir ekmek, lütfen“ oder „Bir ekmek istiyorum“.",
+      "prompt": "Du bist auf dem Markt und möchtest ein Brot kaufen. Was sagst du zur Verkäuferin?"
+    },
+    "tr-a1-03-e1": {
+      "explain": "„çay“ bedeutet „der Tee“."
+    },
+    "tr-a1-03-e2": {
+      "explain": "„Sütlü mü, limonlu mu?“ bedeutet „Mit Milch oder mit Zitrone?“."
+    },
+    "tr-a1-03-e3": {
+      "explain": "Der ganze Satz heißt „Sütlü mü, limonlu mu?“ = „Mit Milch oder mit Zitrone?“. „-lı / -lü“ = „mit“: sütlü = mit Milch, limonlu = mit Zitrone; „-sız / -süz“ = „ohne“."
+    },
+    "tr-a1-03-e4": {
+      "explain": "Richtige Reihenfolge: „Limonlu. Ve bir bardak su“ = „Mit Zitrone. Und ein Glas Wasser“."
+    },
+    "tr-a1-03-e5": {
+      "explain": "„su“ bedeutet „das Wasser“."
+    },
+    "tr-a1-03-e6": {
+      "explain": "„die Milch“ heißt „süt“. Groß- und Kleinschreibung zählt nicht, aber jeder Buchstabe und jedes Zeichen."
+    },
+    "tr-a1-03-e7": {
+      "explain": "Du kannst sagen: „Bir kahve, lütfen“ oder „Bir kahve istiyorum, lütfen“ oder „Bir kahve istiyorum“.",
+      "prompt": "Du bist im Café und möchtest einen Kaffee bestellen. Was sagst du?"
+    },
+    "tr-a1-04-e1": {
+      "explain": "„sağda“ bedeutet „rechts“."
+    },
+    "tr-a1-04-e2": {
+      "explain": "„Affedersiniz, pirinç nerede?“ bedeutet „Entschuldigung, wo ist der Reis?“."
+    },
+    "tr-a1-04-e3": {
+      "explain": "Der ganze Satz heißt „Affedersiniz, pirinç nerede?“ = „Entschuldigung, wo ist der Reis?“. „nerede“ = wo, „ne“ = was, „kim“ = wer. Das Fragewort steht oft am Ende."
+    },
+    "tr-a1-04-e4": {
+      "explain": "Richtige Reihenfolge: „Pirinç orada, sağda“ = „Der Reis ist dort, rechts“."
+    },
+    "tr-a1-04-e5": {
+      "explain": "„solda“ bedeutet „links“."
+    },
+    "tr-a1-04-e6": {
+      "explain": "„der Reis“ heißt „pirinç“. Groß- und Kleinschreibung zählt nicht, aber jeder Buchstabe und jedes Zeichen."
+    },
+    "tr-a1-04-e7": {
+      "explain": "Du kannst sagen: „Affedersiniz, süt nerede?“ oder „Süt nerede?“ oder „Pardon, süt nerede?“.",
+      "prompt": "Du findest die Milch nicht. Frag einen Mitarbeiter, wo sie ist."
+    },
+    "tr-a1-05-e1": {
+      "explain": "„düz“ bedeutet „geradeaus“."
+    },
+    "tr-a1-05-e2": {
+      "explain": "„Uzak mı?“ bedeutet „Ist es weit?“."
+    },
+    "tr-a1-05-e3": {
+      "explain": "Der ganze Satz heißt „Sonra sola dönün“ = „Dann biegen Sie links ab“. „sola“ = nach links, „sağa“ = nach rechts."
+    },
+    "tr-a1-05-e4": {
+      "explain": "Richtige Reihenfolge: „Hayır, yürüyerek beş dakika“ = „Nein, es sind fünf Minuten zu Fuß“. „yürüyerek“ = zu Fuß."
+    },
+    "tr-a1-05-e5": {
+      "explain": "„yakın“ bedeutet „nah“."
+    },
+    "tr-a1-05-e6": {
+      "explain": "„das Museum“ heißt „müze“. Groß- und Kleinschreibung zählt nicht, aber jeder Buchstabe und jedes Zeichen."
+    },
+    "tr-a1-05-e7": {
+      "explain": "Du kannst sagen: „Affedersiniz, müze nerede?“ oder „Müze nerede?“ oder „Pardon, müze nerede?“.",
+      "prompt": "Du suchst das Museum. Frag eine Passantin, wo es ist."
+    },
+    "tr-a1-06-e1": {
+      "explain": "„bilet“ bedeutet „die Fahrkarte“."
+    },
+    "tr-a1-06-e2": {
+      "explain": "„Tek yön mü, gidiş-dönüş mü?“ bedeutet „Einfach oder hin und zurück?“."
+    },
+    "tr-a1-06-e3": {
+      "explain": "Der ganze Satz heißt „Tren hangi perondan kalkıyor?“ = „Von welchem Gleis fährt der Zug?“. „hangi“ = „welcher“: hangi peron = welches Gleis."
+    },
+    "tr-a1-06-e4": {
+      "explain": "Richtige Reihenfolge: „Ankara'ya bir bilet, lütfen“ = „Eine Fahrkarte nach Ankara, bitte“. „-ya / -e“ = „nach“: Ankara’ya = nach Ankara."
+    },
+    "tr-a1-06-e5": {
+      "explain": "„tren“ bedeutet „der Zug“."
+    },
+    "tr-a1-06-e6": {
+      "explain": "„heute“ heißt „bugün“. Groß- und Kleinschreibung zählt nicht, aber jeder Buchstabe und jedes Zeichen."
+    },
+    "tr-a1-06-e7": {
+      "explain": "Du kannst sagen: „Ankara'ya bir bilet, lütfen“ oder „Ankara'ya gidiş-dönüş bir bilet, lütfen“ oder „Ankara'ya bir bilet istiyorum“.",
+      "prompt": "Am Schalter möchtest du eine Fahrkarte nach Ankara. Was sagst du?"
+    },
+    "tr-a1-07-e1": {
+      "explain": "„baş“ bedeutet „der Kopf“."
+    },
+    "tr-a1-07-e2": {
+      "explain": "„Ateşiniz de var mı?“ bedeutet „Haben Sie auch Fieber?“."
+    },
+    "tr-a1-07-e3": {
+      "explain": "Der ganze Satz heißt „Başım ağrıyor“ = „Mir tut der Kopf weh“. „Başım ağrıyor“ = „Mein Kopf tut weh“: baş (Kopf) + ım (mein) + ağrıyor (tut weh)."
+    },
+    "tr-a1-07-e4": {
+      "explain": "Richtige Reihenfolge: „Evet, biraz. Ve çok yorgunum“ = „Ja, ein bisschen. Und ich bin sehr müde“."
+    },
+    "tr-a1-07-e5": {
+      "explain": "„ilaç“ bedeutet „das Medikament“."
+    },
+    "tr-a1-07-e6": {
+      "explain": "„der Kopf“ heißt „baş“. Groß- und Kleinschreibung zählt nicht, aber jeder Buchstabe und jedes Zeichen."
+    },
+    "tr-a1-07-e7": {
+      "explain": "Du kannst sagen: „Karnım ağrıyor“ oder „Midem ağrıyor“.",
+      "prompt": "Die Ärztin fragt, was dir fehlt. Sag, dass dir der Bauch wehtut."
+    },
+    "tr-a1-08-e1": {
+      "explain": "„cumartesi“ bedeutet „Samstag“."
+    },
+    "tr-a1-08-e2": {
+      "explain": "„İyi fikir! Saat kaçta?“ bedeutet „Gute Idee! Um wie viel Uhr?“."
+    },
+    "tr-a1-08-e3": {
+      "explain": "Der ganze Satz heißt „İyi fikir! Saat kaçta?“ = „Gute Idee! Um wie viel Uhr?“. „Saat kaç?“ = „Wie spät ist es?“; „Saat kaçta?“ = „Um wie viel Uhr?“"
+    },
+    "tr-a1-08-e4": {
+      "explain": "Richtige Reihenfolge: „Cumartesi boş musun?“ = „Hast du am Samstag Zeit?“."
+    },
+    "tr-a1-08-e5": {
+      "explain": "„Saat kaç?“ bedeutet „Wie spät ist es?“."
+    },
+    "tr-a1-08-e6": {
+      "explain": "„Sonntag“ heißt „pazar“. Groß- und Kleinschreibung zählt nicht, aber jeder Buchstabe und jedes Zeichen."
+    },
+    "tr-a1-08-e7": {
+      "explain": "Du kannst sagen: „Pazar boş musun?“ oder „Pazar günü boş musun?“ oder „Pazar günü müsait misin?“.",
+      "prompt": "Du möchtest mit einem Freund ins Kino. Frag ihn, ob er am Sonntag Zeit hat."
+    },
+    "tr-a1-09-e1": {
+      "explain": "„çok lezzetli“ bedeutet „sehr lecker“."
+    },
+    "tr-a1-09-e2": {
+      "explain": "„Ne alırsınız?“ bedeutet „Was möchten Sie?“."
+    },
+    "tr-a1-09-e3": {
+      "explain": "Der ganze Satz heißt „İyi akşamlar, iki kişilik masa ayırttım“ = „Guten Abend, ich habe einen Tisch für zwei reserviert“. „-tım / -dım“ = Vergangenheit mit „ich“: ayırttım = ich habe reserviert."
+    },
+    "tr-a1-09-e4": {
+      "explain": "Richtige Reihenfolge: „Ben çorba ve salata alayım“ = „Für mich die Suppe und einen Salat“."
+    },
+    "tr-a1-09-e5": {
+      "explain": "„balık“ bedeutet „der Fisch“."
+    },
+    "tr-a1-09-e6": {
+      "explain": "„die Suppe“ heißt „çorba“. Groß- und Kleinschreibung zählt nicht, aber jeder Buchstabe und jedes Zeichen."
+    },
+    "tr-a1-09-e7": {
+      "explain": "Du kannst sagen: „Hesap, lütfen“ oder „Hesabı alabilir miyim?“ oder „Hesap lütfen“.",
+      "prompt": "Du bist fertig mit dem Essen. Bitte den Kellner um die Rechnung."
+    },
+    "tr-a1-10-e1": {
+      "explain": "„müzik“ bedeutet „die Musik“."
+    },
+    "tr-a1-10-e2": {
+      "explain": "„Hafta sonu ne yapıyorsun?“ bedeutet „Was machst du am Wochenende?“."
+    },
+    "tr-a1-10-e3": {
+      "explain": "Der ganze Satz heißt „Cumartesi futbol oynuyorum“ = „Am Samstag spiele ich Fußball“. „oynamak“ = spielen: futbol oynuyorum = ich spiele Fußball."
+    },
+    "tr-a1-10-e4": {
+      "explain": "Richtige Reihenfolge: „Pazar günü kitap okuyorum“ = „Am Sonntag lese ich ein Buch“. Im Türkischen steht das Verb am Satzende."
+    },
+    "tr-a1-10-e5": {
+      "explain": "„yüzmek“ bedeutet „schwimmen“."
+    },
+    "tr-a1-10-e6": {
+      "explain": "„das Buch“ heißt „kitap“. Groß- und Kleinschreibung zählt nicht, aber jeder Buchstabe und jedes Zeichen."
+    },
+    "tr-a1-10-e7": {
+      "explain": "Du kannst sagen: „Yemek yapmayı seviyorum“ oder „Yemek yapmayı çok seviyorum“.",
+      "prompt": "Eine neue Freundin fragt, was du gern machst. Antworte, dass du gern kochst."
+    }
+  }
+}

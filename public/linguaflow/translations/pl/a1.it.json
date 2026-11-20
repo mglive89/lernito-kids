@@ -1,0 +1,399 @@
+{
+  "format": 1,
+  "id": "pl-a1.it",
+  "content": "pl-a1",
+  "source": "it",
+  "target": "pl",
+  "version": "1.0.0",
+  "quality": "unreviewed",
+  "course": {
+    "title": "Polacco A1 – Vita di tutti i giorni in Polonia",
+    "description": "Dieci lezioni brevi su situazioni reali: presentarsi, fare la spesa, al bar, in stazione, dal medico, al ristorante e nel tempo libero."
+  },
+  "lessons": {
+    "pl-a1-01": {
+      "title": "Ciao! Mi presento",
+      "goal": "Salutare, dire come ti chiami e da dove vieni."
+    },
+    "pl-a1-02": {
+      "title": "Al mercato",
+      "goal": "Comprare pane e frutta e chiedere quanto costa."
+    },
+    "pl-a1-03": {
+      "title": "Al bar",
+      "goal": "Ordinare da bere e pagare."
+    },
+    "pl-a1-04": {
+      "title": "Al supermercato",
+      "goal": "Chiedere dove si trovano i prodotti e capire la risposta."
+    },
+    "pl-a1-05": {
+      "title": "Chiedere la strada",
+      "goal": "Chiedere come arrivare in un posto e capire indicazioni semplici."
+    },
+    "pl-a1-06": {
+      "title": "In stazione",
+      "goal": "Comprare un biglietto e chiedere da quale binario parte il treno."
+    },
+    "pl-a1-07": {
+      "title": "Dal medico",
+      "goal": "Dire cosa non va e capire un consiglio."
+    },
+    "pl-a1-08": {
+      "title": "Hai tempo sabato?",
+      "goal": "Proporre un’uscita, i giorni della settimana e l’ora."
+    },
+    "pl-a1-09": {
+      "title": "Al ristorante",
+      "goal": "Dire che hai prenotato, ordinare e chiedere il conto."
+    },
+    "pl-a1-10": {
+      "title": "Il fine settimana",
+      "goal": "Parlare di cosa fai nel tempo libero e di cosa ti piace."
+    }
+  },
+  "items": {
+    "pl-a1-01-d1": "Ciao! Sono Zosia.",
+    "pl-a1-01-d2": "Ciao, Zosia! Mi chiamo Marco.",
+    "pl-a1-01-d3": "Di dove sei?",
+    "pl-a1-01-d4": "Vengo dall’Italia. E tu?",
+    "pl-a1-01-d5": "Io sono di Cracovia. Piacere!",
+    "pl-a1-01-d6": "Piacere mio! A presto.",
+    "pl-a1-01-v1": "Buongiorno",
+    "pl-a1-01-v2": "Buonasera",
+    "pl-a1-01-v3": "Arrivederci",
+    "pl-a1-01-v4": "Come ti chiami?",
+    "pl-a1-01-v5": "Grazie",
+    "pl-a1-01-v6": "Per favore",
+    "pl-a1-02-d1": "Buongiorno! Cosa desidera?",
+    "pl-a1-02-d2": "Vorrei un pane, per favore.",
+    "pl-a1-02-d3": "Ecco a lei. Qualcos’altro?",
+    "pl-a1-02-d4": "Sì, anche tre mele.",
+    "pl-a1-02-d5": "Quanto costa?",
+    "pl-a1-02-d6": "Sono dodici złoty.",
+    "pl-a1-02-v1": "il pane",
+    "pl-a1-02-v2": "la mela",
+    "pl-a1-02-v3": "il formaggio",
+    "pl-a1-02-v4": "la torta",
+    "pl-a1-02-v5": "Quanto costa?",
+    "pl-a1-02-v6": "tre",
+    "pl-a1-03-d1": "Buongiorno! Cosa prende?",
+    "pl-a1-03-d2": "Un tè, per favore.",
+    "pl-a1-03-d3": "Con latte o con limone?",
+    "pl-a1-03-d4": "Con limone. E un bicchiere d’acqua.",
+    "pl-a1-03-d5": "Posso pagare, per favore?",
+    "pl-a1-03-d6": "Certo. Sono diciotto złoty.",
+    "pl-a1-03-v1": "il caffè",
+    "pl-a1-03-v2": "il tè",
+    "pl-a1-03-v3": "l’acqua",
+    "pl-a1-03-v4": "il latte",
+    "pl-a1-03-v5": "il succo d’arancia",
+    "pl-a1-03-v6": "il conto",
+    "pl-a1-04-d1": "Scusi, dov’è il riso?",
+    "pl-a1-04-d2": "Il riso è lì, a destra.",
+    "pl-a1-04-d3": "E le uova?",
+    "pl-a1-04-d4": "Sono vicino al latte.",
+    "pl-a1-04-d5": "Grazie mille!",
+    "pl-a1-04-d6": "Prego!",
+    "pl-a1-04-v1": "il riso",
+    "pl-a1-04-v2": "le uova",
+    "pl-a1-04-v3": "la frutta",
+    "pl-a1-04-v4": "a destra",
+    "pl-a1-04-v5": "a sinistra",
+    "pl-a1-04-v6": "la cassa",
+    "pl-a1-05-d1": "Scusi, dov’è la stazione?",
+    "pl-a1-05-d2": "Vada sempre dritto.",
+    "pl-a1-05-d3": "Poi giri a sinistra.",
+    "pl-a1-05-d4": "È lontano?",
+    "pl-a1-05-d5": "No, sono cinque minuti a piedi.",
+    "pl-a1-05-d6": "Grazie, arrivederci!",
+    "pl-a1-05-v1": "la stazione",
+    "pl-a1-05-v2": "il museo",
+    "pl-a1-05-v3": "dritto",
+    "pl-a1-05-v4": "vicino",
+    "pl-a1-05-v5": "lontano",
+    "pl-a1-05-v6": "la fermata dell’autobus",
+    "pl-a1-06-d1": "Un biglietto per Varsavia, per favore.",
+    "pl-a1-06-d2": "Solo andata o andata e ritorno?",
+    "pl-a1-06-d3": "Andata e ritorno.",
+    "pl-a1-06-d4": "Da quale binario parte il treno?",
+    "pl-a1-06-d5": "Dal binario tre, alle dieci.",
+    "pl-a1-06-d6": "Perfetto, grazie!",
+    "pl-a1-06-v1": "il treno",
+    "pl-a1-06-v2": "il biglietto",
+    "pl-a1-06-v3": "il binario",
+    "pl-a1-06-v4": "l’autobus",
+    "pl-a1-06-v5": "oggi",
+    "pl-a1-06-v6": "domani",
+    "pl-a1-07-d1": "Buongiorno. Cosa c’è che non va?",
+    "pl-a1-07-d2": "Mi fa male la testa.",
+    "pl-a1-07-d3": "Ha anche la febbre?",
+    "pl-a1-07-d4": "Sì, un po’. E sono molto stanco.",
+    "pl-a1-07-d5": "Beva molta acqua e riposi.",
+    "pl-a1-07-d6": "Grazie mille.",
+    "pl-a1-07-v1": "la testa",
+    "pl-a1-07-v2": "la pancia",
+    "pl-a1-07-v3": "la febbre",
+    "pl-a1-07-v4": "la medicina",
+    "pl-a1-07-v5": "malato",
+    "pl-a1-07-v6": "Sto bene.",
+    "pl-a1-08-d1": "Hai tempo sabato?",
+    "pl-a1-08-d2": "Sì! Cosa facciamo?",
+    "pl-a1-08-d3": "Andiamo al cinema?",
+    "pl-a1-08-d4": "Bella idea! A che ora?",
+    "pl-a1-08-d5": "Alle sette di sera.",
+    "pl-a1-08-d6": "Va bene, a sabato!",
+    "pl-a1-08-v1": "lunedì",
+    "pl-a1-08-v2": "venerdì",
+    "pl-a1-08-v3": "sabato",
+    "pl-a1-08-v4": "domenica",
+    "pl-a1-08-v5": "Che ore sono?",
+    "pl-a1-08-v6": "stasera",
+    "pl-a1-09-d1": "Buonasera, ho prenotato un tavolo per due.",
+    "pl-a1-09-d2": "Prego, ecco il menù.",
+    "pl-a1-09-d3": "Cosa desiderate?",
+    "pl-a1-09-d4": "Per me la zuppa e un’insalata.",
+    "pl-a1-09-d5": "Il conto, per favore.",
+    "pl-a1-09-d6": "Subito!",
+    "pl-a1-09-v1": "il menù",
+    "pl-a1-09-v2": "la zuppa",
+    "pl-a1-09-v3": "il pesce",
+    "pl-a1-09-v4": "il dolce",
+    "pl-a1-09-v5": "buonissimo",
+    "pl-a1-09-v6": "il tavolo",
+    "pl-a1-10-d1": "Cosa fai nel fine settimana?",
+    "pl-a1-10-d2": "Il sabato gioco a calcio.",
+    "pl-a1-10-d3": "La domenica leggo un libro.",
+    "pl-a1-10-d4": "Io vado in piscina con mia sorella.",
+    "pl-a1-10-d5": "Ti piace nuotare?",
+    "pl-a1-10-d6": "Sì, moltissimo!",
+    "pl-a1-10-v1": "il calcio",
+    "pl-a1-10-v2": "il libro",
+    "pl-a1-10-v3": "la musica",
+    "pl-a1-10-v4": "cucinare",
+    "pl-a1-10-v5": "nuotare",
+    "pl-a1-10-v6": "Mi piace la musica."
+  },
+  "exercises": {
+    "pl-a1-01-e1": {
+      "explain": "«Do widzenia» significa «Arrivederci»."
+    },
+    "pl-a1-01-e2": {
+      "explain": "«Skąd jesteś?» significa «Di dove sei?»."
+    },
+    "pl-a1-01-e3": {
+      "explain": "La frase completa è «Cześć, Zosiu! Mam na imię Marco» = «Ciao, Zosia! Mi chiamo Marco». «Mam na imię …» (letteralmente «ho di nome …») = «Mi chiamo …»."
+    },
+    "pl-a1-01-e4": {
+      "explain": "Ordine giusto: «Jestem z Włoch. A ty?» = «Vengo dall’Italia. E tu?». «z» + genitivo = «da»: z Włoch (dall’Italia), z Krakowa (da Cracovia)."
+    },
+    "pl-a1-01-e5": {
+      "explain": "«Dzień dobry» significa «Buongiorno»."
+    },
+    "pl-a1-01-e6": {
+      "explain": "«Grazie» si dice «Dziękuję». Le maiuscole non contano, ma ogni lettera e ogni accento sì."
+    },
+    "pl-a1-01-e7": {
+      "explain": "Puoi dire: «Mam na imię Giulia» oppure «Jestem Giulia» oppure «Nazywam się Giulia».",
+      "prompt": "Una nuova compagna di corso ti chiede come ti chiami. Rispondi che ti chiami Giulia."
+    },
+    "pl-a1-02-e1": {
+      "explain": "«jabłko» significa «la mela»."
+    },
+    "pl-a1-02-e2": {
+      "explain": "«Poproszę chleb» significa «Vorrei un pane, per favore»."
+    },
+    "pl-a1-02-e3": {
+      "explain": "La frase completa è «Poproszę chleb» = «Vorrei un pane, per favore». «Poproszę …» = «Vorrei …»: è il modo più comune per chiedere qualcosa nei negozi."
+    },
+    "pl-a1-02-e4": {
+      "explain": "Ordine giusto: «Tak, jeszcze trzy jabłka» = «Sì, anche tre mele». jabłko = mela, jabłka = mele."
+    },
+    "pl-a1-02-e5": {
+      "explain": "«ciasto» significa «la torta»."
+    },
+    "pl-a1-02-e6": {
+      "explain": "«il pane» si dice «chleb». Le maiuscole non contano, ma ogni lettera e ogni accento sì."
+    },
+    "pl-a1-02-e7": {
+      "explain": "Puoi dire: «Poproszę chleb» oppure «Poproszę jeden chleb» oppure «Chciałbym chleb».",
+      "prompt": "Sei al mercato e vuoi comprare un pane. Cosa dici alla venditrice?"
+    },
+    "pl-a1-03-e1": {
+      "explain": "«herbata» significa «il tè»."
+    },
+    "pl-a1-03-e2": {
+      "explain": "«Z mlekiem czy z cytryną?» significa «Con latte o con limone?»."
+    },
+    "pl-a1-03-e3": {
+      "explain": "La frase completa è «Z mlekiem czy z cytryną?» = «Con latte o con limone?». «czy» = «o» nelle domande con due possibilità; «i» = «e», «ale» = «ma»."
+    },
+    "pl-a1-03-e4": {
+      "explain": "Ordine giusto: «Czy mogę zapłacić?» = «Posso pagare, per favore?». «Czy» all’inizio trasforma la frase in una domanda."
+    },
+    "pl-a1-03-e5": {
+      "explain": "«woda» significa «l’acqua»."
+    },
+    "pl-a1-03-e6": {
+      "explain": "«il latte» si dice «mleko». Le maiuscole non contano, ma ogni lettera e ogni accento sì."
+    },
+    "pl-a1-03-e7": {
+      "explain": "Puoi dire: «Poproszę kawę» oppure «Poproszę jedną kawę» oppure «Kawę, proszę». Dopo «poproszę» kawa diventa kawę.",
+      "prompt": "Sei al bar e vuoi ordinare un caffè. Cosa dici?"
+    },
+    "pl-a1-04-e1": {
+      "explain": "«po prawej» significa «a destra»."
+    },
+    "pl-a1-04-e2": {
+      "explain": "«Przepraszam, gdzie jest ryż?» significa «Scusi, dov’è il riso?»."
+    },
+    "pl-a1-04-e3": {
+      "explain": "La frase completa è «Przepraszam, gdzie jest ryż?» = «Scusi, dov’è il riso?». «gdzie» = dove, «co» = che cosa, «kto» = chi."
+    },
+    "pl-a1-04-e4": {
+      "explain": "Ordine giusto: «Ryż jest tam, po prawej» = «Il riso è lì, a destra»."
+    },
+    "pl-a1-04-e5": {
+      "explain": "«po lewej» significa «a sinistra»."
+    },
+    "pl-a1-04-e6": {
+      "explain": "«il riso» si dice «ryż». Le maiuscole non contano, ma ogni lettera e ogni accento sì."
+    },
+    "pl-a1-04-e7": {
+      "explain": "Puoi dire: «Przepraszam, gdzie jest mleko?» oppure «Gdzie jest mleko?».",
+      "prompt": "Non trovi il latte. Chiedi a un commesso dov’è."
+    },
+    "pl-a1-05-e1": {
+      "explain": "«prosto» significa «dritto»."
+    },
+    "pl-a1-05-e2": {
+      "explain": "«Czy to daleko?» significa «È lontano?»."
+    },
+    "pl-a1-05-e3": {
+      "explain": "La frase completa è «Potem w lewo» = «Poi giri a sinistra». «w lewo» = a sinistra, «w prawo» = a destra, «prosto» = dritto."
+    },
+    "pl-a1-05-e4": {
+      "explain": "Ordine giusto: «Nie, pięć minut pieszo» = «No, sono cinque minuti a piedi». «pieszo» = a piedi."
+    },
+    "pl-a1-05-e5": {
+      "explain": "«blisko» significa «vicino»."
+    },
+    "pl-a1-05-e6": {
+      "explain": "«il museo» si dice «muzeum». Le maiuscole non contano, ma ogni lettera e ogni accento sì."
+    },
+    "pl-a1-05-e7": {
+      "explain": "Puoi dire: «Przepraszam, gdzie jest muzeum?» oppure «Gdzie jest muzeum?».",
+      "prompt": "Cerchi il museo. Chiedi a una passante dov’è."
+    },
+    "pl-a1-06-e1": {
+      "explain": "«bilet» significa «il biglietto»."
+    },
+    "pl-a1-06-e2": {
+      "explain": "«W jedną stronę czy w obie strony?» significa «Solo andata o andata e ritorno?»."
+    },
+    "pl-a1-06-e3": {
+      "explain": "La frase completa è «Z którego peronu odjeżdża pociąg?» = «Da quale binario parte il treno?». «Z którego peronu?» = «Da quale binario?»: dopo «z» si usa il genitivo."
+    },
+    "pl-a1-06-e4": {
+      "explain": "Ordine giusto: «Poproszę bilet do Warszawy» = «Un biglietto per Varsavia, per favore». Per la destinazione: «do» + genitivo: do Warszawy."
+    },
+    "pl-a1-06-e5": {
+      "explain": "«pociąg» significa «il treno»."
+    },
+    "pl-a1-06-e6": {
+      "explain": "«oggi» si dice «dzisiaj». Le maiuscole non contano, ma ogni lettera e ogni accento sì."
+    },
+    "pl-a1-06-e7": {
+      "explain": "Puoi dire: «Poproszę bilet do Warszawy» oppure «Bilet do Warszawy, proszę» oppure «Poproszę bilet w obie strony do Warszawy».",
+      "prompt": "Alla biglietteria vuoi un biglietto per Varsavia. Cosa dici?"
+    },
+    "pl-a1-07-e1": {
+      "explain": "«głowa» significa «la testa»."
+    },
+    "pl-a1-07-e2": {
+      "explain": "«Czy ma pan też gorączkę?» significa «Ha anche la febbre?»."
+    },
+    "pl-a1-07-e3": {
+      "explain": "La frase completa è «Boli mnie głowa» = «Mi fa male la testa». «Boli mnie …» = «Mi fa male …»: boli mnie głowa."
+    },
+    "pl-a1-07-e4": {
+      "explain": "Ordine giusto: «Tak, trochę. I jestem bardzo zmęczony» = «Sì, un po’. E sono molto stanco»."
+    },
+    "pl-a1-07-e5": {
+      "explain": "«lekarstwo» significa «la medicina»."
+    },
+    "pl-a1-07-e6": {
+      "explain": "«la testa» si dice «głowa». Le maiuscole non contano, ma ogni lettera e ogni accento sì."
+    },
+    "pl-a1-07-e7": {
+      "explain": "Puoi dire: «Boli mnie brzuch» oppure «Brzuch mnie boli».",
+      "prompt": "Il medico ti chiede cosa non va. Digli che ti fa male la pancia."
+    },
+    "pl-a1-08-e1": {
+      "explain": "«sobota» significa «sabato»."
+    },
+    "pl-a1-08-e2": {
+      "explain": "«Dobry pomysł! O której?» significa «Bella idea! A che ora?»."
+    },
+    "pl-a1-08-e3": {
+      "explain": "La frase completa è «Masz czas w sobotę?» = «Hai tempo sabato?». «w sobotę» = sabato: dopo «w» sobota diventa sobotę."
+    },
+    "pl-a1-08-e4": {
+      "explain": "Ordine giusto: «Idziemy do kina?» = «Andiamo al cinema?»."
+    },
+    "pl-a1-08-e5": {
+      "explain": "«Która godzina?» significa «Che ore sono?»."
+    },
+    "pl-a1-08-e6": {
+      "explain": "«domenica» si dice «niedziela». Le maiuscole non contano, ma ogni lettera e ogni accento sì."
+    },
+    "pl-a1-08-e7": {
+      "explain": "Puoi dire: «Masz czas w niedzielę?» oppure «Czy masz czas w niedzielę?».",
+      "prompt": "Vuoi andare al cinema con un amico. Chiedigli se ha tempo domenica."
+    },
+    "pl-a1-09-e1": {
+      "explain": "«pyszny» significa «buonissimo»."
+    },
+    "pl-a1-09-e2": {
+      "explain": "«Co państwo zamawiają?» significa «Cosa desiderate?»."
+    },
+    "pl-a1-09-e3": {
+      "explain": "La frase completa è «Dobry wieczór, mam rezerwację na dwie osoby» = «Buonasera, ho prenotato un tavolo per due». «Mam rezerwację» = «Ho una prenotazione»."
+    },
+    "pl-a1-09-e4": {
+      "explain": "Ordine giusto: «Dla mnie zupa i sałatka» = «Per me la zuppa e un’insalata»."
+    },
+    "pl-a1-09-e5": {
+      "explain": "«ryba» significa «il pesce»."
+    },
+    "pl-a1-09-e6": {
+      "explain": "«la zuppa» si dice «zupa». Le maiuscole non contano, ma ogni lettera e ogni accento sì."
+    },
+    "pl-a1-09-e7": {
+      "explain": "Puoi dire: «Poproszę rachunek» oppure «Rachunek, proszę» oppure «Czy mogę prosić o rachunek?».",
+      "prompt": "Hai finito di mangiare. Chiedi il conto al cameriere."
+    },
+    "pl-a1-10-e1": {
+      "explain": "«muzyka» significa «la musica»."
+    },
+    "pl-a1-10-e2": {
+      "explain": "«Co robisz w weekend?» significa «Cosa fai nel fine settimana?»."
+    },
+    "pl-a1-10-e3": {
+      "explain": "La frase completa è «W sobotę gram w piłkę nożną» = «Il sabato gioco a calcio». «grać w …» = giocare a …: gram w piłkę nożną = gioco a calcio."
+    },
+    "pl-a1-10-e4": {
+      "explain": "Ordine giusto: «W niedzielę czytam książkę» = «La domenica leggo un libro»."
+    },
+    "pl-a1-10-e5": {
+      "explain": "«pływać» significa «nuotare»."
+    },
+    "pl-a1-10-e6": {
+      "explain": "«il libro» si dice «książka». Le maiuscole non contano, ma ogni lettera e ogni accento sì."
+    },
+    "pl-a1-10-e7": {
+      "explain": "Puoi dire: «Lubię gotować» oppure «Bardzo lubię gotować». «Lubię» + infinito = «Mi piace …».",
+      "prompt": "Una nuova amica ti chiede cosa ti piace. Rispondi che ti piace cucinare."
+    }
+  }
+}
